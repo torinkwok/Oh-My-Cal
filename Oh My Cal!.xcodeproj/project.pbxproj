@@ -36,6 +36,8 @@
 		83099CB219ADBB2E00DDBF1D /* BGTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9319ADBB2E00DDBF1D /* BGTheme.m */; };
 		83099CB319ADBB2E00DDBF1D /* BGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9519ADBB2E00DDBF1D /* BGThemeManager.m */; };
 		839396ED19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 839396EC19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m */; };
+		839396F019ADD791008D8A3C /* OMCLCDScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 839396EF19ADD791008D8A3C /* OMCLCDScreen.m */; };
+		839396F219ADE567008D8A3C /* OMCDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 839396F119ADE567008D8A3C /* OMCDefaults.plist */; };
 		83D5D4C519ADB172004AFD84 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4C419ADB172004AFD84 /* Cocoa.framework */; };
 		83D5D4CF19ADB172004AFD84 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D4CD19ADB172004AFD84 /* InfoPlist.strings */; };
 		83D5D4D119ADB172004AFD84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D4D019ADB172004AFD84 /* main.m */; };
@@ -135,6 +137,9 @@
 		83099C9719ADBB2E00DDBF1D /* NSTokenAttachmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTokenAttachmentCell.h; sourceTree = "<group>"; };
 		839396EB19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCCalWithProgrammerStyle.h; path = "Oh My Cal!/OMCCalWithProgrammerStyle.h"; sourceTree = "<group>"; };
 		839396EC19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCCalWithProgrammerStyle.m; path = "Oh My Cal!/OMCCalWithProgrammerStyle.m"; sourceTree = "<group>"; };
+		839396EE19ADD791008D8A3C /* OMCLCDScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCLCDScreen.h; path = "Oh My Cal!/OMCLCDScreen.h"; sourceTree = "<group>"; };
+		839396EF19ADD791008D8A3C /* OMCLCDScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCLCDScreen.m; path = "Oh My Cal!/OMCLCDScreen.m"; sourceTree = "<group>"; };
+		839396F119ADE567008D8A3C /* OMCDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = OMCDefaults.plist; path = BGHUDAppKit/OMCDefaults.plist; sourceTree = "<group>"; };
 		83D5D4C119ADB172004AFD84 /* Oh My Cal!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oh My Cal!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D5D4C419ADB172004AFD84 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		83D5D4C719ADB172004AFD84 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -155,7 +160,7 @@
 		83D5D4EC19ADB172004AFD84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		83D5D4EE19ADB172004AFD84 /* Oh_My_Cal_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Oh_My_Cal_Tests.m; sourceTree = "<group>"; };
 		83D5D4F819ADB17B004AFD84 /* Oh My Cal!.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Oh My Cal!.entitlements"; sourceTree = "<group>"; };
-		83D5D51C19ADB26C004AFD84 /* OMFCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMFCommon.h; sourceTree = "<group>"; };
+		83D5D51C19ADB26C004AFD84 /* OMCCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMCCommon.h; sourceTree = "<group>"; };
 		83D5D52319ADB803004AFD84 /* OMFMainPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFMainPanel.h; path = "Oh My Cal!/OMFMainPanel.h"; sourceTree = "<group>"; };
 		83D5D52419ADB819004AFD84 /* OMFMainPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OMFMainPanel.xib; path = "Oh My Cal!/OMFMainPanel.xib"; sourceTree = "<group>"; };
 		83D5D52619ADB83C004AFD84 /* OMFMainPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFMainPanelController.m; path = "Oh My Cal!/OMFMainPanelController.m"; sourceTree = "<group>"; };
@@ -271,6 +276,8 @@
 		839396EA19ADC79F008D8A3C /* Cal Views */ = {
 			isa = PBXGroup;
 			children = (
+				839396EE19ADD791008D8A3C /* OMCLCDScreen.h */,
+				839396EF19ADD791008D8A3C /* OMCLCDScreen.m */,
 				839396EB19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.h */,
 				839396EC19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m */,
 			);
@@ -339,7 +346,8 @@
 				83D5D4CC19ADB172004AFD84 /* Oh My Cal!-Info.plist */,
 				83D5D4DC19ADB172004AFD84 /* Images.xcassets */,
 				83D5D4CD19ADB172004AFD84 /* InfoPlist.strings */,
-				83D5D51C19ADB26C004AFD84 /* OMFCommon.h */,
+				839396F119ADE567008D8A3C /* OMCDefaults.plist */,
+				83D5D51C19ADB26C004AFD84 /* OMCCommon.h */,
 				83D5D4D019ADB172004AFD84 /* main.m */,
 				83D5D4D219ADB172004AFD84 /* Oh My Cal!-Prefix.pch */,
 				83D5D4D319ADB172004AFD84 /* Credits.rtf */,
@@ -528,6 +536,7 @@
 			files = (
 				83D5D4CF19ADB172004AFD84 /* InfoPlist.strings in Resources */,
 				83D5D52519ADB819004AFD84 /* OMFMainPanel.xib in Resources */,
+				839396F219ADE567008D8A3C /* OMCDefaults.plist in Resources */,
 				83D5D53019ADB8B1004AFD84 /* statusbar-fan-highlighting.png in Resources */,
 				83D5D4DD19ADB172004AFD84 /* Images.xcassets in Resources */,
 				83D5D53B19ADB8E1004AFD84 /* OMFPreferencesPanel.xib in Resources */,
@@ -556,6 +565,7 @@
 				83099CA819ADBB2E00DDBF1D /* BGHUDStepperCell.m in Sources */,
 				83099CA319ADBB2E00DDBF1D /* BGHUDScrollView.m in Sources */,
 				83D5D52A19ADB83C004AFD84 /* OMFMainPanel.m in Sources */,
+				839396F019ADD791008D8A3C /* OMCLCDScreen.m in Sources */,
 				83D5D53719ADB8C7004AFD84 /* OMFStatusBarController.m in Sources */,
 				83099C9F19ADBB2E00DDBF1D /* BGHUDOutlineView.m in Sources */,
 				83099CA119ADBB2E00DDBF1D /* BGHUDProgressIndicator.m in Sources */,

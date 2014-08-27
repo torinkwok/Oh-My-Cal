@@ -32,6 +32,8 @@
  ****************************************************************************/
 
 #import "OMFPanelBackgroundView.h"
+
+#import "OMCLCDScreen.h"
 #import "OMCCalWithProgrammerStyle.h"
 
 #define ARROW_WIDTH     20.f
@@ -45,6 +47,8 @@
 // OMFPanelBackgroundView class
 @implementation OMFPanelBackgroundView
 
+@synthesize _currentCalStyle;
+@synthesize _LCDScreen;
 @synthesize _calWithProgrammerStyle;
 
 @synthesize arrowX = _arrowX;
@@ -52,16 +56,29 @@
 #pragma mark Conforms <NSAwakeFromNib> protocol
 - ( void ) awakeFromNib
     {
-    NSRect currentWindowFrame = [ [ self window ] frame ];
-    NSRect newWindowFrame = NSMakeRect( NSMinX( currentWindowFrame )
-                                      , NSMinY( currentWindowFrame )
+    _currentCalStyle = ( OMCCalStyle )[ [ USER_DEFAULTS objectForKey: OMCDefaultsKeyCalStyle ] intValue ];
+
+    NSView* currentCal = nil;
+    switch( _currentCalStyle )
+        {
+    case OMCBasicStyle: /* TODO: NOTHING */ break;
+    case OMCProgrammerStyle: currentCal = self._calWithProgrammerStyle; break;
+        }
+
+    [ self._LCDScreen setFrame: NSMakeRect( NSMinX( self.bounds ) + 12
+                                          , NSMaxY( self._calWithProgrammerStyle.bounds )
+                                          , NSWidth( self._calWithProgrammerStyle.bounds ) - 12 * 2
+                                          , 160
+                                          ) ];
+
+    NSRect newWindowFrame = NSMakeRect( 0, 0 // Because of the openPanel: method in OMCMainPanelController, the origin of window does not matter.
                                       , NSWidth( self._calWithProgrammerStyle.bounds )
-                                      , NSHeight( self.bounds ) + 200 // TODO: The height delta should be based on height of dial
+                                      , NSHeight( self._calWithProgrammerStyle.bounds ) + NSHeight( self._LCDScreen.bounds ) + 20 // TODO: The height delta should be based on height of dial
                                       );
 
     [ [ self window ] setFrame: newWindowFrame display: YES ];
 
-    [ self addSubview: self._calWithProgrammerStyle ];
+    [ self setSubviews: @[ self._LCDScreen, self._calWithProgrammerStyle ] ];
     }
 
 #pragma mark Customize Drawing

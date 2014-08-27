@@ -34,7 +34,7 @@
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
     #import "BGHUDAppKit.h"
-    #import "OMFCommon.h"
+    #import "OMCCommon.h"
 #endif
 
 //////////////////////////////////////////////////////////////////////////////

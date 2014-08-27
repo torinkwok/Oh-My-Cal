@@ -31,25 +31,17 @@
  **                                                                         **
  ****************************************************************************/
 
-#import <Cocoa/Cocoa.h>
+#import "OMCLCDScreen.h"
 
-@class OMCLCDScreen;
-@class OMCCalWithProgrammerStyle;
+// OMCLCDScreen class
+@implementation OMCLCDScreen
 
-// OMFPanelBackgroundView class
-@interface OMFPanelBackgroundView : NSView
+- ( BOOL ) canBecomeKeyView
     {
-@private
-    CGFloat _arrowX;
+    return YES;
     }
 
-@property ( nonatomic, assign ) OMCCalStyle _currentCalStyle;
-@property ( nonatomic, assign ) IBOutlet OMCLCDScreen* _LCDScreen;
-@property ( nonatomic, assign ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
-
-@property ( nonatomic, assign ) CGFloat arrowX;
-
-@end // OMFPanelBackgroundView
+@end // OMCLCDScreen class
 
 //////////////////////////////////////////////////////////////////////////////
 

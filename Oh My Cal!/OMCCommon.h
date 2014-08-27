@@ -60,15 +60,9 @@
 #define FUCKING_CODE 0
 
 // User Defaults Keys
-#define OMFDefaultsKeyDefaultTickVal    @"OMFDefaultsKeyDefaultTickVal"
-#define OMFDefaultsKeyRefreshFrequency  @"OMFDefaultsKeyRefreshFrequency"
-#define OMFDefaultsKeyTemperatureUnit   @"OMFDefaultsKeyTemperatureUnit"
-#define OMFDefaultsKeyStartAtLogin      @"OMFDefaultsKeyStartAtLogin"
-#define OMFDefaultsKeyDashboardAccuracy @"OMFDefaultsKeyDashboardAccuracy"
+#define OMCDefaultsKeyCalStyle @"OMCDefaultsKeyCalStyle"
 
-typedef enum { OMFCelsius, OMFFahrenheit } OMFTemperatureUnit;
-typedef enum { OMFStartAtLogin, OMFNotStartAtLogin } OMFBehaviorWhileStarting;
-typedef enum { OMFDashboardLowAccuracy, OMFDashboardMediumAccuracy, OMFDashboardHighAccuracy } OMFDashboardAccuracy;
+typedef enum { OMCBasicStyle, OMCProgrammerStyle } OMCCalStyle;
 
 ////////////////////////////////////////////////////////////////////////////
 
