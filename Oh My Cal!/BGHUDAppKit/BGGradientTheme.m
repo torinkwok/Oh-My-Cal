@@ -37,6 +37,21 @@
 
 @implementation BGGradientTheme
 
+- ( NSGradient* ) normalGradientForView: ( NSView* )_View
+    {
+    if ( [ _View isKindOfClass: [ BGHUDView class ] ] )
+        {
+        return [ [ [ NSGradient alloc ]
+            initWithColorsAndLocations: [ NSColor colorWithDeviceRed: 0.324f green: 0.331f blue: 0.347f alpha: .3f ], ( CGFloat )0
+                                      , [ NSColor colorWithDeviceRed: 0.245f green: 0.253f blue: 0.269f alpha: .3f ], .5f
+                                      , [ NSColor colorWithDeviceRed: 0.206f green: 0.214f blue: 0.233f alpha: .3f ], .5f
+                                      , [ NSColor colorWithDeviceRed: 0.139f green: 0.147f blue: 0.167f alpha: .3f ], 1.0f
+                                      , nil ] autorelease ];
+        }
+
+    return [ self normalGradient ];
+    }
+
 -(NSGradient *)normalGradient {
 	
 	return [ [ [ NSGradient alloc ]
@@ -92,8 +107,13 @@
 }
 
 -(CGFloat)alphaValue {
-	
+#if FLAT
 	return 0.2f;
+#endif
+
+#if TEXTURE
+    return 0.7;
+#endif
 }
 
 @end

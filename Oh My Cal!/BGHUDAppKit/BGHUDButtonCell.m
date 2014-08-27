@@ -352,11 +352,15 @@
 	
 	//Save Graphics State
 	[NSGraphicsContext saveGraphicsState];
-	
-	if([self isEnabled]) {
-		
+
+#if FLAT
+	if([self isEnabled])
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] dropShadow] set];
-	}
+#endif
+
+#if TEXTURE
+    [[[[BGThemeManager keyedManager] themeForKey: self.themeKey] dropShadow] set];
+#endif
 	
 	//Draw Dark Border
 	[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] darkStrokeColor] set];
@@ -390,8 +394,13 @@
 			}
 		}
 	} else {
-		
+    #if FLAT
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] disabledNormalGradient] drawInBezierPath: path angle: 90];
+    #endif
+
+    #if TEXTURE
+		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] normalGradient] drawInBezierPath: path angle: 90];
+    #endif
 	}
 	
 	//Draw Border
@@ -402,7 +411,7 @@
 	
 	[path setLineWidth: 1.0f];
 
-#if 1 // Tong Guo
+#if FLAT // Tong Guo
 	[path stroke];
 #endif
 

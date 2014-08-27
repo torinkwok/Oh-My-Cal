@@ -87,6 +87,7 @@
 //General Theme
 -(CGFloat)gradientAngle;
 -(NSGradient *)normalGradient;					//Gradient used to draw normal background
+- ( NSGradient* ) normalGradientForView: ( NSView* )_View;
 -(NSGradient *)disabledNormalGradient;			//Gradient used for disabled background
 -(NSGradient *)pushedGradient;					//Gradient used to draw pushed background
 -(NSGradient *)highlightGradient;				//Gradient used to draw highlight background

@@ -40,10 +40,10 @@
 #define ARROW_WIDTH     20.f
 #define ARROW_HEIGHT    8.f
 
-#define CORNER_RADIUS   20.f
+#define CORNER_RADIUS   30.f
 
 #define GRAY_SCALE      .12549f
-#define ALPHA_VAL       .85f
+#define ALPHA_VAL       .95f
 
 #define LCD_HEIGHT      130.f
 #define BINARY_OPERATION_PANEL_HEIGHT 60.f
@@ -53,7 +53,7 @@
 // OMFPanelBackgroundView class
 @implementation OMFPanelBackgroundView
 
-@synthesize _currentCalStyle;
+@synthesize _currentCalType;
 @synthesize _LCDScreen;
 @synthesize _binaryOperationPanel;
 @synthesize _calWithProgrammerStyle;
@@ -63,13 +63,13 @@
 #pragma mark Conforms <NSAwakeFromNib> protocol
 - ( void ) awakeFromNib
     {
-    _currentCalStyle = ( OMCCalStyle )[ [ USER_DEFAULTS objectForKey: OMCDefaultsKeyCalStyle ] intValue ];
+    _currentCalType = ( OMCCalType )[ [ USER_DEFAULTS objectForKey: OMCDefaultsKeyCalType ] intValue ];
 
     NSView* currentCal = nil;
-    switch( _currentCalStyle )
+    switch( _currentCalType )
         {
-    case OMCBasicStyle: /* TODO: NOTHING */                             break;
-    case OMCProgrammerStyle: currentCal = self._calWithProgrammerStyle; break;
+    case OMCBasicType: /* TODO: NOTHING */                             break;
+    case OMCProgrammerType: currentCal = self._calWithProgrammerStyle; break;
         }
 
     [ self._binaryOperationPanel setFrame: NSMakeRect( NSMinX( self.bounds ) + PADDING_VAL

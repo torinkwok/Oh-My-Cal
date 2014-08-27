@@ -31,27 +31,10 @@
  **                                                                         **
  ****************************************************************************/
 
-#import <Cocoa/Cocoa.h>
+#import "OMCCommon.h"
 
-@class OMCLCDScreen;
-@class OMCBinaryOperationPanel;
-@class OMCCalWithProgrammerStyle;
-
-// OMFPanelBackgroundView class
-@interface OMFPanelBackgroundView : NSView
-    {
-@private
-    CGFloat _arrowX;
-    }
-
-@property ( nonatomic, assign ) OMCCalType _currentCalType;
-@property ( nonatomic, assign ) IBOutlet OMCLCDScreen* _LCDScreen;
-@property ( nonatomic, assign ) IBOutlet OMCBinaryOperationPanel* _binaryOperationPanel;
-@property ( nonatomic, assign ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
-
-@property ( nonatomic, assign ) CGFloat arrowX;
-
-@end // OMFPanelBackgroundView
+NSString* const OMCFlatStyle = @"OMCFlatStyle";
+NSString* const OMCTextureStyle = @"OMCTextureStyle";
 
 //////////////////////////////////////////////////////////////////////////////
 

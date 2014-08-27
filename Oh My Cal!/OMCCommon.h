@@ -58,13 +58,19 @@
 #define NOTIFICATION_CENTER [ NSNotificationCenter defaultCenter ]
 
 #define FUCKING_CODE 0
+#define FLAT    0
+#define TEXTURE !FLAT
 
 // User Defaults Keys
-#define OMCDefaultsKeyCalStyle @"OMCDefaultsKeyCalStyle"
+#define OMCDefaultsKeyCalType           @"OMCDefaultsKeyCalType"
+#define OMCDefaultsKeyCalStyle          @"OMCDefaultsKeyCalStyle"
 #define OMFDefaultsKeyStartAtLogin      @"OMFDefaultsKeyStartAtLogin"
 
-typedef enum { OMCBasicStyle, OMCProgrammerStyle } OMCCalStyle;
+typedef enum { OMCBasicType, OMCProgrammerType } OMCCalType;
 typedef enum { OMFStartAtLogin, OMFNotStartAtLogin } OMFBehaviorWhileStarting;
+
+NSString extern* const OMCFlatStyle;
+NSString extern* const OMCTextureStyle;
 
 ////////////////////////////////////////////////////////////////////////////
 
