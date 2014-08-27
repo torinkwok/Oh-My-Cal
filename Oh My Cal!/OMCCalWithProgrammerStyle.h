@@ -35,6 +35,10 @@
 
 // OMCCalWithProgrammerStyle class
 @interface OMCCalWithProgrammerStyle : NSView
+
+//@property ( nonatomic, assign )
+
+
 @end // OMCCalWithProgrammerStyle class
 
 //////////////////////////////////////////////////////////////////////////////
