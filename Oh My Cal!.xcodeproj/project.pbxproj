@@ -1,0 +1,626 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		83D5D4C519ADB172004AFD84 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4C419ADB172004AFD84 /* Cocoa.framework */; };
+		83D5D4CF19ADB172004AFD84 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D4CD19ADB172004AFD84 /* InfoPlist.strings */; };
+		83D5D4D119ADB172004AFD84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D4D019ADB172004AFD84 /* main.m */; };
+		83D5D4D519ADB172004AFD84 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D4D319ADB172004AFD84 /* Credits.rtf */; };
+		83D5D4D819ADB172004AFD84 /* OMCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D4D719ADB172004AFD84 /* OMCAppDelegate.m */; };
+		83D5D4DB19ADB172004AFD84 /* OMCMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D4D919ADB172004AFD84 /* OMCMainMenu.xib */; };
+		83D5D4DD19ADB172004AFD84 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D4DC19ADB172004AFD84 /* Images.xcassets */; };
+		83D5D4E419ADB172004AFD84 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4E319ADB172004AFD84 /* XCTest.framework */; };
+		83D5D4E519ADB172004AFD84 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4C419ADB172004AFD84 /* Cocoa.framework */; };
+		83D5D4ED19ADB172004AFD84 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D4EB19ADB172004AFD84 /* InfoPlist.strings */; };
+		83D5D4EF19ADB172004AFD84 /* Oh_My_Cal_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D4EE19ADB172004AFD84 /* Oh_My_Cal_Tests.m */; };
+		83D5D52519ADB819004AFD84 /* OMFMainPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D52419ADB819004AFD84 /* OMFMainPanel.xib */; };
+		83D5D52919ADB83C004AFD84 /* OMFMainPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D52619ADB83C004AFD84 /* OMFMainPanelController.m */; };
+		83D5D52A19ADB83C004AFD84 /* OMFMainPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D52819ADB83C004AFD84 /* OMFMainPanel.m */; };
+		83D5D52D19ADB85A004AFD84 /* OMFPanelBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D52B19ADB85A004AFD84 /* OMFPanelBackgroundView.m */; };
+		83D5D53019ADB8B1004AFD84 /* statusbar-fan-highlighting.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D52E19ADB8B1004AFD84 /* statusbar-fan-highlighting.png */; };
+		83D5D53119ADB8B1004AFD84 /* statusbar-fan.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D52F19ADB8B1004AFD84 /* statusbar-fan.png */; };
+		83D5D53619ADB8C7004AFD84 /* OMFStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D53319ADB8C7004AFD84 /* OMFStatusItemView.m */; };
+		83D5D53719ADB8C7004AFD84 /* OMFStatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D53519ADB8C7004AFD84 /* OMFStatusBarController.m */; };
+		83D5D53A19ADB8E1004AFD84 /* OMFAboutPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D53819ADB8E1004AFD84 /* OMFAboutPanel.xib */; };
+		83D5D53B19ADB8E1004AFD84 /* OMFPreferencesPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D53919ADB8E1004AFD84 /* OMFPreferencesPanel.xib */; };
+		83D5D54119ADB8FF004AFD84 /* OMFPreferencesPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D53C19ADB8FF004AFD84 /* OMFPreferencesPanelController.m */; };
+		83D5D54219ADB8FF004AFD84 /* OMFAboutPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D53E19ADB8FF004AFD84 /* OMFAboutPanelController.m */; };
+		83D5D54419ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D54319ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		83D5D4E619ADB172004AFD84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83D5D4B919ADB172004AFD84 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83D5D4C019ADB172004AFD84;
+			remoteInfo = "Oh My Cal!";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		83D5D4C119ADB172004AFD84 /* Oh My Cal!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oh My Cal!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		83D5D4C419ADB172004AFD84 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		83D5D4C719ADB172004AFD84 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		83D5D4C819ADB172004AFD84 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		83D5D4C919ADB172004AFD84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		83D5D4CC19ADB172004AFD84 /* Oh My Cal!-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Oh My Cal!-Info.plist"; sourceTree = "<group>"; };
+		83D5D4CE19ADB172004AFD84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		83D5D4D019ADB172004AFD84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		83D5D4D219ADB172004AFD84 /* Oh My Cal!-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Oh My Cal!-Prefix.pch"; sourceTree = "<group>"; };
+		83D5D4D419ADB172004AFD84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		83D5D4D619ADB172004AFD84 /* OMCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMCAppDelegate.h; sourceTree = "<group>"; };
+		83D5D4D719ADB172004AFD84 /* OMCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OMCAppDelegate.m; sourceTree = "<group>"; };
+		83D5D4DA19ADB172004AFD84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OMCMainMenu.xib; sourceTree = "<group>"; };
+		83D5D4DC19ADB172004AFD84 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		83D5D4E219ADB172004AFD84 /* Oh My Cal!Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Oh My Cal!Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		83D5D4E319ADB172004AFD84 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		83D5D4EA19ADB172004AFD84 /* Oh My Cal!Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Oh My Cal!Tests-Info.plist"; sourceTree = "<group>"; };
+		83D5D4EC19ADB172004AFD84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		83D5D4EE19ADB172004AFD84 /* Oh_My_Cal_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Oh_My_Cal_Tests.m; sourceTree = "<group>"; };
+		83D5D4F819ADB17B004AFD84 /* Oh My Cal!.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Oh My Cal!.entitlements"; sourceTree = "<group>"; };
+		83D5D51C19ADB26C004AFD84 /* OMFCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMFCommon.h; sourceTree = "<group>"; };
+		83D5D52319ADB803004AFD84 /* OMFMainPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFMainPanel.h; path = "Oh My Cal!/OMFMainPanel.h"; sourceTree = "<group>"; };
+		83D5D52419ADB819004AFD84 /* OMFMainPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OMFMainPanel.xib; path = "Oh My Cal!/OMFMainPanel.xib"; sourceTree = "<group>"; };
+		83D5D52619ADB83C004AFD84 /* OMFMainPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFMainPanelController.m; path = "Oh My Cal!/OMFMainPanelController.m"; sourceTree = "<group>"; };
+		83D5D52719ADB83C004AFD84 /* OMFMainPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFMainPanelController.h; path = "Oh My Cal!/OMFMainPanelController.h"; sourceTree = "<group>"; };
+		83D5D52819ADB83C004AFD84 /* OMFMainPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFMainPanel.m; path = "Oh My Cal!/OMFMainPanel.m"; sourceTree = "<group>"; };
+		83D5D52B19ADB85A004AFD84 /* OMFPanelBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFPanelBackgroundView.m; path = "Oh My Cal!/OMFPanelBackgroundView.m"; sourceTree = "<group>"; };
+		83D5D52C19ADB85A004AFD84 /* OMFPanelBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFPanelBackgroundView.h; path = "Oh My Cal!/OMFPanelBackgroundView.h"; sourceTree = "<group>"; };
+		83D5D52E19ADB8B1004AFD84 /* statusbar-fan-highlighting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "statusbar-fan-highlighting.png"; path = "Oh My Cal!/Resources/statusbar-fan-highlighting.png"; sourceTree = "<group>"; };
+		83D5D52F19ADB8B1004AFD84 /* statusbar-fan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "statusbar-fan.png"; path = "Oh My Cal!/Resources/statusbar-fan.png"; sourceTree = "<group>"; };
+		83D5D53219ADB8C7004AFD84 /* OMFStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFStatusItemView.h; path = "Oh My Cal!/OMFStatusItemView.h"; sourceTree = "<group>"; };
+		83D5D53319ADB8C7004AFD84 /* OMFStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFStatusItemView.m; path = "Oh My Cal!/OMFStatusItemView.m"; sourceTree = "<group>"; };
+		83D5D53419ADB8C7004AFD84 /* OMFStatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFStatusBarController.h; path = "Oh My Cal!/OMFStatusBarController.h"; sourceTree = "<group>"; };
+		83D5D53519ADB8C7004AFD84 /* OMFStatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFStatusBarController.m; path = "Oh My Cal!/OMFStatusBarController.m"; sourceTree = "<group>"; };
+		83D5D53819ADB8E1004AFD84 /* OMFAboutPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OMFAboutPanel.xib; path = "Oh My Cal!/OMFAboutPanel.xib"; sourceTree = "<group>"; };
+		83D5D53919ADB8E1004AFD84 /* OMFPreferencesPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OMFPreferencesPanel.xib; path = "Oh My Cal!/OMFPreferencesPanel.xib"; sourceTree = "<group>"; };
+		83D5D53C19ADB8FF004AFD84 /* OMFPreferencesPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFPreferencesPanelController.m; path = "Oh My Cal!/OMFPreferencesPanelController.m"; sourceTree = "<group>"; };
+		83D5D53D19ADB8FF004AFD84 /* OMFAboutPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFAboutPanelController.h; path = "Oh My Cal!/OMFAboutPanelController.h"; sourceTree = "<group>"; };
+		83D5D53E19ADB8FF004AFD84 /* OMFAboutPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFAboutPanelController.m; path = "Oh My Cal!/OMFAboutPanelController.m"; sourceTree = "<group>"; };
+		83D5D53F19ADB8FF004AFD84 /* OMFContentViewOfAboutPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFContentViewOfAboutPanel.h; path = "Oh My Cal!/OMFContentViewOfAboutPanel.h"; sourceTree = "<group>"; };
+		83D5D54019ADB8FF004AFD84 /* OMFPreferencesPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFPreferencesPanelController.h; path = "Oh My Cal!/OMFPreferencesPanelController.h"; sourceTree = "<group>"; };
+		83D5D54319ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFContentViewOfAboutPanel.m; path = "Oh My Cal!/OMFContentViewOfAboutPanel.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		83D5D4BE19ADB172004AFD84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83D5D4C519ADB172004AFD84 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83D5D4DF19ADB172004AFD84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83D5D4E519ADB172004AFD84 /* Cocoa.framework in Frameworks */,
+				83D5D4E419ADB172004AFD84 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		83D5D4B819ADB172004AFD84 = {
+			isa = PBXGroup;
+			children = (
+				83D5D51F19ADB452004AFD84 /* Main Panel */,
+				83D5D52119ADB46E004AFD84 /* Status Bar */,
+				83D5D4CA19ADB172004AFD84 /* Whole App */,
+				83D5D51D19ADB3F3004AFD84 /* Other Panels */,
+				83D5D4CB19ADB172004AFD84 /* Supporting Files */,
+				83D5D4E819ADB172004AFD84 /* Oh My Cal!Tests */,
+				83D5D4C319ADB172004AFD84 /* Frameworks */,
+				83D5D4C219ADB172004AFD84 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		83D5D4C219ADB172004AFD84 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				83D5D4C119ADB172004AFD84 /* Oh My Cal!.app */,
+				83D5D4E219ADB172004AFD84 /* Oh My Cal!Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		83D5D4C319ADB172004AFD84 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83D5D4C419ADB172004AFD84 /* Cocoa.framework */,
+				83D5D4E319ADB172004AFD84 /* XCTest.framework */,
+				83D5D4C619ADB172004AFD84 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		83D5D4C619ADB172004AFD84 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83D5D4C719ADB172004AFD84 /* AppKit.framework */,
+				83D5D4C819ADB172004AFD84 /* CoreData.framework */,
+				83D5D4C919ADB172004AFD84 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		83D5D4CA19ADB172004AFD84 /* Whole App */ = {
+			isa = PBXGroup;
+			children = (
+				83D5D4F919ADB1B4004AFD84 /* Resources */,
+				83D5D4D619ADB172004AFD84 /* OMCAppDelegate.h */,
+				83D5D4D719ADB172004AFD84 /* OMCAppDelegate.m */,
+			);
+			name = "Whole App";
+			path = "Oh My Cal!";
+			sourceTree = "<group>";
+		};
+		83D5D4CB19ADB172004AFD84 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				83D5D4F819ADB17B004AFD84 /* Oh My Cal!.entitlements */,
+				83D5D4CC19ADB172004AFD84 /* Oh My Cal!-Info.plist */,
+				83D5D4DC19ADB172004AFD84 /* Images.xcassets */,
+				83D5D4CD19ADB172004AFD84 /* InfoPlist.strings */,
+				83D5D51C19ADB26C004AFD84 /* OMFCommon.h */,
+				83D5D4D019ADB172004AFD84 /* main.m */,
+				83D5D4D219ADB172004AFD84 /* Oh My Cal!-Prefix.pch */,
+				83D5D4D319ADB172004AFD84 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			path = "Oh My Cal!";
+			sourceTree = "<group>";
+		};
+		83D5D4E819ADB172004AFD84 /* Oh My Cal!Tests */ = {
+			isa = PBXGroup;
+			children = (
+				83D5D4EE19ADB172004AFD84 /* Oh_My_Cal_Tests.m */,
+				83D5D4E919ADB172004AFD84 /* Supporting Files */,
+			);
+			path = "Oh My Cal!Tests";
+			sourceTree = "<group>";
+		};
+		83D5D4E919ADB172004AFD84 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				83D5D4EA19ADB172004AFD84 /* Oh My Cal!Tests-Info.plist */,
+				83D5D4EB19ADB172004AFD84 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		83D5D4F919ADB1B4004AFD84 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				83D5D4D919ADB172004AFD84 /* OMCMainMenu.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		83D5D51D19ADB3F3004AFD84 /* Other Panels */ = {
+			isa = PBXGroup;
+			children = (
+				83D5D51E19ADB3FC004AFD84 /* Resources */,
+				83D5D53D19ADB8FF004AFD84 /* OMFAboutPanelController.h */,
+				83D5D53E19ADB8FF004AFD84 /* OMFAboutPanelController.m */,
+				83D5D53F19ADB8FF004AFD84 /* OMFContentViewOfAboutPanel.h */,
+				83D5D54319ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m */,
+				83D5D54019ADB8FF004AFD84 /* OMFPreferencesPanelController.h */,
+				83D5D53C19ADB8FF004AFD84 /* OMFPreferencesPanelController.m */,
+			);
+			name = "Other Panels";
+			sourceTree = "<group>";
+		};
+		83D5D51E19ADB3FC004AFD84 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				83D5D53819ADB8E1004AFD84 /* OMFAboutPanel.xib */,
+				83D5D53919ADB8E1004AFD84 /* OMFPreferencesPanel.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		83D5D51F19ADB452004AFD84 /* Main Panel */ = {
+			isa = PBXGroup;
+			children = (
+				83D5D52019ADB45A004AFD84 /* Resources */,
+				83D5D52C19ADB85A004AFD84 /* OMFPanelBackgroundView.h */,
+				83D5D52B19ADB85A004AFD84 /* OMFPanelBackgroundView.m */,
+				83D5D52319ADB803004AFD84 /* OMFMainPanel.h */,
+				83D5D52819ADB83C004AFD84 /* OMFMainPanel.m */,
+				83D5D52719ADB83C004AFD84 /* OMFMainPanelController.h */,
+				83D5D52619ADB83C004AFD84 /* OMFMainPanelController.m */,
+			);
+			name = "Main Panel";
+			sourceTree = "<group>";
+		};
+		83D5D52019ADB45A004AFD84 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				83D5D52419ADB819004AFD84 /* OMFMainPanel.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		83D5D52119ADB46E004AFD84 /* Status Bar */ = {
+			isa = PBXGroup;
+			children = (
+				83D5D52219ADB479004AFD84 /* Resources */,
+				83D5D53219ADB8C7004AFD84 /* OMFStatusItemView.h */,
+				83D5D53319ADB8C7004AFD84 /* OMFStatusItemView.m */,
+				83D5D53419ADB8C7004AFD84 /* OMFStatusBarController.h */,
+				83D5D53519ADB8C7004AFD84 /* OMFStatusBarController.m */,
+			);
+			name = "Status Bar";
+			sourceTree = "<group>";
+		};
+		83D5D52219ADB479004AFD84 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				83D5D52E19ADB8B1004AFD84 /* statusbar-fan-highlighting.png */,
+				83D5D52F19ADB8B1004AFD84 /* statusbar-fan.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		83D5D4C019ADB172004AFD84 /* Oh My Cal! */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83D5D4F219ADB172004AFD84 /* Build configuration list for PBXNativeTarget "Oh My Cal!" */;
+			buildPhases = (
+				83D5D4BD19ADB172004AFD84 /* Sources */,
+				83D5D4BE19ADB172004AFD84 /* Frameworks */,
+				83D5D4BF19ADB172004AFD84 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Oh My Cal!";
+			productName = "Oh My Cal!";
+			productReference = 83D5D4C119ADB172004AFD84 /* Oh My Cal!.app */;
+			productType = "com.apple.product-type.application";
+		};
+		83D5D4E119ADB172004AFD84 /* Oh My Cal!Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83D5D4F519ADB172004AFD84 /* Build configuration list for PBXNativeTarget "Oh My Cal!Tests" */;
+			buildPhases = (
+				83D5D4DE19ADB172004AFD84 /* Sources */,
+				83D5D4DF19ADB172004AFD84 /* Frameworks */,
+				83D5D4E019ADB172004AFD84 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				83D5D4E719ADB172004AFD84 /* PBXTargetDependency */,
+			);
+			name = "Oh My Cal!Tests";
+			productName = "Oh My Cal!Tests";
+			productReference = 83D5D4E219ADB172004AFD84 /* Oh My Cal!Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83D5D4B919ADB172004AFD84 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = OMC;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Tong G.";
+				TargetAttributes = {
+					83D5D4C019ADB172004AFD84 = {
+						DevelopmentTeam = 89BSC2UYH8;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+					83D5D4E119ADB172004AFD84 = {
+						TestTargetID = 83D5D4C019ADB172004AFD84;
+					};
+				};
+			};
+			buildConfigurationList = 83D5D4BC19ADB172004AFD84 /* Build configuration list for PBXProject "Oh My Cal!" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83D5D4B819ADB172004AFD84;
+			productRefGroup = 83D5D4C219ADB172004AFD84 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				83D5D4C019ADB172004AFD84 /* Oh My Cal! */,
+				83D5D4E119ADB172004AFD84 /* Oh My Cal!Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		83D5D4BF19ADB172004AFD84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83D5D4CF19ADB172004AFD84 /* InfoPlist.strings in Resources */,
+				83D5D52519ADB819004AFD84 /* OMFMainPanel.xib in Resources */,
+				83D5D53019ADB8B1004AFD84 /* statusbar-fan-highlighting.png in Resources */,
+				83D5D4DD19ADB172004AFD84 /* Images.xcassets in Resources */,
+				83D5D53B19ADB8E1004AFD84 /* OMFPreferencesPanel.xib in Resources */,
+				83D5D4D519ADB172004AFD84 /* Credits.rtf in Resources */,
+				83D5D53A19ADB8E1004AFD84 /* OMFAboutPanel.xib in Resources */,
+				83D5D4DB19ADB172004AFD84 /* OMCMainMenu.xib in Resources */,
+				83D5D53119ADB8B1004AFD84 /* statusbar-fan.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83D5D4E019ADB172004AFD84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83D5D4ED19ADB172004AFD84 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		83D5D4BD19ADB172004AFD84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83D5D52A19ADB83C004AFD84 /* OMFMainPanel.m in Sources */,
+				83D5D53719ADB8C7004AFD84 /* OMFStatusBarController.m in Sources */,
+				83D5D54119ADB8FF004AFD84 /* OMFPreferencesPanelController.m in Sources */,
+				83D5D52D19ADB85A004AFD84 /* OMFPanelBackgroundView.m in Sources */,
+				83D5D4D819ADB172004AFD84 /* OMCAppDelegate.m in Sources */,
+				83D5D54419ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m in Sources */,
+				83D5D4D119ADB172004AFD84 /* main.m in Sources */,
+				83D5D53619ADB8C7004AFD84 /* OMFStatusItemView.m in Sources */,
+				83D5D54219ADB8FF004AFD84 /* OMFAboutPanelController.m in Sources */,
+				83D5D52919ADB83C004AFD84 /* OMFMainPanelController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83D5D4DE19ADB172004AFD84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83D5D4EF19ADB172004AFD84 /* Oh_My_Cal_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		83D5D4E719ADB172004AFD84 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83D5D4C019ADB172004AFD84 /* Oh My Cal! */;
+			targetProxy = 83D5D4E619ADB172004AFD84 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		83D5D4CD19ADB172004AFD84 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83D5D4CE19ADB172004AFD84 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		83D5D4D319ADB172004AFD84 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83D5D4D419ADB172004AFD84 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		83D5D4D919ADB172004AFD84 /* OMCMainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83D5D4DA19ADB172004AFD84 /* Base */,
+			);
+			name = OMCMainMenu.xib;
+			sourceTree = "<group>";
+		};
+		83D5D4EB19ADB172004AFD84 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83D5D4EC19ADB172004AFD84 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		83D5D4F019ADB172004AFD84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		83D5D4F119ADB172004AFD84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		83D5D4F319ADB172004AFD84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_ENTITLEMENTS = "Oh My Cal!/Oh My Cal!.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Oh My Cal!/Oh My Cal!-Prefix.pch";
+				INFOPLIST_FILE = "Oh My Cal!/Oh My Cal!-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		83D5D4F419ADB172004AFD84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_ENTITLEMENTS = "Oh My Cal!/Oh My Cal!.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Oh My Cal!/Oh My Cal!-Prefix.pch";
+				INFOPLIST_FILE = "Oh My Cal!/Oh My Cal!-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		83D5D4F619ADB172004AFD84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Oh My Cal!.app/Contents/MacOS/Oh My Cal!";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Oh My Cal!/Oh My Cal!-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Oh My Cal!Tests/Oh My Cal!Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		83D5D4F719ADB172004AFD84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Oh My Cal!.app/Contents/MacOS/Oh My Cal!";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Oh My Cal!/Oh My Cal!-Prefix.pch";
+				INFOPLIST_FILE = "Oh My Cal!Tests/Oh My Cal!Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		83D5D4BC19ADB172004AFD84 /* Build configuration list for PBXProject "Oh My Cal!" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83D5D4F019ADB172004AFD84 /* Debug */,
+				83D5D4F119ADB172004AFD84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83D5D4F219ADB172004AFD84 /* Build configuration list for PBXNativeTarget "Oh My Cal!" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83D5D4F319ADB172004AFD84 /* Debug */,
+				83D5D4F419ADB172004AFD84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		83D5D4F519ADB172004AFD84 /* Build configuration list for PBXNativeTarget "Oh My Cal!Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83D5D4F619ADB172004AFD84 /* Debug */,
+				83D5D4F719ADB172004AFD84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83D5D4B919ADB172004AFD84 /* Project object */;
+}
