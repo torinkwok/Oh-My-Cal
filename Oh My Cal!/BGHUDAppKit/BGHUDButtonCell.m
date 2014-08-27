@@ -395,17 +395,17 @@
 	}
 	
 	//Draw Border
-	if([self isEnabled]) {
-		
+	if([self isEnabled])
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] strokeColor] set];
-	} else {
-		
+	else
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] strokeColor] set];
-	}
 	
 	[path setLineWidth: 1.0f];
+
+#if 1 // Tong Guo
 	[path stroke];
-	
+#endif
+
 	//path = nil;
 	[path release];
 	

@@ -349,7 +349,7 @@
             </subviews>
         </customView>
         <customView id="lUW-uQ-i4U" customClass="OMCLCDScreen">
-            <rect key="frame" x="0.0" y="0.0" width="358" height="105"/>
+            <rect key="frame" x="0.0" y="0.0" width="229" height="105"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
         </customView>
         <customView id="dMK-iL-Q71" customClass="OMCBinaryOperationPanel">

@@ -168,10 +168,14 @@
 	rect = [self bounds];
 	
 	if(self.useTheme) {
-		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] normalGradient] drawInRect: rect angle: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] gradientAngle]];
+        NSBezierPath* roundedRect = [ NSBezierPath bezierPathWithRoundedRect: rect xRadius: 3 yRadius: 3 ];
+
+		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] normalGradient] drawInBezierPath: roundedRect angle: 50];
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] strokeColor] set];
-		NSFrameRect(rect);
-		
+#if 0 // Tong Guo
+        [ roundedRect setLineWidth: 2 ];
+        [ roundedRect stroke ];
+#endif
 	} else {
 		
 		NSGradient *gradient;
