@@ -31,11 +31,11 @@
  **                                                                         **
  ****************************************************************************/
 
-#ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
-    #import "BGHUDAppKit.h"
-    #import "OMFCommon.h"
-#endif
+#import "OMCCalWithProgrammerStyle.h"
+
+// OMCCalWithProgrammerStyle class
+@implementation OMCCalWithProgrammerStyle
+@end // OMCCalWithProgrammerStyle class
 
 //////////////////////////////////////////////////////////////////////////////
 

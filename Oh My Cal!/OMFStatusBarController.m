@@ -58,7 +58,7 @@ NSString* const OMFStatusBarControllerStatusBarItemAlternateIconName = @"statusb
         NSStatusItem* statusItem = [ [ NSStatusBar systemStatusBar ] statusItemWithLength: NSSquareStatusItemLength ];
 
         self.statusItemView = [ OMFStatusItemView statusItemViewWithStatusItem: statusItem ];
-        [ statusItem setLength: 112 ];
+        [ statusItem setLength: 25 ];
 
         NSImage* icon = [ NSImage imageNamed: OMFStatusBarControllerStatusBarItemIconName ];
         NSImage* alternateIcon = [ NSImage imageNamed: OMFStatusBarControllerStatusBarItemAlternateIconName ];

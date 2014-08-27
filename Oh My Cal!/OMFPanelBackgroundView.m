@@ -32,6 +32,7 @@
  ****************************************************************************/
 
 #import "OMFPanelBackgroundView.h"
+#import "OMCCalWithProgrammerStyle.h"
 
 #define ARROW_WIDTH     20.f
 #define ARROW_HEIGHT    8.f
@@ -44,7 +45,24 @@
 // OMFPanelBackgroundView class
 @implementation OMFPanelBackgroundView
 
+@synthesize _calWithProgrammerStyle;
+
 @synthesize arrowX = _arrowX;
+
+#pragma mark Conforms <NSAwakeFromNib> protocol
+- ( void ) awakeFromNib
+    {
+    NSRect currentWindowFrame = [ [ self window ] frame ];
+    NSRect newWindowFrame = NSMakeRect( NSMinX( currentWindowFrame )
+                                      , NSMinY( currentWindowFrame )
+                                      , NSWidth( self._calWithProgrammerStyle.bounds )
+                                      , NSHeight( self.bounds ) + 200 // TODO: The height delta should be based on height of dial
+                                      );
+
+    [ [ self window ] setFrame: newWindowFrame display: YES ];
+
+    [ self addSubview: self._calWithProgrammerStyle ];
+    }
 
 #pragma mark Customize Drawing
 - ( void ) drawRect: ( NSRect )_DirtyRect

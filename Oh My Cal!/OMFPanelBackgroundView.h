@@ -33,12 +33,16 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class OMCCalWithProgrammerStyle;
+
 // OMFPanelBackgroundView class
 @interface OMFPanelBackgroundView : NSView
     {
 @private
     CGFloat _arrowX;
     }
+
+@property ( nonatomic, assign ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
 
 @property ( nonatomic, assign ) CGFloat arrowX;
 
