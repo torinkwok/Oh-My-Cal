@@ -33,25 +33,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class OMCLCDScreen;
-@class OMCBinaryOperationPanel;
-@class OMCCalWithProgrammerStyle;
+// OMCBinaryOperationPanel class
+@interface OMCBinaryOperationPanel : BGHUDView
 
-// OMFPanelBackgroundView class
-@interface OMFPanelBackgroundView : NSView
-    {
-@private
-    CGFloat _arrowX;
-    }
-
-@property ( nonatomic, assign ) OMCCalStyle _currentCalStyle;
-@property ( nonatomic, assign ) IBOutlet OMCLCDScreen* _LCDScreen;
-@property ( nonatomic, assign ) IBOutlet OMCBinaryOperationPanel* _binaryOperationPanel;
-@property ( nonatomic, assign ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
-
-@property ( nonatomic, assign ) CGFloat arrowX;
-
-@end // OMFPanelBackgroundView
+@end // OMCBinaryOperationPanel class
 
 //////////////////////////////////////////////////////////////////////////////
 

@@ -22,6 +22,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <connections>
                     <outlet property="_LCDScreen" destination="lUW-uQ-i4U" id="ajn-YS-H8g"/>
+                    <outlet property="_binaryOperationPanel" destination="dMK-iL-Q71" id="ASx-Yg-2rb"/>
                     <outlet property="_calWithProgrammerStyle" destination="GvH-CV-btC" id="ObX-6e-bsi"/>
                 </connections>
             </view>
@@ -349,6 +350,10 @@
         </customView>
         <customView id="lUW-uQ-i4U" customClass="OMCLCDScreen">
             <rect key="frame" x="0.0" y="0.0" width="358" height="105"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        </customView>
+        <customView id="dMK-iL-Q71" customClass="OMCBinaryOperationPanel">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
         </customView>
     </objects>

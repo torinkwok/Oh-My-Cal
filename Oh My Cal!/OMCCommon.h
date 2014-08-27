@@ -61,8 +61,10 @@
 
 // User Defaults Keys
 #define OMCDefaultsKeyCalStyle @"OMCDefaultsKeyCalStyle"
+#define OMFDefaultsKeyStartAtLogin      @"OMFDefaultsKeyStartAtLogin"
 
 typedef enum { OMCBasicStyle, OMCProgrammerStyle } OMCCalStyle;
+typedef enum { OMFStartAtLogin, OMFNotStartAtLogin } OMFBehaviorWhileStarting;
 
 ////////////////////////////////////////////////////////////////////////////
 

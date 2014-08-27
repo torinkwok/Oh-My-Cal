@@ -4,5 +4,7 @@
 <dict>
 	<key>OMCDefaultsKeyCalStyle</key>
 	<integer>1</integer>
+	<key>OMFDefaultsKeyStartAtLogin</key>
+	<integer>1</integer>
 </dict>
 </plist>
