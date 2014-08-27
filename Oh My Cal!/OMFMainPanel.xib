@@ -22,7 +22,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <connections>
                     <outlet property="_LCDScreen" destination="lUW-uQ-i4U" id="ajn-YS-H8g"/>
-                    <outlet property="_binaryOperationPanel" destination="dMK-iL-Q71" id="ASx-Yg-2rb"/>
+                    <outlet property="_binaryOperationPanel" destination="x4i-YK-xrg" id="0ZP-BP-we7"/>
                     <outlet property="_calWithProgrammerStyle" destination="GvH-CV-btC" id="ObX-6e-bsi"/>
                 </connections>
             </view>
@@ -352,9 +352,15 @@
             <rect key="frame" x="0.0" y="0.0" width="229" height="105"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
         </customView>
-        <customView id="dMK-iL-Q71" customClass="OMCBinaryOperationPanel">
-            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+        <box autoresizesSubviews="NO" title="Box" borderType="line" titlePosition="noTitle" id="x4i-YK-xrg" customClass="OMCBinaryOperationPanel">
+            <rect key="frame" x="0.0" y="0.0" width="291" height="72"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-        </customView>
+            <view key="contentView">
+                <rect key="frame" x="1" y="1" width="289" height="70"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            </view>
+            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+        </box>
     </objects>
 </document>
