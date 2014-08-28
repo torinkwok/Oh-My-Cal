@@ -356,6 +356,46 @@
                     </buttonCell>
                 </button>
             </subviews>
+            <connections>
+                <outlet property="_0xA" destination="pIT-ss-GOt" id="eNH-S5-9WQ"/>
+                <outlet property="_0xB" destination="dcy-5L-C9B" id="D6l-Rw-bWC"/>
+                <outlet property="_0xC" destination="ZXv-Nw-VY7" id="lBH-wy-t0o"/>
+                <outlet property="_0xD" destination="F9s-7I-u0h" id="4II-fJ-eBF"/>
+                <outlet property="_0xE" destination="xOH-ZG-cQA" id="SHo-Tn-9et"/>
+                <outlet property="_0xF" destination="vAB-6m-kIH" id="Cwu-O8-E00"/>
+                <outlet property="_1_sOperator" destination="Kba-qv-MLd" id="7S0-dQ-qsG"/>
+                <outlet property="_2_sOperator" destination="KS6-Cp-ELA" id="4EK-kN-w8N"/>
+                <outlet property="_additionOperator" destination="Ugm-HP-Zzc" id="6b8-5A-LFj"/>
+                <outlet property="_andOperator" destination="yaR-OC-YLq" id="2kK-WY-YlQ"/>
+                <outlet property="_clear" destination="v83-Rs-WKp" id="yGO-j4-e1L"/>
+                <outlet property="_clearAll" destination="QRR-RZ-tmp" id="mwb-iv-2qd"/>
+                <outlet property="_del" destination="lHe-Zb-MeN" id="RVb-v3-O93"/>
+                <outlet property="_divisionOperator" destination="EeY-7x-TAX" id="3rc-Vg-GEZ"/>
+                <outlet property="_double0xF" destination="OBM-U9-lcj" id="E4Z-m3-dMg"/>
+                <outlet property="_doubleZero" destination="mtT-1S-mhW" id="6n6-qr-dHp"/>
+                <outlet property="_eight" destination="8yo-oD-6T1" id="tdZ-Xn-5R3"/>
+                <outlet property="_enterOperator" destination="xro-bX-OpV" id="nRi-D9-hM5"/>
+                <outlet property="_factorialOperator" destination="yCM-Jf-C3x" id="SrS-Bd-edM"/>
+                <outlet property="_five" destination="j0S-nK-d0b" id="ROp-Q7-Ixl"/>
+                <outlet property="_four" destination="zGM-1h-KUg" id="l3s-MR-qWT"/>
+                <outlet property="_lhsParenthesis" destination="Ca8-XM-jjo" id="H6n-IW-hpt"/>
+                <outlet property="_lshOperator" destination="tbD-k4-Tuc" id="hcm-TF-0Y6"/>
+                <outlet property="_modOperator" destination="9Mf-2o-9Jw" id="ZfF-He-RsC"/>
+                <outlet property="_multiplicationOperator" destination="mP3-HX-zwp" id="R1Y-js-TOl"/>
+                <outlet property="_nine" destination="Ru3-NP-4t9" id="AsO-Dv-fqe"/>
+                <outlet property="_norOperator" destination="QLo-a5-iuV" id="FM7-Ak-Xd8"/>
+                <outlet property="_one" destination="UZc-cw-axX" id="R8N-xC-g11"/>
+                <outlet property="_orOperator" destination="5cD-ve-hqK" id="beM-Sy-J9p"/>
+                <outlet property="_rhsParenthesis" destination="bLO-LH-EiQ" id="SHv-fN-g9u"/>
+                <outlet property="_rshOperator" destination="eoj-2e-pms" id="etC-cG-4z6"/>
+                <outlet property="_seven" destination="xEY-uV-LLd" id="Y9Q-AO-Y4z"/>
+                <outlet property="_six" destination="41M-x6-ujB" id="jY3-gu-zw8"/>
+                <outlet property="_subtractionOperator" destination="nf8-3Z-7I6" id="0Oj-jt-4Jw"/>
+                <outlet property="_three" destination="OmS-zF-u5o" id="FpQ-Pm-coi"/>
+                <outlet property="_two" destination="bpd-QP-hy8" id="azS-AM-G3J"/>
+                <outlet property="_xorOperator" destination="2EZ-i4-X2D" id="7Zo-Ry-Osu"/>
+                <outlet property="_zero" destination="5u1-c9-BrR" id="pbd-1L-RJ8"/>
+            </connections>
         </customView>
         <customView id="lUW-uQ-i4U" customClass="OMCLCDScreen">
             <rect key="frame" x="0.0" y="0.0" width="229" height="105"/>
