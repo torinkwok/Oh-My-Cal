@@ -32,7 +32,7 @@
             </connections>
         </window>
         <customView id="GvH-CV-btC" customClass="OMCCalWithProgrammerStyle">
-            <rect key="frame" x="0.0" y="0.0" width="371" height="202"/>
+            <rect key="frame" x="0.0" y="0.0" width="371" height="187"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v83-Rs-WKp">

@@ -46,10 +46,12 @@
 #define GRAY_SCALE      .12549f
 #define ALPHA_VAL       .95f
 
-#define LCD_HEIGHT      130.f
-#define BINARY_OPERATION_BOX_HEIGHT 60.f
-#define PADDING_VAL     12.f
-#define VISUAL_MAGIC    30.f // This magic number just for producing a beautiful appearance
+#define VISUAL_MAGIC    53.f // This magic number just for producing a beautiful appearance
+
+CGFloat const kPaddingVal = 12.f;
+CGFloat const kLCDHeight = 150.f;
+CGFloat const kBinaryOperationBoxHeight = 60.f;
+CGFloat const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 
 // OMFPanelBackgroundView class
 @implementation OMFPanelBackgroundView
@@ -74,15 +76,15 @@
     case OMCProgrammerType: currentCal = self._calWithProgrammerStyle; break;
         }
 
-    [ self._binaryOperationBox setFrame: NSMakeRect( NSMinX( self.bounds ) + PADDING_VAL
-                                                   , NSMaxY( currentCal.frame )
-                                                   , NSWidth( currentCal.bounds ) - PADDING_VAL * 2
-                                                   , BINARY_OPERATION_BOX_HEIGHT ) ];
+    [ self._binaryOperationBox setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
+                                                   , NSMaxY( currentCal.frame ) + kPaddingBetweenBinaryOperationPanelAndKeyboard
+                                                   , NSWidth( currentCal.bounds ) - kPaddingVal * 2
+                                                   , kBinaryOperationBoxHeight ) ];
 
-    [ self._LCDScreen setFrame: NSMakeRect( NSMinX( self.bounds ) + PADDING_VAL
-                                          , NSMaxY( self._binaryOperationBox.frame ) + PADDING_VAL
-                                          , NSWidth( currentCal.bounds ) - PADDING_VAL * 2
-                                          , LCD_HEIGHT
+    [ self._LCDScreen setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
+                                          , NSMaxY( self._binaryOperationBox.frame ) + kPaddingVal * 2
+                                          , NSWidth( currentCal.bounds ) - kPaddingVal * 2
+                                          , kLCDHeight
                                           ) ];
 
     CGFloat newWindowHeight = NSHeight( currentCal.bounds )
