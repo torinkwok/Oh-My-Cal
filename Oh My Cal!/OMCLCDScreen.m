@@ -43,6 +43,7 @@ CGFloat static const kYPadding = 10.f;
     NSFont* _drawingFont;
 
     NSRect _boundary;
+    NSRect _gridPathBoundary;
     CGFloat _spaceX;
     CGFloat _spaceWidth;
     CGFloat _spaceHeight;
@@ -75,25 +76,25 @@ CGFloat static const kYPadding = 10.f;
     _spaceWidth = NSWidth( _boundary ) - kXPadding * 2;
     _spaceHeight = 20.f;
 
-    // Operand Spaces
-    [ self _initializeOperandSpaces ];
-
-    // Line Path
-    [ self _initializeLinePath ];
-
     // Grid Path
     [ self _initializeGridPath ];
 
     // Operands
     [ self _initializeOprands ];
 
+    // Operand Spaces
+    [ self _initializeOperandSpaces ];
+
+    // Line Path
+    [ self _initializeLinePath ];
+
     self->_drawingFont = [ [ NSFont fontWithName: @"Lucida Grande" size: 15 ] retain ];
     }
 
 - ( void ) _initializeOperandSpaces
     {
-    self->_tmpOperandSpace = NSMakeRect( _spaceX
-                                       , NSMinY( _boundary ) + kYPadding
+    self->_tmpOperandSpace = NSMakeRect( NSMinX( _gridPathBoundary )
+                                       , NSMinY( _gridPathBoundary ) + kYPadding
                                        , _spaceWidth
                                        , _spaceHeight
                                        );
@@ -104,7 +105,7 @@ CGFloat static const kYPadding = 10.f;
                                        , _spaceHeight
                                        );
 
-    self->_lhsOperandSpace = NSMakeRect( _spaceX
+    self->_lhsOperandSpace = NSMakeRect( NSMinX( _gridPathBoundary )
                                        , NSMaxY( self->_rhsOperandSpace ) + kYPadding
                                        , _spaceWidth
                                        , _spaceHeight
@@ -113,19 +114,27 @@ CGFloat static const kYPadding = 10.f;
 
 - ( void ) _initializeOprands
     {
-    self.lhsOperand = [ NSMutableString string ];
+    if ( !self.lhsOperand )
+        self.lhsOperand = [ NSMutableString string ];
 //    [ self.lhsOperand appendString: @"31241" ];
-    self.rhsOperand = [ NSMutableString string ];
+
+    if ( !self.rhsOperand )
+        self.rhsOperand = [ NSMutableString string ];
 //    [ self.rhsOperand appendString: @"4234235235" ];
-    self.resultValue = [ NSMutableString string ];
+
+    if ( !self.resultValue )
+        self.resultValue = [ NSMutableString string ];
 //    [ self.resultValue appendString: @"5645647487" ];
     }
 
 - ( void ) _initializeLinePath
     {
-    self.linePath = [ NSBezierPath bezierPath ];
-    [ self.linePath moveToPoint: NSMakePoint( _spaceX, NSMaxY( self.tmpOperandSpace ) + kYPadding / 2 ) ];
-    [ self.linePath lineToPoint: NSMakePoint( _spaceX + _spaceWidth, NSMaxY( self.tmpOperandSpace ) + kYPadding / 2 ) ];
+    if ( !self.linePath )
+        {
+        self.linePath = [ NSBezierPath bezierPath ];
+        [ self.linePath moveToPoint: NSMakePoint( _spaceX, NSMaxY( self.tmpOperandSpace ) + kYPadding / 2 ) ];
+        [ self.linePath lineToPoint: NSMakePoint( _spaceX + _spaceWidth, NSMaxY( self.tmpOperandSpace ) + kYPadding / 2 ) ];
+        }
     }
 
 - ( void ) _initializeGridPath
@@ -138,6 +147,8 @@ CGFloat static const kYPadding = 10.f;
         NSAffineTransform* affine = [ NSAffineTransform transform ];
         [ affine translateXBy: 0.f yBy: 25 ];
         gridPathBounds.origin = [ affine transformPoint: gridPathBounds.origin ];
+
+        _gridPathBoundary = gridPathBounds;
 
         self.gridPath = [ NSBezierPath bezierPathWithRect: gridPathBounds ];
 
@@ -162,6 +173,10 @@ CGFloat static const kYPadding = 10.f;
     {
     [ super drawRect: _DirtyRect ];
 
+//    NSFrameRect( self->_lhsOperandSpace );
+//    NSFrameRect( self->_rhsOperandSpace );
+    NSFrameRect( self->_tmpOperandSpace );
+
     [ [ [ NSColor lightGrayColor ] colorWithAlphaComponent: .3 ] set ];
     [ self.gridPath stroke ];
 
@@ -183,7 +198,7 @@ CGFloat static const kYPadding = 10.f;
     [ self.resultValue drawAtPoint: NSMakePoint( NSMaxX( self.tmpOperandSpace ) -  [ self.resultValue sizeWithAttributes: drawingAttributes ].width
                                               , NSMinY( self.tmpOperandSpace ) + 2 )
                    withAttributes: drawingAttributes ];
-//    [ self.linePath stroke ];
+    [ self.linePath stroke ];
     }
 
 #pragma mark Accessors
