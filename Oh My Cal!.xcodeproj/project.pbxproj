@@ -36,6 +36,7 @@
 		83099CB219ADBB2E00DDBF1D /* BGTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9319ADBB2E00DDBF1D /* BGTheme.m */; };
 		83099CB319ADBB2E00DDBF1D /* BGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9519ADBB2E00DDBF1D /* BGThemeManager.m */; };
 		833F645119AF03BB001C7C35 /* OMCBinaryOperationBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 833F645019AF03BB001C7C35 /* OMCBinaryOperationBox.m */; };
+		833F645519AF2FBE001C7C35 /* OMCCalculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 833F645419AF2FBE001C7C35 /* OMCCalculation.m */; };
 		839396ED19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 839396EC19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m */; };
 		839396F019ADD791008D8A3C /* OMCLCDScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 839396EF19ADD791008D8A3C /* OMCLCDScreen.m */; };
 		839396F219ADE567008D8A3C /* OMCDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 839396F119ADE567008D8A3C /* OMCDefaults.plist */; };
@@ -140,6 +141,8 @@
 		83099C9719ADBB2E00DDBF1D /* NSTokenAttachmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTokenAttachmentCell.h; sourceTree = "<group>"; };
 		833F644F19AF03BB001C7C35 /* OMCBinaryOperationBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCBinaryOperationBox.h; path = "Oh My Cal!/OMCBinaryOperationBox.h"; sourceTree = "<group>"; };
 		833F645019AF03BB001C7C35 /* OMCBinaryOperationBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCBinaryOperationBox.m; path = "Oh My Cal!/OMCBinaryOperationBox.m"; sourceTree = "<group>"; };
+		833F645319AF2FBE001C7C35 /* OMCCalculation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCCalculation.h; path = "Oh My Cal!/OMCCalculation.h"; sourceTree = "<group>"; };
+		833F645419AF2FBE001C7C35 /* OMCCalculation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCCalculation.m; path = "Oh My Cal!/OMCCalculation.m"; sourceTree = "<group>"; };
 		839396EB19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCCalWithProgrammerStyle.h; path = "Oh My Cal!/OMCCalWithProgrammerStyle.h"; sourceTree = "<group>"; };
 		839396EC19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCCalWithProgrammerStyle.m; path = "Oh My Cal!/OMCCalWithProgrammerStyle.m"; sourceTree = "<group>"; };
 		839396EE19ADD791008D8A3C /* OMCLCDScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCLCDScreen.h; path = "Oh My Cal!/OMCLCDScreen.h"; sourceTree = "<group>"; };
@@ -281,6 +284,15 @@
 			path = "Oh My Cal!/BGHUDAppKit";
 			sourceTree = "<group>";
 		};
+		833F645219AF2FAE001C7C35 /* Calculation */ = {
+			isa = PBXGroup;
+			children = (
+				833F645319AF2FBE001C7C35 /* OMCCalculation.h */,
+				833F645419AF2FBE001C7C35 /* OMCCalculation.m */,
+			);
+			name = Calculation;
+			sourceTree = "<group>";
+		};
 		839396EA19ADC79F008D8A3C /* Cal Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +311,7 @@
 		83D5D4B819ADB172004AFD84 = {
 			isa = PBXGroup;
 			children = (
+				833F645219AF2FAE001C7C35 /* Calculation */,
 				83D5D51F19ADB452004AFD84 /* Main Panel */,
 				83D5D52119ADB46E004AFD84 /* Status Bar */,
 				83D5D4CA19ADB172004AFD84 /* Whole App */,
@@ -592,6 +605,7 @@
 				83099C9919ADBB2E00DDBF1D /* BGHUDBox.m in Sources */,
 				83D5D4D819ADB172004AFD84 /* OMCAppDelegate.m in Sources */,
 				83099CA719ADBB2E00DDBF1D /* BGHUDSliderCell.m in Sources */,
+				833F645519AF2FBE001C7C35 /* OMCCalculation.m in Sources */,
 				83099CAF19ADBB2E00DDBF1D /* BGHUDTokenAttachmentCell.m in Sources */,
 				83099CA219ADBB2E00DDBF1D /* BGHUDScroller.m in Sources */,
 				83099C9B19ADBB2E00DDBF1D /* BGHUDColorWell.m in Sources */,

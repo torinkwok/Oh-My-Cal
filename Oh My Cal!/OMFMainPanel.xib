@@ -15,10 +15,10 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="OMFMainPanel">
             <windowStyleMask key="styleMask" utility="YES"/>
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" transient="YES" ignoresCycle="YES"/>
-            <rect key="contentRect" x="196" y="240" width="240" height="169"/>
+            <rect key="contentRect" x="196" y="240" width="240" height="175"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <view key="contentView" id="EiT-Mj-1SZ" customClass="OMFPanelBackgroundView">
-                <rect key="frame" x="0.0" y="0.0" width="240" height="169"/>
+                <rect key="frame" x="0.0" y="0.0" width="240" height="175"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <connections>
                     <outlet property="_LCDScreen" destination="lUW-uQ-i4U" id="ajn-YS-H8g"/>
@@ -42,6 +42,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="1J4-kL-4u6"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="31" translatesAutoresizingMaskIntoConstraints="NO" id="QRR-RZ-tmp">
                     <rect key="frame" x="269" y="133" width="41" height="25"/>
@@ -50,6 +53,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="gmF-gB-iZp"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="35" translatesAutoresizingMaskIntoConstraints="NO" id="nf8-3Z-7I6">
                     <rect key="frame" x="318" y="103" width="41" height="25"/>
@@ -58,6 +64,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="u3z-IM-uf8"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="34" translatesAutoresizingMaskIntoConstraints="NO" id="Ugm-HP-Zzc">
                     <rect key="frame" x="269" y="103" width="41" height="25"/>
@@ -66,6 +75,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="gsL-gh-cOu"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="36" translatesAutoresizingMaskIntoConstraints="NO" id="mP3-HX-zwp">
                     <rect key="frame" x="269" y="73" width="41" height="25"/>
@@ -74,6 +86,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="sxb-Wl-aol"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="37" translatesAutoresizingMaskIntoConstraints="NO" id="EeY-7x-TAX">
                     <rect key="frame" x="318" y="73" width="41" height="25"/>
@@ -82,6 +97,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="1tg-qA-PAX"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="28" translatesAutoresizingMaskIntoConstraints="NO" id="vAB-6m-kIH">
                     <rect key="frame" x="221" y="163" width="35" height="25"/>
@@ -90,6 +108,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="cfB-AX-UF8"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="27" translatesAutoresizingMaskIntoConstraints="NO" id="xOH-ZG-cQA">
                     <rect key="frame" x="178" y="163" width="35" height="25"/>
@@ -98,6 +119,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="EzQ-cE-7Ko"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="25" translatesAutoresizingMaskIntoConstraints="NO" id="ZXv-Nw-VY7">
                     <rect key="frame" x="221" y="133" width="35" height="25"/>
@@ -106,6 +130,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="1dB-t2-UFE"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="24" translatesAutoresizingMaskIntoConstraints="NO" id="dcy-5L-C9B">
                     <rect key="frame" x="178" y="133" width="35" height="25"/>
@@ -114,6 +141,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="MLb-Nj-vF9"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="19" translatesAutoresizingMaskIntoConstraints="NO" id="8yo-oD-6T1">
                     <rect key="frame" x="178" y="103" width="35" height="25"/>
@@ -122,6 +152,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="l0f-2B-skF"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ru3-NP-4t9">
                     <rect key="frame" x="221" y="103" width="35" height="25"/>
@@ -130,6 +163,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="V2W-dW-nc1"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="16" translatesAutoresizingMaskIntoConstraints="NO" id="j0S-nK-d0b">
                     <rect key="frame" x="178" y="73" width="35" height="25"/>
@@ -138,6 +174,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="gRg-FG-GZv"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="17" translatesAutoresizingMaskIntoConstraints="NO" id="41M-x6-ujB">
                     <rect key="frame" x="221" y="73" width="35" height="25"/>
@@ -146,6 +185,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="2Eu-GC-bG1"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="26" translatesAutoresizingMaskIntoConstraints="NO" id="F9s-7I-u0h">
                     <rect key="frame" x="135" y="163" width="35" height="25"/>
@@ -154,6 +196,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="Ge4-qe-Wx3"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="5cD-ve-hqK">
                     <rect key="frame" x="71" y="163" width="51" height="25"/>
@@ -162,6 +207,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="ktg-Js-wYN"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="23" translatesAutoresizingMaskIntoConstraints="NO" id="pIT-ss-GOt">
                     <rect key="frame" x="135" y="133" width="35" height="25"/>
@@ -170,6 +218,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="SQg-4r-1vl"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="2EZ-i4-X2D">
                     <rect key="frame" x="71" y="133" width="51" height="25"/>
@@ -178,6 +229,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="cLY-Dr-pZo"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="eoj-2e-pms">
                     <rect key="frame" x="71" y="103" width="51" height="25"/>
@@ -186,6 +240,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="P6D-tf-8hz"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="18" translatesAutoresizingMaskIntoConstraints="NO" id="xEY-uV-LLd">
                     <rect key="frame" x="135" y="103" width="35" height="25"/>
@@ -194,6 +251,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="ew0-6E-v3e"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="yCM-Jf-C3x">
                     <rect key="frame" x="71" y="13" width="51" height="25"/>
@@ -202,6 +262,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="13" name="ArialRoundedMTBold"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="14x-de-IPx"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="15" translatesAutoresizingMaskIntoConstraints="NO" id="zGM-1h-KUg">
                     <rect key="frame" x="135" y="73" width="35" height="25"/>
@@ -210,6 +273,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="Udd-5N-Mu5"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yaR-OC-YLq">
                     <rect key="frame" x="12" y="163" width="51" height="25"/>
@@ -218,6 +284,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="ELl-kk-DZY"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="QLo-a5-iuV">
                     <rect key="frame" x="12" y="133" width="51" height="25"/>
@@ -226,6 +295,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="xg5-rF-ymo"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="tbD-k4-Tuc">
                     <rect key="frame" x="12" y="103" width="51" height="25"/>
@@ -234,6 +306,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="KXn-iU-8dp"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="10" translatesAutoresizingMaskIntoConstraints="NO" id="9Mf-2o-9Jw">
                     <rect key="frame" x="12" y="13" width="51" height="25"/>
@@ -242,6 +317,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="fCG-LF-ryF"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="13" translatesAutoresizingMaskIntoConstraints="NO" id="bpd-QP-hy8">
                     <rect key="frame" x="178" y="43" width="35" height="25"/>
@@ -250,6 +328,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="nrg-IT-gew"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="14" translatesAutoresizingMaskIntoConstraints="NO" id="OmS-zF-u5o">
                     <rect key="frame" x="221" y="43" width="35" height="25"/>
@@ -258,6 +339,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="3kb-Wk-3YV"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="12" translatesAutoresizingMaskIntoConstraints="NO" id="UZc-cw-axX">
                     <rect key="frame" x="135" y="43" width="35" height="25"/>
@@ -266,6 +350,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="4Zt-LA-Zzp"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="21" translatesAutoresizingMaskIntoConstraints="NO" id="5u1-c9-BrR">
                     <rect key="frame" x="178" y="13" width="35" height="25"/>
@@ -274,6 +361,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="Pr9-B2-u5e"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="22" translatesAutoresizingMaskIntoConstraints="NO" id="mtT-1S-mhW">
                     <rect key="frame" x="221" y="13" width="35" height="25"/>
@@ -282,6 +372,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="z8V-wP-3EU"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="29" translatesAutoresizingMaskIntoConstraints="NO" id="OBM-U9-lcj">
                     <rect key="frame" x="135" y="13" width="35" height="25"/>
@@ -290,6 +383,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="5hK-HY-aTq"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="38" translatesAutoresizingMaskIntoConstraints="NO" id="Ca8-XM-jjo">
                     <rect key="frame" x="269" y="43" width="41" height="25"/>
@@ -298,6 +394,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="20W-bo-2Fu"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="39" translatesAutoresizingMaskIntoConstraints="NO" id="bLO-LH-EiQ">
                     <rect key="frame" x="318" y="43" width="41" height="25"/>
@@ -306,6 +405,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="RGT-Rl-2DR"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="33" translatesAutoresizingMaskIntoConstraints="NO" id="xro-bX-OpV">
                     <rect key="frame" x="269" y="13" width="90" height="25"/>
@@ -314,6 +416,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="dAX-Zb-CGC"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="8" translatesAutoresizingMaskIntoConstraints="NO" id="KS6-Cp-ELA">
                     <rect key="frame" x="12" y="43" width="51" height="25"/>
@@ -322,6 +427,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="9DD-cm-c9d"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="9" translatesAutoresizingMaskIntoConstraints="NO" id="Kba-qv-MLd">
                     <rect key="frame" x="71" y="43" width="51" height="25"/>
@@ -330,6 +438,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="gPW-gP-CPc"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="7" translatesAutoresizingMaskIntoConstraints="NO" id="IBi-Bj-Vn0">
                     <rect key="frame" x="71" y="73" width="51" height="25"/>
@@ -338,6 +449,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="Mea-iG-3kp"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="u7O-fd-shE">
                     <rect key="frame" x="12" y="73" width="51" height="25"/>
@@ -346,6 +460,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="mV8-gO-vJd"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="30" translatesAutoresizingMaskIntoConstraints="NO" id="lHe-Zb-MeN">
                     <rect key="frame" x="269" y="163" width="90" height="25"/>
@@ -354,6 +471,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="Rua-iW-eWY"/>
+                    </connections>
                 </button>
             </subviews>
             <connections>
@@ -423,5 +543,6 @@
             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
         </box>
+        <customObject id="odj-gr-7MT" customClass="OMCCalculation"/>
     </objects>
 </document>
