@@ -31,29 +31,17 @@
  **                                                                         **
  ****************************************************************************/
 
-#import <Cocoa/Cocoa.h>
+#import "OMCBinaryOperationBox.h"
 
-@class OMCLCDScreen;
-@class OMCBinaryOperationBox;
-@class OMCBinaryOperationPanel;
-@class OMCCalWithProgrammerStyle;
+// OMCBinaryOperationBox class
+@implementation OMCBinaryOperationBox
 
-// OMFPanelBackgroundView class
-@interface OMFPanelBackgroundView : NSView
+- ( void ) awakeFromNib
     {
-@private
-    CGFloat _arrowX;
+
     }
 
-@property ( nonatomic, assign ) OMCCalType _currentCalType;
-@property ( nonatomic, assign ) IBOutlet OMCLCDScreen* _LCDScreen;
-@property ( nonatomic, assign ) IBOutlet OMCBinaryOperationBox* _binaryOperationBox;
-    @property ( nonatomic, assign ) IBOutlet OMCBinaryOperationPanel* _binaryOperationPanel;
-@property ( nonatomic, assign ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
-
-@property ( nonatomic, assign ) CGFloat arrowX;
-
-@end // OMFPanelBackgroundView
+@end // OMCBinaryOperationBox
 
 //////////////////////////////////////////////////////////////////////////////
 

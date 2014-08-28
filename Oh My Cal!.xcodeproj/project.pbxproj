@@ -35,6 +35,7 @@
 		83099CB119ADBB2E00DDBF1D /* BGHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9119ADBB2E00DDBF1D /* BGHUDView.m */; };
 		83099CB219ADBB2E00DDBF1D /* BGTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9319ADBB2E00DDBF1D /* BGTheme.m */; };
 		83099CB319ADBB2E00DDBF1D /* BGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9519ADBB2E00DDBF1D /* BGThemeManager.m */; };
+		833F645119AF03BB001C7C35 /* OMCBinaryOperationBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 833F645019AF03BB001C7C35 /* OMCBinaryOperationBox.m */; };
 		839396ED19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 839396EC19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m */; };
 		839396F019ADD791008D8A3C /* OMCLCDScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 839396EF19ADD791008D8A3C /* OMCLCDScreen.m */; };
 		839396F219ADE567008D8A3C /* OMCDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 839396F119ADE567008D8A3C /* OMCDefaults.plist */; };
@@ -137,6 +138,8 @@
 		83099C9519ADBB2E00DDBF1D /* BGThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGThemeManager.m; sourceTree = "<group>"; };
 		83099C9619ADBB2E00DDBF1D /* NSTokenAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTokenAttachment.h; sourceTree = "<group>"; };
 		83099C9719ADBB2E00DDBF1D /* NSTokenAttachmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTokenAttachmentCell.h; sourceTree = "<group>"; };
+		833F644F19AF03BB001C7C35 /* OMCBinaryOperationBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCBinaryOperationBox.h; path = "Oh My Cal!/OMCBinaryOperationBox.h"; sourceTree = "<group>"; };
+		833F645019AF03BB001C7C35 /* OMCBinaryOperationBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCBinaryOperationBox.m; path = "Oh My Cal!/OMCBinaryOperationBox.m"; sourceTree = "<group>"; };
 		839396EB19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCCalWithProgrammerStyle.h; path = "Oh My Cal!/OMCCalWithProgrammerStyle.h"; sourceTree = "<group>"; };
 		839396EC19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCCalWithProgrammerStyle.m; path = "Oh My Cal!/OMCCalWithProgrammerStyle.m"; sourceTree = "<group>"; };
 		839396EE19ADD791008D8A3C /* OMCLCDScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCLCDScreen.h; path = "Oh My Cal!/OMCLCDScreen.h"; sourceTree = "<group>"; };
@@ -285,6 +288,8 @@
 				839396EF19ADD791008D8A3C /* OMCLCDScreen.m */,
 				839396F319ADEB91008D8A3C /* OMCBinaryOperationPanel.h */,
 				839396F419ADEB91008D8A3C /* OMCBinaryOperationPanel.m */,
+				833F644F19AF03BB001C7C35 /* OMCBinaryOperationBox.h */,
+				833F645019AF03BB001C7C35 /* OMCBinaryOperationBox.m */,
 				839396EB19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.h */,
 				839396EC19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m */,
 			);
@@ -583,6 +588,7 @@
 				83D5D52D19ADB85A004AFD84 /* OMFPanelBackgroundView.m in Sources */,
 				83099CA519ADBB2E00DDBF1D /* BGHUDSecureTextFieldCell.m in Sources */,
 				83099CA419ADBB2E00DDBF1D /* BGHUDSearchFieldCell.m in Sources */,
+				833F645119AF03BB001C7C35 /* OMCBinaryOperationBox.m in Sources */,
 				83099C9919ADBB2E00DDBF1D /* BGHUDBox.m in Sources */,
 				83D5D4D819ADB172004AFD84 /* OMCAppDelegate.m in Sources */,
 				83099CA719ADBB2E00DDBF1D /* BGHUDSliderCell.m in Sources */,

@@ -36,6 +36,17 @@
 // OMCBinaryOperationPanel class
 @implementation OMCBinaryOperationPanel
 
+- ( void ) awakeFromNib
+    {
+
+    }
+
+#pragma mark Customize Drawing
+- ( void ) drawRect: ( NSRect )_DirtyRect
+    {
+
+    }
+
 @end // OMCBinaryOperationPanel
 
 //////////////////////////////////////////////////////////////////////////////

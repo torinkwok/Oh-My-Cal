@@ -22,7 +22,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <connections>
                     <outlet property="_LCDScreen" destination="lUW-uQ-i4U" id="ajn-YS-H8g"/>
-                    <outlet property="_binaryOperationPanel" destination="x4i-YK-xrg" id="0ZP-BP-we7"/>
+                    <outlet property="_binaryOperationBox" destination="x4i-YK-xrg" id="XZV-p6-dD8"/>
+                    <outlet property="_binaryOperationPanel" destination="h31-zA-4wg" id="Nwd-nm-lIP"/>
                     <outlet property="_calWithProgrammerStyle" destination="GvH-CV-btC" id="ObX-6e-bsi"/>
                 </connections>
             </view>
@@ -360,13 +361,25 @@
             <rect key="frame" x="0.0" y="0.0" width="229" height="105"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
         </customView>
-        <box autoresizesSubviews="NO" title="Box" borderType="line" titlePosition="noTitle" id="x4i-YK-xrg" customClass="OMCBinaryOperationPanel">
-            <rect key="frame" x="0.0" y="0.0" width="291" height="72"/>
+        <box autoresizesSubviews="NO" title="Box" borderType="line" titlePosition="noTitle" id="x4i-YK-xrg" customClass="OMCBinaryOperationBox">
+            <rect key="frame" x="0.0" y="0.0" width="292" height="194"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <view key="contentView">
-                <rect key="frame" x="1" y="1" width="289" height="70"/>
+                <rect key="frame" x="1" y="1" width="290" height="192"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="h31-zA-4wg" customClass="OMCBinaryOperationPanel">
+                        <rect key="frame" x="7" y="8" width="276" height="178"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                </subviews>
             </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="h31-zA-4wg" secondAttribute="bottom" constant="5" id="2tB-zm-X4x"/>
+                <constraint firstAttribute="trailing" secondItem="h31-zA-4wg" secondAttribute="trailing" constant="5" id="7p4-nB-50B"/>
+                <constraint firstItem="h31-zA-4wg" firstAttribute="leading" secondItem="x4i-YK-xrg" secondAttribute="leading" constant="5" id="ISd-FC-GxM"/>
+                <constraint firstItem="h31-zA-4wg" firstAttribute="top" secondItem="x4i-YK-xrg" secondAttribute="top" constant="5" id="MGi-1e-snJ"/>
+            </constraints>
             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
         </box>

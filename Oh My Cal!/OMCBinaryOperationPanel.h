@@ -34,7 +34,7 @@
 #import <Cocoa/Cocoa.h>
 
 // OMCBinaryOperationPanel class
-@interface OMCBinaryOperationPanel : BGHUDBox
+@interface OMCBinaryOperationPanel : NSView
 
 @end // OMCBinaryOperationPanel class
 

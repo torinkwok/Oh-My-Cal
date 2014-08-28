@@ -34,6 +34,7 @@
 #import "OMFPanelBackgroundView.h"
 
 #import "OMCLCDScreen.h"
+#import "OMCBinaryOperationBox.h"
 #import "OMCBinaryOperationPanel.h"
 #import "OMCCalWithProgrammerStyle.h"
 
@@ -46,7 +47,7 @@
 #define ALPHA_VAL       .95f
 
 #define LCD_HEIGHT      130.f
-#define BINARY_OPERATION_PANEL_HEIGHT 60.f
+#define BINARY_OPERATION_BOX_HEIGHT 60.f
 #define PADDING_VAL     12.f
 #define VISUAL_MAGIC    30.f // This magic number just for producing a beautiful appearance
 
@@ -55,7 +56,8 @@
 
 @synthesize _currentCalType;
 @synthesize _LCDScreen;
-@synthesize _binaryOperationPanel;
+@synthesize _binaryOperationBox;
+    @synthesize _binaryOperationPanel;
 @synthesize _calWithProgrammerStyle;
 
 @synthesize arrowX = _arrowX;
@@ -72,20 +74,20 @@
     case OMCProgrammerType: currentCal = self._calWithProgrammerStyle; break;
         }
 
-    [ self._binaryOperationPanel setFrame: NSMakeRect( NSMinX( self.bounds ) + PADDING_VAL
-                                                     , NSMaxY( currentCal.frame )
-                                                     , NSWidth( currentCal.bounds ) - PADDING_VAL * 2
-                                                     , BINARY_OPERATION_PANEL_HEIGHT ) ];
+    [ self._binaryOperationBox setFrame: NSMakeRect( NSMinX( self.bounds ) + PADDING_VAL
+                                                   , NSMaxY( currentCal.frame )
+                                                   , NSWidth( currentCal.bounds ) - PADDING_VAL * 2
+                                                   , BINARY_OPERATION_BOX_HEIGHT ) ];
 
     [ self._LCDScreen setFrame: NSMakeRect( NSMinX( self.bounds ) + PADDING_VAL
-                                          , NSMaxY( self._binaryOperationPanel.frame ) + PADDING_VAL
+                                          , NSMaxY( self._binaryOperationBox.frame ) + PADDING_VAL
                                           , NSWidth( currentCal.bounds ) - PADDING_VAL * 2
                                           , LCD_HEIGHT
                                           ) ];
 
     CGFloat newWindowHeight = NSHeight( currentCal.bounds )
                                 + NSHeight( self._LCDScreen.bounds )
-                                + NSHeight( self._binaryOperationPanel.bounds )
+                                + NSHeight( self._binaryOperationBox.bounds )
                                 + VISUAL_MAGIC; // This magic number just for producing a beautiful appearance
 
     NSRect newWindowFrame = NSMakeRect( 0, 0 // Because of the openPanel: method in OMCMainPanelController, the origin of window does not matter.
@@ -95,7 +97,7 @@
 
     [ [ self window ] setFrame: newWindowFrame display: YES ];
 
-    [ self setSubviews: @[ self._LCDScreen, self._binaryOperationPanel, currentCal ] ];
+    [ self setSubviews: @[ self._LCDScreen, self._binaryOperationBox, currentCal ] ];
     }
 
 #pragma mark Customize Drawing
