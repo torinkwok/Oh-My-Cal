@@ -75,7 +75,7 @@
 @property ( nonatomic, assign ) IBOutlet NSButton* _0xD;
 @property ( nonatomic, assign ) IBOutlet NSButton* _0xE;
 @property ( nonatomic, assign ) IBOutlet NSButton* _0xF;
-@property ( nonatomic, assign ) IBOutlet NSButton* _double0xF;
+@property ( nonatomic, assign ) IBOutlet NSButton* _0xFF;
 
 #pragma mark Control Button
 @property ( nonatomic, assign ) IBOutlet NSButton* _del;

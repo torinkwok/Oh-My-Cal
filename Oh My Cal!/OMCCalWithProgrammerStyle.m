@@ -75,7 +75,7 @@
 @synthesize _0xD;
 @synthesize _0xE;
 @synthesize _0xF;
-@synthesize _double0xF;
+@synthesize _0xFF;
 
 #pragma mark Control Button
 @synthesize _del;
