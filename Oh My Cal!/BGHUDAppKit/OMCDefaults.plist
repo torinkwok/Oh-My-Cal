@@ -8,5 +8,7 @@
 	<string>OMCFlatStyle</string>
 	<key>OMFDefaultsKeyStartAtLogin</key>
 	<integer>1</integer>
+	<key>OMCDefaultsKeyAry</key>
+	<integer>1</integer>
 </dict>
 </plist>

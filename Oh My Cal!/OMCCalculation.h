@@ -33,8 +33,28 @@
 
 #import <Cocoa/Cocoa.h>
 
+typedef enum { OMCWaitAllOperands, OMCWaitRhsOperand, OMCFinishedTyping } OMCTypingState;
+
 // OMCCalculation class
 @interface OMCCalculation : NSObject
+    {
+@private
+    OMCTypingState _typingState;
+    OMCAry _currentAry;
+
+    NSNumber* _lhsOperand;
+    NSNumber* _rhsOperand;
+    NSNumber* _resultVal;
+    NSMutableString* _resultingFormula;
+    }
+
+@property ( nonatomic, assign ) OMCTypingState typingState;
+@property ( nonatomic, assign ) OMCAry currentAry;
+
+@property ( nonatomic, retain ) NSNumber* resultVal;
+@property ( nonatomic, retain ) NSNumber* lhsOperand;
+@property ( nonatomic, retain ) NSNumber* rhsOperand;
+@property ( nonatomic, retain ) NSMutableString* resultingFormula;
 
 - ( IBAction ) calculate: ( id )_Sender;
 

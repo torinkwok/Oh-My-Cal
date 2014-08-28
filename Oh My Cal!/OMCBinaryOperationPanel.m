@@ -44,7 +44,6 @@
 #pragma mark Customize Drawing
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
-
     }
 
 @end // OMCBinaryOperationPanel

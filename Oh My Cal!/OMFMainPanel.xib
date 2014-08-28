@@ -255,17 +255,6 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="ew0-6E-v3e"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="yCM-Jf-C3x">
-                    <rect key="frame" x="71" y="13" width="51" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundTextured" title="!" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kEd-i2-gkl" customClass="BGHUDButtonCell">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" size="13" name="ArialRoundedMTBold"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="calculate:" target="odj-gr-7MT" id="14x-de-IPx"/>
-                    </connections>
-                </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="15" translatesAutoresizingMaskIntoConstraints="NO" id="zGM-1h-KUg">
                     <rect key="frame" x="135" y="73" width="35" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -390,7 +379,7 @@
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="38" translatesAutoresizingMaskIntoConstraints="NO" id="Ca8-XM-jjo">
                     <rect key="frame" x="269" y="43" width="41" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundTextured" title="(" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Iwg-pk-Sog" customClass="BGHUDButtonCell">
+                    <buttonCell key="cell" type="roundTextured" title="(" bezelStyle="texturedRounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Iwg-pk-Sog" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -401,7 +390,7 @@
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="39" translatesAutoresizingMaskIntoConstraints="NO" id="bLO-LH-EiQ">
                     <rect key="frame" x="318" y="43" width="41" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundTextured" title=")" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TB0-ZU-sc7" customClass="BGHUDButtonCell">
+                    <buttonCell key="cell" type="roundTextured" title=")" bezelStyle="texturedRounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TB0-ZU-sc7" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -475,6 +464,17 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="Rua-iW-eWY"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" tag="9" translatesAutoresizingMaskIntoConstraints="NO" id="51z-wu-RTE">
+                    <rect key="frame" x="71" y="13" width="51" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundTextured" title="x!" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lqt-dJ-t1b" customClass="BGHUDButtonCell">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="odj-gr-7MT" id="Jht-z8-P5J"/>
+                    </connections>
+                </button>
             </subviews>
             <connections>
                 <outlet property="_0xA" destination="pIT-ss-GOt" id="eNH-S5-9WQ"/>
@@ -495,7 +495,7 @@
                 <outlet property="_doubleZero" destination="mtT-1S-mhW" id="6n6-qr-dHp"/>
                 <outlet property="_eight" destination="8yo-oD-6T1" id="tdZ-Xn-5R3"/>
                 <outlet property="_enterOperator" destination="xro-bX-OpV" id="nRi-D9-hM5"/>
-                <outlet property="_factorialOperator" destination="yCM-Jf-C3x" id="SrS-Bd-edM"/>
+                <outlet property="_factorialOperator" destination="51z-wu-RTE" id="XDA-iS-nkc"/>
                 <outlet property="_five" destination="j0S-nK-d0b" id="ROp-Q7-Ixl"/>
                 <outlet property="_four" destination="zGM-1h-KUg" id="l3s-MR-qWT"/>
                 <outlet property="_lhsParenthesis" destination="Ca8-XM-jjo" id="H6n-IW-hpt"/>
@@ -517,9 +517,12 @@
                 <outlet property="_zero" destination="5u1-c9-BrR" id="pbd-1L-RJ8"/>
             </connections>
         </customView>
-        <customView id="lUW-uQ-i4U" customClass="OMCLCDScreen">
+        <customView id="lUW-uQ-i4U" userLabel="LCD Screen" customClass="OMCLCDScreen">
             <rect key="frame" x="0.0" y="0.0" width="229" height="105"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <connections>
+                <outlet property="_calculation" destination="odj-gr-7MT" id="H0j-eE-aNd"/>
+            </connections>
         </customView>
         <box autoresizesSubviews="NO" title="Box" borderType="line" titlePosition="noTitle" id="x4i-YK-xrg" customClass="OMCBinaryOperationBox">
             <rect key="frame" x="0.0" y="0.0" width="292" height="194"/>
@@ -531,6 +534,9 @@
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="h31-zA-4wg" customClass="OMCBinaryOperationPanel">
                         <rect key="frame" x="7" y="8" width="276" height="178"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <connections>
+                            <outlet property="_calculation" destination="odj-gr-7MT" id="egR-hk-7do"/>
+                        </connections>
                     </customView>
                 </subviews>
             </view>

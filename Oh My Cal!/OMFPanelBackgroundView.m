@@ -48,10 +48,10 @@
 
 #define VISUAL_MAGIC    53.f // This magic number just for producing a beautiful appearance
 
-CGFloat const kPaddingVal = 12.f;
-CGFloat const kLCDHeight = 150.f;
-CGFloat const kBinaryOperationBoxHeight = 60.f;
-CGFloat const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
+CGFloat static const kPaddingVal = 12.f;
+CGFloat static const kLCDHeight = 150.f;
+CGFloat static const kBinaryOperationBoxHeight = 60.f;
+CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 
 // OMFPanelBackgroundView class
 @implementation OMFPanelBackgroundView
