@@ -63,11 +63,6 @@ NSInteger static const kSpaceBarsCount = 4;
 @synthesize operatorsFont = _operatorsFont;
 @synthesize storageFormulasFont = _storageFormulasFont;
 
-@synthesize lhsOperand = _lhsOperand;
-@synthesize rhsOperand = _rhsOperand;
-@synthesize theOperator = _theOperator;
-@synthesize resultValue = _resultValue;
-
 @synthesize typingState = _typingState;
 @synthesize currentAry = _currentAry;
 
@@ -100,22 +95,12 @@ NSInteger static const kSpaceBarsCount = 4;
 
 - ( void ) currentTypingStateDidChanged: ( NSNotification* )_Notif
     {
-    OMCCalculation* calculation = [ _Notif object ];
-
-    if ( calculation.typingState == OMCWaitAllOperands )
-        [ self.lhsOperand appendString: calculation.lastTypedButton.title ];
-    else if ( calculation.typingState == OMCOperatorDidPressed )
-        [ self.theOperator appendString: [ calculation.lastTypedButton.title uppercaseString ] ];
-
     [ self setNeedsDisplay: YES ];
     }
 
 - ( void ) viewWillMoveToWindow: ( NSWindow* )_Window
     {
     _LCDBoundary = [ self bounds ];
-
-    // Operands
-    [ self _initializeOprands ];
 
     // Line Path
     [ self _initializeLinePath ];
@@ -152,27 +137,6 @@ NSInteger static const kSpaceBarsCount = 4;
                                        , spaceBarWidth
                                        , spaceBarHeight
                                        );
-    }
-
-- ( void ) _initializeOprands
-    {
-    if ( !self.lhsOperand )
-        self.lhsOperand = [ NSMutableString string ];
-
-//    [ self.lhsOperand appendString: @"1412" ];
-
-    if ( !self.rhsOperand )
-        self.rhsOperand = [ NSMutableString string ];
-
-    if ( !self.theOperator )
-        self.theOperator = [ NSMutableString string ];
-
-//    [ self.rhsOperand appendString: @"88215" ];
-
-    if ( !self.resultValue )
-        self.resultValue = [ NSMutableString string ];
-
-//    [ self.resultValue appendString: @"251412" ];
     }
 
 - ( void ) _initializeLinePath
@@ -239,16 +203,16 @@ NSInteger static const kSpaceBarsCount = 4;
         {
     case OMCWaitAllOperands:
             {
-            [ self.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self.lhsOperand inSpaceBar: self.bottommostSpaceBar ]
-                            withAttributes: drawingAttributesForOperands ];
+            [ self._calculation.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.lhsOperand inSpaceBar: self.bottommostSpaceBar ]
+                                        withAttributes: drawingAttributesForOperands ];
             } break;
 
     case OMCOperatorDidPressed:
             {
-            [ self.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self.lhsOperand inSpaceBar: self.thirdSpaceBar ]
+            [ self._calculation.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.lhsOperand inSpaceBar: self.thirdSpaceBar ]
                             withAttributes: drawingAttributesForOperands ];
 
-            [ self.theOperator drawAtPoint: [ self _pointUsedForDrawingOperators: self.theOperator ]
+            [ self._calculation.theOperator drawAtPoint: [ self _pointUsedForDrawingOperators: self._calculation.theOperator ]
                             withAttributes: drawingAttributesForOperators ];
 
             [ NSGraphicsContext saveGraphicsState ];
@@ -323,49 +287,6 @@ NSInteger static const kSpaceBarsCount = 4;
         }
 
     return pointUsedForDrawing;
-    }
-
-#pragma mark Accessors
-- ( void ) setLhsOperand: ( NSString* )_LhsOperand
-    {
-    if ( self->_lhsOperand != _LhsOperand )
-        {
-        [ self->_lhsOperand release ];
-        self->_lhsOperand = [ _LhsOperand mutableCopy ];
-
-//        [ self setNeedsDisplay: YES ];
-        }
-    }
-
-- ( void ) setRhsOperand: ( NSString* )_RhsOperand
-    {
-    if ( self->_rhsOperand != _RhsOperand )
-        {
-        [ self->_rhsOperand release ];
-        self->_rhsOperand = [ _RhsOperand mutableCopy ];
-
-//        [ self setNeedsDisplay: YES ];
-        }
-    }
-
-- ( void ) setTheOperator: ( NSString* )_Operator
-    {
-    if ( self->_theOperator != _Operator )
-        {
-        [ self->_theOperator release ];
-        self->_theOperator = [ _Operator mutableCopy ];
-        }
-    }
-
-- ( void ) setResultValue: ( NSString* )_ResultValue
-    {
-    if ( self->_resultValue != _ResultValue )
-        {
-        [ self->_resultValue release ];
-        self->_resultValue = [ _ResultValue mutableCopy ];
-
-//        [ self setNeedsDisplay: YES ];
-        }
     }
 
 @end // OMCLCDScreen class

@@ -54,10 +54,10 @@ NSString extern* const OMCLastTypedButton;
     OMCButtonType _lastTypedButtonType;
     NSButton* _lastTypedButton;
 
-    NSNumber* _lhsOperand;
-    NSNumber* _rhsOperand;
-    NSNumber* _resultVal;
-    NSMutableString* _resultingFormula;
+    NSMutableString* _lhsOperand;
+    NSMutableString* _rhsOperand;
+    NSMutableString* _theOperator;
+    NSMutableString* _resultValue;
     }
 
 @property ( nonatomic, assign ) OMCTypingState typingState;
@@ -65,10 +65,10 @@ NSString extern* const OMCLastTypedButton;
 @property ( nonatomic, assign ) OMCButtonType lastTypedButtonType;
 @property ( nonatomic, retain ) NSButton* lastTypedButton;
 
-@property ( nonatomic, retain ) NSNumber* resultVal;
-@property ( nonatomic, retain ) NSNumber* lhsOperand;
-@property ( nonatomic, retain ) NSNumber* rhsOperand;
-@property ( nonatomic, retain ) NSMutableString* resultingFormula;
+@property ( nonatomic, retain ) NSMutableString* lhsOperand;
+@property ( nonatomic, retain ) NSMutableString* rhsOperand;
+@property ( nonatomic, retain ) NSMutableString* theOperator;
+@property ( nonatomic, retain ) NSMutableString* resultValue;
 
 - ( IBAction ) calculate: ( id )_Sender;
 

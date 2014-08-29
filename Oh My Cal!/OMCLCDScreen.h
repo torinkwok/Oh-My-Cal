@@ -59,11 +59,6 @@ typedef NSRect OMCSpaceBarRect;
     NSFont* _operatorsFont;
     NSFont* _storageFormulasFont;
 
-    NSMutableString* _lhsOperand;
-    NSMutableString* _rhsOperand;
-    NSMutableString* _theOperator;
-    NSMutableString* _resultValue;
-
     OMCTypingState _typingState;
     OMCAry _currentAry;
     }
@@ -87,11 +82,6 @@ typedef NSRect OMCSpaceBarRect;
 
 @property ( nonatomic, retain ) NSBezierPath* linePath;
 @property ( nonatomic, retain ) NSBezierPath* gridPath;
-
-@property ( nonatomic, retain ) NSMutableString* lhsOperand;
-@property ( nonatomic, retain ) NSMutableString* rhsOperand;
-@property ( nonatomic, retain ) NSMutableString* theOperator;
-@property ( nonatomic, retain ) NSMutableString* resultValue;
 
 @property ( nonatomic, assign ) OMCTypingState typingState;
 @property ( nonatomic, assign ) OMCAry currentAry;
