@@ -51,16 +51,13 @@ CGFloat static const kYPadding = 10.f;
 
 @synthesize _calculation;
 
-@synthesize lhsOperandSpace = _lhsOperandSpace;
-@synthesize rhsOperandSpace = _rhsOperandSpace;
-@synthesize tmpOperandSpace = _tmpOperandSpace;
-
 @synthesize linePath = _linePath;
 @synthesize gridPath = _gridPath;
 
-@synthesize lhsOperand = _lhsOperand;
-@synthesize rhsOperand = _rhsOperand;
-@synthesize resultValue = _resultValue;
+@synthesize bottommostSpaceBar = _bottommostSpaceBar;
+@synthesize secondSpaceBar = _secondSpaceBar;
+@synthesize thirdSpaceBar = _thirdSpaceBar;
+@synthesize topmostSpaceBar = _topmostSpaceBar;
 
 - ( BOOL ) canBecomeKeyView
     {
@@ -73,8 +70,8 @@ CGFloat static const kYPadding = 10.f;
     _boundary = [ self bounds ];
 
     _spaceX = NSMinX( _boundary ) + kXPadding;
-    _spaceWidth = NSWidth( _boundary ) - kXPadding * 2;
-    _spaceHeight = 20.f;
+    _spaceWidth = NSWidth( _boundary ) - kXPadding;
+    _spaceHeight = 26.5f;
 
     // Grid Path
     [ self _initializeGridPath ];
@@ -93,20 +90,26 @@ CGFloat static const kYPadding = 10.f;
 
 - ( void ) _initializeOperandSpaces
     {
-    self->_tmpOperandSpace = NSMakeRect( NSMinX( _gridPathBoundary )
-                                       , NSMinY( _gridPathBoundary ) + kYPadding
-                                       , _spaceWidth
-                                       , _spaceHeight
-                                       );
+    self->_bottommostSpaceBar = NSMakeRect( NSMinX( _gridPathBoundary )
+                                          , NSMinY( _gridPathBoundary )
+                                          , _spaceWidth
+                                          , _spaceHeight
+                                          );
 
-    self->_rhsOperandSpace = NSMakeRect( _spaceX
-                                       , NSMaxY( self->_tmpOperandSpace ) + kYPadding
-                                       , _spaceWidth
-                                       , _spaceHeight
-                                       );
+    self->_secondSpaceBar = NSMakeRect( NSMinX( _gridPathBoundary )
+                                      , NSMaxY( self->_bottommostSpaceBar )
+                                      , _spaceWidth
+                                      , _spaceHeight
+                                      );
 
-    self->_lhsOperandSpace = NSMakeRect( NSMinX( _gridPathBoundary )
-                                       , NSMaxY( self->_rhsOperandSpace ) + kYPadding
+    self->_thirdSpaceBar = NSMakeRect( NSMinX( _gridPathBoundary )
+                                     , NSMaxY( self->_secondSpaceBar )
+                                     , _spaceWidth
+                                     , _spaceHeight
+                                     );
+
+    self->_topmostSpaceBar = NSMakeRect( NSMinX( _gridPathBoundary )
+                                       , NSMaxY( self->_thirdSpaceBar )
                                        , _spaceWidth
                                        , _spaceHeight
                                        );
@@ -132,8 +135,8 @@ CGFloat static const kYPadding = 10.f;
     if ( !self.linePath )
         {
         self.linePath = [ NSBezierPath bezierPath ];
-        [ self.linePath moveToPoint: NSMakePoint( _spaceX, NSMaxY( self.tmpOperandSpace ) + kYPadding / 2 ) ];
-        [ self.linePath lineToPoint: NSMakePoint( _spaceX + _spaceWidth, NSMaxY( self.tmpOperandSpace ) + kYPadding / 2 ) ];
+        [ self.linePath moveToPoint: NSMakePoint( _spaceX, NSMaxY( self->_bottommostSpaceBar ) + kYPadding / 2 ) ];
+        [ self.linePath lineToPoint: NSMakePoint( _spaceX + _spaceWidth, NSMaxY( self->_bottommostSpaceBar ) + kYPadding / 2 ) ];
         }
     }
 
@@ -173,9 +176,10 @@ CGFloat static const kYPadding = 10.f;
     {
     [ super drawRect: _DirtyRect ];
 
-//    NSFrameRect( self->_lhsOperandSpace );
-//    NSFrameRect( self->_rhsOperandSpace );
-//    NSFrameRect( self->_tmpOperandSpace );
+    NSFrameRect( self->_bottommostSpaceBar );
+    NSFrameRect( self->_secondSpaceBar );
+    NSFrameRect( self->_thirdSpaceBar );
+    NSFrameRect( self->_topmostSpaceBar );
 
     [ [ [ NSColor lightGrayColor ] colorWithAlphaComponent: .3 ] set ];
     [ self.gridPath stroke ];
@@ -187,17 +191,17 @@ CGFloat static const kYPadding = 10.f;
                                        , NSForegroundColorAttributeName : drawingColor
                                        };
 
-    [ self.lhsOperand drawAtPoint: NSMakePoint( NSMaxX( self.lhsOperandSpace ) -  [ self.lhsOperand sizeWithAttributes: drawingAttributes ].width
-                                              , NSMinY( self.lhsOperandSpace ) + 2 )
-                   withAttributes: drawingAttributes ];
-
-    [ self.rhsOperand drawAtPoint: NSMakePoint( NSMaxX( self.rhsOperandSpace ) - [ self.rhsOperand sizeWithAttributes: drawingAttributes ].width
-                                              , NSMinY( self.rhsOperandSpace ) + 2 )
-                   withAttributes: drawingAttributes ];
-
-    [ self.resultValue drawAtPoint: NSMakePoint( NSMaxX( self.tmpOperandSpace ) -  [ self.resultValue sizeWithAttributes: drawingAttributes ].width
-                                              , NSMinY( self.tmpOperandSpace ) + 2 )
-                   withAttributes: drawingAttributes ];
+//    [ self.lhsOperand drawAtPoint: NSMakePoint( NSMaxX( self.lhsOperandSpace ) -  [ self.lhsOperand sizeWithAttributes: drawingAttributes ].width
+//                                              , NSMinY( self.lhsOperandSpace ) + 2 )
+//                   withAttributes: drawingAttributes ];
+//
+//    [ self.rhsOperand drawAtPoint: NSMakePoint( NSMaxX( self.rhsOperandSpace ) - [ self.rhsOperand sizeWithAttributes: drawingAttributes ].width
+//                                              , NSMinY( self.rhsOperandSpace ) + 2 )
+//                   withAttributes: drawingAttributes ];
+//
+//    [ self.resultValue drawAtPoint: NSMakePoint( NSMaxX( self.tmpOperandSpace ) -  [ self.resultValue sizeWithAttributes: drawingAttributes ].width
+//                                              , NSMinY( self.tmpOperandSpace ) + 2 )
+//                   withAttributes: drawingAttributes ];
 //    [ self.linePath stroke ];
     }
 

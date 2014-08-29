@@ -39,9 +39,10 @@
 @interface OMCLCDScreen : BGHUDView
     {
 @private
-    NSRect _lhsOperandSpace;
-    NSRect _rhsOperandSpace;
-    NSRect _tmpOperandSpace;
+    NSRect _bottommostSpaceBar;
+    NSRect _secondSpaceBar;
+    NSRect _thirdSpaceBar;
+    NSRect _topmostSpaceBar;
 
     NSBezierPath* _linePath;
     NSBezierPath* _gridPath;
@@ -53,9 +54,10 @@
 
 @property ( nonatomic, assign ) IBOutlet OMCCalculation* _calculation;
 
-@property ( nonatomic, assign, readonly ) NSRect lhsOperandSpace;
-@property ( nonatomic, assign, readonly ) NSRect rhsOperandSpace;
-@property ( nonatomic, assign, readonly ) NSRect tmpOperandSpace;
+@property ( nonatomic, assign, readonly ) NSRect bottommostSpaceBar;
+@property ( nonatomic, assign, readonly ) NSRect secondSpaceBar;
+@property ( nonatomic, assign, readonly ) NSRect thirdSpaceBar;
+@property ( nonatomic, assign, readonly ) NSRect topmostSpaceBar;
 
 @property ( nonatomic, retain ) NSBezierPath* linePath;
 @property ( nonatomic, retain ) NSBezierPath* gridPath;
