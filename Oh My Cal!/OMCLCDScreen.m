@@ -175,7 +175,7 @@ CGFloat static const kYPadding = 10.f;
 
 //    NSFrameRect( self->_lhsOperandSpace );
 //    NSFrameRect( self->_rhsOperandSpace );
-    NSFrameRect( self->_tmpOperandSpace );
+//    NSFrameRect( self->_tmpOperandSpace );
 
     [ [ [ NSColor lightGrayColor ] colorWithAlphaComponent: .3 ] set ];
     [ self.gridPath stroke ];
@@ -198,7 +198,7 @@ CGFloat static const kYPadding = 10.f;
     [ self.resultValue drawAtPoint: NSMakePoint( NSMaxX( self.tmpOperandSpace ) -  [ self.resultValue sizeWithAttributes: drawingAttributes ].width
                                               , NSMinY( self.tmpOperandSpace ) + 2 )
                    withAttributes: drawingAttributes ];
-    [ self.linePath stroke ];
+//    [ self.linePath stroke ];
     }
 
 #pragma mark Accessors
