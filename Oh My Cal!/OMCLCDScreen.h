@@ -35,17 +35,29 @@
 
 @class OMCCalculation;
 
+typedef NSRect OMCSpaceBarRect;
+
 // OMCLCDScreen class
 @interface OMCLCDScreen : BGHUDView
     {
 @private
-    NSRect _bottommostSpaceBar;
-    NSRect _secondSpaceBar;
-    NSRect _thirdSpaceBar;
-    NSRect _topmostSpaceBar;
+    OMCSpaceBarRect _bottommostSpaceBar;
+    OMCSpaceBarRect _secondSpaceBar;
+    OMCSpaceBarRect _thirdSpaceBar;
+    OMCSpaceBarRect _topmostSpaceBar;
 
     NSBezierPath* _linePath;
     NSBezierPath* _gridPath;
+
+    NSColor* _gridColor;
+    NSColor* _auxiliaryLineColor;
+    NSColor* _operandsColor;
+    NSColor* _operatorsColor;
+    NSColor* _storageFormulasColor;
+
+    NSFont* _operandsFont;
+    NSFont* _operatorsFont;
+    NSFont* _storageFormulasFont;
 
     NSMutableString* _lhsOperand;
     NSMutableString* _rhsOperand;
@@ -54,10 +66,20 @@
 
 @property ( nonatomic, assign ) IBOutlet OMCCalculation* _calculation;
 
-@property ( nonatomic, assign, readonly ) NSRect bottommostSpaceBar;
-@property ( nonatomic, assign, readonly ) NSRect secondSpaceBar;
-@property ( nonatomic, assign, readonly ) NSRect thirdSpaceBar;
-@property ( nonatomic, assign, readonly ) NSRect topmostSpaceBar;
+@property ( nonatomic, assign, readonly ) OMCSpaceBarRect bottommostSpaceBar;
+@property ( nonatomic, assign, readonly ) OMCSpaceBarRect secondSpaceBar;
+@property ( nonatomic, assign, readonly ) OMCSpaceBarRect thirdSpaceBar;
+@property ( nonatomic, assign, readonly ) OMCSpaceBarRect topmostSpaceBar;
+
+@property ( nonatomic, retain ) NSColor* gridColor;
+@property ( nonatomic, retain ) NSColor* auxiliaryLineColor;
+@property ( nonatomic, retain ) NSColor* operandsColor;
+@property ( nonatomic, retain ) NSColor* operatorsColor;
+@property ( nonatomic, retain ) NSColor* storageFormulasColor;
+
+@property ( nonatomic, retain ) NSFont* operandsFont;
+@property ( nonatomic, retain ) NSFont* operatorsFont;
+@property ( nonatomic, retain ) NSFont* storageFormulasFont;
 
 @property ( nonatomic, retain ) NSBezierPath* linePath;
 @property ( nonatomic, retain ) NSBezierPath* gridPath;
