@@ -130,15 +130,12 @@ NSInteger static const kSpaceBarsCount = 4;
     {
     if ( !self.lhsOperand )
         self.lhsOperand = [ NSMutableString string ];
-    [ self.lhsOperand appendString: @"31241" ];
 
     if ( !self.rhsOperand )
         self.rhsOperand = [ NSMutableString string ];
-    [ self.rhsOperand appendString: @"4234235235" ];
 
     if ( !self.resultValue )
         self.resultValue = [ NSMutableString string ];
-    [ self.resultValue appendString: @"5645647487" ];
     }
 
 - ( void ) _initializeLinePath
@@ -204,17 +201,17 @@ NSInteger static const kSpaceBarsCount = 4;
                    withAttributes: drawingAttributes ];
 
     [ self.resultValue drawAtPoint: [ self _pointUsedForDrawingOperands: self.resultValue inSpaceBar: self.thirdSpaceBar ]
-                   withAttributes: drawingAttributes ];
+                    withAttributes: drawingAttributes ];
 
     [ self.resultValue drawAtPoint: [ self _pointUsedForDrawingOperands: self.resultValue inSpaceBar: self.topmostSpaceBar ]
-                   withAttributes: drawingAttributes ];
+                    withAttributes: drawingAttributes ];
 
-    [ @"AND" drawAtPoint: [ self _pointUsedForDrawingOperators: @"+" ]
-          withAttributes: @{ NSFontAttributeName : self.operatorsFont
-                           , NSForegroundColorAttributeName: self.operatorsColor } ];
+//    [ @"AND" drawAtPoint: [ self _pointUsedForDrawingOperators: @"+" ]
+//          withAttributes: @{ NSFontAttributeName : self.operatorsFont
+//                           , NSForegroundColorAttributeName: self.operatorsColor } ];
 
-    [ self.auxiliaryLineColor set ];
-    [ self.linePath stroke ];
+//    [ self.auxiliaryLineColor set ];
+//    [ self.linePath stroke ];
     }
 
 - ( NSPoint ) _pointUsedForDrawingOperators: ( NSString* )_Operator
@@ -253,35 +250,38 @@ NSInteger static const kSpaceBarsCount = 4;
     }
 
 #pragma mark Accessors
-//- ( void ) setLhsOperand: ( NSString* )_LhsOperand
-//    {
-//    if ( ![ self->_lhsOperand isEqualToString: _LhsOperand ] )
-//        {
-//        [ self->_lhsOperand replaceCharactersInRange: NSMakeRange( 0, self->_lhsOperand.length ) withString: _LhsOperand ];
-//
-//        [ self setNeedsDisplay: YES ];
-//        }
-//    }
-//
-//- ( void ) setRhsOperand: ( NSString* )_RhsOperand
-//    {
-//    if ( ![ self->_rhsOperand isEqualToString: _RhsOperand ] )
-//        {
-//        [ self->_rhsOperand replaceCharactersInRange: NSMakeRange( 0, self->_rhsOperand.length ) withString: _RhsOperand ];
-//
-//        [ self setNeedsDisplay: YES ];
-//        }
-//    }
-//
-//- ( void ) setResultValue: ( NSString* )_ResultValue
-//    {
-//    if ( ![ self->_resultValue isEqualToString: _ResultValue ] )
-//        {
-//        [ self->_resultValue replaceCharactersInRange: NSMakeRange( 0, self->_resultValue.length ) withString: _ResultValue ];
-//
-//        [ self setNeedsDisplay: YES ];
-//        }
-//    }
+- ( void ) setLhsOperand: ( NSString* )_LhsOperand
+    {
+    if ( self->_lhsOperand != _LhsOperand )
+        {
+        [ self->_lhsOperand release ];
+        self->_lhsOperand = [ _LhsOperand mutableCopy ];
+
+        [ self setNeedsDisplay: YES ];
+        }
+    }
+
+- ( void ) setRhsOperand: ( NSString* )_RhsOperand
+    {
+    if ( self->_rhsOperand != _RhsOperand )
+        {
+        [ self->_rhsOperand release ];
+        self->_rhsOperand = [ _RhsOperand mutableCopy ];
+
+        [ self setNeedsDisplay: YES ];
+        }
+    }
+
+- ( void ) setResultValue: ( NSString* )_ResultValue
+    {
+    if ( self->_resultValue != _ResultValue )
+        {
+        [ self->_resultValue release ];
+        self->_resultValue = [ _ResultValue mutableCopy ];
+
+        [ self setNeedsDisplay: YES ];
+        }
+    }
 
 @end // OMCLCDScreen class
 
