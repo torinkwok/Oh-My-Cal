@@ -63,6 +63,14 @@ NSInteger static const kSpaceBarsCount = 4;
 @synthesize operatorsFont = _operatorsFont;
 @synthesize storageFormulasFont = _storageFormulasFont;
 
+@synthesize lhsOperand = _lhsOperand;
+@synthesize rhsOperand = _rhsOperand;
+@synthesize theOperator = _theOperator;
+@synthesize resultValue = _resultValue;
+
+@synthesize typingState = _typingState;
+@synthesize currentAry = _currentAry;
+
 - ( BOOL ) canBecomeKeyView
     {
     return YES;
@@ -80,6 +88,26 @@ NSInteger static const kSpaceBarsCount = 4;
     self.operandsFont = [ NSFont fontWithName: @"Lucida Grande" size: 15 ];
     self.operatorsFont = [ [ NSFontManager sharedFontManager ] convertFont: self.operandsFont toSize: 11 ];
     self.storageFormulasFont = self.operandsFont;
+
+    [ self setTypingState: OMCWaitAllOperands ];
+    [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS objectForKey: OMCDefaultsKeyAry ] ];
+
+    [ NOTIFICATION_CENTER addObserver: self
+                             selector: @selector( currentTypingStateDidChanged: )
+                                 name: OMCCurrentTypingStateDidChangedNotification
+                               object: self._calculation ];
+    }
+
+- ( void ) currentTypingStateDidChanged: ( NSNotification* )_Notif
+    {
+    OMCCalculation* calculation = [ _Notif object ];
+
+    if ( calculation.typingState == OMCWaitAllOperands )
+        [ self.lhsOperand appendString: calculation.lastTypedButton.title ];
+    else if ( calculation.typingState == OMCOperatorDidPressed )
+        [ self.theOperator appendString: [ calculation.lastTypedButton.title uppercaseString ] ];
+
+    [ self setNeedsDisplay: YES ];
     }
 
 - ( void ) viewWillMoveToWindow: ( NSWindow* )_Window
@@ -131,11 +159,20 @@ NSInteger static const kSpaceBarsCount = 4;
     if ( !self.lhsOperand )
         self.lhsOperand = [ NSMutableString string ];
 
+//    [ self.lhsOperand appendString: @"1412" ];
+
     if ( !self.rhsOperand )
         self.rhsOperand = [ NSMutableString string ];
 
+    if ( !self.theOperator )
+        self.theOperator = [ NSMutableString string ];
+
+//    [ self.rhsOperand appendString: @"88215" ];
+
     if ( !self.resultValue )
         self.resultValue = [ NSMutableString string ];
+
+//    [ self.resultValue appendString: @"251412" ];
     }
 
 - ( void ) _initializeLinePath
@@ -190,28 +227,67 @@ NSInteger static const kSpaceBarsCount = 4;
     [ self.gridColor set ];
     [ self.gridPath stroke ];
 
-    NSDictionary* drawingAttributes = @{ NSFontAttributeName : self.operandsFont
-                                       , NSForegroundColorAttributeName : self.operandsColor
-                                       };
+    NSDictionary* drawingAttributesForOperands = @{ NSFontAttributeName : self.operandsFont
+                                                  , NSForegroundColorAttributeName : self.operandsColor
+                                                  };
 
+    NSDictionary* drawingAttributesForOperators = @{ NSFontAttributeName : self.operatorsFont
+                                                   , NSForegroundColorAttributeName : self.operatorsColor
+                                                   };
+
+    switch ( self._calculation.typingState )
+        {
+    case OMCWaitAllOperands:
+            {
+            [ self.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self.lhsOperand inSpaceBar: self.bottommostSpaceBar ]
+                            withAttributes: drawingAttributesForOperands ];
+            } break;
+
+    case OMCOperatorDidPressed:
+            {
+            [ self.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self.lhsOperand inSpaceBar: self.thirdSpaceBar ]
+                            withAttributes: drawingAttributesForOperands ];
+
+            [ self.theOperator drawAtPoint: [ self _pointUsedForDrawingOperators: self.theOperator ]
+                            withAttributes: drawingAttributesForOperators ];
+
+            [ NSGraphicsContext saveGraphicsState ];
+                [ self.auxiliaryLineColor set ];
+                [ self.linePath stroke ];
+            [ NSGraphicsContext restoreGraphicsState ];
+            } break;
+
+    case OMCWaitRhsOperand:
+            {
+
+            } break;
+
+    case OMCFinishedTyping:
+            {
+            // TODO:
+            } break;
+        }
+
+#if 0
     [ self.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self.lhsOperand inSpaceBar: self.bottommostSpaceBar ]
-                   withAttributes: drawingAttributes ];
+                   withAttributes: drawingAttributesForOperands ];
 
     [ self.rhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self.rhsOperand inSpaceBar: self.secondSpaceBar ]
-                   withAttributes: drawingAttributes ];
+                   withAttributes: drawingAttributesForOperands ];
 
     [ self.resultValue drawAtPoint: [ self _pointUsedForDrawingOperands: self.resultValue inSpaceBar: self.thirdSpaceBar ]
-                    withAttributes: drawingAttributes ];
+                    withAttributes: drawingAttributesForOperands ];
 
     [ self.resultValue drawAtPoint: [ self _pointUsedForDrawingOperands: self.resultValue inSpaceBar: self.topmostSpaceBar ]
-                    withAttributes: drawingAttributes ];
+                    withAttributes: drawingAttributesForOperands ];
 
-//    [ @"AND" drawAtPoint: [ self _pointUsedForDrawingOperators: @"+" ]
-//          withAttributes: @{ NSFontAttributeName : self.operatorsFont
-//                           , NSForegroundColorAttributeName: self.operatorsColor } ];
+    [ @"AND" drawAtPoint: [ self _pointUsedForDrawingOperators: @"+" ]
+          withAttributes: @{ NSFontAttributeName : self.operatorsFont
+                           , NSForegroundColorAttributeName: self.operatorsColor } ];
 
-//    [ self.auxiliaryLineColor set ];
-//    [ self.linePath stroke ];
+    [ self.auxiliaryLineColor set ];
+    [ self.linePath stroke ];
+#endif
     }
 
 - ( NSPoint ) _pointUsedForDrawingOperators: ( NSString* )_Operator
@@ -257,7 +333,7 @@ NSInteger static const kSpaceBarsCount = 4;
         [ self->_lhsOperand release ];
         self->_lhsOperand = [ _LhsOperand mutableCopy ];
 
-        [ self setNeedsDisplay: YES ];
+//        [ self setNeedsDisplay: YES ];
         }
     }
 
@@ -268,7 +344,16 @@ NSInteger static const kSpaceBarsCount = 4;
         [ self->_rhsOperand release ];
         self->_rhsOperand = [ _RhsOperand mutableCopy ];
 
-        [ self setNeedsDisplay: YES ];
+//        [ self setNeedsDisplay: YES ];
+        }
+    }
+
+- ( void ) setTheOperator: ( NSString* )_Operator
+    {
+    if ( self->_theOperator != _Operator )
+        {
+        [ self->_theOperator release ];
+        self->_theOperator = [ _Operator mutableCopy ];
         }
     }
 
@@ -279,7 +364,7 @@ NSInteger static const kSpaceBarsCount = 4;
         [ self->_resultValue release ];
         self->_resultValue = [ _ResultValue mutableCopy ];
 
-        [ self setNeedsDisplay: YES ];
+//        [ self setNeedsDisplay: YES ];
         }
     }
 

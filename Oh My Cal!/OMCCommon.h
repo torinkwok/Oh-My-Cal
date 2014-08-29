@@ -90,6 +90,8 @@ typedef enum { OMCAnd = 0, OMCOr = 1,  OMCNor = 2,  OMCXor = 3
 
 typedef enum { OMCOctal, OMCDecimal, OMCHex } OMCAry;
 
+typedef enum { OMCWaitAllOperands, OMCOperatorDidPressed, OMCWaitRhsOperand, OMCFinishedTyping } OMCTypingState;
+
 ////////////////////////////////////////////////////////////////////////////
 
 /****************************************************************************

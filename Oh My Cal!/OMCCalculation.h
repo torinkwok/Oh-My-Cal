@@ -33,7 +33,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-typedef enum { OMCWaitAllOperands, OMCWaitRhsOperand, OMCFinishedTyping } OMCTypingState;
+// Notifications
+NSString extern* const OMCCurrentTypingStateDidChangedNotification;
+NSString extern* const OMCCurrentAryDidChangedNotification;
+NSString extern* const OMCCurrentLeftOperandDidChangedNotification;
+NSString extern* const OMCCurrentRightOperandDidChangedNotification;
+NSString extern* const OMCCurrentResultValueDidChangedNotification;
+
+// Keys for User Info in notifications
+NSString extern* const OMCCurrentTypingState;
+NSString extern* const OMCCurrentAry;
+NSString extern* const OMCLastTypedButton;
 
 // OMCCalculation class
 @interface OMCCalculation : NSObject
@@ -41,6 +51,8 @@ typedef enum { OMCWaitAllOperands, OMCWaitRhsOperand, OMCFinishedTyping } OMCTyp
 @private
     OMCTypingState _typingState;
     OMCAry _currentAry;
+    OMCButtonType _lastTypedButtonType;
+    NSButton* _lastTypedButton;
 
     NSNumber* _lhsOperand;
     NSNumber* _rhsOperand;
@@ -50,6 +62,8 @@ typedef enum { OMCWaitAllOperands, OMCWaitRhsOperand, OMCFinishedTyping } OMCTyp
 
 @property ( nonatomic, assign ) OMCTypingState typingState;
 @property ( nonatomic, assign ) OMCAry currentAry;
+@property ( nonatomic, assign ) OMCButtonType lastTypedButtonType;
+@property ( nonatomic, retain ) NSButton* lastTypedButton;
 
 @property ( nonatomic, retain ) NSNumber* resultVal;
 @property ( nonatomic, retain ) NSNumber* lhsOperand;

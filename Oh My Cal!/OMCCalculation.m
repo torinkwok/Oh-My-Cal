@@ -33,6 +33,18 @@
 
 #import "OMCCalculation.h"
 
+// Notifications
+NSString* const OMCCurrentTypingStateDidChangedNotification = @"OMCCurrentTypingStateDidChangedNotification";
+NSString* const OMCCurrentAryDidChangedNotification = @"OMCCurrentAryDidChangedNotification";
+NSString* const OMCCurrentLeftOperandDidChangedNotification = @"OMCCurrentLeftOperandDidChangedNotification";
+NSString* const OMCCurrentRightOperandDidChangedNotification = @"OMCCurrentRightOperandDidChangedNotification";
+NSString* const OMCCurrentResultValueDidChangedNotification = @"OMCCurrentResultValueDidChangedNotification";
+
+// Keys for User Info in notifications
+NSString* const OMCCurrentTypingState = @"OMCCurrentTypingState";
+NSString* const OMCCurrentAry = @"OMCCurrentAry";
+NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
+
 // OMCCalculation class
 @implementation OMCCalculation
 
@@ -44,6 +56,9 @@
 @synthesize rhsOperand = _rhsOperand;
 @synthesize resultingFormula = _resultingFormula;
 
+@synthesize lastTypedButtonType = _lastTypedButtonType;
+@synthesize lastTypedButton = _lastTypedButton;
+
 #pragma mark Initializers & Deallocators
 - ( void ) awakeFromNib
     {
@@ -54,25 +69,107 @@
     }
 
 #pragma mark IBActions
+
 // All of the buttons on the keyboard has been connected to this action
 - ( IBAction ) calculate: ( id )_Sender
     {
     NSButton* pressedButton = _Sender;
-    OMCButtonType buttonType = ( OMCButtonType )[ pressedButton tag ];
+    self.lastTypedButtonType = ( OMCButtonType )[ pressedButton tag ];
+    self.lastTypedButton = _Sender;
 
-    switch ( buttonType )
+    switch ( self.lastTypedButtonType )
         {
-    case OMCOne:        [ self.resultingFormula appendString: @"1" ];  break;
-    case OMCTwo:        [ self.resultingFormula appendString: @"2" ];  break;
-    case OMCThree:      [ self.resultingFormula appendString: @"3" ];  break;
-    case OMCFour:       [ self.resultingFormula appendString: @"4" ];  break;
-    case OMCFive:       [ self.resultingFormula appendString: @"5" ];  break;
-    case OMCSix:        [ self.resultingFormula appendString: @"6" ];  break;
-    case OMCSeven:      [ self.resultingFormula appendString: @"7" ];  break;
-    case OMCEight:      [ self.resultingFormula appendString: @"8" ];  break;
-    case OMCNine:       [ self.resultingFormula appendString: @"9" ];  break;
-    case OMCZero:       [ self.resultingFormula appendString: @"0" ];  break;
-    case OMCDoubleZero: [ self.resultingFormula appendString: @"00" ]; break;
+        // Numbers
+    case OMCOne:
+            {
+            if ( self.typingState == OMCWaitAllOperands )
+                self.typingState = OMCWaitAllOperands;
+
+            
+
+            [ self.resultingFormula appendString: @"1" ];
+            } break;
+
+    case OMCTwo:
+            {
+            if ( self.typingState == OMCWaitAllOperands )
+                self.typingState = OMCWaitAllOperands;
+
+            [ self.resultingFormula appendString: @"2" ];
+            } break;
+
+    case OMCThree:
+            {
+            if ( self.typingState == OMCWaitAllOperands )
+                self.typingState = OMCWaitAllOperands;
+
+            [ self.resultingFormula appendString: @"3" ];
+            } break;
+
+    case OMCFour:
+            {
+            if ( self.typingState == OMCWaitAllOperands )
+                self.typingState = OMCWaitAllOperands;
+
+            [ self.resultingFormula appendString: @"4" ];
+            } break;
+
+    case OMCFive:
+            {
+            if ( self.typingState == OMCWaitAllOperands )
+                self.typingState = OMCWaitAllOperands;
+
+            [ self.resultingFormula appendString: @"5" ];
+            } break;
+
+    case OMCSix:
+            {
+            if ( self.typingState == OMCWaitAllOperands )
+                self.typingState = OMCWaitAllOperands;
+
+            [ self.resultingFormula appendString: @"6" ];
+            } break;
+
+    case OMCSeven:
+            {
+            if ( self.typingState == OMCWaitAllOperands )
+                self.typingState = OMCWaitAllOperands;
+
+            [ self.resultingFormula appendString: @"7" ];
+            } break;
+
+    case OMCEight:
+            {
+            if ( self.typingState == OMCWaitAllOperands )
+                self.typingState = OMCWaitAllOperands;
+
+            [ self.resultingFormula appendString: @"8" ];
+            } break;
+
+    case OMCNine:
+            {
+            if ( self.typingState == OMCWaitAllOperands )
+                self.typingState = OMCWaitAllOperands;
+
+            [ self.resultingFormula appendString: @"9" ];
+            } break;
+
+    case OMCZero:
+            {
+            if ( self.typingState == OMCWaitAllOperands )
+                self.typingState = OMCWaitAllOperands;
+
+            [ self.resultingFormula appendString: @"0" ];
+            } break;
+
+    case OMCDoubleZero:
+            {
+            if ( self.typingState == OMCWaitAllOperands )
+                self.typingState = OMCWaitAllOperands;
+
+            [ self.resultingFormula appendString: @"00" ];
+            } break;
+
     case OMC0xA:        [ self.resultingFormula appendString: @"A" ];  break;
     case OMC0xB:        [ self.resultingFormula appendString: @"B" ];  break;
     case OMC0xC:        [ self.resultingFormula appendString: @"C" ];  break;
@@ -81,9 +178,16 @@
     case OMC0xF:        [ self.resultingFormula appendString: @"F" ];  break;
     case OMC0xFF:       [ self.resultingFormula appendString: @"FF" ]; break;
 
-    case OMCAnd:        [ self.resultingFormula appendString: @"&" ];  break;
+        // Binary operators
+    case OMCAnd:
+            {
+            if ( self.typingState == OMCWaitAllOperands )
+                self.typingState = OMCOperatorDidPressed;
+
+            [ self.resultingFormula appendString: @"&" ];
+            } break;
+
     case OMCOr:         [ self.resultingFormula appendString: @"|" ];   break;
-    case OMCNor:        [ self.resultingFormula appendString: @"~" ];  break;
     case OMCXor:        [ self.resultingFormula appendString: @"^" ];  break;
     case OMCLsh:        [ self.resultingFormula appendString: @"<<" ];  break;
     case OMCRsh:        [ self.resultingFormula appendString: @">>" ];  break;
@@ -92,16 +196,18 @@
     case OMC2_s:        [ self.resultingFormula appendString: @"2's" ];  break;
     case OMC1_s:        [ self.resultingFormula appendString: @"1's" ];  break;
     case OMCMod:        [ self.resultingFormula appendString: @"%" ];  break;
-    case OMCFactorial:  [ self.resultingFormula appendString: @"!" ]; break;
-
-    case OMCDel:        break;  // TODO:
-    case OMCAC:         break;  // TODO:
-    case OMCClear:      break;  // TODO:
 
     case OMCAdd:        [ self.resultingFormula appendString: @"+" ];  break;
     case OMCSub:        [ self.resultingFormula appendString: @"-" ];  break;
     case OMCMuliply:    [ self.resultingFormula appendString: @"*" ];  break;
     case OMCDivide:     [ self.resultingFormula appendString: @"/" ];  break;
+
+    case OMCNor:        [ self.resultingFormula appendString: @"~" ];  break;
+    case OMCFactorial:  [ self.resultingFormula appendString: @"!" ]; break;
+
+    case OMCDel:        break;  // TODO:
+    case OMCAC:         break;  // TODO:
+    case OMCClear:      break;  // TODO:
 
     case OMCLeftParenthesis:  [ self.resultingFormula appendString: @"(" ];  break;
     case OMCRightParenthesis: [ self.resultingFormula appendString: @")" ];  break;
@@ -112,6 +218,33 @@
             [ self.resultingFormula deleteCharactersInRange: NSMakeRange( 0, self.resultingFormula.length ) ];
             } break;
         }
+    }
+
+#pragma mark Accessors
+- ( void ) setTypingState: ( OMCTypingState )_TypingState
+    {
+    if ( self->_typingState != _TypingState )
+        self->_typingState = _TypingState;
+
+    [ NOTIFICATION_CENTER postNotificationName: OMCCurrentTypingStateDidChangedNotification
+                                        object: self
+                                      userInfo: @{ OMCCurrentTypingState : [ NSNumber numberWithInt: self->_typingState ]
+                                                 , OMCCurrentAry : [ NSNumber numberWithInt: self->_currentAry ]
+                                                 , OMCLastTypedButton : [ NSNumber numberWithInt: self->_lastTypedButtonType ]
+                                                 } ];
+    }
+
+- ( void ) setCurrentAry: ( OMCAry )_Ary
+    {
+    if ( self->_currentAry != _Ary )
+        self->_currentAry = _Ary;
+
+    [ NOTIFICATION_CENTER postNotificationName: OMCCurrentAryDidChangedNotification
+                                        object: self
+                                      userInfo: @{ OMCCurrentTypingState : [ NSNumber numberWithInt: self->_typingState ]
+                                                 , OMCCurrentAry : [ NSNumber numberWithInt: self->_currentAry ]
+                                                 , OMCLastTypedButton : [ NSNumber numberWithInt: self->_lastTypedButtonType ]
+                                                 } ];
     }
 
 @end // OMCCalculation

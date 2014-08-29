@@ -61,7 +61,11 @@ typedef NSRect OMCSpaceBarRect;
 
     NSMutableString* _lhsOperand;
     NSMutableString* _rhsOperand;
+    NSMutableString* _theOperator;
     NSMutableString* _resultValue;
+
+    OMCTypingState _typingState;
+    OMCAry _currentAry;
     }
 
 @property ( nonatomic, assign ) IBOutlet OMCCalculation* _calculation;
@@ -86,7 +90,11 @@ typedef NSRect OMCSpaceBarRect;
 
 @property ( nonatomic, retain ) NSMutableString* lhsOperand;
 @property ( nonatomic, retain ) NSMutableString* rhsOperand;
+@property ( nonatomic, retain ) NSMutableString* theOperator;
 @property ( nonatomic, retain ) NSMutableString* resultValue;
+
+@property ( nonatomic, assign ) OMCTypingState typingState;
+@property ( nonatomic, assign ) OMCAry currentAry;
 
 @end // OMCLCDScreen
 
