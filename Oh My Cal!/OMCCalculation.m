@@ -92,7 +92,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         [ self.lhsOperand appendString: [ _Button title ] ];
         self.typingState = OMCWaitAllOperands;
         }
-    else if ( self.typingState == OMCOperatorDidPressed || self.typingState == OMCWaitRhsOperand )
+    else if (  self.typingState == OMCWaitRhsOperand )
         {
         [ self.rhsOperand appendString: [ _Button title ] ];
         self.typingState = OMCWaitRhsOperand;
@@ -104,8 +104,34 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     if ( self.typingState == OMCWaitAllOperands )
         {
         [ self.theOperator appendString: [ [ _Button title ] uppercaseString ] ];
-        self.typingState = OMCOperatorDidPressed;
+        self.typingState = OMCWaitRhsOperand;
         }
+    }
+
+- ( void ) _calculateTheResultValueWithLastPressedButton: ( NSButton* )_Button
+    {
+    if ( [ self.theOperator isEqualToString: @"+" ] )
+        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue + self.rhsOperand.integerValue ] ];
+    else if ( [ self.theOperator isEqualToString: @"-" ] )
+        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue - self.rhsOperand.integerValue ] ];
+    else if ( [ self.theOperator isEqualToString: @"×" ] )
+        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue * self.rhsOperand.integerValue ] ];
+    else if ( [ self.theOperator isEqualToString: @"÷" ] )
+        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue / self.rhsOperand.integerValue ] ];
+
+    else if ( [ self.theOperator isEqualToString: @"AND" ] )
+        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue & self.rhsOperand.integerValue ] ];
+    else if ( [ self.theOperator isEqualToString: @"OR" ] )
+        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue | self.rhsOperand.integerValue ] ];
+    else if ( [ self.theOperator isEqualToString: @"LSH" ] )
+        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue << self.rhsOperand.integerValue ] ];
+    else if ( [ self.theOperator isEqualToString: @"RSH" ] )
+        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue >> self.rhsOperand.integerValue ] ];
+
+//    [ self.lhsOperand deleteCharactersInRange: NSMakeRange( 0, self.lhsOperand.length ) ];
+//    [ self.rhsOperand deleteCharactersInRange: NSMakeRange( 0, self.rhsOperand.length ) ];
+
+    self.typingState = OMCFinishedTyping;
     }
 
 // All of the buttons on the keyboard has been connected to this action
@@ -117,7 +143,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     switch ( self.lastTypedButtonType )
         {
-        // Numbers
+    // Numbers
     case OMCOne:
     case OMCTwo:
     case OMCThree:
@@ -129,9 +155,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCNine:
     case OMCZero:
     case OMCDoubleZero:
-            {
-            [ self _appendNumberWithLastPressedButton: self.lastTypedButton ];
-            } break;
+        [ self _appendNumberWithLastPressedButton: self.lastTypedButton ];  break;
 
 //    case OMC0xA:        [ self.resultingFormula appendString: @"A" ];  break;
 //    case OMC0xB:        [ self.resultingFormula appendString: @"B" ];  break;
@@ -141,7 +165,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 //    case OMC0xF:        [ self.resultingFormula appendString: @"F" ];  break;
 //    case OMC0xFF:       [ self.resultingFormula appendString: @"FF" ]; break;
 
-        // Binary operators
+    // Binary operators
     case OMCAnd:
     case OMCOr:
     case OMCXor:
@@ -156,10 +180,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCSub:
     case OMCMuliply:
     case OMCDivide:
-            {
-            [ self _appendBinaryOperatorWithLastPressedButton: self.lastTypedButton ];
-            } break;
-
+        [ self _appendBinaryOperatorWithLastPressedButton: self.lastTypedButton ];  break;
 
     case OMCNor:        break;
     case OMCFactorial:  break;
@@ -172,8 +193,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCRightParenthesis: break;
 
     case OMCEnter:
-            {
-            } break;
+        [ self _calculateTheResultValueWithLastPressedButton: self.lastTypedButton ];   break;
         }
     }
 

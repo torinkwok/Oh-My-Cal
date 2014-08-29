@@ -184,6 +184,45 @@ NSInteger static const kSpaceBarsCount = 4;
     }
 
 #pragma mark Customize Drawing
+- ( void ) _drawTheAuxiliaryLine
+    {
+    [ NSGraphicsContext saveGraphicsState ];
+        [ self.auxiliaryLineColor set ];
+        [ self.linePath stroke ];
+    [ NSGraphicsContext restoreGraphicsState ];
+    }
+
+- ( void ) _drawLhsOperandWithAttributes: ( NSDictionary* )_Attributes
+    {
+    [ self._calculation.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.lhsOperand inSpaceBar: self.bottommostSpaceBar ]
+                                withAttributes: _Attributes ];
+    }
+
+- ( void ) _drawRhsOperandWithAttributesForOperands: ( NSDictionary* )_AttributesForOperands
+                                     andForOperator: ( NSDictionary* )_AttributesForOperator
+    {
+    [ self._calculation.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.lhsOperand inSpaceBar: self.thirdSpaceBar ]
+                    withAttributes: _AttributesForOperands ];
+
+    [ self._calculation.rhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.rhsOperand inSpaceBar: self.secondSpaceBar ]
+                                withAttributes: _AttributesForOperands ];
+
+    [ self._calculation.theOperator drawAtPoint: [ self _pointUsedForDrawingOperators: self._calculation.theOperator ]
+                    withAttributes: _AttributesForOperator ];
+
+    [ self _drawTheAuxiliaryLine ];
+    }
+
+- ( void ) _drawResultValWithAttributesForOperands: ( NSDictionary* )_AttributesForOperands
+                                    andForOperator: ( NSDictionary* )_AttributesForOperator
+    {
+    [ self._calculation.resultValue drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.resultValue inSpaceBar: self.bottommostSpaceBar ]
+                                 withAttributes: _AttributesForOperands ];
+
+    [ self _drawRhsOperandWithAttributesForOperands: _AttributesForOperands
+                                     andForOperator: _AttributesForOperator ];
+    }
+
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
     [ super drawRect: _DirtyRect ];
@@ -203,32 +242,19 @@ NSInteger static const kSpaceBarsCount = 4;
         {
     case OMCWaitAllOperands:
             {
-            [ self._calculation.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.lhsOperand inSpaceBar: self.bottommostSpaceBar ]
-                                        withAttributes: drawingAttributesForOperands ];
-            } break;
-
-    case OMCOperatorDidPressed:
-            {
-            [ self._calculation.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.lhsOperand inSpaceBar: self.thirdSpaceBar ]
-                            withAttributes: drawingAttributesForOperands ];
-
-            [ self._calculation.theOperator drawAtPoint: [ self _pointUsedForDrawingOperators: self._calculation.theOperator ]
-                            withAttributes: drawingAttributesForOperators ];
-
-            [ NSGraphicsContext saveGraphicsState ];
-                [ self.auxiliaryLineColor set ];
-                [ self.linePath stroke ];
-            [ NSGraphicsContext restoreGraphicsState ];
+            [ self _drawLhsOperandWithAttributes: drawingAttributesForOperands ];
             } break;
 
     case OMCWaitRhsOperand:
             {
-
+            [ self _drawRhsOperandWithAttributesForOperands: drawingAttributesForOperands
+                                             andForOperator: drawingAttributesForOperators ];
             } break;
 
     case OMCFinishedTyping:
             {
-            // TODO:
+            [ self _drawResultValWithAttributesForOperands: drawingAttributesForOperands
+                                            andForOperator: drawingAttributesForOperators ];
             } break;
         }
 
