@@ -38,11 +38,10 @@
 
 @synthesize _arySegControl;
 
-- ( void ) drawRect: ( NSRect )_DirtyRect
+#pragma mark Initializers & Deallocators
+- ( void ) awakeFromNib
     {
-    [ [ NSColor whiteColor ] set ];
-
-//    NSFrameRect( self.bounds );
+    [ self._arySegControl setSelectedSegment: [ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
     }
 
 @end // OMCSettingsBar class

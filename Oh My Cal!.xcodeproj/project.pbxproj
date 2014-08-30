@@ -456,8 +456,8 @@
 		83D5D52019ADB45A004AFD84 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				83DD4A1119B1B0B2007F530A /* settings.png */,
 				83D5D52419ADB819004AFD84 /* OMFMainPanel.xib */,
+				83DD4A1119B1B0B2007F530A /* settings.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";

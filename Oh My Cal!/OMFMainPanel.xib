@@ -563,7 +563,7 @@
                         <segments>
                             <segment label="Oct" width="30"/>
                             <segment label="Dec" width="30" selected="YES" tag="1"/>
-                            <segment label="Hex" width="30"/>
+                            <segment label="Hex" width="30" tag="2"/>
                         </segments>
                     </segmentedCell>
                 </segmentedControl>

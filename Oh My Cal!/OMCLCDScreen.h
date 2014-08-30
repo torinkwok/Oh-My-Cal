@@ -46,7 +46,7 @@ typedef NSRect OMCSpaceBarRect;
     OMCSpaceBarRect _thirdSpaceBar;
     OMCSpaceBarRect _topmostSpaceBar;
 
-    NSBezierPath* _linePath;
+    NSBezierPath* _auxiliaryLinePath;
     NSBezierPath* _gridPath;
 
     NSColor* _gridColor;
@@ -80,7 +80,7 @@ typedef NSRect OMCSpaceBarRect;
 @property ( nonatomic, retain ) NSFont* operatorsFont;
 @property ( nonatomic, retain ) NSFont* storageFormulasFont;
 
-@property ( nonatomic, retain ) NSBezierPath* linePath;
+@property ( nonatomic, retain ) NSBezierPath* auxiliaryLinePath;
 @property ( nonatomic, retain ) NSBezierPath* gridPath;
 
 @property ( nonatomic, assign ) OMCTypingState typingState;

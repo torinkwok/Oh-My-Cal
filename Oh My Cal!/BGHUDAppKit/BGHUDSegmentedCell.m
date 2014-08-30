@@ -151,6 +151,11 @@
 	//Draw Border + Shadow
 //	[border stroke];
 
+//	//Draw Dark Border
+//	[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] darkStrokeColor] set];
+//	[border setLineWidth: 1.0f];
+//	[border stroke];
+
 	[NSGraphicsContext restoreGraphicsState];
 	
 	[border release];
@@ -162,6 +167,8 @@
 		[self drawSegment: segCount inFrame: frame withView: view];
 		segCount++;
 	}
+
+    [[[[BGThemeManager keyedManager] themeForKey: self.themeKey] dropShadow] set];
 }
 
 - (void)drawSegment:(NSInteger)segment inFrame:(NSRect)frame withView:(NSView *)view {

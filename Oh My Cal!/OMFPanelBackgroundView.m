@@ -45,7 +45,7 @@
 #define CORNER_RADIUS   30.f
 
 #define GRAY_SCALE      .12549f
-#define ALPHA_VAL       .95f
+#define ALPHA_VAL       .98f
 
 #define VISUAL_MAGIC    53.f // This magic number just for producing a beautiful appearance
 

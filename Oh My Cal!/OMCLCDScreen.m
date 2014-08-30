@@ -45,7 +45,7 @@ NSInteger static const kSpaceBarsCount = 4;
 
 @synthesize _calculation;
 
-@synthesize linePath = _linePath;
+@synthesize auxiliaryLinePath = _auxiliaryLinePath;
 @synthesize gridPath = _gridPath;
 
 @synthesize bottommostSpaceBar = _bottommostSpaceBar;
@@ -141,14 +141,14 @@ NSInteger static const kSpaceBarsCount = 4;
 
 - ( void ) _initializeLinePath
     {
-    if ( !self.linePath )
+    if ( !self.auxiliaryLinePath )
         {
         [ self _initializeOperandSpaceBars ];
 
-        self.linePath = [ NSBezierPath bezierPath ];
-        [ self.linePath moveToPoint: NSMakePoint( NSMinX( self.bottommostSpaceBar ), NSMaxY( self.bottommostSpaceBar ) ) ];
-        [ self.linePath lineToPoint: NSMakePoint( NSMaxX( self.bottommostSpaceBar ), NSMaxY( self.bottommostSpaceBar ) ) ];
-        [ self.linePath setLineWidth: 2 ];
+        self.auxiliaryLinePath = [ NSBezierPath bezierPath ];
+        [ self.auxiliaryLinePath moveToPoint: NSMakePoint( NSMinX( self.bottommostSpaceBar ), NSMaxY( self.bottommostSpaceBar ) ) ];
+        [ self.auxiliaryLinePath lineToPoint: NSMakePoint( NSMaxX( self.bottommostSpaceBar ), NSMaxY( self.bottommostSpaceBar ) ) ];
+        [ self.auxiliaryLinePath setLineWidth: 2 ];
         }
     }
 
@@ -188,7 +188,7 @@ NSInteger static const kSpaceBarsCount = 4;
     {
     [ NSGraphicsContext saveGraphicsState ];
         [ self.auxiliaryLineColor set ];
-        [ self.linePath stroke ];
+        [ self.auxiliaryLinePath stroke ];
     [ NSGraphicsContext restoreGraphicsState ];
     }
 
@@ -294,7 +294,7 @@ NSInteger static const kSpaceBarsCount = 4;
                            , NSForegroundColorAttributeName: self.operatorsColor } ];
 
     [ self.auxiliaryLineColor set ];
-    [ self.linePath stroke ];
+    [ self.auxiliaryLinePath stroke ];
 #endif
     }
 
