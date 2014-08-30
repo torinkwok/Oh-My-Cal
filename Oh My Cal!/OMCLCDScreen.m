@@ -81,8 +81,8 @@ NSInteger static const kSpaceBarsCount = 4;
     self.operatorsColor = self.operandsColor;
     self.storageFormulasColor = [ NSColor whiteColor ];
 
-    self.operandsFont = [ NSFont fontWithName: @"Lucida Grande" size: 15 ];
-    self.operatorsFont = [ [ NSFontManager sharedFontManager ] convertFont: self.operandsFont toSize: 11 ];
+    self.operandsFont = [ NSFont fontWithName: @"PT Mono" size: 15 ];
+    self.operatorsFont = [ [ NSFontManager sharedFontManager ] convertFont: self.operandsFont toSize: 13 ];
     self.storageFormulasFont = self.operandsFont;
 
     [ self setTypingState: OMCWaitAllOperands ];
