@@ -91,6 +91,11 @@ NSInteger static const kSpaceBarsCount = 4;
                              selector: @selector( currentTypingStateDidChanged: )
                                  name: OMCCurrentTypingStateDidChangedNotification
                                object: self._calculation ];
+
+    [ NOTIFICATION_CENTER addObserver: self
+                             selector: @selector( currentTypingStateDidChanged: )
+                                 name: OMCCurrentAryDidChangedNotification
+                               object: self._calculation ];
     }
 
 - ( void ) currentTypingStateDidChanged: ( NSNotification* )_Notif
@@ -196,9 +201,18 @@ NSInteger static const kSpaceBarsCount = 4;
     {
     /* When the user is typing left operand... */
 
+    NSString* operand = nil;
+    OMCAry currentAry = self._calculation.currentAry;
+    if ( currentAry == OMCOctal )
+        operand = [ NSString stringWithFormat: @"%lo", self._calculation.lhsOperand.integerValue ];
+    else if ( currentAry == OMCDecimal )
+        operand = self._calculation.lhsOperand;
+    else if ( currentAry == OMCHex )
+        operand = [ NSString stringWithFormat: @"0x%lx", self._calculation.lhsOperand.integerValue ];
+
     /* ...we should only draw the left operand into the bottommost space bar. It's easy, isn't it? :) */
-    [ self._calculation.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.lhsOperand inSpaceBar: self.bottommostSpaceBar ]
-                                withAttributes: _Attributes ];
+    [ operand drawAtPoint: [ self _pointUsedForDrawingOperands: operand inSpaceBar: self.bottommostSpaceBar ]
+           withAttributes: _Attributes ];
     }
 
 - ( void ) _drawRhsOperandWithAttributesForOperands: ( NSDictionary* )_AttributesForOperands
