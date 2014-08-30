@@ -32,6 +32,7 @@
  ****************************************************************************/
 
 #import "OMCCalWithProgrammerStyle.h"
+#import "OMCCalculation.h"
 
 // OMCCalWithProgrammerStyle class
 @implementation OMCCalWithProgrammerStyle
@@ -81,6 +82,41 @@
 @synthesize _del;
 @synthesize _clearAll;
 @synthesize _clear;
+
+@synthesize _calculation;
+
+#pragma mark Initializers & Deallocators
+- ( void ) awakeFromNib
+    {
+    [ self _toggleSpecialButtonsBasedAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
+    }
+
+#pragma mark IBActions
+- ( IBAction ) aryChanged: ( id )_Sender
+    {
+    NSSegmentedControl* arySeg = ( NSSegmentedControl* )_Sender;
+
+    self._calculation.currentAry = ( OMCAry )[ arySeg.cell tagForSegment: [ arySeg selectedSegment ] ];
+    [ self _toggleSpecialButtonsBasedAry: self._calculation.currentAry ];
+
+    [ USER_DEFAULTS setInteger: self._calculation.currentAry forKey: OMCDefaultsKeyAry ];
+    }
+
+- ( void ) _toggleSpecialButtonsBasedAry: ( OMCAry )_Ary
+    {
+    BOOL isHex = ( _Ary == OMCHex );
+    [ self._0xA setEnabled: isHex ];
+    [ self._0xB setEnabled: isHex ];
+    [ self._0xC setEnabled: isHex ];
+    [ self._0xD setEnabled: isHex ];
+    [ self._0xE setEnabled: isHex ];
+    [ self._0xF setEnabled: isHex ];
+    [ self._0xFF setEnabled: isHex ];
+
+    BOOL isOctal = ( _Ary == OMCOctal );
+    [ self._eight setEnabled: !isOctal ];
+    [ self._nine setEnabled: !isOctal ];
+    }
 
 @end // OMCCalWithProgrammerStyle class
 

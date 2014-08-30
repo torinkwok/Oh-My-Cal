@@ -234,25 +234,49 @@ NSInteger static const kSpaceBarsCount = 4;
                                      andForOperator: _AttributesForOperator ];
     }
 
+/* Initial state of Oh My Cal!: 1. Left Operand is empty
+ *                              2. Right Operand is empty
+ *                              3. Operator is empty
+ *                              4. Result Val is empty
+ */
 - ( void ) _drawPlaceholderForTypingState: ( OMCTypingState )_CurrentTypingState
                            withAttributes: ( NSDictionary* )_Attributes
     {
-
-    }
-
-- ( void ) _drawInitialStateWithAttributes: ( NSDictionary* )_Attribtues
-    {
-    NSString* initialState = nil;
+    NSString* placeholder = nil;
     OMCAry currentAry = self._calculation.currentAry;
 
     if ( currentAry == OMCOctal || currentAry == OMCDecimal )
-        initialState = [ @"0" copy ];
+        {
+        if ( self._calculation.lastTypedButtonType == OMCDivide )
+            placeholder = @"1";
+        else
+            placeholder = @"0";
+        }
     else if ( currentAry == OMCHex )
-        initialState = [ @"0x0" copy ];
+        {
+        if ( self._calculation.lastTypedButtonType == OMCDivide )
+            placeholder = @"0x1";
+        else
+            placeholder = @"0x0";
+        }
 
-    // As with all calculators, the initial state should only be drawn in the bottommost space bar.
-    [ initialState drawAtPoint: [ self _pointUsedForDrawingOperands: initialState inSpaceBar: self.bottommostSpaceBar ]
-                withAttributes: _Attribtues ];
+     /* If Oh My Cal! is in the initial state or user has already typed *nothing* for current operand
+      * draw a "0" for Octal and Decimal and a "0x0" for Hex, respectively. */
+    if ( _CurrentTypingState == OMCWaitAllOperands
+        /* If the length of lhsOperand is greater than 0, that means no need to draw the placeholder for left operand */
+        && self._calculation.lhsOperand.length == 0 )
+        {
+        // As with all calculators, the initial state should only be drawn in the bottommost space bar.
+        [ placeholder drawAtPoint: [ self _pointUsedForDrawingOperands: placeholder inSpaceBar: self.bottommostSpaceBar ]
+                    withAttributes: _Attributes ];
+        }
+    else if ( _CurrentTypingState == OMCWaitRhsOperand
+        /* If the length of rhsOperand is greater than 0, that means no need to draw the placeholder for right operand */
+        && self._calculation.rhsOperand.length == 0 )
+        {
+        [ placeholder drawAtPoint: [ self _pointUsedForDrawingOperands: placeholder inSpaceBar: self.secondSpaceBar ]
+                    withAttributes: _Attributes ];
+        }
     }
 
 - ( void ) drawRect: ( NSRect )_DirtyRect
@@ -270,21 +294,8 @@ NSInteger static const kSpaceBarsCount = 4;
                                                    , NSForegroundColorAttributeName : self.operatorsColor
                                                    };
 
-    /* Initial state of Oh My Cal!: 1. Left Operand is empty
-     *                              2. Right Operand is empty
-     *                              3. Operator is empty
-     *                              4. Result Val is empty
-     *
-     * If Oh My Cal! is in the initial state and user has already typed *nothing*,
-     * draw a "0" for Octal and Decimal and a "0x0" for Hex, respectively. */
-    if ( self._calculation.typingState == OMCWaitAllOperands
-        /* If the length of lhsOperand is greater than 0, that means Oh My Cal! is not in inital state */
-        && self._calculation.lhsOperand.length == 0 )
-        [ self _drawInitialStateWithAttributes: drawingAttributesForOperands ];
-
-    if ( self._calculation.typingState == OMCWaitRhsOperand
-        && self._calculation.rhsOperand.length == 0 )
-        [ self d
+    [ self _drawPlaceholderForTypingState: self._calculation.typingState
+                           withAttributes: drawingAttributesForOperands ];
 
     switch ( self._calculation.typingState )
         {

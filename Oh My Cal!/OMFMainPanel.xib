@@ -489,6 +489,7 @@
                 <outlet property="_2_sOperator" destination="KS6-Cp-ELA" id="4EK-kN-w8N"/>
                 <outlet property="_additionOperator" destination="Ugm-HP-Zzc" id="6b8-5A-LFj"/>
                 <outlet property="_andOperator" destination="yaR-OC-YLq" id="2kK-WY-YlQ"/>
+                <outlet property="_calculation" destination="odj-gr-7MT" id="zUC-Kt-nFF"/>
                 <outlet property="_clear" destination="v83-Rs-WKp" id="yGO-j4-e1L"/>
                 <outlet property="_clearAll" destination="QRR-RZ-tmp" id="mwb-iv-2qd"/>
                 <outlet property="_del" destination="lHe-Zb-MeN" id="RVb-v3-O93"/>
@@ -567,7 +568,7 @@
                         </segments>
                     </segmentedCell>
                     <connections>
-                        <action selector="aryChanged:" target="odj-gr-7MT" id="RoC-E4-xLA"/>
+                        <action selector="aryChanged:" target="GvH-CV-btC" id="wun-Zh-9sG"/>
                     </connections>
                 </segmentedControl>
             </subviews>

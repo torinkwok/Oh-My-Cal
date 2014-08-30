@@ -71,7 +71,6 @@ NSString extern* const OMCLastTypedButton;
 @property ( nonatomic, retain ) NSMutableString* resultValue;
 
 - ( IBAction ) calculate: ( id )_Sender;
-- ( IBAction ) aryChanged: ( id )_Sender;
 
 @end // OMCCalculation class
 

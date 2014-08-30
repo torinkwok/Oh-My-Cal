@@ -250,15 +250,6 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         }
     }
 
-- ( IBAction ) aryChanged: ( id )_Sender
-    {
-    NSSegmentedControl* arySeg = ( NSSegmentedControl* )_Sender;
-
-    self.currentAry = ( OMCAry )[ arySeg.cell tagForSegment: [ arySeg selectedSegment ] ];
-
-    [ USER_DEFAULTS setInteger: self.currentAry forKey: OMCDefaultsKeyAry ];
-    }
-
 #pragma mark Accessors
 - ( void ) setTypingState: ( OMCTypingState )_TypingState
     {
