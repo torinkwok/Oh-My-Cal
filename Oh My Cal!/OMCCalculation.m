@@ -101,10 +101,11 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
 - ( void ) _appendNumberWithLastPressedButton: ( NSButton* )_Button
     {
+    // If Oh My Cal! is in the initial state or user is just typing the left operand
     if ( self.typingState == OMCWaitAllOperands )
         {
         [ self.lhsOperand appendString: [ _Button title ] ];
-        self.typingState = OMCWaitAllOperands;
+        self.typingState = OMCWaitAllOperands;  // Wait for the user to pressing next button
         }
     else if ( self.typingState == OMCWaitRhsOperand )
         {
@@ -125,6 +126,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
 - ( void ) _appendBinaryOperatorWithLastPressedButton: ( NSButton* )_Button
     {
+    /* If user has finished typing the left operand just a moment ago */
     if ( self.typingState == OMCWaitAllOperands )
         {
         [ self.theOperator appendString: [ [ _Button title ] uppercaseString ] ];
@@ -248,6 +250,15 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         }
     }
 
+- ( IBAction ) aryChanged: ( id )_Sender
+    {
+    NSSegmentedControl* arySeg = ( NSSegmentedControl* )_Sender;
+
+    self.currentAry = ( OMCAry )[ arySeg.cell tagForSegment: [ arySeg selectedSegment ] ];
+
+    [ USER_DEFAULTS setInteger: self.currentAry forKey: OMCDefaultsKeyAry ];
+    }
+
 #pragma mark Accessors
 - ( void ) setTypingState: ( OMCTypingState )_TypingState
     {
@@ -256,10 +267,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     [ NOTIFICATION_CENTER postNotificationName: OMCCurrentTypingStateDidChangedNotification
                                         object: self
-                                      userInfo: @{ OMCCurrentTypingState : [ NSNumber numberWithInt: self->_typingState ]
-                                                 , OMCCurrentAry : [ NSNumber numberWithInt: self->_currentAry ]
-                                                 , OMCLastTypedButton : [ NSNumber numberWithInt: self->_lastTypedButtonType ]
-                                                 } ];
+                                      userInfo: nil ];
     }
 
 - ( void ) setCurrentAry: ( OMCAry )_Ary
@@ -269,10 +277,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     [ NOTIFICATION_CENTER postNotificationName: OMCCurrentAryDidChangedNotification
                                         object: self
-                                      userInfo: @{ OMCCurrentTypingState : [ NSNumber numberWithInt: self->_typingState ]
-                                                 , OMCCurrentAry : [ NSNumber numberWithInt: self->_currentAry ]
-                                                 , OMCLastTypedButton : [ NSNumber numberWithInt: self->_lastTypedButtonType ]
-                                                 } ];
+                                      userInfo: nil ];
     }
 
 - ( void ) setLhsOperand: ( NSString* )_LhsOperand

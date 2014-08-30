@@ -194,6 +194,9 @@ NSInteger static const kSpaceBarsCount = 4;
 
 - ( void ) _drawLhsOperandWithAttributes: ( NSDictionary* )_Attributes
     {
+    /* When the user is typing left operand... */
+
+    /* ...we should only draw the left operand into the bottommost space bar. It's easy, isn't it? :) */
     [ self._calculation.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.lhsOperand inSpaceBar: self.bottommostSpaceBar ]
                                 withAttributes: _Attributes ];
     }
@@ -201,16 +204,24 @@ NSInteger static const kSpaceBarsCount = 4;
 - ( void ) _drawRhsOperandWithAttributesForOperands: ( NSDictionary* )_AttributesForOperands
                                      andForOperator: ( NSDictionary* )_AttributesForOperator
     {
-    [ self._calculation.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.lhsOperand inSpaceBar: self.thirdSpaceBar ]
-                    withAttributes: _AttributesForOperands ];
+    /* When the user is typing right operand... */
 
+    /* ...we must draw a left operand into the bottom third space bar... */
+    [ self._calculation.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.lhsOperand inSpaceBar: self.thirdSpaceBar ]
+                                withAttributes: _AttributesForOperands ];
+
+    /* ...draw the right operand the user is typing into the bottom second space bar... */
     [ self._calculation.rhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.rhsOperand inSpaceBar: self.secondSpaceBar ]
                                 withAttributes: _AttributesForOperands ];
 
+    /* ...draw the operator the user selected into the bottom second space bar... */
     [ self._calculation.theOperator drawAtPoint: [ self _pointUsedForDrawingOperators: self._calculation.theOperator ]
-                    withAttributes: _AttributesForOperator ];
+                                 withAttributes: _AttributesForOperator ];
 
+    /* ...and draw a auxiliary line! */
     [ self _drawTheAuxiliaryLine ];
+
+    /* But wait! You might want to ask: where is the result value? Aha! */
     }
 
 - ( void ) _drawResultValWithAttributesForOperands: ( NSDictionary* )_AttributesForOperands
@@ -223,6 +234,12 @@ NSInteger static const kSpaceBarsCount = 4;
                                      andForOperator: _AttributesForOperator ];
     }
 
+- ( void ) _drawPlaceholderForTypingState: ( OMCTypingState )_CurrentTypingState
+                           withAttributes: ( NSDictionary* )_Attributes
+    {
+
+    }
+
 - ( void ) _drawInitialStateWithAttributes: ( NSDictionary* )_Attribtues
     {
     NSString* initialState = nil;
@@ -233,6 +250,7 @@ NSInteger static const kSpaceBarsCount = 4;
     else if ( currentAry == OMCHex )
         initialState = [ @"0x0" copy ];
 
+    // As with all calculators, the initial state should only be drawn in the bottommost space bar.
     [ initialState drawAtPoint: [ self _pointUsedForDrawingOperands: initialState inSpaceBar: self.bottommostSpaceBar ]
                 withAttributes: _Attribtues ];
     }
@@ -252,14 +270,27 @@ NSInteger static const kSpaceBarsCount = 4;
                                                    , NSForegroundColorAttributeName : self.operatorsColor
                                                    };
 
+    /* Initial state of Oh My Cal!: 1. Left Operand is empty
+     *                              2. Right Operand is empty
+     *                              3. Operator is empty
+     *                              4. Result Val is empty
+     *
+     * If Oh My Cal! is in the initial state and user has already typed *nothing*,
+     * draw a "0" for Octal and Decimal and a "0x0" for Hex, respectively. */
     if ( self._calculation.typingState == OMCWaitAllOperands
-            && self._calculation.lhsOperand.length == 0 )
+        /* If the length of lhsOperand is greater than 0, that means Oh My Cal! is not in inital state */
+        && self._calculation.lhsOperand.length == 0 )
         [ self _drawInitialStateWithAttributes: drawingAttributesForOperands ];
+
+    if ( self._calculation.typingState == OMCWaitRhsOperand
+        && self._calculation.rhsOperand.length == 0 )
+        [ self d
 
     switch ( self._calculation.typingState )
         {
     case OMCWaitAllOperands:
             {
+            // User has not typed the right operand, he is just typing the left operand.
             [ self _drawLhsOperandWithAttributes: drawingAttributesForOperands ];
             } break;
 
@@ -275,27 +306,6 @@ NSInteger static const kSpaceBarsCount = 4;
                                             andForOperator: drawingAttributesForOperators ];
             } break;
         }
-
-#if 0
-    [ self.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self.lhsOperand inSpaceBar: self.bottommostSpaceBar ]
-                   withAttributes: drawingAttributesForOperands ];
-
-    [ self.rhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self.rhsOperand inSpaceBar: self.secondSpaceBar ]
-                   withAttributes: drawingAttributesForOperands ];
-
-    [ self.resultValue drawAtPoint: [ self _pointUsedForDrawingOperands: self.resultValue inSpaceBar: self.thirdSpaceBar ]
-                    withAttributes: drawingAttributesForOperands ];
-
-    [ self.resultValue drawAtPoint: [ self _pointUsedForDrawingOperands: self.resultValue inSpaceBar: self.topmostSpaceBar ]
-                    withAttributes: drawingAttributesForOperands ];
-
-    [ @"AND" drawAtPoint: [ self _pointUsedForDrawingOperators: @"+" ]
-          withAttributes: @{ NSFontAttributeName : self.operatorsFont
-                           , NSForegroundColorAttributeName: self.operatorsColor } ];
-
-    [ self.auxiliaryLineColor set ];
-    [ self.auxiliaryLinePath stroke ];
-#endif
     }
 
 - ( NSPoint ) _pointUsedForDrawingOperators: ( NSString* )_Operator

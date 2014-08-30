@@ -566,6 +566,9 @@
                             <segment label="Hex" width="30" tag="2"/>
                         </segments>
                     </segmentedCell>
+                    <connections>
+                        <action selector="aryChanged:" target="odj-gr-7MT" id="RoC-E4-xLA"/>
+                    </connections>
                 </segmentedControl>
             </subviews>
             <constraints>
