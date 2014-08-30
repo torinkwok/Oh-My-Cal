@@ -92,6 +92,8 @@ typedef enum { OMCOctal, OMCDecimal, OMCHex } OMCAry;
 
 typedef enum { OMCWaitAllOperands, /* OMCOperatorDidPressed,*/ OMCWaitRhsOperand, OMCFinishedTyping } OMCTypingState;
 
+#import "NSMutableString+OMCMutableString.h"
+
 ////////////////////////////////////////////////////////////////////////////
 
 /****************************************************************************

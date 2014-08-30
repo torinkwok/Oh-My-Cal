@@ -33,20 +33,6 @@
 
 #import "OMCCalculation.h"
 
-// NSMutableString + OMCCalculation
-@interface NSMutableString ( OMCCalculation )
-- ( void ) clear;
-@end
-
-@implementation NSMutableString ( OMCCalculation )
-
-- ( void ) clear
-    {
-    [ self deleteCharactersInRange: NSMakeRange( 0, [ self length ] ) ];
-    }
-
-@end // NSMutableString + OMCCalculation
-
 // Notifications
 NSString* const OMCCurrentTypingStateDidChangedNotification = @"OMCCurrentTypingStateDidChangedNotification";
 NSString* const OMCCurrentAryDidChangedNotification = @"OMCCurrentAryDidChangedNotification";

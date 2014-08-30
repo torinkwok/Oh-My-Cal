@@ -68,6 +68,8 @@
 		83D5D54419ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D54319ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m */; };
 		83DD4A1219B1B0B2007F530A /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 83DD4A1119B1B0B2007F530A /* settings.png */; };
 		83DD4A1519B1B11A007F530A /* OMCSettingsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DD4A1419B1B11A007F530A /* OMCSettingsBar.m */; };
+		83DD4A1819B1F8CA007F530A /* NSMutableString+OMCMutableString.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DD4A1719B1F8CA007F530A /* NSMutableString+OMCMutableString.m */; };
+		83DD4A1B19B20005007F530A /* OMCOperand.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DD4A1A19B20005007F530A /* OMCOperand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +200,10 @@
 		83DD4A1119B1B0B2007F530A /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = "Oh My Cal!/Resources/settings.png"; sourceTree = "<group>"; };
 		83DD4A1319B1B11A007F530A /* OMCSettingsBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCSettingsBar.h; path = "Oh My Cal!/OMCSettingsBar.h"; sourceTree = "<group>"; };
 		83DD4A1419B1B11A007F530A /* OMCSettingsBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCSettingsBar.m; path = "Oh My Cal!/OMCSettingsBar.m"; sourceTree = "<group>"; };
+		83DD4A1619B1F8CA007F530A /* NSMutableString+OMCMutableString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableString+OMCMutableString.h"; path = "Oh My Cal!/NSMutableString+OMCMutableString.h"; sourceTree = "<group>"; };
+		83DD4A1719B1F8CA007F530A /* NSMutableString+OMCMutableString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableString+OMCMutableString.m"; path = "Oh My Cal!/NSMutableString+OMCMutableString.m"; sourceTree = "<group>"; };
+		83DD4A1919B20005007F530A /* OMCOperand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCOperand.h; path = "Oh My Cal!/OMCOperand.h"; sourceTree = "<group>"; };
+		83DD4A1A19B20005007F530A /* OMCOperand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCOperand.m; path = "Oh My Cal!/OMCOperand.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,8 +298,12 @@
 		833F645219AF2FAE001C7C35 /* Calculation */ = {
 			isa = PBXGroup;
 			children = (
+				83DD4A1619B1F8CA007F530A /* NSMutableString+OMCMutableString.h */,
+				83DD4A1719B1F8CA007F530A /* NSMutableString+OMCMutableString.m */,
 				833F645319AF2FBE001C7C35 /* OMCCalculation.h */,
 				833F645419AF2FBE001C7C35 /* OMCCalculation.m */,
+				83DD4A1919B20005007F530A /* OMCOperand.h */,
+				83DD4A1A19B20005007F530A /* OMCOperand.m */,
 			);
 			name = Calculation;
 			sourceTree = "<group>";
@@ -609,8 +619,10 @@
 				83099CB119ADBB2E00DDBF1D /* BGHUDView.m in Sources */,
 				83D5D52D19ADB85A004AFD84 /* OMFPanelBackgroundView.m in Sources */,
 				83099CA519ADBB2E00DDBF1D /* BGHUDSecureTextFieldCell.m in Sources */,
+				83DD4A1819B1F8CA007F530A /* NSMutableString+OMCMutableString.m in Sources */,
 				83099CA419ADBB2E00DDBF1D /* BGHUDSearchFieldCell.m in Sources */,
 				833F645119AF03BB001C7C35 /* OMCBinaryOperationBox.m in Sources */,
+				83DD4A1B19B20005007F530A /* OMCOperand.m in Sources */,
 				83099C9919ADBB2E00DDBF1D /* BGHUDBox.m in Sources */,
 				83D5D4D819ADB172004AFD84 /* OMCAppDelegate.m in Sources */,
 				83099CA719ADBB2E00DDBF1D /* BGHUDSliderCell.m in Sources */,

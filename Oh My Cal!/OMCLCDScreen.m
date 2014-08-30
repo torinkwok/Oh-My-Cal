@@ -203,12 +203,10 @@ NSInteger static const kSpaceBarsCount = 4;
 
     NSString* operand = nil;
     OMCAry currentAry = self._calculation.currentAry;
-    if ( currentAry == OMCOctal )
-        operand = [ NSString stringWithFormat: @"%lo", self._calculation.lhsOperand.integerValue ];
-    else if ( currentAry == OMCDecimal )
+    if ( currentAry == OMCOctal || currentAry == OMCDecimal )
         operand = self._calculation.lhsOperand;
     else if ( currentAry == OMCHex )
-        operand = [ NSString stringWithFormat: @"0x%lx", self._calculation.lhsOperand.integerValue ];
+        operand = [ NSString stringWithFormat: @"0x%@", self._calculation.lhsOperand ];
 
     /* ...we should only draw the left operand into the bottommost space bar. It's easy, isn't it? :) */
     [ operand drawAtPoint: [ self _pointUsedForDrawingOperands: operand inSpaceBar: self.bottommostSpaceBar ]

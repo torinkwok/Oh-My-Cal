@@ -71,7 +71,7 @@
 @synthesize _zero;
 @synthesize _doubleZero;
 @synthesize _0xA;
-@synthesize _0xB;
+@synthesize _0xB;   
 @synthesize _0xC;
 @synthesize _0xD;
 @synthesize _0xE;
@@ -98,6 +98,28 @@
 
     self._calculation.currentAry = ( OMCAry )[ arySeg.cell tagForSegment: [ arySeg selectedSegment ] ];
     [ self _toggleSpecialButtonsBasedAry: self._calculation.currentAry ];
+
+    if ( self._calculation.currentAry == OMCOctal )
+        {
+        NSLog( @"Value in oct: %ld", self._calculation.lhsOperand.integerValue );
+        [ self._calculation.lhsOperand replaceAllWithString: [ NSString stringWithFormat: @"%lo", self._calculation.lhsOperand.integerValue ] ];
+        [ self._calculation.rhsOperand replaceAllWithString: [ NSString stringWithFormat: @"%lo", self._calculation.rhsOperand.integerValue ] ];
+        [ self._calculation.resultValue replaceAllWithString: [ NSString stringWithFormat: @"%lo", self._calculation.resultValue.integerValue ] ];
+        }
+    else if ( self._calculation.currentAry == OMCDecimal )
+        {
+        NSLog( @"Value in dec: %ld", self._calculation.lhsOperand.integerValue );
+        [ self._calculation.lhsOperand replaceAllWithString: [ NSString stringWithFormat: @"%ld", self._calculation.lhsOperand.integerValue ] ];
+        [ self._calculation.rhsOperand replaceAllWithString: [ NSString stringWithFormat: @"%ld", self._calculation.rhsOperand.integerValue ] ];
+        [ self._calculation.resultValue replaceAllWithString: [ NSString stringWithFormat: @"%ld", self._calculation.resultValue.integerValue ] ];
+        }
+    else if ( self._calculation.currentAry == OMCHex )
+        {
+        NSLog( @"Value in hex: %ld", self._calculation.lhsOperand.integerValue );
+        [ self._calculation.lhsOperand replaceAllWithString: [ NSString stringWithFormat: @"%lx", self._calculation.lhsOperand.integerValue ] ];
+        [ self._calculation.rhsOperand replaceAllWithString: [ NSString stringWithFormat: @"%lx", self._calculation.rhsOperand.integerValue ] ];
+        [ self._calculation.resultValue replaceAllWithString: [ NSString stringWithFormat: @"0x%lx", self._calculation.resultValue.integerValue ] ];
+        }
 
     [ USER_DEFAULTS setInteger: self._calculation.currentAry forKey: OMCDefaultsKeyAry ];
     }
