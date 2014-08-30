@@ -89,10 +89,22 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
 - ( void ) _appendNumberWithLastPressedButton: ( NSButton* )_Button
     {
-    NSInteger numberWillBeAppended = [ _Button title ].integerValue;
-    NSInteger appendCount = 0;
+    NSString* buttonTitle = [ _Button title ];
+    NSInteger numberWillBeAppended = numberWillBeAppended = [ buttonTitle integerValue ];
 
-    if ( [ [ _Button title ] isEqualToString: @"00" ] )
+    if ( self.currentAry == OMCHex )
+        {
+        if ( [ buttonTitle isEqualToString: @"A" ] )    numberWillBeAppended = 10;
+        if ( [ buttonTitle isEqualToString: @"B" ] )    numberWillBeAppended = 11;
+        if ( [ buttonTitle isEqualToString: @"C" ] )    numberWillBeAppended = 12;
+        if ( [ buttonTitle isEqualToString: @"D" ] )    numberWillBeAppended = 13;
+        if ( [ buttonTitle isEqualToString: @"E" ] )    numberWillBeAppended = 14;
+        if ( [ buttonTitle isEqualToString: @"F" ] )    numberWillBeAppended = 15;
+        if ( [ buttonTitle isEqualToString: @"FF" ] )   numberWillBeAppended = pow( 16, 2 );
+        }
+
+    NSInteger appendCount = 0;
+    if ( [ buttonTitle isEqualToString: @"00" ] )
         appendCount = 2;
     else
         appendCount = 1;
@@ -147,14 +159,16 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     {
     if ( self.typingState == OMCFinishedTyping || self.typingState == OMCWaitAllOperands )
         {
-        if ( self.resultValue.baseNumber.integerValue > 0 )
+        if ( self.resultValue.baseNumber.integerValue > 0
+                || self.lhsOperand.baseNumber.integerValue > 0
+                || self.rhsOperand.baseNumber.integerValue > 0
+                || self.theOperator.length > 0 )
             {
+            [ self.resultValue setBaseNumber: @0 ];
             [ self.lhsOperand setBaseNumber: @0 ];
             [ self.rhsOperand setBaseNumber: @0 ];
-            [ self.resultValue setBaseNumber: @0 ];
-
             [ self.theOperator clear ];
-            
+
             self.typingState = OMCWaitAllOperands;
             }
 
@@ -203,15 +217,15 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCNine:
     case OMCZero:
     case OMCDoubleZero:
-        [ self _appendNumberWithLastPressedButton: self.lastTypedButton ];  break;
 
-//    case OMC0xA:        [ self.resultingFormula appendString: @"A" ];  break;
-//    case OMC0xB:        [ self.resultingFormula appendString: @"B" ];  break;
-//    case OMC0xC:        [ self.resultingFormula appendString: @"C" ];  break;
-//    case OMC0xD:        [ self.resultingFormula appendString: @"D" ];  break;
-//    case OMC0xE:        [ self.resultingFormula appendString: @"E" ];  break;
-//    case OMC0xF:        [ self.resultingFormula appendString: @"F" ];  break;
-//    case OMC0xFF:       [ self.resultingFormula appendString: @"FF" ]; break;
+    case OMC0xA:
+    case OMC0xB:
+    case OMC0xC:
+    case OMC0xD:
+    case OMC0xE:
+    case OMC0xF:
+    case OMC0xFF:
+        [ self _appendNumberWithLastPressedButton: self.lastTypedButton ];  break;
 
     // Binary operators
     case OMCAnd:

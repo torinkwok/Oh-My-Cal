@@ -71,7 +71,8 @@
 
 - ( NSString* ) inHex
     {
-    return [ NSString stringWithFormat: @"0x%lx", self.baseNumber.integerValue ];
+    NSString* hexValueInUppercase = [ NSString stringWithFormat: @"%lx", self.baseNumber.integerValue ].uppercaseString;
+    return [ NSString stringWithFormat: @"0x%@", hexValueInUppercase ];
     }
 
 - ( void ) appendDigit: ( NSInteger )_Digit
@@ -81,12 +82,9 @@
     NSInteger currentNumber = [ self baseNumber ].integerValue;
     NSInteger baseNumber = 0;
 
-    if ( _Ary == OMCDecimal )
-        baseNumber = 10;
-    else if ( _Ary == OMCOctal )
-        baseNumber = 8;
-    else if ( _Ary == OMCHex )
-        baseNumber = 16;
+    if ( _Ary == OMCDecimal )           baseNumber = 10;
+        else if ( _Ary == OMCOctal )    baseNumber = 8;
+        else if ( _Ary == OMCHex )      baseNumber = 16;
 
     self.baseNumber =
         [ NSNumber numberWithInteger: ( NSInteger )( currentNumber * pow( ( double )baseNumber, ( double )_Count ) + _Digit ) ];
