@@ -33,6 +33,20 @@
 
 #import "OMCCalculation.h"
 
+// NSMutableString + OMCCalculation
+@interface NSMutableString ( OMCCalculation )
+- ( void ) clear;
+@end
+
+@implementation NSMutableString ( OMCCalculation )
+
+- ( void ) clear
+    {
+    [ self deleteCharactersInRange: NSMakeRange( 0, [ self length ] ) ];
+    }
+
+@end // NSMutableString + OMCCalculation
+
 // Notifications
 NSString* const OMCCurrentTypingStateDidChangedNotification = @"OMCCurrentTypingStateDidChangedNotification";
 NSString* const OMCCurrentAryDidChangedNotification = @"OMCCurrentAryDidChangedNotification";
@@ -92,10 +106,20 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         [ self.lhsOperand appendString: [ _Button title ] ];
         self.typingState = OMCWaitAllOperands;
         }
-    else if (  self.typingState == OMCWaitRhsOperand )
+    else if ( self.typingState == OMCWaitRhsOperand )
         {
         [ self.rhsOperand appendString: [ _Button title ] ];
         self.typingState = OMCWaitRhsOperand;
+        }
+    else if ( self.typingState == OMCFinishedTyping )
+        {
+        [ self.lhsOperand clear ];
+        [ self.rhsOperand clear ];
+        [ self.theOperator clear ];
+        [ self.resultValue clear ];
+
+        [ self.lhsOperand appendString: [ _Button title ] ];
+        self.typingState = OMCWaitAllOperands;
         }
     }
 
@@ -106,10 +130,37 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         [ self.theOperator appendString: [ [ _Button title ] uppercaseString ] ];
         self.typingState = OMCWaitRhsOperand;
         }
+    else if ( self.typingState == OMCFinishedTyping )
+        {
+        [ self.theOperator clear ];
+        [ self.lhsOperand clear ];
+        [ self.rhsOperand clear ];
+
+        [ self.lhsOperand appendString: self.resultValue ];
+        [ self.resultValue clear ];
+        [ self.theOperator appendString: [ [ _Button title ] uppercaseString ] ];
+
+        self.typingState = OMCWaitRhsOperand;
+        }
     }
 
 - ( void ) _calculateTheResultValueWithLastPressedButton: ( NSButton* )_Button
     {
+    if ( self.typingState == OMCFinishedTyping || self.typingState == OMCWaitAllOperands )
+        {
+        if ( self.resultValue.length > 0 )
+            {
+            [ self.lhsOperand clear ];
+            [ self.rhsOperand clear ];
+            [ self.theOperator clear ];
+            [ self.resultValue clear ];
+            
+            self.typingState = OMCWaitAllOperands;
+            }
+
+        return;
+        }
+
     if ( [ self.theOperator isEqualToString: @"+" ] )
         [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue + self.rhsOperand.integerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"-" ] )

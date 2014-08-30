@@ -223,6 +223,13 @@ NSInteger static const kSpaceBarsCount = 4;
                                      andForOperator: _AttributesForOperator ];
     }
 
+- ( void ) _drawInitialStateWithAttributes: ( NSDictionary* )_Attribtues
+    {
+    NSString* initialState = @"0";
+    [ initialState drawAtPoint: [ self _pointUsedForDrawingOperands: initialState inSpaceBar: self.bottommostSpaceBar ]
+                withAttributes: _Attribtues ];
+    }
+
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
     [ super drawRect: _DirtyRect ];
@@ -237,6 +244,10 @@ NSInteger static const kSpaceBarsCount = 4;
     NSDictionary* drawingAttributesForOperators = @{ NSFontAttributeName : self.operatorsFont
                                                    , NSForegroundColorAttributeName : self.operatorsColor
                                                    };
+
+    if ( self._calculation.typingState == OMCWaitAllOperands
+            && self._calculation.lhsOperand.length == 0 )
+        [ self _drawInitialStateWithAttributes: drawingAttributesForOperands ];
 
     switch ( self._calculation.typingState )
         {
