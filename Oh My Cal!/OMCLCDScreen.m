@@ -225,7 +225,14 @@ NSInteger static const kSpaceBarsCount = 4;
 
 - ( void ) _drawInitialStateWithAttributes: ( NSDictionary* )_Attribtues
     {
-    NSString* initialState = @"0";
+    NSString* initialState = nil;
+    OMCAry currentAry = self._calculation.currentAry;
+
+    if ( currentAry == OMCOctal || currentAry == OMCDecimal )
+        initialState = [ @"0" copy ];
+    else if ( currentAry == OMCHex )
+        initialState = [ @"0x0" copy ];
+
     [ initialState drawAtPoint: [ self _pointUsedForDrawingOperands: initialState inSpaceBar: self.bottommostSpaceBar ]
                 withAttributes: _Attribtues ];
     }

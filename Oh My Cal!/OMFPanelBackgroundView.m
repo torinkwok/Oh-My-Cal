@@ -34,6 +34,7 @@
 #import "OMFPanelBackgroundView.h"
 
 #import "OMCLCDScreen.h"
+#import "OMCSettingsBar.h"
 #import "OMCBinaryOperationBox.h"
 #import "OMCBinaryOperationPanel.h"
 #import "OMCCalWithProgrammerStyle.h"
@@ -58,6 +59,7 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 
 @synthesize _currentCalType;
 @synthesize _LCDScreen;
+@synthesize _settingsBar;
 @synthesize _binaryOperationBox;
     @synthesize _binaryOperationPanel;
 @synthesize _calWithProgrammerStyle;
@@ -81,6 +83,11 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
                                                    , NSWidth( currentCal.bounds ) - kPaddingVal * 2
                                                    , kBinaryOperationBoxHeight ) ];
 
+    [ self._settingsBar setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
+                                            , NSMaxY( self._binaryOperationBox.frame )
+                                            , NSWidth( currentCal.bounds ) - kPaddingVal * 2
+                                            , 20 ) ];
+
     [ self._LCDScreen setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
                                           , NSMaxY( self._binaryOperationBox.frame ) + kPaddingVal * 2
                                           , NSWidth( currentCal.bounds ) - kPaddingVal * 2
@@ -99,7 +106,7 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 
     [ [ self window ] setFrame: newWindowFrame display: YES ];
 
-    [ self setSubviews: @[ self._LCDScreen, self._binaryOperationBox, currentCal ] ];
+    [ self setSubviews: @[ self._LCDScreen, self._settingsBar, self._binaryOperationBox, currentCal ] ];
     }
 
 #pragma mark Customize Drawing

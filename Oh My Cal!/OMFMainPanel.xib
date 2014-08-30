@@ -25,6 +25,7 @@
                     <outlet property="_binaryOperationBox" destination="x4i-YK-xrg" id="XZV-p6-dD8"/>
                     <outlet property="_binaryOperationPanel" destination="h31-zA-4wg" id="Nwd-nm-lIP"/>
                     <outlet property="_calWithProgrammerStyle" destination="GvH-CV-btC" id="ObX-6e-bsi"/>
+                    <outlet property="_settingsBar" destination="TuJ-OT-THp" id="T1J-b1-Dhy"/>
                 </connections>
             </view>
             <connections>
@@ -550,5 +551,31 @@
             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
         </box>
         <customObject id="odj-gr-7MT" customClass="OMCCalculation"/>
+        <customView id="TuJ-OT-THp" customClass="OMCSettingsBar">
+            <rect key="frame" x="0.0" y="0.0" width="302" height="31"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="832-bz-Fs4">
+                    <rect key="frame" x="197" y="4" width="102" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" alignment="left" style="rounded" trackingMode="selectOne" id="qjx-Ls-5hD" customClass="BGHUDSegmentedCell">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="Oct" width="30"/>
+                            <segment label="Dec" width="30" selected="YES" tag="1"/>
+                            <segment label="Hex" width="30"/>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="832-bz-Fs4" secondAttribute="bottom" constant="6" id="gc9-pV-Fxt"/>
+                <constraint firstAttribute="trailing" secondItem="832-bz-Fs4" secondAttribute="trailing" constant="5" id="iue-1M-SK3"/>
+                <constraint firstItem="832-bz-Fs4" firstAttribute="top" secondItem="TuJ-OT-THp" secondAttribute="top" constant="3" id="pqp-YP-TEg"/>
+            </constraints>
+            <connections>
+                <outlet property="_arySegControl" destination="832-bz-Fs4" id="nph-Wr-5b2"/>
+            </connections>
+        </customView>
     </objects>
 </document>

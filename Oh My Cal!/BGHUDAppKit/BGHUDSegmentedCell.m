@@ -127,12 +127,12 @@
 			frame.origin.x += 1.5f;
 			frame.origin.y += .5f;
 			frame.size.width -= 3;
-			frame.size.height -= 3;
-			
+			frame.size.height -= 0;
+
 			border = [[NSBezierPath alloc] init];
 			
 			[border appendBezierPathWithRoundedRect: frame
-											xRadius: 4.0f yRadius: 4.0f];
+											xRadius: 5.0f yRadius: 5.0f];
 			break;
 	}
 	
@@ -144,11 +144,13 @@
 	{
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] dropShadow] set];
 	}
+    // Tong Guo
 	[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] strokeColor] set];
-	
+
+//    [ [ NSColor blackColor ] set ];
 	//Draw Border + Shadow
-	[border stroke];
-	
+//	[border stroke];
+
 	[NSGraphicsContext restoreGraphicsState];
 	
 	[border release];
@@ -189,7 +191,7 @@
 				
 				fillPath = [[NSBezierPath alloc] init];
 				
-				[fillPath appendBezierPathWithRoundedRect: fillRect xRadius: 3 yRadius: 3];
+				[fillPath appendBezierPathWithRoundedRect: fillRect xRadius: 5 yRadius: 5];
 				
 				//Setup our joining rect
 				NSRect joinRect = fillRect;
@@ -205,7 +207,7 @@
 				
 				if(![self hasText]) { fillRect.size.width -= 3; }
 				
-				[fillPath appendBezierPathWithRoundedRect: fillRect xRadius: 3 yRadius: 3];
+				[fillPath appendBezierPathWithRoundedRect: fillRect xRadius: 5 yRadius: 5];
 				
 				//Setup our joining rect
 				NSRect joinRect = fillRect;
@@ -248,8 +250,8 @@
 	if(segment != ([self segmentCount] -1)) {
 		
 		[[[[BGThemeManager keyedManager] themeForKey: self.themeKey] strokeColor] set];
-		[NSBezierPath strokeLineFromPoint: NSMakePoint(fillRect.origin.x + fillRect.size.width , fillRect.origin.y)
-								  toPoint: NSMakePoint(fillRect.origin.x + fillRect.size.width, fillRect.origin.y + fillRect.size.height)];
+		[NSBezierPath strokeLineFromPoint: NSMakePoint(fillRect.origin.x + fillRect.size.width, fillRect.origin.y + 1)
+								  toPoint: NSMakePoint(fillRect.origin.x + fillRect.size.width, fillRect.origin.y - 1 + fillRect.size.height)];
 	}
 	
 	[self drawInteriorForSegment: segment withFrame: fillRect];
@@ -262,8 +264,8 @@
 	//if([self labelForSegment: segment] != nil) {
 	
 	NSMutableDictionary *textAttributes = [[NSMutableDictionary alloc] initWithCapacity: 0];
-	
-	[textAttributes setValue: [NSFont controlContentFontOfSize: [NSFont systemFontSizeForControlSize: [self controlSize]]] forKey: NSFontAttributeName];
+
+	[textAttributes setValue: [NSFont controlContentFontOfSize: [NSFont systemFontSizeForControlSize: NSMiniControlSize /* Tong Guo */]] forKey: NSFontAttributeName];
 	if([self isEnabled])
 	{
 		[textAttributes setValue: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] textColor] forKey: NSForegroundColorAttributeName];
@@ -326,8 +328,9 @@
 			[image drawInRect: imageRect fromRect: NSZeroRect operation: NSCompositeSourceAtop fraction: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] alphaValue]];
 		}
 	} else {
-		
-		textRect.origin.y += (BGCenterY(rect) - ([newTitle size].height /2));
+
+        // Tong Guo
+//		textRect.origin.y += (BGCenterY(rect) - ([newTitle size].height /2));
 		textRect.origin.x += (BGCenterX(rect) - ([newTitle size].width /2));
 		textRect.size.height = [newTitle size].height;
 		textRect.size.width = [newTitle size].width;

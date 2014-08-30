@@ -77,7 +77,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 - ( void ) awakeFromNib
     {
     [ self setTypingState: OMCWaitAllOperands ];
-    [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS objectForKey: OMCDefaultsKeyAry ] ];
+    [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
 
     [ self _initializeOprands ];
     }

@@ -31,31 +31,21 @@
  **                                                                         **
  ****************************************************************************/
 
-#import <Cocoa/Cocoa.h>
+#import "OMCSettingsBar.h"
 
-@class OMCLCDScreen;
-@class OMCSettingsBar;
-@class OMCBinaryOperationBox;
-@class OMCBinaryOperationPanel;
-@class OMCCalWithProgrammerStyle;
+// OMCSettingsBar class
+@implementation OMCSettingsBar
 
-// OMFPanelBackgroundView class
-@interface OMFPanelBackgroundView : NSView
+@synthesize _arySegControl;
+
+- ( void ) drawRect: ( NSRect )_DirtyRect
     {
-@private
-    CGFloat _arrowX;
+    [ [ NSColor whiteColor ] set ];
+
+//    NSFrameRect( self.bounds );
     }
 
-@property ( nonatomic, assign ) OMCCalType _currentCalType;
-@property ( nonatomic, assign ) IBOutlet OMCLCDScreen* _LCDScreen;
-@property ( nonatomic, assign ) IBOutlet OMCSettingsBar* _settingsBar;
-@property ( nonatomic, assign ) IBOutlet OMCBinaryOperationBox* _binaryOperationBox;
-    @property ( nonatomic, assign ) IBOutlet OMCBinaryOperationPanel* _binaryOperationPanel;
-@property ( nonatomic, assign ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
-
-@property ( nonatomic, assign ) CGFloat arrowX;
-
-@end // OMFPanelBackgroundView
+@end // OMCSettingsBar class
 
 //////////////////////////////////////////////////////////////////////////////
 

@@ -103,7 +103,9 @@
 }
 
 -(NSColor *)strokeColor {
-	return [NSColor colorWithDeviceRed: 0.749f green: 0.761f blue: 0.788f alpha: 0.7f];
+    // Tong Guo
+    //	return [NSColor colorWithDeviceRed: 0.749f green: 0.761f blue: 0.788f alpha: 0.7f];
+    return [ NSColor colorWithDeviceWhite: 0.4f alpha: 0.7f ];
 }
 
 -(CGFloat)alphaValue {
