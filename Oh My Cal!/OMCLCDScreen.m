@@ -32,6 +32,7 @@
  ****************************************************************************/
 
 #import "OMCLCDScreen.h"
+#import "OMCOperand.h"
 #import "OMCCalculation.h"
 
 NSInteger static const kSpaceBarsCount = 4;
@@ -201,16 +202,20 @@ NSInteger static const kSpaceBarsCount = 4;
     {
     /* When the user is typing left operand... */
 
-    NSString* operand = nil;
+    OMCOperand* operand = self._calculation.lhsOperand;
     OMCAry currentAry = self._calculation.currentAry;
-    if ( currentAry == OMCOctal || currentAry == OMCDecimal )
-        operand = self._calculation.lhsOperand;
+    NSString* lhsOperandInString = nil;
+
+    if ( currentAry == OMCOctal )
+        lhsOperandInString = [ operand inOctal ];
+    else if ( currentAry == OMCDecimal )
+        lhsOperandInString = [ operand inDecimal ];
     else if ( currentAry == OMCHex )
-        operand = [ NSString stringWithFormat: @"0x%@", self._calculation.lhsOperand ];
+        lhsOperandInString = [ operand inHex ];
 
     /* ...we should only draw the left operand into the bottommost space bar. It's easy, isn't it? :) */
-    [ operand drawAtPoint: [ self _pointUsedForDrawingOperands: operand inSpaceBar: self.bottommostSpaceBar ]
-           withAttributes: _Attributes ];
+    [ lhsOperandInString drawAtPoint: [ self _pointUsedForDrawingOperands: lhsOperandInString inSpaceBar: self.bottommostSpaceBar ]
+                      withAttributes: _Attributes ];
     }
 
 - ( void ) _drawRhsOperandWithAttributesForOperands: ( NSDictionary* )_AttributesForOperands
@@ -218,13 +223,37 @@ NSInteger static const kSpaceBarsCount = 4;
     {
     /* When the user is typing right operand... */
 
+    OMCOperand* lhsOperand = self._calculation.lhsOperand;
+    OMCOperand* rhsOperand = self._calculation.rhsOperand;
+
+    OMCAry currentAry = self._calculation.currentAry;
+
+    NSString* lhsOperandInString = nil;
+    NSString* rhsOperandInString = nil;
+
+    if ( currentAry == OMCOctal )
+        {
+        lhsOperandInString = [ lhsOperand inOctal ];
+        rhsOperandInString = [ rhsOperand inOctal ];
+        }
+    else if ( currentAry == OMCDecimal )
+        {
+        lhsOperandInString = [ lhsOperand inDecimal ];
+        rhsOperandInString = [ rhsOperand inDecimal ];
+        }
+    else if ( currentAry == OMCHex )
+        {
+        lhsOperandInString = [ lhsOperand inHex ];
+        rhsOperandInString = [ rhsOperand inHex ];
+        }
+
     /* ...we must draw a left operand into the bottom third space bar... */
-    [ self._calculation.lhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.lhsOperand inSpaceBar: self.thirdSpaceBar ]
-                                withAttributes: _AttributesForOperands ];
+    [ lhsOperandInString drawAtPoint: [ self _pointUsedForDrawingOperands: lhsOperandInString inSpaceBar: self.thirdSpaceBar ]
+                      withAttributes: _AttributesForOperands ];
 
     /* ...draw the right operand the user is typing into the bottom second space bar... */
-    [ self._calculation.rhsOperand drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.rhsOperand inSpaceBar: self.secondSpaceBar ]
-                                withAttributes: _AttributesForOperands ];
+    [ rhsOperandInString drawAtPoint: [ self _pointUsedForDrawingOperands: rhsOperandInString inSpaceBar: self.secondSpaceBar ]
+                      withAttributes: _AttributesForOperands ];
 
     /* ...draw the operator the user selected into the bottom second space bar... */
     [ self._calculation.theOperator drawAtPoint: [ self _pointUsedForDrawingOperators: self._calculation.theOperator ]
@@ -239,8 +268,20 @@ NSInteger static const kSpaceBarsCount = 4;
 - ( void ) _drawResultValWithAttributesForOperands: ( NSDictionary* )_AttributesForOperands
                                     andForOperator: ( NSDictionary* )_AttributesForOperator
     {
-    [ self._calculation.resultValue drawAtPoint: [ self _pointUsedForDrawingOperands: self._calculation.resultValue inSpaceBar: self.bottommostSpaceBar ]
-                                 withAttributes: _AttributesForOperands ];
+    OMCOperand* resultValue = self._calculation.resultValue;
+    OMCAry currentAry = self._calculation.currentAry;
+
+    NSString* resultValueInString = nil;
+
+    if ( currentAry == OMCOctal )
+        resultValueInString = [ resultValue inOctal ];
+    else if ( currentAry == OMCDecimal )
+        resultValueInString = [ resultValue inDecimal ];
+    else if ( currentAry == OMCHex )
+        resultValueInString = [ resultValue inHex ];
+
+    [ resultValueInString drawAtPoint: [ self _pointUsedForDrawingOperands: resultValueInString inSpaceBar: self.bottommostSpaceBar ]
+                       withAttributes: _AttributesForOperands ];
 
     [ self _drawRhsOperandWithAttributesForOperands: _AttributesForOperands
                                      andForOperator: _AttributesForOperator ];
@@ -258,36 +299,26 @@ NSInteger static const kSpaceBarsCount = 4;
     OMCAry currentAry = self._calculation.currentAry;
 
     if ( currentAry == OMCOctal || currentAry == OMCDecimal )
-        {
-        if ( self._calculation.lastTypedButtonType == OMCDivide )
-            placeholder = @"1";
-        else
-            placeholder = @"0";
-        }
+        placeholder = @"0";
     else if ( currentAry == OMCHex )
-        {
-        if ( self._calculation.lastTypedButtonType == OMCDivide )
-            placeholder = @"0x1";
-        else
-            placeholder = @"0x0";
-        }
+        placeholder = @"0x0";
 
      /* If Oh My Cal! is in the initial state or user has already typed *nothing* for current operand
       * draw a "0" for Octal and Decimal and a "0x0" for Hex, respectively. */
     if ( _CurrentTypingState == OMCWaitAllOperands
         /* If the length of lhsOperand is greater than 0, that means no need to draw the placeholder for left operand */
-        && self._calculation.lhsOperand.length == 0 )
+        && self._calculation.lhsOperand.isZero )
         {
         // As with all calculators, the initial state should only be drawn in the bottommost space bar.
         [ placeholder drawAtPoint: [ self _pointUsedForDrawingOperands: placeholder inSpaceBar: self.bottommostSpaceBar ]
-                    withAttributes: _Attributes ];
+                   withAttributes: _Attributes ];
         }
     else if ( _CurrentTypingState == OMCWaitRhsOperand
         /* If the length of rhsOperand is greater than 0, that means no need to draw the placeholder for right operand */
-        && self._calculation.rhsOperand.length == 0 )
+        && self._calculation.rhsOperand.isZero )
         {
         [ placeholder drawAtPoint: [ self _pointUsedForDrawingOperands: placeholder inSpaceBar: self.secondSpaceBar ]
-                    withAttributes: _Attributes ];
+                   withAttributes: _Attributes ];
         }
     }
 

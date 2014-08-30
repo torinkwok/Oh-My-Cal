@@ -32,6 +32,7 @@
  ****************************************************************************/
 
 #import "OMCCalculation.h"
+#import "OMCOperand.h"
 
 // Notifications
 NSString* const OMCCurrentTypingStateDidChangedNotification = @"OMCCurrentTypingStateDidChangedNotification";
@@ -53,8 +54,9 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
 @synthesize lhsOperand = _lhsOperand;
 @synthesize rhsOperand = _rhsOperand;
-@synthesize theOperator = _theOperator;
 @synthesize resultValue = _resultValue;
+
+@synthesize theOperator = _theOperator;
 
 @synthesize lastTypedButtonType = _lastTypedButtonType;
 @synthesize lastTypedButton = _lastTypedButton;
@@ -71,41 +73,50 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 - ( void ) _initializeOprands
     {
     if ( !self.lhsOperand )
-        self.lhsOperand = [ NSMutableString string ];
+        self.lhsOperand = [ OMCOperand operandWithNumber: @0 ];
 
     if ( !self.rhsOperand )
-        self.rhsOperand = [ NSMutableString string ];
+        self.rhsOperand = [ OMCOperand operandWithNumber: @0 ];
+
+    if ( !self.resultValue )
+        self.resultValue = [ OMCOperand operandWithNumber: @0 ];
 
     if ( !self.theOperator )
         self.theOperator = [ NSMutableString string ];
-
-    if ( !self.resultValue )
-        self.resultValue = [ NSMutableString string ];
     }
 
 #pragma mark IBActions
 
 - ( void ) _appendNumberWithLastPressedButton: ( NSButton* )_Button
     {
+    NSInteger numberWillBeAppended = [ _Button title ].integerValue;
+    NSInteger appendCount = 0;
+
+    if ( [ [ _Button title ] isEqualToString: @"00" ] )
+        appendCount = 2;
+    else
+        appendCount = 1;
+
     // If Oh My Cal! is in the initial state or user is just typing the left operand
     if ( self.typingState == OMCWaitAllOperands )
         {
-        [ self.lhsOperand appendString: [ _Button title ] ];
+        [ self.lhsOperand appendDigit: numberWillBeAppended count: appendCount ary: self.currentAry ];
         self.typingState = OMCWaitAllOperands;  // Wait for the user to pressing next button
         }
     else if ( self.typingState == OMCWaitRhsOperand )
         {
-        [ self.rhsOperand appendString: [ _Button title ] ];
+        [ self.rhsOperand appendDigit: numberWillBeAppended count: appendCount ary: self.currentAry ];
         self.typingState = OMCWaitRhsOperand;
         }
     else if ( self.typingState == OMCFinishedTyping )
         {
-        [ self.lhsOperand clear ];
-        [ self.rhsOperand clear ];
-        [ self.theOperator clear ];
-        [ self.resultValue clear ];
+        [ self.lhsOperand setBaseNumber: @0 ];
+        [ self.rhsOperand setBaseNumber: @0 ];
+        [ self.resultValue setBaseNumber: @0 ];
 
-        [ self.lhsOperand appendString: [ _Button title ] ];
+        [ self.theOperator clear ];
+
+        [ self.lhsOperand appendDigit: numberWillBeAppended count: appendCount ary: self.currentAry ];
         self.typingState = OMCWaitAllOperands;
         }
     }
@@ -121,11 +132,11 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     else if ( self.typingState == OMCFinishedTyping )
         {
         [ self.theOperator clear ];
-        [ self.lhsOperand clear ];
-        [ self.rhsOperand clear ];
+        [ self.lhsOperand setBaseNumber: @0 ];
+        [ self.rhsOperand setBaseNumber: @0 ];
 
-        [ self.lhsOperand appendString: self.resultValue ];
-        [ self.resultValue clear ];
+        [ self.lhsOperand setBaseNumber: self.resultValue.baseNumber ];
+        [ self.resultValue setBaseNumber: @0 ];
         [ self.theOperator appendString: [ [ _Button title ] uppercaseString ] ];
 
         self.typingState = OMCWaitRhsOperand;
@@ -136,12 +147,13 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     {
     if ( self.typingState == OMCFinishedTyping || self.typingState == OMCWaitAllOperands )
         {
-        if ( self.resultValue.length > 0 )
+        if ( self.resultValue.baseNumber.integerValue > 0 )
             {
-            [ self.lhsOperand clear ];
-            [ self.rhsOperand clear ];
+            [ self.lhsOperand setBaseNumber: @0 ];
+            [ self.rhsOperand setBaseNumber: @0 ];
+            [ self.resultValue setBaseNumber: @0 ];
+
             [ self.theOperator clear ];
-            [ self.resultValue clear ];
             
             self.typingState = OMCWaitAllOperands;
             }
@@ -150,25 +162,22 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         }
 
     if ( [ self.theOperator isEqualToString: @"+" ] )
-        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue + self.rhsOperand.integerValue ] ];
+        [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue + self.rhsOperand.baseNumber.integerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"-" ] )
-        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue - self.rhsOperand.integerValue ] ];
+        [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue - self.rhsOperand.baseNumber.integerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"×" ] )
-        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue * self.rhsOperand.integerValue ] ];
+        [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue * self.rhsOperand.baseNumber.integerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"÷" ] )
-        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue / self.rhsOperand.integerValue ] ];
+        [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue / self.rhsOperand.baseNumber.integerValue ] ];
 
     else if ( [ self.theOperator isEqualToString: @"AND" ] )
-        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue & self.rhsOperand.integerValue ] ];
+        [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue & self.rhsOperand.baseNumber.integerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"OR" ] )
-        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue | self.rhsOperand.integerValue ] ];
+        [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue | self.rhsOperand.baseNumber.integerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"LSH" ] )
-        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue << self.rhsOperand.integerValue ] ];
+        [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue << self.rhsOperand.baseNumber.integerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"RSH" ] )
-        [ self.resultValue appendString: [ NSString stringWithFormat: @"%ld", self.lhsOperand.integerValue >> self.rhsOperand.integerValue ] ];
-
-//    [ self.lhsOperand deleteCharactersInRange: NSMakeRange( 0, self.lhsOperand.length ) ];
-//    [ self.rhsOperand deleteCharactersInRange: NSMakeRange( 0, self.rhsOperand.length ) ];
+        [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue >> self.rhsOperand.baseNumber.integerValue ] ];
 
     self.typingState = OMCFinishedTyping;
     }
@@ -255,42 +264,6 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     [ NOTIFICATION_CENTER postNotificationName: OMCCurrentAryDidChangedNotification
                                         object: self
                                       userInfo: nil ];
-    }
-
-- ( void ) setLhsOperand: ( NSString* )_LhsOperand
-    {
-    if ( self->_lhsOperand != _LhsOperand )
-        {
-        [ self->_lhsOperand release ];
-        self->_lhsOperand = [ _LhsOperand mutableCopy ];
-        }
-    }
-
-- ( void ) setRhsOperand: ( NSString* )_RhsOperand
-    {
-    if ( self->_rhsOperand != _RhsOperand )
-        {
-        [ self->_rhsOperand release ];
-        self->_rhsOperand = [ _RhsOperand mutableCopy ];
-        }
-    }
-
-- ( void ) setTheOperator: ( NSString* )_Operator
-    {
-    if ( self->_theOperator != _Operator )
-        {
-        [ self->_theOperator release ];
-        self->_theOperator = [ _Operator mutableCopy ];
-        }
-    }
-
-- ( void ) setResultValue: ( NSString* )_ResultValue
-    {
-    if ( self->_resultValue != _ResultValue )
-        {
-        [ self->_resultValue release ];
-        self->_resultValue = [ _ResultValue mutableCopy ];
-        }
     }
 
 @end // OMCCalculation

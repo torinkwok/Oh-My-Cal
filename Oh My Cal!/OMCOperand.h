@@ -50,6 +50,16 @@
 @property ( nonatomic, copy, readonly ) NSString* inDecimal;
 @property ( nonatomic, copy, readonly ) NSString* inHex;
 
++ ( id ) operandWithNumber: ( NSNumber* )_Number;
+
+- ( void ) appendDigit: ( NSInteger )_Digit
+                 count: ( NSInteger )_Count
+                   ary: ( OMCAry )_Ary;
+
+- ( void ) deleteDigit: ( NSInteger )_DigitCount;
+
+- ( BOOL ) isZero;
+
 @end // OMCOperand class
 
 //////////////////////////////////////////////////////////////////////////////

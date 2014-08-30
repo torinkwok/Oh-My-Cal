@@ -33,6 +33,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class OMCOperand;
+
 // Notifications
 NSString extern* const OMCCurrentTypingStateDidChangedNotification;
 NSString extern* const OMCCurrentAryDidChangedNotification;
@@ -54,10 +56,11 @@ NSString extern* const OMCLastTypedButton;
     OMCButtonType _lastTypedButtonType;
     NSButton* _lastTypedButton;
 
-    NSMutableString* _lhsOperand;
-    NSMutableString* _rhsOperand;
+    OMCOperand* _lhsOperand;
+    OMCOperand* _rhsOperand;
+    OMCOperand* _resultValue;
+
     NSMutableString* _theOperator;
-    NSMutableString* _resultValue;
     }
 
 @property ( nonatomic, assign ) OMCTypingState typingState;
@@ -65,10 +68,11 @@ NSString extern* const OMCLastTypedButton;
 @property ( nonatomic, assign ) OMCButtonType lastTypedButtonType;
 @property ( nonatomic, retain ) NSButton* lastTypedButton;
 
-@property ( nonatomic, retain ) NSMutableString* lhsOperand;
-@property ( nonatomic, retain ) NSMutableString* rhsOperand;
+@property ( nonatomic, retain ) OMCOperand* lhsOperand;
+@property ( nonatomic, retain ) OMCOperand* rhsOperand;
+@property ( nonatomic, retain ) OMCOperand* resultValue;
+
 @property ( nonatomic, retain ) NSMutableString* theOperator;
-@property ( nonatomic, retain ) NSMutableString* resultValue;
 
 - ( IBAction ) calculate: ( id )_Sender;
 

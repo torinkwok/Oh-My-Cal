@@ -42,6 +42,22 @@
 @synthesize inDecimal = _inDecimal;
 @synthesize inHex = _inHex;
 
+#pragma mark Initializers & Deallocators
++ ( id ) operandWithNumber: ( NSNumber* )_Number
+    {
+    return [ [ [ [ self class ] alloc ] initWithNumber: _Number ] autorelease ];
+    }
+
+- ( id ) initWithNumber: ( NSNumber* )_Number
+    {
+    if ( self = [ super init ] )
+        {
+        self.baseNumber = _Number;
+        }
+
+    return self;
+    }
+
 #pragma mark Accessors
 - ( NSString* ) inOctal
     {
@@ -56,6 +72,34 @@
 - ( NSString* ) inHex
     {
     return [ NSString stringWithFormat: @"0x%lx", self.baseNumber.integerValue ];
+    }
+
+- ( void ) appendDigit: ( NSInteger )_Digit
+                 count: ( NSInteger )_Count
+                   ary: ( OMCAry )_Ary
+    {
+    NSInteger currentNumber = [ self baseNumber ].integerValue;
+    NSInteger baseNumber = 0;
+
+    if ( _Ary == OMCDecimal )
+        baseNumber = 10;
+    else if ( _Ary == OMCOctal )
+        baseNumber = 8;
+    else if ( _Ary == OMCHex )
+        baseNumber = 16;
+
+    self.baseNumber =
+        [ NSNumber numberWithInteger: ( NSInteger )( currentNumber * pow( ( double )baseNumber, ( double )_Count ) + _Digit ) ];
+    }
+
+- ( void ) deleteDigit: ( NSInteger )_DigitCount
+    {
+
+    }
+
+- ( BOOL ) isZero
+    {
+    return [ self baseNumber ].integerValue == 0;
     }
 
 @end // OMCOperand class
