@@ -135,6 +135,13 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         }
     }
 
+- ( void ) _appendUnitaryOperatorWithLastPressedButton: ( NSButton* )_Button
+    {
+    /* If user has finished typing the left operand just a moment ago */
+    [ self.theOperator clear ];
+    [ self.theOperator appendString: [ [ _Button title ] uppercaseString ] ];
+    }
+
 - ( void ) _appendBinaryOperatorWithLastPressedButton: ( NSButton* )_Button
     {
     /* If user has finished typing the left operand just a moment ago */
@@ -157,34 +164,32 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         }
     }
 
-- ( void ) _appendUnitaryOperatorWithLastPressedButton: ( NSButton* )_Button
+- ( void ) _calculateTheResultValueForMonomialWithLastPressedButton: ( NSButton* )_Button
     {
-    /* If user has finished typing the left operand just a moment ago */
-    [ self.theOperator appendString: [ [ _Button title ] uppercaseString ] ];
+    [ self _appendUnitaryOperatorWithLastPressedButton: _Button ];
 
     if ( [ self.theOperator isEqualToString: @"!" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: factorial( self.lhsOperand.baseNumber.integerValue ) ] ];
-    else if ( [ self.theOperator isEqualToString: @"NOR" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: ~self.lhsOperand.baseNumber.integerValue ] ];
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: factorial( self.lhsOperand.baseNumber.integerValue ) ] ];
+        else if ( self.typingState == OMCFinishedTyping )
+            [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: factorial( self.resultValue.baseNumber.integerValue ) ] ];
+        }
+    else if ( [ self.theOperator isEqualToString: @"NOR" ] ) // 0x89 * 0x56
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: ~self.lhsOperand.baseNumber.integerValue ] ];
+        else if ( self.typingState == OMCFinishedTyping )
+            [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: ~self.resultValue.baseNumber.integerValue ] ];
+        }
 
     self.typingState = OMCFinishedTyping;
     }
 
-- ( void ) clearAllAndReset
-    {
-    // Because of clearing and resetting, all thing should be zero
-    [ self.resultValue setBaseNumber: @0 ];
-    [ self.lhsOperand setBaseNumber: @0 ];
-    [ self.rhsOperand setBaseNumber: @0 ];
-    [ self.theOperator clear ];
-
-    self.typingState = OMCWaitAllOperands;
-    }
-
-- ( void ) _calculateTheResultValueWithLastPressedButton: ( NSButton* )_Button
+- ( void ) _calculateTheResultValueForBinomialWithLastPressedButton: ( NSButton* )_Button
     {
     if ( self.typingState == OMCFinishedTyping /* If the user has finished a calculation... */
-        || self.typingState == OMCWaitAllOperands /* or if the user is typing hte left operand... */  )
+            || self.typingState == OMCWaitAllOperands /* or if the user is typing hte left operand... */  )
         {
         // Reset the LCD to a inital state
         if ( self.resultValue.baseNumber.integerValue > 0
@@ -196,7 +201,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         return;
         }
 
-    /* If the user has not finished a calculation,
+    /* If the user has not finished a calculation, 
+     * for example, they have finished typing the right operand,
      * and they want to calculate a result value... */
     if ( [ self.theOperator isEqualToString: @"+" ] )
         [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue + self.rhsOperand.baseNumber.integerValue ] ];
@@ -250,7 +256,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMC0xE:
     case OMC0xF:
     case OMC0xFF:
-        [ self _appendNumberWithLastPressedButton: self.lastTypedButton ];  break;
+        [ self _appendNumberWithLastPressedButton: self.lastTypedButton ];
+        break;
 
     // Binary operators
     case OMCAnd:
@@ -267,22 +274,36 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCSub:
     case OMCMuliply:
     case OMCDivide:
-        [ self _appendBinaryOperatorWithLastPressedButton: self.lastTypedButton ];  break;
+        [ self _appendBinaryOperatorWithLastPressedButton: self.lastTypedButton ];
+        break;
 
     case OMCNor:
     case OMCFactorial:
-        [ self _appendUnitaryOperatorWithLastPressedButton: self.lastTypedButton ]; break;
+        [ self _calculateTheResultValueForMonomialWithLastPressedButton: self.lastTypedButton ];
+        break;
 
-    case OMCDel:        break;  // TODO:
+    case OMCDel:    break;  // TODO:
     case OMCAC:     [ self clearAllAndReset ];  break;  // TODO:
-    case OMCClear:      break;  // TODO:
+    case OMCClear:  break;  // TODO:
 
     case OMCLeftParenthesis:  break;
     case OMCRightParenthesis: break;
 
     case OMCEnter:
-        [ self _calculateTheResultValueWithLastPressedButton: self.lastTypedButton ];   break;
+        [ self _calculateTheResultValueForBinomialWithLastPressedButton: self.lastTypedButton ];
+        break;
         }
+    }
+
+- ( void ) clearAllAndReset
+    {
+    // Because of clearing and resetting, all thing should be zero
+    [ self.resultValue setBaseNumber: @0 ];
+    [ self.lhsOperand setBaseNumber: @0 ];
+    [ self.rhsOperand setBaseNumber: @0 ];
+    [ self.theOperator clear ];
+
+    self.typingState = OMCWaitAllOperands;
     }
 
 #pragma mark Accessors
