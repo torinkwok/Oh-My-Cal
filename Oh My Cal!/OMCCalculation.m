@@ -34,6 +34,8 @@
 #import "OMCCalculation.h"
 #import "OMCOperand.h"
 
+enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF = 255 };
+
 // Notifications
 NSString* const OMCCurrentTypingStateDidChangedNotification = @"OMCCurrentTypingStateDidChangedNotification";
 NSString* const OMCCurrentAryDidChangedNotification = @"OMCCurrentAryDidChangedNotification";
@@ -94,17 +96,17 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     if ( self.currentAry == OMCHex )
         {
-        if ( [ buttonTitle isEqualToString: @"A" ] )    numberWillBeAppended = 10;
-        if ( [ buttonTitle isEqualToString: @"B" ] )    numberWillBeAppended = 11;
-        if ( [ buttonTitle isEqualToString: @"C" ] )    numberWillBeAppended = 12;
-        if ( [ buttonTitle isEqualToString: @"D" ] )    numberWillBeAppended = 13;
-        if ( [ buttonTitle isEqualToString: @"E" ] )    numberWillBeAppended = 14;
-        if ( [ buttonTitle isEqualToString: @"F" ] )    numberWillBeAppended = 15;
-        if ( [ buttonTitle isEqualToString: @"FF" ] )   numberWillBeAppended = pow( 16, 2 );
+        if ( [ buttonTitle isEqualToString: @"A" ] )    numberWillBeAppended = k0xA;
+        if ( [ buttonTitle isEqualToString: @"B" ] )    numberWillBeAppended = k0xB;
+        if ( [ buttonTitle isEqualToString: @"C" ] )    numberWillBeAppended = k0xC;
+        if ( [ buttonTitle isEqualToString: @"D" ] )    numberWillBeAppended = k0xD;
+        if ( [ buttonTitle isEqualToString: @"E" ] )    numberWillBeAppended = k0xE;
+        if ( [ buttonTitle isEqualToString: @"F" ] )    numberWillBeAppended = k0xF;
+        if ( [ buttonTitle isEqualToString: @"FF" ] )   numberWillBeAppended = k0xFF;
         }
 
     NSInteger appendCount = 0;
-    if ( [ buttonTitle isEqualToString: @"00" ] )
+    if ( [ buttonTitle isEqualToString: @"00" ] || [ buttonTitle isEqualToString: @"FF" ] )
         appendCount = 2;
     else
         appendCount = 1;
