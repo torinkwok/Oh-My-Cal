@@ -283,8 +283,10 @@ NSInteger static const kSpaceBarsCount = 4;
     [ resultValueInString drawAtPoint: [ self _pointUsedForDrawingOperands: resultValueInString inSpaceBar: self.bottommostSpaceBar ]
                        withAttributes: _AttributesForOperands ];
 
-    [ self _drawRhsOperandWithAttributesForOperands: _AttributesForOperands
-                                     andForOperator: _AttributesForOperator ];
+    if ( self._calculation.lastTypedButtonType != OMCFactorial
+            && self._calculation.lastTypedButtonType != OMCNor )
+        [ self _drawRhsOperandWithAttributesForOperands: _AttributesForOperands
+                                         andForOperator: _AttributesForOperator ];
     }
 
 /* Initial state of Oh My Cal!: 1. Left Operand is empty

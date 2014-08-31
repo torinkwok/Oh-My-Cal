@@ -157,26 +157,47 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         }
     }
 
+- ( void ) _appendUnitaryOperatorWithLastPressedButton: ( NSButton* )_Button
+    {
+    /* If user has finished typing the left operand just a moment ago */
+    [ self.theOperator appendString: [ [ _Button title ] uppercaseString ] ];
+
+    if ( [ self.theOperator isEqualToString: @"!" ] )
+        [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: factorial( self.lhsOperand.baseNumber.integerValue ) ] ];
+    else if ( [ self.theOperator isEqualToString: @"NOR" ] )
+        [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: ~self.lhsOperand.baseNumber.integerValue ] ];
+
+    self.typingState = OMCFinishedTyping;
+    }
+
+- ( void ) clearAllAndReset
+    {
+    // Because of clearing and resetting, all thing should be zero
+    [ self.resultValue setBaseNumber: @0 ];
+    [ self.lhsOperand setBaseNumber: @0 ];
+    [ self.rhsOperand setBaseNumber: @0 ];
+    [ self.theOperator clear ];
+
+    self.typingState = OMCWaitAllOperands;
+    }
+
 - ( void ) _calculateTheResultValueWithLastPressedButton: ( NSButton* )_Button
     {
-    if ( self.typingState == OMCFinishedTyping || self.typingState == OMCWaitAllOperands )
+    if ( self.typingState == OMCFinishedTyping /* If the user has finished a calculation... */
+        || self.typingState == OMCWaitAllOperands /* or if the user is typing hte left operand... */  )
         {
+        // Reset the LCD to a inital state
         if ( self.resultValue.baseNumber.integerValue > 0
                 || self.lhsOperand.baseNumber.integerValue > 0
                 || self.rhsOperand.baseNumber.integerValue > 0
                 || self.theOperator.length > 0 )
-            {
-            [ self.resultValue setBaseNumber: @0 ];
-            [ self.lhsOperand setBaseNumber: @0 ];
-            [ self.rhsOperand setBaseNumber: @0 ];
-            [ self.theOperator clear ];
-
-            self.typingState = OMCWaitAllOperands;
-            }
+            [ self clearAllAndReset ];
 
         return;
         }
 
+    /* If the user has not finished a calculation,
+     * and they want to calculate a result value... */
     if ( [ self.theOperator isEqualToString: @"+" ] )
         [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue + self.rhsOperand.baseNumber.integerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"-" ] )
@@ -194,6 +215,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue << self.rhsOperand.baseNumber.integerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"RSH" ] )
         [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue >> self.rhsOperand.baseNumber.integerValue ] ];
+    else if ( [ self.theOperator isEqualToString: @"MOD" ] )
+        [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue % self.rhsOperand.baseNumber.integerValue ] ];
 
     self.typingState = OMCFinishedTyping;
     }
@@ -246,11 +269,12 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCDivide:
         [ self _appendBinaryOperatorWithLastPressedButton: self.lastTypedButton ];  break;
 
-    case OMCNor:        break;
-    case OMCFactorial:  break;
+    case OMCNor:
+    case OMCFactorial:
+        [ self _appendUnitaryOperatorWithLastPressedButton: self.lastTypedButton ]; break;
 
     case OMCDel:        break;  // TODO:
-    case OMCAC:         break;  // TODO:
+    case OMCAC:     [ self clearAllAndReset ];  break;  // TODO:
     case OMCClear:      break;  // TODO:
 
     case OMCLeftParenthesis:  break;
@@ -280,6 +304,23 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     [ NOTIFICATION_CENTER postNotificationName: OMCCurrentAryDidChangedNotification
                                         object: self
                                       userInfo: nil ];
+    }
+
+#pragma mark Calculations
+NSInteger factorial( NSInteger _X )
+    {
+    if ( _X <= 1 )
+        return 1;
+    else
+        return _X * factorial( _X - 1 );
+    }
+
+CGFloat factorialF( CGFloat _X )
+    {
+    if ( _X <= 1.f )
+        return 1.f;
+    else
+        return _X * factorialF( _X - 1.f );
     }
 
 @end // OMCCalculation

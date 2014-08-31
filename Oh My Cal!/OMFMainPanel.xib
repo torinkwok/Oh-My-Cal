@@ -16,7 +16,7 @@
             <windowStyleMask key="styleMask" utility="YES"/>
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" transient="YES" ignoresCycle="YES"/>
             <rect key="contentRect" x="196" y="240" width="240" height="175"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <view key="contentView" id="EiT-Mj-1SZ" customClass="OMFPanelBackgroundView">
                 <rect key="frame" x="0.0" y="0.0" width="240" height="175"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -465,12 +465,12 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="Rua-iW-eWY"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="9" translatesAutoresizingMaskIntoConstraints="NO" id="51z-wu-RTE">
+                <button verticalHuggingPriority="750" fixedFrame="YES" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="51z-wu-RTE">
                     <rect key="frame" x="71" y="13" width="51" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundTextured" title="x!" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lqt-dJ-t1b" customClass="BGHUDButtonCell">
+                    <buttonCell key="cell" type="roundTextured" title="!" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lqt-dJ-t1b" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="ArialUnicodeMS"/>
                     </buttonCell>
                     <connections>
                         <action selector="calculate:" target="odj-gr-7MT" id="Jht-z8-P5J"/>
@@ -553,11 +553,11 @@
         </box>
         <customObject id="odj-gr-7MT" customClass="OMCCalculation"/>
         <customView id="TuJ-OT-THp" customClass="OMCSettingsBar">
-            <rect key="frame" x="0.0" y="0.0" width="302" height="31"/>
+            <rect key="frame" x="0.0" y="0.0" width="302" height="30"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="832-bz-Fs4">
-                    <rect key="frame" x="197" y="4" width="102" height="25"/>
+                    <rect key="frame" x="197" y="4" width="102" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <segmentedCell key="cell" alignment="left" style="rounded" trackingMode="selectOne" id="qjx-Ls-5hD" customClass="BGHUDSegmentedCell">
                         <font key="font" metaFont="system"/>
