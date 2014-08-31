@@ -56,7 +56,9 @@
                  count: ( NSInteger )_Count
                    ary: ( OMCAry )_Ary;
 
-- ( void ) deleteDigit: ( NSInteger )_DigitCount;
+- ( void ) deleteDigit: ( NSInteger )_Digit
+                 count: ( NSInteger )_Count
+                   ary: ( OMCAry )_Ary;
 
 - ( BOOL ) isZero;
 

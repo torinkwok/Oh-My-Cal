@@ -90,9 +90,19 @@
         [ NSNumber numberWithInteger: ( NSInteger )( currentNumber * pow( ( double )baseNumber, ( double )_Count ) + _Digit ) ];
     }
 
-- ( void ) deleteDigit: ( NSInteger )_DigitCount
+- ( void ) deleteDigit: ( NSInteger )_Digit
+                 count: ( NSInteger )_Count
+                   ary: ( OMCAry )_Ary
     {
+    NSInteger currentNumber = [ self baseNumber ].integerValue;
+    NSInteger baseNumber = 0;
 
+    if ( _Ary == OMCDecimal )           baseNumber = 10;
+        else if ( _Ary == OMCOctal )    baseNumber = 8;
+        else if ( _Ary == OMCHex )      baseNumber = 16;
+
+    self.baseNumber =
+        [ NSNumber numberWithInteger: ( NSInteger )( ( currentNumber - _Digit ) / pow( ( double )baseNumber, ( double )_Count ) ) ];
     }
 
 - ( BOOL ) isZero

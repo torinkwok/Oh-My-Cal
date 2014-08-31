@@ -89,6 +89,35 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
 #pragma mark IBActions
 
+- ( void ) _deleteNumberWithLastPressedButton: ( NSButton* )_Button
+    {
+    OMCOperand* operandWillBeDeleted = nil;
+
+    if ( self.typingState == OMCWaitAllOperands )
+        operandWillBeDeleted = self.lhsOperand;
+    else if ( self.typingState == OMCWaitRhsOperand )
+        operandWillBeDeleted = self.rhsOperand;
+    else if ( self.typingState == OMCFinishedTyping )
+        {
+        NSBeep();
+        return;
+        }
+
+    if ( operandWillBeDeleted.isZero )
+        NSBeep();
+    else
+        {
+        NSInteger baseNumber = operandWillBeDeleted.baseNumber.integerValue;
+
+        [ operandWillBeDeleted deleteDigit: baseNumber % 10 count: 1 ary: self.currentAry ];
+
+        if ( self.typingState == OMCWaitAllOperands )
+            self.typingState = OMCWaitAllOperands;
+        else if ( self.typingState == OMCWaitRhsOperand )
+            self.typingState = OMCWaitRhsOperand;
+        }
+    }
+
 - ( void ) _appendNumberWithLastPressedButton: ( NSButton* )_Button
     {
     NSString* buttonTitle = [ _Button title ];
@@ -175,12 +204,19 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         else if ( self.typingState == OMCFinishedTyping )
             [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: factorial( self.resultValue.baseNumber.integerValue ) ] ];
         }
-    else if ( [ self.theOperator isEqualToString: @"NOR" ] ) // 0x89 * 0x56
+    else if ( [ self.theOperator isEqualToString: @"ROL" ] )
         {
         if ( self.typingState == OMCWaitAllOperands )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: ~self.lhsOperand.baseNumber.integerValue ] ];
+            [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue << 1 ] ];
         else if ( self.typingState == OMCFinishedTyping )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: ~self.resultValue.baseNumber.integerValue ] ];
+            [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.resultValue.baseNumber.integerValue << 1 ] ];
+        }
+    else if ( [ self.theOperator isEqualToString: @"ROR" ] )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue >> 1 ] ];
+        else if ( self.typingState == OMCFinishedTyping )
+            [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.resultValue.baseNumber.integerValue >> 1 ] ];
         }
 
     self.typingState = OMCFinishedTyping;
@@ -217,6 +253,10 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue & self.rhsOperand.baseNumber.integerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"OR" ] )
         [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue | self.rhsOperand.baseNumber.integerValue ] ];
+    else if ( [ self.theOperator isEqualToString: @"NOR" ] )
+        [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: ~( self.lhsOperand.baseNumber.integerValue | self.rhsOperand.baseNumber.integerValue ) ] ];
+    else if ( [ self.theOperator isEqualToString: @"XOR" ] )
+        [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue ^ self.rhsOperand.baseNumber.integerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"LSH" ] )
         [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue << self.rhsOperand.baseNumber.integerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"RSH" ] )
@@ -262,11 +302,11 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     // Binary operators
     case OMCAnd:
     case OMCOr:
+    case OMCNor:
     case OMCXor:
     case OMCLsh:
     case OMCRsh:
-    case OMCRoL:
-    case OMCRoR:
+
     case OMC2_s:
     case OMC1_s:
     case OMCMod:
@@ -277,14 +317,17 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         [ self _appendBinaryOperatorWithLastPressedButton: self.lastTypedButton ];
         break;
 
-    case OMCNor:
+    case OMCRoL:
+    case OMCRoR:
     case OMCFactorial:
         [ self _calculateTheResultValueForMonomialWithLastPressedButton: self.lastTypedButton ];
         break;
 
-    case OMCDel:    break;  // TODO:
+    case OMCDel:    [ self _deleteNumberWithLastPressedButton: self.lastTypedButton ];
+        break;
+
+    case OMCClear:
     case OMCAC:     [ self clearAllAndReset ];  break;  // TODO:
-    case OMCClear:  break;  // TODO:
 
     case OMCLeftParenthesis:  break;
     case OMCRightParenthesis: break;
