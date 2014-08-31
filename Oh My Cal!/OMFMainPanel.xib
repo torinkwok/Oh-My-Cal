@@ -16,7 +16,7 @@
             <windowStyleMask key="styleMask" utility="YES"/>
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" transient="YES" ignoresCycle="YES"/>
             <rect key="contentRect" x="196" y="240" width="240" height="175"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <view key="contentView" id="EiT-Mj-1SZ" customClass="OMFPanelBackgroundView">
                 <rect key="frame" x="0.0" y="0.0" width="240" height="175"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -557,7 +557,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="832-bz-Fs4">
-                    <rect key="frame" x="197" y="4" width="102" height="24"/>
+                    <rect key="frame" x="4" y="4" width="102" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <segmentedCell key="cell" alignment="left" style="rounded" trackingMode="selectOne" id="qjx-Ls-5hD" customClass="BGHUDSegmentedCell">
                         <font key="font" metaFont="system"/>
@@ -571,15 +571,41 @@
                         <action selector="aryChanged:" target="GvH-CV-btC" id="wun-Zh-9sG"/>
                     </connections>
                 </segmentedControl>
+                <popUpButton misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rtb-tf-nhm">
+                    <rect key="frame" x="270" y="1" width="31" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" inset="2" pullsDown="YES" arrowPosition="noArrow" preferredEdge="maxX" id="f6V-lo-oIV">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <menu key="menu" title="OtherViews" id="Lgq-so-pDQ">
+                            <items>
+                                <menuItem state="on" image="settings" hidden="YES" id="41K-5R-Xfx"/>
+                                <menuItem title="About Oh My Fan!" id="Vc4-1D-9ps">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                    <connections>
+                                        <action selector="about:" target="-1" id="kLB-q8-nNo"/>
+                                    </connections>
+                                </menuItem>
+                                <menuItem isSeparatorItem="YES" id="BRm-vl-G1v"/>
+                                <menuItem title="Quit" keyEquivalent="q" id="Yhd-vS-FEf"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="832-bz-Fs4" secondAttribute="bottom" constant="6" id="gc9-pV-Fxt"/>
-                <constraint firstAttribute="trailing" secondItem="832-bz-Fs4" secondAttribute="trailing" constant="5" id="iue-1M-SK3"/>
-                <constraint firstItem="832-bz-Fs4" firstAttribute="top" secondItem="TuJ-OT-THp" secondAttribute="top" constant="3" id="pqp-YP-TEg"/>
+                <constraint firstAttribute="trailing" secondItem="rtb-tf-nhm" secondAttribute="trailing" constant="3" id="8Cr-dE-W6M"/>
+                <constraint firstAttribute="bottom" secondItem="rtb-tf-nhm" secondAttribute="bottom" constant="3" id="MDy-IQ-N9W"/>
+                <constraint firstItem="832-bz-Fs4" firstAttribute="leading" secondItem="TuJ-OT-THp" secondAttribute="leading" constant="6" id="Ocg-Ci-fGT"/>
+                <constraint firstAttribute="bottom" secondItem="832-bz-Fs4" secondAttribute="bottom" constant="6" id="SMs-pe-DCM"/>
+                <constraint firstItem="832-bz-Fs4" firstAttribute="top" secondItem="TuJ-OT-THp" secondAttribute="top" constant="3" id="UMZ-gf-s1J"/>
             </constraints>
             <connections>
                 <outlet property="_arySegControl" destination="832-bz-Fs4" id="nph-Wr-5b2"/>
             </connections>
         </customView>
     </objects>
+    <resources>
+        <image name="settings" width="13.5" height="14.5"/>
+    </resources>
 </document>

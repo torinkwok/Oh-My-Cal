@@ -38,6 +38,10 @@
 
 + ( id ) aboutPanelController;
 
+#pragma mark Actions
+- ( IBAction ) emailMe: ( id )_Sender;
+- ( IBAction ) followMeOnTwitter: ( id )_Sender;
+
 @end // OMFAboutPanelController
 
 //////////////////////////////////////////////////////////////////////////////
