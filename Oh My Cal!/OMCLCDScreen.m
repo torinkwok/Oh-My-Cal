@@ -285,7 +285,9 @@ NSInteger static const kSpaceBarsCount = 4;
 
     if ( self._calculation.lastTypedButtonType != OMCFactorial
             && self._calculation.lastTypedButtonType != OMCNor
-            && self._calculation.lastTypedButtonType != OMCRoL )
+            && self._calculation.lastTypedButtonType != OMCRoL
+            && self._calculation.lastTypedButtonType != OMC2_s
+            && self._calculation.lastTypedButtonType != OMC1_s )
         [ self _drawRhsOperandWithAttributesForOperands: _AttributesForOperands
                                          andForOperator: _AttributesForOperator ];
     }

@@ -218,6 +218,21 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         else if ( self.typingState == OMCFinishedTyping )
             [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.resultValue.baseNumber.integerValue >> 1 ] ];
         }
+    else if ( [ self.theOperator isEqualToString: @"2'S" ]
+            || [ self.theOperator isEqualToString: @"1'S" ] )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: ~self.lhsOperand.baseNumber.integerValue ] ];
+        else if ( self.typingState == OMCFinishedTyping )
+            [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: ~self.resultValue.baseNumber.integerValue ] ];
+        }
+    else if ( [ self.theOperator isEqualToString: @"ROR" ] )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.lhsOperand.baseNumber.integerValue >> 1 ] ];
+        else if ( self.typingState == OMCFinishedTyping )
+            [ self.resultValue setBaseNumber: [ NSNumber numberWithInteger: self.resultValue.baseNumber.integerValue >> 1 ] ];
+        }
 
     self.typingState = OMCFinishedTyping;
     }
@@ -307,8 +322,6 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCLsh:
     case OMCRsh:
 
-    case OMC2_s:
-    case OMC1_s:
     case OMCMod:
     case OMCAdd:
     case OMCSub:
@@ -320,6 +333,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCRoL:
     case OMCRoR:
     case OMCFactorial:
+    case OMC2_s:
+    case OMC1_s:
         [ self _calculateTheResultValueForMonomialWithLastPressedButton: self.lastTypedButton ];
         break;
 
