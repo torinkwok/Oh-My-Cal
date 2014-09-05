@@ -526,7 +526,7 @@
                 <outlet property="_calculation" destination="odj-gr-7MT" id="H0j-eE-aNd"/>
             </connections>
         </customView>
-        <box autoresizesSubviews="NO" title="Box" borderType="line" titlePosition="noTitle" id="x4i-YK-xrg" customClass="OMCBinaryOperationBox">
+        <box title="Box" borderType="line" titlePosition="noTitle" id="x4i-YK-xrg" customClass="OMCBinaryOperationBox">
             <rect key="frame" x="0.0" y="0.0" width="292" height="194"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <view key="contentView">
@@ -574,7 +574,7 @@
                 <popUpButton misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rtb-tf-nhm">
                     <rect key="frame" x="270" y="1" width="31" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" inset="2" pullsDown="YES" arrowPosition="noArrow" preferredEdge="maxX" id="f6V-lo-oIV">
+                    <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" inset="2" pullsDown="YES" arrowPosition="noArrow" preferredEdge="maxX" selectedItem="Yhd-vS-FEf" id="f6V-lo-oIV">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" title="OtherViews" id="Lgq-so-pDQ">

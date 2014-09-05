@@ -34,20 +34,30 @@
 #import <Cocoa/Cocoa.h>
 #import "OMCBinaryAndDecimalConversion.h"
 
+@class OMCCalculation;
+
 // OMCBinaryOperationPanel class
 @interface OMCBinaryOperationPanel : NSView <OMCBinaryAndDecimalConversion>
     {
 @private
-    NSMutableArray* _bitsRects;
-
-    NSUInteger       _currentResultVal;
+    NSUInteger      _currentResultVal;
     NSString*       _binaryInString;
+
+    NSArray*        _rectsBitsOccupied;
+    NSColor*        _bitColor;
+    NSFont*         _bitFont;
+    NSSize          _bitSize;
     }
 
-@property ( nonatomic, retain ) NSMutableArray* bitsRects;
+@property ( nonatomic, assign ) IBOutlet OMCCalculation* _calculation;
 
 @property ( nonatomic, assign ) NSUInteger currentResultVal;
 @property ( nonatomic, copy ) NSString* binaryInString;
+
+@property ( nonatomic, copy ) NSArray* rectsBitsOccupied;
+@property ( nonatomic, retain ) NSColor* bitColor;
+@property ( nonatomic, retain ) NSFont* bitFont;
+@property ( nonatomic, assign ) NSSize bitSize;
 
 @end // OMCBinaryOperationPanel class
 

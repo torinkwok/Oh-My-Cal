@@ -35,7 +35,6 @@
 
 // OMCBinaryOperationBox class
 @interface OMCBinaryOperationBox : BGHUDBox
-
 @end // OMCBinaryOperationBox class
 
 //////////////////////////////////////////////////////////////////////////////

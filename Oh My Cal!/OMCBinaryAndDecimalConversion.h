@@ -31,13 +31,14 @@
  **                                                                         **
  ****************************************************************************/
 
-#import <Cocoa/Cocoa.h>
+@class NSString;
 
 // OMCBinaryAndDecimalConversion protocol
 @protocol OMCBinaryAndDecimalConversion
 
 @optional
 - ( NSString* ) convertDecimalToBinary: ( NSUInteger )_DecimalValue;
+
 - ( NSUInteger ) convertBinaryToDecimal: ( NSString* )_BinaryInString;
 
 @end // OMCBinaryAndDecimalConversion protocol

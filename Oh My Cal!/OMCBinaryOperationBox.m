@@ -35,12 +35,6 @@
 
 // OMCBinaryOperationBox class
 @implementation OMCBinaryOperationBox
-
-- ( void ) awakeFromNib
-    {
-
-    }
-
 @end // OMCBinaryOperationBox
 
 //////////////////////////////////////////////////////////////////////////////
