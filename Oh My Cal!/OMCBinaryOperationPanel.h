@@ -48,7 +48,12 @@
 
     NSColor*        _bitColor;
     NSFont*         _bitFont;
+
+    NSColor*        _anchorColor;
+    NSFont*         _anchorFont;
+
     NSSize          _bitSize;
+    NSSize          _anchorSize;
     }
 
 @property ( nonatomic, assign ) IBOutlet OMCCalculation* _calculation;
@@ -61,7 +66,12 @@
 
 @property ( nonatomic, retain ) NSColor* bitColor;
 @property ( nonatomic, retain ) NSFont* bitFont;
+
+@property ( nonatomic, retain ) NSColor* anchorColor;
+@property ( nonatomic, retain ) NSFont* anchorFont;
+
 @property ( nonatomic, assign ) NSSize bitSize;
+@property ( nonatomic, assign ) NSSize anchorSize;
 
 @end // OMCBinaryOperationPanel class
 

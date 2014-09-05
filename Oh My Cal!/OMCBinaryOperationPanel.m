@@ -58,7 +58,12 @@ NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOper
 
 @synthesize bitColor = _bitColor;
 @synthesize bitFont = _bitFont;
+
+@synthesize anchorColor = _anchorColor;
+@synthesize anchorFont = _anchorFont;
+
 @synthesize bitSize = _bitSize;
+@synthesize anchorSize = _anchorSize;
 
 #pragma mark Initializers & Deallocators
 - ( void ) awakeFromNib
@@ -83,7 +88,12 @@ NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOper
 
     self.bitColor = [ NSColor whiteColor ];
     self.bitFont = [ NSFont fontWithName: @"Courier Std" size: 13.f ];
+
+    self.anchorColor = [ NSColor colorWithDeviceWhite: .6f alpha: .5f ];
+    self.anchorFont = [ NSFont fontWithName: @"Courier Std" size: 9.f ];
+
     self.bitSize = [ @"0" sizeWithAttributes: @{ NSFontAttributeName : self.bitFont } ];
+    self.anchorSize = [ @"64" sizeWithAttributes: @{ NSFontAttributeName : self.anchorFont } ];
 
     [ self _initializeRectsBitOccupied ];
     }
@@ -104,8 +114,8 @@ NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOper
 
 - ( void ) _initializeRectsBitOccupied
     {
-    NSMutableArray* rects = [ NSMutableArray arrayWithCapacity: BIT_COUNT ];
-
+    NSMutableArray* topLevelRects = [ NSMutableArray arrayWithCapacity: BIT_COUNT / 2 ];
+    NSMutableArray* bottomLevelRects = [ NSMutableArray arrayWithCapacity: BIT_COUNT / 2 ];
 
     CGFloat bitWidth = self.bitSize.width + 1.f;
     CGFloat bitHeight = self.bitSize.height;
@@ -114,35 +124,26 @@ NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOper
 
     NSRect bitRect = NSZeroRect;
 
-    for ( int index = 0; index < BIT_COUNT / 2; index++ )
-        {
-        bitX = NSMaxX( [ [ rects lastObject ] rectValue ] );
+    BOOL isMoreThanHalf = NO;
 
-        if ( ( index % 4 ) == 0 && index != 0 )
+    for ( int index = 0; index < BIT_COUNT; index++ )
+        {
+        isMoreThanHalf = ( index >= BIT_COUNT / 2 );
+
+        bitX = NSMaxX( [ [ ( isMoreThanHalf ? bottomLevelRects : topLevelRects ) lastObject ] rectValue ] );
+
+        if ( ( index % 4 ) == 0 && index != 0 && index != BIT_COUNT / 2 )
             bitX += 7.2f;
+
+        if ( isMoreThanHalf ) bitY = bitHeight + BIT_GROUP_VERTICAL_GAP;
 
         bitRect = NSMakeRect( bitX, bitY, bitWidth, bitHeight );
 
-        [ rects addObject: [ NSValue valueWithRect: bitRect ] ];
+        [ ( isMoreThanHalf ? bottomLevelRects : topLevelRects ) addObject: [ NSValue valueWithRect: bitRect ] ];
         }
 
-    self.rectsTheTopLevelBitsOccupied = rects;
-    [ rects removeAllObjects ];
-
-    for ( int index = 0; index < BIT_COUNT / 2; index++ )
-        {
-        bitX = NSMaxX( [ [ rects lastObject ] rectValue ] );
-
-        if ( ( index % 4 ) == 0 && index != 0 )
-            bitX += 7.2f;
-
-        bitY = bitHeight + BIT_GROUP_VERTICAL_GAP;
-        bitRect = NSMakeRect( bitX, bitY, bitWidth, bitHeight );
-
-        [ rects addObject: [ NSValue valueWithRect: bitRect ] ];
-        }
-
-    self.rectsTheBottomLevelBitsOccupied = rects;
+    self.rectsTheTopLevelBitsOccupied = topLevelRects;
+    self.rectsTheBottomLevelBitsOccupied = bottomLevelRects;
     }
 
 #pragma mark Conforms <OMCBinaryAndDecimalConversion> protocol
@@ -181,25 +182,59 @@ NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOper
 
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
-    [ [ NSColor whiteColor ] set ];
+    NSDictionary* attributesForDrawingBits = @{ NSFontAttributeName : self.bitFont
+                                              , NSForegroundColorAttributeName : self.bitColor
+                                              };
+
+    NSDictionary* attributesForDrawingAnchors = @{ NSFontAttributeName : self.anchorFont
+                                                 , NSForegroundColorAttributeName : self.anchorColor
+                                                 };
 
     [ self.rectsTheTopLevelBitsOccupied enumerateObjectsUsingBlock:
         ^( NSValue* _RectVal, NSUInteger _Index, BOOL* _Stop )
             {
             [ [ self.binaryInString substringWithRange: NSMakeRange( _Index, 1 ) ]
-                    drawInRect: [ _RectVal rectValue ] withAttributes: @{ NSFontAttributeName : self.bitFont
-                                                                        , NSForegroundColorAttributeName : self.bitColor
-                                                                        } ];
+                    drawInRect: [ _RectVal rectValue ] withAttributes: attributesForDrawingBits ];
             } ];
 
     [ self.rectsTheBottomLevelBitsOccupied enumerateObjectsUsingBlock:
         ^( NSValue* _RectVal, NSUInteger _Index, BOOL* _Stop )
             {
             [ [ self.binaryInString substringWithRange: NSMakeRange( _Index + BIT_COUNT / 2, 1 ) ]
-                    drawInRect: [ _RectVal rectValue ] withAttributes: @{ NSFontAttributeName : self.bitFont
-                                                                        , NSForegroundColorAttributeName : self.bitColor
-                                                                        } ];
+                    drawInRect: [ _RectVal rectValue ] withAttributes: attributesForDrawingBits ];
             } ];
+
+    NSRect rectForCertainBit = NSZeroRect;
+
+    // Drawing anchors in top level
+    rectForCertainBit = [ self.rectsTheTopLevelBitsOccupied.firstObject rectValue ];
+    [ @"63" drawAtPoint: NSMakePoint( NSMinX( rectForCertainBit ), NSMaxY( rectForCertainBit ) )
+         withAttributes: attributesForDrawingAnchors ];
+
+    rectForCertainBit = [ self.rectsTheTopLevelBitsOccupied[ 16 ] rectValue ];
+    rectForCertainBit.origin.x -= 2.f;
+    [ @"47" drawAtPoint: NSMakePoint( NSMinX( rectForCertainBit ), NSMaxY( rectForCertainBit ) )
+         withAttributes: attributesForDrawingAnchors ];
+
+    rectForCertainBit = [ self.rectsTheTopLevelBitsOccupied[ 31 ] rectValue ];
+    rectForCertainBit.origin.x -= 2.f;
+    [ @"32" drawAtPoint: NSMakePoint( NSMinX( rectForCertainBit ), NSMaxY( rectForCertainBit ) )
+         withAttributes: attributesForDrawingAnchors ];
+
+    // Drawing anchors in bottom level
+    rectForCertainBit = [ self.rectsTheBottomLevelBitsOccupied.firstObject rectValue ];
+    [ @"31" drawAtPoint: NSMakePoint( NSMinX( rectForCertainBit ), NSMaxY( rectForCertainBit ) )
+         withAttributes: attributesForDrawingAnchors ];
+
+    rectForCertainBit = [ self.rectsTheBottomLevelBitsOccupied[ 16 ] rectValue ];
+    rectForCertainBit.origin.x -= 2.f;
+    [ @"15" drawAtPoint: NSMakePoint( NSMinX( rectForCertainBit ), NSMaxY( rectForCertainBit ) )
+         withAttributes: attributesForDrawingAnchors ];
+
+    rectForCertainBit = [ self.rectsTheBottomLevelBitsOccupied[ 31 ] rectValue ];
+    rectForCertainBit.origin.x += 1.f;
+    [ @"0" drawAtPoint: NSMakePoint( NSMinX( rectForCertainBit ), NSMaxY( rectForCertainBit ) )
+         withAttributes: attributesForDrawingAnchors ];
     }
 
 @end // OMCBinaryOperationPanel
