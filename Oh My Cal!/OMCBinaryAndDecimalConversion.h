@@ -33,17 +33,14 @@
 
 #import <Cocoa/Cocoa.h>
 
-// NSMutableString + OMCCalculation
-@interface NSMutableString ( OMCCalculation )
+// OMCBinaryAndDecimalConversion protocol
+@protocol OMCBinaryAndDecimalConversion
 
-- ( void ) clear;
+@optional
+- ( NSString* ) convertDecimalToBinary: ( NSInteger )_DecimalValue;
+- ( NSInteger ) convertBinaryToDecimal: ( NSString* )_BinaryInString;
 
-- ( void ) replaceAllWithString: ( NSString* )_String;
-
-- ( void ) fillWith: ( NSString* )_FillString
-              count: ( NSInteger )_Count;
-
-@end // NSMutableString + OMCCalculation
+@end // OMCBinaryAndDecimalConversion protocol
 
 //////////////////////////////////////////////////////////////////////////////
 

@@ -574,9 +574,9 @@
                 <popUpButton misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rtb-tf-nhm">
                     <rect key="frame" x="270" y="1" width="31" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" inset="2" pullsDown="YES" arrowPosition="noArrow" preferredEdge="maxX" id="f6V-lo-oIV">
+                    <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" inset="2" pullsDown="YES" arrowPosition="noArrow" preferredEdge="maxX" id="f6V-lo-oIV">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="menu"/>
                         <menu key="menu" title="OtherViews" id="Lgq-so-pDQ">
                             <items>
                                 <menuItem state="on" image="settings" hidden="YES" id="41K-5R-Xfx"/>
@@ -587,7 +587,11 @@
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="BRm-vl-G1v"/>
-                                <menuItem title="Quit" keyEquivalent="q" id="Yhd-vS-FEf"/>
+                                <menuItem title="Quit" keyEquivalent="q" id="Yhd-vS-FEf">
+                                    <connections>
+                                        <action selector="terminate:" target="-1" id="vnO-1D-psK"/>
+                                    </connections>
+                                </menuItem>
                             </items>
                         </menu>
                     </popUpButtonCell>

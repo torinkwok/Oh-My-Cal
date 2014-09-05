@@ -32,9 +32,22 @@
  ****************************************************************************/
 
 #import <Cocoa/Cocoa.h>
+#import "OMCBinaryAndDecimalConversion.h"
 
 // OMCBinaryOperationPanel class
-@interface OMCBinaryOperationPanel : NSView
+@interface OMCBinaryOperationPanel : NSView <OMCBinaryAndDecimalConversion>
+    {
+@private
+    NSMutableArray* _bitsRects;
+
+    NSInteger       _currentResultVal;
+    NSString*       _binaryInString;
+    }
+
+@property ( nonatomic, retain ) NSMutableArray* bitsRects;
+
+@property ( nonatomic, assign ) NSInteger currentResultVal;
+@property ( nonatomic, copy ) NSString* binaryInString;
 
 @end // OMCBinaryOperationPanel class
 

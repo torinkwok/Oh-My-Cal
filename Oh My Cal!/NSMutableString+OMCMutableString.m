@@ -47,6 +47,13 @@
         [ self replaceCharactersInRange: NSMakeRange( 0, self.length ) withString: _String ];
     }
 
+- ( void ) fillWith: ( NSString* )_FillString
+              count: ( NSInteger )_Count
+    {
+    for ( NSInteger index = 0; index < _Count; index++ )
+        [ self appendString: _FillString ];
+    }
+
 @end // NSMutableString + OMCCalculation
 
 //////////////////////////////////////////////////////////////////////////////
