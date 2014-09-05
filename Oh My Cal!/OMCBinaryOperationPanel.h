@@ -40,13 +40,13 @@
 @private
     NSMutableArray* _bitsRects;
 
-    NSInteger       _currentResultVal;
+    NSUInteger       _currentResultVal;
     NSString*       _binaryInString;
     }
 
 @property ( nonatomic, retain ) NSMutableArray* bitsRects;
 
-@property ( nonatomic, assign ) NSInteger currentResultVal;
+@property ( nonatomic, assign ) NSUInteger currentResultVal;
 @property ( nonatomic, copy ) NSString* binaryInString;
 
 @end // OMCBinaryOperationPanel class

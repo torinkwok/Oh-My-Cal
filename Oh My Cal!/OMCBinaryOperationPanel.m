@@ -51,19 +51,17 @@
     {
     self.bitsRects = [ NSMutableArray arrayWithCapacity: BIT_COUNT ];
 
-    self.currentResultVal = 0;
-    self.binaryInString = [ NSString string ];
-
-    NSLog( @"%@", [ self convertDecimalToBinary: 18446744073709551527 ] );
+    self.currentResultVal = 0U;
+    self.binaryInString = [ self convertDecimalToBinary: 0 ];
     }
 
-#pragma mark Conforms OMCBinaryAndDecimalConversion protocol
-- ( NSString* ) convertDecimalToBinary: ( NSInteger )_DecimalVal
+#pragma mark Conforms <OMCBinaryAndDecimalConversion> protocol
+- ( NSString* ) convertDecimalToBinary: ( NSUInteger )_DecimalVal
     {
     NSMutableString* binaryInString = [ NSMutableString string ];
     [ binaryInString fillWith: @"0" count: BIT_COUNT ];
 
-    NSInteger quotient = _DecimalVal;
+    NSUInteger quotient = _DecimalVal;
     for ( NSInteger index = BIT_COUNT - 1; index >= 0; index-- )
         {
         [ binaryInString replaceCharactersInRange: NSMakeRange( index, 1 )

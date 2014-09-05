@@ -37,8 +37,8 @@
 @protocol OMCBinaryAndDecimalConversion
 
 @optional
-- ( NSString* ) convertDecimalToBinary: ( NSInteger )_DecimalValue;
-- ( NSInteger ) convertBinaryToDecimal: ( NSString* )_BinaryInString;
+- ( NSString* ) convertDecimalToBinary: ( NSUInteger )_DecimalValue;
+- ( NSUInteger ) convertBinaryToDecimal: ( NSString* )_BinaryInString;
 
 @end // OMCBinaryAndDecimalConversion protocol
 
