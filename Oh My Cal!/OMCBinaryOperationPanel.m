@@ -42,6 +42,8 @@
 #define BIT_GROUP_VERTICAL_GAP      10.f
 
 NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultValue.baseNumber.unsignedIntegerValue";
+NSString static* const kKeyPathForLhsOperandInCalculationObject = @"self.lhsOperand.baseNumber.unsignedIntegerValue";
+NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOperand.baseNumber.unsignedIntegerValue";
 
 // OMCBinaryOperationPanel class
 @implementation OMCBinaryOperationPanel
@@ -51,7 +53,9 @@ NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultVa
 @synthesize currentResultVal = _currentResultVal;
 @synthesize binaryInString = _binaryInString;
 
-@synthesize rectsBitsOccupied = _rectsBitsOccupied;
+@synthesize rectsTheTopLevelBitsOccupied = _rectsTheTopLevelBitsOccupied;
+@synthesize rectsTheBottomLevelBitsOccupied = _rectsTheBottomLevelBitsOccupied;
+
 @synthesize bitColor = _bitColor;
 @synthesize bitFont = _bitFont;
 @synthesize bitSize = _bitSize;
@@ -60,10 +64,20 @@ NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultVa
 - ( void ) awakeFromNib
     {
     self.currentResultVal = 0U;
-    self.binaryInString = [ self convertDecimalToBinary: 35235235 ];
+    self.binaryInString = [ self convertDecimalToBinary: 0 ];
 
     [ _calculation addObserver: self
                     forKeyPath: kKeyPathForResultValInCalculationObject
+                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                       context: NULL ];
+
+    [ _calculation addObserver: self
+                    forKeyPath: kKeyPathForLhsOperandInCalculationObject
+                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                       context: NULL ];
+
+    [ _calculation addObserver: self
+                    forKeyPath: kKeyPathForRhsOperandInCalculationObject
                        options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                        context: NULL ];
 
@@ -79,7 +93,9 @@ NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultVa
                            change: ( NSDictionary* )_Change
                           context: ( void* )_Context
     {
-    if ( [ _KeyPath isEqualToString: kKeyPathForResultValInCalculationObject ] )
+    if ( [ _KeyPath isEqualToString: kKeyPathForResultValInCalculationObject ]
+            || [ _KeyPath isEqualToString: kKeyPathForLhsOperandInCalculationObject ]
+            || [ _KeyPath isEqualToString: kKeyPathForRhsOperandInCalculationObject ] )
         {
         self.binaryInString = [ self convertDecimalToBinary: [ _Change[ @"new" ] unsignedIntegerValue ] ];
         [ self setNeedsDisplay: YES ];
@@ -90,7 +106,6 @@ NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultVa
     {
     NSMutableArray* rects = [ NSMutableArray arrayWithCapacity: BIT_COUNT ];
 
-    NSRect bounds = [ self bounds ];
 
     CGFloat bitWidth = self.bitSize.width + 1.f;
     CGFloat bitHeight = self.bitSize.height;
@@ -104,19 +119,22 @@ NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultVa
         bitX = NSMaxX( [ [ rects lastObject ] rectValue ] );
 
         if ( ( index % 4 ) == 0 && index != 0 )
-            bitX += 7;
+            bitX += 7.2f;
 
         bitRect = NSMakeRect( bitX, bitY, bitWidth, bitHeight );
 
         [ rects addObject: [ NSValue valueWithRect: bitRect ] ];
         }
 
+    self.rectsTheTopLevelBitsOccupied = rects;
+    [ rects removeAllObjects ];
+
     for ( int index = 0; index < BIT_COUNT / 2; index++ )
         {
         bitX = NSMaxX( [ [ rects lastObject ] rectValue ] );
 
         if ( ( index % 4 ) == 0 && index != 0 )
-            bitX += 7;
+            bitX += 7.2f;
 
         bitY = bitHeight + BIT_GROUP_VERTICAL_GAP;
         bitRect = NSMakeRect( bitX, bitY, bitWidth, bitHeight );
@@ -124,7 +142,7 @@ NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultVa
         [ rects addObject: [ NSValue valueWithRect: bitRect ] ];
         }
 
-    self.rectsBitsOccupied = rects;
+    self.rectsTheBottomLevelBitsOccupied = rects;
     }
 
 #pragma mark Conforms <OMCBinaryAndDecimalConversion> protocol
@@ -165,10 +183,19 @@ NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultVa
     {
     [ [ NSColor whiteColor ] set ];
 
-    [ self.rectsBitsOccupied enumerateObjectsUsingBlock:
+    [ self.rectsTheTopLevelBitsOccupied enumerateObjectsUsingBlock:
         ^( NSValue* _RectVal, NSUInteger _Index, BOOL* _Stop )
             {
             [ [ self.binaryInString substringWithRange: NSMakeRange( _Index, 1 ) ]
+                    drawInRect: [ _RectVal rectValue ] withAttributes: @{ NSFontAttributeName : self.bitFont
+                                                                        , NSForegroundColorAttributeName : self.bitColor
+                                                                        } ];
+            } ];
+
+    [ self.rectsTheBottomLevelBitsOccupied enumerateObjectsUsingBlock:
+        ^( NSValue* _RectVal, NSUInteger _Index, BOOL* _Stop )
+            {
+            [ [ self.binaryInString substringWithRange: NSMakeRange( _Index + BIT_COUNT / 2, 1 ) ]
                     drawInRect: [ _RectVal rectValue ] withAttributes: @{ NSFontAttributeName : self.bitFont
                                                                         , NSForegroundColorAttributeName : self.bitColor
                                                                         } ];

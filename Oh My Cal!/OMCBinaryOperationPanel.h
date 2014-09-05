@@ -43,7 +43,9 @@
     NSUInteger      _currentResultVal;
     NSString*       _binaryInString;
 
-    NSArray*        _rectsBitsOccupied;
+    NSArray*        _rectsTheTopLevelBitsOccupied;
+    NSArray*        _rectsTheBottomLevelBitsOccupied;
+
     NSColor*        _bitColor;
     NSFont*         _bitFont;
     NSSize          _bitSize;
@@ -54,7 +56,9 @@
 @property ( nonatomic, assign ) NSUInteger currentResultVal;
 @property ( nonatomic, copy ) NSString* binaryInString;
 
-@property ( nonatomic, copy ) NSArray* rectsBitsOccupied;
+@property ( nonatomic, copy ) NSArray* rectsTheTopLevelBitsOccupied;
+@property ( nonatomic, copy ) NSArray* rectsTheBottomLevelBitsOccupied;
+
 @property ( nonatomic, retain ) NSColor* bitColor;
 @property ( nonatomic, retain ) NSFont* bitFont;
 @property ( nonatomic, assign ) NSSize bitSize;
