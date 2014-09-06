@@ -37,8 +37,6 @@
 
 enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF = 255 };
 
-NSString static* const kKeyPathBinaryStringInBinaryOperationPanel = @"self.binaryInString";
-
 // Notifications
 NSString* const OMCCurrentTypingStateDidChangedNotification = @"OMCCurrentTypingStateDidChangedNotification";
 NSString* const OMCCurrentAryDidChangedNotification = @"OMCCurrentAryDidChangedNotification";
@@ -76,21 +74,34 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     [ self _initializeOprands ];
 
-    [ _binaryOperationPanel addObserver: self
-                             forKeyPath: kKeyPathBinaryStringInBinaryOperationPanel
-                                options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                                context: NULL ];
+    [ NOTIFICATION_CENTER addObserver: self
+                             selector: @selector( binaryStringDidChanged: )
+                                 name: OMCBinaryStringDidChanged
+                               object: self._binaryOperationPanel ];
     }
 
-- ( void ) observeValueForKeyPath: ( NSString* )_KeyPath
-                         ofObject: ( id )_Object
-                           change: ( NSDictionary* )_Change
-                          context: ( void* )_Context
+- ( void ) binaryStringDidChanged: ( NSNotification* )_Notif
     {
-    if ( [ _KeyPath isEqualToString: kKeyPathBinaryStringInBinaryOperationPanel ] )
+    NSUInteger newDecimal = [ self convertBinaryToDecimal: self._binaryOperationPanel.binaryInString ];
+
+    if ( self.typingState == OMCWaitAllOperands )
         {
-//        NSLog( @"%lu", [ self convertBinaryToDecimal: _Change[ @"new" ] ] );
-        self.resultValue.baseNumber = [ NSNumber numberWithInteger: [ self convertBinaryToDecimal: _Change[ @"new" ] ] ];
+        self.lhsOperand.baseNumber = [ NSNumber numberWithUnsignedInteger: newDecimal ];
+        self.typingState = OMCWaitAllOperands;
+        }
+    else if ( self.typingState == OMCWaitRhsOperand )
+        {
+        self.rhsOperand.baseNumber = [ NSNumber numberWithUnsignedInteger: newDecimal ];
+        self.typingState = OMCWaitRhsOperand;
+        }
+    else if ( self.typingState == OMCFinishedTyping )
+        {
+        self.lhsOperand.baseNumber = @0;
+        self.rhsOperand.baseNumber = @0;
+        self.resultValue.baseNumber = @0;
+
+        self.lhsOperand.baseNumber = [ NSNumber numberWithUnsignedInteger: newDecimal ];
+        self.typingState = OMCWaitAllOperands;
         }
     }
 

@@ -35,6 +35,9 @@
 #import "OMCBinaryAndDecimalConversion.h"
 #import "OMCCalculation.h"
 
+// Notification names
+NSString* const OMCBinaryStringDidChanged = @"OMCBinaryStringDidChanged";
+
 NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultValue.baseNumber.unsignedIntegerValue";
 NSString static* const kKeyPathForLhsOperandInCalculationObject = @"self.lhsOperand.baseNumber.unsignedIntegerValue";
 NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOperand.baseNumber.unsignedIntegerValue";
@@ -255,6 +258,10 @@ NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOper
 
             self.binaryInString = [ self.binaryInString stringByReplacingCharactersInRange: NSMakeRange( index, 1 )
                                                                                 withString: ( bit == 0 ) ? @"1" : @"0" ];
+
+            [ NOTIFICATION_CENTER postNotificationName: OMCBinaryStringDidChanged
+                                                object: self ];
+
             [ self setNeedsDisplay: YES ];
             break;
             }

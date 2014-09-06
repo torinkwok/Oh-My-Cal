@@ -34,6 +34,9 @@
 #import <Cocoa/Cocoa.h>
 #import "OMCBinaryAndDecimalConversion.h"
 
+// Notification names
+NSString extern* const OMCBinaryStringDidChanged;
+
 @class OMCCalculation;
 
 // OMCBinaryOperationPanel class
