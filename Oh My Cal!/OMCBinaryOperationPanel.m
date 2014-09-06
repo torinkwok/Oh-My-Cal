@@ -240,33 +240,23 @@ NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOper
 
     NSInteger bit = 0;
     BOOL isMoreThanHalf = NO;
+    NSArray* rectsBitsOccupied = nil;
+
     for ( int index = 0; index < BIT_COUNT; index++ )
         {
         isMoreThanHalf = ( index >= BIT_COUNT / 2 );
 
-        if ( index < BIT_COUNT / 2 )
-            {
-            if ( NSPointInRect( location, [ self.rectsTheTopLevelBitsOccupied[ index ] rectValue ] ) )
-                {
-                bit = [ self.binaryInString substringWithRange: NSMakeRange( index, 1 ) ].integerValue;
+        rectsBitsOccupied = isMoreThanHalf ? self.rectsTheBottomLevelBitsOccupied : self.rectsTheTopLevelBitsOccupied;
 
-                self.binaryInString = [ self.binaryInString stringByReplacingCharactersInRange: NSMakeRange( index, 1 )
-                                                                                    withString: ( bit == 0 ) ? @"1" : @"0" ];
-                [ self setNeedsDisplay: YES ];
-                break;
-                }
-            }
-        else if ( index >= BIT_COUNT / 2 )
+        int bitIndex = isMoreThanHalf ? ( index - BIT_COUNT / 2 ) : index;
+        if ( NSPointInRect( location, [ rectsBitsOccupied[ bitIndex ] rectValue ] ) )
             {
-            if ( NSPointInRect( location, [ self.rectsTheBottomLevelBitsOccupied[ index - BIT_COUNT / 2 ] rectValue ] ) )
-                {
-                bit = [ self.binaryInString substringWithRange: NSMakeRange( index, 1 ) ].integerValue;
+            bit = [ self.binaryInString substringWithRange: NSMakeRange( index, 1 ) ].integerValue;
 
-                self.binaryInString = [ self.binaryInString stringByReplacingCharactersInRange: NSMakeRange( index, 1 )
-                                                                                    withString: ( bit == 0 ) ? @"1" : @"0" ];
-                [ self setNeedsDisplay: YES ];
-                break;
-                }
+            self.binaryInString = [ self.binaryInString stringByReplacingCharactersInRange: NSMakeRange( index, 1 )
+                                                                                withString: ( bit == 0 ) ? @"1" : @"0" ];
+            [ self setNeedsDisplay: YES ];
+            break;
             }
         }
     }

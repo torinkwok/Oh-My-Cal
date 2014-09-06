@@ -54,6 +54,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 // OMCCalculation class
 @implementation OMCCalculation
 
+@synthesize _binaryOperationPanel;
+
 @synthesize typingState = _typingState;
 @synthesize currentAry = _currentAry;
 
@@ -73,6 +75,23 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
 
     [ self _initializeOprands ];
+
+    [ _binaryOperationPanel addObserver: self
+                             forKeyPath: kKeyPathBinaryStringInBinaryOperationPanel
+                                options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                                context: NULL ];
+    }
+
+- ( void ) observeValueForKeyPath: ( NSString* )_KeyPath
+                         ofObject: ( id )_Object
+                           change: ( NSDictionary* )_Change
+                          context: ( void* )_Context
+    {
+    if ( [ _KeyPath isEqualToString: kKeyPathBinaryStringInBinaryOperationPanel ] )
+        {
+//        NSLog( @"%lu", [ self convertBinaryToDecimal: _Change[ @"new" ] ] );
+        self.resultValue.baseNumber = [ NSNumber numberWithInteger: [ self convertBinaryToDecimal: _Change[ @"new" ] ] ];
+        }
     }
 
 - ( void ) _initializeOprands
