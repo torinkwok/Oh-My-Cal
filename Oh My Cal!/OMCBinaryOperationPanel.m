@@ -129,13 +129,13 @@ NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOper
     for ( int index = 0; index < BIT_COUNT; index++ )
         {
         isMoreThanHalf = ( index >= BIT_COUNT / 2 );
-
         bitX = NSMaxX( [ [ ( isMoreThanHalf ? bottomLevelRects : topLevelRects ) lastObject ] rectValue ] );
 
         if ( ( index % 4 ) == 0 && index != 0 && index != BIT_COUNT / 2 )
             bitX += 7.2f;
 
-        if ( isMoreThanHalf ) bitY = bitHeight + BIT_GROUP_VERTICAL_GAP;
+        if ( isMoreThanHalf )
+            bitY = bitHeight + BIT_GROUP_VERTICAL_GAP;
 
         bitRect = NSMakeRect( bitX, bitY, bitWidth, bitHeight );
 
