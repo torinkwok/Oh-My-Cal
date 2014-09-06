@@ -61,17 +61,17 @@
 #pragma mark Accessors
 - ( NSString* ) inOctal
     {
-    return [ NSString stringWithFormat: @"%lo", self.baseNumber.integerValue ];
+    return [ NSString stringWithFormat: @"%lo", self.baseNumber.unsignedIntegerValue ];
     }
 
 - ( NSString* ) inDecimal
     {
-    return [ NSString stringWithFormat: @"%ld", self.baseNumber.integerValue ];
+    return [ NSString stringWithFormat: @"%lu", self.baseNumber.unsignedIntegerValue ];
     }
 
 - ( NSString* ) inHex
     {
-    NSString* hexValueInUppercase = [ NSString stringWithFormat: @"%lx", self.baseNumber.integerValue ].uppercaseString;
+    NSString* hexValueInUppercase = [ NSString stringWithFormat: @"%lx", self.baseNumber.unsignedIntegerValue ].uppercaseString;
     return [ NSString stringWithFormat: @"0x%@", hexValueInUppercase ];
     }
 
@@ -79,7 +79,7 @@
                  count: ( NSInteger )_Count
                    ary: ( OMCAry )_Ary
     {
-    NSUInteger currentNumber = [ self baseNumber ].integerValue;
+    NSUInteger currentNumber = [ self baseNumber ].unsignedIntegerValue;
     NSUInteger baseNumber = 0;
 
     if ( _Ary == OMCDecimal )           baseNumber = 10;
@@ -94,7 +94,7 @@
                  count: ( NSInteger )_Count
                    ary: ( OMCAry )_Ary
     {
-    NSUInteger currentNumber = [ self baseNumber ].integerValue;
+    NSUInteger currentNumber = [ self baseNumber ].unsignedIntegerValue;
     NSUInteger baseNumber = 0;
 
     if ( _Ary == OMCDecimal )           baseNumber = 10;
@@ -107,7 +107,7 @@
 
 - ( BOOL ) isZero
     {
-    return [ self baseNumber ].integerValue == 0;
+    return [ self baseNumber ].unsignedIntegerValue == 0;
     }
 
 @end // OMCOperand class
