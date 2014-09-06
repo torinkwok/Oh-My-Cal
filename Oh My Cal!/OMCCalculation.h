@@ -32,8 +32,10 @@
  ****************************************************************************/
 
 #import <Cocoa/Cocoa.h>
+#import "OMCBinaryAndDecimalConversion.h"
 
 @class OMCOperand;
+@class OMCBinaryOperationPanel;
 
 // Notifications
 NSString extern* const OMCCurrentTypingStateDidChangedNotification;
@@ -48,7 +50,7 @@ NSString extern* const OMCCurrentAry;
 NSString extern* const OMCLastTypedButton;
 
 // OMCCalculation class
-@interface OMCCalculation : NSObject
+@interface OMCCalculation : NSObject <OMCBinaryAndDecimalConversion>
     {
 @private
     OMCTypingState _typingState;
@@ -62,6 +64,8 @@ NSString extern* const OMCLastTypedButton;
 
     NSMutableString* _theOperator;
     }
+
+@property ( nonatomic, assign ) IBOutlet OMCBinaryOperationPanel* _binaryOperationPanel;
 
 @property ( nonatomic, assign ) OMCTypingState typingState;
 @property ( nonatomic, assign ) OMCAry currentAry;

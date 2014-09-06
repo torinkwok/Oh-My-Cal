@@ -94,6 +94,12 @@ typedef enum { OMCWaitAllOperands, OMCWaitRhsOperand, OMCFinishedTyping } OMCTyp
 
 #import "NSMutableString+OMCMutableString.h"
 
+#define BIT_COUNT       64
+#define BIT_GROUP       4
+#define BIT_GROUP_COUNT BIT_COUNT / BIT_GROUP
+#define BIT_GROUP_HORIZONTAL_GAP    15.f
+#define BIT_GROUP_VERTICAL_GAP      10.f
+
 ////////////////////////////////////////////////////////////////////////////
 
 /****************************************************************************

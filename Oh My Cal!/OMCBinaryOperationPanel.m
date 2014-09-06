@@ -35,12 +35,6 @@
 #import "OMCBinaryAndDecimalConversion.h"
 #import "OMCCalculation.h"
 
-#define BIT_COUNT       64
-#define BIT_GROUP       4
-#define BIT_GROUP_COUNT BIT_COUNT / BIT_GROUP
-#define BIT_GROUP_HORIZONTAL_GAP    15.f
-#define BIT_GROUP_VERTICAL_GAP      10.f
-
 NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultValue.baseNumber.unsignedIntegerValue";
 NSString static* const kKeyPathForLhsOperandInCalculationObject = @"self.lhsOperand.baseNumber.unsignedIntegerValue";
 NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOperand.baseNumber.unsignedIntegerValue";
@@ -157,6 +151,7 @@ NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOper
         {
         /* For example:
          * We want to retrieve the binary form of 75, we can...
+         *
          * 75 / 2 = 37	residue 1
          * 37 / 2 = 18	residue 1
          * 18 / 2 = 9	residue 0
@@ -164,6 +159,7 @@ NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOper
          *  4 / 2 = 2 	residue 0
          *  2 / 2 = 1 	residue 0
          *  1 / 2 = 0	residue 1
+         *
          * so the binary form of 75 is '0000 0000 0100 1011'
          */
         [ binaryInString replaceCharactersInRange: NSMakeRange( index, 1 )
@@ -235,6 +231,44 @@ NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOper
     rectForCertainBit.origin.x += 1.f;
     [ @"0" drawAtPoint: NSMakePoint( NSMinX( rectForCertainBit ), NSMaxY( rectForCertainBit ) )
          withAttributes: attributesForDrawingAnchors ];
+    }
+
+#pragma mark Events Handling
+- ( void ) mouseDown: ( NSEvent* )_Event
+    {
+    NSPoint location = [ self convertPoint: _Event.locationInWindow fromView: nil ];
+
+    NSInteger bit = 0;
+    BOOL isMoreThanHalf = NO;
+    for ( int index = 0; index < BIT_COUNT; index++ )
+        {
+        isMoreThanHalf = ( index >= BIT_COUNT / 2 );
+
+        if ( index < BIT_COUNT / 2 )
+            {
+            if ( NSPointInRect( location, [ self.rectsTheTopLevelBitsOccupied[ index ] rectValue ] ) )
+                {
+                bit = [ self.binaryInString substringWithRange: NSMakeRange( index, 1 ) ].integerValue;
+
+                self.binaryInString = [ self.binaryInString stringByReplacingCharactersInRange: NSMakeRange( index, 1 )
+                                                                                    withString: ( bit == 0 ) ? @"1" : @"0" ];
+                [ self setNeedsDisplay: YES ];
+                break;
+                }
+            }
+        else if ( index >= BIT_COUNT / 2 )
+            {
+            if ( NSPointInRect( location, [ self.rectsTheBottomLevelBitsOccupied[ index - BIT_COUNT / 2 ] rectValue ] ) )
+                {
+                bit = [ self.binaryInString substringWithRange: NSMakeRange( index, 1 ) ].integerValue;
+
+                self.binaryInString = [ self.binaryInString stringByReplacingCharactersInRange: NSMakeRange( index, 1 )
+                                                                                    withString: ( bit == 0 ) ? @"1" : @"0" ];
+                [ self setNeedsDisplay: YES ];
+                break;
+                }
+            }
+        }
     }
 
 @end // OMCBinaryOperationPanel

@@ -33,8 +33,11 @@
 
 #import "OMCCalculation.h"
 #import "OMCOperand.h"
+#import "OMCBinaryOperationPanel.h"
 
 enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF = 255 };
+
+NSString static* const kKeyPathBinaryStringInBinaryOperationPanel = @"self.binaryInString";
 
 // Notifications
 NSString* const OMCCurrentTypingStateDidChangedNotification = @"OMCCurrentTypingStateDidChangedNotification";
@@ -400,6 +403,36 @@ CGFloat factorialF( CGFloat _X )
         return 1.f;
     else
         return _X * factorialF( _X - 1.f );
+    }
+
+#pragma mark Conforms <OMCBinaryAndDecimalConversion> protocol
+- ( NSUInteger ) convertBinaryToDecimal: ( NSString* )_Binary
+    {
+    NSUInteger decimal = 0U;
+
+    double exponent = 0.f;
+    for ( int index = BIT_COUNT - 1; index >= 0; index-- )
+        {
+        /* For example:
+         * We want to retrieve the decimal form of '0100 1011', we can...
+         *
+         * 1 * 2^0 = 1
+         * 1 * 2^1 = 2
+         * 0 * 2^2 = 0
+         * 1 * 2^3 = 8
+         * 0 * 2^4 = 0
+         * 0 * 2^5 = 0
+         * 1 * 2^6 = 64
+         *
+         * 64 + 8 + 2 + 1 = 75
+         * so the decimal form of '0100 1011' is 75
+         */
+        NSInteger bit = [ _Binary substringWithRange: NSMakeRange( index, 1 ) ].integerValue;
+
+        decimal += bit * pow( 2, exponent++ );
+        }
+
+    return decimal;
     }
 
 @end // OMCCalculation

@@ -551,7 +551,11 @@
             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
         </box>
-        <customObject id="odj-gr-7MT" customClass="OMCCalculation"/>
+        <customObject id="odj-gr-7MT" customClass="OMCCalculation">
+            <connections>
+                <outlet property="_binaryOperationPanel" destination="h31-zA-4wg" id="6cA-sj-yCa"/>
+            </connections>
+        </customObject>
         <customView id="TuJ-OT-THp" customClass="OMCSettingsBar">
             <rect key="frame" x="0.0" y="0.0" width="302" height="30"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
