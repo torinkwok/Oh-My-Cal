@@ -414,6 +414,7 @@ NSInteger static const kSpaceBarsCount = 4;
     {
     NSUInteger modifierFlags = [ _Event modifierFlags ];
     NSString* characters = [ _Event charactersIgnoringModifiers ];
+    BOOL isHex = [ self._calculation currentAry ] == OMCHex;
 
     SEL actionToBeSent = @selector( calculate: );
     id actionSender = nil;
@@ -438,34 +439,36 @@ NSInteger static const kSpaceBarsCount = 4;
         actionSender = self._calWithProgrammerStyle._nine;
     else if ( [ characters isEqualToString: @"0" ] && !( modifierFlags & NSAlternateKeyMask ) )
         actionSender = self._calWithProgrammerStyle._zero;
+    // 00: : ⌥-0
     else if ( [ characters isEqualToString: @"0" ] && ( modifierFlags & NSAlternateKeyMask ) )
         actionSender = self._calWithProgrammerStyle._doubleZero;
 
-    else if ( [ characters isCaseInsensitiveLike: @"A" ] && !( modifierFlags & NSCommandKeyMask ) )
+    else if ( isHex && [ characters isCaseInsensitiveLike: @"A" ] && !( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._0xA;
-    else if ( [ characters isCaseInsensitiveLike: @"B" ] )
+    else if ( isHex && [ characters isCaseInsensitiveLike: @"B" ] )
         actionSender = self._calWithProgrammerStyle._0xB;
-    else if ( [ characters isCaseInsensitiveLike: @"C" ] )
+    else if ( isHex && [ characters isCaseInsensitiveLike: @"C" ] )
         actionSender = self._calWithProgrammerStyle._0xC;
-    else if ( [ characters isCaseInsensitiveLike: @"D" ] )
+    else if ( isHex && [ characters isCaseInsensitiveLike: @"D" ] )
         actionSender = self._calWithProgrammerStyle._0xD;
-    else if ( [ characters isCaseInsensitiveLike: @"E" ] )
+    else if ( isHex && [ characters isCaseInsensitiveLike: @"E" ] )
         actionSender = self._calWithProgrammerStyle._0xE;
-    else if ( [ characters isCaseInsensitiveLike: @"F" ] && !( modifierFlags & NSAlternateKeyMask ) )
+    else if ( isHex && [ characters isCaseInsensitiveLike: @"F" ] && !( modifierFlags & NSAlternateKeyMask ) )
         actionSender = self._calWithProgrammerStyle._0xF;
-    else if ( [ characters isCaseInsensitiveLike: @"F" ] && ( modifierFlags & NSAlternateKeyMask ) )
+    // FF: ⌥-F
+    else if ( isHex && [ characters isCaseInsensitiveLike: @"F" ] && ( modifierFlags & NSAlternateKeyMask ) )
         actionSender = self._calWithProgrammerStyle._0xFF;
 
-    // AND
+    // AND: ⌘-A
     else if ( [ characters isCaseInsensitiveLike: @"A" ] && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._andOperator;
-    // OR
+    // OR: ⌘-O
     else if ( [ characters isCaseInsensitiveLike: @"O" ] && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._orOperator;
-    // NOR
+    // NOR: ⌘-N
     else if ( [ characters isCaseInsensitiveLike: @"N" ] && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._norOperator;
-    // XOR
+    // XOR: ⌘-X
     else if ( [ characters isCaseInsensitiveLike: @"X" ] && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._xorOperator;
 
@@ -475,10 +478,10 @@ NSInteger static const kSpaceBarsCount = 4;
     // RoR
     else if ( [ characters isCaseInsensitiveLike: @"R" ] && !( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._rorOperator;
-    // Lsh
+    // Lsh: ⌘-L
     else if ( [ characters isCaseInsensitiveLike: @"L" ] && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._lshOperator;
-    // Rsh
+    // Rsh: ⌘-R
     else if ( [ characters isCaseInsensitiveLike: @"R" ] && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._rshOperator;
 
@@ -496,24 +499,24 @@ NSInteger static const kSpaceBarsCount = 4;
     else if ( [ characters isEqualToString: @"/" ] )
         actionSender = self._calWithProgrammerStyle._divisionOperator;
 
-    // Mod
+    // Mod: ⌘-M
     else if ( [ characters isCaseInsensitiveLike: @"M" ] && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._modOperator;
     // Factorial
     else if ( [ characters isEqualToString: @"!" ] )
         actionSender = self._calWithProgrammerStyle._factorialOperator;
 
-    // DEL
+    // DEL: Delete
     else if ( _Event.keyCode == 51 && !( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
         actionSender = self._calWithProgrammerStyle._del;
-    // Clear
+    // Clear: ⌘-Delete
     else if ( _Event.keyCode == 51 && ( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
         actionSender = self._calWithProgrammerStyle._clear;
-    // Clear All
+    // Clear All: ⌘-⇧-Delete
     else if ( _Event.keyCode == 51 && ( modifierFlags & NSCommandKeyMask ) && ( modifierFlags & NSShiftKeyMask ) )
         actionSender = self._calWithProgrammerStyle._clearAll;
 
-    // Enter
+    // Enter: Return
     else if ( _Event.keyCode == 36 )
         actionSender = self._calWithProgrammerStyle._enterOperator;
 
