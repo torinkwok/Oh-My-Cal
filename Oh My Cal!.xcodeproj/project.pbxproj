@@ -71,6 +71,7 @@
 		83DD4A1819B1F8CA007F530A /* NSMutableString+OMCMutableString.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DD4A1719B1F8CA007F530A /* NSMutableString+OMCMutableString.m */; };
 		83DD4A1B19B20005007F530A /* OMCOperand.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DD4A1A19B20005007F530A /* OMCOperand.m */; };
 		83ED014919BC9627004E7F9E /* OhMyCal.icns in Resources */ = {isa = PBXBuildFile; fileRef = 83ED014819BC9627004E7F9E /* OhMyCal.icns */; };
+		83ED014B19BC9757004E7F9E /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 83ED014A19BC9757004E7F9E /* logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +208,7 @@
 		83DD4A1919B20005007F530A /* OMCOperand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCOperand.h; path = "Oh My Cal!/OMCOperand.h"; sourceTree = "<group>"; };
 		83DD4A1A19B20005007F530A /* OMCOperand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCOperand.m; path = "Oh My Cal!/OMCOperand.m"; sourceTree = "<group>"; };
 		83ED014819BC9627004E7F9E /* OhMyCal.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = OhMyCal.icns; sourceTree = "<group>"; };
+		83ED014A19BC9757004E7F9E /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = "Oh My Cal!/logo.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,6 +449,7 @@
 		83D5D51E19ADB3FC004AFD84 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				83ED014A19BC9757004E7F9E /* logo.png */,
 				83D5D53819ADB8E1004AFD84 /* OMFAboutPanel.xib */,
 				83D5D53919ADB8E1004AFD84 /* OMFPreferencesPanel.xib */,
 			);
@@ -588,6 +591,7 @@
 				839396F219ADE567008D8A3C /* OMCDefaults.plist in Resources */,
 				83DD4A1219B1B0B2007F530A /* settings.png in Resources */,
 				83D5D4DD19ADB172004AFD84 /* Images.xcassets in Resources */,
+				83ED014B19BC9757004E7F9E /* logo.png in Resources */,
 				83D5D53B19ADB8E1004AFD84 /* OMFPreferencesPanel.xib in Resources */,
 				83D5D4D519ADB172004AFD84 /* Credits.rtf in Resources */,
 				83D5D53A19ADB8E1004AFD84 /* OMFAboutPanel.xib in Resources */,

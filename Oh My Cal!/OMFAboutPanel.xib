@@ -16,15 +16,15 @@
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" managed="YES" participatesInCycle="YES"/>
             <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
             <rect key="contentRect" x="75" y="291" width="366" height="362"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <view key="contentView" id="PpQ-42-U3G" customClass="OMFContentViewOfAboutPanel">
                 <rect key="frame" x="0.0" y="0.0" width="366" height="362"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zGh-bv-d7A">
-                        <rect key="frame" x="131" y="251" width="104" height="91"/>
+                        <rect key="frame" x="131" y="256" width="104" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" id="CrG-ne-sEf"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="logo" id="CrG-ne-sEf"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hew-Jm-FxA">
                         <rect key="frame" x="110" y="226" width="146" height="27"/>
@@ -135,4 +135,7 @@
             </view>
         </window>
     </objects>
+    <resources>
+        <image name="logo" width="256" height="256"/>
+    </resources>
 </document>
