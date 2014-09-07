@@ -374,8 +374,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCDel:    [ self _deleteNumberWithLastPressedButton: self.lastTypedButton ];
         break;
 
-    case OMCClear:
-    case OMCAC:     [ self clearAllAndReset ];  break;  // TODO:
+    case OMCClear:  [ self clearCurrentOperand ];   break;
+    case OMCAC:     [ self clearAllAndReset ];      break;
 
     case OMCLeftParenthesis:  break;
     case OMCRightParenthesis: break;
@@ -395,6 +395,25 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     [ self.theOperator clear ];
 
     self.typingState = OMCWaitAllOperands;
+    }
+
+- ( void ) clearCurrentOperand
+    {
+    if ( self.typingState == OMCWaitAllOperands )
+        {
+        self.lhsOperand.baseNumber = @0U;
+        self.typingState = OMCWaitAllOperands;
+        }
+    else if ( self.typingState == OMCWaitRhsOperand )
+        {
+        self.rhsOperand.baseNumber = @0U;
+        self.typingState = OMCWaitRhsOperand;
+        }
+    else if ( self.typingState == OMCFinishedTyping )
+        {
+        [ self clearAllAndReset ];
+        self.typingState = OMCWaitAllOperands;
+        }
     }
 
 #pragma mark Accessors
