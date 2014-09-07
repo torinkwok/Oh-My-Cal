@@ -46,9 +46,9 @@
     self._statusBarController = [ OMFStatusBarController statusBarController ];
     self._mainPanelController = [ OMFMainPanelController mainPanelControllerWithDelegate: self ];
 
-    [ self setStartAtLogin: ( [ USER_DEFAULTS integerForKey: OMFDefaultsKeyStartAtLogin ] == OMFStartAtLogin ) ? YES : NO ];
-
-    [ self setRights ];
+//    [ self setStartAtLogin: ( [ USER_DEFAULTS integerForKey: OMFDefaultsKeyStartAtLogin ] == OMFStartAtLogin ) ? YES : NO ];
+//
+//    [ self setRights ];
     }
 
 - ( IBAction ) togglePanel: ( id )_Sender

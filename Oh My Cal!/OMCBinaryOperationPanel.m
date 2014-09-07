@@ -84,10 +84,10 @@ NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOper
                        context: NULL ];
 
     self.bitColor = [ NSColor whiteColor ];
-    self.bitFont = [ NSFont fontWithName: @"Courier Std" size: 13.f ];
+    self.bitFont = [ NSFont fontWithName: @"Courier" size: 13.f ];
 
     self.anchorColor = [ NSColor colorWithDeviceWhite: .6f alpha: .5f ];
-    self.anchorFont = [ NSFont fontWithName: @"Courier Std" size: 9.f ];
+    self.anchorFont = [ NSFont fontWithName: @"Courier" size: 8.f ];
 
     self.bitSize = [ @"0" sizeWithAttributes: @{ NSFontAttributeName : self.bitFont } ];
     self.anchorSize = [ @"64" sizeWithAttributes: @{ NSFontAttributeName : self.anchorFont } ];
@@ -207,31 +207,37 @@ NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOper
 
     // Drawing anchors in top level
     rectForCertainBit = [ self.rectsTheTopLevelBitsOccupied.firstObject rectValue ];
+    rectForCertainBit.origin.y -= 4.f;
     [ @"63" drawAtPoint: NSMakePoint( NSMinX( rectForCertainBit ), NSMaxY( rectForCertainBit ) )
          withAttributes: attributesForDrawingAnchors ];
 
     rectForCertainBit = [ self.rectsTheTopLevelBitsOccupied[ 16 ] rectValue ];
     rectForCertainBit.origin.x -= 2.f;
+    rectForCertainBit.origin.y -= 4.f;
     [ @"47" drawAtPoint: NSMakePoint( NSMinX( rectForCertainBit ), NSMaxY( rectForCertainBit ) )
          withAttributes: attributesForDrawingAnchors ];
 
     rectForCertainBit = [ self.rectsTheTopLevelBitsOccupied[ 31 ] rectValue ];
     rectForCertainBit.origin.x -= 2.f;
+    rectForCertainBit.origin.y -= 4.f;
     [ @"32" drawAtPoint: NSMakePoint( NSMinX( rectForCertainBit ), NSMaxY( rectForCertainBit ) )
          withAttributes: attributesForDrawingAnchors ];
 
     // Drawing anchors in bottom level
     rectForCertainBit = [ self.rectsTheBottomLevelBitsOccupied.firstObject rectValue ];
+    rectForCertainBit.origin.y -= 4.f;
     [ @"31" drawAtPoint: NSMakePoint( NSMinX( rectForCertainBit ), NSMaxY( rectForCertainBit ) )
          withAttributes: attributesForDrawingAnchors ];
 
     rectForCertainBit = [ self.rectsTheBottomLevelBitsOccupied[ 16 ] rectValue ];
     rectForCertainBit.origin.x -= 2.f;
+    rectForCertainBit.origin.y -= 4.f;
     [ @"15" drawAtPoint: NSMakePoint( NSMinX( rectForCertainBit ), NSMaxY( rectForCertainBit ) )
          withAttributes: attributesForDrawingAnchors ];
 
     rectForCertainBit = [ self.rectsTheBottomLevelBitsOccupied[ 31 ] rectValue ];
     rectForCertainBit.origin.x += 1.f;
+    rectForCertainBit.origin.y -= 4.f;
     [ @"0" drawAtPoint: NSMakePoint( NSMinX( rectForCertainBit ), NSMaxY( rectForCertainBit ) )
          withAttributes: attributesForDrawingAnchors ];
     }
