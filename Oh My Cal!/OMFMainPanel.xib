@@ -16,7 +16,7 @@
             <windowStyleMask key="styleMask" utility="YES"/>
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" transient="YES" ignoresCycle="YES"/>
             <rect key="contentRect" x="196" y="240" width="240" height="175"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <view key="contentView" id="EiT-Mj-1SZ" customClass="OMFPanelBackgroundView">
                 <rect key="frame" x="0.0" y="0.0" width="240" height="175"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -509,6 +509,8 @@
                 <outlet property="_one" destination="UZc-cw-axX" id="R8N-xC-g11"/>
                 <outlet property="_orOperator" destination="5cD-ve-hqK" id="beM-Sy-J9p"/>
                 <outlet property="_rhsParenthesis" destination="bLO-LH-EiQ" id="SHv-fN-g9u"/>
+                <outlet property="_rolOperator" destination="u7O-fd-shE" id="OsC-VE-KYx"/>
+                <outlet property="_rorOperator" destination="IBi-Bj-Vn0" id="WaK-Qv-pK1"/>
                 <outlet property="_rshOperator" destination="eoj-2e-pms" id="etC-cG-4z6"/>
                 <outlet property="_seven" destination="xEY-uV-LLd" id="Y9Q-AO-Y4z"/>
                 <outlet property="_six" destination="41M-x6-ujB" id="jY3-gu-zw8"/>
@@ -523,6 +525,7 @@
             <rect key="frame" x="0.0" y="0.0" width="229" height="105"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <connections>
+                <outlet property="_calWithProgrammerStyle" destination="GvH-CV-btC" id="TPy-f2-uq9"/>
                 <outlet property="_calculation" destination="odj-gr-7MT" id="H0j-eE-aNd"/>
             </connections>
         </customView>

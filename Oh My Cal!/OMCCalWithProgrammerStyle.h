@@ -45,6 +45,8 @@
 @property ( nonatomic, assign ) IBOutlet NSButton* _xorOperator;
 @property ( nonatomic, assign ) IBOutlet NSButton* _lshOperator;
 @property ( nonatomic, assign ) IBOutlet NSButton* _rshOperator;
+@property ( nonatomic, assign ) IBOutlet NSButton* _rolOperator;
+@property ( nonatomic, assign ) IBOutlet NSButton* _rorOperator;
 @property ( nonatomic, assign ) IBOutlet NSButton* _2_sOperator;
 @property ( nonatomic, assign ) IBOutlet NSButton* _1_sOperator;
 

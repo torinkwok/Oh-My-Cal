@@ -259,13 +259,6 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         else if ( self.typingState == OMCFinishedTyping )
             [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: ~self.resultValue.baseNumber.unsignedIntegerValue ] ];
         }
-    else if ( [ self.theOperator isEqualToString: @"ROR" ] )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue >> 1 ] ];
-        else if ( self.typingState == OMCFinishedTyping )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.resultValue.baseNumber.unsignedIntegerValue >> 1 ] ];
-        }
 
     self.typingState = OMCFinishedTyping;
     }

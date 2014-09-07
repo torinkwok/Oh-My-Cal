@@ -34,6 +34,7 @@
 #import "OMCLCDScreen.h"
 #import "OMCOperand.h"
 #import "OMCCalculation.h"
+#import "OMCCalWithProgrammerStyle.h"
 
 NSInteger static const kSpaceBarsCount = 4;
 
@@ -45,6 +46,7 @@ NSInteger static const kSpaceBarsCount = 4;
     }
 
 @synthesize _calculation;
+@synthesize _calWithProgrammerStyle;
 
 @synthesize auxiliaryLinePath = _auxiliaryLinePath;
 @synthesize gridPath = _gridPath;
@@ -68,6 +70,11 @@ NSInteger static const kSpaceBarsCount = 4;
 @synthesize currentAry = _currentAry;
 
 - ( BOOL ) canBecomeKeyView
+    {
+    return YES;
+    }
+
+- ( BOOL ) acceptsFirstResponder
     {
     return YES;
     }
@@ -284,8 +291,8 @@ NSInteger static const kSpaceBarsCount = 4;
                        withAttributes: _AttributesForOperands ];
 
     if ( self._calculation.lastTypedButtonType != OMCFactorial
-            && self._calculation.lastTypedButtonType != OMCNor
             && self._calculation.lastTypedButtonType != OMCRoL
+            && self._calculation.lastTypedButtonType != OMCRoR
             && self._calculation.lastTypedButtonType != OMC2_s
             && self._calculation.lastTypedButtonType != OMC1_s )
         [ self _drawRhsOperandWithAttributesForOperands: _AttributesForOperands
@@ -400,6 +407,123 @@ NSInteger static const kSpaceBarsCount = 4;
         }
 
     return pointUsedForDrawing;
+    }
+
+#pragma mark Events Handling
+- ( void ) keyDown: ( NSEvent* )_Event
+    {
+    NSUInteger modifierFlags = [ _Event modifierFlags ];
+    NSString* characters = [ _Event charactersIgnoringModifiers ];
+
+    SEL actionToBeSent = @selector( calculate: );
+    id actionSender = nil;
+
+    if ( [ characters isEqualToString: @"1" ] )
+        actionSender = self._calWithProgrammerStyle._one;
+    else if ( [ characters isEqualToString: @"2" ] )
+        actionSender = self._calWithProgrammerStyle._two;
+    else if ( [ characters isEqualToString: @"3" ] )
+        actionSender = self._calWithProgrammerStyle._three;
+    else if ( [ characters isEqualToString: @"4" ] )
+        actionSender = self._calWithProgrammerStyle._four;
+    else if ( [ characters isEqualToString: @"5" ] )
+        actionSender = self._calWithProgrammerStyle._five;
+    else if ( [ characters isEqualToString: @"6" ] )
+        actionSender = self._calWithProgrammerStyle._six;
+    else if ( [ characters isEqualToString: @"7" ] )
+        actionSender = self._calWithProgrammerStyle._seven;
+    else if ( [ characters isEqualToString: @"8" ] )
+        actionSender = self._calWithProgrammerStyle._eight;
+    else if ( [ characters isEqualToString: @"9" ] )
+        actionSender = self._calWithProgrammerStyle._nine;
+    else if ( [ characters isEqualToString: @"0" ] && !( modifierFlags & NSAlternateKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._zero;
+    else if ( [ characters isEqualToString: @"0" ] && ( modifierFlags & NSAlternateKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._doubleZero;
+
+    else if ( [ characters isCaseInsensitiveLike: @"A" ] && !( modifierFlags & NSCommandKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._0xA;
+    else if ( [ characters isCaseInsensitiveLike: @"B" ] )
+        actionSender = self._calWithProgrammerStyle._0xB;
+    else if ( [ characters isCaseInsensitiveLike: @"C" ] )
+        actionSender = self._calWithProgrammerStyle._0xC;
+    else if ( [ characters isCaseInsensitiveLike: @"D" ] )
+        actionSender = self._calWithProgrammerStyle._0xD;
+    else if ( [ characters isCaseInsensitiveLike: @"E" ] )
+        actionSender = self._calWithProgrammerStyle._0xE;
+    else if ( [ characters isCaseInsensitiveLike: @"F" ] && !( modifierFlags & NSAlternateKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._0xF;
+    else if ( [ characters isCaseInsensitiveLike: @"F" ] && ( modifierFlags & NSAlternateKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._0xFF;
+
+    // AND
+    else if ( [ characters isCaseInsensitiveLike: @"A" ] && ( modifierFlags & NSCommandKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._andOperator;
+    // OR
+    else if ( [ characters isCaseInsensitiveLike: @"O" ] && ( modifierFlags & NSCommandKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._orOperator;
+    // NOR
+    else if ( [ characters isCaseInsensitiveLike: @"N" ] && ( modifierFlags & NSCommandKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._norOperator;
+    // XOR
+    else if ( [ characters isCaseInsensitiveLike: @"X" ] && ( modifierFlags & NSCommandKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._xorOperator;
+
+    // RoL
+    else if ( [ characters isCaseInsensitiveLike: @"L" ] && !( modifierFlags & NSCommandKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._rolOperator;
+    // RoR
+    else if ( [ characters isCaseInsensitiveLike: @"R" ] && !( modifierFlags & NSCommandKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._rorOperator;
+    // Lsh
+    else if ( [ characters isCaseInsensitiveLike: @"L" ] && ( modifierFlags & NSCommandKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._lshOperator;
+    // Rsh
+    else if ( [ characters isCaseInsensitiveLike: @"R" ] && ( modifierFlags & NSCommandKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._rshOperator;
+
+    // +
+    else if ( [ characters isEqualToString: @"+" ] )
+        actionSender = self._calWithProgrammerStyle._additionOperator;
+    // -
+    else if ( [ characters isEqualToString: @"-" ] )
+        actionSender = self._calWithProgrammerStyle._subtractionOperator;
+    // *
+    else if ( [ characters isEqualToString: @"*" ] )
+        actionSender = self._calWithProgrammerStyle._multiplicationOperator;
+    // /
+    
+    else if ( [ characters isEqualToString: @"/" ] )
+        actionSender = self._calWithProgrammerStyle._divisionOperator;
+
+    // Mod
+    else if ( [ characters isCaseInsensitiveLike: @"M" ] && ( modifierFlags & NSCommandKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._modOperator;
+    // Factorial
+    else if ( [ characters isEqualToString: @"!" ] )
+        actionSender = self._calWithProgrammerStyle._factorialOperator;
+
+    // DEL
+    else if ( _Event.keyCode == 51 && !( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._del;
+    // Clear
+    else if ( _Event.keyCode == 51 && ( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._clear;
+    // Clear All
+    else if ( _Event.keyCode == 51 && ( modifierFlags & NSCommandKeyMask ) && ( modifierFlags & NSShiftKeyMask ) )
+        actionSender = self._calWithProgrammerStyle._clearAll;
+
+    // Enter
+    else if ( _Event.keyCode == 36 )
+        actionSender = self._calWithProgrammerStyle._enterOperator;
+
+    if ( actionSender )
+        {
+        [ NSApp sendAction: actionToBeSent to: self._calculation from: actionSender ];
+        return;
+        }
+
+    [ super keyDown: _Event ];
     }
 
 @end // OMCLCDScreen class

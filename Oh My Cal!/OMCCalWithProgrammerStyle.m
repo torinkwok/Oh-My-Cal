@@ -45,6 +45,8 @@
 @synthesize _xorOperator;
 @synthesize _lshOperator;
 @synthesize _rshOperator;
+@synthesize _rolOperator;
+@synthesize _rorOperator;
 @synthesize _2_sOperator;
 @synthesize _1_sOperator;
 
