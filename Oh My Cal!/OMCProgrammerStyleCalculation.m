@@ -230,19 +230,33 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
 // All of the buttons on the keyboard has been connected to this action
 - ( IBAction ) calculate: ( id )_Sender
     {
-    [ super calculate: _Sender ];
-
     NSButton* pressedButton = ( NSButton* )_Sender;
     self.lastTypedButtonType = ( OMCProgrammerStyleButtonType )[ pressedButton tag ];
     self.lastTypedButton = _Sender;
 
     switch ( self.lastTypedButtonType )
         {
+    // Numbers
     case OMC0xA:    case OMC0xB:    case OMC0xC:
     case OMC0xD:    case OMC0xE:    case OMC0xF:
     case OMC0xFF:
         [ self appendNumberWithLastPressedButton: self.lastTypedButton ];
+        return;
+
+    // Binary operators
+    case OMCAnd:    case OMCOr:     case OMCNor:
+    case OMCXor:    case OMCLsh:    case OMCRsh:
+    case OMCMod:
+        [ self appendBinaryOperatorWithLastPressedButton: self.lastTypedButton ];
+        return;
+
+    case OMCRoL:    case OMCRoR:    case OMCFactorial:
+    case OMC2_s:    case OMC1_s:
+        [ self calculateTheResultValueForMonomialWithLastPressedButton: self.lastTypedButton ];
+        return;
         }
+
+    [ super calculate: _Sender ];
     }
 
 #pragma mark Calculations

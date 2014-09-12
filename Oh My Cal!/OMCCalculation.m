@@ -164,34 +164,27 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCSeven:  case OMCEight:  case OMCNine:
     case OMCZero:   case OMCDoubleZero:
         [ self appendNumberWithLastPressedButton: self.lastTypedButton ];
-        break;
+        return;
 
     // Binary operators
-    case OMCAnd:    case OMCOr:     case OMCNor:
-    case OMCXor:    case OMCLsh:    case OMCRsh:
-
-    case OMCMod:    case OMCAdd:    case OMCSub:
+    case OMCAdd:        case OMCSub:
     case OMCMuliply:    case OMCDivide:
         [ self appendBinaryOperatorWithLastPressedButton: self.lastTypedButton ];
-        break;
+        return;
 
-    case OMCRoL:    case OMCRoR:    case OMCFactorial:
-    case OMC2_s:    case OMC1_s:
-        [ self calculateTheResultValueForMonomialWithLastPressedButton: self.lastTypedButton ];
-        break;
-
+    // Commands
     case OMCDel:    [ self deleteNumberWithLastPressedButton: self.lastTypedButton ];
-        break;
+        return;
 
-    case OMCClear:  [ self clearCurrentOperand ];   break;
-    case OMCAC:     [ self clearAllAndReset ];      break;
+    case OMCClear:  [ self clearCurrentOperand ];   return;
+    case OMCAC:     [ self clearAllAndReset ];      return;
 
-    case OMCLeftParenthesis:  break;
-    case OMCRightParenthesis: break;
+    case OMCLeftParenthesis:  return;
+    case OMCRightParenthesis: return;
 
     case OMCEnter:
         [ self calculateTheResultValueForBinomialWithLastPressedButton: self.lastTypedButton ];
-        break;
+        return;
         }
     }
 
