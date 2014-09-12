@@ -1,6 +1,6 @@
 # Oh My Cal!
 
-## Oh My Cal! is a calculator designed for programmers.
+#### Oh My Cal! is a calculator designed for programmers.
 
 Benefit Highlighting:
 
