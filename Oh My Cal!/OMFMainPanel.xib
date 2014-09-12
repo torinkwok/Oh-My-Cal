@@ -799,8 +799,10 @@
             </subviews>
             <connections>
                 <outlet property="_additionOperator" destination="BiN-jz-sFr" id="psK-iI-ieh"/>
+                <outlet property="_clear" destination="Hd2-18-W8W" id="Pzb-X6-7uU"/>
                 <outlet property="_divisionOperator" destination="xUR-L1-Bze" id="e5t-yK-tgR"/>
                 <outlet property="_eight" destination="ygW-k7-z0z" id="bxt-X8-bEq"/>
+                <outlet property="_enterOperator" destination="zHv-TY-7Bl" id="nHD-Z9-hmN"/>
                 <outlet property="_five" destination="LZd-ef-BNT" id="2Qx-SZ-brj"/>
                 <outlet property="_floatPoint" destination="qSs-jh-gyZ" id="Txw-Dx-ITc"/>
                 <outlet property="_four" destination="nnx-Ad-TdR" id="2Cc-ib-377"/>
