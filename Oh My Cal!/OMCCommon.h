@@ -38,7 +38,7 @@
                                                             , NSStringFromSelector( _cmd )          \
                                                             , NSStringFromClass( [ self class ] )   \
                                                             , self ]                                \
-                         userInfo: nil ]
+                       userInfo: nil ]
 
 
 
@@ -86,6 +86,12 @@ typedef enum { OMCAnd = 0, OMCOr = 1,  OMCNor = 2,  OMCXor = 3
 
              , OMCAdd = 34, OMCSub = 35, OMCMuliply = 36, OMCDivide = 37
              , OMCLeftParenthesis = 38, OMCRightParenthesis = 39
+
+             , OMCMemoryClear = 40, OMCMemoryPlus = 41, OMCMemorySub = 42, OMCMemoryRead = 43
+
+             , OMCPositiveAndNegative = 44
+
+             , OMCFloatPoint = 45
              } OMCProgrammerStyleButtonType;
 
 typedef enum { OMCOctal, OMCDecimal, OMCHex } OMCAry;

@@ -53,25 +53,10 @@
 #pragma mark Buttons with mathematical operators
 @synthesize _modOperator;
 @synthesize _factorialOperator;
-@synthesize _additionOperator;
-@synthesize _subtractionOperator;
-@synthesize _multiplicationOperator;
-@synthesize _divisionOperator;
 @synthesize _lhsParenthesis;
 @synthesize _rhsParenthesis;
-@synthesize _enterOperator;
 
 #pragma mark Buttons with operands
-@synthesize _one;
-@synthesize _two;
-@synthesize _three;
-@synthesize _four;
-@synthesize _five;
-@synthesize _six;
-@synthesize _seven;
-@synthesize _eight;
-@synthesize _nine;
-@synthesize _zero;
 @synthesize _doubleZero;
 @synthesize _0xA;
 @synthesize _0xB;   
@@ -84,7 +69,6 @@
 #pragma mark Control Button
 @synthesize _del;
 @synthesize _clearAll;
-@synthesize _clear;
 
 @synthesize _calculation;
 
@@ -101,28 +85,6 @@
 
     self._calculation.currentAry = ( OMCAry )[ arySeg.cell tagForSegment: [ arySeg selectedSegment ] ];
     [ self _toggleSpecialButtonsBasedAry: self._calculation.currentAry ];
-
-//    if ( self._calculation.currentAry == OMCOctal )
-//        {
-////        NSLog( @"Value in oct: %ld", self._calculation.lhsOperand.baseNumber );
-//        [ self._calculation.lhsOperand setBaseNumber: [ NSString stringWithFormat: @"%lo", self._calculation.lhsOperand.baseNumber ] ];
-//        [ self._calculation.rhsOperand setBaseNumber: [ NSString stringWithFormat: @"%lo", self._calculation.rhsOperand.baseNumber ] ];
-//        [ self._calculation.resultValue setBaseNumber: [ NSString stringWithFormat: @"%lo", self._calculation.resultValue.baseNumber ] ];
-//        }
-//    else if ( self._calculation.currentAry == OMCDecimal )
-//        {
-////        NSLog( @"Value in dec: %ld", self._calculation.lhsOperand.integerValue );
-//        [ self._calculation.lhsOperand replaceAllWithString: [ NSString stringWithFormat: @"%ld", self._calculation.lhsOperand.integerValue ] ];
-//        [ self._calculation.rhsOperand replaceAllWithString: [ NSString stringWithFormat: @"%ld", self._calculation.rhsOperand.integerValue ] ];
-//        [ self._calculation.resultValue replaceAllWithString: [ NSString stringWithFormat: @"%ld", self._calculation.resultValue.integerValue ] ];
-//        }
-//    else if ( self._calculation.currentAry == OMCHex )
-//        {
-////        NSLog( @"Value in hex: %ld", self._calculation.lhsOperand.integerValue );
-//        [ self._calculation.lhsOperand replaceAllWithString: [ NSString stringWithFormat: @"%lx", self._calculation.lhsOperand.integerValue ] ];
-//        [ self._calculation.rhsOperand replaceAllWithString: [ NSString stringWithFormat: @"%lx", self._calculation.rhsOperand.integerValue ] ];
-//        [ self._calculation.resultValue replaceAllWithString: [ NSString stringWithFormat: @"0x%lx", self._calculation.resultValue.integerValue ] ];
-//        }
 
     [ USER_DEFAULTS setInteger: self._calculation.currentAry forKey: OMCDefaultsKeyAry ];
     }

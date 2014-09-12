@@ -31,52 +31,11 @@
  **                                                                         **
  ****************************************************************************/
 
-#import <Cocoa/Cocoa.h>
-#import "OMCCal.h"
+#import "OMCCalWithBasicStyle.h"
 
-@class OMCCalculation;
-
-// OMCCalWithProgrammerStyle class
-@interface OMCCalWithProgrammerStyle : OMCCal
-
-#pragma mark Buttons with bitwise operators
-@property ( nonatomic, assign ) IBOutlet NSButton* _andOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _orOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _norOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _xorOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _lshOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _rshOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _rolOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _rorOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _2_sOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _1_sOperator;
-
-#pragma mark Buttons with mathematical operators
-@property ( nonatomic, assign ) IBOutlet NSButton* _modOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _factorialOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _lhsParenthesis;
-@property ( nonatomic, assign ) IBOutlet NSButton* _rhsParenthesis;
-
-#pragma mark Buttons with operands
-@property ( nonatomic, assign ) IBOutlet NSButton* _doubleZero;
-@property ( nonatomic, assign ) IBOutlet NSButton* _0xA;
-@property ( nonatomic, assign ) IBOutlet NSButton* _0xB;
-@property ( nonatomic, assign ) IBOutlet NSButton* _0xC;
-@property ( nonatomic, assign ) IBOutlet NSButton* _0xD;
-@property ( nonatomic, assign ) IBOutlet NSButton* _0xE;
-@property ( nonatomic, assign ) IBOutlet NSButton* _0xF;
-@property ( nonatomic, assign ) IBOutlet NSButton* _0xFF;
-
-#pragma mark Control Button
-@property ( nonatomic, assign ) IBOutlet NSButton* _del;
-@property ( nonatomic, assign ) IBOutlet NSButton* _clearAll;
-
-@property ( nonatomic, assign ) IBOutlet OMCCalculation* _calculation;
-
-#pragma mark IBActions
-- ( IBAction ) aryChanged: ( id )_Sender;
-
-@end // OMCCalWithProgrammerStyle class
+// OMCCalWithBasicStyle class
+@implementation OMCCalWithBasicStyle
+@end // OMCCalWithBasicStyle
 
 //////////////////////////////////////////////////////////////////////////////
 
