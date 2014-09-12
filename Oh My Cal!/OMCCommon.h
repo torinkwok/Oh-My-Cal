@@ -86,7 +86,7 @@ typedef enum { OMCAnd = 0, OMCOr = 1,  OMCNor = 2,  OMCXor = 3
 
              , OMCAdd = 34, OMCSub = 35, OMCMuliply = 36, OMCDivide = 37
              , OMCLeftParenthesis = 38, OMCRightParenthesis = 39
-             } OMCButtonType;
+             } OMCProgrammerStyleButtonType;
 
 typedef enum { OMCOctal, OMCDecimal, OMCHex } OMCAry;
 

@@ -34,11 +34,9 @@
 #import <Cocoa/Cocoa.h>
 #import "OMCCalculation.h"
 
-// OMCUsignedIntegerCalculation class
-@interface OMCUsignedIntegerCalculation : OMCCalculation
-
-
-@end // OMCUsignedIntegerCalculation
+// OMCBasicStyleCalculation class
+@interface OMCBasicStyleCalculation : OMCCalculation
+@end // OMCBasicStyleCalculation
 
 //////////////////////////////////////////////////////////////////////////////
 

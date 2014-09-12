@@ -31,14 +31,14 @@
  **                                                                         **
  ****************************************************************************/
 
-#import "OMCUnsignedIntegerCalculation.h"
+#import "OMCProgrammerStyleCalculation.h"
 #import "OMCOperand.h"
 #import "OMCBinaryOperationPanel.h"
 
 enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF = 255 };
 
 // OMCUnsignedIntegerCalculation class
-@implementation OMCUsignedIntegerCalculation
+@implementation OMCProgrammerStyleCalculation
 
 - ( void ) deleteNumberWithLastPressedButton: ( NSButton* )_Button
     {
@@ -224,6 +224,25 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
         [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue % self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
 
     self.typingState = OMCFinishedTyping;
+    }
+
+#pragma mark IBActions
+// All of the buttons on the keyboard has been connected to this action
+- ( IBAction ) calculate: ( id )_Sender
+    {
+    [ super calculate: _Sender ];
+
+    NSButton* pressedButton = ( NSButton* )_Sender;
+    self.lastTypedButtonType = ( OMCProgrammerStyleButtonType )[ pressedButton tag ];
+    self.lastTypedButton = _Sender;
+
+    switch ( self.lastTypedButtonType )
+        {
+    case OMC0xA:    case OMC0xB:    case OMC0xC:
+    case OMC0xD:    case OMC0xE:    case OMC0xF:
+    case OMC0xFF:
+        [ self appendNumberWithLastPressedButton: self.lastTypedButton ];
+        }
     }
 
 #pragma mark Calculations

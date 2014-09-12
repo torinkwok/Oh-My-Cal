@@ -118,8 +118,6 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         self.theOperator = [ NSMutableString string ];
     }
 
-#pragma mark IBActions
-
 - ( void ) deleteNumberWithLastPressedButton: ( NSButton* )_Button
     {
     __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__;
@@ -150,11 +148,12 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__;
     }
 
+#pragma mark IBActions
 // All of the buttons on the keyboard has been connected to this action
 - ( IBAction ) calculate: ( id )_Sender
     {
-    NSButton* pressedButton = _Sender;
-    self.lastTypedButtonType = ( OMCButtonType )[ pressedButton tag ];
+    NSButton* pressedButton = ( NSButton* )_Sender;
+    self.lastTypedButtonType = ( OMCProgrammerStyleButtonType )[ pressedButton tag ];
     self.lastTypedButton = _Sender;
 
     switch ( self.lastTypedButtonType )
@@ -164,10 +163,6 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCFour:   case OMCFive:   case OMCSix:
     case OMCSeven:  case OMCEight:  case OMCNine:
     case OMCZero:   case OMCDoubleZero:
-
-    case OMC0xA:    case OMC0xB:    case OMC0xC:
-    case OMC0xD:    case OMC0xE:    case OMC0xF:
-    case OMC0xFF:
         [ self appendNumberWithLastPressedButton: self.lastTypedButton ];
         break;
 

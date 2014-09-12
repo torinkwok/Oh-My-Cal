@@ -16,7 +16,7 @@
             <windowStyleMask key="styleMask" utility="YES"/>
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" transient="YES" ignoresCycle="YES"/>
             <rect key="contentRect" x="196" y="240" width="240" height="175"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <view key="contentView" id="EiT-Mj-1SZ" customClass="OMFPanelBackgroundView">
                 <rect key="frame" x="0.0" y="0.0" width="240" height="175"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -513,7 +513,7 @@
             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
         </box>
-        <customObject id="odj-gr-7MT" customClass="OMCUsignedIntegerCalculation">
+        <customObject id="odj-gr-7MT" customClass="OMCProgrammerStyleCalculation">
             <connections>
                 <outlet property="_binaryOperationPanel" destination="h31-zA-4wg" id="6cA-sj-yCa"/>
             </connections>

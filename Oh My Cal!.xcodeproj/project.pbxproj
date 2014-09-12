@@ -72,7 +72,9 @@
 		83DD4A1B19B20005007F530A /* OMCOperand.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DD4A1A19B20005007F530A /* OMCOperand.m */; };
 		83ED014919BC9627004E7F9E /* OhMyCal.icns in Resources */ = {isa = PBXBuildFile; fileRef = 83ED014819BC9627004E7F9E /* OhMyCal.icns */; };
 		83ED014D19BC97FC004E7F9E /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 83ED014C19BC97FC004E7F9E /* logo.png */; };
-		83FD699919C3303300B4488C /* OMCUnsignedIntegerCalculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FD699819C3303300B4488C /* OMCUnsignedIntegerCalculation.m */; };
+		83FD699919C3303300B4488C /* OMCProgrammerStyleCalculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FD699819C3303300B4488C /* OMCProgrammerStyleCalculation.m */; };
+		83FD699C19C3679900B4488C /* OMCBasicStyleCalculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FD699B19C3679900B4488C /* OMCBasicStyleCalculation.m */; };
+		83FD699F19C3694D00B4488C /* OMCScientificStyleCalculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83FD699E19C3694D00B4488C /* OMCScientificStyleCalculation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,8 +212,12 @@
 		83DD4A1A19B20005007F530A /* OMCOperand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCOperand.m; path = "Oh My Cal!/OMCOperand.m"; sourceTree = "<group>"; };
 		83ED014819BC9627004E7F9E /* OhMyCal.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = OhMyCal.icns; sourceTree = "<group>"; };
 		83ED014C19BC97FC004E7F9E /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = "Oh My Cal!/Resources/logo.png"; sourceTree = "<group>"; };
-		83FD699719C3303300B4488C /* OMCUnsignedIntegerCalculation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCUnsignedIntegerCalculation.h; path = "Oh My Cal!/OMCUnsignedIntegerCalculation.h"; sourceTree = "<group>"; };
-		83FD699819C3303300B4488C /* OMCUnsignedIntegerCalculation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCUnsignedIntegerCalculation.m; path = "Oh My Cal!/OMCUnsignedIntegerCalculation.m"; sourceTree = "<group>"; };
+		83FD699719C3303300B4488C /* OMCProgrammerStyleCalculation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCProgrammerStyleCalculation.h; path = "Oh My Cal!/OMCProgrammerStyleCalculation.h"; sourceTree = "<group>"; };
+		83FD699819C3303300B4488C /* OMCProgrammerStyleCalculation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCProgrammerStyleCalculation.m; path = "Oh My Cal!/OMCProgrammerStyleCalculation.m"; sourceTree = "<group>"; };
+		83FD699A19C3679900B4488C /* OMCBasicStyleCalculation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCBasicStyleCalculation.h; path = "Oh My Cal!/OMCBasicStyleCalculation.h"; sourceTree = "<group>"; };
+		83FD699B19C3679900B4488C /* OMCBasicStyleCalculation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCBasicStyleCalculation.m; path = "Oh My Cal!/OMCBasicStyleCalculation.m"; sourceTree = "<group>"; };
+		83FD699D19C3694D00B4488C /* OMCScientificStyleCalculation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCScientificStyleCalculation.h; path = "Oh My Cal!/OMCScientificStyleCalculation.h"; sourceTree = "<group>"; };
+		83FD699E19C3694D00B4488C /* OMCScientificStyleCalculation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCScientificStyleCalculation.m; path = "Oh My Cal!/OMCScientificStyleCalculation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,8 +316,12 @@
 				83DD4A1719B1F8CA007F530A /* NSMutableString+OMCMutableString.m */,
 				833F645319AF2FBE001C7C35 /* OMCCalculation.h */,
 				833F645419AF2FBE001C7C35 /* OMCCalculation.m */,
-				83FD699719C3303300B4488C /* OMCUnsignedIntegerCalculation.h */,
-				83FD699819C3303300B4488C /* OMCUnsignedIntegerCalculation.m */,
+				83FD699A19C3679900B4488C /* OMCBasicStyleCalculation.h */,
+				83FD699B19C3679900B4488C /* OMCBasicStyleCalculation.m */,
+				83FD699D19C3694D00B4488C /* OMCScientificStyleCalculation.h */,
+				83FD699E19C3694D00B4488C /* OMCScientificStyleCalculation.m */,
+				83FD699719C3303300B4488C /* OMCProgrammerStyleCalculation.h */,
+				83FD699819C3303300B4488C /* OMCProgrammerStyleCalculation.m */,
 				83DD4A1919B20005007F530A /* OMCOperand.h */,
 				83DD4A1A19B20005007F530A /* OMCOperand.m */,
 			);
@@ -641,8 +651,9 @@
 				83099C9919ADBB2E00DDBF1D /* BGHUDBox.m in Sources */,
 				83D5D4D819ADB172004AFD84 /* OMCAppDelegate.m in Sources */,
 				83099CA719ADBB2E00DDBF1D /* BGHUDSliderCell.m in Sources */,
-				83FD699919C3303300B4488C /* OMCUnsignedIntegerCalculation.m in Sources */,
+				83FD699919C3303300B4488C /* OMCProgrammerStyleCalculation.m in Sources */,
 				833F645519AF2FBE001C7C35 /* OMCCalculation.m in Sources */,
+				83FD699C19C3679900B4488C /* OMCBasicStyleCalculation.m in Sources */,
 				83099CAF19ADBB2E00DDBF1D /* BGHUDTokenAttachmentCell.m in Sources */,
 				83099CA219ADBB2E00DDBF1D /* BGHUDScroller.m in Sources */,
 				83099C9B19ADBB2E00DDBF1D /* BGHUDColorWell.m in Sources */,
@@ -655,6 +666,7 @@
 				83099CB219ADBB2E00DDBF1D /* BGTheme.m in Sources */,
 				83099CAB19ADBB2E00DDBF1D /* BGHUDTableViewHeaderCell.m in Sources */,
 				83099C9E19ADBB2E00DDBF1D /* BGHUDLabel.m in Sources */,
+				83FD699F19C3694D00B4488C /* OMCScientificStyleCalculation.m in Sources */,
 				83DD4A1519B1B11A007F530A /* OMCSettingsBar.m in Sources */,
 				83099CA919ADBB2E00DDBF1D /* BGHUDTableCornerView.m in Sources */,
 				83099CB319ADBB2E00DDBF1D /* BGThemeManager.m in Sources */,
