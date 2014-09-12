@@ -35,8 +35,6 @@
 #import "OMCOperand.h"
 #import "OMCBinaryOperationPanel.h"
 
-enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF = 255 };
-
 // Notifications
 NSString* const OMCCurrentTypingStateDidChangedNotification = @"OMCCurrentTypingStateDidChangedNotification";
 NSString* const OMCCurrentAryDidChangedNotification = @"OMCCurrentAryDidChangedNotification";
@@ -122,190 +120,34 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
 #pragma mark IBActions
 
-- ( void ) _deleteNumberWithLastPressedButton: ( NSButton* )_Button
+- ( void ) deleteNumberWithLastPressedButton: ( NSButton* )_Button
     {
-    OMCOperand* operandWillBeDeleted = nil;
-
-    if ( self.typingState == OMCWaitAllOperands )
-        operandWillBeDeleted = self.lhsOperand;
-    else if ( self.typingState == OMCWaitRhsOperand )
-        operandWillBeDeleted = self.rhsOperand;
-    else if ( self.typingState == OMCFinishedTyping )
-        {
-        NSBeep();
-        return;
-        }
-
-    if ( operandWillBeDeleted.isZero )
-        NSBeep();
-    else
-        {
-        NSUInteger baseNumber = operandWillBeDeleted.baseNumber.unsignedIntegerValue;
-
-        [ operandWillBeDeleted deleteDigit: baseNumber % 10 count: 1 ary: self.currentAry ];
-
-        if ( self.typingState == OMCWaitAllOperands )
-            self.typingState = OMCWaitAllOperands;
-        else if ( self.typingState == OMCWaitRhsOperand )
-            self.typingState = OMCWaitRhsOperand;
-        }
+    __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__;
     }
 
-- ( void ) _appendNumberWithLastPressedButton: ( NSButton* )_Button
+- ( void ) appendNumberWithLastPressedButton: ( NSButton* )_Button
     {
-    NSString* buttonTitle = [ _Button title ];
-    NSInteger numberWillBeAppended = numberWillBeAppended = [ buttonTitle integerValue ];
-
-    if ( self.currentAry == OMCHex )
-        {
-        if ( [ buttonTitle isEqualToString: @"A" ] )    numberWillBeAppended = k0xA;
-        if ( [ buttonTitle isEqualToString: @"B" ] )    numberWillBeAppended = k0xB;
-        if ( [ buttonTitle isEqualToString: @"C" ] )    numberWillBeAppended = k0xC;
-        if ( [ buttonTitle isEqualToString: @"D" ] )    numberWillBeAppended = k0xD;
-        if ( [ buttonTitle isEqualToString: @"E" ] )    numberWillBeAppended = k0xE;
-        if ( [ buttonTitle isEqualToString: @"F" ] )    numberWillBeAppended = k0xF;
-        if ( [ buttonTitle isEqualToString: @"FF" ] )   numberWillBeAppended = k0xFF;
-        }
-
-    NSInteger appendCount = 0;
-    if ( [ buttonTitle isEqualToString: @"00" ] || [ buttonTitle isEqualToString: @"FF" ] )
-        appendCount = 2;
-    else
-        appendCount = 1;
-
-    // If Oh My Cal! is in the initial state or user is just typing the left operand
-    if ( self.typingState == OMCWaitAllOperands )
-        {
-        [ self.lhsOperand appendDigit: numberWillBeAppended count: appendCount ary: self.currentAry ];
-        self.typingState = OMCWaitAllOperands;  // Wait for the user to pressing next button
-        }
-    else if ( self.typingState == OMCWaitRhsOperand )
-        {
-        [ self.rhsOperand appendDigit: numberWillBeAppended count: appendCount ary: self.currentAry ];
-        self.typingState = OMCWaitRhsOperand;
-        }
-    else if ( self.typingState == OMCFinishedTyping )
-        {
-        [ self.lhsOperand setBaseNumber: @0 ];
-        [ self.rhsOperand setBaseNumber: @0 ];
-        [ self.resultValue setBaseNumber: @0 ];
-
-        [ self.theOperator clear ];
-
-        [ self.lhsOperand appendDigit: numberWillBeAppended count: appendCount ary: self.currentAry ];
-        self.typingState = OMCWaitAllOperands;
-        }
+    __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__;
     }
 
-- ( void ) _appendUnitaryOperatorWithLastPressedButton: ( NSButton* )_Button
+- ( void ) appendUnitaryOperatorWithLastPressedButton: ( NSButton* )_Button
     {
-    /* If user has finished typing the left operand just a moment ago */
-    [ self.theOperator clear ];
-    [ self.theOperator appendString: [ [ _Button title ] uppercaseString ] ];
+    __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__;
     }
 
-- ( void ) _appendBinaryOperatorWithLastPressedButton: ( NSButton* )_Button
+- ( void ) appendBinaryOperatorWithLastPressedButton: ( NSButton* )_Button
     {
-    /* If user has finished typing the left operand just a moment ago */
-    if ( self.typingState == OMCWaitAllOperands )
-        {
-        [ self.theOperator appendString: [ [ _Button title ] uppercaseString ] ];
-        self.typingState = OMCWaitRhsOperand;
-        }
-    else if ( self.typingState == OMCFinishedTyping )
-        {
-        [ self.theOperator clear ];
-        [ self.lhsOperand setBaseNumber: @0 ];
-        [ self.rhsOperand setBaseNumber: @0 ];
-
-        [ self.lhsOperand setBaseNumber: self.resultValue.baseNumber ];
-        [ self.resultValue setBaseNumber: @0 ];
-        [ self.theOperator appendString: [ [ _Button title ] uppercaseString ] ];
-
-        self.typingState = OMCWaitRhsOperand;
-        }
+    __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__;
     }
 
-- ( void ) _calculateTheResultValueForMonomialWithLastPressedButton: ( NSButton* )_Button
+- ( void ) calculateTheResultValueForMonomialWithLastPressedButton: ( NSButton* )_Button
     {
-    [ self _appendUnitaryOperatorWithLastPressedButton: _Button ];
-
-    if ( [ self.theOperator isEqualToString: @"!" ] )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: factorial( self.lhsOperand.baseNumber.unsignedIntegerValue ) ] ];
-        else if ( self.typingState == OMCFinishedTyping )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: factorial( self.resultValue.baseNumber.unsignedIntegerValue ) ] ];
-        }
-    else if ( [ self.theOperator isEqualToString: @"ROL" ] )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue << 1 ] ];
-        else if ( self.typingState == OMCFinishedTyping )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.resultValue.baseNumber.unsignedIntegerValue << 1 ] ];
-        }
-    else if ( [ self.theOperator isEqualToString: @"ROR" ] )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue >> 1 ] ];
-        else if ( self.typingState == OMCFinishedTyping )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.resultValue.baseNumber.unsignedIntegerValue >> 1 ] ];
-        }
-    else if ( [ self.theOperator isEqualToString: @"2'S" ]
-            || [ self.theOperator isEqualToString: @"1'S" ] )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: ~self.lhsOperand.baseNumber.unsignedIntegerValue ] ];
-        else if ( self.typingState == OMCFinishedTyping )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: ~self.resultValue.baseNumber.unsignedIntegerValue ] ];
-        }
-
-    self.typingState = OMCFinishedTyping;
+    __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__;
     }
 
-- ( void ) _calculateTheResultValueForBinomialWithLastPressedButton: ( NSButton* )_Button
+- ( void ) calculateTheResultValueForBinomialWithLastPressedButton: ( NSButton* )_Button
     {
-    if ( self.typingState == OMCFinishedTyping /* If the user has finished a calculation... */
-            || self.typingState == OMCWaitAllOperands /* or if the user is typing hte left operand... */  )
-        {
-        // Reset the LCD to a inital state
-        if ( self.resultValue.baseNumber.unsignedIntegerValue > 0
-                || self.lhsOperand.baseNumber.unsignedIntegerValue > 0
-                || self.rhsOperand.baseNumber.unsignedIntegerValue > 0
-                || self.theOperator.length > 0 )
-            [ self clearAllAndReset ];
-
-        return;
-        }
-
-    /* If the user has not finished a calculation, 
-     * for example, they have finished typing the right operand,
-     * and they want to calculate a result value... */
-    if ( [ self.theOperator isEqualToString: @"+" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue + self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
-    else if ( [ self.theOperator isEqualToString: @"-" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue - self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
-    else if ( [ self.theOperator isEqualToString: @"×" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue * self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
-    else if ( [ self.theOperator isEqualToString: @"÷" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue / self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
-
-    else if ( [ self.theOperator isEqualToString: @"AND" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue & self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
-    else if ( [ self.theOperator isEqualToString: @"OR" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue | self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
-    else if ( [ self.theOperator isEqualToString: @"NOR" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: ~( self.lhsOperand.baseNumber.unsignedIntegerValue | self.rhsOperand.baseNumber.unsignedIntegerValue ) ] ];
-    else if ( [ self.theOperator isEqualToString: @"XOR" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue ^ self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
-    else if ( [ self.theOperator isEqualToString: @"LSH" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue << self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
-    else if ( [ self.theOperator isEqualToString: @"RSH" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue >> self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
-    else if ( [ self.theOperator isEqualToString: @"MOD" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue % self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
-
-    self.typingState = OMCFinishedTyping;
+    __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__;
     }
 
 // All of the buttons on the keyboard has been connected to this action
@@ -318,53 +160,32 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     switch ( self.lastTypedButtonType )
         {
     // Numbers
-    case OMCOne:
-    case OMCTwo:
-    case OMCThree:
-    case OMCFour:
-    case OMCFive:
-    case OMCSix:
-    case OMCSeven:
-    case OMCEight:
-    case OMCNine:
-    case OMCZero:
-    case OMCDoubleZero:
+    case OMCOne:    case OMCTwo:    case OMCThree:
+    case OMCFour:   case OMCFive:   case OMCSix:
+    case OMCSeven:  case OMCEight:  case OMCNine:
+    case OMCZero:   case OMCDoubleZero:
 
-    case OMC0xA:
-    case OMC0xB:
-    case OMC0xC:
-    case OMC0xD:
-    case OMC0xE:
-    case OMC0xF:
+    case OMC0xA:    case OMC0xB:    case OMC0xC:
+    case OMC0xD:    case OMC0xE:    case OMC0xF:
     case OMC0xFF:
-        [ self _appendNumberWithLastPressedButton: self.lastTypedButton ];
+        [ self appendNumberWithLastPressedButton: self.lastTypedButton ];
         break;
 
     // Binary operators
-    case OMCAnd:
-    case OMCOr:
-    case OMCNor:
-    case OMCXor:
-    case OMCLsh:
-    case OMCRsh:
+    case OMCAnd:    case OMCOr:     case OMCNor:
+    case OMCXor:    case OMCLsh:    case OMCRsh:
 
-    case OMCMod:
-    case OMCAdd:
-    case OMCSub:
-    case OMCMuliply:
-    case OMCDivide:
-        [ self _appendBinaryOperatorWithLastPressedButton: self.lastTypedButton ];
+    case OMCMod:    case OMCAdd:    case OMCSub:
+    case OMCMuliply:    case OMCDivide:
+        [ self appendBinaryOperatorWithLastPressedButton: self.lastTypedButton ];
         break;
 
-    case OMCRoL:
-    case OMCRoR:
-    case OMCFactorial:
-    case OMC2_s:
-    case OMC1_s:
-        [ self _calculateTheResultValueForMonomialWithLastPressedButton: self.lastTypedButton ];
+    case OMCRoL:    case OMCRoR:    case OMCFactorial:
+    case OMC2_s:    case OMC1_s:
+        [ self calculateTheResultValueForMonomialWithLastPressedButton: self.lastTypedButton ];
         break;
 
-    case OMCDel:    [ self _deleteNumberWithLastPressedButton: self.lastTypedButton ];
+    case OMCDel:    [ self deleteNumberWithLastPressedButton: self.lastTypedButton ];
         break;
 
     case OMCClear:  [ self clearCurrentOperand ];   break;
@@ -374,7 +195,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCRightParenthesis: break;
 
     case OMCEnter:
-        [ self _calculateTheResultValueForBinomialWithLastPressedButton: self.lastTypedButton ];
+        [ self calculateTheResultValueForBinomialWithLastPressedButton: self.lastTypedButton ];
         break;
         }
     }
@@ -428,23 +249,6 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     [ NOTIFICATION_CENTER postNotificationName: OMCCurrentAryDidChangedNotification
                                         object: self
                                       userInfo: nil ];
-    }
-
-#pragma mark Calculations
-NSUInteger factorial( NSUInteger _X )
-    {
-    if ( _X <= 1 )
-        return 1;
-    else
-        return _X * factorial( _X - 1 );
-    }
-
-CGFloat factorialF( CGFloat _X )
-    {
-    if ( _X <= 1.f )
-        return 1.f;
-    else
-        return _X * factorialF( _X - 1.f );
     }
 
 #pragma mark Conforms <OMCBinaryAndDecimalConversion> protocol
