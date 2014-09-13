@@ -33,6 +33,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class OMFMainPanelController;
 @class OMCLCDScreen;
 @class OMCSettingsBar;
 @class OMCBinaryOperationBox;
@@ -47,6 +48,8 @@
 @private
     CGFloat _arrowX;
     }
+
+@property ( nonatomic, assign ) IBOutlet OMFMainPanelController* _mainPanelController;
 
 @property ( nonatomic, assign ) OMCCalStyle _currentCalStyle;
 @property ( nonatomic, assign ) IBOutlet OMCLCDScreen* _LCDScreen;

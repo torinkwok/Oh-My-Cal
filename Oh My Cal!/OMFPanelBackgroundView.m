@@ -41,6 +41,8 @@
 #import "OMCCalWithBasicStyle.h"
 #import "OMCCalWithProgrammerStyle.h"
 
+#import "OMFMainPanelController.h"
+
 #define ARROW_WIDTH     20.f
 #define ARROW_HEIGHT    8.f
 
@@ -58,6 +60,8 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 
 // OMFPanelBackgroundView class
 @implementation OMFPanelBackgroundView
+
+@synthesize _mainPanelController;
 
 @synthesize _currentCalStyle;
 @synthesize _LCDScreen;
@@ -93,54 +97,44 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 
     switch( _CalStyle )
         {
-    case OMCBasicStyle:
-            {
-            currentCal = self._calWithBasicStyle;
-
-
-            } break;
-
-    case OMCScientificStyle: /* TODO: TODO */
-            {
-
-            } break;
-
-    case OMCProgrammerStyle:
-            {
-            currentCal = self._calWithProgrammerStyle;
-
-            [ self._binaryOperationBox setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
-                                                           , NSMaxY( currentCal.frame ) + kPaddingBetweenBinaryOperationPanelAndKeyboard
-                                                           , NSWidth( currentCal.bounds ) - kPaddingVal * 2
-                                                           , kBinaryOperationBoxHeight ) ];
-
-            [ self._settingsBar setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
-                                                    , NSMaxY( self._binaryOperationBox.frame )
-                                                    , NSWidth( currentCal.bounds ) - kPaddingVal * 2
-                                                    , 20 ) ];
-
-            [ self._LCDScreen setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
-                                                  , NSMaxY( self._binaryOperationBox.frame ) + kPaddingVal * 2
-                                                  , NSWidth( currentCal.bounds ) - kPaddingVal * 2
-                                                  , kLCDHeight
-                                                  ) ];
-
-            newWindowHeight = NSHeight( currentCal.bounds )
-                                + NSHeight( self._LCDScreen.bounds )
-                                + NSHeight( self._binaryOperationBox.bounds )
-                                + VISUAL_MAGIC; // This magic number just for producing a beautiful appearance
-
-            newWindowFrame = NSMakeRect( 0, 0 // Because of the openPanel: method in OMCMainPanelController, the origin of window does not matter.
-                                       , NSWidth( currentCal.bounds )
-                                       , newWindowHeight
-                                       );
-
-            [ components addObjectsFromArray: @[ self._binaryOperationBox, currentCal ] ];
-
-            [ [ self window ] setFrame: newWindowFrame display: YES ];
-            } break;
+    case OMCBasicStyle:         currentCal = self._calWithBasicStyle;       break;
+    case OMCScientificStyle: /* TODO: TODO */                               break;
+    case OMCProgrammerStyle:    currentCal = self._calWithProgrammerStyle;  break;
         }
 
+    if ( currentCal == self._calWithProgrammerStyle )
+        {
+        [ self._binaryOperationBox setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
+                                                       , NSMaxY( currentCal.frame ) + kPaddingBetweenBinaryOperationPanelAndKeyboard
+                                                       , NSWidth( currentCal.bounds ) - kPaddingVal * 2
+                                                       , kBinaryOperationBoxHeight ) ];
+        [ components addObject: self._binaryOperationBox ];
+        }
+
+    [ self._settingsBar setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
+                                            , NSMaxY( self._binaryOperationBox.frame )
+                                            , NSWidth( currentCal.bounds ) - kPaddingVal * 2
+                                            , 20 ) ];
+
+    [ self._LCDScreen setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
+                                          , NSMaxY( self._binaryOperationBox.frame ) + kPaddingVal * 2
+                                          , NSWidth( currentCal.bounds ) - kPaddingVal * 2
+                                          , kLCDHeight
+                                          ) ];
+
+    newWindowHeight = NSHeight( currentCal.bounds )
+                        + NSHeight( self._LCDScreen.bounds )
+                        + NSHeight( self._binaryOperationBox.bounds )
+                        + VISUAL_MAGIC; // This magic number just for producing a beautiful appearance
+
+    newWindowFrame = NSMakeRect( 0, 0 // Because of the openPanel: method in OMCMainPanelController, the origin of window does not matter.
+                               , NSWidth( currentCal.bounds )
+                               , newWindowHeight
+                               );
+
+    [ components addObject: currentCal ];
+
+    [ [ self window ] setFrame: newWindowFrame display: YES ];
     [ self setSubviews: components ];
     }
 
@@ -217,6 +211,10 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
     self._currentCalStyle = ( OMCCalStyle )[ sender tag ];
 
     [ self _checkCorrectStyleMenuItem: self._currentCalStyle ];
+    [ self _switchCalStyle: self._currentCalStyle ];
+
+    [ self._mainPanelController closePanel ];
+    [ self._mainPanelController openPanel ];
     }
 
 - ( void ) _checkCorrectStyleMenuItem: ( OMCCalStyle )_CalStyle

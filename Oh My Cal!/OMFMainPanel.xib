@@ -27,6 +27,7 @@
                     <outlet property="_binaryOperationPanel" destination="h31-zA-4wg" id="Nwd-nm-lIP"/>
                     <outlet property="_calWithBasicStyle" destination="3LL-Vp-8Ph" id="oaW-ph-5Np"/>
                     <outlet property="_calWithProgrammerStyle" destination="GvH-CV-btC" id="ObX-6e-bsi"/>
+                    <outlet property="_mainPanelController" destination="-2" id="uTu-jk-qAV"/>
                     <outlet property="_programmertyleMenuItem" destination="ZhY-vc-eNE" id="diQ-Pc-nZO"/>
                     <outlet property="_scientificStyleMenuItem" destination="rWO-LH-2vs" id="32G-hS-1Wg"/>
                     <outlet property="_settingsBar" destination="TuJ-OT-THp" id="T1J-b1-Dhy"/>
