@@ -66,10 +66,6 @@
 @synthesize _0xF;
 @synthesize _0xFF;
 
-#pragma mark Control Button
-@synthesize _del;
-@synthesize _clearAll;
-
 @synthesize _calculation;
 
 #pragma mark Initializers & Deallocators

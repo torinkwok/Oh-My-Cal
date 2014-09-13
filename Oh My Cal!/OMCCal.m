@@ -52,6 +52,9 @@
 @synthesize _multiplicationOperator;
 @synthesize _divisionOperator;
 
+#pragma mark Control Button
+@synthesize _del;
+@synthesize _clearAll;
 @synthesize _clear;
 
 @synthesize _enterOperator;

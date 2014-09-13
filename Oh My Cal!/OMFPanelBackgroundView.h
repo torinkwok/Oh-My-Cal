@@ -37,6 +37,8 @@
 @class OMCSettingsBar;
 @class OMCBinaryOperationBox;
 @class OMCBinaryOperationPanel;
+
+@class OMCCalWithBasicStyle;
 @class OMCCalWithProgrammerStyle;
 
 // OMFPanelBackgroundView class
@@ -51,6 +53,8 @@
 @property ( nonatomic, assign ) IBOutlet OMCSettingsBar* _settingsBar;
 @property ( nonatomic, assign ) IBOutlet OMCBinaryOperationBox* _binaryOperationBox;
     @property ( nonatomic, assign ) IBOutlet OMCBinaryOperationPanel* _binaryOperationPanel;
+
+@property ( nonatomic, assign ) IBOutlet OMCCalWithBasicStyle* _calWithBasicStyle;
 @property ( nonatomic, assign ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
 
 @property ( nonatomic, assign ) CGFloat arrowX;

@@ -37,6 +37,8 @@
 #import "OMCSettingsBar.h"
 #import "OMCBinaryOperationBox.h"
 #import "OMCBinaryOperationPanel.h"
+
+#import "OMCCalWithBasicStyle.h"
 #import "OMCCalWithProgrammerStyle.h"
 
 #define ARROW_WIDTH     20.f
@@ -62,6 +64,8 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 @synthesize _settingsBar;
 @synthesize _binaryOperationBox;
     @synthesize _binaryOperationPanel;
+
+@synthesize _calWithBasicStyle;
 @synthesize _calWithProgrammerStyle;
 
 @synthesize arrowX = _arrowX;
@@ -75,6 +79,7 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
     switch( _currentCalType )
         {
     case OMCBasicType: /* TODO: NOTHING */                             break;
+    case OMCScientific:
     case OMCProgrammerType: currentCal = self._calWithProgrammerStyle; break;
         }
 

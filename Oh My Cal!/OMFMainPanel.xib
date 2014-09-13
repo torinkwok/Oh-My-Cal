@@ -24,6 +24,7 @@
                     <outlet property="_LCDScreen" destination="lUW-uQ-i4U" id="ajn-YS-H8g"/>
                     <outlet property="_binaryOperationBox" destination="x4i-YK-xrg" id="XZV-p6-dD8"/>
                     <outlet property="_binaryOperationPanel" destination="h31-zA-4wg" id="Nwd-nm-lIP"/>
+                    <outlet property="_calWithBasicStyle" destination="3LL-Vp-8Ph" id="oaW-ph-5Np"/>
                     <outlet property="_calWithProgrammerStyle" destination="GvH-CV-btC" id="ObX-6e-bsi"/>
                     <outlet property="_settingsBar" destination="TuJ-OT-THp" id="T1J-b1-Dhy"/>
                 </connections>
@@ -801,6 +802,10 @@
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="BRm-vl-G1v"/>
+                                <menuItem title="Basic" keyEquivalent="1" id="n6C-zu-lsG"/>
+                                <menuItem title="Scientific" keyEquivalent="2" id="rWO-LH-2vs"/>
+                                <menuItem title="Programmer" keyEquivalent="3" id="ZhY-vc-eNE"/>
+                                <menuItem isSeparatorItem="YES" id="HDw-Lt-knt"/>
                                 <menuItem title="Quit" keyEquivalent="q" id="Yhd-vS-FEf">
                                     <connections>
                                         <action selector="terminate:" target="-1" id="vnO-1D-psK"/>

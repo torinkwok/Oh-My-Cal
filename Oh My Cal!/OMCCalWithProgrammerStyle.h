@@ -67,10 +67,6 @@
 @property ( nonatomic, assign ) IBOutlet NSButton* _0xF;
 @property ( nonatomic, assign ) IBOutlet NSButton* _0xFF;
 
-#pragma mark Control Button
-@property ( nonatomic, assign ) IBOutlet NSButton* _del;
-@property ( nonatomic, assign ) IBOutlet NSButton* _clearAll;
-
 @property ( nonatomic, assign ) IBOutlet OMCCalculation* _calculation;
 
 #pragma mark IBActions

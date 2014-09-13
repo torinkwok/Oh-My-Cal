@@ -51,6 +51,9 @@
 @property ( nonatomic, assign ) IBOutlet NSButton* _multiplicationOperator;
 @property ( nonatomic, assign ) IBOutlet NSButton* _divisionOperator;
 
+#pragma mark Control Button
+@property ( nonatomic, assign ) IBOutlet NSButton* _del;
+@property ( nonatomic, assign ) IBOutlet NSButton* _clearAll;
 @property ( nonatomic, assign ) IBOutlet NSButton* _clear;
 
 @property ( nonatomic, assign ) IBOutlet NSButton* _enterOperator;

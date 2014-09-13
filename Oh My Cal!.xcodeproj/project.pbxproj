@@ -48,7 +48,6 @@
 		83D5D4C519ADB172004AFD84 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4C419ADB172004AFD84 /* Cocoa.framework */; };
 		83D5D4CF19ADB172004AFD84 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D4CD19ADB172004AFD84 /* InfoPlist.strings */; };
 		83D5D4D119ADB172004AFD84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D4D019ADB172004AFD84 /* main.m */; };
-		83D5D4D519ADB172004AFD84 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D4D319ADB172004AFD84 /* Credits.rtf */; };
 		83D5D4D819ADB172004AFD84 /* OMCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D4D719ADB172004AFD84 /* OMCAppDelegate.m */; };
 		83D5D4DB19ADB172004AFD84 /* OMCMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D4D919ADB172004AFD84 /* OMCMainMenu.xib */; };
 		83D5D4DD19ADB172004AFD84 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D4DC19ADB172004AFD84 /* Images.xcassets */; };
@@ -176,7 +175,6 @@
 		83D5D4CE19ADB172004AFD84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		83D5D4D019ADB172004AFD84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		83D5D4D219ADB172004AFD84 /* Oh My Cal!-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Oh My Cal!-Prefix.pch"; sourceTree = "<group>"; };
-		83D5D4D419ADB172004AFD84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		83D5D4D619ADB172004AFD84 /* OMCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMCAppDelegate.h; sourceTree = "<group>"; };
 		83D5D4D719ADB172004AFD84 /* OMCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OMCAppDelegate.m; sourceTree = "<group>"; };
 		83D5D4DA19ADB172004AFD84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OMCMainMenu.xib; sourceTree = "<group>"; };
@@ -428,7 +426,6 @@
 				839396FA19AE1D81008D8A3C /* OMCCommon.m */,
 				83D5D4D019ADB172004AFD84 /* main.m */,
 				83D5D4D219ADB172004AFD84 /* Oh My Cal!-Prefix.pch */,
-				83D5D4D319ADB172004AFD84 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			path = "Oh My Cal!";
@@ -621,7 +618,6 @@
 				83ED014D19BC97FC004E7F9E /* logo.png in Resources */,
 				83D5D4DD19ADB172004AFD84 /* Images.xcassets in Resources */,
 				83D5D53B19ADB8E1004AFD84 /* OMFPreferencesPanel.xib in Resources */,
-				83D5D4D519ADB172004AFD84 /* Credits.rtf in Resources */,
 				83D5D53A19ADB8E1004AFD84 /* OMFAboutPanel.xib in Resources */,
 				83ED014919BC9627004E7F9E /* OhMyCal.icns in Resources */,
 				832A24A619C4387E005E79A5 /* README.md in Resources */,
@@ -726,14 +722,6 @@
 				83D5D4CE19ADB172004AFD84 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		83D5D4D319ADB172004AFD84 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				83D5D4D419ADB172004AFD84 /* en */,
-			);
-			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 		83D5D4D919ADB172004AFD84 /* OMCMainMenu.xib */ = {

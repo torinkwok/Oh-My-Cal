@@ -66,7 +66,7 @@
 #define OMFDefaultsKeyStartAtLogin      @"OMFDefaultsKeyStartAtLogin"
 #define OMCDefaultsKeyAry               @"OMCDefaultsKeyAry"
 
-typedef enum { OMCBasicType, OMCProgrammerType } OMCCalType;
+typedef enum { OMCBasicType, OMCScientific, OMCProgrammerType } OMCCalType;
 typedef enum { OMFStartAtLogin, OMFNotStartAtLogin } OMFBehaviorWhileStarting;
 
 NSString extern* const OMCFlatStyle;
