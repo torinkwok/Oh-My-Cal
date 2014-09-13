@@ -2,10 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>OMCDefaultsKeyCalType</key>
-	<integer>1</integer>
 	<key>OMCDefaultsKeyCalStyle</key>
-	<string>OMCFlatStyle</string>
+	<integer>2</integer>
 	<key>OMFDefaultsKeyStartAtLogin</key>
 	<integer>1</integer>
 	<key>OMCDefaultsKeyAry</key>

@@ -48,7 +48,7 @@
     CGFloat _arrowX;
     }
 
-@property ( nonatomic, assign ) OMCCalType _currentCalType;
+@property ( nonatomic, assign ) OMCCalStyle _currentCalStyle;
 @property ( nonatomic, assign ) IBOutlet OMCLCDScreen* _LCDScreen;
 @property ( nonatomic, assign ) IBOutlet OMCSettingsBar* _settingsBar;
 @property ( nonatomic, assign ) IBOutlet OMCBinaryOperationBox* _binaryOperationBox;
@@ -57,7 +57,14 @@
 @property ( nonatomic, assign ) IBOutlet OMCCalWithBasicStyle* _calWithBasicStyle;
 @property ( nonatomic, assign ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
 
+@property ( nonatomic, assign ) IBOutlet NSMenuItem* _basicStyleMenuItem;
+@property ( nonatomic, assign ) IBOutlet NSMenuItem* _scientificStyleMenuItem;
+@property ( nonatomic, assign ) IBOutlet NSMenuItem* _programmertyleMenuItem;
+
 @property ( nonatomic, assign ) CGFloat arrowX;
+
+#pragma mark IBActions
+- ( IBAction ) calStyleChanged: ( id )_Sender;
 
 @end // OMFPanelBackgroundView
 

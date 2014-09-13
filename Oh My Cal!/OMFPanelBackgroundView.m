@@ -59,7 +59,7 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 // OMFPanelBackgroundView class
 @implementation OMFPanelBackgroundView
 
-@synthesize _currentCalType;
+@synthesize _currentCalStyle;
 @synthesize _LCDScreen;
 @synthesize _settingsBar;
 @synthesize _binaryOperationBox;
@@ -68,50 +68,80 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 @synthesize _calWithBasicStyle;
 @synthesize _calWithProgrammerStyle;
 
+@synthesize _basicStyleMenuItem;
+@synthesize _scientificStyleMenuItem;
+@synthesize _programmertyleMenuItem;
+
 @synthesize arrowX = _arrowX;
 
 #pragma mark Conforms <NSAwakeFromNib> protocol
 - ( void ) awakeFromNib
     {
-    _currentCalType = ( OMCCalType )[ [ USER_DEFAULTS objectForKey: OMCDefaultsKeyCalType ] intValue ];
+    self._currentCalStyle = ( OMCCalStyle )[ [ USER_DEFAULTS objectForKey: OMCDefaultsKeyCalStyle ] intValue ];
+    [ self _checkCorrectStyleMenuItem: self._currentCalStyle ];
 
+    [ self _switchCalStyle: self._currentCalStyle ];
+    }
+
+- ( void ) _switchCalStyle: ( OMCCalStyle )_CalStyle
+    {
     NSView* currentCal = nil;
-    switch( _currentCalType )
+    NSMutableArray* components = [ NSMutableArray arrayWithObjects: self._LCDScreen, self._settingsBar, nil ];
+
+    CGFloat newWindowHeight = 0.f;
+    NSRect newWindowFrame = NSZeroRect;
+
+    switch( _CalStyle )
         {
-    case OMCBasicType: /* TODO: NOTHING */                             break;
-    case OMCScientific:
-    case OMCProgrammerType: currentCal = self._calWithProgrammerStyle; break;
-        }
+    case OMCBasicStyle:
+            {
+            currentCal = self._calWithBasicStyle;
 
-    [ self._binaryOperationBox setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
-                                                   , NSMaxY( currentCal.frame ) + kPaddingBetweenBinaryOperationPanelAndKeyboard
-                                                   , NSWidth( currentCal.bounds ) - kPaddingVal * 2
-                                                   , kBinaryOperationBoxHeight ) ];
 
-    [ self._settingsBar setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
-                                            , NSMaxY( self._binaryOperationBox.frame )
-                                            , NSWidth( currentCal.bounds ) - kPaddingVal * 2
-                                            , 20 ) ];
+            } break;
 
-    [ self._LCDScreen setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
-                                          , NSMaxY( self._binaryOperationBox.frame ) + kPaddingVal * 2
-                                          , NSWidth( currentCal.bounds ) - kPaddingVal * 2
-                                          , kLCDHeight
-                                          ) ];
+    case OMCScientificStyle: /* TODO: TODO */
+            {
 
-    CGFloat newWindowHeight = NSHeight( currentCal.bounds )
+            } break;
+
+    case OMCProgrammerStyle:
+            {
+            currentCal = self._calWithProgrammerStyle;
+
+            [ self._binaryOperationBox setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
+                                                           , NSMaxY( currentCal.frame ) + kPaddingBetweenBinaryOperationPanelAndKeyboard
+                                                           , NSWidth( currentCal.bounds ) - kPaddingVal * 2
+                                                           , kBinaryOperationBoxHeight ) ];
+
+            [ self._settingsBar setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
+                                                    , NSMaxY( self._binaryOperationBox.frame )
+                                                    , NSWidth( currentCal.bounds ) - kPaddingVal * 2
+                                                    , 20 ) ];
+
+            [ self._LCDScreen setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
+                                                  , NSMaxY( self._binaryOperationBox.frame ) + kPaddingVal * 2
+                                                  , NSWidth( currentCal.bounds ) - kPaddingVal * 2
+                                                  , kLCDHeight
+                                                  ) ];
+
+            newWindowHeight = NSHeight( currentCal.bounds )
                                 + NSHeight( self._LCDScreen.bounds )
                                 + NSHeight( self._binaryOperationBox.bounds )
                                 + VISUAL_MAGIC; // This magic number just for producing a beautiful appearance
 
-    NSRect newWindowFrame = NSMakeRect( 0, 0 // Because of the openPanel: method in OMCMainPanelController, the origin of window does not matter.
-                                      , NSWidth( currentCal.bounds )
-                                      , newWindowHeight
-                                      );
+            newWindowFrame = NSMakeRect( 0, 0 // Because of the openPanel: method in OMCMainPanelController, the origin of window does not matter.
+                                       , NSWidth( currentCal.bounds )
+                                       , newWindowHeight
+                                       );
 
-    [ [ self window ] setFrame: newWindowFrame display: YES ];
+            [ components addObjectsFromArray: @[ self._binaryOperationBox, currentCal ] ];
 
-    [ self setSubviews: @[ self._LCDScreen, self._settingsBar, self._binaryOperationBox, currentCal ] ];
+            [ [ self window ] setFrame: newWindowFrame display: YES ];
+            } break;
+        }
+
+    [ self setSubviews: components ];
     }
 
 #pragma mark Customize Drawing
@@ -178,6 +208,24 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 
         [ self setNeedsDisplay: YES ];
         }
+    }
+
+#pragma mark IBActions
+- ( IBAction ) calStyleChanged: ( id )_Sender
+    {
+    NSMenuItem* sender = ( NSMenuItem* )_Sender;
+    self._currentCalStyle = ( OMCCalStyle )[ sender tag ];
+
+    [ self _checkCorrectStyleMenuItem: self._currentCalStyle ];
+    }
+
+- ( void ) _checkCorrectStyleMenuItem: ( OMCCalStyle )_CalStyle
+    {
+    [ self._basicStyleMenuItem setState: _CalStyle == OMCBasicStyle ];
+    [ self._scientificStyleMenuItem setState: _CalStyle == OMCScientificStyle ];
+    [ self._programmertyleMenuItem setState: _CalStyle == OMCProgrammerStyle ];
+
+    [ USER_DEFAULTS setInteger: self._currentCalStyle forKey: OMCDefaultsKeyCalStyle ];
     }
 
 @end // OMFPanelBackgroundView

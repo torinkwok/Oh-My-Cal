@@ -22,10 +22,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <connections>
                     <outlet property="_LCDScreen" destination="lUW-uQ-i4U" id="ajn-YS-H8g"/>
+                    <outlet property="_basicStyleMenuItem" destination="n6C-zu-lsG" id="nqc-Jx-Fs7"/>
                     <outlet property="_binaryOperationBox" destination="x4i-YK-xrg" id="XZV-p6-dD8"/>
                     <outlet property="_binaryOperationPanel" destination="h31-zA-4wg" id="Nwd-nm-lIP"/>
                     <outlet property="_calWithBasicStyle" destination="3LL-Vp-8Ph" id="oaW-ph-5Np"/>
                     <outlet property="_calWithProgrammerStyle" destination="GvH-CV-btC" id="ObX-6e-bsi"/>
+                    <outlet property="_programmertyleMenuItem" destination="ZhY-vc-eNE" id="diQ-Pc-nZO"/>
+                    <outlet property="_scientificStyleMenuItem" destination="rWO-LH-2vs" id="32G-hS-1Wg"/>
                     <outlet property="_settingsBar" destination="TuJ-OT-THp" id="T1J-b1-Dhy"/>
                 </connections>
             </view>
@@ -764,6 +767,7 @@
             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
         </box>
+        <customObject id="Mio-RE-1td" customClass="OMCBasicStyleCalculation"/>
         <customObject id="odj-gr-7MT" customClass="OMCProgrammerStyleCalculation">
             <connections>
                 <outlet property="_binaryOperationPanel" destination="h31-zA-4wg" id="6cA-sj-yCa"/>
@@ -802,9 +806,21 @@
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="BRm-vl-G1v"/>
-                                <menuItem title="Basic" keyEquivalent="1" id="n6C-zu-lsG"/>
-                                <menuItem title="Scientific" keyEquivalent="2" id="rWO-LH-2vs"/>
-                                <menuItem title="Programmer" keyEquivalent="3" id="ZhY-vc-eNE"/>
+                                <menuItem title="Basic" keyEquivalent="1" id="n6C-zu-lsG">
+                                    <connections>
+                                        <action selector="calStyleChanged:" target="EiT-Mj-1SZ" id="96J-vA-jRi"/>
+                                    </connections>
+                                </menuItem>
+                                <menuItem title="Scientific" tag="1" keyEquivalent="2" id="rWO-LH-2vs">
+                                    <connections>
+                                        <action selector="calStyleChanged:" target="EiT-Mj-1SZ" id="W47-9T-Wwy"/>
+                                    </connections>
+                                </menuItem>
+                                <menuItem title="Programmer" tag="2" keyEquivalent="3" id="ZhY-vc-eNE">
+                                    <connections>
+                                        <action selector="calStyleChanged:" target="EiT-Mj-1SZ" id="nvB-iP-Sf9"/>
+                                    </connections>
+                                </menuItem>
                                 <menuItem isSeparatorItem="YES" id="HDw-Lt-knt"/>
                                 <menuItem title="Quit" keyEquivalent="q" id="Yhd-vS-FEf">
                                     <connections>
