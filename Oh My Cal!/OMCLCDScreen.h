@@ -34,6 +34,8 @@
 #import <Cocoa/Cocoa.h>
 
 @class OMCCalculation;
+
+@class OMCCalWithBasicStyle;
 @class OMCCalWithProgrammerStyle;
 
 typedef NSRect OMCSpaceBarRect;
@@ -65,6 +67,9 @@ typedef NSRect OMCSpaceBarRect;
     }
 
 @property ( nonatomic, assign ) IBOutlet OMCCalculation* _calculation;
+
+@property ( nonatomic, assign ) IBOutlet OMCCalWithBasicStyle* _calWithBasicStyle;
+// TODO: @property ( nonatomic, assign ) IBOutlet OMCCalWithScientificStyle* _calWithScientificStyle;
 @property ( nonatomic, assign ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
 
 @property ( nonatomic, assign, readonly ) OMCSpaceBarRect bottommostSpaceBar;

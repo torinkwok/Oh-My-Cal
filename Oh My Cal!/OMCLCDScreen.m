@@ -46,6 +46,9 @@ NSInteger static const kSpaceBarsCount = 4;
     }
 
 @synthesize _calculation;
+
+@synthesize _calWithBasicStyle;
+// TODO: @synthesize _calWithScientificStyle;
 @synthesize _calWithProgrammerStyle;
 
 @synthesize auxiliaryLinePath = _auxiliaryLinePath;

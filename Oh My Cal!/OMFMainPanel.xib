@@ -740,6 +740,7 @@
             <rect key="frame" x="0.0" y="0.0" width="229" height="105"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <connections>
+                <outlet property="_calWithBasicStyle" destination="3LL-Vp-8Ph" id="19D-Mr-zXx"/>
                 <outlet property="_calWithProgrammerStyle" destination="GvH-CV-btC" id="TPy-f2-uq9"/>
                 <outlet property="_calculation" destination="odj-gr-7MT" id="H0j-eE-aNd"/>
             </connections>
