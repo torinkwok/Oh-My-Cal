@@ -158,7 +158,7 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 
     /* LCD Screen */
     [ self._LCDScreen setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
-                                          , NSMaxY( self._settingsBar.frame ) + 4.f
+                                          , NSMaxY( self._settingsBar.frame ) + 5.f
                                           , NSWidth( currentCal.bounds ) - kPaddingVal * 2
                                           , kLCDHeight
                                           ) ];
