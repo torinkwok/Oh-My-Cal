@@ -119,7 +119,7 @@ NSInteger static const kSpaceBarsCount = 4;
     [ self _initializeLinePath ];
     }
 
-- ( void ) _initializeOperandSpaceBars
+- ( void ) _regenerateOperandSpaceBars
     {
     [ self _regenerateGridPath ];
 
@@ -156,7 +156,7 @@ NSInteger static const kSpaceBarsCount = 4;
     {
     if ( !self.auxiliaryLinePath )
         {
-        [ self _initializeOperandSpaceBars ];
+        [ self _regenerateOperandSpaceBars ];
 
         self.auxiliaryLinePath = [ NSBezierPath bezierPath ];
         [ self.auxiliaryLinePath moveToPoint: NSMakePoint( NSMinX( self.bottommostSpaceBar ), NSMaxY( self.bottommostSpaceBar ) ) ];
@@ -336,6 +336,7 @@ NSInteger static const kSpaceBarsCount = 4;
     [ super drawRect: _DirtyRect ];
 
     [ self _regenerateGridPath ];
+    [ self _regenerateOperandSpaceBars ];
 
     [ self.gridColor set ];
     [ self.gridPath stroke ];
