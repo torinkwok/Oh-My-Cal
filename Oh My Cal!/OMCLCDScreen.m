@@ -34,6 +34,8 @@
 #import "OMCLCDScreen.h"
 #import "OMCOperand.h"
 #import "OMCCalculation.h"
+
+#import "OMCCalWithBasicStyle.h"
 #import "OMCCalWithProgrammerStyle.h"
 
 NSInteger static const kSpaceBarsCount = 4;
