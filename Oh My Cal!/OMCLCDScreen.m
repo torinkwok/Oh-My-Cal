@@ -116,7 +116,7 @@ NSInteger static const kSpaceBarsCount = 4;
     _LCDBoundary = [ self bounds ];
 
     // Line Path
-    [ self _initializeLinePath ];
+    [ self _regenerateLinePath ];
     }
 
 - ( void ) _regenerateOperandSpaceBars
@@ -152,17 +152,14 @@ NSInteger static const kSpaceBarsCount = 4;
                                        );
     }
 
-- ( void ) _initializeLinePath
+- ( void ) _regenerateLinePath
     {
-    if ( !self.auxiliaryLinePath )
-        {
-        [ self _regenerateOperandSpaceBars ];
+    [ self _regenerateOperandSpaceBars ];
 
-        self.auxiliaryLinePath = [ NSBezierPath bezierPath ];
-        [ self.auxiliaryLinePath moveToPoint: NSMakePoint( NSMinX( self.bottommostSpaceBar ), NSMaxY( self.bottommostSpaceBar ) ) ];
-        [ self.auxiliaryLinePath lineToPoint: NSMakePoint( NSMaxX( self.bottommostSpaceBar ), NSMaxY( self.bottommostSpaceBar ) ) ];
-        [ self.auxiliaryLinePath setLineWidth: 2 ];
-        }
+    self.auxiliaryLinePath = [ NSBezierPath bezierPath ];
+    [ self.auxiliaryLinePath moveToPoint: NSMakePoint( NSMinX( self.bottommostSpaceBar ), NSMaxY( self.bottommostSpaceBar ) ) ];
+    [ self.auxiliaryLinePath lineToPoint: NSMakePoint( NSMaxX( self.bottommostSpaceBar ), NSMaxY( self.bottommostSpaceBar ) ) ];
+    [ self.auxiliaryLinePath setLineWidth: 2 ];
     }
 
 - ( void ) _regenerateGridPath
@@ -335,6 +332,7 @@ NSInteger static const kSpaceBarsCount = 4;
     {
     [ super drawRect: _DirtyRect ];
 
+    [ self _regenerateLinePath ];
     [ self _regenerateGridPath ];
     [ self _regenerateOperandSpaceBars ];
 
