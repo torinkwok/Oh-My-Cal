@@ -46,6 +46,11 @@
     return YES;
     }
 
+- ( NSTimeInterval ) animationResizeTime: ( NSRect )_NewWindowFrame
+    {
+    return ( NSTimeInterval ).2f;
+    }
+
 @end // OMFMainPanel
 
 /////////////////////////////////////////////////////////////////////////////

@@ -68,6 +68,8 @@
 + ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;
 - ( id ) initWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;
 
+- ( NSRect ) frameBasedOnFrameOfStatusItemView: ( NSRect )_Frame;
+
 #pragma mark Panel Handling
 - ( void ) openPanel;
 - ( void ) closePanel;

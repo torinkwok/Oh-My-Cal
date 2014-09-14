@@ -73,16 +73,22 @@
     }
 
 #pragma mark Panel Handling
-- ( void ) openPanel
+- ( NSRect ) frameBasedOnFrameOfStatusItemView: ( NSRect )_Frame
     {
     NSRect frameOfStatusItemView = [ [ self.delegate statusItemViewForPanelController: self ] globalRect ];
 
-    NSRect frame = [ self.window frame ];
-    NSPoint origin = NSMakePoint( NSMidX( frameOfStatusItemView ) - NSWidth( frame ) / 2
-                                , NSMinY( frameOfStatusItemView ) - NSHeight( frame )
+    NSRect frame = _Frame;
+    NSPoint origin = NSMakePoint( NSMidX( frameOfStatusItemView ) - NSWidth( _Frame ) / 2
+                                , NSMinY( frameOfStatusItemView ) - NSHeight( _Frame )
                                 );
     frame.origin = origin;
-    [ self.window setFrame: frame display: YES ];
+
+    return frame;
+    }
+
+- ( void ) openPanel
+    {
+    [ self.window setFrame: [ self frameBasedOnFrameOfStatusItemView: self.window.frame ] display: YES ];
 
     [ self.window makeKeyAndOrderFront: self ];
     [ NSApp activateIgnoringOtherApps: YES ];

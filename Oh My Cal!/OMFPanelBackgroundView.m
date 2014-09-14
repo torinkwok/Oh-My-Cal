@@ -117,7 +117,7 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
     switch( _CalStyle )
         {
     case OMCBasicStyle:         currentCal = self._calWithBasicStyle;       break;
-    case OMCScientificStyle:    /* TODO currentCal = self._calWithScientificStyle: */ break;
+    case OMCScientificStyle:    currentCal = self._calWithProgrammerStyle;/* TODO currentCal = self._calWithScientificStyle: */ break;
     case OMCProgrammerStyle:    currentCal = self._calWithProgrammerStyle;  break;
         }
 
@@ -174,7 +174,10 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 
     [ components addObject: currentCal ];
 
-    [ [ self window ] setFrame: newWindowFrame display: YES ];
+    [ [ self window ] setFrame: [ self._mainPanelController frameBasedOnFrameOfStatusItemView: newWindowFrame ]
+                       display: YES
+                       animate: YES ];
+
     [ self setSubviews: components ];
     }
 
