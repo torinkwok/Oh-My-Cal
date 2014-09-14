@@ -100,7 +100,9 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
     [ [ self _LCDScreen ] removeFromSuperview ];
     [ [ self _settingsBar ] removeFromSuperview ];
     [ [ self _binaryOperationBox ] removeFromSuperview ];
+
     [ [ self _calWithBasicStyle ] removeFromSuperview ];
+    // TODO: [ [ self _calWithScientificStyle ] removeFromSuperview ];
     [ [ self _calWithProgrammerStyle ] removeFromSuperview ];
     }
 
@@ -255,9 +257,6 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 
     [ self _checkCorrectStyleMenuItem: self._currentCalStyle ];
     [ self _switchCalStyle: self._currentCalStyle ];
-
-//    [ self._mainPanelController closePanel ];
-//    [ self._mainPanelController openPanel ];
     }
 
 - ( void ) _checkCorrectStyleMenuItem: ( OMCCalStyle )_CalStyle

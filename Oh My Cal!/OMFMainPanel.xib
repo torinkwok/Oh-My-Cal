@@ -800,7 +800,7 @@
                         <menu key="menu" title="OtherViews" id="Lgq-so-pDQ">
                             <items>
                                 <menuItem state="on" image="settings" hidden="YES" id="41K-5R-Xfx"/>
-                                <menuItem title="About Oh My Fan!" id="Vc4-1D-9ps">
+                                <menuItem title="About Oh My Cal!" id="Vc4-1D-9ps">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <connections>
                                         <action selector="about:" target="-1" id="kLB-q8-nNo"/>

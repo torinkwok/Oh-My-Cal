@@ -121,7 +121,7 @@ NSInteger static const kSpaceBarsCount = 4;
 
 - ( void ) _initializeOperandSpaceBars
     {
-    [ self _initializeGridPath ];
+    [ self _regenerateGridPath ];
 
     CGFloat spaceBarX = NSMinX( _gridPathBoundary );
     CGFloat spaceBarWidth = NSWidth( _gridPathBoundary );
@@ -165,35 +165,32 @@ NSInteger static const kSpaceBarsCount = 4;
         }
     }
 
-- ( void ) _initializeGridPath
+- ( void ) _regenerateGridPath
     {
-    if ( !self.gridPath )
+    NSRect gridPathBounds = NSInsetRect( self.bounds, 10, 10 );
+    gridPathBounds.size.height -= 26.5;
+
+    NSAffineTransform* affine = [ NSAffineTransform transform ];
+    [ affine translateXBy: 0.f yBy: 26.5 ];
+    gridPathBounds.origin = [ affine transformPoint: gridPathBounds.origin ];
+
+    _gridPathBoundary = gridPathBounds;
+
+    self.gridPath = [ NSBezierPath bezierPathWithRect: gridPathBounds ];
+
+    CGFloat height = gridPathBounds.size.height;
+    CGFloat horizontalGridSpacing = height / kSpaceBarsCount;
+
+    for ( int hor = 1; hor < height / horizontalGridSpacing; hor++ )
         {
-        NSRect gridPathBounds = NSInsetRect( self.bounds, 10, 10 );
-        gridPathBounds.size.height -= 26.5;
-
-        NSAffineTransform* affine = [ NSAffineTransform transform ];
-        [ affine translateXBy: 0.f yBy: 26.5 ];
-        gridPathBounds.origin = [ affine transformPoint: gridPathBounds.origin ];
-
-        _gridPathBoundary = gridPathBounds;
-
-        self.gridPath = [ NSBezierPath bezierPathWithRect: gridPathBounds ];
-
-        CGFloat height = gridPathBounds.size.height;
-        CGFloat horizontalGridSpacing = height / kSpaceBarsCount;
-
-        for ( int hor = 1; hor < height / horizontalGridSpacing; hor++ )
-            {
-            [ self.gridPath moveToPoint: NSMakePoint( NSMinX( gridPathBounds ), NSMinY( gridPathBounds ) + hor * horizontalGridSpacing ) ];
-            [ self.gridPath lineToPoint: NSMakePoint( NSMaxX( gridPathBounds ), NSMinY( gridPathBounds ) + hor * horizontalGridSpacing ) ];
-            }
-
-        CGFloat dashes[ 2 ];
-        dashes[ 0 ] = 1;
-        dashes[ 1 ] = 2;
-        [ self.gridPath setLineDash: dashes count: 2 phase: .0f ];
+        [ self.gridPath moveToPoint: NSMakePoint( NSMinX( gridPathBounds ), NSMinY( gridPathBounds ) + hor * horizontalGridSpacing ) ];
+        [ self.gridPath lineToPoint: NSMakePoint( NSMaxX( gridPathBounds ), NSMinY( gridPathBounds ) + hor * horizontalGridSpacing ) ];
         }
+
+    CGFloat dashes[ 2 ];
+    dashes[ 0 ] = 1;
+    dashes[ 1 ] = 2;
+    [ self.gridPath setLineDash: dashes count: 2 phase: .0f ];
     }
 
 #pragma mark Customize Drawing
@@ -337,6 +334,8 @@ NSInteger static const kSpaceBarsCount = 4;
 - ( void ) drawRect: ( NSRect )_DirtyRect
     {
     [ super drawRect: _DirtyRect ];
+
+    [ self _regenerateGridPath ];
 
     [ self.gridColor set ];
     [ self.gridPath stroke ];
