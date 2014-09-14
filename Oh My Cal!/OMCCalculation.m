@@ -98,6 +98,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         self.rhsOperand.baseNumber = @0;
         self.resultValue.baseNumber = @0;
 
+        [ self.theOperator clear ];
+
         self.lhsOperand.baseNumber = [ NSNumber numberWithUnsignedInteger: newDecimal ];
         self.typingState = OMCWaitAllOperands;
         }
