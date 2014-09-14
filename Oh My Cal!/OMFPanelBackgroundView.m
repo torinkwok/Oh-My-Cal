@@ -78,6 +78,14 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 
 @synthesize arrowX = _arrowX;
 
+#define DEBUG_CODE \
+    NSLog( @"LCD Screen: %@", NSStringFromRect( self._LCDScreen.frame ) );                  \
+    NSLog( @"Settings Bar: %@", NSStringFromRect( self._settingsBar.frame ) );              \
+    NSLog( @"Binary Operation Box: %@", NSStringFromRect( self._binaryOperationBox.frame ) );   \
+    NSLog( @"Cal With Basic Style: %@", NSStringFromRect( self._calWithBasicStyle.frame ) );    \
+    NSLog( @"Cal With Programmer Style: %@", NSStringFromRect( self._calWithProgrammerStyle.frame ) );  \
+    printf( "\n\n" )
+
 #pragma mark Conforms <NSAwakeFromNib> protocol
 - ( void ) awakeFromNib
     {
@@ -87,8 +95,19 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
     [ self _switchCalStyle: self._currentCalStyle ];
     }
 
+- ( void ) _removeAllSubview
+    {
+    [ [ self _LCDScreen ] removeFromSuperview ];
+    [ [ self _settingsBar ] removeFromSuperview ];
+    [ [ self _binaryOperationBox ] removeFromSuperview ];
+    [ [ self _calWithBasicStyle ] removeFromSuperview ];
+    [ [ self _calWithProgrammerStyle ] removeFromSuperview ];
+    }
+
 - ( void ) _switchCalStyle: ( OMCCalStyle )_CalStyle
     {
+    [ self _removeAllSubview ];
+
     NSView* currentCal = nil;
     NSMutableArray* components = [ NSMutableArray arrayWithObjects: self._LCDScreen, self._settingsBar, nil ];
 
@@ -98,11 +117,20 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
     switch( _CalStyle )
         {
     case OMCBasicStyle:         currentCal = self._calWithBasicStyle;       break;
-    case OMCScientificStyle: /* TODO: TODO */                               break;
+    case OMCScientificStyle:    /* TODO currentCal = self._calWithScientificStyle: */ break;
     case OMCProgrammerStyle:    currentCal = self._calWithProgrammerStyle;  break;
         }
 
-    if ( currentCal == self._calWithProgrammerStyle )
+    // From bottom to top:
+
+    /* Cal with any style */
+    [ currentCal setFrameOrigin: NSZeroPoint ];
+
+    /* Binary Operation Box */
+    BOOL isBasicStyle = ( currentCal == self._calWithBasicStyle );
+    // TODO: BOOL isScientificStyle;
+    BOOL isProgrammerStyle = ( currentCal == self._calWithProgrammerStyle );
+    if ( isProgrammerStyle )
         {
         [ self._binaryOperationBox setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
                                                        , NSMaxY( currentCal.frame ) + kPaddingBetweenBinaryOperationPanelAndKeyboard
@@ -111,23 +139,35 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
         [ components addObject: self._binaryOperationBox ];
         }
 
+    /* Settings Bar */
+    CGFloat maxYForSettingBar = 0.f;
+    if ( isBasicStyle )
+        maxYForSettingBar = NSMaxY( self._calWithBasicStyle.frame ) + kPaddingBetweenBinaryOperationPanelAndKeyboard;
+    else if ( isProgrammerStyle )
+        maxYForSettingBar = NSMaxY( self._binaryOperationBox.frame );
+    // TODO: else if ( isScientifictStyle )
+
     [ self._settingsBar setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
-                                            , NSMaxY( self._binaryOperationBox.frame )
+                                            , maxYForSettingBar
                                             , NSWidth( currentCal.bounds ) - kPaddingVal * 2
                                             , 20 ) ];
 
+    [ self._settingsBar._arySegControl setHidden: !isProgrammerStyle ]; // Be visible only for programmer style
+
+    /* LCD Screen */
     [ self._LCDScreen setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
-                                          , NSMaxY( self._binaryOperationBox.frame ) + kPaddingVal * 2
+                                          , NSMaxY( self._settingsBar.frame ) + 4.f
                                           , NSWidth( currentCal.bounds ) - kPaddingVal * 2
                                           , kLCDHeight
                                           ) ];
 
     newWindowHeight = NSHeight( currentCal.bounds )
                         + NSHeight( self._LCDScreen.bounds )
-                        + NSHeight( self._binaryOperationBox.bounds )
+                        + ( isProgrammerStyle ? NSHeight( self._binaryOperationBox.bounds ) : 0.f )
                         + VISUAL_MAGIC; // This magic number just for producing a beautiful appearance
 
-    newWindowFrame = NSMakeRect( 0, 0 // Because of the openPanel: method in OMCMainPanelController, the origin of window does not matter.
+    CGPoint oldOrigin = [ self.window frame ].origin;
+    newWindowFrame = NSMakeRect( oldOrigin.x, oldOrigin.y // Because of the openPanel: method in OMCMainPanelController, the origin of window does not matter.
                                , NSWidth( currentCal.bounds )
                                , newWindowHeight
                                );
@@ -213,8 +253,8 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
     [ self _checkCorrectStyleMenuItem: self._currentCalStyle ];
     [ self _switchCalStyle: self._currentCalStyle ];
 
-    [ self._mainPanelController closePanel ];
-    [ self._mainPanelController openPanel ];
+//    [ self._mainPanelController closePanel ];
+//    [ self._mainPanelController openPanel ];
     }
 
 - ( void ) _checkCorrectStyleMenuItem: ( OMCCalStyle )_CalStyle
