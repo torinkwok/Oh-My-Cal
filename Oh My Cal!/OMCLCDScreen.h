@@ -33,6 +33,9 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class OMFPanelBackgroundView;
+
+@class OMCCalculation;
 @class OMCBasicStyleCalculation;
 // TODO: @class OMCScientificStyleCalculation;
 @class OMCProgrammerStyleCalculation;
@@ -66,7 +69,11 @@ typedef NSRect OMCSpaceBarRect;
 
     OMCTypingState _typingState;
     OMCAry _currentAry;
+
+    OMCCalculation* _currentCalculation;
     }
+
+@property ( nonatomic, assign ) IBOutlet OMFPanelBackgroundView* _mainPanelBackgroundView;
 
 @property ( nonatomic, assign ) IBOutlet OMCBasicStyleCalculation* _basicStyleCalculation;
 // TODO: @property ( nonatomic, assign ) IBOutlet OMCScientificStyleCalculation* _scientificStyleCalculation;
@@ -96,6 +103,8 @@ typedef NSRect OMCSpaceBarRect;
 
 @property ( nonatomic, assign ) OMCTypingState typingState;
 @property ( nonatomic, assign ) OMCAry currentAry;
+
+@property ( nonatomic, retain ) OMCCalculation* currentCalculation;
 
 @end // OMCLCDScreen
 

@@ -743,6 +743,7 @@
                 <outlet property="_basicStyleCalculation" destination="Mio-RE-1td" id="m4p-cL-yx0"/>
                 <outlet property="_calWithBasicStyle" destination="3LL-Vp-8Ph" id="19D-Mr-zXx"/>
                 <outlet property="_calWithProgrammerStyle" destination="GvH-CV-btC" id="TPy-f2-uq9"/>
+                <outlet property="_mainPanelBackgroundView" destination="EiT-Mj-1SZ" id="JUd-sC-bVl"/>
                 <outlet property="_programmerStyleCalculation" destination="odj-gr-7MT" id="ZIe-XZ-3oI"/>
             </connections>
         </customView>

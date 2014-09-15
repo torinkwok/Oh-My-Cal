@@ -31,6 +31,8 @@
  **                                                                         **
  ****************************************************************************/
 
+#import "OMFPanelBackgroundView.h"
+
 #import "OMCLCDScreen.h"
 #import "OMCOperand.h"
 
@@ -43,12 +45,16 @@
 
 NSInteger static const kSpaceBarsCount = 4;
 
+NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"self._currentCalStyle";
+
 // OMCLCDScreen class
 @implementation OMCLCDScreen
     {
     NSRect _LCDBoundary;
     NSRect _gridPathBoundary;
     }
+
+@synthesize _mainPanelBackgroundView;
 
 @synthesize _basicStyleCalculation;
 // TODO: @synthesize _scientificStyleCalculation;
@@ -79,6 +85,8 @@ NSInteger static const kSpaceBarsCount = 4;
 @synthesize typingState = _typingState;
 @synthesize currentAry = _currentAry;
 
+@synthesize currentCalculation = _currentCalculation;
+
 - ( BOOL ) canBecomeKeyView
     {
     return YES;
@@ -107,6 +115,29 @@ NSInteger static const kSpaceBarsCount = 4;
 
     [ self _addObserverForCalculations: self._basicStyleCalculation ];
     [ self _addObserverForCalculations: self._programmerStyleCalculation ];
+
+    [ self._mainPanelBackgroundView addObserver: self
+                                     forKeyPath: kKeyPathForCurrentCalStyleInMainPanelBackgroundView
+                                        options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                                        context: NULL ];
+    }
+
+- ( void ) observeValueForKeyPath: ( NSString* )_KeyPath
+                         ofObject: ( id )_Object
+                           change: ( NSDictionary* )_Change
+                           context: ( void* )_Context
+    {
+    if ( [ _KeyPath isEqualToString: kKeyPathForCurrentCalStyleInMainPanelBackgroundView ] )
+        {
+        OMCCalStyle style = ( OMCCalStyle )[ _Change[ @"new" ] intValue ];
+
+        if ( style == OMCBasicStyle )
+            self.currentCalculation = self._basicStyleCalculation;
+        else if ( style == OMCScientificStyle );
+            // TODO: self.currentCalculation = self._scientificStyleCalculation;
+        else if ( style == OMCProgrammerStyle )
+            self.currentCalculation = self._programmerStyleCalculation;
+        }
     }
 
 - ( void ) _addObserverForCalculations: ( OMCCalculation* )_Calculation
@@ -221,8 +252,8 @@ NSInteger static const kSpaceBarsCount = 4;
 
 //    OMCCalculation* calculation = nil;
 
-    OMCOperand* operand = self._programmerStyleCalculation.lhsOperand;
-    OMCAry currentAry = self._programmerStyleCalculation.currentAry;
+    OMCOperand* operand = self.currentCalculation.lhsOperand;
+    OMCAry currentAry = self.currentCalculation.currentAry;
     NSString* lhsOperandInString = nil;
 
     if ( currentAry == OMCOctal )
@@ -242,10 +273,10 @@ NSInteger static const kSpaceBarsCount = 4;
     {
     /* When the user is typing right operand... */
 
-    OMCOperand* lhsOperand = self._programmerStyleCalculation.lhsOperand;
-    OMCOperand* rhsOperand = self._programmerStyleCalculation.rhsOperand;
+    OMCOperand* lhsOperand = self.currentCalculation.lhsOperand;
+    OMCOperand* rhsOperand = self.currentCalculation.rhsOperand;
 
-    OMCAry currentAry = self._programmerStyleCalculation.currentAry;
+    OMCAry currentAry = self.currentCalculation.currentAry;
 
     NSString* lhsOperandInString = nil;
     NSString* rhsOperandInString = nil;
@@ -275,8 +306,8 @@ NSInteger static const kSpaceBarsCount = 4;
                       withAttributes: _AttributesForOperands ];
 
     /* ...draw the operator the user selected into the bottom second space bar... */
-    [ self._programmerStyleCalculation.theOperator drawAtPoint: [ self _pointUsedForDrawingOperators: self._programmerStyleCalculation.theOperator ]
-                                 withAttributes: _AttributesForOperator ];
+    [ self.currentCalculation.theOperator drawAtPoint: [ self _pointUsedForDrawingOperators: self.currentCalculation.theOperator ]
+                                       withAttributes: _AttributesForOperator ];
 
     /* ...and draw a auxiliary line! */
     [ self _drawTheAuxiliaryLine ];
@@ -287,8 +318,8 @@ NSInteger static const kSpaceBarsCount = 4;
 - ( void ) _drawResultValWithAttributesForOperands: ( NSDictionary* )_AttributesForOperands
                                     andForOperator: ( NSDictionary* )_AttributesForOperator
     {
-    OMCOperand* resultValue = self._programmerStyleCalculation.resultValue;
-    OMCAry currentAry = self._programmerStyleCalculation.currentAry;
+    OMCOperand* resultValue = self.currentCalculation.resultValue;
+    OMCAry currentAry = self.currentCalculation.currentAry;
 
     NSString* resultValueInString = nil;
 
@@ -302,11 +333,11 @@ NSInteger static const kSpaceBarsCount = 4;
     [ resultValueInString drawAtPoint: [ self _pointUsedForDrawingOperands: resultValueInString inSpaceBar: self.bottommostSpaceBar ]
                        withAttributes: _AttributesForOperands ];
 
-    if ( self._programmerStyleCalculation.lastTypedButtonType != OMCFactorial
-            && self._programmerStyleCalculation.lastTypedButtonType != OMCRoL
-            && self._programmerStyleCalculation.lastTypedButtonType != OMCRoR
-            && self._programmerStyleCalculation.lastTypedButtonType != OMC2_s
-            && self._programmerStyleCalculation.lastTypedButtonType != OMC1_s )
+    if ( self.currentCalculation.lastTypedButtonType != OMCFactorial
+            && self.currentCalculation.lastTypedButtonType != OMCRoL
+            && self.currentCalculation.lastTypedButtonType != OMCRoR
+            && self.currentCalculation.lastTypedButtonType != OMC2_s
+            && self.currentCalculation.lastTypedButtonType != OMC1_s )
         [ self _drawRhsOperandWithAttributesForOperands: _AttributesForOperands
                                          andForOperator: _AttributesForOperator ];
     }
@@ -320,7 +351,7 @@ NSInteger static const kSpaceBarsCount = 4;
                            withAttributes: ( NSDictionary* )_Attributes
     {
     NSString* placeholder = nil;
-    OMCAry currentAry = self._programmerStyleCalculation.currentAry;
+    OMCAry currentAry = self.currentCalculation.currentAry;
 
     if ( currentAry == OMCOctal || currentAry == OMCDecimal )
         placeholder = @"0";
@@ -331,7 +362,7 @@ NSInteger static const kSpaceBarsCount = 4;
       * draw a "0" for Octal and Decimal and a "0x0" for Hex, respectively. */
     if ( _CurrentTypingState == OMCWaitAllOperands
         /* If the length of lhsOperand is greater than 0, that means no need to draw the placeholder for left operand */
-        && self._programmerStyleCalculation.lhsOperand.isZero )
+        && self.currentCalculation.lhsOperand.isZero )
         {
         // As with all calculators, the initial state should only be drawn in the bottommost space bar.
         [ placeholder drawAtPoint: [ self _pointUsedForDrawingOperands: placeholder inSpaceBar: self.bottommostSpaceBar ]
@@ -339,7 +370,7 @@ NSInteger static const kSpaceBarsCount = 4;
         }
     else if ( _CurrentTypingState == OMCWaitRhsOperand
         /* If the length of rhsOperand is greater than 0, that means no need to draw the placeholder for right operand */
-        && self._programmerStyleCalculation.rhsOperand.isZero )
+        && self.currentCalculation.rhsOperand.isZero )
         {
         [ placeholder drawAtPoint: [ self _pointUsedForDrawingOperands: placeholder inSpaceBar: self.secondSpaceBar ]
                    withAttributes: _Attributes ];
@@ -365,10 +396,10 @@ NSInteger static const kSpaceBarsCount = 4;
                                                    , NSForegroundColorAttributeName : self.operatorsColor
                                                    };
 
-    [ self _drawPlaceholderForTypingState: self._programmerStyleCalculation.typingState
+    [ self _drawPlaceholderForTypingState: self.currentCalculation.typingState
                            withAttributes: drawingAttributesForOperands ];
 
-    switch ( self._programmerStyleCalculation.typingState )
+    switch ( self.currentCalculation.typingState )
         {
     case OMCWaitAllOperands:
             {
@@ -430,7 +461,7 @@ NSInteger static const kSpaceBarsCount = 4;
     {
     NSUInteger modifierFlags = [ _Event modifierFlags ];
     NSString* characters = [ _Event charactersIgnoringModifiers ];
-    BOOL isHex = [ self._programmerStyleCalculation currentAry ] == OMCHex;
+    BOOL isHex = [ self.currentCalculation currentAry ] == OMCHex;
 
     SEL actionToBeSent = @selector( calculate: );
     id actionSender = nil;
@@ -538,7 +569,7 @@ NSInteger static const kSpaceBarsCount = 4;
 
     if ( actionSender )
         {
-        [ NSApp sendAction: actionToBeSent to: self._programmerStyleCalculation from: actionSender ];
+        [ NSApp sendAction: actionToBeSent to: self.currentCalculation from: actionSender ];
         return;
         }
 
