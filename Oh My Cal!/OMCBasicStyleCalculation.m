@@ -35,6 +35,12 @@
 
 // OMCBasicStyleCalculation class
 @implementation OMCBasicStyleCalculation
+
+- ( void ) appendNumberWithLastPressedButton: ( NSButton* )_Button
+    {
+    // TODO: Implementation for Basic Style Calculation
+    }
+
 @end // OMCBasicStyleCalculation
 
 //////////////////////////////////////////////////////////////////////////////
