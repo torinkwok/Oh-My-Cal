@@ -36,8 +36,6 @@
 
 // OMCProgrammerStyleCalculation class
 @interface OMCProgrammerStyleCalculation : OMCCalculation
-
-
 @end // OMCProgrammerStyleCalculation
 
 //////////////////////////////////////////////////////////////////////////////

@@ -16,7 +16,7 @@
             <windowStyleMask key="styleMask" utility="YES"/>
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" transient="YES" ignoresCycle="YES"/>
             <rect key="contentRect" x="196" y="240" width="240" height="175"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <view key="contentView" id="EiT-Mj-1SZ" customClass="OMFPanelBackgroundView">
                 <rect key="frame" x="0.0" y="0.0" width="240" height="175"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -740,9 +740,10 @@
             <rect key="frame" x="0.0" y="0.0" width="229" height="105"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <connections>
+                <outlet property="_basicStyleCalculation" destination="Mio-RE-1td" id="m4p-cL-yx0"/>
                 <outlet property="_calWithBasicStyle" destination="3LL-Vp-8Ph" id="19D-Mr-zXx"/>
                 <outlet property="_calWithProgrammerStyle" destination="GvH-CV-btC" id="TPy-f2-uq9"/>
-                <outlet property="_calculation" destination="odj-gr-7MT" id="H0j-eE-aNd"/>
+                <outlet property="_programmerStyleCalculation" destination="odj-gr-7MT" id="ZIe-XZ-3oI"/>
             </connections>
         </customView>
         <box title="Box" borderType="line" titlePosition="noTitle" id="x4i-YK-xrg" customClass="OMCBinaryOperationBox">

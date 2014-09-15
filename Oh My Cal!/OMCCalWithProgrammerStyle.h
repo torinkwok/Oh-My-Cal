@@ -34,7 +34,7 @@
 #import <Cocoa/Cocoa.h>
 #import "OMCCal.h"
 
-@class OMCCalculation;
+@class OMCProgrammerStyleCalculation;
 
 // OMCCalWithProgrammerStyle class
 @interface OMCCalWithProgrammerStyle : OMCCal
@@ -67,7 +67,7 @@
 @property ( nonatomic, assign ) IBOutlet NSButton* _0xF;
 @property ( nonatomic, assign ) IBOutlet NSButton* _0xFF;
 
-@property ( nonatomic, assign ) IBOutlet OMCCalculation* _calculation;
+@property ( nonatomic, assign ) IBOutlet OMCProgrammerStyleCalculation* _calculation;
 
 #pragma mark IBActions
 - ( IBAction ) aryChanged: ( id )_Sender;

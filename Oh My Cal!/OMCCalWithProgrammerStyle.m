@@ -33,7 +33,7 @@
 
 #import "OMCCalWithProgrammerStyle.h"
 #import "OMCOperand.h"
-#import "OMCCalculation.h"
+#import "OMCProgrammerStyleCalculation.h"
 
 // OMCCalWithProgrammerStyle class
 @implementation OMCCalWithProgrammerStyle

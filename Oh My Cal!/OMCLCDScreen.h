@@ -33,7 +33,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class OMCCalculation;
+@class OMCBasicStyleCalculation;
+// TODO: @class OMCScientificStyleCalculation;
+@class OMCProgrammerStyleCalculation;
 
 @class OMCCalWithBasicStyle;
 @class OMCCalWithProgrammerStyle;
@@ -66,7 +68,9 @@ typedef NSRect OMCSpaceBarRect;
     OMCAry _currentAry;
     }
 
-@property ( nonatomic, assign ) IBOutlet OMCCalculation* _calculation;
+@property ( nonatomic, assign ) IBOutlet OMCBasicStyleCalculation* _basicStyleCalculation;
+// TODO: @property ( nonatomic, assign ) IBOutlet OMCScientificStyleCalculation* _scientificStyleCalculation;
+@property ( nonatomic, assign ) IBOutlet OMCProgrammerStyleCalculation* _programmerStyleCalculation;
 
 @property ( nonatomic, assign ) IBOutlet OMCCalWithBasicStyle* _calWithBasicStyle;
 // TODO: @property ( nonatomic, assign ) IBOutlet OMCCalWithScientificStyle* _calWithScientificStyle;
