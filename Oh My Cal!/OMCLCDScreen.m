@@ -219,6 +219,8 @@ NSInteger static const kSpaceBarsCount = 4;
     {
     /* When the user is typing left operand... */
 
+//    OMCCalculation* calculation = nil;
+
     OMCOperand* operand = self._programmerStyleCalculation.lhsOperand;
     OMCAry currentAry = self._programmerStyleCalculation.currentAry;
     NSString* lhsOperandInString = nil;

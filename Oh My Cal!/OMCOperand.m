@@ -44,6 +44,8 @@
 
 @synthesize calStyle = _calStyle;
 
+@synthesize isWaitingForFloatNumber = _isWaitingForFloatNumber;
+
 #pragma mark Initializers & Deallocators
 + ( id ) operandWithNumber: ( NSNumber* )_Number
     {
@@ -56,6 +58,7 @@
         {
         self.baseNumber = _Number;
         self.calStyle = OMCBasicStyle;
+        self.isWaitingForFloatNumber = NO;
         }
 
     return self;
@@ -82,17 +85,25 @@
                  count: ( NSInteger )_Count
                    ary: ( OMCAry )_Ary
     {
-    NSUInteger currentNumber = 0U;
+    NSUInteger baseNumber = 10;
 
     switch ( self.calStyle )
         {
-    case OMCBasicStyle:         break;
+    case OMCBasicStyle:
+            {
+            double currentNumber = [ self baseNumber ].doubleValue;
+
+            if ( !self.isWaitingForFloatNumber )
+                self.baseNumber =
+                    [ NSNumber numberWithDouble: ( NSUInteger )( currentNumber * pow( ( double )baseNumber, ( double )_Count ) + _Digit ) ];
+            } break;
+
     case OMCScientificStyle:    break;
+
     case OMCProgrammerStyle:
             {
-            currentNumber = [ self baseNumber ].unsignedIntegerValue;
+            NSUInteger currentNumber = [ self baseNumber ].unsignedIntegerValue;
 
-            NSUInteger baseNumber = 0;
             if ( _Ary == OMCDecimal )           baseNumber = 10;
                 else if ( _Ary == OMCOctal )    baseNumber = 8;
                 else if ( _Ary == OMCHex )      baseNumber = 16;
@@ -107,17 +118,15 @@
                  count: ( NSInteger )_Count
                    ary: ( OMCAry )_Ary
     {
-    NSUInteger currentNumber = 0U;
-
     switch ( self.calStyle )
         {
     case OMCBasicStyle:         break;
     case OMCScientificStyle:    break;
     case OMCProgrammerStyle:
             {
-            currentNumber = [ self baseNumber ].unsignedIntegerValue;
-            NSUInteger baseNumber = 0;
+            NSUInteger currentNumber = [ self baseNumber ].unsignedIntegerValue;
 
+            NSUInteger baseNumber = 0;
             if ( _Ary == OMCDecimal )           baseNumber = 10;
                 else if ( _Ary == OMCOctal )    baseNumber = 8;
                 else if ( _Ary == OMCHex )      baseNumber = 16;

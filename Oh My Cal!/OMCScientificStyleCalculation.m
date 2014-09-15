@@ -46,6 +46,11 @@
     [ self.resultValue setCalStyle: OMCScientificStyle ];
     }
 
+- ( void ) appendNumberWithLastPressedButton: ( NSButton* )_Button
+    {
+    // TODO: Implementation for Scientific Style Calculation
+    }
+
 @end // OMCScientificStyleCalculation
 
 //////////////////////////////////////////////////////////////////////////////

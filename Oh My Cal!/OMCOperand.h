@@ -44,6 +44,8 @@
     NSString* _inHex;
 
     OMCCalStyle _calStyle;
+
+    BOOL _isWaitingForFloatNumber;  // TRUE only after user pressing the `.` button
     }
 
 @property ( nonatomic, retain ) NSNumber* baseNumber;
@@ -53,6 +55,8 @@
 @property ( nonatomic, copy, readonly ) NSString* inHex;
 
 @property ( nonatomic, assign ) OMCCalStyle calStyle;
+
+@property ( nonatomic, assign, setter = setWaitingForFloatNumber: ) BOOL isWaitingForFloatNumber;
 
 + ( id ) operandWithNumber: ( NSNumber* )_Number;
 

@@ -165,6 +165,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCFour:   case OMCFive:   case OMCSix:
     case OMCSeven:  case OMCEight:  case OMCNine:
     case OMCZero:
+    case OMCFloatPoint:
         [ self appendNumberWithLastPressedButton: self.lastTypedButton ];
         return;
 
