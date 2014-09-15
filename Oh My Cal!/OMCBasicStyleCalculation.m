@@ -32,9 +32,19 @@
  ****************************************************************************/
 
 #import "OMCBasicStyleCalculation.h"
+#import "OMCOperand.h"
 
 // OMCBasicStyleCalculation class
 @implementation OMCBasicStyleCalculation
+
+- ( void ) awakeFromNib
+    {
+    [ super awakeFromNib ];
+
+    [ self.lhsOperand setCalStyle: OMCBasicStyle ];
+    [ self.rhsOperand setCalStyle: OMCBasicStyle ];
+    [ self.resultValue setCalStyle: OMCBasicStyle ];
+    }
 
 - ( void ) appendNumberWithLastPressedButton: ( NSButton* )_Button
     {

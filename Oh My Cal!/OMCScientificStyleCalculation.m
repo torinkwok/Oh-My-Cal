@@ -32,9 +32,20 @@
  ****************************************************************************/
 
 #import "OMCScientificStyleCalculation.h"
+#import "OMCOperand.h"
 
 // OMCScientificStyleCalculation class
 @implementation OMCScientificStyleCalculation
+
+- ( void ) awakeFromNib
+    {
+    [ super awakeFromNib ];
+
+    [ self.lhsOperand setCalStyle: OMCScientificStyle ];
+    [ self.rhsOperand setCalStyle: OMCScientificStyle ];
+    [ self.resultValue setCalStyle: OMCScientificStyle ];
+    }
+
 @end // OMCScientificStyleCalculation
 
 //////////////////////////////////////////////////////////////////////////////

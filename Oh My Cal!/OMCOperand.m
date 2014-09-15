@@ -42,6 +42,8 @@
 @synthesize inDecimal = _inDecimal;
 @synthesize inHex = _inHex;
 
+@synthesize calStyle = _calStyle;
+
 #pragma mark Initializers & Deallocators
 + ( id ) operandWithNumber: ( NSNumber* )_Number
     {
@@ -53,6 +55,7 @@
     if ( self = [ super init ] )
         {
         self.baseNumber = _Number;
+        self.calStyle = OMCBasicStyle;
         }
 
     return self;
@@ -79,30 +82,50 @@
                  count: ( NSInteger )_Count
                    ary: ( OMCAry )_Ary
     {
-    NSUInteger currentNumber = [ self baseNumber ].unsignedIntegerValue;
-    NSUInteger baseNumber = 0;
+    NSUInteger currentNumber = 0U;
 
-    if ( _Ary == OMCDecimal )           baseNumber = 10;
-        else if ( _Ary == OMCOctal )    baseNumber = 8;
-        else if ( _Ary == OMCHex )      baseNumber = 16;
+    switch ( self.calStyle )
+        {
+    case OMCBasicStyle:         break;
+    case OMCScientificStyle:    break;
+    case OMCProgrammerStyle:
+            {
+            currentNumber = [ self baseNumber ].unsignedIntegerValue;
 
-    self.baseNumber =
-        [ NSNumber numberWithUnsignedInteger: ( NSUInteger )( currentNumber * pow( ( double )baseNumber, ( double )_Count ) + _Digit ) ];
+            NSUInteger baseNumber = 0;
+            if ( _Ary == OMCDecimal )           baseNumber = 10;
+                else if ( _Ary == OMCOctal )    baseNumber = 8;
+                else if ( _Ary == OMCHex )      baseNumber = 16;
+
+            self.baseNumber =
+                [ NSNumber numberWithUnsignedInteger: ( NSUInteger )( currentNumber * pow( ( double )baseNumber, ( double )_Count ) + _Digit ) ];
+            } break;
+        }
     }
 
 - ( void ) deleteDigit: ( NSInteger )_Digit
                  count: ( NSInteger )_Count
                    ary: ( OMCAry )_Ary
     {
-    NSUInteger currentNumber = [ self baseNumber ].unsignedIntegerValue;
-    NSUInteger baseNumber = 0;
+    NSUInteger currentNumber = 0U;
 
-    if ( _Ary == OMCDecimal )           baseNumber = 10;
-        else if ( _Ary == OMCOctal )    baseNumber = 8;
-        else if ( _Ary == OMCHex )      baseNumber = 16;
+    switch ( self.calStyle )
+        {
+    case OMCBasicStyle:         break;
+    case OMCScientificStyle:    break;
+    case OMCProgrammerStyle:
+            {
+            currentNumber = [ self baseNumber ].unsignedIntegerValue;
+            NSUInteger baseNumber = 0;
 
-    self.baseNumber =
-        [ NSNumber numberWithUnsignedInteger: ( NSUInteger )( ( currentNumber - _Digit ) / pow( ( double )baseNumber, ( double )_Count ) ) ];
+            if ( _Ary == OMCDecimal )           baseNumber = 10;
+                else if ( _Ary == OMCOctal )    baseNumber = 8;
+                else if ( _Ary == OMCHex )      baseNumber = 16;
+
+            self.baseNumber =
+                [ NSNumber numberWithUnsignedInteger: ( NSUInteger )( ( currentNumber - _Digit ) / pow( ( double )baseNumber, ( double )_Count ) ) ];
+            } break;
+        }
     }
 
 - ( BOOL ) isZero

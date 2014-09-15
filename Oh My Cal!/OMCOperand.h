@@ -42,6 +42,8 @@
     NSString* _inOctal;
     NSString* _inDecimal;
     NSString* _inHex;
+
+    OMCCalStyle _calStyle;
     }
 
 @property ( nonatomic, retain ) NSNumber* baseNumber;
@@ -49,6 +51,8 @@
 @property ( nonatomic, copy, readonly ) NSString* inOctal;
 @property ( nonatomic, copy, readonly ) NSString* inDecimal;
 @property ( nonatomic, copy, readonly ) NSString* inHex;
+
+@property ( nonatomic, assign ) OMCCalStyle calStyle;
 
 + ( id ) operandWithNumber: ( NSNumber* )_Number;
 
