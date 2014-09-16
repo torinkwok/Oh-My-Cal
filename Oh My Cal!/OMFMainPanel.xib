@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6206.9" systemVersion="14A329r" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13F31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6206.9"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OMFMainPanelController">
@@ -16,7 +16,7 @@
             <windowStyleMask key="styleMask" utility="YES"/>
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" transient="YES" ignoresCycle="YES"/>
             <rect key="contentRect" x="196" y="240" width="240" height="175"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <view key="contentView" id="EiT-Mj-1SZ" customClass="OMFPanelBackgroundView">
                 <rect key="frame" x="0.0" y="0.0" width="240" height="175"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -496,8 +496,8 @@
                 <rect key="frame" x="1" y="1" width="290" height="192"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="h31-zA-4wg" customClass="OMCBinaryOperationPanel">
-                        <rect key="frame" x="7" y="8" width="276" height="178"/>
+                    <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h31-zA-4wg" customClass="OMCBinaryOperationPanel">
+                        <rect key="frame" x="7" y="7" width="276" height="178"/>
                         <connections>
                             <outlet property="_calculation" destination="odj-gr-7MT" id="egR-hk-7do"/>
                         </connections>
@@ -544,7 +544,7 @@
                         <menu key="menu" title="OtherViews" id="Lgq-so-pDQ">
                             <items>
                                 <menuItem state="on" image="settings" hidden="YES" id="41K-5R-Xfx"/>
-                                <menuItem title="About Oh My Fan!" id="Vc4-1D-9ps">
+                                <menuItem title="About Oh My Cal!" id="Vc4-1D-9ps">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <connections>
                                         <action selector="about:" target="-1" id="kLB-q8-nNo"/>
