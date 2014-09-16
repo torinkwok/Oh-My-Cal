@@ -142,13 +142,14 @@
                    ary: ( OMCAry )_Ary
     {
     NSUInteger baseNumber = 10;
-    NSLog( @"%d", [ self decimalPlacesForAFloatNumber: 5.4445234242 ] );
+//    NSLog( @"%d", [ self decimalPlacesForAFloatNumber: 5.4445234242 ] );
 
     switch ( self.calStyle )
         {
     case OMCBasicStyle:
             {
             double currentNumber = [ self baseNumber ].doubleValue;
+            NSLog( @"%lg", currentNumber );
 
             if ( _Digit == -1 )
                 self.isWaitingForFloatNumber = YES;
@@ -184,7 +185,7 @@
     {
     /* Retrieve the fractional part of currentNumber
      * for example: 10.34, the fractional part is 0.34 */
-    double fractional = _FloatNumber - ( int )_FloatNumber;
+//    double fractionalPart = _FloatNumber - ( int )_FloatNumber;
     NSString* fractionalPart = [ NSString stringWithFormat: @"%g", _FloatNumber - ( int )_FloatNumber ];
 
     /* Decimal Places
