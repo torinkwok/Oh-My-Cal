@@ -37,6 +37,7 @@
 @implementation OMCOperand
 
 @synthesize baseNumber = _baseNumber;
+@synthesize unsignedIntNumber = _unsignedIntNumber;
 @synthesize floatNumber = _floatNumber;
 
 @synthesize inOctal = _inOctal;
@@ -58,7 +59,9 @@
     if ( self = [ super init ] )
         {
         self.baseNumber = _Number;
+        self.unsignedIntNumber = 0U;
         self.floatNumber = 0.f;
+
         self.calStyle = OMCBasicStyle;
         self.isWaitingForFloatNumber = NO;
         }

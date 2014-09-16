@@ -38,6 +38,8 @@
     {
 @private
     NSNumber* _baseNumber;
+
+    NSUInteger _unsignedIntNumber;
     double _floatNumber;
 
     NSString* _inOctal;
@@ -50,6 +52,7 @@
     }
 
 @property ( nonatomic, retain ) NSNumber* baseNumber;
+@property ( nonatomic, assign ) NSUInteger unsignedIntNumber;
 @property ( nonatomic, assign ) double floatNumber;
 
 @property ( nonatomic, copy, readonly ) NSString* inOctal;
