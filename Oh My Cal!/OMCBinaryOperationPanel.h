@@ -37,7 +37,7 @@
 // Notification names
 NSString extern* const OMCBinaryStringDidChanged;
 
-@class OMCCalculation;
+@class OMCProgrammerStyleCalculation;
 
 // OMCBinaryOperationPanel class
 @interface OMCBinaryOperationPanel : NSView <OMCBinaryAndDecimalConversion>
@@ -59,7 +59,7 @@ NSString extern* const OMCBinaryStringDidChanged;
     NSSize          _anchorSize;
     }
 
-@property ( nonatomic, assign ) IBOutlet OMCCalculation* _calculation;
+@property ( nonatomic, assign ) IBOutlet OMCProgrammerStyleCalculation* _calculation;
 
 @property ( nonatomic, assign ) NSUInteger currentResultVal;
 @property ( nonatomic, copy ) NSString* binaryInString;

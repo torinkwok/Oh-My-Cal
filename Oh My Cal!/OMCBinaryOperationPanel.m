@@ -33,7 +33,7 @@
 
 #import "OMCBinaryOperationPanel.h"
 #import "OMCBinaryAndDecimalConversion.h"
-#import "OMCCalculation.h"
+#import "OMCProgrammerStyleCalculation.h"
 
 // Notification names
 NSString* const OMCBinaryStringDidChanged = @"OMCBinaryStringDidChanged";
@@ -104,6 +104,7 @@ NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOper
             || [ _KeyPath isEqualToString: kKeyPathForLhsOperandInCalculationObject ]
             || [ _KeyPath isEqualToString: kKeyPathForRhsOperandInCalculationObject ] )
         {
+        NSLog( @"%@", _Change );
         self.binaryInString = [ self convertDecimalToBinary: [ _Change[ @"new" ] unsignedIntegerValue ] ];
         [ self setNeedsDisplay: YES ];
         }

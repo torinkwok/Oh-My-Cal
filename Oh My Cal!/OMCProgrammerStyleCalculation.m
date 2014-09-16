@@ -113,9 +113,9 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
         }
     else if ( self.typingState == OMCFinishedTyping )
         {
-        [ self.lhsOperand setBaseNumber: @0 ];
-        [ self.rhsOperand setBaseNumber: @0 ];
-        [ self.resultValue setBaseNumber: @0 ];
+        [ self.lhsOperand setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
+        [ self.rhsOperand setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
+        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
 
         [ self.theOperator clear ];
 
@@ -142,11 +142,11 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
     else if ( self.typingState == OMCFinishedTyping )
         {
         [ self.theOperator clear ];
-        [ self.lhsOperand setBaseNumber: @0 ];
-        [ self.rhsOperand setBaseNumber: @0 ];
+        [ self.lhsOperand setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
+        [ self.rhsOperand setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
 
         [ self.lhsOperand setBaseNumber: self.resultValue.baseNumber ];
-        [ self.resultValue setBaseNumber: @0 ];
+        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
         [ self.theOperator appendString: [ [ _Button title ] uppercaseString ] ];
 
         self.typingState = OMCWaitRhsOperand;
@@ -160,31 +160,31 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
     if ( [ self.theOperator isEqualToString: @"!" ] )
         {
         if ( self.typingState == OMCWaitAllOperands )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: factorial( self.lhsOperand.baseNumber.unsignedIntegerValue ) ] ];
+            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: factorial( self.lhsOperand.baseNumber.unsignedIntegerValue ) ] ];
         else if ( self.typingState == OMCFinishedTyping )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: factorial( self.resultValue.baseNumber.unsignedIntegerValue ) ] ];
+            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: factorial( self.resultValue.baseNumber.unsignedIntegerValue ) ] ];
         }
     else if ( [ self.theOperator isEqualToString: @"ROL" ] )
         {
         if ( self.typingState == OMCWaitAllOperands )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue << 1 ] ];
+            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue << 1 ] ];
         else if ( self.typingState == OMCFinishedTyping )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.resultValue.baseNumber.unsignedIntegerValue << 1 ] ];
+            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.resultValue.baseNumber.unsignedIntegerValue << 1 ] ];
         }
     else if ( [ self.theOperator isEqualToString: @"ROR" ] )
         {
         if ( self.typingState == OMCWaitAllOperands )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue >> 1 ] ];
+            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue >> 1 ] ];
         else if ( self.typingState == OMCFinishedTyping )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.resultValue.baseNumber.unsignedIntegerValue >> 1 ] ];
+            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.resultValue.baseNumber.unsignedIntegerValue >> 1 ] ];
         }
     else if ( [ self.theOperator isEqualToString: @"2'S" ]
             || [ self.theOperator isEqualToString: @"1'S" ] )
         {
         if ( self.typingState == OMCWaitAllOperands )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: ~self.lhsOperand.baseNumber.unsignedIntegerValue ] ];
+            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: ~self.lhsOperand.baseNumber.unsignedIntegerValue ] ];
         else if ( self.typingState == OMCFinishedTyping )
-            [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: ~self.resultValue.baseNumber.unsignedIntegerValue ] ];
+            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: ~self.resultValue.baseNumber.unsignedIntegerValue ] ];
         }
 
     self.typingState = OMCFinishedTyping;
@@ -209,28 +209,28 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
      * for example, they have finished typing the right operand,
      * and they want to calculate a result value... */
     if ( [ self.theOperator isEqualToString: @"+" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue + self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
+        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue + self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"-" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue - self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
+        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue - self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"×" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue * self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
+        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue * self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"÷" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue / self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
+        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue / self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
 
     else if ( [ self.theOperator isEqualToString: @"AND" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue & self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
+        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue & self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"OR" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue | self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
+        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue | self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"NOR" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: ~( self.lhsOperand.baseNumber.unsignedIntegerValue | self.rhsOperand.baseNumber.unsignedIntegerValue ) ] ];
+        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: ~( self.lhsOperand.baseNumber.unsignedIntegerValue | self.rhsOperand.baseNumber.unsignedIntegerValue ) ] ];
     else if ( [ self.theOperator isEqualToString: @"XOR" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue ^ self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
+        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue ^ self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"LSH" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue << self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
+        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue << self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"RSH" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue >> self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
+        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue >> self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
     else if ( [ self.theOperator isEqualToString: @"MOD" ] )
-        [ self.resultValue setBaseNumber: [ NSNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue % self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
+        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue % self.rhsOperand.baseNumber.unsignedIntegerValue ] ];
 
     self.typingState = OMCFinishedTyping;
     }
