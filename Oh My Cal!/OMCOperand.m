@@ -97,8 +97,7 @@
     {
     if ( self = [ super init ] )
         {
-        self.baseNumber.unsignedIntegerValue = 0U;
-        self.baseNumber.doubleValue = 0.f;
+        self.baseNumber = _Number;
 
         self.calStyle = OMCBasicStyle;
         self.isWaitingForFloatNumber = NO;
@@ -185,6 +184,7 @@
     {
     /* Retrieve the fractional part of currentNumber
      * for example: 10.34, the fractional part is 0.34 */
+    double fractional = _FloatNumber - ( int )_FloatNumber;
     NSString* fractionalPart = [ NSString stringWithFormat: @"%g", _FloatNumber - ( int )_FloatNumber ];
 
     /* Decimal Places
