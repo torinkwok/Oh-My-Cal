@@ -37,6 +37,7 @@
 @implementation OMCOperand
 
 @synthesize baseNumber = _baseNumber;
+@synthesize floatNumber = _floatNumber;
 
 @synthesize inOctal = _inOctal;
 @synthesize inDecimal = _inDecimal;
@@ -57,6 +58,7 @@
     if ( self = [ super init ] )
         {
         self.baseNumber = _Number;
+        self.floatNumber = 0.f;
         self.calStyle = OMCBasicStyle;
         self.isWaitingForFloatNumber = NO;
         }
@@ -100,6 +102,13 @@
                    ary: ( OMCAry )_Ary
     {
     NSUInteger baseNumber = 10;
+    NSLog( @"%d", [ self decimalPlacesForAFloatNumber: 5.4445234242 ] );
+    NSLog( @"%d", [ self decimalPlacesForAFloatNumber: 5.4132445 ] );
+    NSLog( @"%d", [ self decimalPlacesForAFloatNumber: 5.4445 ] );
+    NSLog( @"%d", [ self decimalPlacesForAFloatNumber: 4.2 ] );
+    NSLog( @"%d", [ self decimalPlacesForAFloatNumber: 9.44 ] );
+    NSLog( @"%d", [ self decimalPlacesForAFloatNumber: 24.3 ] );
+    NSLog( @"%d", [ self decimalPlacesForAFloatNumber: 4.2 ] );
 
     switch ( self.calStyle )
         {
@@ -113,28 +122,8 @@
                 {
                 if ( self.isWaitingForFloatNumber )
                     {
-                    double fractionalPart = 0.f;
-                    int decimalPlaces = 1;
-
-                    while ( true )
-                        {
-                        // BUG: Same value in any throughtout
-                        fractionalPart = currentNumber - ( int )currentNumber;
-
-                        if ( fractionalPart == 0.f )
-                            break;
-                        else
-                            {
-                            fractionalPart *= 10;
-                            decimalPlaces++;
-                            }
-                        }
-
-                    NSLog( @"DecimalPlaces: %d", decimalPlaces );
-                    self.baseNumber = [ NSNumber numberWithDouble: ( currentNumber + ( double )_Digit / ( double )( decimalPlaces * 10 ) ) ];
-
-//                    NSLog( @"Fractional Part: %g", fractionalPart );
-//                    self.baseNumber = [ NSNumber numberWithDouble: 4.32f ];
+                    int decimalPlaces = [ self decimalPlacesForAFloatNumber: currentNumber ];
+                    self.baseNumber = [ NSNumber numberWithDouble: ( currentNumber + ( double )_Digit / pow( 10, decimalPlaces + 1 ) ) ];
                     }
                 else if ( !self.isWaitingForFloatNumber )
                     self.baseNumber = [ NSNumber numberWithDouble: ( NSUInteger )( currentNumber * pow( ( double )baseNumber, ( double )_Count ) + _Digit ) ];
@@ -155,6 +144,32 @@
                 [ NSNumber numberWithUnsignedInteger: ( NSUInteger )( currentNumber * pow( ( double )baseNumber, ( double )_Count ) + _Digit ) ];
             } break;
         }
+    }
+
+- ( int ) decimalPlacesForAFloatNumber: ( double )_FloatNumber
+    {
+    /* Retrieve the fractional part of currentNumber
+     * for example: 10.34, the fractional part is 0.34 */
+    NSString* fractionalPart = [ NSString stringWithFormat: @"%g", _FloatNumber - ( int )_FloatNumber ];
+//    NSNumber* number = [ NSNumber numberWithDouble: _FloatNumber ];
+
+    /* Decimal Places
+     * for example: for 5, decimalPlaces is 1
+     * for 6.5, decimalPlaces is 2
+     * for 7.753 decimalPlaces is 4 */
+    int decimalPlaces = 0;
+    while ( true )
+        {
+        if ( ( fractionalPart.doubleValue - ( int )fractionalPart.doubleValue ) == 0.f )
+            break;
+        else
+            {
+            fractionalPart = [ NSString stringWithFormat: @"%g", fractionalPart.doubleValue * 10 ];
+            decimalPlaces++;
+            }
+        }
+
+    return decimalPlaces;
     }
 
 - ( void ) deleteDigit: ( NSInteger )_Digit

@@ -16,7 +16,7 @@
             <windowStyleMask key="styleMask" utility="YES"/>
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" transient="YES" ignoresCycle="YES"/>
             <rect key="contentRect" x="196" y="240" width="240" height="175"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <view key="contentView" id="EiT-Mj-1SZ" customClass="OMFPanelBackgroundView">
                 <rect key="frame" x="0.0" y="0.0" width="240" height="175"/>
                 <autoresizingMask key="autoresizingMask"/>
