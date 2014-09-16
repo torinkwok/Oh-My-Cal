@@ -72,7 +72,21 @@
 
 - ( NSString* ) inDecimal
     {
-    return [ NSString stringWithFormat: @"%lu", self.baseNumber.unsignedIntegerValue ];
+    NSString* decimalForm = nil;
+
+    switch ( self.calStyle )
+        {
+    case OMCBasicStyle:
+    case OMCScientificStyle:
+        decimalForm = [ NSString stringWithFormat: @"%g", self.baseNumber.doubleValue ];
+        break;
+
+    case OMCProgrammerStyle:
+        decimalForm = [ NSString stringWithFormat: @"%lu", self.baseNumber.unsignedIntegerValue ];
+        break;
+        }
+
+    return decimalForm;
     }
 
 - ( NSString* ) inHex
@@ -93,9 +107,38 @@
             {
             double currentNumber = [ self baseNumber ].doubleValue;
 
-            if ( !self.isWaitingForFloatNumber )
-                self.baseNumber =
-                    [ NSNumber numberWithDouble: ( NSUInteger )( currentNumber * pow( ( double )baseNumber, ( double )_Count ) + _Digit ) ];
+            if ( _Digit == -1 )
+                self.isWaitingForFloatNumber = YES;
+            else
+                {
+                if ( self.isWaitingForFloatNumber )
+                    {
+                    double fractionalPart = 0.f;
+                    int decimalPlaces = 1;
+
+                    while ( true )
+                        {
+                        // BUG: Same value in any throughtout
+                        fractionalPart = currentNumber - ( int )currentNumber;
+
+                        if ( fractionalPart == 0.f )
+                            break;
+                        else
+                            {
+                            fractionalPart *= 10;
+                            decimalPlaces++;
+                            }
+                        }
+
+                    NSLog( @"DecimalPlaces: %d", decimalPlaces );
+                    self.baseNumber = [ NSNumber numberWithDouble: ( currentNumber + ( double )_Digit / ( double )( decimalPlaces * 10 ) ) ];
+
+//                    NSLog( @"Fractional Part: %g", fractionalPart );
+//                    self.baseNumber = [ NSNumber numberWithDouble: 4.32f ];
+                    }
+                else if ( !self.isWaitingForFloatNumber )
+                    self.baseNumber = [ NSNumber numberWithDouble: ( NSUInteger )( currentNumber * pow( ( double )baseNumber, ( double )_Count ) + _Digit ) ];
+                }
             } break;
 
     case OMCScientificStyle:    break;
