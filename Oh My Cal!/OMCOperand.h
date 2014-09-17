@@ -60,8 +60,7 @@
 
 + ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber;
 
-- ( NSUInteger ) unsignedIntegerForm;
-- ( double ) doubleForm;
+- ( void ) integer
 
 - ( void ) appendDigit: ( NSInteger )_Digit
                  count: ( NSInteger )_Count
