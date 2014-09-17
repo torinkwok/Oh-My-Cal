@@ -33,27 +33,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-// OMCNumber class
-@interface OMCNumber : NSObject
-    {
-@private
-    NSUInteger  _unsignedIntegerValue;
-    double      _doubleValue;
-    }
-
-@property ( nonatomic, assign ) NSUInteger  unsignedIntegerValue;
-@property ( nonatomic, assign ) double      doubleValue;
-
-+ ( OMCNumber* ) numberWithUnsignedInteger: ( NSUInteger )_UnsignedInteger;
-+ ( OMCNumber* ) numberWithDouble: ( double )_DoubleVal;
-
-@end // OMCNumber
-
 // OMCOperand class
 @interface OMCOperand : NSObject
     {
 @private
-    OMCNumber* _baseNumber;
     NSDecimalNumber* _decimalNumber;
 
     NSString* _inOctal;
@@ -65,7 +48,6 @@
     BOOL _isWaitingForFloatNumber;  // TRUE only after user pressing the `.` button
     }
 
-@property ( nonatomic, retain ) OMCNumber* baseNumber;
 @property ( nonatomic, retain ) NSDecimalNumber* decimalNumber;
 
 @property ( nonatomic, copy, readonly ) NSString* inOctal;
@@ -76,8 +58,10 @@
 
 @property ( nonatomic, assign, setter = setWaitingForFloatNumber: ) BOOL isWaitingForFloatNumber;
 
-+ ( id ) operandWithNumber: ( OMCNumber* )_Number;
 + ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber;
+
+- ( NSUInteger ) unsignedIntegerForm;
+- ( double ) doubleForm;
 
 - ( void ) appendDigit: ( NSInteger )_Digit
                  count: ( NSInteger )_Count

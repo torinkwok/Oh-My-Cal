@@ -33,51 +33,9 @@
 
 #import "OMCOperand.h"
 
-// OMCNumber class
-@implementation OMCNumber
-
-@synthesize unsignedIntegerValue = _unsignedIntegerValue;
-@synthesize doubleValue = _doubleValue;
-
-#pragma mark Initializers & Dealloactors
-- ( id ) initWithUnsignedInteger: ( NSUInteger )_UnsignedInteger
-    {
-    if ( self = [ super init ] )
-        {
-        self.unsignedIntegerValue = _UnsignedInteger;
-        self.doubleValue = ( double )_UnsignedInteger;
-        }
-
-    return self;
-    }
-
-- ( id ) initWithDouble: ( double )_DoubleVal
-    {
-    if ( self = [ super init ] )
-        {
-        self.unsignedIntegerValue = ( NSUInteger )_DoubleVal;
-        self.doubleValue = _DoubleVal;
-        }
-
-    return self;
-    }
-
-+ ( OMCNumber* ) numberWithUnsignedInteger: ( NSUInteger )_UnsignedInteger
-    {
-    return [ [ [ [ self class ] alloc ] initWithUnsignedInteger: _UnsignedInteger ] autorelease ];
-    }
-
-+ ( OMCNumber* ) numberWithDouble: ( double )_DoubleVal
-    {
-    return [ [ [ [ self class ] alloc ] initWithDouble: _DoubleVal ] autorelease ];
-    }
-
-@end // OMCNumber
-
 // OMCOperand class
 @implementation OMCOperand
 
-@synthesize baseNumber = _baseNumber;
 @synthesize decimalNumber = _decimalNumber;
 
 @synthesize inOctal = _inOctal;
@@ -89,27 +47,9 @@
 @synthesize isWaitingForFloatNumber = _isWaitingForFloatNumber;
 
 #pragma mark Initializers & Deallocators
-+ ( id ) operandWithNumber: ( OMCNumber* )_Number
-    {
-    return [ [ [ [ self class ] alloc ] initWithNumber: _Number ] autorelease ];
-    }
-
 + ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
     {
     return [ [ [ [ self class ] alloc ] initWithDecimalNumber: _DecimalNumber ] autorelease ];
-    }
-
-- ( id ) initWithNumber: ( OMCNumber* )_Number
-    {
-    if ( self = [ super init ] )
-        {
-        self.baseNumber = _Number;
-
-        self.calStyle = OMCBasicStyle;
-        self.isWaitingForFloatNumber = NO;
-        }
-
-    return self;
     }
 
 - ( id ) initWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
@@ -128,7 +68,7 @@
 #pragma mark Accessors
 - ( NSString* ) inOctal
     {
-    return [ NSString stringWithFormat: @"%lo", self.baseNumber.unsignedIntegerValue ];
+    return [ NSString stringWithFormat: @"%lo", [ self.decimalNumber decimalNumberByRounding ];
     }
 
 - ( NSString* ) inDecimal
