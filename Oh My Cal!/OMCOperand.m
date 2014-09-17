@@ -94,11 +94,29 @@
     return [ [ [ [ self class ] alloc ] initWithNumber: _Number ] autorelease ];
     }
 
++ ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
+    {
+    return [ [ [ [ self class ] alloc ] initWithDecimalNumber: _DecimalNumber ] autorelease ];
+    }
+
 - ( id ) initWithNumber: ( OMCNumber* )_Number
     {
     if ( self = [ super init ] )
         {
         self.baseNumber = _Number;
+
+        self.calStyle = OMCBasicStyle;
+        self.isWaitingForFloatNumber = NO;
+        }
+
+    return self;
+    }
+
+- ( id ) initWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
+    {
+    if ( self = [ super init ] )
+        {
+        self.decimalNumber = _decimalNumber;
 
         self.calStyle = OMCBasicStyle;
         self.isWaitingForFloatNumber = NO;

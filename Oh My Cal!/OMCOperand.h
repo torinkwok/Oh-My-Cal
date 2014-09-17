@@ -77,6 +77,7 @@
 @property ( nonatomic, assign, setter = setWaitingForFloatNumber: ) BOOL isWaitingForFloatNumber;
 
 + ( id ) operandWithNumber: ( OMCNumber* )_Number;
++ ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber;
 
 - ( void ) appendDigit: ( NSInteger )_Digit
                  count: ( NSInteger )_Count
