@@ -78,6 +78,7 @@
 @implementation OMCOperand
 
 @synthesize baseNumber = _baseNumber;
+@synthesize decimalNumber = _decimalNumber;
 
 @synthesize inOctal = _inOctal;
 @synthesize inDecimal = _inDecimal;
@@ -142,6 +143,7 @@
                    ary: ( OMCAry )_Ary
     {
     NSUInteger baseNumber = 10;
+    NSLog( @"%d", [ self decimalPlacesForAFloatNumber: 43.2342427878798] );
 
     switch ( self.calStyle )
         {
@@ -190,7 +192,11 @@
     {
     /* Retrieve the fractional part of currentNumber
      * for example: 10.34, the fractional part is 0.34 */
-    NSString* fractionalPart = [ NSString stringWithFormat: @"%g", _FloatNumber - ( int )_FloatNumber ];
+    NSString* fractionalPart = [ NSString stringWithFormat: @"%.15g", _FloatNumber - ( int )_FloatNumber ];
+
+//    NSString* fuckString = @"523542.5255235262";
+//    double fuckDouble = [ fuckString doubleValue ];
+    NSLog( @"%.20g", 42424.342424000 );
 
     /* Decimal Places
      * for example: for 5, decimalPlaces is 1
@@ -240,6 +246,29 @@
     }
 
 @end // OMCOperand class
+
+// OMCOperand + OMCDecimalNumberBehaviors
+@implementation OMCOperand ( OMCDecimalNumberBehaviors )
+
+- ( short ) scale
+    {
+    return NSDecimalNoScale;
+    }
+
+- ( NSRoundingMode ) roundingMode
+    {
+    return NSRoundPlain;
+    }
+
+- ( NSDecimalNumber* ) exceptionDuringOperation: ( SEL )_OperationMethod
+                                          error: ( NSCalculationError )_Error
+                                    leftOperand: ( NSDecimalNumber* )_LhsOperand
+                                   rightOperand: ( NSDecimalNumber* )_RhsOperand
+    {
+    return nil;
+    }
+
+@end // OMCOperand + OMCDecimalNumberBehaviors
 
 //////////////////////////////////////////////////////////////////////////////
 

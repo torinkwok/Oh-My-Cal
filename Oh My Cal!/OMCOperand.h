@@ -54,6 +54,7 @@
     {
 @private
     OMCNumber* _baseNumber;
+    NSDecimalNumber* _decimalNumber;
 
     NSString* _inOctal;
     NSString* _inDecimal;
@@ -65,6 +66,7 @@
     }
 
 @property ( nonatomic, retain ) OMCNumber* baseNumber;
+@property ( nonatomic, retain ) NSDecimalNumber* decimalNumber;
 
 @property ( nonatomic, copy, readonly ) NSString* inOctal;
 @property ( nonatomic, copy, readonly ) NSString* inDecimal;
@@ -87,6 +89,20 @@
 - ( BOOL ) isZero;
 
 @end // OMCOperand class
+
+// OMCOperand + OMCDecimalNumberBehaviors
+@interface OMCOperand ( OMCDecimalNumberBehaviors ) <NSDecimalNumberBehaviors>
+
+- ( short ) scale;
+
+- ( NSRoundingMode ) roundingMode;
+
+- ( NSDecimalNumber* ) exceptionDuringOperation: ( SEL )_OperationMethod
+                                          error: ( NSCalculationError )_Error
+                                    leftOperand: ( NSDecimalNumber* )_LhsOperand
+                                   rightOperand: ( NSDecimalNumber* )_RhsOperand;
+
+@end // OMCOperand + OMCDecimalNumberBehaviors
 
 //////////////////////////////////////////////////////////////////////////////
 
