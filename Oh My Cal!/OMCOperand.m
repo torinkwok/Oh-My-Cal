@@ -116,6 +116,11 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return [ OMCOperand operandWithDecimalNumber: [ NSDecimalNumber one ] ];
     }
 
+- ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs
+    {
+    return [ self.decimalNumber compare: _Rhs.decimalNumber ];
+    }
+
 #pragma mark Accessors
 - ( NSString* ) inOctal
     {

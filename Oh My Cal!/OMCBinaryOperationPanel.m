@@ -38,9 +38,9 @@
 // Notification names
 NSString* const OMCBinaryStringDidChanged = @"OMCBinaryStringDidChanged";
 
-NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultValue.baseNumber.unsignedIntegerValue";
-NSString static* const kKeyPathForLhsOperandInCalculationObject = @"self.lhsOperand.baseNumber.unsignedIntegerValue";
-NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOperand.baseNumber.unsignedIntegerValue";
+NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultValue.unsignedInteger";
+NSString static* const kKeyPathForLhsOperandInCalculationObject = @"self.lhsOperand.unsignedInteger";
+NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOperand.unsignedInteger";
 
 // OMCBinaryOperationPanel class
 @implementation OMCBinaryOperationPanel

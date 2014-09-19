@@ -89,6 +89,8 @@ NSString extern* const OMCOperandDivideByZeroException;
 + ( id ) zero;
 + ( id ) one;
 
+- ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs;
+
 #pragma mark Degit Operations
 - ( void ) appendDigit: ( NSInteger )_Digit
                  count: ( NSInteger )_Count
