@@ -68,7 +68,7 @@
 #pragma mark Accessors
 - ( NSString* ) inOctal
     {
-    return [ NSString stringWithFormat: @"%lo", [ self.decimalNumber decimalNumberByRounding ];
+    return [ NSString stringWithFormat: @"%lo", [ self.decimalNumber  ];
     }
 
 - ( NSString* ) inDecimal
@@ -151,10 +151,6 @@
     /* Retrieve the fractional part of currentNumber
      * for example: 10.34, the fractional part is 0.34 */
     NSString* fractionalPart = [ NSString stringWithFormat: @"%.15g", _FloatNumber - ( int )_FloatNumber ];
-
-//    NSString* fuckString = @"523542.5255235262";
-//    double fuckDouble = [ fuckString doubleValue ];
-    NSLog( @"%.20g", 42424.342424000 );
 
     /* Decimal Places
      * for example: for 5, decimalPlaces is 1

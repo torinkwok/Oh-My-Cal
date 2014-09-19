@@ -60,8 +60,6 @@
 
 + ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber;
 
-- ( void ) integer
-
 - ( void ) appendDigit: ( NSInteger )_Digit
                  count: ( NSInteger )_Count
                    ary: ( OMCAry )_Ary;
