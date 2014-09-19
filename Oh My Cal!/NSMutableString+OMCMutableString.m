@@ -47,6 +47,22 @@
         [ self replaceCharactersInRange: NSMakeRange( 0, self.length ) withString: _String ];
     }
 
+- ( void ) deleteTheLastCharacter
+    {
+    [ self deleteCharactersInRange: NSMakeRange( self.length - 1, 1 ) ];
+    }
+
+- ( BOOL ) contains: ( NSString* )_SubString
+    {
+    BOOL contains = NO;
+
+    NSRange range = [ self rangeOfString: _SubString ];
+    if ( range.location != NSNotFound )
+        contains = YES;
+
+    return contains;
+    }
+
 - ( void ) fillWith: ( NSString* )_FillString
               count: ( NSInteger )_Count
     {
