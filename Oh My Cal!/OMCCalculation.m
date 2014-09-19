@@ -232,6 +232,13 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
                                       userInfo: nil ];
     }
 
+- ( void ) zeroedAllOperands
+    {
+    [ self.lhsOperand zeroed ];
+    [ self.rhsOperand zeroed ];
+    [ self.resultValue zeroed ];
+    }
+
 - ( void ) setCurrentAry: ( OMCAry )_Ary
     {
     if ( self->_currentAry != _Ary )

@@ -71,6 +71,8 @@ NSString extern* const OMCOperandDivideByZeroException;
 @property ( nonatomic, copy, readonly ) NSString* inDecimal;
 @property ( nonatomic, copy, readonly ) NSString* inHex;
 
+@property ( nonatomic, assign, readonly ) NSUInteger unsignedInteger;
+
 @property ( nonatomic, assign ) OMCCalStyle calStyle;
 @property ( nonatomic, assign ) OMCAry currentAry;
 
@@ -82,6 +84,7 @@ NSString extern* const OMCOperandDivideByZeroException;
 
 #pragma mark Initializers
 + ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber;
++ ( id ) operandWithUnsignedInteger: ( NSUInteger )_UsignedInteger;
 
 + ( id ) zero;
 + ( id ) one;
@@ -103,6 +106,21 @@ NSString extern* const OMCOperandDivideByZeroException;
 - ( OMCOperand* ) subtract: ( OMCOperand* )_Rhs;
 - ( OMCOperand* ) multiply: ( OMCOperand* )_Rhs;
 - ( OMCOperand* ) divide: ( OMCOperand* )_Rhs;
+- ( OMCOperand* ) mod: ( OMCOperand* )_Rhs;
+
+- ( OMCOperand* ) factorial;
+
+- ( OMCOperand* ) bitwiseAnd: ( OMCOperand* )_Rhs;
+- ( OMCOperand* ) bitwiseOr: ( OMCOperand* )_Rhs;
+- ( OMCOperand* ) bitwiseNor: ( OMCOperand* )_Rhs;
+- ( OMCOperand* ) bitwiseXor: ( OMCOperand* )_Rhs;
+- ( OMCOperand* ) Lsh: ( OMCOperand* )_Rhs;
+- ( OMCOperand* ) Rsh: ( OMCOperand* )_Rhs;
+
+- ( OMCOperand* ) RoL;
+- ( OMCOperand* ) RoR;
+
+- ( OMCOperand* ) flipBytes;
 
 @end // OMCOperand class
 

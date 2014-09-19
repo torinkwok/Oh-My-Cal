@@ -67,7 +67,9 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
         NSBeep();
     else
         {
-        NSUInteger baseNumber = operandWillBeDeleted.baseNumber.unsignedIntegerValue;
+        // REF#1 OMCOperand
+        NSUInteger baseNumber = operandWillBeDeleted.decimalNumber.unsignedIntegerValue;
+//        NSUInteger baseNumber = operandWillBeDeleted.baseNumber.unsignedIntegerValue;
 
         [ operandWillBeDeleted deleteDigit: baseNumber % 10 count: 1 ary: self.currentAry ];
 
@@ -113,9 +115,11 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
         }
     else if ( self.typingState == OMCFinishedTyping )
         {
-        [ self.lhsOperand setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
-        [ self.rhsOperand setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
-        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
+        // REF#1 OMCOperand
+        [ self zeroedAllOperands ];
+//        [ self.lhsOperand setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
+//        [ self.rhsOperand setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
+//        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
 
         [ self.theOperator clear ];
 
@@ -142,11 +146,17 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
     else if ( self.typingState == OMCFinishedTyping )
         {
         [ self.theOperator clear ];
-        [ self.lhsOperand setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
-        [ self.rhsOperand setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
 
-        [ self.lhsOperand setBaseNumber: self.resultValue.baseNumber ];
-        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
+        // REF#1 OMCOperand
+        [ self.lhsOperand zeroed ];
+        [ self.rhsOperand zeroed ];
+//        [ self.lhsOperand setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
+//        [ self.rhsOperand setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
+
+//        [ self.lhsOperand setBaseNumber: self.resultValue.baseNumber ];
+        self.lhsOperand = [ self.resultValue copy ];
+//        [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
+        [ self.resultValue zeroed ];
         [ self.theOperator appendString: [ [ _Button title ] uppercaseString ] ];
 
         self.typingState = OMCWaitRhsOperand;
@@ -159,24 +169,31 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
 
     if ( [ self.theOperator isEqualToString: @"!" ] )
         {
+        // REF#1 OMCOperand
         if ( self.typingState == OMCWaitAllOperands )
-            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: factorial( self.lhsOperand.baseNumber.unsignedIntegerValue ) ] ];
+            self.resultValue = [ self.lhsOperand factorial ];
+//            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: factorial( self.lhsOperand.baseNumber.unsignedIntegerValue ) ] ];
         else if ( self.typingState == OMCFinishedTyping )
-            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: factorial( self.resultValue.baseNumber.unsignedIntegerValue ) ] ];
+            self.resultValue = [ self.resultValue factorial ];
+//            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: factorial( self.resultValue.baseNumber.unsignedIntegerValue ) ] ];
         }
     else if ( [ self.theOperator isEqualToString: @"ROL" ] )
         {
         if ( self.typingState == OMCWaitAllOperands )
-            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue << 1 ] ];
+            self.resultValue = [ self.lhsOperand RoL ];
+//            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue << 1 ] ];
         else if ( self.typingState == OMCFinishedTyping )
-            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.resultValue.baseNumber.unsignedIntegerValue << 1 ] ];
+            self.resultValue = [ self.resultValue RoL ];
+//            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.resultValue.baseNumber.unsignedIntegerValue << 1 ] ];
         }
     else if ( [ self.theOperator isEqualToString: @"ROR" ] )
         {
         if ( self.typingState == OMCWaitAllOperands )
-            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue >> 1 ] ];
+            self.resultValue = [ self.lhsOperand RoR ];
+//            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.lhsOperand.baseNumber.unsignedIntegerValue >> 1 ] ];
         else if ( self.typingState == OMCFinishedTyping )
-            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.resultValue.baseNumber.unsignedIntegerValue >> 1 ] ];
+            self.resultValue = [ self.resultValue RoR ];
+//            [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: self.resultValue.baseNumber.unsignedIntegerValue >> 1 ] ];
         }
     else if ( [ self.theOperator isEqualToString: @"2'S" ]
             || [ self.theOperator isEqualToString: @"1'S" ] )
@@ -205,7 +222,7 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
         return;
         }
 
-    /* If the user has not finished a calculation, 
+    /* If the user has not finished a calculation, O
      * for example, they have finished typing the right operand,
      * and they want to calculate a result value... */
     if ( [ self.theOperator isEqualToString: @"+" ] )

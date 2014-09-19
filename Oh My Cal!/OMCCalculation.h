@@ -80,6 +80,8 @@ NSString extern* const OMCLastTypedButton;
 
 - ( IBAction ) calculate: ( id )_Sender;
 
+- ( void ) zeroedAllOperands;
+
 - ( void ) deleteNumberWithLastPressedButton: ( NSButton* )_Button;
 - ( void ) appendNumberWithLastPressedButton: ( NSButton* )_Button;
 - ( void ) appendUnitaryOperatorWithLastPressedButton: ( NSButton* )_Button;

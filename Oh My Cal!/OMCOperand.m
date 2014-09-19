@@ -51,6 +51,8 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 @synthesize inDecimal = _inDecimal;
 @synthesize inHex = _inHex;
 
+@synthesize unsignedInteger = _unsignedInteger;
+
 @synthesize calStyle = _calStyle;
 @synthesize currentAry = _currentAry;
 
@@ -68,6 +70,14 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 + ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
     {
     return [ [ [ [ self class ] alloc ] initWithDecimalNumber: _DecimalNumber ] autorelease ];
+    }
+
++ ( id ) operandWithUnsignedInteger: ( NSUInteger )_UnsignedInteger
+    {
+    NSNumber* unsignedNumber = [ NSNumber numberWithUnsignedInteger: _UnsignedInteger ];
+    NSDecimalNumber* resultDecimalNumber = [ NSDecimalNumber decimalNumberWithString: [ unsignedNumber stringValue ] ];
+
+    return [ OMCOperand operandWithDecimalNumber: resultDecimalNumber ];
     }
 
 - ( id ) initWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
@@ -292,6 +302,11 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return abs( [ [ self decimalNumber ] decimalValue ]._exponent );
     }
 
+- ( NSUInteger ) unsignedInteger
+    {
+    return self.decimalNumber.unsignedIntegerValue;
+    }
+
 #pragma mark Calculation
 - ( OMCOperand* ) add: ( OMCOperand* )_Rhs
     {
@@ -319,6 +334,69 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberByDividingBy: _Rhs.decimalNumber
                                                                        withBehavior: self ];
     return [ OMCOperand operandWithDecimalNumber: resultDecimal ];
+    }
+
+- ( OMCOperand* ) mod: ( OMCOperand* )_Rhs
+    {
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger % _Rhs.unsignedInteger ];
+    }
+
+- ( OMCOperand* ) factorial
+    {
+    return [ OMCOperand operandWithUnsignedInteger: factorial( self.unsignedInteger ) ];
+    }
+
+- ( OMCOperand* ) bitwiseAnd: ( OMCOperand* )_Rhs
+    {
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger & _Rhs.unsignedInteger ];
+    }
+
+- ( OMCOperand* ) bitwiseOr: ( OMCOperand* )_Rhs
+    {
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger | _Rhs.unsignedInteger ];
+    }
+    
+- ( OMCOperand* ) bitwiseNor: ( OMCOperand* )_Rhs
+    {
+    return [ OMCOperand operandWithUnsignedInteger: ~( self.unsignedInteger | _Rhs.unsignedInteger ) ];
+    }
+
+- ( OMCOperand* ) bitwiseXor: ( OMCOperand* )_Rhs
+    {
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger ^ _Rhs.unsignedInteger ];
+    }
+
+- ( OMCOperand* ) Lsh: ( OMCOperand* )_Rhs
+    {
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger << _Rhs.unsignedInteger ];
+    }
+
+- ( OMCOperand* ) Rsh: ( OMCOperand* )_Rhs
+    {
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger >> _Rhs.unsignedInteger ];
+    }
+
+- ( OMCOperand* ) RoL
+    {
+    return [ self Lsh: [ OMCOperand one ] ];
+    }
+
+- ( OMCOperand* ) RoR
+    {
+    return [ self Rsh: [ OMCOperand one ] ];
+    }
+
+- ( OMCOperand* ) flipBytes
+    {
+    return [ OMCOperand operandWithUnsignedInteger: ~self.unsignedInteger ];
+    }
+
+NSUInteger factorial( NSUInteger _X )
+    {
+    if ( _X <= 1 )
+        return 1;
+    else
+        return _X * factorial( _X - 1 );
     }
 
 @end // OMCOperand class
