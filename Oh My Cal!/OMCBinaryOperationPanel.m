@@ -31,6 +31,7 @@
  **                                                                         **
  ****************************************************************************/
 
+#import "OMCOperand.h"
 #import "OMCBinaryOperationPanel.h"
 #import "OMCBinaryAndDecimalConversion.h"
 #import "OMCProgrammerStyleCalculation.h"
@@ -38,9 +39,9 @@
 // Notification names
 NSString* const OMCBinaryStringDidChanged = @"OMCBinaryStringDidChanged";
 
-NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultValue.unsignedInteger";
-NSString static* const kKeyPathForLhsOperandInCalculationObject = @"self.lhsOperand.unsignedInteger";
-NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOperand.unsignedInteger";
+NSString static* const kKeyPathForLhsOperandInCalculationObject = @"self.lhsOperand.decimalNumber";
+NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOperand.decimalNumber";
+NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultValue.decimalNumber";
 
 // OMCBinaryOperationPanel class
 @implementation OMCBinaryOperationPanel

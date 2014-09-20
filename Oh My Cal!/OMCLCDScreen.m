@@ -250,8 +250,6 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
     {
     /* When the user is typing left operand... */
 
-//    OMCCalculation* calculation = nil;
-
     OMCOperand* operand = self.currentCalculation.lhsOperand;
     OMCAry currentAry = self.currentCalculation.currentAry;
     NSString* lhsOperandInString = nil;

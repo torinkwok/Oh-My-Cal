@@ -66,6 +66,13 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return [ self _numericStringInAry: self.currentAry ];
     }
 
+- ( id ) copyWithZone: ( NSZone* )_Zone
+    {
+    id newOperand = [ [ self class ] operandWithDecimalNumber: [ self.decimalNumber copy ] ];
+
+    return newOperand;
+    }
+
 #pragma mark Initializers & Deallocators
 + ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
     {

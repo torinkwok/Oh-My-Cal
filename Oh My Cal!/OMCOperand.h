@@ -44,7 +44,7 @@ NSString extern* const OMCOperandUnderflowException;
 NSString extern* const OMCOperandDivideByZeroException;
 
 // OMCOperand class
-@interface OMCOperand : NSObject
+@interface OMCOperand : NSObject <NSCopying>
     {
 @private
     NSDecimalNumber* _decimalNumber;
