@@ -42,8 +42,8 @@
 // OMFAppDelegate class
 @interface OMCAppDelegate : NSObject <NSApplicationDelegate, OMFMainPanelControllerDelegate>
 
-@property ( retain ) OMFStatusBarController* _statusBarController;
-@property ( retain ) OMFMainPanelController* _mainPanelController;
+@property ( nonatomic, retain ) OMFStatusBarController* _statusBarController;
+@property ( nonatomic, retain ) OMFMainPanelController* _mainPanelController;
 
 @end // OMFAppDelegate
 

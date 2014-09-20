@@ -32,6 +32,10 @@
  ****************************************************************************/
 
 #import "OMCCalculation.h"
+#import "OMCBasicStyleCalculation.h"
+#import "OMCScientificStyleCalculation.h"
+#import "OMCProgrammerStyleCalculation.h"
+
 #import "OMCOperand.h"
 #import "OMCBinaryOperationPanel.h"
 
@@ -53,7 +57,9 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 @synthesize _binaryOperationPanel;
 
 @synthesize typingState = _typingState;
+
 @synthesize currentAry = _currentAry;
+@synthesize calStyle = _calStyle;
 
 @synthesize lhsOperand = _lhsOperand;
 @synthesize rhsOperand = _rhsOperand;
@@ -72,6 +78,12 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     [ self _initializeOprands ];
 
     [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
+    if ( [ self class ] == [ OMCBasicStyleCalculation class ] )
+        self.calStyle = OMCBasicStyle;
+    else if ( [ self class ] == [ OMCScientificStyleCalculation class ] )
+        self.calStyle = OMCScientificStyle;
+    else if ( [ self class ] == [ OMCProgrammerStyleCalculation class ] )
+        self.calStyle = OMCProgrammerStyle;
 
     [ NOTIFICATION_CENTER addObserver: self
                              selector: @selector( binaryStringDidChanged: )
@@ -83,48 +95,35 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     {
     NSUInteger newDecimal = [ self convertBinaryToDecimal: self._binaryOperationPanel.binaryInString ];
 
-    // REF#1 OMCOperand
     if ( self.typingState == OMCWaitAllOperands )
         {
-//        self.lhsOperand.baseNumber = [ OMCNumber numberWithUnsignedInteger: newDecimal ];
-        self.lhsOperand = [ OMCOperand operandWithUnsignedInteger: newDecimal ];
+        self.lhsOperand = [ OMCOperand operandWithUnsignedInteger: newDecimal inAry: self.currentAry calStyle: self.calStyle ];
         self.typingState = OMCWaitAllOperands;
         }
     else if ( self.typingState == OMCWaitRhsOperand )
         {
-//        self.rhsOperand.baseNumber = [ OMCNumber numberWithUnsignedInteger: newDecimal ];
-        self.rhsOperand = [ OMCOperand operandWithUnsignedInteger: newDecimal ];
+        self.rhsOperand = [ OMCOperand operandWithUnsignedInteger: newDecimal inAry: self.currentAry calStyle: self.calStyle ];
         self.typingState = OMCWaitRhsOperand;
         }
     else if ( self.typingState == OMCFinishedTyping )
         {
         [ self zeroedAllOperands ];
-//        self.lhsOperand.baseNumber = [ OMCNumber numberWithUnsignedInteger: 0U ];
-//        self.rhsOperand.baseNumber = [ OMCNumber numberWithUnsignedInteger: 0U ];
-//        self.resultValue.baseNumber = [ OMCNumber numberWithUnsignedInteger: 0U ];
-//
-//        [ self.theOperator clear ];
 
-//        self.lhsOperand.baseNumber = [ OMCNumber numberWithUnsignedInteger: newDecimal ];
-        self.lhsOperand = [ OMCOperand operandWithUnsignedInteger: newDecimal ];
+        self.lhsOperand = [ OMCOperand operandWithUnsignedInteger: newDecimal inAry: self.currentAry calStyle: self.calStyle ];
         self.typingState = OMCWaitAllOperands;
         }
     }
 
 - ( void ) _initializeOprands
     {
-    // REF#1 OMCOperand
     if ( !self.lhsOperand )
         self.lhsOperand = [ OMCOperand zero ];
-//        self.lhsOperand = [ OMCOperand operandWithNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
 
     if ( !self.rhsOperand )
         self.rhsOperand = [ OMCOperand zero ];
-//        self.rhsOperand = [ OMCOperand operandWithNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
 
     if ( !self.resultValue )
         self.resultValue = [ OMCOperand zero ];
-//        self.resultValue = [ OMCOperand operandWithNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
 
     if ( !self.theOperator )
         self.theOperator = [ NSMutableString string ];
@@ -203,13 +202,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
 - ( void ) clearAllAndReset
     {
-    // Because of clearing and resetting, all thing should be zero
-    // REF#1 OMCOperand
     [ self zeroedAllOperands ];
-//    [ self.resultValue setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
-//    [ self.lhsOperand setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
-//    [ self.rhsOperand setBaseNumber: [ OMCNumber numberWithUnsignedInteger: 0U ] ];
-//    [ self.theOperator clear ];
 
     self.typingState = OMCWaitAllOperands;
     }
@@ -219,13 +212,11 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     if ( self.typingState == OMCWaitAllOperands )
         {
         [ self.lhsOperand zeroed ];
-//        self.lhsOperand.baseNumber = [ OMCNumber numberWithUnsignedInteger: 0U ];
         self.typingState = OMCWaitAllOperands;
         }
     else if ( self.typingState == OMCWaitRhsOperand )
         {
         [ self.rhsOperand zeroed ];
-//        self.rhsOperand.baseNumber = [ OMCNumber numberWithUnsignedInteger: 0U ];
         self.typingState = OMCWaitRhsOperand;
         }
     else if ( self.typingState == OMCFinishedTyping )
