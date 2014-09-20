@@ -73,11 +73,11 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 #pragma mark Initializers & Deallocators
 - ( void ) awakeFromNib
     {
-    [ self setTypingState: OMCWaitAllOperands ];
-
     [ self _initializeOprands ];
 
+    [ self setTypingState: OMCWaitAllOperands ];
     [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
+
     if ( [ self class ] == [ OMCBasicStyleCalculation class ] )
         self.calStyle = OMCBasicStyle;
     else if ( [ self class ] == [ OMCScientificStyleCalculation class ] )

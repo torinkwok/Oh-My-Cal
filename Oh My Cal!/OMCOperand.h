@@ -50,10 +50,6 @@ NSString extern* const OMCOperandDivideByZeroException;
     NSDecimalNumber* _decimalNumber;
     NSMutableString* _numericString;
 
-    NSString* _inOctal;
-    NSString* _inDecimal;
-    NSString* _inHex;
-
     OMCCalStyle _calStyle;
     OMCAry      _currentAry;
 

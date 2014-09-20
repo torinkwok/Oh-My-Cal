@@ -60,23 +60,23 @@
     // If Oh My Cal! is in the initial state or user is just typing the left operand
     if ( self.typingState == OMCWaitAllOperands )
         {
-//        [ self.lhsOperand setWaitingForFloatNumber: isWaitingForFloatNumber ];
         [ self.lhsOperand appendDigit: numberWillBeAppended count: appendCount ary: self.currentAry ];
         self.typingState = OMCWaitAllOperands;
         }
     else if ( self.typingState == OMCWaitRhsOperand )
         {
-//        [ self.rhsOperand setWaitingForFloatNumber: isWaitingForFloatNumber ];
         [ self.rhsOperand appendDigit: numberWillBeAppended count: appendCount ary: self.currentAry ];
         self.typingState = OMCWaitRhsOperand;   // Wait for the user to pressing next button
         }
     else if ( self.typingState == OMCFinishedTyping )
         {
-        [ self.lhsOperand setBaseNumber: @.0f ];
-        [ self.rhsOperand setBaseNumber: @.0f ];
-        [ self.resultValue setBaseNumber: @.0f ];
+        // REF#1
+        [ self zeroedAllOperands ];
+//        [ self.lhsOperand setBaseNumber: @.0f ];
+//        [ self.rhsOperand setBaseNumber: @.0f ];
+//        [ self.resultValue setBaseNumber: @.0f ];
 
-        [ self.theOperator clear ];
+//        [ self.theOperator clear ];
 
         [ self.lhsOperand appendDigit: numberWillBeAppended count: appendCount ary: self.currentAry ];
         self.typingState = OMCWaitAllOperands;  // Wait for the user to pressing next button

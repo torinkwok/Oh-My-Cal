@@ -47,9 +47,9 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 @synthesize decimalNumber = _decimalNumber;
 @synthesize numericString = _numericString;
 
-@synthesize inOctal = _inOctal;
-@synthesize inDecimal = _inDecimal;
-@synthesize inHex = _inHex;
+@synthesize inOctal;
+@synthesize inDecimal;
+@synthesize inHex;
 
 @synthesize unsignedInteger = _unsignedInteger;
 
