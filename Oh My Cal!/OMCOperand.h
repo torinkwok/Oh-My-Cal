@@ -89,10 +89,11 @@ NSString extern* const OMCOperandDivideByZeroException;
                             inAry: ( OMCAry )_Ary
                          calStyle: ( OMCCalStyle )_CalStyle;
 
-+ ( id ) operandWithUnsignedInteger: ( NSUInteger )_UsignedInteger;
++ ( id ) operandWithUnsignedInteger: ( NSUInteger )_UnsignedInteger;
 
-+ ( id ) operandWithUnsignedInteger: ( NSUInteger )_UsignedInteger
-                            inAry: ( OMCAry )_Ary;
++ ( id ) operandWithUnsignedInteger: ( NSUInteger )_UnsignedInteger
+                              inAry: ( OMCAry )_Ary
+                           calStyle: ( OMCCalStyle )_CalStyle;
 
 + ( id ) zero;
 + ( id ) one;
