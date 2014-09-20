@@ -252,14 +252,14 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
 
     OMCOperand* operand = self.currentCalculation.lhsOperand;
     OMCAry currentAry = self.currentCalculation.currentAry;
-    NSString* lhsOperandInString = nil;
+    NSString* lhsOperandInString = [ operand description ];
 
-    if ( currentAry == OMCOctal )
-        lhsOperandInString = [ operand inOctal ];
-    else if ( currentAry == OMCDecimal )
-        lhsOperandInString = [ operand inDecimal ];
-    else if ( currentAry == OMCHex )
-        lhsOperandInString = [ operand inHex ];
+//    if ( currentAry == OMCOctal )
+//        lhsOperandInString = [ operand inOctal ];
+//    else if ( currentAry == OMCDecimal )
+//        lhsOperandInString = [ operand inDecimal ];
+//    else if ( currentAry == OMCHex )
+//        lhsOperandInString = [ operand inHex ];
 
     /* ...we should only draw the left operand into the bottommost space bar. It's easy, isn't it? :) */
     [ lhsOperandInString drawAtPoint: [ self _pointUsedForDrawingOperands: lhsOperandInString inSpaceBar: self.bottommostSpaceBar ]
@@ -274,26 +274,26 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
     OMCOperand* lhsOperand = self.currentCalculation.lhsOperand;
     OMCOperand* rhsOperand = self.currentCalculation.rhsOperand;
 
-    OMCAry currentAry = self.currentCalculation.currentAry;
+//    OMCAry currentAry = self.currentCalculation.currentAry;
 
-    NSString* lhsOperandInString = nil;
-    NSString* rhsOperandInString = nil;
+    NSString* lhsOperandInString = [ lhsOperand description ];
+    NSString* rhsOperandInString = [ rhsOperand description ];
 
-    if ( currentAry == OMCOctal )
-        {
-        lhsOperandInString = [ lhsOperand inOctal ];
-        rhsOperandInString = [ rhsOperand inOctal ];
-        }
-    else if ( currentAry == OMCDecimal )
-        {
-        lhsOperandInString = [ lhsOperand inDecimal ];
-        rhsOperandInString = [ rhsOperand inDecimal ];
-        }
-    else if ( currentAry == OMCHex )
-        {
-        lhsOperandInString = [ lhsOperand inHex ];
-        rhsOperandInString = [ rhsOperand inHex ];
-        }
+//    if ( currentAry == OMCOctal )
+//        {
+//        lhsOperandInString = [ lhsOperand inOctal ];
+//        rhsOperandInString = [ rhsOperand inOctal ];
+//        }
+//    else if ( currentAry == OMCDecimal )
+//        {
+//        lhsOperandInString = [ lhsOperand inDecimal ];
+//        rhsOperandInString = [ rhsOperand inDecimal ];
+//        }
+//    else if ( currentAry == OMCHex )
+//        {
+//        lhsOperandInString = [ lhsOperand inHex ];
+//        rhsOperandInString = [ rhsOperand inHex ];
+//        }
 
     /* ...we must draw a left operand into the bottom third space bar... */
     [ lhsOperandInString drawAtPoint: [ self _pointUsedForDrawingOperands: lhsOperandInString inSpaceBar: self.thirdSpaceBar ]
@@ -319,14 +319,14 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
     OMCOperand* resultValue = self.currentCalculation.resultValue;
     OMCAry currentAry = self.currentCalculation.currentAry;
 
-    NSString* resultValueInString = nil;
+    NSString* resultValueInString = [ resultValue description ];
 
-    if ( currentAry == OMCOctal )
-        resultValueInString = [ resultValue inOctal ];
-    else if ( currentAry == OMCDecimal )
-        resultValueInString = [ resultValue inDecimal ];
-    else if ( currentAry == OMCHex )
-        resultValueInString = [ resultValue inHex ];
+//    if ( currentAry == OMCOctal )
+//        resultValueInString = [ resultValue inOctal ];
+//    else if ( currentAry == OMCDecimal )
+//        resultValueInString = [ resultValue inDecimal ];
+//    else if ( currentAry == OMCHex )
+//        resultValueInString = [ resultValue inHex ];
 
     [ resultValueInString drawAtPoint: [ self _pointUsedForDrawingOperands: resultValueInString inSpaceBar: self.bottommostSpaceBar ]
                        withAttributes: _AttributesForOperands ];

@@ -84,7 +84,14 @@ NSString extern* const OMCOperandDivideByZeroException;
 
 #pragma mark Initializers
 + ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber;
+
++ ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
+                            inAry: ( OMCAry )_Ary;
+
 + ( id ) operandWithUnsignedInteger: ( NSUInteger )_UsignedInteger;
+
++ ( id ) operandWithUnsignedInteger: ( NSUInteger )_UsignedInteger
+                            inAry: ( OMCAry )_Ary;
 
 + ( id ) zero;
 + ( id ) one;

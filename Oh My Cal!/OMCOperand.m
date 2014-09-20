@@ -79,6 +79,12 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return [ [ [ [ self class ] alloc ] initWithDecimalNumber: _DecimalNumber ] autorelease ];
     }
 
++ ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
+                            inAry: ( OMCAry )_Ary
+    {
+
+    }
+
 + ( id ) operandWithUnsignedInteger: ( NSUInteger )_UnsignedInteger
     {
     NSNumber* unsignedNumber = [ NSNumber numberWithUnsignedInteger: _UnsignedInteger ];

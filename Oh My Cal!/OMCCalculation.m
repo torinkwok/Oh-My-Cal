@@ -68,9 +68,10 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 - ( void ) awakeFromNib
     {
     [ self setTypingState: OMCWaitAllOperands ];
-    [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
 
     [ self _initializeOprands ];
+
+    [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
 
     [ NOTIFICATION_CENTER addObserver: self
                              selector: @selector( binaryStringDidChanged: )
@@ -257,7 +258,13 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 - ( void ) setCurrentAry: ( OMCAry )_Ary
     {
     if ( self->_currentAry != _Ary )
+        {
         self->_currentAry = _Ary;
+
+        [ self.lhsOperand setCurrentAry: self->_currentAry ];
+        [ self.rhsOperand setCurrentAry: self->_currentAry ];
+        [ self.resultValue setCurrentAry: self->_currentAry ];
+        }
 
     [ NOTIFICATION_CENTER postNotificationName: OMCCurrentAryDidChangedNotification
                                         object: self
