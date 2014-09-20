@@ -34,6 +34,7 @@
 #import "OMFPanelBackgroundView.h"
 
 #import "OMCLCDScreen.h"
+#import "OMCCalculation.h"
 #import "OMCSettingsBar.h"
 #import "OMCBinaryOperationBox.h"
 #import "OMCBinaryOperationPanel.h"
@@ -257,6 +258,10 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 
     [ self _checkCorrectStyleMenuItem: self._currentCalStyle ];
     [ self _switchCalStyle: self._currentCalStyle ];
+
+    if ( self._currentCalStyle == OMCBasicStyle || self._currentCalStyle == OMCScientificStyle )
+        [ self._LCDScreen.currentCalculation setCurrentAry: OMCDecimal ];
+    // TODO: BUG!
     }
 
 - ( void ) _checkCorrectStyleMenuItem: ( OMCCalStyle )_CalStyle
