@@ -86,7 +86,8 @@ NSString extern* const OMCOperandDivideByZeroException;
 + ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber;
 
 + ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
-                            inAry: ( OMCAry )_Ary;
+                            inAry: ( OMCAry )_Ary
+                         calStyle: ( OMCCalStyle )_CalStyle;
 
 + ( id ) operandWithUnsignedInteger: ( NSUInteger )_UsignedInteger;
 
