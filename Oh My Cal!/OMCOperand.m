@@ -68,7 +68,9 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 
 - ( id ) copyWithZone: ( NSZone* )_Zone
     {
-    id newOperand = [ [ self class ] operandWithDecimalNumber: [ self.decimalNumber copy ] ];
+    id newOperand = [ [ self class ] operandWithDecimalNumber: [ self.decimalNumber copy ]
+                                                        inAry: self.currentAry
+                                                     calStyle: self.calStyle ];
 
     return newOperand;
     }
@@ -100,10 +102,9 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     NSNumber* unsignedNumber = [ NSNumber numberWithUnsignedInteger: _UnsignedInteger ];
     NSDecimalNumber* resultDecimalNumber = [ NSDecimalNumber decimalNumberWithString: [ unsignedNumber stringValue ] ];
 
-    OMCOperand* newOperand = [ OMCOperand operandWithDecimalNumber: resultDecimalNumber ];
-    [ newOperand setCurrentAry: _Ary ];
-    [ newOperand setCalStyle: _CalStyle ];
-
+    OMCOperand* newOperand = [ OMCOperand operandWithDecimalNumber: resultDecimalNumber
+                                                             inAry: _Ary
+                                                          calStyle: _CalStyle];
     return newOperand;
     }
 
@@ -351,68 +352,92 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     {
     NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberByAdding: _Rhs.decimalNumber
                                                                    withBehavior: self ];
-    return [ OMCOperand operandWithDecimalNumber: resultDecimal ];
+    return [ OMCOperand operandWithDecimalNumber: resultDecimal
+                                           inAry: self.currentAry
+                                        calStyle: self.calStyle ];
     }
 
 - ( OMCOperand* ) subtract: ( OMCOperand* )_Rhs
     {
     NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberBySubtracting: _Rhs.decimalNumber
                                                                         withBehavior: self ];
-    return [ OMCOperand operandWithDecimalNumber: resultDecimal ];
+    return [ OMCOperand operandWithDecimalNumber: resultDecimal
+                                           inAry: self.currentAry
+                                        calStyle: self.calStyle ];
     }
 
 - ( OMCOperand* ) multiply: ( OMCOperand* )_Rhs
     {
     NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberByMultiplyingBy: _Rhs.decimalNumber
                                                                           withBehavior: self ];
-    return [ OMCOperand operandWithDecimalNumber: resultDecimal ];
+    return [ OMCOperand operandWithDecimalNumber: resultDecimal
+                                           inAry: self.currentAry
+                                        calStyle: self.calStyle ];
     }
 
 - ( OMCOperand* ) divide: ( OMCOperand* )_Rhs
     {
     NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberByDividingBy: _Rhs.decimalNumber
                                                                        withBehavior: self ];
-    return [ OMCOperand operandWithDecimalNumber: resultDecimal ];
+    return [ OMCOperand operandWithDecimalNumber: resultDecimal
+                                           inAry: self.currentAry
+                                        calStyle: self.calStyle ];
     }
 
 - ( OMCOperand* ) mod: ( OMCOperand* )_Rhs
     {
-    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger % _Rhs.unsignedInteger ];
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger % _Rhs.unsignedInteger
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
     }
 
 - ( OMCOperand* ) factorial
     {
-    return [ OMCOperand operandWithUnsignedInteger: factorial( self.unsignedInteger ) ];
+    return [ OMCOperand operandWithUnsignedInteger: factorial( self.unsignedInteger )
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
     }
 
 - ( OMCOperand* ) bitwiseAnd: ( OMCOperand* )_Rhs
     {
-    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger & _Rhs.unsignedInteger ];
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger & _Rhs.unsignedInteger
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
     }
 
 - ( OMCOperand* ) bitwiseOr: ( OMCOperand* )_Rhs
     {
-    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger | _Rhs.unsignedInteger ];
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger | _Rhs.unsignedInteger
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
     }
     
 - ( OMCOperand* ) bitwiseNor: ( OMCOperand* )_Rhs
     {
-    return [ OMCOperand operandWithUnsignedInteger: ~( self.unsignedInteger | _Rhs.unsignedInteger ) ];
+    return [ OMCOperand operandWithUnsignedInteger: ~( self.unsignedInteger | _Rhs.unsignedInteger )
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
     }
 
 - ( OMCOperand* ) bitwiseXor: ( OMCOperand* )_Rhs
     {
-    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger ^ _Rhs.unsignedInteger ];
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger ^ _Rhs.unsignedInteger
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
     }
 
 - ( OMCOperand* ) Lsh: ( OMCOperand* )_Rhs
     {
-    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger << _Rhs.unsignedInteger ];
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger << _Rhs.unsignedInteger
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
     }
 
 - ( OMCOperand* ) Rsh: ( OMCOperand* )_Rhs
     {
-    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger >> _Rhs.unsignedInteger ];
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger >> _Rhs.unsignedInteger
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
     }
 
 - ( OMCOperand* ) RoL
@@ -427,7 +452,9 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 
 - ( OMCOperand* ) flipBytes
     {
-    return [ OMCOperand operandWithUnsignedInteger: ~self.unsignedInteger ];
+    return [ OMCOperand operandWithUnsignedInteger: ~self.unsignedInteger
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
     }
 
 NSUInteger factorial( NSUInteger _X )
