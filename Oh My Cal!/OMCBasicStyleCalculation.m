@@ -46,16 +46,6 @@
     [ self.resultValue setCalStyle: OMCBasicStyle ];
     }
 
-- ( void ) appendUnitaryOperatorWithLastPressedButton: ( NSButton* )_Button
-    {
-    // TODO: Implementation for Basic Style Calculation
-    }
-
-- ( void ) appendBinaryOperatorWithLastPressedButton: ( NSButton* )_Button
-    {
-
-    }
-
 @end // OMCBasicStyleCalculation
 
 //////////////////////////////////////////////////////////////////////////////

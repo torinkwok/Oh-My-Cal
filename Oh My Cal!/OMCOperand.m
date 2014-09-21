@@ -292,8 +292,18 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 
 - ( void ) zeroed
     {
+    if ( self.isWaitingForFloatNumber )
+        self.isWaitingForFloatNumber = NO;
+
     self.decimalNumber = [ NSDecimalNumber zero ];
-    [ self.numericString replaceAllWithString: @"0" ];
+
+    NSString* zeroString = nil;
+    if ( self.currentAry == OMCProgrammerStyle )
+        zeroString = @"0x0";
+    else
+        zeroString = @"0";
+
+    [ self.numericString replaceAllWithString: zeroString ];
     }
 
 - ( void ) _appendDigit: ( NSString* )_DigitToBeAppend
