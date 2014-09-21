@@ -131,12 +131,68 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
 - ( void ) deleteNumberWithLastPressedButton: ( NSButton* )_Button
     {
-    __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__;
+    OMCOperand* operandWillBeDeleted = nil;
+
+    if ( self.typingState == OMCWaitAllOperands )
+        operandWillBeDeleted = self.lhsOperand;
+    else if ( self.typingState == OMCWaitRhsOperand )
+        operandWillBeDeleted = self.rhsOperand;
+    else if ( self.typingState == OMCFinishedTyping )
+        {
+        NSBeep();
+        return;
+        }
+
+    if ( operandWillBeDeleted.isZero )
+        NSBeep();
+    else
+        {
+        NSUInteger baseNumber = operandWillBeDeleted.decimalNumber.unsignedIntegerValue;
+
+        [ operandWillBeDeleted deleteDigit: baseNumber % 10 count: 1 ary: self.currentAry ];
+
+        if ( self.typingState == OMCWaitAllOperands )
+            self.typingState = OMCWaitAllOperands;
+        else if ( self.typingState == OMCWaitRhsOperand )
+            self.typingState = OMCWaitRhsOperand;
+        }
     }
 
 - ( void ) appendNumberWithLastPressedButton: ( NSButton* )_Button
     {
-    __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__;
+    NSString* buttonTitle = [ _Button title ];
+    NSInteger numberWillBeAppended = numberWillBeAppended = [ buttonTitle integerValue ];
+
+    BOOL isWaitingForFloatNumber = [ buttonTitle isEqualToString: @"." ];
+    if ( isWaitingForFloatNumber )
+        numberWillBeAppended = -1;
+
+    NSInteger appendCount = 1;  // appendCount in basicStyleCalculation is always 1
+
+    // If Oh My Cal! is in the initial state or user is just typing the left operand
+    if ( self.typingState == OMCWaitAllOperands )
+        {
+        [ self.lhsOperand appendDigit: numberWillBeAppended count: appendCount ary: self.currentAry ];
+        self.typingState = OMCWaitAllOperands;
+        }
+    else if ( self.typingState == OMCWaitRhsOperand )
+        {
+        [ self.rhsOperand appendDigit: numberWillBeAppended count: appendCount ary: self.currentAry ];
+        self.typingState = OMCWaitRhsOperand;   // Wait for the user to pressing next button
+        }
+    else if ( self.typingState == OMCFinishedTyping )
+        {
+        // REF#1
+        [ self zeroedAllOperands ];
+//        [ self.lhsOperand setBaseNumber: @.0f ];
+//        [ self.rhsOperand setBaseNumber: @.0f ];
+//        [ self.resultValue setBaseNumber: @.0f ];
+
+//        [ self.theOperator clear ];
+
+        [ self.lhsOperand appendDigit: numberWillBeAppended count: appendCount ary: self.currentAry ];
+        self.typingState = OMCWaitAllOperands;  // Wait for the user to pressing next button
+        }
     }
 
 - ( void ) appendUnitaryOperatorWithLastPressedButton: ( NSButton* )_Button

@@ -49,35 +49,6 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
     [ self.resultValue setCalStyle: OMCProgrammerStyle ];
     }
 
-- ( void ) deleteNumberWithLastPressedButton: ( NSButton* )_Button
-    {
-    OMCOperand* operandWillBeDeleted = nil;
-
-    if ( self.typingState == OMCWaitAllOperands )
-        operandWillBeDeleted = self.lhsOperand;
-    else if ( self.typingState == OMCWaitRhsOperand )
-        operandWillBeDeleted = self.rhsOperand;
-    else if ( self.typingState == OMCFinishedTyping )
-        {
-        NSBeep();
-        return;
-        }
-
-    if ( operandWillBeDeleted.isZero )
-        NSBeep();
-    else
-        {
-        NSUInteger baseNumber = operandWillBeDeleted.decimalNumber.unsignedIntegerValue;
-
-        [ operandWillBeDeleted deleteDigit: baseNumber % 10 count: 1 ary: self.currentAry ];
-
-        if ( self.typingState == OMCWaitAllOperands )
-            self.typingState = OMCWaitAllOperands;
-        else if ( self.typingState == OMCWaitRhsOperand )
-            self.typingState = OMCWaitRhsOperand;
-        }
-    }
-
 - ( void ) appendNumberWithLastPressedButton: ( NSButton* )_Button
     {
     NSString* buttonTitle = [ _Button title ];
@@ -114,7 +85,6 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
     else if ( self.typingState == OMCFinishedTyping )
         {
         [ self zeroedAllOperands ];
-        [ self.theOperator clear ];
 
         [ self.lhsOperand appendDigit: numberWillBeAppended count: appendCount ary: self.currentAry ];
         self.typingState = OMCWaitAllOperands;  // Wait for the user to pressing next button
