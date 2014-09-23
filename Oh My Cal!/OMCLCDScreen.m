@@ -269,6 +269,10 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
     NSString* lhsOperandInString = [ lhsOperand description ];
     NSString* rhsOperandInString = [ rhsOperand description ];
 
+//    if ( [ lhsOperandInString contains: @"." ]
+//            && lhsOperand.isWaitingForFloatNumber && ( [ lhsOperand decimalPlaces ] == 0 ) )
+//        lhsOperandInString = [ lhsOperandInString stringBy
+
     /* ...we must draw a left operand into the bottom third space bar... */
     [ lhsOperandInString drawAtPoint: [ self _pointUsedForDrawingOperands: lhsOperandInString inSpaceBar: self.thirdSpaceBar ]
                       withAttributes: _AttributesForOperands ];

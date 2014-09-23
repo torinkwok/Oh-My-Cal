@@ -85,6 +85,12 @@ NSString extern* const OMCOperandDivideByZeroException;
                             inAry: ( OMCAry )_Ary
                          calStyle: ( OMCCalStyle )_CalStyle;
 
++ ( id ) operandWithString: ( NSString* )_NumericString;
+
++ ( id ) operandWithString: ( NSString* )_NumericString
+                     inAry: ( OMCAry )_Ary
+                  calStyle: ( OMCCalStyle )_CalStyle;
+
 + ( id ) operandWithUnsignedInteger: ( NSUInteger )_UnsignedInteger;
 
 + ( id ) operandWithUnsignedInteger: ( NSUInteger )_UnsignedInteger

@@ -90,6 +90,24 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                                                      calStyle: _CalStyle ] autorelease ];
     }
 
++ ( id ) operandWithString: ( NSString* )_NumericString
+    {
+    NSDecimalNumber* numeric = [ NSDecimalNumber decimalNumberWithString: _NumericString ];
+
+    return [ OMCOperand operandWithDecimalNumber: numeric ];
+    }
+
++ ( id ) operandWithString: ( NSString* )_NumericString
+                     inAry: ( OMCAry )_Ary
+                  calStyle: ( OMCCalStyle )_CalStyle
+    {
+    OMCOperand* newOperand = [ OMCOperand operandWithString: _NumericString ];
+    [ newOperand setCurrentAry: _Ary ];
+    [ newOperand setCalStyle: _CalStyle ];
+
+    return newOperand;
+    }
+
 + ( id ) operandWithUnsignedInteger: ( NSUInteger )_UnsignedInteger
     {
     return [ OMCOperand operandWithUnsignedInteger: _UnsignedInteger inAry: OMCDecimal calStyle: OMCBasicStyle ];
@@ -274,18 +292,27 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     case OMCProgrammerStyle:
             {
             NSUInteger baseNumber = 10;
-            NSUInteger currentNumber = [ [ self decimalNumber ] unsignedIntegerValue ];
 
             if ( _Ary == OMCDecimal )           baseNumber = 10;
                 else if ( _Ary == OMCOctal )    baseNumber = 8;
                 else if ( _Ary == OMCHex )      baseNumber = 16;
 
-            NSUInteger newNumeric = ( NSUInteger )( ( currentNumber - _Digit ) / pow( ( double )baseNumber, ( double )_Count ) );
-            NSString* newNumericString = [ NSNumber numberWithUnsignedInteger: newNumeric ].stringValue;
+            NSDecimalNumber* digitNumeric = [ NSDecimalNumber decimalNumberWithString: [ NSString stringWithFormat: @"%ld", _Digit ] ];
+            NSDecimalNumber* exponent = [ NSDecimalNumber decimalNumberWithString: [ NSString stringWithFormat: @"%g", pow( ( double )baseNumber, ( double )_Count ) ] ];
 
-            self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: newNumericString ];
+            NSDecimalNumberHandler* roundUpBehavior = [ NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode: NSRoundUp scale: 0 raiseOnExactness: NO raiseOnOverflow: NO raiseOnUnderflow: NO raiseOnDivideByZero: NO ];
+            NSDecimalNumberHandler* roundDownBehavior = [ NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode: NSRoundDown scale: 0 raiseOnExactness: NO raiseOnOverflow: NO raiseOnUnderflow: NO raiseOnDivideByZero: NO ];
 
-            [ self.numericString replaceAllWithString: [ self _numericStringInAry: _Ary ] ];
+            NSDecimalNumber* newNumeric = nil;
+            newNumeric = [ [ self.decimalNumber decimalNumberBySubtracting: digitNumeric ] decimalNumberByDividingBy: exponent withBehavior: roundUpBehavior ];
+
+            OMCOperand* newOperand = [ OMCOperand operandWithDecimalNumber: newNumeric inAry: self.currentAry calStyle: self.calStyle ];
+
+            if ( ![ newOperand.description isEqualToString: [ self.description substringToIndex: self.description.length - 1 ] ] )
+                newNumeric = [ [ self.decimalNumber decimalNumberBySubtracting: digitNumeric ] decimalNumberByDividingBy: exponent withBehavior: roundDownBehavior ];
+
+            self.decimalNumber = newNumeric;
+            [ self.numericString replaceAllWithString: [ newNumeric description ] ];
             } break;
         }
     }

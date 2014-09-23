@@ -31,35 +31,12 @@
  **                                                                         **
  ****************************************************************************/
 
-#import "NSMutableString+OMCMutableString.h"
+// NSString + OMCCalculation
+@interface NSString ( OMCString )
 
-// NSMutableString + OMCCalculation
-@implementation NSMutableString ( OMCCalculation )
+- ( BOOL ) contains: ( NSString* )_SubString;
 
-- ( void ) clear
-    {
-    [ self deleteCharactersInRange: NSMakeRange( 0, [ self length ] ) ];
-    }
-
-- ( void ) replaceAllWithString: ( NSString* )_String
-    {
-    if ( _String )
-        [ self replaceCharactersInRange: NSMakeRange( 0, self.length ) withString: _String ];
-    }
-
-- ( void ) deleteTheLastCharacter
-    {
-    [ self deleteCharactersInRange: NSMakeRange( self.length - 1, 1 ) ];
-    }
-
-- ( void ) fillWith: ( NSString* )_FillString
-              count: ( NSInteger )_Count
-    {
-    for ( NSInteger index = 0; index < _Count; index++ )
-        [ self appendString: _FillString ];
-    }
-
-@end // NSMutableString + OMCCalculation
+@end // NSString + OMCString
 
 //////////////////////////////////////////////////////////////////////////////
 

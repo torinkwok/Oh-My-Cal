@@ -97,6 +97,7 @@ typedef enum { OMCOctal, OMCDecimal, OMCHex } OMCAry;
 
 typedef enum { OMCWaitAllOperands, OMCWaitRhsOperand, OMCFinishedTyping } OMCTypingState;
 
+#import "NSString+OMCString.h"
 #import "NSMutableString+OMCMutableString.h"
 
 #define BIT_COUNT       64

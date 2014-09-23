@@ -42,8 +42,6 @@
 
 - ( void ) deleteTheLastCharacter;
 
-- ( BOOL ) contains: ( NSString* )_SubString;
-
 - ( void ) fillWith: ( NSString* )_FillString
               count: ( NSInteger )_Count;
 
