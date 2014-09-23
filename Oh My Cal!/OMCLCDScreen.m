@@ -305,7 +305,8 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
             && self.currentCalculation.lastTypedButtonType != OMCRoL
             && self.currentCalculation.lastTypedButtonType != OMCRoR
             && self.currentCalculation.lastTypedButtonType != OMC2_s
-            && self.currentCalculation.lastTypedButtonType != OMC1_s )
+            && self.currentCalculation.lastTypedButtonType != OMC1_s
+            && ![ resultValue.exceptionCarried isEqualToString: OMCOperandDivideByZeroException ] )
         [ self _drawRhsOperandWithAttributesForOperands: _AttributesForOperands
                                          andForOperator: _AttributesForOperator ];
     }
@@ -330,7 +331,8 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
       * draw a "0" for Octal and Decimal and a "0x0" for Hex, respectively. */
     if ( _CurrentTypingState == OMCWaitAllOperands
         /* If the length of lhsOperand is greater than 0, that means no need to draw the placeholder for left operand */
-        && self.currentCalculation.lhsOperand.isZero )
+        && self.currentCalculation.lhsOperand.isZero
+        && !self.currentCalculation.lhsOperand.isWaitingForFloatNumber )
         {
         // As with all calculators, the initial state should only be drawn in the bottommost space bar.
         [ placeholder drawAtPoint: [ self _pointUsedForDrawingOperands: placeholder inSpaceBar: self.bottommostSpaceBar ]

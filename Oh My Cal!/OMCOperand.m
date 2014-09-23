@@ -58,6 +58,8 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 
 @synthesize isWaitingForFloatNumber = _isWaitingForFloatNumber;
 
+@synthesize exceptionCarried = _exceptionCarried;
+
 @synthesize decimalNumberHandler = _decimalNumberHandler;
 
 #pragma mark Overrides
@@ -167,6 +169,14 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 + ( id ) one
     {
     return [ OMCOperand operandWithDecimalNumber: [ NSDecimalNumber one ] ];
+    }
+
++ ( id ) divByZero
+    {
+    OMCOperand* newOperand = [ OMCOperand operandWithDecimalNumber: [ NSDecimalNumber notANumber ] ];
+    [ newOperand setExceptionCarried: OMCOperandDivideByZeroException ];
+
+    return newOperand;
     }
 
 - ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs
@@ -365,6 +375,9 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 
 - ( NSString* ) _numericStringInAry: ( OMCAry )_Ary
     {
+    if ( [ self.exceptionCarried isEqualToString: OMCOperandDivideByZeroException ] )
+        return @"DivByZero";
+
     NSString* numericString = nil;
 
     if ( _Ary == OMCDecimal )           numericString = [ self inDecimal ];

@@ -302,7 +302,14 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         self.resultValue = [ self.lhsOperand multiply: self.rhsOperand ];
 
     else if ( [ self.theOperator isEqualToString: @"÷" ] )
-        self.resultValue = [ self.lhsOperand divide: self.rhsOperand ];
+        {
+        @try {
+            self.resultValue = [ self.lhsOperand divide: self.rhsOperand ];
+            } @catch ( NSException* _Ex )
+                {
+                self.resultValue = [ OMCOperand divByZero ];
+                }
+        }
 
 
     else if ( [ self.theOperator isEqualToString: @"AND" ] )

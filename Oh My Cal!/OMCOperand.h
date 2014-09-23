@@ -55,6 +55,8 @@ NSString extern* const OMCOperandDivideByZeroException;
 
     BOOL _isWaitingForFloatNumber;  // TRUE only after user pressing the `.` button
 
+    NSString* _exceptionCarried;
+
 #if DEBUG   // Just for testing
     NSDecimalNumberHandler* _decimalNumberHandler;
 #endif
@@ -75,6 +77,8 @@ NSString extern* const OMCOperandDivideByZeroException;
 @property ( nonatomic, assign, readonly ) int decimalPlaces;
 
 @property ( nonatomic, assign, setter = setWaitingForFloatNumber: ) BOOL isWaitingForFloatNumber;
+
+@property ( nonatomic, copy ) NSString* exceptionCarried;
 
 @property ( nonatomic, retain ) NSDecimalNumberHandler* decimalNumberHandler;
 
@@ -99,6 +103,7 @@ NSString extern* const OMCOperandDivideByZeroException;
 
 + ( id ) zero;
 + ( id ) one;
++ ( id ) divByZero;
 
 - ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs;
 
