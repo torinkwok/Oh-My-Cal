@@ -330,17 +330,18 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
      /* If Oh My Cal! is in the initial state or user has already typed *nothing* for current operand
       * draw a "0" for Octal and Decimal and a "0x0" for Hex, respectively. */
     if ( _CurrentTypingState == OMCWaitAllOperands
-        /* If the length of lhsOperand is greater than 0, that means no need to draw the placeholder for left operand */
-        && self.currentCalculation.lhsOperand.isZero
-        && !self.currentCalculation.lhsOperand.isWaitingForFloatNumber )
+            /* If the length of lhsOperand is greater than 0, that means no need to draw the placeholder for left operand */
+            && self.currentCalculation.lhsOperand.isZero
+            && !self.currentCalculation.lhsOperand.isWaitingForFloatNumber )
         {
         // As with all calculators, the initial state should only be drawn in the bottommost space bar.
         [ placeholder drawAtPoint: [ self _pointUsedForDrawingOperands: placeholder inSpaceBar: self.bottommostSpaceBar ]
                    withAttributes: _Attributes ];
         }
     else if ( _CurrentTypingState == OMCWaitRhsOperand
-        /* If the length of rhsOperand is greater than 0, that means no need to draw the placeholder for right operand */
-        && self.currentCalculation.rhsOperand.isZero )
+            /* If the length of rhsOperand is greater than 0, that means no need to draw the placeholder for right operand */
+            && self.currentCalculation.rhsOperand.isZero
+            && !self.currentCalculation.rhsOperand.isWaitingForFloatNumber )
         {
         [ placeholder drawAtPoint: [ self _pointUsedForDrawingOperands: placeholder inSpaceBar: self.secondSpaceBar ]
                    withAttributes: _Attributes ];
