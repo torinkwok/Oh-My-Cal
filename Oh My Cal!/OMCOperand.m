@@ -267,7 +267,7 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
             if ( [ newNumericString length ] <= UNSIGNED_INT_OPERAND_MAX_DIGIT )
                 self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: newNumericString ];
             else
-                ;   // TODO: NSBeep();
+                NSBeep();
 
             [ self.numericString replaceAllWithString: [ self _numericStringInAry: _Ary ] ];
             } break;
@@ -300,18 +300,28 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
             NSDecimalNumber* digitNumeric = [ NSDecimalNumber decimalNumberWithString: [ NSString stringWithFormat: @"%ld", _Digit ] ];
             NSDecimalNumber* exponent = [ NSDecimalNumber decimalNumberWithString: [ NSString stringWithFormat: @"%g", pow( ( double )baseNumber, ( double )_Count ) ] ];
 
-            NSDecimalNumberHandler* roundUpBehavior = [ NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode: NSRoundUp scale: 0 raiseOnExactness: NO raiseOnOverflow: NO raiseOnUnderflow: NO raiseOnDivideByZero: NO ];
-            NSDecimalNumberHandler* roundDownBehavior = [ NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode: NSRoundDown scale: 0 raiseOnExactness: NO raiseOnOverflow: NO raiseOnUnderflow: NO raiseOnDivideByZero: NO ];
+            NSDecimalNumberHandler* roundUpBehavior = [ NSDecimalNumberHandler roundUpBehavior ];
+            NSDecimalNumberHandler* roundDownBehavior = [ NSDecimalNumberHandler roundDownBehavior ];
+
+            /* TODO: To be graceful */
 
             NSDecimalNumber* newNumeric = nil;
+
+            /* The initial numeric, and it is waiting for testing of consistency, so the value may not be a final value */
             newNumeric = [ [ self.decimalNumber decimalNumberBySubtracting: digitNumeric ] decimalNumberByDividingBy: exponent withBehavior: roundUpBehavior ];
 
-            OMCOperand* newOperand = [ OMCOperand operandWithDecimalNumber: newNumeric inAry: self.currentAry calStyle: self.calStyle ];
+            /* This operand is just for testing of consistency! */
+            OMCOperand* operandJustForTestingConsistency = [ OMCOperand operandWithDecimalNumber: newNumeric inAry: self.currentAry calStyle: self.calStyle ];
 
-            if ( ![ newOperand.description isEqualToString: [ self.description substringToIndex: self.description.length - 1 ] ] )
+            /* If inconsistent due to round up... */
+            NSString* theCorrectFormAfterDeletingTheLastDigit = [ self.description substringToIndex: self.description.length - 1 ];
+            if ( ![ operandJustForTestingConsistency.description isEqualToString: theCorrectFormAfterDeletingTheLastDigit ] )
+                /* ...round down */
                 newNumeric = [ [ self.decimalNumber decimalNumberBySubtracting: digitNumeric ] decimalNumberByDividingBy: exponent withBehavior: roundDownBehavior ];
 
-            self.decimalNumber = newNumeric;
+            /* ^ It's double insurance, it's very useful, but it's very ugly. Hmmm...I admit that. ^ */
+
+            [ self setDecimalNumber: newNumeric ];
             [ self.numericString replaceAllWithString: [ newNumeric description ] ];
             } break;
         }
@@ -568,6 +578,31 @@ NSUInteger factorial( NSUInteger _X )
     }
 
 @end // OMCOperand + OMCDecimalNumberBehaviors
+
+// NSDecimalNumberHandler + OMCOperand
+@implementation NSDecimalNumberHandler ( OMCOperand )
+
++ ( instancetype ) roundUpBehavior
+    {
+    return [ NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode: NSRoundUp
+                                                                   scale: 0
+                                                        raiseOnExactness: NO
+                                                         raiseOnOverflow: NO
+                                                        raiseOnUnderflow: NO
+                                                     raiseOnDivideByZero: NO ];
+    }
+
++ ( instancetype ) roundDownBehavior
+    {
+    return [ NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode: NSRoundDown
+                                                                   scale: 0
+                                                        raiseOnExactness: NO
+                                                         raiseOnOverflow: NO
+                                                        raiseOnUnderflow: NO
+                                                     raiseOnDivideByZero: NO ];
+    }
+
+@end // NSDecimalNumberHandler + OMCOperand
 
 //////////////////////////////////////////////////////////////////////////////
 

@@ -33,7 +33,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define UNSIGNED_INT_OPERAND_MAX_DIGIT  17
+#define UNSIGNED_INT_OPERAND_MAX_DIGIT  16
 
 NSString extern* const OMCDot;
 
@@ -150,6 +150,14 @@ NSString extern* const OMCOperandDivideByZeroException;
                                    rightOperand: ( NSDecimalNumber* )_RhsOperand;
 
 @end // OMCOperand + OMCDecimalNumberBehaviors
+
+// NSDecimalNumberHandler + OMCOperand
+@interface NSDecimalNumberHandler ( OMCOperand )
+
++ ( instancetype ) roundUpBehavior;
++ ( instancetype ) roundDownBehavior;
+
+@end // NSDecimalNumberHandler + OMCOperand
 
 //////////////////////////////////////////////////////////////////////////////
 
