@@ -47,6 +47,17 @@
     return contains;
     }
 
+- ( BOOL ) endingAs: ( NSString* )_String
+    {
+    BOOL isEndAsThisString = NO;
+
+    NSRange range = [ self rangeOfString: _String ];
+    if ( ( range.location + range.length ) == [ self length ] )
+        isEndAsThisString = YES;
+
+    return isEndAsThisString;
+    }
+
 @end// NSString + OMCString
 
 //////////////////////////////////////////////////////////////////////////////

@@ -36,6 +36,8 @@
 
 - ( BOOL ) contains: ( NSString* )_SubString;
 
+- ( BOOL ) endingAs: ( NSString* )_String;
+
 @end // NSString + OMCString
 
 //////////////////////////////////////////////////////////////////////////////
