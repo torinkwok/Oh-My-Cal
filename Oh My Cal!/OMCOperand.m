@@ -332,7 +332,9 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
             /* ^ It's double insurance, it's very useful, but it's very ugly. Hmmm...I admit that. ^ */
 
             [ self setDecimalNumber: newNumeric ];
-            [ self.numericString replaceAllWithString: [ newNumeric description ] ];
+
+            OMCOperand* resultOperand = [ OMCOperand operandWithDecimalNumber: newNumeric inAry: self.currentAry calStyle: self.calStyle ];
+            [ self.numericString replaceAllWithString: [ resultOperand numericString ] ];
             } break;
         }
     }

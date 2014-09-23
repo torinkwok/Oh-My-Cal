@@ -39,6 +39,10 @@
 #import "OMCOperand.h"
 #import "OMCBinaryOperationPanel.h"
 
+// Notification UserInfo Keys
+NSString* const OMCCalculationNewTypingState = @"OMCCalculationNewTypingState";
+NSString* const OMCCalculationNewAry = @"OMCCalculationNewAry";
+
 // Notifications
 NSString* const OMCCurrentTypingStateDidChangedNotification = @"OMCCurrentTypingStateDidChangedNotification";
 NSString* const OMCCurrentAryDidChangedNotification = @"OMCCurrentAryDidChangedNotification";
@@ -428,7 +432,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     [ NOTIFICATION_CENTER postNotificationName: OMCCurrentTypingStateDidChangedNotification
                                         object: self
-                                      userInfo: nil ];
+                                      userInfo: @{ OMCCalculationNewTypingState : [ NSNumber numberWithInt: self.typingState ] } ];
     }
 
 - ( void ) zeroedAllOperands
@@ -460,7 +464,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     [ NOTIFICATION_CENTER postNotificationName: OMCCurrentAryDidChangedNotification
                                         object: self
-                                      userInfo: nil ];
+                                      userInfo: @{ OMCCalculationNewAry : [ NSNumber numberWithInt: self.currentAry ] } ];
     }
 
 #pragma mark Conforms <OMCBinaryAndDecimalConversion> protocol

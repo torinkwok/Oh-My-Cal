@@ -155,6 +155,7 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
 
 - ( void ) currentTypingStateDidChanged: ( NSNotification* )_Notif
     {
+    [ self setTypingState: [ _Notif.userInfo[ OMCCalculationNewTypingState ] intValue ] ];
     [ self setNeedsDisplay: YES ];
     }
 
@@ -251,7 +252,7 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
     /* When the user is typing left operand... */
 
     OMCOperand* operand = self.currentCalculation.lhsOperand;
-    NSString* lhsOperandInString = [ operand description ];
+    NSString* lhsOperandInString = ( self.typingState == OMCWaitAllOperands ) ? [ operand numericString ] : [ operand description ];
 
     /* ...we should only draw the left operand into the bottommost space bar. It's easy, isn't it? :) */
     [ lhsOperandInString drawAtPoint: [ self _pointUsedForDrawingOperands: lhsOperandInString inSpaceBar: self.bottommostSpaceBar ]
@@ -266,8 +267,8 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
     OMCOperand* lhsOperand = self.currentCalculation.lhsOperand;
     OMCOperand* rhsOperand = self.currentCalculation.rhsOperand;
 
-    NSString* lhsOperandInString = [ lhsOperand description ];
-    NSString* rhsOperandInString = [ rhsOperand description ];
+    NSString* lhsOperandInString = ( self.typingState == OMCWaitAllOperands ) ? [ lhsOperand numericString ] : [ lhsOperand description ];
+    NSString* rhsOperandInString = ( self.typingState == OMCWaitRhsOperand ) ? [ rhsOperand numericString ] : [ rhsOperand description ];
 
     if ( [ lhsOperandInString endingAs: OMCDot ] )
         lhsOperandInString = [ lhsOperandInString substringToIndex: lhsOperandInString.length - 1 ];
