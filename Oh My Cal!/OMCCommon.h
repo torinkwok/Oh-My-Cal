@@ -75,22 +75,29 @@ typedef enum { OMCAnd = 0, OMCOr = 1,  OMCNor = 2,  OMCXor = 3
              , OMCLsh = 4, OMCRsh = 5, OMCRoL = 6,  OMCRoR = 7
              , OMC2_s = 8, OMC1_s = 9, OMCMod = 10, OMCFactorial = 11
 
-             , OMCOne = 12,  OMCTwo = 13,  OMCThree = 14, OMCFour = 15
-             , OMCFive = 16, OMCSix = 17,  OMCSeven = 18, OMCEight = 19
+             , OMCOne = 12,  OMCTwo = 13,  OMCThree = 14,   OMCFour = 15
+             , OMCFive = 16, OMCSix = 17,  OMCSeven = 18,   OMCEight = 19
              , OMCNine = 20, OMCZero = 21, OMCDoubleZero = 22
-             , OMC0xA = 23,  OMC0xB = 24,  OMC0xC = 25, OMC0xD = 26
+             , OMC0xA = 23,  OMC0xB = 24,  OMC0xC = 25,     OMC0xD = 26
              , OMC0xE = 27,  OMC0xF = 28,  OMC0xFF = 29
 
              , OMCDel = 30, OMCAC = 31, OMCClear = 32, OMCEnter = 33
 
-             , OMCAdd = 34, OMCSub = 35, OMCMuliply = 36, OMCDivide = 37
-             , OMCLeftParenthesis = 38, OMCRightParenthesis = 39
+             , OMCAdd = 34, OMCSub = 35,    OMCMuliply = 36, OMCDivide = 37
+             , OMCLeftParenthesis = 38,     OMCRightParenthesis = 39
 
              , OMCMemoryClear = 40, OMCMemoryAdd = 41, OMCMemorySub = 42, OMCMemoryRead = 43
 
              , OMCPositiveAndNegative = 44
 
              , OMCFloatPoint = 45
+
+             , OMCShift = 46,       OMCPercent = 47
+             , OMCReciprocal = 48,  OMCSquare = 49,     OMCCube = 50,   OMCxPower = 51
+             , OMCFactorial = 52,   OMCSqrt = 53,       OMCRad = 54,    OMCLog2 = 55
+             , OMCSin = 56,         OMCCos = 57,        OMCTan = 58,    OMCLog10 = 59
+             , OMCSinh = 60,        OMCCosh = 61,       OMCTanh = 62,   OMCIn = 63
+             , OMCPi = 64,          OMCe = 65,          OMCRand = 66,   OMCEE = 67
              } OMCProgrammerStyleButtonType;
 
 typedef enum { OMCOctal, OMCDecimal, OMCHex } OMCAry;
