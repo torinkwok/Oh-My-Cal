@@ -552,7 +552,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="Gtq-Iz-cMS"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="52" translatesAutoresizingMaskIntoConstraints="NO" id="xlw-mm-E4b">
+                <button verticalHuggingPriority="750" fixedFrame="YES" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="xlw-mm-E4b">
                     <rect key="frame" x="12" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="!" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tvj-FY-4ng" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

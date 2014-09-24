@@ -94,7 +94,7 @@ typedef enum { OMCAnd = 0, OMCOr = 1,  OMCNor = 2,  OMCXor = 3
 
              , OMCShift = 46,       OMCPercent = 47
              , OMCReciprocal = 48,  OMCSquare = 49,     OMCCube = 50,   OMCxPower = 51
-             , OMCFactorial = 52,   OMCSqrt = 53,       OMCRad = 54,    OMCLog2 = 55
+             , OMCSqrt = 53,        OMCRad = 54,    OMCLog2 = 55
              , OMCSin = 56,         OMCCos = 57,        OMCTan = 58,    OMCLog10 = 59
              , OMCSinh = 60,        OMCCosh = 61,       OMCTanh = 62,   OMCIn = 63
              , OMCPi = 64,          OMCe = 65,          OMCRand = 66,   OMCEE = 67
