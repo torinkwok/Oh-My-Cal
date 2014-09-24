@@ -81,27 +81,30 @@ NSString extern* const OMCOperandDivideByZeroException;
 @property ( nonatomic, retain ) NSDecimalNumberHandler* decimalNumberHandler;
 
 #pragma mark Initializers
-+ ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber;
++ ( instancetype ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber;
 
-+ ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
-                            inAry: ( OMCAry )_Ary
-                         calStyle: ( OMCCalStyle )_CalStyle;
++ ( instancetype ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
+                                      inAry: ( OMCAry )_Ary
+                                   calStyle: ( OMCCalStyle )_CalStyle;
 
-+ ( id ) operandWithString: ( NSString* )_NumericString;
++ ( instancetype ) operandWithString: ( NSString* )_NumericString;
 
-+ ( id ) operandWithString: ( NSString* )_NumericString
-                     inAry: ( OMCAry )_Ary
-                  calStyle: ( OMCCalStyle )_CalStyle;
++ ( instancetype ) operandWithString: ( NSString* )_NumericString
+                               inAry: ( OMCAry )_Ary
+                            calStyle: ( OMCCalStyle )_CalStyle;
 
-+ ( id ) operandWithUnsignedInteger: ( NSUInteger )_UnsignedInteger;
++ ( instancetype ) operandWithUnsignedInteger: ( NSUInteger )_UnsignedInteger;
 
-+ ( id ) operandWithUnsignedInteger: ( NSUInteger )_UnsignedInteger
-                              inAry: ( OMCAry )_Ary
-                           calStyle: ( OMCCalStyle )_CalStyle;
++ ( instancetype ) operandWithUnsignedInteger: ( NSUInteger )_UnsignedInteger
+                                        inAry: ( OMCAry )_Ary
+                                     calStyle: ( OMCCalStyle )_CalStyle;
 
-+ ( id ) zero;
-+ ( id ) one;
-+ ( id ) divByZero;
++ ( instancetype ) zero;
++ ( instancetype ) one;
++ ( instancetype ) divByZero;
+
+- ( instancetype ) abs;
+- ( instancetype ) positiveOrNegative;
 
 - ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs;
 

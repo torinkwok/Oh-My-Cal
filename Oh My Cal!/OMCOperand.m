@@ -80,30 +80,30 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     }
 
 #pragma mark Initializers & Deallocators
-+ ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
++ ( instancetype ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
     {
     return [ self operandWithDecimalNumber: _DecimalNumber inAry: OMCDecimal calStyle: OMCBasicStyle ];
     }
 
-+ ( id ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
-                            inAry: ( OMCAry )_Ary
-                         calStyle: ( OMCCalStyle )_CalStyle
++ ( instancetype ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
+                                      inAry: ( OMCAry )_Ary
+                                   calStyle: ( OMCCalStyle )_CalStyle
     {
     return [ [ [ [ self class ] alloc ] initWithDecimalNumber: _DecimalNumber
                                                         inAry: _Ary
                                                      calStyle: _CalStyle ] autorelease ];
     }
 
-+ ( id ) operandWithString: ( NSString* )_NumericString
++ ( instancetype ) operandWithString: ( NSString* )_NumericString
     {
     NSDecimalNumber* numeric = [ NSDecimalNumber decimalNumberWithString: _NumericString ];
 
     return [ OMCOperand operandWithDecimalNumber: numeric ];
     }
 
-+ ( id ) operandWithString: ( NSString* )_NumericString
-                     inAry: ( OMCAry )_Ary
-                  calStyle: ( OMCCalStyle )_CalStyle
++ ( instancetype ) operandWithString: ( NSString* )_NumericString
+                              inAry: ( OMCAry )_Ary
+                           calStyle: ( OMCCalStyle )_CalStyle
     {
     OMCOperand* newOperand = [ OMCOperand operandWithString: _NumericString ];
     [ newOperand setCurrentAry: _Ary ];
@@ -112,14 +112,14 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return newOperand;
     }
 
-+ ( id ) operandWithUnsignedInteger: ( NSUInteger )_UnsignedInteger
++ ( instancetype ) operandWithUnsignedInteger: ( NSUInteger )_UnsignedInteger
     {
     return [ OMCOperand operandWithUnsignedInteger: _UnsignedInteger inAry: OMCDecimal calStyle: OMCBasicStyle ];
     }
 
-+ ( id ) operandWithUnsignedInteger: ( NSUInteger )_UnsignedInteger
-                              inAry: ( OMCAry )_Ary
-                           calStyle: ( OMCCalStyle )_CalStyle
++ ( instancetype ) operandWithUnsignedInteger: ( NSUInteger )_UnsignedInteger
+                                        inAry: ( OMCAry )_Ary
+                                     calStyle: ( OMCCalStyle )_CalStyle
     {
     NSNumber* unsignedNumber = [ NSNumber numberWithUnsignedInteger: _UnsignedInteger ];
     NSDecimalNumber* resultDecimalNumber = [ NSDecimalNumber decimalNumberWithString: [ unsignedNumber stringValue ] ];
@@ -130,15 +130,15 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return newOperand;
     }
 
-- ( id ) initWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
+- ( instancetype ) initWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
     {
     return [ self initWithDecimalNumber: _DecimalNumber inAry: OMCDecimal calStyle: OMCBasicStyle ];
     }
 
 // Designated Initializer
-- ( id ) initWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
-                         inAry: ( OMCAry )_Ary
-                      calStyle: ( OMCCalStyle )_CalStyle
+- ( instancetype ) initWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
+                                   inAry: ( OMCAry )_Ary
+                                calStyle: ( OMCCalStyle )_CalStyle
     {
     if ( self = [ super init ] )
         {
@@ -156,22 +156,45 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return self;
     }
 
-+ ( id ) zero
++ ( instancetype ) zero
     {
     return [ OMCOperand operandWithDecimalNumber: [ NSDecimalNumber zero ] ];
     }
 
-+ ( id ) one
++ ( instancetype ) one
     {
     return [ OMCOperand operandWithDecimalNumber: [ NSDecimalNumber one ] ];
     }
 
-+ ( id ) divByZero
++ ( instancetype ) divByZero
     {
     OMCOperand* newOperand = [ OMCOperand operandWithDecimalNumber: [ NSDecimalNumber notANumber ] ];
     [ newOperand setExceptionCarried: OMCOperandDivideByZeroException ];
 
     return newOperand;
+    }
+
+- ( instancetype ) abs
+    {
+    NSDecimal decimalValue = [ self.decimalNumber decimalValue ];
+    decimalValue._isNegative = NO;
+
+    return [ OMCOperand operandWithDecimalNumber: [ NSDecimalNumber decimalNumberWithDecimal: decimalValue ]
+                                           inAry: self.currentAry
+                                        calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) positiveOrNegative
+    {
+    if ( [ self compare: [ OMCOperand zero ] ] == NSOrderedSame )
+        return [ OMCOperand zero ];
+
+    NSDecimal decimalValue = [ self.decimalNumber decimalValue ];
+    decimalValue._isNegative = !decimalValue._isNegative;
+
+    return [ OMCOperand operandWithDecimalNumber: [ NSDecimalNumber decimalNumberWithDecimal: decimalValue ]
+                                           inAry: self.currentAry
+                                        calStyle: self.calStyle ];
     }
 
 - ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs

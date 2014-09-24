@@ -361,6 +361,29 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     switch ( self.lastTypedButtonType )
         {
+    case OMCPositiveAndNegative:
+            {
+            if ( self.typingState == OMCWaitAllOperands )
+                {
+                self.lhsOperand = [ self.lhsOperand positiveOrNegative ];
+                self.typingState = OMCWaitAllOperands;
+                }
+            else if ( self.typingState == OMCWaitRhsOperand )
+                {
+                self.rhsOperand = [ self.rhsOperand positiveOrNegative ];
+                self.typingState = OMCWaitRhsOperand;
+                }
+            else if ( self.typingState == OMCFinishedTyping )
+                {
+                OMCOperand* resultOperand = [ self.resultValue positiveOrNegative ];
+
+                [ self clearAllAndReset ];
+
+                self.lhsOperand = resultOperand;
+                self.typingState = OMCWaitAllOperands;
+                }
+            } return;
+
     // Numbers
     case OMCOne:    case OMCTwo:    case OMCThree:
     case OMCFour:   case OMCFive:   case OMCSix:
@@ -441,32 +464,16 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
             OMCOperand* operandToBeAdded = nil;
 
             if ( self.typingState == OMCWaitAllOperands )
-                {
                 operandToBeAdded = self.lhsOperand;
-                [ self.lhsOperand setInMemory: YES ];
-                }
             else if ( self.typingState == OMCWaitRhsOperand )
-                {
                 operandToBeAdded = self.rhsOperand;
-                [ self.rhsOperand setInMemory: YES ];
-                }
             else if ( self.typingState == OMCFinishedTyping )
-                {
                 operandToBeAdded = self.resultValue;
-                [ self.resultValue setInMemory: YES ];
-                }
 
             self.memory = [ self.memory subtract: operandToBeAdded ];
             } return;
 
-    case OMCMemoryClear:
-            {
-            [ self.memory zeroed ];
-
-            [ self.lhsOperand setInMemory: NO ];
-            [ self.rhsOperand setInMemory: NO ];
-            [ self.resultValue setInMemory: NO ];
-            } return;
+    case OMCMemoryClear: [ self clearMemory ];   return;
 
     case OMCMemoryRead:
             {
@@ -488,6 +495,15 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
                 }
             } return;
         }
+    }
+
+- ( void ) clearMemory
+    {
+    [ self.memory zeroed ];
+
+    [ self.lhsOperand setInMemory: NO ];
+    [ self.rhsOperand setInMemory: NO ];
+    [ self.resultValue setInMemory: NO ];
     }
 
 - ( void ) clearAllAndReset
