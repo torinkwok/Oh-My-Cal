@@ -39,6 +39,7 @@
 		833F645119AF03BB001C7C35 /* OMCBinaryOperationBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 833F645019AF03BB001C7C35 /* OMCBinaryOperationBox.m */; };
 		833F645519AF2FBE001C7C35 /* OMCCalculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 833F645419AF2FBE001C7C35 /* OMCCalculation.m */; };
 		8351EF2A19D113ED00D5FD7D /* NSString+OMCString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8351EF2919D113ED00D5FD7D /* NSString+OMCString.m */; };
+		838B9A5619D33C49008F9827 /* OMCCalWithScientificStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B9A5519D33C49008F9827 /* OMCCalWithScientificStyle.m */; };
 		839396ED19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 839396EC19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m */; };
 		839396F019ADD791008D8A3C /* OMCLCDScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 839396EF19ADD791008D8A3C /* OMCLCDScreen.m */; };
 		839396F219ADE567008D8A3C /* OMCDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 839396F119ADE567008D8A3C /* OMCDefaults.plist */; };
@@ -159,6 +160,8 @@
 		833F645419AF2FBE001C7C35 /* OMCCalculation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCCalculation.m; path = "Oh My Cal!/OMCCalculation.m"; sourceTree = "<group>"; };
 		8351EF2819D113ED00D5FD7D /* NSString+OMCString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+OMCString.h"; path = "Oh My Cal!/NSString+OMCString.h"; sourceTree = "<group>"; };
 		8351EF2919D113ED00D5FD7D /* NSString+OMCString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+OMCString.m"; path = "Oh My Cal!/NSString+OMCString.m"; sourceTree = "<group>"; };
+		838B9A5419D33C49008F9827 /* OMCCalWithScientificStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCCalWithScientificStyle.h; path = "Oh My Cal!/OMCCalWithScientificStyle.h"; sourceTree = "<group>"; };
+		838B9A5519D33C49008F9827 /* OMCCalWithScientificStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCCalWithScientificStyle.m; path = "Oh My Cal!/OMCCalWithScientificStyle.m"; sourceTree = "<group>"; };
 		839396EB19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCCalWithProgrammerStyle.h; path = "Oh My Cal!/OMCCalWithProgrammerStyle.h"; sourceTree = "<group>"; };
 		839396EC19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCCalWithProgrammerStyle.m; path = "Oh My Cal!/OMCCalWithProgrammerStyle.m"; sourceTree = "<group>"; };
 		839396EE19ADD791008D8A3C /* OMCLCDScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCLCDScreen.h; path = "Oh My Cal!/OMCLCDScreen.h"; sourceTree = "<group>"; };
@@ -355,6 +358,8 @@
 				83FD69A419C3820200B4488C /* OMCCal.m */,
 				83FD69A019C3753000B4488C /* OMCCalWithBasicStyle.h */,
 				83FD69A119C3753000B4488C /* OMCCalWithBasicStyle.m */,
+				838B9A5419D33C49008F9827 /* OMCCalWithScientificStyle.h */,
+				838B9A5519D33C49008F9827 /* OMCCalWithScientificStyle.m */,
 				839396EB19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.h */,
 				839396EC19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m */,
 			);
@@ -670,6 +675,7 @@
 				833F645519AF2FBE001C7C35 /* OMCCalculation.m in Sources */,
 				83FD699C19C3679900B4488C /* OMCBasicStyleCalculation.m in Sources */,
 				83FD69A519C3820200B4488C /* OMCCal.m in Sources */,
+				838B9A5619D33C49008F9827 /* OMCCalWithScientificStyle.m in Sources */,
 				83099CAF19ADBB2E00DDBF1D /* BGHUDTokenAttachmentCell.m in Sources */,
 				83099CA219ADBB2E00DDBF1D /* BGHUDScroller.m in Sources */,
 				83099C9B19ADBB2E00DDBF1D /* BGHUDColorWell.m in Sources */,
