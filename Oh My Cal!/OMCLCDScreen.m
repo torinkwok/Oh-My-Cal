@@ -37,7 +37,7 @@
 #import "OMCOperand.h"
 
 #import "OMCBasicStyleCalculation.h"
-// TODO: #import "OMCScientificStyleCalculation.h"
+#import "OMCScientificStyleCalculation.h"
 #import "OMCProgrammerStyleCalculation.h"
 
 #import "OMCCalWithBasicStyle.h"
@@ -57,11 +57,11 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
 @synthesize _mainPanelBackgroundView;
 
 @synthesize _basicStyleCalculation;
-// TODO: @synthesize _scientificStyleCalculation;
+@synthesize _scientificStyleCalculation;
 @synthesize _programmerStyleCalculation;
 
 @synthesize _calWithBasicStyle;
-// TODO: @synthesize _calWithScientificStyle;
+@synthesize _calWithScientificStyle;
 @synthesize _calWithProgrammerStyle;
 
 @synthesize auxiliaryLinePath = _auxiliaryLinePath;
@@ -133,8 +133,8 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
 
         if ( style == OMCBasicStyle )
             self.currentCalculation = self._basicStyleCalculation;
-        else if ( style == OMCScientificStyle );
-            // TODO: self.currentCalculation = self._scientificStyleCalculation;
+        else if ( style == OMCScientificStyle )
+            self.currentCalculation = self._scientificStyleCalculation;
         else if ( style == OMCProgrammerStyle )
             self.currentCalculation = self._programmerStyleCalculation;
         }

@@ -40,6 +40,7 @@
 #import "OMCBinaryOperationPanel.h"
 
 #import "OMCCalWithBasicStyle.h"
+#import "OMCCalWithScientificStyle.h"
 #import "OMCCalWithProgrammerStyle.h"
 
 #import "OMFMainPanelController.h"
@@ -103,7 +104,7 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
     [ [ self _binaryOperationBox ] removeFromSuperview ];
 
     [ [ self _calWithBasicStyle ] removeFromSuperview ];
-    // TODO: [ [ self _calWithScientificStyle ] removeFromSuperview ];
+    [ [ self _calWithScientificStyle ] removeFromSuperview ];
     [ [ self _calWithProgrammerStyle ] removeFromSuperview ];
     }
 
@@ -120,7 +121,7 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
     switch( _CalStyle )
         {
     case OMCBasicStyle:         currentCal = self._calWithBasicStyle;       break;
-    case OMCScientificStyle:    currentCal = self._calWithProgrammerStyle;/* TODO currentCal = self._calWithScientificStyle: */ break;
+    case OMCScientificStyle:    currentCal = self._calWithScientificStyle;/* TODO currentCal = self._calWithScientificStyle: */ break;
     case OMCProgrammerStyle:    currentCal = self._calWithProgrammerStyle;  break;
         }
 
@@ -131,7 +132,7 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 
     /* Binary Operation Box */
     BOOL isBasicStyle = ( currentCal == self._calWithBasicStyle );
-    // TODO: BOOL isScientificStyle;
+    BOOL isScientificStyle = ( currentCal == self._calWithScientificStyle );
     BOOL isProgrammerStyle = ( currentCal == self._calWithProgrammerStyle );
     if ( isProgrammerStyle )
         {
@@ -146,9 +147,10 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
     CGFloat maxYForSettingBar = 0.f;
     if ( isBasicStyle )
         maxYForSettingBar = NSMaxY( self._calWithBasicStyle.frame ) + kPaddingBetweenBinaryOperationPanelAndKeyboard;
+    else if ( isScientificStyle )
+        maxYForSettingBar = NSMaxY( self._calWithScientificStyle.frame ) + kPaddingBetweenBinaryOperationPanelAndKeyboard;
     else if ( isProgrammerStyle )
         maxYForSettingBar = NSMaxY( self._binaryOperationBox.frame );
-    // TODO: else if ( isScientifictStyle )
 
     [ self._settingsBar setFrame: NSMakeRect( NSMinX( self.bounds ) + kPaddingVal
                                             , maxYForSettingBar

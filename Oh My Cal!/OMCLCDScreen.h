@@ -37,7 +37,7 @@
 
 @class OMCCalculation;
 @class OMCBasicStyleCalculation;
-// TODO: @class OMCScientificStyleCalculation;
+@class OMCScientificStyleCalculation;
 @class OMCProgrammerStyleCalculation;
 
 @class OMCCalWithBasicStyle;
@@ -76,11 +76,11 @@ typedef NSRect OMCSpaceBarRect;
 @property ( nonatomic, assign ) IBOutlet OMFPanelBackgroundView* _mainPanelBackgroundView;
 
 @property ( nonatomic, assign ) IBOutlet OMCBasicStyleCalculation* _basicStyleCalculation;
-// TODO: @property ( nonatomic, assign ) IBOutlet OMCScientificStyleCalculation* _scientificStyleCalculation;
+@property ( nonatomic, assign ) IBOutlet OMCScientificStyleCalculation* _scientificStyleCalculation;
 @property ( nonatomic, assign ) IBOutlet OMCProgrammerStyleCalculation* _programmerStyleCalculation;
 
 @property ( nonatomic, assign ) IBOutlet OMCCalWithBasicStyle* _calWithBasicStyle;
-// TODO: @property ( nonatomic, assign ) IBOutlet OMCCalWithScientificStyle* _calWithScientificStyle;
+@property ( nonatomic, assign ) IBOutlet OMCCalWithScientificStyle* _calWithScientificStyle;
 @property ( nonatomic, assign ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
 
 @property ( nonatomic, assign, readonly ) OMCSpaceBarRect bottommostSpaceBar;

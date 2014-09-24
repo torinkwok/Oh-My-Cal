@@ -40,6 +40,7 @@
 @class OMCBinaryOperationPanel;
 
 @class OMCCalWithBasicStyle;
+@class OMCCalWithScientificStyle;
 @class OMCCalWithProgrammerStyle;
 
 // OMFPanelBackgroundView class
@@ -58,6 +59,7 @@
     @property ( nonatomic, assign ) IBOutlet OMCBinaryOperationPanel* _binaryOperationPanel;
 
 @property ( nonatomic, assign ) IBOutlet OMCCalWithBasicStyle* _calWithBasicStyle;
+@property ( nonatomic, assign ) IBOutlet OMCCalWithScientificStyle* _calWithScientificStyle;
 @property ( nonatomic, assign ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
 
 @property ( nonatomic, assign ) IBOutlet NSMenuItem* _basicStyleMenuItem;
