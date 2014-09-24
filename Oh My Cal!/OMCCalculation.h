@@ -94,6 +94,8 @@ NSString extern* const OMCLastTypedButton;
 
 @property ( nonatomic, retain ) NSMutableString* theOperator;
 
+@property ( nonatomic, assign, readonly ) BOOL isBinomialInLastCalculation;
+
 - ( IBAction ) calculate: ( id )_Sender;
 
 - ( void ) zeroedAllOperands;

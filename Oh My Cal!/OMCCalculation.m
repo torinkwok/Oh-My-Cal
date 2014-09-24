@@ -76,6 +76,9 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 @synthesize lastTypedButtonType = _lastTypedButtonType;
 @synthesize lastTypedButton = _lastTypedButton;
 
+@synthesize isBinomialInLastCalculation = _isBinomial;
+
+
 #pragma mark Initializers & Deallocators
 - ( void ) awakeFromNib
     {
@@ -304,7 +307,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         return;
         }
 
-    /* If the user has not finished a calculation, O
+    /* If the user has not finished a calculation,
      * for example, they have finished typing the right operand,
      * and they want to calculate a result value... */
     if ( [ self.theOperator isEqualToString: @"+" ] )
@@ -575,6 +578,20 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     [ NOTIFICATION_CENTER postNotificationName: OMCCurrentAryDidChangedNotification
                                         object: self
                                       userInfo: @{ OMCCalculationNewAry : [ NSNumber numberWithInt: self.currentAry ] } ];
+    }
+
+- ( BOOL ) isBinomialInLastCalculation
+    {
+    switch ( self.lastTypedButtonType )
+        {
+    case OMCFactorial:
+    case OMCRoL:    case OMCRoR:
+    case OMC2_s:    case OMC1_s:
+        return NO;
+
+    default:
+        return YES;
+        }
     }
 
 #pragma mark Conforms <OMCBinaryAndDecimalConversion> protocol

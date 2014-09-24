@@ -296,17 +296,14 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
                                     andForOperator: ( NSDictionary* )_AttributesForOperator
     {
     OMCOperand* resultValue = self.currentCalculation.resultValue;
-
     NSString* resultValueInString = [ resultValue description ];
 
     [ resultValueInString drawAtPoint: [ self _pointUsedForDrawingOperands: resultValueInString inSpaceBar: self.bottommostSpaceBar ]
                        withAttributes: _AttributesForOperands ];
 
-    if ( self.currentCalculation.lastTypedButtonType != OMCFactorial
-            && self.currentCalculation.lastTypedButtonType != OMCRoL
-            && self.currentCalculation.lastTypedButtonType != OMCRoR
-            && self.currentCalculation.lastTypedButtonType != OMC2_s
-            && self.currentCalculation.lastTypedButtonType != OMC1_s
+    /* Draw all operand only for binomial
+     * If current expression is monomial, draw the result value only... */
+    if ( self.currentCalculation.isBinomialInLastCalculation
             && ![ resultValue.exceptionCarried isEqualToString: OMCOperandDivideByZeroException ] )
         [ self _drawRhsOperandWithAttributesForOperands: _AttributesForOperands
                                          andForOperator: _AttributesForOperator ];
