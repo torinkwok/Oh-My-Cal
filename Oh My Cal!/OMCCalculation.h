@@ -71,6 +71,8 @@ NSString extern* const OMCLastTypedButton;
     OMCOperand* _rhsOperand;
     OMCOperand* _resultValue;
 
+    OMCOperand* _memory;
+
     NSMutableString* _theOperator;
     }
 
@@ -87,6 +89,8 @@ NSString extern* const OMCLastTypedButton;
 @property ( nonatomic, retain ) OMCOperand* lhsOperand;
 @property ( nonatomic, retain ) OMCOperand* rhsOperand;
 @property ( nonatomic, retain ) OMCOperand* resultValue;
+
+@property ( nonatomic, retain ) OMCOperand* memory;
 
 @property ( nonatomic, retain ) NSMutableString* theOperator;
 

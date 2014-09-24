@@ -69,6 +69,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 @synthesize rhsOperand = _rhsOperand;
 @synthesize resultValue = _resultValue;
 
+@synthesize memory = _memory;
+
 @synthesize theOperator = _theOperator;
 
 @synthesize lastTypedButtonType = _lastTypedButtonType;
@@ -131,6 +133,9 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     if ( !self.theOperator )
         self.theOperator = [ NSMutableString string ];
+
+    if ( !self.memory )
+        self.memory = [ OMCOperand zero ];
     }
 
 - ( void ) deleteNumberWithLastPressedButton: ( NSButton* )_Button
@@ -191,11 +196,17 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     // If Oh My Cal! is in the initial state or user is just typing the left operand
     if ( self.typingState == OMCWaitAllOperands )
         {
+        if ( self.lhsOperand.isInMemory )
+            [ self.lhsOperand zeroed ];
+
         [ self.lhsOperand appendDigit: numberWillBeAppended count: appendCount ary: self.currentAry ];
         self.typingState = OMCWaitAllOperands;
         }
     else if ( self.typingState == OMCWaitRhsOperand )
         {
+        if ( self.rhsOperand.isInMemory )
+            [ self.rhsOperand zeroed ];
+
         [ self.rhsOperand appendDigit: numberWillBeAppended count: appendCount ary: self.currentAry ];
         self.typingState = OMCWaitRhsOperand;   // Wait for the user to pressing next button
         }
@@ -371,29 +382,26 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCAnd:    case OMCOr:     case OMCNor:
     case OMCXor:    case OMCLsh:    case OMCRsh:
     case OMCMod:
-        {
-        [ self appendBinaryOperatorWithLastPressedButton: self.lastTypedButton ];
-        } return;
+            [ self appendBinaryOperatorWithLastPressedButton: self.lastTypedButton ];
+            return;
 
     // Monomial operators
     case OMCRoL:    case OMCRoR:    case OMCFactorial:
     case OMC2_s:    case OMC1_s:
-        {
-        [ self calculateTheResultValueForMonomialWithLastPressedButton: self.lastTypedButton ];
-        } return;
+            [ self calculateTheResultValueForMonomialWithLastPressedButton: self.lastTypedButton ];
+            return;
 
     // Commands
-    case OMCDel:    [ self deleteNumberWithLastPressedButton: self.lastTypedButton ];
-        return;
+    case OMCDel:    [ self deleteNumberWithLastPressedButton: self.lastTypedButton ];  return;
 
     case OMCClear:
-        {
-        if ( self.calStyle == OMCBasicStyle )
-            [ self clearAllAndReset ];
-        else
-            [ self clearCurrentOperand ];
+            {
+            if ( self.calStyle == OMCBasicStyle )
+                [ self clearAllAndReset ];
+            else
+                [ self clearCurrentOperand ];
 
-        } return;
+            } return;
 
     case OMCAC:     [ self clearAllAndReset ];      return;
 
@@ -401,9 +409,84 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCRightParenthesis: return;
 
     case OMCEnter:
-        {
-        [ self calculateTheResultValueForBinomialWithLastPressedButton: self.lastTypedButton ];
-        } return;
+            [ self calculateTheResultValueForBinomialWithLastPressedButton: self.lastTypedButton ];
+            return;
+
+    // Memory Operations
+    case OMCMemoryAdd:
+            {
+            OMCOperand* operandToBeAdded = nil;
+
+            if ( self.typingState == OMCWaitAllOperands )
+                {
+                operandToBeAdded = self.lhsOperand;
+                [ self.lhsOperand setInMemory: YES ];
+                }
+            else if ( self.typingState == OMCWaitRhsOperand )
+                {
+                operandToBeAdded = self.rhsOperand;
+                [ self.rhsOperand setInMemory: YES ];
+                }
+            else if ( self.typingState == OMCFinishedTyping )
+                {
+                operandToBeAdded = self.resultValue;
+                [ self.resultValue setInMemory: YES ];
+                }
+
+            self.memory = [ self.memory add: operandToBeAdded ];
+            } return;
+
+    case OMCMemorySub:
+            {
+            OMCOperand* operandToBeAdded = nil;
+
+            if ( self.typingState == OMCWaitAllOperands )
+                {
+                operandToBeAdded = self.lhsOperand;
+                [ self.lhsOperand setInMemory: YES ];
+                }
+            else if ( self.typingState == OMCWaitRhsOperand )
+                {
+                operandToBeAdded = self.rhsOperand;
+                [ self.rhsOperand setInMemory: YES ];
+                }
+            else if ( self.typingState == OMCFinishedTyping )
+                {
+                operandToBeAdded = self.resultValue;
+                [ self.resultValue setInMemory: YES ];
+                }
+
+            self.memory = [ self.memory subtract: operandToBeAdded ];
+            } return;
+
+    case OMCMemoryClear:
+            {
+            [ self.memory zeroed ];
+
+            [ self.lhsOperand setInMemory: NO ];
+            [ self.rhsOperand setInMemory: NO ];
+            [ self.resultValue setInMemory: NO ];
+            } return;
+
+    case OMCMemoryRead:
+            {
+            if ( self.typingState == OMCWaitAllOperands )
+                {
+                self.lhsOperand = [ self.memory copy ];
+                self.typingState = OMCWaitAllOperands;
+                }
+            else if ( self.typingState == OMCWaitRhsOperand )
+                {
+                self.rhsOperand = [ self.memory copy ];
+                self.typingState = OMCWaitRhsOperand;
+                }
+            else if ( self.typingState == OMCFinishedTyping )
+                {
+                [ self clearAllAndReset ];
+                self.lhsOperand = [ self.memory copy ];
+                self.typingState = OMCWaitAllOperands;
+                }
+            } return;
         }
     }
 

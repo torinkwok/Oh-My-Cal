@@ -222,7 +222,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="41" translatesAutoresizingMaskIntoConstraints="NO" id="gxt-35-FfD">
-                    <rect key="frame" x="55" y="163" width="36" height="25"/>
+                    <rect key="frame" x="12" y="163" width="36" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="M+" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1WH-r3-oWc" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -232,7 +232,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="42" translatesAutoresizingMaskIntoConstraints="NO" id="5ZN-Iu-w4F">
-                    <rect key="frame" x="98" y="163" width="35" height="25"/>
+                    <rect key="frame" x="55" y="163" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="M-" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4Dq-Ge-6Mb" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -242,7 +242,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="40" translatesAutoresizingMaskIntoConstraints="NO" id="Qe5-XS-F7Q">
-                    <rect key="frame" x="12" y="163" width="35" height="25"/>
+                    <rect key="frame" x="98" y="163" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="MC" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ljb-yU-jAz" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>

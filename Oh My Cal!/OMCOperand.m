@@ -56,6 +56,8 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 @synthesize calStyle = _calStyle;
 @synthesize currentAry = _currentAry;
 
+@synthesize isInMemory = _isInMemory;
+
 @synthesize isWaitingForFloatNumber = _isWaitingForFloatNumber;
 
 @synthesize exceptionCarried = _exceptionCarried;
@@ -133,6 +135,7 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return [ self initWithDecimalNumber: _DecimalNumber inAry: OMCDecimal calStyle: OMCBasicStyle ];
     }
 
+// Designated Initializer
 - ( id ) initWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
                          inAry: ( OMCAry )_Ary
                       calStyle: ( OMCCalStyle )_CalStyle
@@ -142,20 +145,12 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
         self.calStyle = _CalStyle;
         self.currentAry = _Ary;
 
+        self.isInMemory = NO;
+
         self.decimalNumber = _DecimalNumber;
         self.numericString = [ NSMutableString stringWithString: [ self _numericStringInAry: self.currentAry ] ];
 
         self.isWaitingForFloatNumber = NO;
-
-    #if DEBUG   // Just for testing
-        self.decimalNumberHandler =
-            [ NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode: NSRoundPlain
-                                                                    scale: 15
-                                                         raiseOnExactness: YES
-                                                          raiseOnOverflow: YES
-                                                         raiseOnUnderflow: YES
-                                                      raiseOnDivideByZero: YES ];
-    #endif
         }
 
     return self;
@@ -348,6 +343,9 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     {
     if ( self.isWaitingForFloatNumber )
         self.isWaitingForFloatNumber = NO;
+
+    if ( self.isInMemory )
+        self.isInMemory = NO;
 
     self.decimalNumber = [ NSDecimalNumber zero ];
 
