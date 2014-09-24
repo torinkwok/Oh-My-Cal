@@ -289,7 +289,6 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     self.typingState = OMCFinishedTyping;
     }
 
-
 - ( void ) calculateTheResultValueForBinomialWithLastPressedButton: ( NSButton* )_Button
     {
     if ( self.typingState == OMCFinishedTyping /* If the user has finished a calculation... */

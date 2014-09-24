@@ -192,9 +192,14 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     NSDecimal decimalValue = [ self.decimalNumber decimalValue ];
     decimalValue._isNegative = !decimalValue._isNegative;
 
-    return [ OMCOperand operandWithDecimalNumber: [ NSDecimalNumber decimalNumberWithDecimal: decimalValue ]
-                                           inAry: self.currentAry
-                                        calStyle: self.calStyle ];
+    OMCOperand* newOperand =
+        [ OMCOperand operandWithDecimalNumber: [ NSDecimalNumber decimalNumberWithDecimal: decimalValue ]
+                                        inAry: self.currentAry
+                                     calStyle: self.calStyle ];
+                                     
+    [ newOperand setWaitingForFloatNumber: [ self.numericString contains: OMCDot ] ];
+
+    return newOperand;
     }
 
 - ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs
