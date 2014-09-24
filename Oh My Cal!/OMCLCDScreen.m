@@ -114,6 +114,7 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
     [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS objectForKey: OMCDefaultsKeyAry ] ];
 
     [ self _addObserverForCalculations: self._basicStyleCalculation ];
+    [ self _addObserverForCalculations: self._scientificStyleCalculation ];
     [ self _addObserverForCalculations: self._programmerStyleCalculation ];
 
     [ self._mainPanelBackgroundView addObserver: self

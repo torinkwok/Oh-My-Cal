@@ -419,11 +419,10 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     case OMCClear:
             {
-            if ( self.calStyle == OMCBasicStyle )
-                [ self clearAllAndReset ];
-            else
+            if ( self.calStyle == OMCProgrammerStyle )
                 [ self clearCurrentOperand ];
-
+            else
+                [ self clearAllAndReset ];
             } return;
 
     case OMCAC:     [ self clearAllAndReset ];      return;
