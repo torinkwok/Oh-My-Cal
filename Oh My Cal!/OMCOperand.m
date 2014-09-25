@@ -261,6 +261,7 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return resultOperand;
     }
 
+/* Computes the natural (base 2) logarithm of current value */
 - ( instancetype ) log2
     {
     double result = log2( self.decimalNumber.doubleValue );
@@ -270,6 +271,7 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                                  calStyle: self.calStyle ];
     }
 
+/* Computes the natural (base 10) logarithm of current value */
 - ( instancetype ) log10
     {
     double result = log10( self.decimalNumber.doubleValue );
@@ -279,6 +281,17 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                                  calStyle: self.calStyle ];
     }
 
+/* Computes the natural (base e) logarithm of current value */
+- ( instancetype ) naturalLogarithm
+    {
+    double result = log( self.decimalNumber.doubleValue  );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+/* Computes the sine of current value (measured in radians) */
 - ( instancetype ) sin
     {
     double result = sin( self.decimalNumber.doubleValue );
@@ -288,6 +301,7 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                                  calStyle: self.calStyle ];
     }
 
+/* Computes the cosine of current value (measured in radians) */
 - ( instancetype ) cos
     {
     double result = cos( self.decimalNumber.doubleValue );
@@ -297,6 +311,7 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                                  calStyle: self.calStyle ];
     }
 
+/* Computes the tangent of current value (measured in radians) */
 - ( instancetype ) tan
     {
     double result = tan( self.decimalNumber.doubleValue );
@@ -306,6 +321,7 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                                  calStyle: self.calStyle ];
     }
 
+/* Computes hyperbolic sine of current value */
 - ( instancetype ) sinh
     {
     double result = sinh( self.decimalNumber.doubleValue );
@@ -315,6 +331,7 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                                  calStyle: self.calStyle ];
     }
 
+/* Computes hyperbolic cosine of current value */
 - ( instancetype ) cosh
     {
     double result = cosh( self.decimalNumber.doubleValue );
@@ -324,6 +341,7 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                                  calStyle: self.calStyle ];
     }
 
+/* Computes hyperbolic tangent of current value */
 - ( instancetype ) tanh
     {
     double result = tanh( self.decimalNumber.doubleValue );
@@ -332,6 +350,11 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                                     inAry: self.currentAry
                                  calStyle: self.calStyle ];
     }
+
+//- ( instancetype ) rand
+//    {
+//    double randVal =
+//    }
 
 - ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs
     {

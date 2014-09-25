@@ -116,14 +116,26 @@ NSString extern* const OMCOperandDivideByZeroException;
 - ( instancetype ) percent;
 - ( instancetype ) reciprocal;
 
+/* Computes the natural (base 2) logarithm of current value */
 - ( instancetype ) log2;
+/* Computes the natural (base 10) logarithm of current value */
 - ( instancetype ) log10;
+/* Computes the natural (base e) logarithm of current value */
+- ( instancetype ) naturalLogarithm;
+/* Computes the sine of current value (measured in radians) */
 - ( instancetype ) sin;
+/* Computes the cosine of current value (measured in radians) */
 - ( instancetype ) cos;
+/* Computes the tangent of current value (measured in radians) */
 - ( instancetype ) tan;
+/* Computes hyperbolic sine of current value */
 - ( instancetype ) sinh;
+/* Computes hyperbolic cosine of current value */
 - ( instancetype ) cosh;
+/* Computes hyperbolic tangent of current value */
 - ( instancetype ) tanh;
+
+- ( instancetype ) rand;
 
 - ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs;
 

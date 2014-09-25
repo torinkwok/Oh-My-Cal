@@ -342,6 +342,14 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
             self.resultValue = [ self.resultValue log10 ];
         }
 
+    else if ( [ self.theOperator compare: @"In" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand naturalLogarithm ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue naturalLogarithm ];
+        }
+
     else if ( [ self.theOperator compare: @"sin" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
         {
         if ( self.typingState == OMCWaitAllOperands )
@@ -551,13 +559,15 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCPercent:    case OMCReciprocal:
     case OMCSquare:     case OMCCube:
 
-    case OMCLog2:       case OMCLog10:
+    case OMCLog2:       case OMCLog10:  case OMCIn:
     case OMCSin:        case OMCCos:    case OMCTan:
     case OMCSinh:       case OMCCosh:   case OMCTanh:
 
     case OMCPi:         case OMCe:
 
     case OMCSqrt:
+
+    case OMCRand:
 
     case OMCRoL:    case OMCRoR:    case OMCFactorial:
     case OMC2_s:    case OMC1_s:
@@ -740,11 +750,13 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCSquare: case OMCCube:
     case OMCSqrt:
 
-    case OMCLog2:       case OMCLog10:
+    case OMCLog2:       case OMCLog10:  case OMCIn:
     case OMCSin:        case OMCCos:    case OMCTan:
     case OMCSinh:       case OMCCosh:   case OMCTanh:
 
     case OMCPi:         case OMCe:
+
+    case OMCRand:
         return NO;
 
     default:
