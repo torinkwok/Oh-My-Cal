@@ -414,11 +414,21 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
             self.resultValue = [ OMCOperand e ];
         }
 
+        else if ( [ self.theOperator compare: @"Rand" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ OMCOperand rand ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ OMCOperand rand ];
+        }
+
     self.typingState = OMCFinishedTyping;
     }
 
 - ( void ) calculateTheResultValueForBinomialWithLastPressedButton: ( NSButton* )_Button
     {
+    NSLog( @"%@", [ OMCOperand rand ] );
+
 #if 0
     NSLog( @"log2: %@", [ self.lhsOperand log2 ] );
     NSLog( @"log10: %@", [ self.lhsOperand log10 ] );

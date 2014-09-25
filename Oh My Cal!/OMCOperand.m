@@ -183,6 +183,19 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", EULER_NUMBER ] ];
     }
 
++ ( instancetype ) rand
+    {
+    NSMutableString* randNumericString = [ NSMutableString stringWithString: @"0." ];
+
+    for ( int index = 0; index < 3; index++ )
+        {
+        NSString* aPiece = [ NSString stringWithFormat: @"%d", ( rand() % 100000 + 1 ) ];
+        [ randNumericString appendString: aPiece ];
+        }
+
+    return [ OMCOperand operandWithString: randNumericString ];
+    }
+
 - ( instancetype ) abs
     {
     NSDecimal decimalValue = [ self.decimalNumber decimalValue ];
@@ -349,11 +362,6 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                                     inAry: self.currentAry
                                  calStyle: self.calStyle ];
     }
-
-//- ( instancetype ) rand
-//    {
-//    double randVal =
-//    }
 
 - ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs
     {

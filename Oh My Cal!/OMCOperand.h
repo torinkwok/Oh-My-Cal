@@ -105,6 +105,8 @@ NSString extern* const OMCOperandDivideByZeroException;
 + ( instancetype ) pi;
 + ( instancetype ) e;
 
++ ( instancetype ) rand;
+
 - ( instancetype ) abs;
 - ( instancetype ) positiveOrNegative;
 
@@ -134,8 +136,6 @@ NSString extern* const OMCOperandDivideByZeroException;
 - ( instancetype ) cosh;
 /* Computes hyperbolic tangent of current value */
 - ( instancetype ) tanh;
-
-- ( instancetype ) rand;
 
 - ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs;
 
