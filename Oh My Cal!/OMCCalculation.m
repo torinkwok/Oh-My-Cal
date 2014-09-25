@@ -427,19 +427,6 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
 - ( void ) calculateTheResultValueForBinomialWithLastPressedButton: ( NSButton* )_Button
     {
-    NSLog( @"%@", [ OMCOperand rand ] );
-
-#if 0
-    NSLog( @"log2: %@", [ self.lhsOperand log2 ] );
-    NSLog( @"log10: %@", [ self.lhsOperand log10 ] );
-    NSLog( @"sin: %@", [ self.lhsOperand sin ] );
-    NSLog( @"cos: %@", [ self.lhsOperand cos ] );
-    NSLog( @"tan: %@", [ self.lhsOperand tan ] );
-    NSLog( @"sinh: %@", [ self.lhsOperand sinh ] );
-    NSLog( @"cosh: %@", [ self.lhsOperand cosh ] );
-    NSLog( @"tanh: %@", [ self.lhsOperand tanh ] );
-#endif
-
     if ( self.typingState == OMCFinishedTyping /* If the user has finished a calculation... */
             || self.typingState == OMCWaitAllOperands /* or if the user is typing hte left operand... */  )
         {
