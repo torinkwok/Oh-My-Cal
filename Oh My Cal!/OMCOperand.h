@@ -102,11 +102,28 @@ NSString extern* const OMCOperandDivideByZeroException;
 + ( instancetype ) zero;
 + ( instancetype ) one;
 + ( instancetype ) divByZero;
++ ( instancetype ) pi;
++ ( instancetype ) e;
 
 - ( instancetype ) abs;
 - ( instancetype ) positiveOrNegative;
 
 - ( instancetype ) pow: ( OMCOperand* )_Exponent;
+- ( instancetype ) square;
+- ( instancetype ) cube;
+- ( instancetype ) sqrt;
+
+- ( instancetype ) percent;
+- ( instancetype ) reciprocal;
+
+- ( instancetype ) log2;
+- ( instancetype ) log10;
+- ( instancetype ) sin;
+- ( instancetype ) cos;
+- ( instancetype ) tan;
+- ( instancetype ) sinh;
+- ( instancetype ) cosh;
+- ( instancetype ) tanh;
 
 - ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs;
 

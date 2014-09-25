@@ -286,11 +286,142 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
             self.resultValue = [ self.resultValue flipBytes ];
         }
 
+    else if ( [ self.theOperator compare: @"x²" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand square ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue square ];
+        }
+
+    else if ( [ self.theOperator compare: @"x³" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand cube ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue cube ];
+        }
+
+    else if ( [ self.theOperator compare: @"1/x" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand reciprocal ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue reciprocal ];
+        }
+
+    else if ( [ self.theOperator compare: @"√" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand sqrt ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue sqrt ];
+        }
+
+    else if ( [ self.theOperator compare: @"%" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand percent ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue percent ];
+        }
+
+    else if ( [ self.theOperator compare: @"log₂" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand log2 ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue log2 ];
+        }
+
+    else if ( [ self.theOperator compare: @"log₁₀" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand log10 ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue log10 ];
+        }
+
+    else if ( [ self.theOperator compare: @"sin" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand sin ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue sin ];
+        }
+
+    else if ( [ self.theOperator compare: @"cos" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand cos ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue cos ];
+        }
+
+    else if ( [ self.theOperator compare: @"tan" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand tan ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue tan ];
+        }
+
+    else if ( [ self.theOperator compare: @"sinh" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand sinh ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue sinh ];
+        }
+
+    else if ( [ self.theOperator compare: @"cosh" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand cosh ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue cosh ];
+        }
+
+    else if ( [ self.theOperator compare: @"tanh" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand tanh ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue tanh ];
+        }
+
+    else if ( [ self.theOperator compare: @"π" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ OMCOperand pi ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ OMCOperand pi ];
+        }
+
+    else if ( [ self.theOperator compare: @"e" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ OMCOperand e ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ OMCOperand e ];
+        }
+
     self.typingState = OMCFinishedTyping;
     }
 
 - ( void ) calculateTheResultValueForBinomialWithLastPressedButton: ( NSButton* )_Button
     {
+#if 0
+    NSLog( @"log2: %@", [ self.lhsOperand log2 ] );
+    NSLog( @"log10: %@", [ self.lhsOperand log10 ] );
+    NSLog( @"sin: %@", [ self.lhsOperand sin ] );
+    NSLog( @"cos: %@", [ self.lhsOperand cos ] );
+    NSLog( @"tan: %@", [ self.lhsOperand tan ] );
+    NSLog( @"sinh: %@", [ self.lhsOperand sinh ] );
+    NSLog( @"cosh: %@", [ self.lhsOperand cosh ] );
+    NSLog( @"tanh: %@", [ self.lhsOperand tanh ] );
+#endif
+
     if ( self.typingState == OMCFinishedTyping /* If the user has finished a calculation... */
             || self.typingState == OMCWaitAllOperands /* or if the user is typing hte left operand... */  )
         {
@@ -417,6 +548,17 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
             return;
 
     // Monomial operators
+    case OMCPercent:    case OMCReciprocal:
+    case OMCSquare:     case OMCCube:
+
+    case OMCLog2:       case OMCLog10:
+    case OMCSin:        case OMCCos:    case OMCTan:
+    case OMCSinh:       case OMCCosh:   case OMCTanh:
+
+    case OMCPi:         case OMCe:
+
+    case OMCSqrt:
+
     case OMCRoL:    case OMCRoR:    case OMCFactorial:
     case OMC2_s:    case OMC1_s:
             [ self calculateTheResultValueForMonomialWithLastPressedButton: self.lastTypedButton ];
@@ -590,8 +732,19 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     switch ( self.lastTypedButtonType )
         {
     case OMCFactorial:
+    case OMCPercent:    case OMCReciprocal:
+
     case OMCRoL:    case OMCRoR:
     case OMC2_s:    case OMC1_s:
+
+    case OMCSquare: case OMCCube:
+    case OMCSqrt:
+
+    case OMCLog2:       case OMCLog10:
+    case OMCSin:        case OMCCos:    case OMCTan:
+    case OMCSinh:       case OMCCosh:   case OMCTanh:
+
+    case OMCPi:         case OMCe:
         return NO;
 
     default:

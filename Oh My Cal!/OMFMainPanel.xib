@@ -674,7 +674,7 @@
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="38" translatesAutoresizingMaskIntoConstraints="NO" id="LP3-vH-khj">
                     <rect key="frame" x="71" y="163" width="51" height="25"/>
-                    <buttonCell key="cell" type="roundTextured" title="(" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aFI-PB-he3" customClass="BGHUDButtonCell">
+                    <buttonCell key="cell" type="roundTextured" title="(" bezelStyle="texturedRounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aFI-PB-he3" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -684,7 +684,7 @@
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="39" translatesAutoresizingMaskIntoConstraints="NO" id="df7-uO-Y9G">
                     <rect key="frame" x="130" y="163" width="51" height="25"/>
-                    <buttonCell key="cell" type="roundTextured" title=")" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="x9E-gH-dIj" customClass="BGHUDButtonCell">
+                    <buttonCell key="cell" type="roundTextured" title=")" bezelStyle="texturedRounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="x9E-gH-dIj" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>

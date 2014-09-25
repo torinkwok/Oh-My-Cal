@@ -71,6 +71,9 @@ typedef enum { OMFStartAtLogin, OMFNotStartAtLogin } OMFBehaviorWhileStarting;
 NSString extern* const OMCFlatStyle;
 NSString extern* const OMCTextureStyle;
 
+#define PI              3.141592653589793
+#define EULER_NUMBER    2.718281828459045
+
 typedef enum { OMCAnd = 0, OMCOr = 1,  OMCNor = 2,  OMCXor = 3
              , OMCLsh = 4, OMCRsh = 5, OMCRoL = 6,  OMCRoR = 7
              , OMC2_s = 8, OMC1_s = 9, OMCMod = 10, OMCFactorial = 11
@@ -94,7 +97,7 @@ typedef enum { OMCAnd = 0, OMCOr = 1,  OMCNor = 2,  OMCXor = 3
 
              , OMCShift = 46,       OMCPercent = 47
              , OMCReciprocal = 48,  OMCSquare = 49,     OMCCube = 50,   OMCxPower = 51
-             , OMCSqrt = 53,        OMCRad = 54,    OMCLog2 = 55
+             , OMCSqrt = 53,        OMCRad = 54,        OMCLog2 = 55
              , OMCSin = 56,         OMCCos = 57,        OMCTan = 58,    OMCLog10 = 59
              , OMCSinh = 60,        OMCCosh = 61,       OMCTanh = 62,   OMCIn = 63
              , OMCPi = 64,          OMCe = 65,          OMCRand = 66,   OMCEE = 67

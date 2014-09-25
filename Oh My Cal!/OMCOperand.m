@@ -174,6 +174,16 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return newOperand;
     }
 
++ ( instancetype ) pi
+    {
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", PI ] ];
+    }
+
++ ( instancetype ) e
+    {
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", EULER_NUMBER ] ];
+    }
+
 - ( instancetype ) abs
     {
     NSDecimal decimalValue = [ self.decimalNumber decimalValue ];
@@ -211,6 +221,116 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                                                       inAry: self.currentAry
                                                    calStyle: self.calStyle ];
     return newOperand;
+    }
+
+- ( instancetype ) square
+    {
+    return [ self multiply: self ];
+    }
+
+- ( instancetype ) cube
+    {
+    return [ [ self square ] multiply: self ];
+    }
+
+- ( instancetype ) sqrt
+    {
+    double result = sqrt( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) percent
+    {
+    OMCOperand* oneHundred = [ OMCOperand operandWithString: @"100" inAry: self.currentAry calStyle: self.calStyle ];
+    OMCOperand* resultOperand = [ self divide: oneHundred ];
+    [ resultOperand setCurrentAry: self.currentAry ];
+    [ resultOperand setCalStyle: self.calStyle ];
+
+    return resultOperand;
+    }
+
+- ( instancetype ) reciprocal
+    {
+    OMCOperand* resultOperand = [ [ OMCOperand one ] divide: self ];
+    [ resultOperand setCurrentAry: self.currentAry ];
+    [ resultOperand setCalStyle: self.calStyle ];
+
+    return resultOperand;
+    }
+
+- ( instancetype ) log2
+    {
+    double result = log2( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) log10
+    {
+    double result = log10( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) sin
+    {
+    double result = sin( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) cos
+    {
+    double result = cos( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) tan
+    {
+    double result = tan( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) sinh
+    {
+    double result = sinh( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) cosh
+    {
+    double result = cosh( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) tanh
+    {
+    double result = tanh( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
     }
 
 - ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs
