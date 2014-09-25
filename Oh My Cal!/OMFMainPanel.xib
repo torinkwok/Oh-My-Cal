@@ -513,7 +513,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="53" translatesAutoresizingMaskIntoConstraints="NO" id="Ndg-W4-RHZ">
-                    <rect key="frame" x="71" y="103" width="51" height="25"/>
+                    <rect key="frame" x="189" y="133" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="√" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ijV-GI-tCJ" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -523,7 +523,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="54" translatesAutoresizingMaskIntoConstraints="NO" id="iT4-QC-fQg">
-                    <rect key="frame" x="130" y="103" width="51" height="25"/>
+                    <rect key="frame" x="71" y="163" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="Rad" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hEb-vH-xOM" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -533,7 +533,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="57" translatesAutoresizingMaskIntoConstraints="NO" id="ZdN-k8-Eua">
-                    <rect key="frame" x="71" y="73" width="51" height="25"/>
+                    <rect key="frame" x="130" y="73" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="cos" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZBJ-dE-VWi" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -543,7 +543,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="58" translatesAutoresizingMaskIntoConstraints="NO" id="27P-W9-OCd">
-                    <rect key="frame" x="130" y="73" width="51" height="25"/>
+                    <rect key="frame" x="189" y="73" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="tan" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EY1-vU-XsH" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -553,7 +553,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="xlw-mm-E4b">
-                    <rect key="frame" x="12" y="103" width="51" height="25"/>
+                    <rect key="frame" x="12" y="43" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="!" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tvj-FY-4ng" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -563,7 +563,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="56" translatesAutoresizingMaskIntoConstraints="NO" id="sUd-jb-GDY">
-                    <rect key="frame" x="12" y="73" width="51" height="25"/>
+                    <rect key="frame" x="71" y="73" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="sin" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xsg-6m-uoe" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -573,7 +573,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="61" translatesAutoresizingMaskIntoConstraints="NO" id="VMm-mj-Rc3">
-                    <rect key="frame" x="71" y="43" width="51" height="25"/>
+                    <rect key="frame" x="130" y="43" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="cosh" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zcp-xh-9yY" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -583,7 +583,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="62" translatesAutoresizingMaskIntoConstraints="NO" id="zsa-Ac-Cs2">
-                    <rect key="frame" x="130" y="43" width="51" height="25"/>
+                    <rect key="frame" x="189" y="43" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="tanh" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V4w-E7-7d7" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -593,7 +593,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="60" translatesAutoresizingMaskIntoConstraints="NO" id="d8F-ah-rLU">
-                    <rect key="frame" x="12" y="43" width="51" height="25"/>
+                    <rect key="frame" x="71" y="43" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="sinh" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="olg-Ho-DVb" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -603,7 +603,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="59" translatesAutoresizingMaskIntoConstraints="NO" id="hIt-97-ZUC">
-                    <rect key="frame" x="189" y="73" width="51" height="25"/>
+                    <rect key="frame" x="189" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="log₁₀" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jLf-pf-cyE" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -613,7 +613,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="55" translatesAutoresizingMaskIntoConstraints="NO" id="kMA-V1-h54">
-                    <rect key="frame" x="189" y="103" width="51" height="25"/>
+                    <rect key="frame" x="130" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="log₂" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3au-sK-g1L" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -623,7 +623,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="63" translatesAutoresizingMaskIntoConstraints="NO" id="2cP-wd-v3L">
-                    <rect key="frame" x="189" y="43" width="51" height="25"/>
+                    <rect key="frame" x="71" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="In" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9b0-6M-2lS" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -643,7 +643,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="48" translatesAutoresizingMaskIntoConstraints="NO" id="Ef4-Oc-ltn">
-                    <rect key="frame" x="12" y="133" width="51" height="25"/>
+                    <rect key="frame" x="12" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="1/x" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="byd-wI-f0P" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -653,7 +653,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="49" translatesAutoresizingMaskIntoConstraints="NO" id="nmk-G0-F15">
-                    <rect key="frame" x="71" y="133" width="51" height="25"/>
+                    <rect key="frame" x="12" y="133" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="x²" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WJm-JK-Jju" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -672,9 +672,9 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="EJR-m4-2wp"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="38" translatesAutoresizingMaskIntoConstraints="NO" id="LP3-vH-khj">
-                    <rect key="frame" x="71" y="163" width="51" height="25"/>
-                    <buttonCell key="cell" type="roundTextured" title="(" bezelStyle="texturedRounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aFI-PB-he3" customClass="BGHUDButtonCell">
+                <button verticalHuggingPriority="750" fixedFrame="YES" tag="30" translatesAutoresizingMaskIntoConstraints="NO" id="LP3-vH-khj">
+                    <rect key="frame" x="130" y="163" width="110" height="25"/>
+                    <buttonCell key="cell" type="roundTextured" title="DEL" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aFI-PB-he3" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -682,18 +682,8 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="I8W-lN-Dz5"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="39" translatesAutoresizingMaskIntoConstraints="NO" id="df7-uO-Y9G">
-                    <rect key="frame" x="130" y="163" width="51" height="25"/>
-                    <buttonCell key="cell" type="roundTextured" title=")" bezelStyle="texturedRounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="x9E-gH-dIj" customClass="BGHUDButtonCell">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="calculate:" target="lIE-2s-Zv9" id="8KE-2y-brA"/>
-                    </connections>
-                </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="47" translatesAutoresizingMaskIntoConstraints="NO" id="fZp-y8-SY8">
-                    <rect key="frame" x="189" y="163" width="51" height="25"/>
+                    <rect key="frame" x="12" y="73" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="%" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nnN-Pm-me6" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -703,7 +693,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="50" translatesAutoresizingMaskIntoConstraints="NO" id="K0L-iF-VWf">
-                    <rect key="frame" x="130" y="133" width="51" height="25"/>
+                    <rect key="frame" x="71" y="133" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="x³" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IbN-wR-dRL" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -713,7 +703,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="51" translatesAutoresizingMaskIntoConstraints="NO" id="kyr-pf-ahU">
-                    <rect key="frame" x="189" y="133" width="51" height="25"/>
+                    <rect key="frame" x="130" y="133" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="yˣ" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oyY-WF-L1G" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -762,6 +752,7 @@
                 <outlet property="_cos" destination="ZdN-k8-Eua" id="8IX-Gx-Kji"/>
                 <outlet property="_cosh" destination="VMm-mj-Rc3" id="45k-Z1-tdG"/>
                 <outlet property="_cube" destination="K0L-iF-VWf" id="rrH-wQ-HCg"/>
+                <outlet property="_del" destination="LP3-vH-khj" id="HLA-jV-3Mk"/>
                 <outlet property="_divisionOperator" destination="rrS-tS-Wcu" id="8em-Kw-qdJ"/>
                 <outlet property="_e" destination="Gux-H7-Esu" id="AaT-nr-mG6"/>
                 <outlet property="_eight" destination="CNB-r9-N7F" id="U2u-5n-afF"/>
@@ -770,7 +761,6 @@
                 <outlet property="_five" destination="0Zo-J9-tpf" id="i5D-1C-Rwa"/>
                 <outlet property="_floatPoint" destination="LZG-1b-Rrk" id="yXj-DW-6Ei"/>
                 <outlet property="_four" destination="1al-V3-erw" id="5ia-Fx-lmc"/>
-                <outlet property="_lhsParenthesis" destination="LP3-vH-khj" id="ipg-ey-v5w"/>
                 <outlet property="_log10" destination="hIt-97-ZUC" id="ruh-cb-VaK"/>
                 <outlet property="_log2" destination="kMA-V1-h54" id="doQ-RD-UUv"/>
                 <outlet property="_memoryClear" destination="hmZ-Br-Af9" id="yDf-GN-ZWR"/>
@@ -786,7 +776,6 @@
                 <outlet property="_rad" destination="iT4-QC-fQg" id="XnW-ag-y0i"/>
                 <outlet property="_rand" destination="tiA-tk-R9K" id="j6r-su-eon"/>
                 <outlet property="_reciprocal" destination="Ef4-Oc-ltn" id="7v6-9H-GCI"/>
-                <outlet property="_rhsParenthesis" destination="df7-uO-Y9G" id="J7e-Dm-O8O"/>
                 <outlet property="_seven" destination="aCr-1v-crY" id="IFl-cm-zec"/>
                 <outlet property="_shift" destination="86a-if-81k" id="zbh-1N-vkf"/>
                 <outlet property="_sin" destination="sUd-jb-GDY" id="LSB-xJ-CuI"/>
