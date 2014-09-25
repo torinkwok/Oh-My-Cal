@@ -188,10 +188,7 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     NSMutableString* randNumericString = [ NSMutableString stringWithString: @"0." ];
 
     for ( int index = 0; index < 3; index++ )
-        {
-        NSString* aPiece = [ NSString stringWithFormat: @"%d", ( rand() % 100000 + 1 ) ];
-        [ randNumericString appendString: aPiece ];
-        }
+        [ randNumericString appendString: [ NSString stringWithFormat: @"%d", ( rand() % 100000 + 1 ) ] ];
 
     return [ OMCOperand operandWithString: randNumericString ];
     }
