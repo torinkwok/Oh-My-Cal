@@ -623,11 +623,20 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
             OMCOperand* operandToBeAdded = nil;
 
             if ( self.typingState == OMCWaitAllOperands )
+                {
                 operandToBeAdded = self.lhsOperand;
+                [ self.lhsOperand setInMemory: YES ];
+                }
             else if ( self.typingState == OMCWaitRhsOperand )
+                {
                 operandToBeAdded = self.rhsOperand;
+                [ self.rhsOperand setInMemory: YES ];
+                }
             else if ( self.typingState == OMCFinishedTyping )
+                {
                 operandToBeAdded = self.resultValue;
+                [ self.resultValue setInMemory: YES ];
+                }
 
             self.memory = [ self.memory subtract: operandToBeAdded ];
             } return;

@@ -75,7 +75,6 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     id newOperand = [ [ self class ] operandWithDecimalNumber: [ self.decimalNumber copy ]
                                                         inAry: self.currentAry
                                                      calStyle: self.calStyle ];
-
     return newOperand;
     }
 
@@ -150,7 +149,7 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
         self.decimalNumber = _DecimalNumber;
         self.numericString = [ NSMutableString stringWithString: [ self _numericStringInAry: self.currentAry ] ];
 
-        self.isWaitingForFloatNumber = NO;
+        self.isWaitingForFloatNumber = [ self.numericString contains: OMCDot ];
         }
 
     return self;
@@ -599,18 +598,22 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     {
     NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberByAdding: _Rhs.decimalNumber
                                                                    withBehavior: self ];
-    return [ OMCOperand operandWithDecimalNumber: resultDecimal
-                                           inAry: self.currentAry
-                                        calStyle: self.calStyle ];
+
+    OMCOperand* resultOperand = [ OMCOperand operandWithDecimalNumber: resultDecimal
+                                                                inAry: self.currentAry
+                                                             calStyle: self.calStyle ];
+    return resultOperand;
     }
 
 - ( OMCOperand* ) subtract: ( OMCOperand* )_Rhs
     {
     NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberBySubtracting: _Rhs.decimalNumber
                                                                         withBehavior: self ];
-    return [ OMCOperand operandWithDecimalNumber: resultDecimal
-                                           inAry: self.currentAry
-                                        calStyle: self.calStyle ];
+
+    OMCOperand* resultOperand = [ OMCOperand operandWithDecimalNumber: resultDecimal
+                                                                inAry: self.currentAry
+                                                             calStyle: self.calStyle ];
+    return resultOperand;
     }
 
 - ( OMCOperand* ) multiply: ( OMCOperand* )_Rhs
