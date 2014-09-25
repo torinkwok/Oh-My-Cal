@@ -329,6 +329,10 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         }
 
 
+    else if ( [ self.theOperator isEqualToString: @"Yˣ" ] )
+        self.resultValue = [ self.lhsOperand pow: self.rhsOperand ];
+
+
     else if ( [ self.theOperator isEqualToString: @"AND" ] )
         self.resultValue = [ self.lhsOperand bitwiseAnd: self.rhsOperand ];
 
@@ -403,6 +407,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     // Binary operators
     case OMCAdd:        case OMCSub:
     case OMCMuliply:    case OMCDivide:
+
+    case OMCxPower:
 
     case OMCAnd:    case OMCOr:     case OMCNor:
     case OMCXor:    case OMCLsh:    case OMCRsh:

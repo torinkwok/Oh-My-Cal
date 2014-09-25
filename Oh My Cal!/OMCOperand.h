@@ -106,6 +106,8 @@ NSString extern* const OMCOperandDivideByZeroException;
 - ( instancetype ) abs;
 - ( instancetype ) positiveOrNegative;
 
+- ( instancetype ) pow: ( OMCOperand* )_Exponent;
+
 - ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs;
 
 #pragma mark Degit Operations

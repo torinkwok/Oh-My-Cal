@@ -202,6 +202,17 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return newOperand;
     }
 
+- ( instancetype ) pow: ( OMCOperand* )_Exponent
+    {
+    double exponent = [ _Exponent.decimalNumber doubleValue ];
+    double result = pow( self.decimalNumber.doubleValue, exponent );
+
+    OMCOperand* newOperand = [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                                      inAry: self.currentAry
+                                                   calStyle: self.calStyle ];
+    return newOperand;
+    }
+
 - ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs
     {
     return [ self.decimalNumber compare: _Rhs.decimalNumber ];
