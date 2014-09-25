@@ -523,7 +523,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="54" translatesAutoresizingMaskIntoConstraints="NO" id="iT4-QC-fQg">
-                    <rect key="frame" x="71" y="163" width="51" height="25"/>
+                    <rect key="frame" x="12" y="73" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="Rad" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hEb-vH-xOM" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -683,7 +683,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="47" translatesAutoresizingMaskIntoConstraints="NO" id="fZp-y8-SY8">
-                    <rect key="frame" x="12" y="73" width="51" height="25"/>
+                    <rect key="frame" x="71" y="163" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="%" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nnN-Pm-me6" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
