@@ -556,6 +556,9 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
         return;
 
     [ self.numericString deleteTheLastCharacter ];
+    if ( self.numericString.length == 0 )
+        [ self.numericString replaceAllWithString: @"0" ];
+
     self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: self.numericString ];
     }
 
