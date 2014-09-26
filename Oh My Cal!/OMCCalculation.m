@@ -698,9 +698,6 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     if ( self->_typingState != _TypingState )
         self->_typingState = _TypingState;
 
-    if ( self->_typingState == OMCFinishedTyping )
-        [ self back2NotWatingForFloatNumber ];
-
     [ NOTIFICATION_CENTER postNotificationName: OMCCurrentTypingStateDidChangedNotification
                                         object: self
                                       userInfo: @{ OMCCalculationNewTypingState : [ NSNumber numberWithInt: self.typingState ] } ];
@@ -713,13 +710,6 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     [ self.resultValue zeroed ];
 
     [ self.theOperator clear ];
-    }
-
-- ( void ) back2NotWatingForFloatNumber
-    {
-    [ self.lhsOperand setWaitingForFloatNumber: NO ];
-    [ self.rhsOperand setWaitingForFloatNumber: NO  ];
-    [ self.resultValue setWaitingForFloatNumber: NO ];
     }
 
 - ( void ) setCurrentAry: ( OMCAry )_Ary

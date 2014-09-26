@@ -215,9 +215,6 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
         [ OMCOperand operandWithDecimalNumber: [ NSDecimalNumber decimalNumberWithDecimal: decimalValue ]
                                         inAry: self.currentAry
                                      calStyle: self.calStyle ];
-                                     
-    [ newOperand setWaitingForFloatNumber: [ self.numericString contains: OMCDot ] ];
-
     return newOperand;
     }
 
