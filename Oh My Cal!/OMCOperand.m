@@ -298,7 +298,7 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     }
 
 /* Computes the sine of current value (measured in radians) */
-- ( instancetype ) sin
+- ( instancetype ) sinWithRadians;
     {
     double result = sin( self.decimalNumber.doubleValue );
 
@@ -308,7 +308,7 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     }
 
 /* Computes the cosine of current value (measured in radians) */
-- ( instancetype ) cos
+- ( instancetype ) cosWithRadians
     {
     double result = cos( self.decimalNumber.doubleValue );
 
@@ -318,9 +318,39 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     }
 
 /* Computes the tangent of current value (measured in radians) */
-- ( instancetype ) tan
+- ( instancetype ) tanWithRadians
     {
     double result = tan( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+/* Computes the sine of current value (measured in degrees) */
+- ( instancetype ) sinWithDegrees
+    {
+    double result = sin( self.decimalNumber.doubleValue * PI / 180 );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+/* Computes the cosine of current value (measured in degrees) */
+- ( instancetype ) cosWithDegrees
+    {
+    double result = cos( self.decimalNumber.doubleValue * PI / 180 );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+/* Computes the tangent of current value (measured in degrees) */
+- ( instancetype ) tanWithDegrees;
+    {
+    double result = tan( self.decimalNumber.doubleValue * PI / 180 );
 
     return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
                                     inAry: self.currentAry

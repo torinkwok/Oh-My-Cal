@@ -524,8 +524,8 @@
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="54" translatesAutoresizingMaskIntoConstraints="NO" id="iT4-QC-fQg">
                     <rect key="frame" x="12" y="73" width="51" height="25"/>
-                    <buttonCell key="cell" type="roundTextured" title="Rad" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hEb-vH-xOM" customClass="BGHUDButtonCell">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                    <buttonCell key="cell" type="roundTextured" title="Deg" alternateTitle="Rad" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hEb-vH-xOM" customClass="BGHUDButtonCell">
+                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>

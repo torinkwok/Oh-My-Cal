@@ -63,6 +63,7 @@ NSString extern* const OMCLastTypedButton;
 
     OMCAry _currentAry;
     OMCCalStyle _calStyle;
+    OMCTrigonometricMode _trigonometricMode;
 
     OMCProgrammerStyleButtonType _lastTypedButtonType;
     NSButton* _lastTypedButton;
@@ -82,6 +83,7 @@ NSString extern* const OMCLastTypedButton;
 
 @property ( nonatomic, assign ) OMCAry currentAry;
 @property ( nonatomic, assign ) OMCCalStyle calStyle;
+@property ( nonatomic, assign ) OMCTrigonometricMode trigonometricMode;
 
 @property ( nonatomic, assign ) OMCProgrammerStyleButtonType lastTypedButtonType;
 @property ( nonatomic, retain ) NSButton* lastTypedButton;

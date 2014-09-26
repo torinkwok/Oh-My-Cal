@@ -64,6 +64,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
 @synthesize currentAry = _currentAry;
 @synthesize calStyle = _calStyle;
+@synthesize trigonometricMode = _trigonometricMode;
 
 @synthesize lhsOperand = _lhsOperand;
 @synthesize rhsOperand = _rhsOperand;
@@ -86,6 +87,9 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     [ self setTypingState: OMCWaitAllOperands ];
     [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
+
+    /* Radian mode by default */
+    [ self setTrigonometricMode: OMCRadianMode ];
 
     if ( [ self class ] == [ OMCBasicStyleCalculation class ] )
         self.calStyle = OMCBasicStyle;
@@ -348,25 +352,25 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     else if ( [ self.theOperator compare: @"sin" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
         {
         if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand sin ];
+            self.resultValue = [ self.lhsOperand sinWithRadians ];
         else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue sin ];
+            self.resultValue = [ self.resultValue sinWithRadians ];
         }
 
     else if ( [ self.theOperator compare: @"cos" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
         {
         if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand cos ];
+            self.resultValue = [ self.lhsOperand cosWithRadians ];
         else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue cos ];
+            self.resultValue = [ self.resultValue cosWithRadians ];
         }
 
     else if ( [ self.theOperator compare: @"tan" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
         {
         if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand tan ];
+            self.resultValue = [ self.lhsOperand tanWithRadians ];
         else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue tan ];
+            self.resultValue = [ self.resultValue tanWithRadians ];
         }
 
     else if ( [ self.theOperator compare: @"sinh" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
@@ -577,7 +581,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
                 [ self clearAllAndReset ];
             } return;
 
-    case OMCAC:     [ self clearAllAndReset ];      return;
+    case OMCAC: [ self clearAllAndReset ];                                              return;
+    case OMCToggleTrigonometircMode: [ self toggleTrigonometricMode: pressedButton ];   return;
 
     case OMCLeftParenthesis:  return;
     case OMCRightParenthesis: return;
@@ -655,6 +660,12 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
                 }
             } return;
         }
+    }
+
+- ( void ) toggleTrigonometricMode: ( NSButton* )_Button
+    {
+    OMCTrigonometricMode newMode = ( self.trigonometricMode == OMCRadianMode ) ? OMCDegreeMode : OMCRadianMode;
+    [ self setTrigonometricMode: newMode ];
     }
 
 - ( void ) clearMemory

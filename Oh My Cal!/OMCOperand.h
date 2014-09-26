@@ -124,12 +124,21 @@ NSString extern* const OMCOperandDivideByZeroException;
 - ( instancetype ) log10;
 /* Computes the natural (base e) logarithm of current value */
 - ( instancetype ) naturalLogarithm;
+
 /* Computes the sine of current value (measured in radians) */
-- ( instancetype ) sin;
+- ( instancetype ) sinWithRadians;
 /* Computes the cosine of current value (measured in radians) */
-- ( instancetype ) cos;
+- ( instancetype ) cosWithRadians;
 /* Computes the tangent of current value (measured in radians) */
-- ( instancetype ) tan;
+- ( instancetype ) tanWithRadians;
+
+/* Computes the sine of current value (measured in degrees) */
+- ( instancetype ) sinWithDegrees;
+/* Computes the cosine of current value (measured in degrees) */
+- ( instancetype ) cosWithDegrees;
+/* Computes the tangent of current value (measured in degrees) */
+- ( instancetype ) tanWithDegrees;;
+
 /* Computes hyperbolic sine of current value */
 - ( instancetype ) sinh;
 /* Computes hyperbolic cosine of current value */
