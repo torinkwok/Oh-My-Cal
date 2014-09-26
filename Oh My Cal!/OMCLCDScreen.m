@@ -438,22 +438,16 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
                                                 , NSForegroundColorAttributeName : self.statusColor
                                                 };
     CGFloat gapInStatus = 10.f;
+
+    //=======================================================================================================//
+    // Drawing trigonometric mode
     NSString* RAD = @"Rad";
     NSString* DEG = @"Deg";
     NSString* trigonometricModeInString = ( self.currentCalculation.trigonometricMode == OMCRadianMode ) ? RAD : DEG;
-    NSString* hasMemoryInString = @"M";
-
-    NSString* currentAryInString = nil;
-    if ( self.currentCalculation.currentAry == OMCDecimal )         currentAryInString = @"DEC";
-        else if ( self.currentCalculation.currentAry == OMCOctal )  currentAryInString = @"OCT";
-        else if ( self.currentCalculation.currentAry == OMCHex )    currentAryInString = @"HEX";
 
     NSSize sizeForRAD = [ RAD sizeWithAttributes: drawingAttributesForStatus ];
     NSSize sizeForDEG = [ DEG sizeWithAttributes: drawingAttributesForStatus ];
     NSSize sizeForTrigonometricStatus = NSMakeSize( MAX( sizeForDEG.width, sizeForRAD.width ), MAX( sizeForDEG.height, sizeForRAD.height ) );
-
-    NSSize sizeForHasMemoryInString = [ hasMemoryInString sizeWithAttributes: drawingAttributesForStatus ];
-    NSSize sizeForCurrentAryInString = [ currentAryInString sizeWithAttributes: drawingAttributesForStatus ];
 
     NSRect rectForTrigonometricStatus = NSMakeRect( self.statusSpaceBar.origin.x
                                                   , self.statusSpaceBar.origin.y
@@ -461,23 +455,35 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
                                                   , sizeForTrigonometricStatus.height
                                                   );
 
+    if ( self.currentCalculation.calStyle == OMCScientificStyle )
+        [ trigonometricModeInString drawInRect: rectForTrigonometricStatus withAttributes: drawingAttributesForStatus ];
+
+    //=======================================================================================================//
+    // Drawing has memory
+    NSString* hasMemoryInString = @"M";
+    NSSize sizeForHasMemoryInString = [ hasMemoryInString sizeWithAttributes: drawingAttributesForStatus ];
+
     NSRect rectForHasMemoryStatus = NSMakeRect( NSMaxX( rectForTrigonometricStatus ) + gapInStatus
                                               , rectForTrigonometricStatus.origin.y
                                               , sizeForHasMemoryInString.width
                                               , sizeForHasMemoryInString.height
                                               );
+    if ( self.currentCalculation.hasMemory )
+        [ hasMemoryInString drawInRect: rectForHasMemoryStatus withAttributes: drawingAttributesForStatus ];
 
+    //=======================================================================================================//
+    // Drawing current ary
+    NSString* currentAryInString = nil;
+    if ( self.currentCalculation.currentAry == OMCDecimal )         currentAryInString = @"DEC";
+        else if ( self.currentCalculation.currentAry == OMCOctal )  currentAryInString = @"OCT";
+        else if ( self.currentCalculation.currentAry == OMCHex )    currentAryInString = @"HEX";
+
+    NSSize sizeForCurrentAryInString = [ currentAryInString sizeWithAttributes: drawingAttributesForStatus ];
     NSRect rectForCurrentAryInString = NSMakeRect( NSMaxX( rectForHasMemoryStatus ) + gapInStatus
                                                  , rectForHasMemoryStatus.origin.y
                                                  , sizeForCurrentAryInString.width
                                                  , sizeForCurrentAryInString.height
                                                  );
-
-    if ( self.currentCalculation.calStyle == OMCScientificStyle )
-        [ trigonometricModeInString drawInRect: rectForTrigonometricStatus withAttributes: drawingAttributesForStatus ];
-
-    if ( self.currentCalculation.hasMemory )
-        [ hasMemoryInString drawInRect: rectForHasMemoryStatus withAttributes: drawingAttributesForStatus ];
 
     if ( self.currentCalculation.calStyle == OMCProgrammerStyle )
     [ currentAryInString drawInRect: rectForCurrentAryInString withAttributes: drawingAttributesForStatus ];
