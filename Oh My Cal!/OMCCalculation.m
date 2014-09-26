@@ -66,6 +66,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 @synthesize calStyle = _calStyle;
 @synthesize trigonometricMode = _trigonometricMode;
 @synthesize hasMemory = _hasMemory;
+@synthesize isInShift = _isInShift;
 
 @synthesize lhsOperand = _lhsOperand;
 @synthesize rhsOperand = _rhsOperand;
@@ -89,6 +90,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     [ self setTypingState: OMCWaitAllOperands ];
     [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
     [ self setHasMemory: NO ];
+    [ self setIsInShift: NO ];
 
     /* Radian mode by default */
     [ self setTrigonometricMode: OMCRadianMode ];
@@ -592,6 +594,9 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCEnter:
             [ self calculateTheResultValueForBinomialWithLastPressedButton: self.lastTypedButton ];
             return;
+
+    /* Cal with scientific style will observe this property( isInShift ) and response it */
+    case OMCShift: self.isInShift = !self.isInShift;    return;
 
     // Memory Operations
     case OMCMemoryAdd:

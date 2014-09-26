@@ -32,6 +32,9 @@
  ****************************************************************************/
 
 #import "OMCCalWithScientificStyle.h"
+#import "OMCScientificStyleCalculation.h"
+
+NSString static* const kKeyPathForIsInShiftInCalculationObject = @"self.isInShift";
 
 // OMCCalWithScientificStyle class
 @implementation OMCCalWithScientificStyle
@@ -71,6 +74,43 @@
 @synthesize _e;
 @synthesize _rand;
 @synthesize _EE;
+
+@synthesize sinRect = _sinRect;
+
+#pragma mark Initializers & Deallocators
+- ( void ) awakeFromNib
+    {
+    [ self._calculation addObserver: self
+                         forKeyPath: kKeyPathForIsInShiftInCalculationObject
+                            options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                            context: NULL ];
+
+    self.sinRect = [ self._sin frame ];
+    }
+
+- ( void ) observeValueForKeyPath: ( NSString* )_KeyPath
+                         ofObject: ( id )_Object
+                           change: ( NSDictionary* )_Change
+                          context: ( void* )_Context
+    {
+    if ( [ _KeyPath isEqualToString: kKeyPathForIsInShiftInCalculationObject ] )
+        {
+        BOOL isInShiftNow = [ _Change[ @"new" ] boolValue ];
+
+        if ( isInShiftNow )
+            {
+            [ [ self._sin retain ] removeFromSuperview ];
+            [ self addSubview: self._asinh ];
+            }
+        else
+            {
+            [ self._sin setFrame: self.sinRect ];
+            [ self addSubview: self._sin  ];
+
+            [ [ self._asinh retain ] removeFromSuperview ];
+            }
+        }
+    }
 
 @end // OMCCalWithScientificStyle
 

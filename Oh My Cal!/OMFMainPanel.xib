@@ -1392,7 +1392,7 @@
             </connections>
         </button>
         <button verticalHuggingPriority="750" tag="60" id="7D3-aD-H0D">
-            <rect key="frame" x="0.0" y="0.0" width="51" height="25"/>
+            <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
             <buttonCell key="cell" type="roundTextured" title="sinh⁻¹" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cYe-gi-SPS" customClass="BGHUDButtonCell">
                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                 <font key="font" metaFont="system"/>
