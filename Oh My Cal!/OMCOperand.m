@@ -553,10 +553,17 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 - ( void ) _deleteLastDigit
     {
     if ( [ self.numericString isEqualToString: @"0" ] )
+        {
+        NSBeep();
         return;
+        }
 
     [ self.numericString deleteTheLastCharacter ];
-    if ( self.numericString.length == 0 )
+
+    /* If the numeric string is empty... */
+    if ( self.numericString.length == 0
+            /* or there is only a negative sign in numeric string... */
+            || ( ( self.numericString.length == 1 ) && [ self.numericString isEqualToString: @"-" ] ) )
         [ self.numericString replaceAllWithString: @"0" ];
 
     self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: self.numericString ];

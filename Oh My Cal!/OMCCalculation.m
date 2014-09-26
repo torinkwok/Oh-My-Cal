@@ -155,19 +155,14 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         return;
         }
 
-    if ( operandWillBeDeleted.isZero )
-        NSBeep();
-    else
-        {
-        NSUInteger baseNumber = operandWillBeDeleted.decimalNumber.unsignedIntegerValue;
+    NSUInteger baseNumber = operandWillBeDeleted.decimalNumber.unsignedIntegerValue;
 
-        [ operandWillBeDeleted deleteDigit: baseNumber % 10 count: 1 ary: self.currentAry ];
+    [ operandWillBeDeleted deleteDigit: baseNumber % 10 count: 1 ary: self.currentAry ];
 
-        if ( self.typingState == OMCWaitAllOperands )
-            self.typingState = OMCWaitAllOperands;
-        else if ( self.typingState == OMCWaitRhsOperand )
-            self.typingState = OMCWaitRhsOperand;
-        }
+    if ( self.typingState == OMCWaitAllOperands )
+        self.typingState = OMCWaitAllOperands;
+    else if ( self.typingState == OMCWaitRhsOperand )
+        self.typingState = OMCWaitRhsOperand;
     }
 
 - ( void ) appendNumberWithLastPressedButton: ( NSButton* )_Button
