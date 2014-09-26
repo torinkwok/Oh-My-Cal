@@ -72,10 +72,11 @@
 
 -(NSGradient *)highlightGradient {
 	
-	return [[[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceRed: 0.524f green: 0.531f blue: 0.547f alpha: [self alphaValue]],
-			 (CGFloat)0, [NSColor colorWithDeviceRed: 0.445f green: 0.453f blue: 0.469f alpha: [self alphaValue]], (CGFloat).5,
-			 [NSColor colorWithDeviceRed: 0.406f green: 0.414f blue: 0.433f alpha: [self alphaValue]], (CGFloat).5,
-			 [NSColor colorWithDeviceRed: 0.339f green: 0.347f blue: 0.367f alpha: [self alphaValue]], (CGFloat)1.0f, nil] autorelease];
+	return [[[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceRed: 0.706f green: 0.714f blue: 0.733f alpha: [self alphaValue]],
+			 (CGFloat)0, [NSColor colorWithDeviceRed: 0.545f green: 0.553f blue: 0.569f alpha: [self alphaValue]], (CGFloat).5,
+			 [NSColor colorWithDeviceRed: 0.706f green: 0.714f blue: 0.733f alpha: [self alphaValue]], (CGFloat)1.f,
+             // Tong Guo
+/*			 [NSColor colorWithDeviceRed: 1.f green: 1.f blue: 1.f alpha: [self alphaValue]], (CGFloat)1.0f, */ nil] autorelease];
 }
 
 -(NSGradient *)knobColor {
