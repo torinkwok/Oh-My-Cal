@@ -54,11 +54,17 @@
 @synthesize _sin;
 @synthesize _cos;
 @synthesize _tan;
+@synthesize _asin;
+@synthesize _acos;
+@synthesize _atan;
 @synthesize _log10;
 
 @synthesize _sinh;
 @synthesize _cosh;
 @synthesize _tanh;
+@synthesize _asinh;
+@synthesize _acosh;
+@synthesize _atanh;
 @synthesize _In;
 
 @synthesize _pi;

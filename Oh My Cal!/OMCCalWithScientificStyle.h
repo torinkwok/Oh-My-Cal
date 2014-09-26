@@ -57,11 +57,17 @@
 @property ( nonatomic, assign ) IBOutlet NSButton* _sin;
 @property ( nonatomic, assign ) IBOutlet NSButton* _cos;
 @property ( nonatomic, assign ) IBOutlet NSButton* _tan;
+@property ( nonatomic, assign ) IBOutlet NSButton* _asin;
+@property ( nonatomic, assign ) IBOutlet NSButton* _acos;
+@property ( nonatomic, assign ) IBOutlet NSButton* _atan;
 @property ( nonatomic, assign ) IBOutlet NSButton* _log10;
 
 @property ( nonatomic, assign ) IBOutlet NSButton* _sinh;
 @property ( nonatomic, assign ) IBOutlet NSButton* _cosh;
 @property ( nonatomic, assign ) IBOutlet NSButton* _tanh;
+@property ( nonatomic, assign ) IBOutlet NSButton* _asinh;
+@property ( nonatomic, assign ) IBOutlet NSButton* _acosh;
+@property ( nonatomic, assign ) IBOutlet NSButton* _atanh;
 @property ( nonatomic, assign ) IBOutlet NSButton* _In;
 
 @property ( nonatomic, assign ) IBOutlet NSButton* _pi;
