@@ -352,25 +352,25 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     else if ( [ self.theOperator compare: @"sin" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
         {
         if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand sinWithRadians ];
+            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.lhsOperand sinWithRadians ] : [ self.lhsOperand sinWithDegrees ];
         else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue sinWithRadians ];
+            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.resultValue sinWithRadians ] : [ self.resultValue sinWithDegrees ];
         }
 
     else if ( [ self.theOperator compare: @"cos" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
         {
         if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand cosWithRadians ];
+            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.lhsOperand cosWithRadians ] : [ self.lhsOperand cosWithDegrees ];
         else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue cosWithRadians ];
+            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.resultValue cosWithRadians ] : [ self.resultValue cosWithDegrees ];
         }
 
     else if ( [ self.theOperator compare: @"tan" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
         {
         if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand tanWithRadians ];
+            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.lhsOperand tanWithRadians ] : [ self.lhsOperand tanWithDegrees ];
         else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue tanWithRadians ];
+            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.resultValue tanWithRadians ] : [ self.resultValue tanWithDegrees ];
         }
 
     else if ( [ self.theOperator compare: @"sinh" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
