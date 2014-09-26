@@ -139,12 +139,33 @@ NSString extern* const OMCOperandDivideByZeroException;
 /* Computes the tangent of current value (measured in degrees) */
 - ( instancetype ) tanWithDegrees;;
 
+/* Computes the principal values of the arc sine of current value (measured in radians) */
+- ( instancetype ) asinWithRadians;
+/* Computes the principal values of the arc cosine of current value (measured in radians) */
+- ( instancetype ) acosWithRadians;
+/* Computes the principal values of the arc tangent of current value (measured in radians) */
+- ( instancetype ) atanWithRadians;
+
+/* Computes the principal values of the arc sine of current value (measured in degrees) */
+- ( instancetype ) asinWithDegrees;
+/* Computes the principal values of the arc cosine of current value (measured in degrees) */
+- ( instancetype ) acosWithDegrees;
+/* Computes the principal values of the arc tangent of current value (measured in degrees) */
+- ( instancetype ) atanWithDegrees;
+
 /* Computes hyperbolic sine of current value */
 - ( instancetype ) sinh;
 /* Computes hyperbolic cosine of current value */
 - ( instancetype ) cosh;
 /* Computes hyperbolic tangent of current value */
 - ( instancetype ) tanh;
+
+/* Computes the inverse hyperbolic sine of current value */
+- ( instancetype ) asinh;
+/* Computes the inverse hyperbolic cosine of current value */
+- ( instancetype ) acosh;
+/* Computes the inverse hyperbolic tangent of current value */
+- ( instancetype ) atanh;
 
 - ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs;
 

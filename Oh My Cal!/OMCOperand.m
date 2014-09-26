@@ -302,6 +302,8 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     {
     double result = sin( self.decimalNumber.doubleValue );
 
+    NSLog( @"With RAD %.16g", asin( self.decimalNumber.doubleValue ) );
+
     return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
                                     inAry: self.currentAry
                                  calStyle: self.calStyle ];
@@ -357,6 +359,66 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                                  calStyle: self.calStyle ];
     }
 
+/* Computes the principal values of the arc sine of current value (measured in radians) */
+- ( instancetype ) asinWithRadians
+    {
+    double result = asin( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+/* Computes the principal values of the arc cosine of current value (measured in radians) */
+- ( instancetype ) acosWithRadians
+    {
+    double result = acos( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+/* Computes the principal values of the arc tangent of current value (measured in radians) */
+- ( instancetype ) atanWithRadians
+    {
+    double result = atan( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+/* Computes the principal values of the arc sine of current value (measured in degrees) */
+- ( instancetype ) asinWithDegrees
+    {
+    double result = asin( self.decimalNumber.doubleValue ) * 180 / PI;
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+/* Computes the principal values of the arc cosine of current value (measured in degrees) */
+- ( instancetype ) acosWithDegrees
+    {
+    double result = acos( self.decimalNumber.doubleValue ) * 180 / PI;
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+/* Computes the principal values of the arc tangent of current value (measured in degrees) */
+- ( instancetype ) atanWithDegrees
+    {
+    double result = atan( self.decimalNumber.doubleValue ) * 180 / PI;
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
 /* Computes hyperbolic sine of current value */
 - ( instancetype ) sinh
     {
@@ -381,6 +443,36 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 - ( instancetype ) tanh
     {
     double result = tanh( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+/* Computes the inverse hyperbolic sine of current value */
+- ( instancetype ) asinh
+    {
+    double result = asinh( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+/* Computes the inverse hyperbolic cosine of current value */
+- ( instancetype ) acosh
+    {
+    double result = acosh( self.decimalNumber.doubleValue );
+
+    return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
+                                    inAry: self.currentAry
+                                 calStyle: self.calStyle ];
+    }
+
+/* Computes the inverse hyperbolic tangent of current value */
+- ( instancetype ) atanh
+    {
+    double result = atanh( self.decimalNumber.doubleValue );
 
     return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
                                     inAry: self.currentAry
