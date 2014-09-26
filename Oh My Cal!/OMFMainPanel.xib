@@ -38,7 +38,7 @@
             </connections>
         </window>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="3LL-Vp-8Ph" customClass="OMCCalWithBasicStyle">
+        <customView canDrawConcurrently="YES" id="3LL-Vp-8Ph" customClass="OMCCalWithBasicStyle">
             <rect key="frame" x="0.0" y="0.0" width="188" height="187"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -288,7 +288,7 @@
                 <outlet property="_zero" destination="DCR-JS-plA" id="ZZu-IC-ULb"/>
             </connections>
         </customView>
-        <customView id="okK-3d-rOk" customClass="OMCCalWithScientificStyle">
+        <customView canDrawConcurrently="YES" id="okK-3d-rOk" customClass="OMCCalWithScientificStyle">
             <rect key="frame" x="0.0" y="0.0" width="429" height="187"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -792,7 +792,7 @@
                 <outlet property="_zero" destination="LmE-cp-OgS" id="Gfx-tx-snR"/>
             </connections>
         </customView>
-        <customView id="GvH-CV-btC" customClass="OMCCalWithProgrammerStyle">
+        <customView canDrawConcurrently="YES" id="GvH-CV-btC" customClass="OMCCalWithProgrammerStyle">
             <rect key="frame" x="0.0" y="0.0" width="371" height="187"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>

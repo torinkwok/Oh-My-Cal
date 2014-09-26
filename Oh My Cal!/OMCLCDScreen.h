@@ -53,6 +53,7 @@ typedef NSRect OMCSpaceBarRect;
     OMCSpaceBarRect _secondSpaceBar;
     OMCSpaceBarRect _thirdSpaceBar;
     OMCSpaceBarRect _topmostSpaceBar;
+    OMCSpaceBarRect _statusSpaceBar;
 
     NSBezierPath* _auxiliaryLinePath;
     NSBezierPath* _gridPath;
@@ -62,10 +63,12 @@ typedef NSRect OMCSpaceBarRect;
     NSColor* _operandsColor;
     NSColor* _operatorsColor;
     NSColor* _storageFormulasColor;
+    NSColor* _statusColor;
 
     NSFont* _operandsFont;
     NSFont* _operatorsFont;
     NSFont* _storageFormulasFont;
+    NSFont* _statusFont;
 
     OMCTypingState _typingState;
     OMCAry _currentAry;
@@ -87,16 +90,19 @@ typedef NSRect OMCSpaceBarRect;
 @property ( nonatomic, assign, readonly ) OMCSpaceBarRect secondSpaceBar;
 @property ( nonatomic, assign, readonly ) OMCSpaceBarRect thirdSpaceBar;
 @property ( nonatomic, assign, readonly ) OMCSpaceBarRect topmostSpaceBar;
+@property ( nonatomic, assign, readonly ) OMCSpaceBarRect statusSpaceBar;
 
 @property ( nonatomic, retain ) NSColor* gridColor;
 @property ( nonatomic, retain ) NSColor* auxiliaryLineColor;
 @property ( nonatomic, retain ) NSColor* operandsColor;
 @property ( nonatomic, retain ) NSColor* operatorsColor;
 @property ( nonatomic, retain ) NSColor* storageFormulasColor;
+@property ( nonatomic, retain ) NSColor* statusColor;
 
 @property ( nonatomic, retain ) NSFont* operandsFont;
 @property ( nonatomic, retain ) NSFont* operatorsFont;
 @property ( nonatomic, retain ) NSFont* storageFormulasFont;
+@property ( nonatomic, retain ) NSFont* statusFont;
 
 @property ( nonatomic, retain ) NSBezierPath* auxiliaryLinePath;
 @property ( nonatomic, retain ) NSBezierPath* gridPath;

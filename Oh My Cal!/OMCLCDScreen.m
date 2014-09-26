@@ -46,6 +46,9 @@
 NSInteger static const kSpaceBarsCount = 4;
 
 NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"self._currentCalStyle";
+NSString static* const kKeyPathForTrigonometircModeInCalculations = @"self.trigonometricMode";
+NSString static* const kKeyPathForHasMemoryInCalculations = @"self.hasMemory";
+NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
 
 // OMCLCDScreen class
 @implementation OMCLCDScreen
@@ -71,16 +74,19 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
 @synthesize secondSpaceBar = _secondSpaceBar;
 @synthesize thirdSpaceBar = _thirdSpaceBar;
 @synthesize topmostSpaceBar = _topmostSpaceBar;
+@synthesize statusSpaceBar = _statusSpaceBar;
 
 @synthesize gridColor = _gridColor;
 @synthesize auxiliaryLineColor = _auxiliaryLineColor;
 @synthesize operandsColor = _operandsColor;
 @synthesize operatorsColor = _operatorsColor;
 @synthesize storageFormulasColor = _storageFormulasColor;
+@synthesize statusColor = _statusColor;
 
 @synthesize operandsFont = _operandsFont;
 @synthesize operatorsFont = _operatorsFont;
 @synthesize storageFormulasFont = _storageFormulasFont;
+@synthesize statusFont = _statusFont;
 
 @synthesize typingState = _typingState;
 @synthesize currentAry = _currentAry;
@@ -103,12 +109,14 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
     self.gridColor = [ [ NSColor lightGrayColor ] colorWithAlphaComponent: .3 ];
     self.auxiliaryLineColor = [ NSColor colorWithDeviceRed: .3373f green: .3373f blue: .3412f alpha: 1.f ];
     self.operandsColor = [ NSColor whiteColor ];
-    self.operatorsColor = self.operandsColor;
+    self.operatorsColor = self.operandsColor;   // Same as the color for operands
     self.storageFormulasColor = [ NSColor whiteColor ];
+    self.statusColor = [ NSColor whiteColor ];
 
     self.operandsFont = [ NSFont fontWithName: @"PT Mono" size: 15 ];
     self.operatorsFont = [ [ NSFontManager sharedFontManager ] convertFont: self.operandsFont toSize: 13 ];
-    self.storageFormulasFont = self.operandsFont;
+    self.storageFormulasFont = self.operandsFont;   // Same as the font for operands
+    self.statusFont = [ NSFont fontWithName: @"Lucida Grande" size: 10 ];
 
     [ self setTypingState: OMCWaitAllOperands ];
     [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS objectForKey: OMCDefaultsKeyAry ] ];
@@ -121,6 +129,11 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
                                      forKeyPath: kKeyPathForCurrentCalStyleInMainPanelBackgroundView
                                         options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                                         context: NULL ];
+                                        
+    [ self.currentCalculation addObserver: self
+                               forKeyPath: kKeyPathForCurrentCalStyleInMainPanelBackgroundView
+                                  options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                                  context: NULL ];
     }
 
 - ( void ) observeValueForKeyPath: ( NSString* )_KeyPath
@@ -139,6 +152,10 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
         else if ( style == OMCProgrammerStyle )
             self.currentCalculation = self._programmerStyleCalculation;
         }
+    else if ( [ _KeyPath isEqualToString: kKeyPathForTrigonometircModeInCalculations ]
+                || [ _KeyPath isEqualToString: kKeyPathForHasMemoryInCalculations ]
+                || [ _KeyPath isEqualToString: kKeyPathCurrentAryInCalculations ] )
+        [ self setNeedsDisplayInRect: self.statusSpaceBar ];
     }
 
 - ( void ) _addObserverForCalculations: ( OMCCalculation* )_Calculation
@@ -152,6 +169,21 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
                              selector: @selector( currentTypingStateDidChanged: )
                                  name: OMCCurrentAryDidChangedNotification
                                object: _Calculation ];
+
+    [ _Calculation addObserver: self
+                    forKeyPath: kKeyPathForTrigonometircModeInCalculations
+                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                       context: NULL ];
+
+    [ _Calculation addObserver: self
+                    forKeyPath: kKeyPathForHasMemoryInCalculations
+                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                       context: NULL ];
+
+    [ _Calculation addObserver: self
+                    forKeyPath: kKeyPathCurrentAryInCalculations
+                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                       context: NULL ];
     }
 
 - ( void ) currentTypingStateDidChanged: ( NSNotification* )_Notif
@@ -199,6 +231,16 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
                                        , spaceBarWidth
                                        , spaceBarHeight
                                        );
+
+    CGFloat statusBarX = spaceBarX;
+    CGFloat statusBarY = 5.f;
+    CGFloat statusBarWidth = spaceBarWidth;
+    CGFloat statusBarHeight = 20.f;
+    self->_statusSpaceBar = NSMakeRect( statusBarX
+                                      , statusBarY
+                                      , statusBarWidth
+                                      , statusBarHeight
+                                      );
     }
 
 - ( void ) _regenerateLinePath
@@ -385,6 +427,65 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
                                             andForOperator: drawingAttributesForOperators ];
             } break;
         }
+
+    [ self _drawStatus ];
+    }
+
+/* Draw status */
+- ( void ) _drawStatus
+    {
+    NSDictionary* drawingAttributesForStatus = @{ NSFontAttributeName : self.statusFont
+                                                , NSForegroundColorAttributeName : self.statusColor
+                                                };
+    CGFloat gapInStatus = 10.f;
+    NSString* RAD = @"Rad";
+    NSString* DEG = @"Deg";
+    NSString* trigonometricModeInString = ( self.currentCalculation.trigonometricMode == OMCRadianMode ) ? RAD : DEG;
+    NSString* hasMemoryInString = @"M";
+
+    NSString* currentAryInString = nil;
+    if ( self.currentCalculation.currentAry == OMCDecimal )         currentAryInString = @"DEC";
+        else if ( self.currentCalculation.currentAry == OMCOctal )  currentAryInString = @"OCT";
+        else if ( self.currentCalculation.currentAry == OMCHex )    currentAryInString = @"HEX";
+
+    NSSize sizeForRAD = [ RAD sizeWithAttributes: drawingAttributesForStatus ];
+    NSSize sizeForDEG = [ DEG sizeWithAttributes: drawingAttributesForStatus ];
+    NSSize sizeForTrigonometricStatus = NSMakeSize( MAX( sizeForDEG.width, sizeForRAD.width ), MAX( sizeForDEG.height, sizeForRAD.height ) );
+
+    NSSize sizeForHasMemoryInString = [ hasMemoryInString sizeWithAttributes: drawingAttributesForStatus ];
+    NSSize sizeForCurrentAryInString = [ currentAryInString sizeWithAttributes: drawingAttributesForStatus ];
+
+    NSRect rectForTrigonometricStatus = NSMakeRect( self.statusSpaceBar.origin.x
+                                                  , self.statusSpaceBar.origin.y
+                                                  , sizeForTrigonometricStatus.width
+                                                  , sizeForTrigonometricStatus.height
+                                                  );
+
+    NSRect rectForHasMemoryStatus = NSMakeRect( NSMaxX( rectForTrigonometricStatus ) + gapInStatus
+                                              , rectForTrigonometricStatus.origin.y
+                                              , sizeForHasMemoryInString.width
+                                              , sizeForHasMemoryInString.height
+                                              );
+
+    NSRect rectForCurrentAryInString = NSMakeRect( NSMaxX( rectForHasMemoryStatus ) + gapInStatus
+                                                 , rectForHasMemoryStatus.origin.y
+                                                 , sizeForCurrentAryInString.width
+                                                 , sizeForCurrentAryInString.height
+                                                 );
+
+    if ( self.currentCalculation.calStyle == OMCScientificStyle )
+        [ trigonometricModeInString drawInRect: rectForTrigonometricStatus withAttributes: drawingAttributesForStatus ];
+
+    if ( self.currentCalculation.hasMemory )
+        [ hasMemoryInString drawInRect: rectForHasMemoryStatus withAttributes: drawingAttributesForStatus ];
+
+    if ( self.currentCalculation.calStyle == OMCProgrammerStyle )
+    [ currentAryInString drawInRect: rectForCurrentAryInString withAttributes: drawingAttributesForStatus ];
+    }
+
+- ( void ) _drawTrigonometricStatusWithAttributes: ( NSDictionary* )_Attributes
+    {
+
     }
 
 - ( NSPoint ) _pointUsedForDrawingOperators: ( NSString* )_Operator

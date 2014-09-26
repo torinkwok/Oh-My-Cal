@@ -65,6 +65,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 @synthesize currentAry = _currentAry;
 @synthesize calStyle = _calStyle;
 @synthesize trigonometricMode = _trigonometricMode;
+@synthesize hasMemory = _hasMemory;
 
 @synthesize lhsOperand = _lhsOperand;
 @synthesize rhsOperand = _rhsOperand;
@@ -87,6 +88,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     [ self setTypingState: OMCWaitAllOperands ];
     [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
+    [ self setHasMemory: NO ];
 
     /* Radian mode by default */
     [ self setTrigonometricMode: OMCRadianMode ];
@@ -595,6 +597,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCMemoryAdd:
             {
             OMCOperand* operandToBeAdded = nil;
+            [ self setHasMemory: YES ];
 
             if ( self.typingState == OMCWaitAllOperands )
                 {
@@ -618,6 +621,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCMemorySub:
             {
             OMCOperand* operandToBeAdded = nil;
+            [ self setHasMemory: YES ];
 
             if ( self.typingState == OMCWaitAllOperands )
                 {
@@ -638,7 +642,11 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
             self.memory = [ self.memory subtract: operandToBeAdded ];
             } return;
 
-    case OMCMemoryClear: [ self clearMemory ];   return;
+    case OMCMemoryClear:
+            {
+            [ self setHasMemory: NO ];
+            [ self clearMemory ];
+            } return;
 
     case OMCMemoryRead:
             {
