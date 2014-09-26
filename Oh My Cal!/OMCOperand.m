@@ -416,6 +416,8 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                     digitToBeAppend = [ NSString stringWithFormat: OMCDot ];
                     [ self.numericString appendString: digitToBeAppend ];
                     }
+                else
+                    NSBeep();
                 }
             else
                 {
