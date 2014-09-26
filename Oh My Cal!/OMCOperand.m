@@ -378,9 +378,6 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     case OMCScientificStyle:
             {
             decimalForm = [ NSString stringWithFormat: @"%@", [ self.decimalNumber description ] ];
-
-            if ( self.isWaitingForFloatNumber && ( [ self decimalPlaces ] == 0 ) )
-                decimalForm = [ decimalForm stringByAppendingString: OMCDot ];
             } break;
 
     case OMCProgrammerStyle:

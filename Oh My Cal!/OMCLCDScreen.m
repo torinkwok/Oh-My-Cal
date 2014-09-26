@@ -271,9 +271,6 @@ NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"s
     NSString* lhsOperandInString = ( self.typingState == OMCWaitAllOperands ) ? [ lhsOperand numericString ] : [ lhsOperand description ];
     NSString* rhsOperandInString = ( self.typingState == OMCWaitRhsOperand ) ? [ rhsOperand numericString ] : [ rhsOperand description ];
 
-    if ( [ lhsOperandInString endingAs: OMCDot ] )
-        lhsOperandInString = [ lhsOperandInString substringToIndex: lhsOperandInString.length - 1 ];
-
     /* ...we must draw a left operand into the bottom third space bar... */
     [ lhsOperandInString drawAtPoint: [ self _pointUsedForDrawingOperands: lhsOperandInString inSpaceBar: self.thirdSpaceBar ]
                       withAttributes: _AttributesForOperands ];
