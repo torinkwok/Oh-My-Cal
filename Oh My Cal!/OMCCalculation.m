@@ -133,30 +133,20 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
 - ( void ) _initializeOprands
     {
-    if ( !self.lhsOperand )
-        self.lhsOperand = [ OMCOperand zero ];
+    if ( !self.lhsOperand )     self.lhsOperand = [ OMCOperand zero ];
+    if ( !self.rhsOperand )     self.rhsOperand = [ OMCOperand zero ];
+    if ( !self.resultValue )    self.resultValue = [ OMCOperand zero ];
+    if ( !self.theOperator )    self.theOperator = [ NSMutableString string ];
 
-    if ( !self.rhsOperand )
-        self.rhsOperand = [ OMCOperand zero ];
-
-    if ( !self.resultValue )
-        self.resultValue = [ OMCOperand zero ];
-
-    if ( !self.theOperator )
-        self.theOperator = [ NSMutableString string ];
-
-    if ( !self.memory )
-        self.memory = [ OMCOperand zero ];
+    if ( !self.memory )         self.memory = [ OMCOperand zero ];
     }
 
 - ( void ) deleteNumberWithLastPressedButton: ( NSButton* )_Button
     {
     OMCOperand* operandWillBeDeleted = nil;
 
-    if ( self.typingState == OMCWaitAllOperands )
-        operandWillBeDeleted = self.lhsOperand;
-    else if ( self.typingState == OMCWaitRhsOperand )
-        operandWillBeDeleted = self.rhsOperand;
+    if ( self.typingState == OMCWaitAllOperands )       operandWillBeDeleted = self.lhsOperand;
+    else if ( self.typingState == OMCWaitRhsOperand )   operandWillBeDeleted = self.rhsOperand;
     else if ( self.typingState == OMCFinishedTyping )
         {
         NSBeep();
@@ -432,51 +422,35 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
             } return;
 
     // Numbers
-    case OMCOne:    case OMCTwo:    case OMCThree:
-    case OMCFour:   case OMCFive:   case OMCSix:
-    case OMCSeven:  case OMCEight:  case OMCNine:
-    case OMCZero:   case OMCDoubleZero:
+    case OMCOne:    case OMCTwo:    case OMCThree:  case OMCFour:   case OMCFive:   case OMCSix:
+    case OMCSeven:  case OMCEight:  case OMCNine:   case OMCZero:   case OMCDoubleZero:
     case OMCFloatPoint:
 
-    case OMC0xA:    case OMC0xB:    case OMC0xC:
-    case OMC0xD:    case OMC0xE:    case OMC0xF:
+    case OMC0xA:    case OMC0xB:    case OMC0xC:    case OMC0xD:    case OMC0xE:    case OMC0xF:
     case OMC0xFF:
         {
         [ self appendNumberWithLastPressedButton: self.lastTypedButton ];
         } return;
 
     // Binary operators
-    case OMCAdd:        case OMCSub:
-    case OMCMuliply:    case OMCDivide:
+    case OMCAdd:        case OMCSub:    case OMCMuliply:    case OMCDivide:
 
     case OMCxPower:
 
-    case OMCAnd:    case OMCOr:     case OMCNor:
-    case OMCXor:    case OMCLsh:    case OMCRsh:
+    case OMCAnd:        case OMCOr:     case OMCNor:    case OMCXor:    case OMCLsh:    case OMCRsh:
     case OMCMod:
             [ self appendBinaryOperatorWithLastPressedButton: self.lastTypedButton ];
             return;
 
     // Monomial operators
-    case OMCPercent:    case OMCReciprocal:
-    case OMCSquare:     case OMCCube:
-
-    case OMCLog2:       case OMCLog10:  case OMCIn:
+    case OMCPercent:    case OMCReciprocal:     case OMCSquare:     case OMCCube:
+    case OMCLog2:       case OMCLog10:  case OMCIn:     case OMCSqrt:
     
-    case OMCSin:        case OMCCos:    case OMCTan:
-    case OMCSinh:       case OMCCosh:   case OMCTanh:
+    case OMCSin:        case OMCCos:    case OMCTan:    case OMCSinh:       case OMCCosh:   case OMCTanh:
+    case OMCAsin:       case OMCAcos:   case OMCAtan:   case OMCAsinh:      case OMCAcosh:  case OMCAtanh:
 
-    case OMCAsin:       case OMCAcos:   case OMCAtan:
-    case OMCAsinh:      case OMCAcosh:  case OMCAtanh:
-
-    case OMCPi:         case OMCe:
-
-    case OMCSqrt:
-
-    case OMCRand:
-
-    case OMCRoL:    case OMCRoR:    case OMCFactorial:
-    case OMC2_s:    case OMC1_s:
+    case OMCPi:         case OMCe:      case OMCRand:
+    case OMCRoL:        case OMCRoR:    case OMCFactorial:  case OMC2_s:    case OMC1_s:
             [ self calculateTheResultValueForMonomialWithLastPressedButton: self.lastTypedButton ];
             return;
 
