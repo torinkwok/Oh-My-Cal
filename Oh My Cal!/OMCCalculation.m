@@ -467,7 +467,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
             self.resultValue = [ OMCOperand e ];
         }
 
-        else if ( [ self.theOperator compare: @"Rand" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+    else if ( [ self.theOperator compare: @"Rand" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
         {
         if ( self.typingState == OMCWaitAllOperands )
             self.resultValue = [ OMCOperand rand ];
