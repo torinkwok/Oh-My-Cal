@@ -97,18 +97,23 @@ NSString static* const kKeyPathForIsInShiftInCalculationObject = @"self.isInShif
         {
         BOOL isInShiftNow = [ _Change[ @"new" ] boolValue ];
 
-        if ( isInShiftNow )
-            {
-            [ [ self._sin retain ] removeFromSuperview ];
-            [ self addSubview: self._asinh ];
-            }
-        else
-            {
-            [ self._sin setFrame: self.sinRect ];
-            [ self addSubview: self._sin  ];
+        [ self._sin setHidden: isInShiftNow ];
+        [ self._asin setHidden: !isInShiftNow ];
 
-            [ [ self._asinh retain ] removeFromSuperview ];
-            }
+        [ self._cos setHidden: isInShiftNow ];
+        [ self._acos setHidden: !isInShiftNow ];
+
+        [ self._tan setHidden: isInShiftNow ];
+        [ self._atan setHidden: !isInShiftNow ];
+
+        [ self._sinh setHidden: isInShiftNow ];
+        [ self._asinh setHidden: !isInShiftNow ];
+
+        [ self._cosh setHidden: isInShiftNow ];
+        [ self._acosh setHidden: !isInShiftNow ];
+
+        [ self._tanh setHidden: isInShiftNow ];
+        [ self._atanh setHidden: !isInShiftNow ];
         }
     }
 
