@@ -279,7 +279,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     return ( OMCOperand* )buffer;
     }
     
-#define COMPARE_OPERATOR( _Rhs ) COMPARE_WITH_CASE_INSENSITIVE( self.theOperator, _Rhs )
+#define COMPARE_WITH_OPERATOR( _Rhs ) COMPARE_WITH_CASE_INSENSITIVE( self.theOperator, _Rhs )
 
 - ( void ) calculateTheResultValueForMonomialWithLastPressedButton: ( NSButton* )_Button
     {
@@ -287,52 +287,52 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     SEL calculation = nil;
 
-    if ( COMPARE_OPERATOR( @"!" ) )             calculation = @selector( factorial );
-    else if ( COMPARE_OPERATOR( @"RoL" ) )      calculation = @selector( RoL );
-    else if ( COMPARE_OPERATOR( @"RoR" ) )      calculation = @selector( RoR );
+    if ( COMPARE_WITH_OPERATOR( @"!" ) )             calculation = @selector( factorial );
+    else if ( COMPARE_WITH_OPERATOR( @"RoL" ) )      calculation = @selector( RoL );
+    else if ( COMPARE_WITH_OPERATOR( @"RoR" ) )      calculation = @selector( RoR );
 
     else if ( [ self.theOperator isEqualToString: @"2'S" ] || [ self.theOperator isEqualToString: @"1'S" ] )
         calculation = @selector( flipBytes );
 
-    else if ( COMPARE_OPERATOR( @"x²" ) )       calculation = @selector( square );
-    else if ( COMPARE_OPERATOR( @"x³" ) )       calculation = @selector( cube );
-    else if ( COMPARE_OPERATOR( @"1/x" ) )      calculation = @selector( reciprocal );
-    else if ( COMPARE_OPERATOR( @"√" ) )        calculation = @selector( sqrt );
-    else if ( COMPARE_OPERATOR( @"%" ) )        calculation = @selector( percent );
+    else if ( COMPARE_WITH_OPERATOR( @"x²" ) )       calculation = @selector( square );
+    else if ( COMPARE_WITH_OPERATOR( @"x³" ) )       calculation = @selector( cube );
+    else if ( COMPARE_WITH_OPERATOR( @"1/x" ) )      calculation = @selector( reciprocal );
+    else if ( COMPARE_WITH_OPERATOR( @"√" ) )        calculation = @selector( sqrt );
+    else if ( COMPARE_WITH_OPERATOR( @"%" ) )        calculation = @selector( percent );
 
-    else if ( COMPARE_OPERATOR( @"log2" ) )     calculation = @selector( log2 );
-    else if ( COMPARE_OPERATOR( @"log10" ) )    calculation = @selector( log10 );
-    else if ( COMPARE_OPERATOR( @"In" ) )       calculation = @selector( naturalLogarithm );
+    else if ( COMPARE_WITH_OPERATOR( @"log2" ) )     calculation = @selector( log2 );
+    else if ( COMPARE_WITH_OPERATOR( @"log10" ) )    calculation = @selector( log10 );
+    else if ( COMPARE_WITH_OPERATOR( @"In" ) )       calculation = @selector( naturalLogarithm );
 
-    else if ( COMPARE_OPERATOR( @"sin" ) )
+    else if ( COMPARE_WITH_OPERATOR( @"sin" ) )
         calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( sinWithRadians ) : @selector( sinWithDegrees );
 
-    else if ( COMPARE_OPERATOR( @"cos" ) )
+    else if ( COMPARE_WITH_OPERATOR( @"cos" ) )
         calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( cosWithRadians ) : @selector( cosWithDegrees );
 
-    else if ( COMPARE_OPERATOR( @"tan" ) )
+    else if ( COMPARE_WITH_OPERATOR( @"tan" ) )
         calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( tanWithRadians ) : @selector( tanWithDegrees );
 
-    else if ( COMPARE_OPERATOR( @"sinh" ) )     calculation = @selector( sinh );
-    else if ( COMPARE_OPERATOR( @"cosh" ) )     calculation = @selector( cosh );
-    else if ( COMPARE_OPERATOR( @"tanh" ) )     calculation = @selector( tanh );
+    else if ( COMPARE_WITH_OPERATOR( @"sinh" ) )     calculation = @selector( sinh );
+    else if ( COMPARE_WITH_OPERATOR( @"cosh" ) )     calculation = @selector( cosh );
+    else if ( COMPARE_WITH_OPERATOR( @"tanh" ) )     calculation = @selector( tanh );
 
-    else if ( COMPARE_OPERATOR( @"sin⁻¹" ) )
+    else if ( COMPARE_WITH_OPERATOR( @"sin⁻¹" ) )
         calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( asinWithRadians ) : @selector( asinWithDegrees );
 
-    else if ( COMPARE_OPERATOR( @"cos⁻¹" ) )
+    else if ( COMPARE_WITH_OPERATOR( @"cos⁻¹" ) )
         calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( acosWithRadians ) : @selector( acosWithDegrees );
 
-    else if ( COMPARE_OPERATOR( @"tan⁻¹" ) )
+    else if ( COMPARE_WITH_OPERATOR( @"tan⁻¹" ) )
         calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( atanWithRadians ) : @selector( atanWithDegrees );
 
-    else if ( COMPARE_OPERATOR( @"sinh⁻¹" ) )   calculation = @selector( asinh );
-    else if ( COMPARE_OPERATOR( @"cosh⁻¹" ) )   calculation = @selector( acosh );
-    else if ( COMPARE_OPERATOR( @"tanh⁻¹" ) )   calculation = @selector( atanh );
+    else if ( COMPARE_WITH_OPERATOR( @"sinh⁻¹" ) )   calculation = @selector( asinh );
+    else if ( COMPARE_WITH_OPERATOR( @"cosh⁻¹" ) )   calculation = @selector( acosh );
+    else if ( COMPARE_WITH_OPERATOR( @"tanh⁻¹" ) )   calculation = @selector( atanh );
 
-    else if ( COMPARE_OPERATOR( @"π" ) )        calculation = @selector( pi );
-    else if ( COMPARE_OPERATOR( @"e" ) )        calculation = @selector( e );
-    else if ( COMPARE_OPERATOR( @"rand" ) )     calculation = @selector( rand );
+    else if ( COMPARE_WITH_OPERATOR( @"π" ) )        calculation = @selector( pi );
+    else if ( COMPARE_WITH_OPERATOR( @"e" ) )        calculation = @selector( e );
+    else if ( COMPARE_WITH_OPERATOR( @"rand" ) )     calculation = @selector( rand );
 
     self.resultValue = [ self _performCalculationOfMonomial: calculation ];
     self.typingState = OMCFinishedTyping;
