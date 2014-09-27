@@ -291,8 +291,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     else if ( COMPARE_WITH_OPERATOR( @"RoL" ) )      calculation = @selector( RoL );
     else if ( COMPARE_WITH_OPERATOR( @"RoR" ) )      calculation = @selector( RoR );
 
-    else if ( [ self.theOperator isEqualToString: @"2'S" ] || [ self.theOperator isEqualToString: @"1'S" ] )
-        calculation = @selector( flipBytes );
+    else if ( COMPARE_WITH_OPERATOR( @"2's" )
+            || COMPARE_WITH_OPERATOR( @"1's" ) )     calculation = @selector( flipBytes );
 
     else if ( COMPARE_WITH_OPERATOR( @"x²" ) )       calculation = @selector( square );
     else if ( COMPARE_WITH_OPERATOR( @"x³" ) )       calculation = @selector( cube );
@@ -300,8 +300,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     else if ( COMPARE_WITH_OPERATOR( @"√" ) )        calculation = @selector( sqrt );
     else if ( COMPARE_WITH_OPERATOR( @"%" ) )        calculation = @selector( percent );
 
-    else if ( COMPARE_WITH_OPERATOR( @"log2" ) )     calculation = @selector( log2 );
-    else if ( COMPARE_WITH_OPERATOR( @"log10" ) )    calculation = @selector( log10 );
+    else if ( COMPARE_WITH_OPERATOR( @"log₂" ) )     calculation = @selector( log2 );
+    else if ( COMPARE_WITH_OPERATOR( @"log₁₀" ) )    calculation = @selector( log10 );
     else if ( COMPARE_WITH_OPERATOR( @"In" ) )       calculation = @selector( naturalLogarithm );
 
     else if ( COMPARE_WITH_OPERATOR( @"sin" ) )
