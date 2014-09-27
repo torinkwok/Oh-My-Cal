@@ -31,6 +31,9 @@
  **                                                                         **
  ****************************************************************************/
 
+#define COMPARE_WITH_CASE_INSENSITIVE( _Lhs, _Rhs )                                 \
+    ( [ _Lhs compare: _Rhs options: NSCaseInsensitiveSearch ] == NSOrderedSame )    \
+
 // NSString + OMCCalculation
 @interface NSString ( OMCString )
 

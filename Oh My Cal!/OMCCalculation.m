@@ -278,6 +278,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     return ( OMCOperand* )buffer;
     }
+    
+#define COMPARE_OPERATOR( _Rhs ) COMPARE_WITH_CASE_INSENSITIVE( self.theOperator, _Rhs )
 
 - ( void ) calculateTheResultValueForMonomialWithLastPressedButton: ( NSButton* )_Button
     {
@@ -285,86 +287,52 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     SEL calculation = nil;
 
-    if ( [ self.theOperator compare: @"!" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( factorial );
-
-    else if ( [ self.theOperator compare: @"RoL" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( RoL );
-
-    else if ( [ self.theOperator compare: @"RoR" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( RoR );
+    if ( COMPARE_OPERATOR( @"!" ) )             calculation = @selector( factorial );
+    else if ( COMPARE_OPERATOR( @"RoL" ) )      calculation = @selector( RoL );
+    else if ( COMPARE_OPERATOR( @"RoR" ) )      calculation = @selector( RoR );
 
     else if ( [ self.theOperator isEqualToString: @"2'S" ] || [ self.theOperator isEqualToString: @"1'S" ] )
         calculation = @selector( flipBytes );
 
-    else if ( [ self.theOperator compare: @"x²" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( square );
+    else if ( COMPARE_OPERATOR( @"x²" ) )       calculation = @selector( square );
+    else if ( COMPARE_OPERATOR( @"x³" ) )       calculation = @selector( cube );
+    else if ( COMPARE_OPERATOR( @"1/x" ) )      calculation = @selector( reciprocal );
+    else if ( COMPARE_OPERATOR( @"√" ) )        calculation = @selector( sqrt );
+    else if ( COMPARE_OPERATOR( @"%" ) )        calculation = @selector( percent );
 
-    else if ( [ self.theOperator compare: @"x³" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( cube );
+    else if ( COMPARE_OPERATOR( @"log2" ) )     calculation = @selector( log2 );
+    else if ( COMPARE_OPERATOR( @"log10" ) )    calculation = @selector( log10 );
+    else if ( COMPARE_OPERATOR( @"In" ) )       calculation = @selector( naturalLogarithm );
 
-    else if ( [ self.theOperator compare: @"1/x" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( reciprocal );
-
-    else if ( [ self.theOperator compare: @"√" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( sqrt );
-
-    else if ( [ self.theOperator compare: @"%" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( percent );
-
-    else if ( [ self.theOperator compare: @"log₂" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( log2 );
-
-    else if ( [ self.theOperator compare: @"log₁₀" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( log10 );
-
-    else if ( [ self.theOperator compare: @"In" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( naturalLogarithm );
-
-    else if ( [ self.theOperator compare: @"sin" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+    else if ( COMPARE_OPERATOR( @"sin" ) )
         calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( sinWithRadians ) : @selector( sinWithDegrees );
 
-    else if ( [ self.theOperator compare: @"cos" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+    else if ( COMPARE_OPERATOR( @"cos" ) )
         calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( cosWithRadians ) : @selector( cosWithDegrees );
 
-    else if ( [ self.theOperator compare: @"tan" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+    else if ( COMPARE_OPERATOR( @"tan" ) )
         calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( tanWithRadians ) : @selector( tanWithDegrees );
 
-    else if ( [ self.theOperator compare: @"sinh" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( sinh );
+    else if ( COMPARE_OPERATOR( @"sinh" ) )     calculation = @selector( sinh );
+    else if ( COMPARE_OPERATOR( @"cosh" ) )     calculation = @selector( cosh );
+    else if ( COMPARE_OPERATOR( @"tanh" ) )     calculation = @selector( tanh );
 
-    else if ( [ self.theOperator compare: @"cosh" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( cosh );
-
-    else if ( [ self.theOperator compare: @"tanh" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( tanh );
-
-    else if ( [ self.theOperator compare: @"sin⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+    else if ( COMPARE_OPERATOR( @"sin⁻¹" ) )
         calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( asinWithRadians ) : @selector( asinWithDegrees );
 
-    else if ( [ self.theOperator compare: @"cos⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+    else if ( COMPARE_OPERATOR( @"cos⁻¹" ) )
         calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( acosWithRadians ) : @selector( acosWithDegrees );
 
-    else if ( [ self.theOperator compare: @"tan⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+    else if ( COMPARE_OPERATOR( @"tan⁻¹" ) )
         calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( atanWithRadians ) : @selector( atanWithDegrees );
 
-    else if ( [ self.theOperator compare: @"sinh⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( asinh );
+    else if ( COMPARE_OPERATOR( @"sinh⁻¹" ) )   calculation = @selector( asinh );
+    else if ( COMPARE_OPERATOR( @"cosh⁻¹" ) )   calculation = @selector( acosh );
+    else if ( COMPARE_OPERATOR( @"tanh⁻¹" ) )   calculation = @selector( atanh );
 
-    else if ( [ self.theOperator compare: @"cosh⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( acosh );
-
-    else if ( [ self.theOperator compare: @"tanh⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( atanh );
-
-    else if ( [ self.theOperator compare: @"π" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( pi );
-
-    else if ( [ self.theOperator compare: @"e" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( e );
-
-    else if ( [ self.theOperator compare: @"Rand" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        calculation = @selector( rand );
+    else if ( COMPARE_OPERATOR( @"π" ) )        calculation = @selector( pi );
+    else if ( COMPARE_OPERATOR( @"e" ) )        calculation = @selector( e );
+    else if ( COMPARE_OPERATOR( @"rand" ) )     calculation = @selector( rand );
 
     self.resultValue = [ self _performCalculationOfMonomial: calculation ];
     self.typingState = OMCFinishedTyping;
