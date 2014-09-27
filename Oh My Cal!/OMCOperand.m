@@ -760,6 +760,9 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 
 - ( OMCOperand* ) divide: ( OMCOperand* )_Rhs
     {
+    if ( [ _Rhs isZero ] )
+        return [ OMCOperand divByZero ];
+
     NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberByDividingBy: _Rhs.decimalNumber
                                                                        withBehavior: self ];
     return [ OMCOperand operandWithDecimalNumber: resultDecimal

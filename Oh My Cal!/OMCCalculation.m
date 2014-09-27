@@ -254,30 +254,6 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         self.typingState = OMCWaitRhsOperand;
         }
     }
-
-- ( OMCOperand* ) _performCalculationOfMonomial: ( SEL )_CalSel
-    {
-    BOOL isClassMethod = NO;
-    if ( _CalSel == @selector( pi ) || _CalSel == @selector( e ) || _CalSel == @selector( rand ) )
-        isClassMethod = YES;
-
-    /* Because of the calculation of monomial, the possible operand is just lhsOperand and resultValue.
-     * So we don't need the rhsOperand */
-    OMCOperand* operand = ( self.typingState == OMCWaitAllOperands ) ? self.lhsOperand : self.resultValue;
-    Class operandClass = [ OMCOperand class ];
-
-    NSMethodSignature* calMethodSignature = [ ( isClassMethod ? operandClass : operand ) methodSignatureForSelector: _CalSel ];
-    NSInvocation* calInvocation = [ NSInvocation invocationWithMethodSignature: calMethodSignature ];
-    [ calInvocation setSelector: _CalSel ];
-
-    NSUInteger length = [ [ calInvocation methodSignature ] methodReturnLength ];
-    void* buffer = ( void* )malloc( length );
-
-    [ calInvocation invokeWithTarget: ( isClassMethod ? operandClass : operand ) ];
-    [ calInvocation getReturnValue: &buffer ];
-
-    return ( OMCOperand* )buffer;
-    }
     
 #define COMPARE_WITH_OPERATOR( _Rhs ) COMPARE_WITH_CASE_INSENSITIVE( self.theOperator, _Rhs )
 
@@ -332,16 +308,40 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     else if ( COMPARE_WITH_OPERATOR( @"π" ) )        calculation = @selector( pi );
     else if ( COMPARE_WITH_OPERATOR( @"e" ) )        calculation = @selector( e );
-    else if ( COMPARE_WITH_OPERATOR( @"rand" ) )     calculation = @selector( rand );
+    else if ( COMPARE_WITH_OPERATOR( @"Rand" ) )     calculation = @selector( rand );
 
     self.resultValue = [ self _performCalculationOfMonomial: calculation ];
     self.typingState = OMCFinishedTyping;
     }
 
+- ( OMCOperand* ) _performCalculationOfMonomial: ( SEL )_CalSel
+    {
+    BOOL isClassMethod = NO;
+    if ( _CalSel == @selector( pi ) || _CalSel == @selector( e ) || _CalSel == @selector( rand ) )
+        isClassMethod = YES;
+
+    /* Because of the calculation of monomial, the possible operand is just lhsOperand and resultValue.
+     * So we don't need the rhsOperand */
+    OMCOperand* operand = ( self.typingState == OMCWaitAllOperands ) ? self.lhsOperand : self.resultValue;
+    Class operandClass = [ OMCOperand class ];
+
+    NSMethodSignature* calMethodSignature = [ ( isClassMethod ? operandClass : operand ) methodSignatureForSelector: _CalSel ];
+    NSInvocation* calInvocation = [ NSInvocation invocationWithMethodSignature: calMethodSignature ];
+    [ calInvocation setSelector: _CalSel ];
+
+    NSUInteger returnValBytes = [ [ calInvocation methodSignature ] methodReturnLength ];
+    void* buffer = ( void* )malloc( returnValBytes );
+
+    [ calInvocation invokeWithTarget: ( isClassMethod ? operandClass : operand ) ];
+    [ calInvocation getReturnValue: &buffer ];
+
+    return ( OMCOperand* )buffer;
+    }
+
 - ( void ) calculateTheResultValueForBinomialWithLastPressedButton: ( NSButton* )_Button
     {
-    if ( self.typingState == OMCFinishedTyping /* If the user has finished a calculation... */
-            || self.typingState == OMCWaitAllOperands /* or if the user is typing hte left operand... */  )
+    if ( self.typingState == OMCFinishedTyping /* If the user has already finished a calculation... */
+            || self.typingState == OMCWaitAllOperands /* or if the user is typing the left operand... */  )
         {
         // Reset the LCD to a inital state
         OMCOperand* zero = [ OMCOperand zero ];
@@ -355,55 +355,47 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         return;
         }
 
+    SEL calculation = nil;
+
     /* If the user has not finished a calculation,
      * for example, they have finished typing the right operand,
      * and they want to calculate a result value... */
-    if ( [ self.theOperator isEqualToString: @"+" ] )
-        self.resultValue = [ self.lhsOperand add: self.rhsOperand ];
+    if ( COMPARE_WITH_OPERATOR( @"+" ) )            calculation = @selector( add: );
+    else if ( COMPARE_WITH_OPERATOR( @"-" ) )       calculation = @selector( subtract: );
+    else if ( COMPARE_WITH_OPERATOR( @"×" ) )       calculation = @selector( multiply: );
+    else if ( COMPARE_WITH_OPERATOR( @"÷" ) )       calculation = @selector( divide: );
 
-    else if ( [ self.theOperator isEqualToString: @"-" ] )
-        self.resultValue = [ self.lhsOperand subtract: self.rhsOperand ];
+    else if ( COMPARE_WITH_OPERATOR( @"And" ) )     calculation = @selector( bitwiseAnd: );
+    else if ( COMPARE_WITH_OPERATOR( @"Or" ) )      calculation = @selector( bitwiseOr: );
+    else if ( COMPARE_WITH_OPERATOR( @"Nor" ) )     calculation = @selector( bitwiseNor: );
+    else if ( COMPARE_WITH_OPERATOR( @"Xor" ) )     calculation = @selector( bitwiseXor: );
+    else if ( COMPARE_WITH_OPERATOR( @"Lsh" ) )     calculation = @selector( Lsh: );
+    else if ( COMPARE_WITH_OPERATOR( @"Rsh" ) )     calculation = @selector( Rsh: );
 
-    else if ( [ self.theOperator isEqualToString: @"×" ] )
-        self.resultValue = [ self.lhsOperand multiply: self.rhsOperand ];
+    else if ( COMPARE_WITH_OPERATOR( @"Yˣ" ) )      calculation = @selector( pow: );
+    else if ( COMPARE_WITH_OPERATOR( @"Mod" ) )     calculation = @selector( mod: );
 
-    else if ( [ self.theOperator isEqualToString: @"÷" ] )
-        {
-        @try {
-            self.resultValue = [ self.lhsOperand divide: self.rhsOperand ];
-            } @catch ( NSException* _Ex )
-                {
-                self.resultValue = [ OMCOperand divByZero ];
-                }
-        }
-
-
-    else if ( [ self.theOperator isEqualToString: @"Yˣ" ] )
-        self.resultValue = [ self.lhsOperand pow: self.rhsOperand ];
-
-
-    else if ( [ self.theOperator isEqualToString: @"AND" ] )
-        self.resultValue = [ self.lhsOperand bitwiseAnd: self.rhsOperand ];
-
-    else if ( [ self.theOperator isEqualToString: @"OR" ] )
-        self.resultValue = [ self.lhsOperand bitwiseOr: self.rhsOperand ];
-
-    else if ( [ self.theOperator isEqualToString: @"NOR" ] )
-        self.resultValue = [ self.lhsOperand bitwiseNor: self.rhsOperand ];
-
-    else if ( [ self.theOperator isEqualToString: @"XOR" ] )
-        self.resultValue = [ self.lhsOperand bitwiseXor: self.rhsOperand ];
-
-    else if ( [ self.theOperator isEqualToString: @"LSH" ] )
-        self.resultValue = [ self.lhsOperand Lsh: self.rhsOperand ];
-
-    else if ( [ self.theOperator isEqualToString: @"RSH" ] )
-        self.resultValue = [ self.lhsOperand Rsh: self.rhsOperand ];
-
-    else if ( [ self.theOperator isEqualToString: @"MOD" ] )
-        self.resultValue = [ self.lhsOperand mod: self.rhsOperand ];
-
+    self.resultValue = [ self _performCalculationOfBinomial: calculation ];
     self.typingState = OMCFinishedTyping;
+    }
+
+- ( OMCOperand* ) _performCalculationOfBinomial: ( SEL )_CalSel
+    {
+    OMCOperand* lhsOperand = self.lhsOperand;
+    OMCOperand* rhsOperand = self.rhsOperand;
+
+    NSMethodSignature* calMethodSignature = [ lhsOperand methodSignatureForSelector: _CalSel ];
+    NSInvocation* calInvocation = [ NSInvocation invocationWithMethodSignature: calMethodSignature ];
+    [ calInvocation setSelector: _CalSel ];
+    [ calInvocation setArgument: &rhsOperand atIndex: 2 ];
+
+    NSUInteger returnValBytes = [ [ calInvocation methodSignature ] methodReturnLength ];
+    void* buffer = ( void* )malloc( returnValBytes );
+
+    [ calInvocation invokeWithTarget: lhsOperand ];
+    [ calInvocation getReturnValue: &buffer ];
+
+    return ( OMCOperand* )buffer;
     }
 
 #pragma mark IBActions
@@ -673,19 +665,19 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCFactorial:
     case OMCPercent:    case OMCReciprocal:
 
-    case OMCRoL:    case OMCRoR:
-    case OMC2_s:    case OMC1_s:
+    case OMCRoL:        case OMCRoR:
+    case OMC2_s:        case OMC1_s:
 
-    case OMCSquare: case OMCCube:
+    case OMCSquare:     case OMCCube:
     case OMCSqrt:
 
-    case OMCLog2:       case OMCLog10:  case OMCIn:
+    case OMCLog2:       case OMCLog10:      case OMCIn:
 
-    case OMCSin:        case OMCCos:    case OMCTan:
-    case OMCSinh:       case OMCCosh:   case OMCTanh:
+    case OMCSin:        case OMCCos:        case OMCTan:
+    case OMCSinh:       case OMCCosh:       case OMCTanh:
 
-    case OMCAsin:       case OMCAcos:   case OMCAtan:
-    case OMCAsinh:      case OMCAcosh:  case OMCAtanh:
+    case OMCAsin:       case OMCAcos:       case OMCAtan:
+    case OMCAsinh:      case OMCAcosh:      case OMCAtanh:
 
     case OMCPi:         case OMCe:
 
