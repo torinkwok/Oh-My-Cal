@@ -38,10 +38,6 @@
 
 // OMCCalWithScientificStyle class
 @interface OMCCalWithScientificStyle : OMCCalWithBasicStyle
-    {
-@private
-    NSRect _sinRect;
-    }
 
 @property ( nonatomic, assign ) IBOutlet NSButton* _shift;
 @property ( nonatomic, assign ) IBOutlet NSButton* _lhsParenthesis;
@@ -80,8 +76,6 @@
 @property ( nonatomic, assign ) IBOutlet NSButton* _EE;
 
 @property ( nonatomic, assign ) IBOutlet OMCScientificStyleCalculation* _calculation;
-
-@property ( nonatomic, assign ) NSRect sinRect;
 
 @end // OMCCal
 

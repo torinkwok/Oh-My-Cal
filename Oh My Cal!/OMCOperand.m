@@ -302,8 +302,6 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     {
     double result = sin( self.decimalNumber.doubleValue );
 
-    NSLog( @"With RAD %.16g", asin( self.decimalNumber.doubleValue ) );
-
     return [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
                                     inAry: self.currentAry
                                  calStyle: self.calStyle ];

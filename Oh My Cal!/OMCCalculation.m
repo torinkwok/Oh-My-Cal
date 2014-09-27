@@ -353,6 +353,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
             self.resultValue = [ self.resultValue naturalLogarithm ];
         }
 
+    //
     else if ( [ self.theOperator compare: @"sin" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
         {
         if ( self.typingState == OMCWaitAllOperands )
@@ -399,6 +400,55 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
             self.resultValue = [ self.lhsOperand tanh ];
         else if ( self.typingState == OMCFinishedTyping )
             self.resultValue = [ self.resultValue tanh ];
+        }
+
+    //
+    else if ( [ self.theOperator compare: @"sin⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.lhsOperand asinWithRadians ] : [ self.lhsOperand asinWithDegrees ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.resultValue asinWithRadians ] : [ self.resultValue asinWithDegrees ];
+        }
+
+    else if ( [ self.theOperator compare: @"cos⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.lhsOperand acosWithRadians ] : [ self.lhsOperand acosWithDegrees ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.resultValue acosWithRadians ] : [ self.resultValue acosWithDegrees ];
+        }
+
+    else if ( [ self.theOperator compare: @"tan⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.lhsOperand atanWithRadians ] : [ self.lhsOperand atanWithDegrees ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.resultValue atanWithRadians ] : [ self.resultValue atanWithDegrees ];
+        }
+
+    else if ( [ self.theOperator compare: @"sinh⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand asinh ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue asinh ];
+        }
+
+    else if ( [ self.theOperator compare: @"cosh⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand acosh ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue acosh ];
+        }
+
+    else if ( [ self.theOperator compare: @"tanh⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        {
+        if ( self.typingState == OMCWaitAllOperands )
+            self.resultValue = [ self.lhsOperand atanh ];
+        else if ( self.typingState == OMCFinishedTyping )
+            self.resultValue = [ self.resultValue atanh ];
         }
 
     else if ( [ self.theOperator compare: @"π" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
@@ -560,8 +610,12 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCSquare:     case OMCCube:
 
     case OMCLog2:       case OMCLog10:  case OMCIn:
+    
     case OMCSin:        case OMCCos:    case OMCTan:
     case OMCSinh:       case OMCCosh:   case OMCTanh:
+
+    case OMCAsin:       case OMCAcos:   case OMCAtan:
+    case OMCAsinh:      case OMCAcosh:  case OMCAtanh:
 
     case OMCPi:         case OMCe:
 
@@ -766,8 +820,12 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCSqrt:
 
     case OMCLog2:       case OMCLog10:  case OMCIn:
+
     case OMCSin:        case OMCCos:    case OMCTan:
     case OMCSinh:       case OMCCosh:   case OMCTanh:
+
+    case OMCAsin:       case OMCAcos:   case OMCAtan:
+    case OMCAsinh:      case OMCAcosh:  case OMCAtanh:
 
     case OMCPi:         case OMCe:
 

@@ -75,8 +75,6 @@ NSString static* const kKeyPathForIsInShiftInCalculationObject = @"self.isInShif
 @synthesize _rand;
 @synthesize _EE;
 
-@synthesize sinRect = _sinRect;
-
 #pragma mark Initializers & Deallocators
 - ( void ) awakeFromNib
     {
@@ -84,8 +82,6 @@ NSString static* const kKeyPathForIsInShiftInCalculationObject = @"self.isInShif
                          forKeyPath: kKeyPathForIsInShiftInCalculationObject
                             options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                             context: NULL ];
-
-    self.sinRect = [ self._sin frame ];
     }
 
 - ( void ) observeValueForKeyPath: ( NSString* )_KeyPath
