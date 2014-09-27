@@ -679,7 +679,9 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     /* If the numeric string is empty... */
     if ( self.numericString.length == 0
             /* or there is only a negative sign in numeric string... */
-            || ( ( self.numericString.length == 1 ) && [ self.numericString isEqualToString: @"-" ] ) )
+            || ( ( self.numericString.length == 1 ) && [ self.numericString isEqualToString: @"-" ] )
+            /* or there is a "-0" in numeric string... */
+            || ( ( self.numericString.length == 2 ) && [ self.numericString isEqualToString: @"-0" ] ) )
         [ self.numericString replaceAllWithString: @"0" ];
 
     self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: self.numericString ];
