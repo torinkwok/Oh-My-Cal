@@ -257,19 +257,23 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
 - ( OMCOperand* ) _performCalculationOfMonomial: ( SEL )_CalSel
     {
-    /* Because of the calculation of monomial,
-     * the possible operand is just lhsOperand and resultValue
-     * we don't need the rhsOperand */
-    OMCOperand* operand = ( self.typingState == OMCWaitAllOperands ) ? self.lhsOperand : self.resultValue;
+    BOOL isClassMethod = NO;
+    if ( _CalSel == @selector( pi ) || _CalSel == @selector( e ) || _CalSel == @selector( rand ) )
+        isClassMethod = YES;
 
-    NSMethodSignature* calMethodSignature = [ operand methodSignatureForSelector: _CalSel ];
+    /* Because of the calculation of monomial, the possible operand is just lhsOperand and resultValue.
+     * So we don't need the rhsOperand */
+    OMCOperand* operand = ( self.typingState == OMCWaitAllOperands ) ? self.lhsOperand : self.resultValue;
+    Class operandClass = [ OMCOperand class ];
+
+    NSMethodSignature* calMethodSignature = [ ( isClassMethod ? operandClass : operand ) methodSignatureForSelector: _CalSel ];
     NSInvocation* calInvocation = [ NSInvocation invocationWithMethodSignature: calMethodSignature ];
     [ calInvocation setSelector: _CalSel ];
 
     NSUInteger length = [ [ calInvocation methodSignature ] methodReturnLength ];
     void* buffer = ( void* )malloc( length );
 
-    [ calInvocation invokeWithTarget: operand ];
+    [ calInvocation invokeWithTarget: ( isClassMethod ? operandClass : operand ) ];
     [ calInvocation getReturnValue: &buffer ];
 
     return ( OMCOperand* )buffer;
@@ -281,236 +285,88 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     SEL calculation = nil;
 
-    if ( [ self.theOperator isEqualToString: @"!" ] )
-        {
-        NSLog( @"%@", [ self _performCalculationOfMonomial: @selector( factorial ) ] );
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand factorial ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue factorial ];
-        }
-    else if ( [ self.theOperator isEqualToString: @"ROL" ] )
-        {
-        NSLog( @"%@", [ self _performCalculationOfMonomial: @selector( RoL ) ] );
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand RoL ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue RoL ];
-        }
-    else if ( [ self.theOperator isEqualToString: @"ROR" ] )
-        {
-        NSLog( @"%@", [ self _performCalculationOfMonomial: @selector( RoR ) ] );
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand RoR ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue RoR ];
-        }
-    else if ( [ self.theOperator isEqualToString: @"2'S" ]
-            || [ self.theOperator isEqualToString: @"1'S" ] )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand flipBytes ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue flipBytes ];
-        }
+    if ( [ self.theOperator compare: @"!" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        calculation = @selector( factorial );
+
+    else if ( [ self.theOperator compare: @"RoL" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        calculation = @selector( RoL );
+
+    else if ( [ self.theOperator compare: @"RoR" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
+        calculation = @selector( RoR );
+
+    else if ( [ self.theOperator isEqualToString: @"2'S" ] || [ self.theOperator isEqualToString: @"1'S" ] )
+        calculation = @selector( flipBytes );
 
     else if ( [ self.theOperator compare: @"x²" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        NSLog( @"%@", [ self _performCalculationOfMonomial: @selector( square ) ] );
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand square ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue square ];
-        }
+        calculation = @selector( square );
 
     else if ( [ self.theOperator compare: @"x³" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        NSLog( @"%@", [ self _performCalculationOfMonomial: @selector( cube ) ] );
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand cube ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue cube ];
-        }
+        calculation = @selector( cube );
 
     else if ( [ self.theOperator compare: @"1/x" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        NSLog( @"%@", [ self _performCalculationOfMonomial: @selector( reciprocal ) ] );
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand reciprocal ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue reciprocal ];
-        }
+        calculation = @selector( reciprocal );
 
     else if ( [ self.theOperator compare: @"√" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        NSLog( @"%@", [ self _performCalculationOfMonomial: @selector( sqrt ) ] );
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand sqrt ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue sqrt ];
-        }
+        calculation = @selector( sqrt );
 
     else if ( [ self.theOperator compare: @"%" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        NSLog( @"%@", [ self _performCalculationOfMonomial: @selector( percent ) ] );
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand percent ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue percent ];
-        }
+        calculation = @selector( percent );
 
     else if ( [ self.theOperator compare: @"log₂" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        NSLog( @"%@", [ self _performCalculationOfMonomial: @selector( log2 ) ] );
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand log2 ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue log2 ];
-        }
+        calculation = @selector( log2 );
 
     else if ( [ self.theOperator compare: @"log₁₀" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        NSLog( @"%@", [ self _performCalculationOfMonomial: @selector( log10 ) ] );
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand log10 ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue log10 ];
-        }
+        calculation = @selector( log10 );
 
     else if ( [ self.theOperator compare: @"In" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        NSLog( @"%@", [ self _performCalculationOfMonomial: @selector( naturalLogarithm ) ] );
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand naturalLogarithm ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue naturalLogarithm ];
-        }
+        calculation = @selector( naturalLogarithm );
 
-    //
     else if ( [ self.theOperator compare: @"sin" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.lhsOperand sinWithRadians ] : [ self.lhsOperand sinWithDegrees ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.resultValue sinWithRadians ] : [ self.resultValue sinWithDegrees ];
-        }
+        calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( sinWithRadians ) : @selector( sinWithDegrees );
 
     else if ( [ self.theOperator compare: @"cos" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.lhsOperand cosWithRadians ] : [ self.lhsOperand cosWithDegrees ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.resultValue cosWithRadians ] : [ self.resultValue cosWithDegrees ];
-        }
+        calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( cosWithRadians ) : @selector( cosWithDegrees );
 
     else if ( [ self.theOperator compare: @"tan" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.lhsOperand tanWithRadians ] : [ self.lhsOperand tanWithDegrees ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.resultValue tanWithRadians ] : [ self.resultValue tanWithDegrees ];
-        }
+        calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( tanWithRadians ) : @selector( tanWithDegrees );
 
     else if ( [ self.theOperator compare: @"sinh" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        NSLog( @"%@", [ self _performCalculationOfMonomial: @selector( sinh ) ] );
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand sinh ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue sinh ];
-        }
+        calculation = @selector( sinh );
 
     else if ( [ self.theOperator compare: @"cosh" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        NSLog( @"%@", [ self _performCalculationOfMonomial: @selector( cosh ) ] );
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand cosh ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue cosh ];
-        }
+        calculation = @selector( cosh );
 
     else if ( [ self.theOperator compare: @"tanh" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        NSLog( @"%@", [ self _performCalculationOfMonomial: @selector( tanh ) ] );
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand tanh ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue tanh ];
-        }
+        calculation = @selector( tanh );
 
-    //
     else if ( [ self.theOperator compare: @"sin⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.lhsOperand asinWithRadians ] : [ self.lhsOperand asinWithDegrees ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.resultValue asinWithRadians ] : [ self.resultValue asinWithDegrees ];
-        }
+        calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( asinWithRadians ) : @selector( asinWithDegrees );
 
     else if ( [ self.theOperator compare: @"cos⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.lhsOperand acosWithRadians ] : [ self.lhsOperand acosWithDegrees ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.resultValue acosWithRadians ] : [ self.resultValue acosWithDegrees ];
-        }
+        calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( acosWithRadians ) : @selector( acosWithDegrees );
 
     else if ( [ self.theOperator compare: @"tan⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.lhsOperand atanWithRadians ] : [ self.lhsOperand atanWithDegrees ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = ( self.trigonometricMode == OMCRadianMode ) ? [ self.resultValue atanWithRadians ] : [ self.resultValue atanWithDegrees ];
-        }
+        calculation = ( self.trigonometricMode == OMCRadianMode ) ? @selector( atanWithRadians ) : @selector( atanWithDegrees );
 
     else if ( [ self.theOperator compare: @"sinh⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand asinh ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue asinh ];
-        }
+        calculation = @selector( asinh );
 
     else if ( [ self.theOperator compare: @"cosh⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand acosh ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue acosh ];
-        }
+        calculation = @selector( acosh );
 
     else if ( [ self.theOperator compare: @"tanh⁻¹" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ self.lhsOperand atanh ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ self.resultValue atanh ];
-        }
+        calculation = @selector( atanh );
 
     else if ( [ self.theOperator compare: @"π" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ OMCOperand pi ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ OMCOperand pi ];
-        }
+        calculation = @selector( pi );
 
     else if ( [ self.theOperator compare: @"e" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ OMCOperand e ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ OMCOperand e ];
-        }
+        calculation = @selector( e );
 
     else if ( [ self.theOperator compare: @"Rand" options: NSCaseInsensitiveSearch ] == NSOrderedSame )
-        {
-        if ( self.typingState == OMCWaitAllOperands )
-            self.resultValue = [ OMCOperand rand ];
-        else if ( self.typingState == OMCFinishedTyping )
-            self.resultValue = [ OMCOperand rand ];
-        }
+        calculation = @selector( rand );
 
+    self.resultValue = [ self _performCalculationOfMonomial: calculation ];
     self.typingState = OMCFinishedTyping;
     }
 
