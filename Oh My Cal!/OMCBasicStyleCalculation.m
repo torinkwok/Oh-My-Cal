@@ -44,6 +44,8 @@
     [ self.lhsOperand setCalStyle: OMCBasicStyle ];
     [ self.rhsOperand setCalStyle: OMCBasicStyle ];
     [ self.resultValue setCalStyle: OMCBasicStyle ];
+
+    [ self setCurrentAry: OMCDecimal ];
     }
 
 @end // OMCBasicStyleCalculation

@@ -45,6 +45,8 @@
     [ self.lhsOperand setCalStyle: OMCProgrammerStyle ];
     [ self.rhsOperand setCalStyle: OMCProgrammerStyle ];
     [ self.resultValue setCalStyle: OMCProgrammerStyle ];
+
+    [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
     }
 
 @end // OMCUnsignedIntegerCalculation

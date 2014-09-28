@@ -81,14 +81,12 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
 @synthesize isBinomialInLastCalculation = _isBinomial;
 
-
 #pragma mark Initializers & Deallocators
 - ( void ) awakeFromNib
     {
     [ self _initializeOprands ];
 
     [ self setTypingState: OMCWaitAllOperands ];
-    [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
     [ self setHasMemory: NO ];
     [ self setIsInShift: NO ];
 

@@ -106,6 +106,14 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
 #pragma mark Initializers & Deallocators
 - ( void ) awakeFromNib
     {
+    OMCCalStyle defaultCalStyle = ( OMCCalStyle )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyCalStyle ];
+    if ( defaultCalStyle == OMCBasicStyle )
+        self.currentCalculation = self._basicStyleCalculation;
+    else if ( defaultCalStyle == OMCScientificStyle )
+        self.currentCalculation = self._scientificStyleCalculation;
+    else if ( defaultCalStyle == OMCProgrammerStyle )
+        self.currentCalculation = self._programmerStyleCalculation;
+
     self.gridColor = [ [ NSColor lightGrayColor ] colorWithAlphaComponent: .3 ];
     self.auxiliaryLineColor = [ NSColor colorWithDeviceRed: .3373f green: .3373f blue: .3412f alpha: 1.f ];
     self.operandsColor = [ NSColor whiteColor ];
@@ -119,7 +127,6 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
     self.statusFont = [ NSFont fontWithName: @"Lucida Grande" size: 10 ];
 
     [ self setTypingState: OMCWaitAllOperands ];
-    [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS objectForKey: OMCDefaultsKeyAry ] ];
 
     [ self _addObserverForCalculations: self._basicStyleCalculation ];
     [ self _addObserverForCalculations: self._scientificStyleCalculation ];
@@ -163,11 +170,6 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
     [ NOTIFICATION_CENTER addObserver: self
                              selector: @selector( currentTypingStateDidChanged: )
                                  name: OMCCurrentTypingStateDidChangedNotification
-                               object: _Calculation ];
-
-    [ NOTIFICATION_CENTER addObserver: self
-                             selector: @selector( currentTypingStateDidChanged: )
-                                 name: OMCCurrentAryDidChangedNotification
                                object: _Calculation ];
 
     [ _Calculation addObserver: self
@@ -358,11 +360,18 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
     {
     NSString* placeholder = nil;
     OMCAry currentAry = self.currentCalculation.currentAry;
+    NSLog( @"Current Ary in calculation: %d", self.currentCalculation.currentAry );
+    NSLog( @"Current Ary in me: %d", self.currentAry );
 
-    if ( currentAry == OMCOctal || currentAry == OMCDecimal )
+    if ( self.currentCalculation.calStyle == OMCProgrammerStyle )
+        {
+        if ( currentAry == OMCOctal || currentAry == OMCDecimal )
+            placeholder = @"0";
+        else if ( currentAry == OMCHex )
+            placeholder = @"0x0";
+        }
+    else
         placeholder = @"0";
-    else if ( currentAry == OMCHex )
-        placeholder = @"0x0";
 
      /* If Oh My Cal! is in the initial state or user has already typed *nothing* for current operand
       * draw a "0" for Octal and Decimal and a "0x0" for Hex, respectively. */
@@ -487,11 +496,6 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
 
     if ( self.currentCalculation.calStyle == OMCProgrammerStyle )
     [ currentAryInString drawInRect: rectForCurrentAryInString withAttributes: drawingAttributesForStatus ];
-    }
-
-- ( void ) _drawTrigonometricStatusWithAttributes: ( NSDictionary* )_Attributes
-    {
-
     }
 
 - ( NSPoint ) _pointUsedForDrawingOperators: ( NSString* )_Operator
@@ -647,6 +651,12 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
         }
 
     [ super keyDown: _Event ];
+    }
+
+#pragma mark Accessors
+- ( OMCAry ) currentAry
+    {
+    return self.currentCalculation.currentAry;
     }
 
 @end // OMCLCDScreen class

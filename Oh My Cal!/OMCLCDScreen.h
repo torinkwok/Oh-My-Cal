@@ -71,7 +71,6 @@ typedef NSRect OMCSpaceBarRect;
     NSFont* _statusFont;
 
     OMCTypingState _typingState;
-    OMCAry _currentAry;
 
     OMCCalculation* _currentCalculation;
     }
@@ -108,7 +107,7 @@ typedef NSRect OMCSpaceBarRect;
 @property ( nonatomic, retain ) NSBezierPath* gridPath;
 
 @property ( nonatomic, assign ) OMCTypingState typingState;
-@property ( nonatomic, assign ) OMCAry currentAry;
+@property ( nonatomic, assign, readonly ) OMCAry currentAry;
 
 @property ( nonatomic, retain ) OMCCalculation* currentCalculation;
 
