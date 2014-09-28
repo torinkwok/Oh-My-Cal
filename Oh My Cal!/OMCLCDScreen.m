@@ -360,8 +360,6 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
     {
     NSString* placeholder = nil;
     OMCAry currentAry = self.currentCalculation.currentAry;
-    NSLog( @"Current Ary in calculation: %d", self.currentCalculation.currentAry );
-    NSLog( @"Current Ary in me: %d", self.currentAry );
 
     if ( self.currentCalculation.calStyle == OMCProgrammerStyle )
         {
