@@ -567,7 +567,10 @@
 
 - ( void ) setCurrentAry: ( OMCAry )_Ary
     {
-    if ( self->_currentAry != _Ary )
+    if ( self->_currentAry != _Ary
+            || self.lhsOperand.currentAry != _Ary
+            || self.rhsOperand.currentAry != _Ary
+            || self.resultValue.currentAry != _Ary )
         {
         self->_currentAry = _Ary;
 

@@ -45,7 +45,6 @@
 
 NSInteger static const kSpaceBarsCount = 4;
 
-NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"self._currentCalStyle";
 NSString static* const kKeyPathForTrigonometircModeInCalculations = @"self.trigonometricMode";
 NSString static* const kKeyPathForHasMemoryInCalculations = @"self.hasMemory";
 NSString static* const kKeyPathTypingStateInCalculations = @"self.typingState";
@@ -92,8 +91,7 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
 @synthesize typingState = _typingState;
 @synthesize currentAry = _currentAry;
 
-@synthesize currentCalculation = _currentCalculation;
-
+#pragma mark Overrides
 - ( BOOL ) canBecomeKeyView
     {
     return YES;
@@ -107,14 +105,6 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
 #pragma mark Initializers & Deallocators
 - ( void ) awakeFromNib
     {
-    OMCCalStyle defaultCalStyle = ( OMCCalStyle )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyCalStyle ];
-    if ( defaultCalStyle == OMCBasicStyle )
-        self.currentCalculation = self._basicStyleCalculation;
-    else if ( defaultCalStyle == OMCScientificStyle )
-        self.currentCalculation = self._scientificStyleCalculation;
-    else if ( defaultCalStyle == OMCProgrammerStyle )
-        self.currentCalculation = self._programmerStyleCalculation;
-
     self.gridColor = [ [ NSColor lightGrayColor ] colorWithAlphaComponent: .3 ];
     self.auxiliaryLineColor = [ NSColor colorWithDeviceRed: .3373f green: .3373f blue: .3412f alpha: 1.f ];
     self.operandsColor = [ NSColor whiteColor ];
@@ -130,11 +120,6 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
     [ self _addObserverForCalculations: self._basicStyleCalculation ];
     [ self _addObserverForCalculations: self._scientificStyleCalculation ];
     [ self _addObserverForCalculations: self._programmerStyleCalculation ];
-
-    [ self._mainPanelBackgroundView addObserver: self
-                                     forKeyPath: kKeyPathForCurrentCalStyleInMainPanelBackgroundView
-                                        options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                                        context: NULL ];
     }
 
 - ( void ) observeValueForKeyPath: ( NSString* )_KeyPath
@@ -142,19 +127,7 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
                            change: ( NSDictionary* )_Change
                            context: ( void* )_Context
     {
-    if ( [ _KeyPath isEqualToString: kKeyPathForCurrentCalStyleInMainPanelBackgroundView ] )
-        {
-        OMCCalStyle style = ( OMCCalStyle )[ _Change[ @"new" ] intValue ];
-
-        if ( style == OMCBasicStyle )
-            self.currentCalculation = self._basicStyleCalculation;
-        else if ( style == OMCScientificStyle )
-            self.currentCalculation = self._scientificStyleCalculation;
-        else if ( style == OMCProgrammerStyle )
-            self.currentCalculation = self._programmerStyleCalculation;
-        }
-
-    else if ( [ _KeyPath isEqualToString: kKeyPathCurrentAryInCalculations ]
+    if ( [ _KeyPath isEqualToString: kKeyPathCurrentAryInCalculations ]
                 || [ _KeyPath isEqualToString: kKeyPathTypingStateInCalculations ] )
         [ self setNeedsDisplay: YES ];
         
@@ -653,6 +626,20 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
 - ( OMCAry ) currentAry
     {
     return self.currentCalculation.currentAry;
+    }
+
+- ( OMCCalculation* ) currentCalculation
+    {
+    OMCCalStyle defaultCalStyle = [ self._mainPanelBackgroundView _currentCalStyle ];
+
+    if ( defaultCalStyle == OMCBasicStyle )
+        return self._basicStyleCalculation;
+    else if ( defaultCalStyle == OMCScientificStyle )
+        return self._scientificStyleCalculation;
+    else if ( defaultCalStyle == OMCProgrammerStyle )
+        return self._programmerStyleCalculation;
+
+    return nil;
     }
 
 @end // OMCLCDScreen class

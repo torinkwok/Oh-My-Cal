@@ -107,7 +107,7 @@ typedef NSRect OMCSpaceBarRect;
 @property ( nonatomic, assign, readonly ) OMCTypingState typingState;
 @property ( nonatomic, assign, readonly ) OMCAry currentAry;
 
-@property ( nonatomic, retain ) OMCCalculation* currentCalculation;
+@property ( nonatomic, retain, readonly ) OMCCalculation* currentCalculation;
 
 @end // OMCLCDScreen
 
