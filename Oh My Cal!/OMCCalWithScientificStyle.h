@@ -49,6 +49,12 @@
 @property ( nonatomic, assign ) IBOutlet NSButton* _cube;
 @property ( nonatomic, assign ) IBOutlet NSButton* _xPower;
 
+@property ( nonatomic, assign ) IBOutlet NSButton* _cubeRoot;
+@property ( nonatomic, assign ) IBOutlet NSButton* _xRoot;
+@property ( nonatomic, assign ) IBOutlet NSButton* _e_x;
+@property ( nonatomic, assign ) IBOutlet NSButton* _2_x;
+@property ( nonatomic, assign ) IBOutlet NSButton* _10_x;
+
 @property ( nonatomic, assign ) IBOutlet NSButton* _factorial;
 @property ( nonatomic, assign ) IBOutlet NSButton* _sqrt;
 @property ( nonatomic, assign ) IBOutlet NSButton* _rad;

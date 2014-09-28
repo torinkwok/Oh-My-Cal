@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6206.9" systemVersion="14A329r" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6206.9"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="OMFMainPanelController">
@@ -15,7 +15,7 @@
             <windowStyleMask key="styleMask" utility="YES"/>
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" transient="YES" ignoresCycle="YES"/>
             <rect key="contentRect" x="196" y="240" width="240" height="175"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <view key="contentView" id="EiT-Mj-1SZ" customClass="OMFPanelBackgroundView">
                 <rect key="frame" x="0.0" y="0.0" width="240" height="175"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -672,6 +672,16 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="w18-Z4-F3i"/>
                     </connections>
                 </button>
+                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="78" translatesAutoresizingMaskIntoConstraints="NO" id="5H0-QU-OWK">
+                    <rect key="frame" x="189" y="103" width="51" height="25"/>
+                    <buttonCell key="cell" type="roundTextured" title="10ˣ" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gpT-da-dHO" customClass="BGHUDButtonCell">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="lIE-2s-Zv9" id="xkt-r2-fvl"/>
+                    </connections>
+                </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="55" translatesAutoresizingMaskIntoConstraints="NO" id="kMA-V1-h54">
                     <rect key="frame" x="130" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="log₂" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3au-sK-g1L" customClass="BGHUDButtonCell">
@@ -682,6 +692,16 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="0rM-1I-w1r"/>
                     </connections>
                 </button>
+                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="77" translatesAutoresizingMaskIntoConstraints="NO" id="ptl-Cy-8b7">
+                    <rect key="frame" x="130" y="103" width="51" height="25"/>
+                    <buttonCell key="cell" type="roundTextured" title="2ˣ" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RY5-ze-7s4" customClass="BGHUDButtonCell">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="lIE-2s-Zv9" id="e56-EJ-zdA"/>
+                    </connections>
+                </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="63" translatesAutoresizingMaskIntoConstraints="NO" id="2cP-wd-v3L">
                     <rect key="frame" x="71" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="In" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9b0-6M-2lS" customClass="BGHUDButtonCell">
@@ -690,6 +710,16 @@
                     </buttonCell>
                     <connections>
                         <action selector="calculate:" target="lIE-2s-Zv9" id="298-ts-SNU"/>
+                    </connections>
+                </button>
+                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="76" translatesAutoresizingMaskIntoConstraints="NO" id="FjF-r1-z9S">
+                    <rect key="frame" x="71" y="103" width="51" height="25"/>
+                    <buttonCell key="cell" type="roundTextured" title="eˣ" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CDH-Hk-gMu" customClass="BGHUDButtonCell">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="lIE-2s-Zv9" id="bBO-6r-AVg"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="67" translatesAutoresizingMaskIntoConstraints="NO" id="6Cf-o1-ucv">
@@ -762,6 +792,16 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="Ncd-I3-E0e"/>
                     </connections>
                 </button>
+                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="74" translatesAutoresizingMaskIntoConstraints="NO" id="5L6-ih-V9P">
+                    <rect key="frame" x="71" y="133" width="51" height="25"/>
+                    <buttonCell key="cell" type="roundTextured" title="∛" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dD5-GG-ggp" customClass="BGHUDButtonCell">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="11" name="STIXGeneral-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="lIE-2s-Zv9" id="kJ3-iQ-398"/>
+                    </connections>
+                </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="51" translatesAutoresizingMaskIntoConstraints="NO" id="kyr-pf-ahU">
                     <rect key="frame" x="130" y="133" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="yˣ" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oyY-WF-L1G" customClass="BGHUDButtonCell">
@@ -770,6 +810,16 @@
                     </buttonCell>
                     <connections>
                         <action selector="calculate:" target="lIE-2s-Zv9" id="Zoy-ju-cba"/>
+                    </connections>
+                </button>
+                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="75" translatesAutoresizingMaskIntoConstraints="NO" id="iNL-Hp-hol">
+                    <rect key="frame" x="130" y="133" width="51" height="25"/>
+                    <buttonCell key="cell" type="roundTextured" title="ˣ√y" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QyW-lu-pZt" customClass="BGHUDButtonCell">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="calculate:" target="lIE-2s-Zv9" id="YtK-th-TmR"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" tag="65" translatesAutoresizingMaskIntoConstraints="NO" id="Gux-H7-Esu">
@@ -804,6 +854,8 @@
                 </button>
             </subviews>
             <connections>
+                <outlet property="_10_x" destination="5H0-QU-OWK" id="VsV-gF-wQg"/>
+                <outlet property="_2_x" destination="ptl-Cy-8b7" id="jRI-44-JiG"/>
                 <outlet property="_EE" destination="6Cf-o1-ucv" id="bLJ-lw-2sG"/>
                 <outlet property="_In" destination="2cP-wd-v3L" id="dd4-kQ-K0I"/>
                 <outlet property="_acos" destination="BCl-yp-krP" id="k9Z-gr-NPK"/>
@@ -818,9 +870,11 @@
                 <outlet property="_cos" destination="ZdN-k8-Eua" id="8IX-Gx-Kji"/>
                 <outlet property="_cosh" destination="VMm-mj-Rc3" id="45k-Z1-tdG"/>
                 <outlet property="_cube" destination="K0L-iF-VWf" id="rrH-wQ-HCg"/>
+                <outlet property="_cubeRoot" destination="5L6-ih-V9P" id="6ZA-cf-ssB"/>
                 <outlet property="_del" destination="LP3-vH-khj" id="HLA-jV-3Mk"/>
                 <outlet property="_divisionOperator" destination="rrS-tS-Wcu" id="8em-Kw-qdJ"/>
                 <outlet property="_e" destination="Gux-H7-Esu" id="AaT-nr-mG6"/>
+                <outlet property="_e_x" destination="FjF-r1-z9S" id="wAI-DZ-fSo"/>
                 <outlet property="_eight" destination="CNB-r9-N7F" id="U2u-5n-afF"/>
                 <outlet property="_enterOperator" destination="K6L-au-Ira" id="92J-hT-LJm"/>
                 <outlet property="_factorial" destination="xlw-mm-E4b" id="J9R-Fh-Lo5"/>
@@ -855,6 +909,7 @@
                 <outlet property="_three" destination="XQB-oY-Vua" id="DBw-Cf-gWv"/>
                 <outlet property="_two" destination="fmy-2v-cMi" id="STM-Zh-Nxi"/>
                 <outlet property="_xPower" destination="kyr-pf-ahU" id="o7n-wZ-VPe"/>
+                <outlet property="_xRoot" destination="iNL-Hp-hol" id="HZ4-oo-yBV"/>
                 <outlet property="_zero" destination="LmE-cp-OgS" id="Gfx-tx-snR"/>
             </connections>
         </customView>

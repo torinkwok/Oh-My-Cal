@@ -393,7 +393,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 - ( IBAction ) calculate: ( id )_Sender
     {
     NSButton* pressedButton = ( NSButton* )_Sender;
-    self.lastTypedButtonType = ( OMCProgrammerStyleButtonType )[ pressedButton tag ];
+    self.lastTypedButtonType = ( OMCButtonType )[ pressedButton tag ];
     self.lastTypedButton = _Sender;
 
     switch ( self.lastTypedButtonType )
@@ -435,7 +435,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     // Binary operators
     case OMCAdd:        case OMCSub:    case OMCMuliply:    case OMCDivide:
 
-    case OMCxPower:
+    case OMCxPower:     case OMCxRoot:
 
     case OMCAnd:        case OMCOr:     case OMCNor:    case OMCXor:    case OMCLsh:    case OMCRsh:
     case OMCMod:
@@ -444,7 +444,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     // Monomial operators
     case OMCPercent:    case OMCReciprocal:     case OMCSquare:     case OMCCube:
-    case OMCLog2:       case OMCLog10:  case OMCIn:     case OMCSqrt:
+    case OMCLog2:       case OMCLog10:          case OMCIn:         case OMCSqrt:
+    case OMCCubeRoot:   case OMCe_x:            case OMC2_x:        case OMC10_x:
     
     case OMCSin:        case OMCCos:    case OMCTan:    case OMCSinh:       case OMCCosh:   case OMCTanh:
     case OMCAsin:       case OMCAcos:   case OMCAtan:   case OMCAsinh:      case OMCAcosh:  case OMCAtanh:
@@ -480,59 +481,22 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     // Memory Operations
     case OMCMemoryAdd:
-            {
-            OMCOperand* operandToBeAdded = nil;
-            [ self setHasMemory: YES ];
-
-            if ( self.typingState == OMCWaitAllOperands )
-                {
-                operandToBeAdded = self.lhsOperand;
-                [ self.lhsOperand setInMemory: YES ];
-                }
-            else if ( self.typingState == OMCWaitRhsOperand )
-                {
-                operandToBeAdded = self.rhsOperand;
-                [ self.rhsOperand setInMemory: YES ];
-                }
-            else if ( self.typingState == OMCFinishedTyping )
-                {
-                operandToBeAdded = self.resultValue;
-                [ self.resultValue setInMemory: YES ];
-                }
-
-            self.memory = [ self.memory add: operandToBeAdded ];
-            } return;
-
     case OMCMemorySub:
             {
             OMCOperand* operandToBeAdded = nil;
+
+            if ( self.typingState == OMCWaitAllOperands )           operandToBeAdded = self.lhsOperand;
+                else if ( self.typingState == OMCWaitRhsOperand )   operandToBeAdded = self.rhsOperand;
+                else if ( self.typingState == OMCFinishedTyping )   operandToBeAdded = self.resultValue;
+
             [ self setHasMemory: YES ];
+            [ operandToBeAdded setInMemory: YES ];
 
-            if ( self.typingState == OMCWaitAllOperands )
-                {
-                operandToBeAdded = self.lhsOperand;
-                [ self.lhsOperand setInMemory: YES ];
-                }
-            else if ( self.typingState == OMCWaitRhsOperand )
-                {
-                operandToBeAdded = self.rhsOperand;
-                [ self.rhsOperand setInMemory: YES ];
-                }
-            else if ( self.typingState == OMCFinishedTyping )
-                {
-                operandToBeAdded = self.resultValue;
-                [ self.resultValue setInMemory: YES ];
-                }
-
-            self.memory = [ self.memory subtract: operandToBeAdded ];
+            self.memory = ( self.lastTypedButtonType == OMCMemoryAdd ) ? [ self.memory add: operandToBeAdded ]
+                                                                       : [ self.memory subtract: operandToBeAdded ];
             } return;
 
-    case OMCMemoryClear:
-            {
-            [ self setHasMemory: NO ];
-            [ self clearMemory ];
-            } return;
-
+    case OMCMemoryClear: [ self clearMemory ];  return;
     case OMCMemoryRead:
             {
             if ( self.typingState == OMCWaitAllOperands )
@@ -568,6 +532,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     [ self.lhsOperand setInMemory: NO ];
     [ self.rhsOperand setInMemory: NO ];
     [ self.resultValue setInMemory: NO ];
+
+    [ self setHasMemory: NO ];
     }
 
 - ( void ) clearAllAndReset
@@ -646,6 +612,8 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     case OMCSqrt:
 
     case OMCLog2:       case OMCLog10:      case OMCIn:
+
+    case OMCCubeRoot:   case OMCe_x:        case OMC2_x:        case OMC10_x:
 
     case OMCSin:        case OMCCos:        case OMCTan:
     case OMCSinh:       case OMCCosh:       case OMCTanh:

@@ -67,7 +67,7 @@ NSString extern* const OMCLastTypedButton;
     BOOL                    _hasMemory;
     BOOL                    _isInShift;
 
-    OMCProgrammerStyleButtonType _lastTypedButtonType;
+    OMCButtonType _lastTypedButtonType;
     NSButton* _lastTypedButton;
 
     OMCOperand* _lhsOperand;
@@ -89,7 +89,7 @@ NSString extern* const OMCLastTypedButton;
 @property ( nonatomic, assign ) BOOL hasMemory;
 @property ( nonatomic, assign ) BOOL isInShift;
 
-@property ( nonatomic, assign ) OMCProgrammerStyleButtonType lastTypedButtonType;
+@property ( nonatomic, assign ) OMCButtonType lastTypedButtonType;
 @property ( nonatomic, retain ) NSButton* lastTypedButton;
 
 @property ( nonatomic, retain ) OMCOperand* lhsOperand;

@@ -49,6 +49,12 @@ NSString static* const kKeyPathForIsInShiftInCalculationObject = @"self.isInShif
 @synthesize _cube;
 @synthesize _xPower;
 
+@synthesize _cubeRoot;
+@synthesize _xRoot;
+@synthesize _e_x;
+@synthesize _2_x;
+@synthesize _10_x;
+
 @synthesize _factorial;
 @synthesize _sqrt;
 @synthesize _rad;
@@ -110,6 +116,21 @@ NSString static* const kKeyPathForIsInShiftInCalculationObject = @"self.isInShif
 
         [ self._tanh setHidden: isInShiftNow ];
         [ self._atanh setHidden: !isInShiftNow ];
+
+        [ self._cube setHidden: isInShiftNow ];
+        [ self._cubeRoot setHidden: !isInShiftNow ];
+
+        [ self._xPower setHidden: isInShiftNow ];
+        [ self._xRoot setHidden: !isInShiftNow ];
+
+        [ self._In setHidden: isInShiftNow ];
+        [ self._e_x setHidden: !isInShiftNow ];
+
+        [ self._log2 setHidden: isInShiftNow ];
+        [ self._2_x setHidden: !isInShiftNow ];
+
+        [ self._log10 setHidden: isInShiftNow ];
+        [ self._10_x setHidden: !isInShiftNow ];
         }
     }
 
