@@ -265,6 +265,10 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     else if ( COMPARE_WITH_OPERATOR( @"1/x" ) )      calculation = @selector( reciprocal );
     else if ( COMPARE_WITH_OPERATOR( @"√" ) )        calculation = @selector( sqrt );
     else if ( COMPARE_WITH_OPERATOR( @"%" ) )        calculation = @selector( percent );
+    else if ( COMPARE_WITH_OPERATOR( @"∛") )        calculation = @selector( cubeRoot );
+    else if ( COMPARE_WITH_OPERATOR( @"eˣ") )        calculation = @selector( e_x );
+    else if ( COMPARE_WITH_OPERATOR( @"2ˣ") )        calculation = @selector( _2_x );
+    else if ( COMPARE_WITH_OPERATOR( @"10ˣ") )        calculation = @selector( _10_x );
 
     else if ( COMPARE_WITH_OPERATOR( @"log₂" ) )     calculation = @selector( log2 );
     else if ( COMPARE_WITH_OPERATOR( @"log₁₀" ) )    calculation = @selector( log10 );
@@ -363,6 +367,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     else if ( COMPARE_WITH_OPERATOR( @"Rsh" ) )     calculation = @selector( Rsh: );
 
     else if ( COMPARE_WITH_OPERATOR( @"Yˣ" ) )      calculation = @selector( pow: );
+    else if ( COMPARE_WITH_OPERATOR( @"ˣ√y" ) )     calculation = @selector( xRoot: );
     else if ( COMPARE_WITH_OPERATOR( @"Mod" ) )     calculation = @selector( mod: );
 
     self.resultValue = [ self _performCalculationOfBinomial: calculation ];
@@ -422,7 +427,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
             } return;
 
     // Numbers
-    case OMCOne:    case OMCTwo:    case OMCThree:  case OMCFour:   case OMCFive:   case OMCSix:
+    case OMCOne:    case OMCTwo:    case OMCThree:  case OMCFour:   case OMCFive:       case OMCSix:
     case OMCSeven:  case OMCEight:  case OMCNine:   case OMCZero:   case OMCDoubleZero:
     case OMCFloatPoint:
 
@@ -437,7 +442,7 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
 
     case OMCxPower:     case OMCxRoot:
 
-    case OMCAnd:        case OMCOr:     case OMCNor:    case OMCXor:    case OMCLsh:    case OMCRsh:
+    case OMCAnd:        case OMCOr:     case OMCNor:        case OMCXor:    case OMCLsh:    case OMCRsh:
     case OMCMod:
             [ self appendBinaryOperatorWithLastPressedButton: self.lastTypedButton ];
             return;

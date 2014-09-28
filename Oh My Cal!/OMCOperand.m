@@ -248,6 +248,35 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                                  calStyle: self.calStyle ];
     }
 
+- ( instancetype ) cubeRoot
+    {
+    OMCOperand* three = [ OMCOperand operandWithString: @"3" inAry: self.currentAry calStyle: self.calStyle ];
+    return [ self pow: [ [ OMCOperand one ] divide: three ] ];
+    }
+
+- ( instancetype ) xRoot: ( OMCOperand* )_Exponent
+    {
+    /* x root = pow( val, 1 / x ) */
+    return [ self pow: [ [ OMCOperand one ] divide: _Exponent ] ];
+    }
+
+- ( instancetype ) e_x
+    {
+    return [ [ OMCOperand e ] pow: self ];
+    }
+
+- ( instancetype ) _2_x
+    {
+    OMCOperand* two = [ OMCOperand operandWithString: @"2" ];
+    return [ two pow: self ];
+    }
+
+- ( instancetype ) _10_x
+    {
+    OMCOperand* ten = [ OMCOperand operandWithString: @"10" ];
+    return [ ten pow: self ];
+    }
+
 - ( instancetype ) percent
     {
     OMCOperand* oneHundred = [ OMCOperand operandWithString: @"100" inAry: self.currentAry calStyle: self.calStyle ];
