@@ -39,22 +39,6 @@
 #import "OMCOperand.h"
 #import "OMCBinaryOperationPanel.h"
 
-// Notification UserInfo Keys
-NSString* const OMCCalculationNewTypingState = @"OMCCalculationNewTypingState";
-NSString* const OMCCalculationNewAry = @"OMCCalculationNewAry";
-
-// Notifications
-NSString* const OMCCurrentTypingStateDidChangedNotification = @"OMCCurrentTypingStateDidChangedNotification";
-NSString* const OMCCurrentAryDidChangedNotification = @"OMCCurrentAryDidChangedNotification";
-NSString* const OMCCurrentLeftOperandDidChangedNotification = @"OMCCurrentLeftOperandDidChangedNotification";
-NSString* const OMCCurrentRightOperandDidChangedNotification = @"OMCCurrentRightOperandDidChangedNotification";
-NSString* const OMCCurrentResultValueDidChangedNotification = @"OMCCurrentResultValueDidChangedNotification";
-
-// Keys for User Info in notifications
-NSString* const OMCCurrentTypingState = @"OMCCurrentTypingState";
-NSString* const OMCCurrentAry = @"OMCCurrentAry";
-NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
-
 // OMCCalculation class
 @implementation OMCCalculation
 
@@ -570,10 +554,6 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
     {
     if ( self->_typingState != _TypingState )
         self->_typingState = _TypingState;
-
-    [ NOTIFICATION_CENTER postNotificationName: OMCCurrentTypingStateDidChangedNotification
-                                        object: self
-                                      userInfo: @{ OMCCalculationNewTypingState : [ NSNumber numberWithInt: self.typingState ] } ];
     }
 
 - ( void ) zeroedAllOperands
@@ -595,10 +575,6 @@ NSString* const OMCLastTypedButton = @"OMCLastTypedButton";
         [ self.rhsOperand setCurrentAry: self->_currentAry ];
         [ self.resultValue setCurrentAry: self->_currentAry ];
         }
-
-    [ NOTIFICATION_CENTER postNotificationName: OMCCurrentAryDidChangedNotification
-                                        object: self
-                                      userInfo: @{ OMCCalculationNewAry : [ NSNumber numberWithInt: self.currentAry ] } ];
     }
 
 - ( BOOL ) isBinomialInLastCalculation

@@ -43,18 +43,6 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
 @class OMCOperand;
 @class OMCBinaryOperationPanel;
 
-// Notifications
-NSString extern* const OMCCurrentTypingStateDidChangedNotification;
-NSString extern* const OMCCurrentAryDidChangedNotification;
-NSString extern* const OMCCurrentLeftOperandDidChangedNotification;
-NSString extern* const OMCCurrentRightOperandDidChangedNotification;
-NSString extern* const OMCCurrentResultValueDidChangedNotification;
-
-// Keys for User Info in notifications
-NSString extern* const OMCCurrentTypingState;
-NSString extern* const OMCCurrentAry;
-NSString extern* const OMCLastTypedButton;
-
 // OMCCalculation class
 @interface OMCCalculation : NSObject <OMCBinaryAndDecimalConversion>
     {

@@ -48,6 +48,7 @@ NSInteger static const kSpaceBarsCount = 4;
 NSString static* const kKeyPathForCurrentCalStyleInMainPanelBackgroundView = @"self._currentCalStyle";
 NSString static* const kKeyPathForTrigonometircModeInCalculations = @"self.trigonometricMode";
 NSString static* const kKeyPathForHasMemoryInCalculations = @"self.hasMemory";
+NSString static* const kKeyPathTypingStateInCalculations = @"self.typingState";
 NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
 
 // OMCLCDScreen class
@@ -126,8 +127,6 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
     self.storageFormulasFont = self.operandsFont;   // Same as the font for operands
     self.statusFont = [ NSFont fontWithName: @"Lucida Grande" size: 10 ];
 
-    [ self setTypingState: OMCWaitAllOperands ];
-
     [ self _addObserverForCalculations: self._basicStyleCalculation ];
     [ self _addObserverForCalculations: self._scientificStyleCalculation ];
     [ self _addObserverForCalculations: self._programmerStyleCalculation ];
@@ -136,11 +135,6 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
                                      forKeyPath: kKeyPathForCurrentCalStyleInMainPanelBackgroundView
                                         options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                                         context: NULL ];
-                                        
-    [ self.currentCalculation addObserver: self
-                               forKeyPath: kKeyPathCurrentAryInCalculations
-                                  options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                                  context: NULL ];
     }
 
 - ( void ) observeValueForKeyPath: ( NSString* )_KeyPath
@@ -159,7 +153,8 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
         else if ( style == OMCProgrammerStyle )
             self.currentCalculation = self._programmerStyleCalculation;
         }
-    else if ( [ _KeyPath isEqualToString: kKeyPathCurrentAryInCalculations ] )
+    else if ( [ _KeyPath isEqualToString: kKeyPathCurrentAryInCalculations ]
+                || [ _KeyPath isEqualToString: kKeyPathTypingStateInCalculations ] )
         [ self setNeedsDisplay: YES ];
     else if ( [ _KeyPath isEqualToString: kKeyPathForTrigonometircModeInCalculations ]
                 || [ _KeyPath isEqualToString: kKeyPathForHasMemoryInCalculations ]
@@ -169,11 +164,6 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
 
 - ( void ) _addObserverForCalculations: ( OMCCalculation* )_Calculation
     {
-    [ NOTIFICATION_CENTER addObserver: self
-                             selector: @selector( currentTypingStateDidChanged: )
-                                 name: OMCCurrentTypingStateDidChangedNotification
-                               object: _Calculation ];
-
     [ _Calculation addObserver: self
                     forKeyPath: kKeyPathForTrigonometircModeInCalculations
                        options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
@@ -188,12 +178,11 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
                     forKeyPath: kKeyPathCurrentAryInCalculations
                        options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                        context: NULL ];
-    }
 
-- ( void ) currentTypingStateDidChanged: ( NSNotification* )_Notif
-    {
-    [ self setTypingState: [ _Notif.userInfo[ OMCCalculationNewTypingState ] intValue ] ];
-    [ self setNeedsDisplay: YES ];
+    [ _Calculation addObserver: self
+                    forKeyPath: kKeyPathTypingStateInCalculations
+                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                       context: NULL ];
     }
 
 - ( void ) viewWillMoveToWindow: ( NSWindow* )_Window
@@ -654,6 +643,11 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
     }
 
 #pragma mark Accessors
+- ( OMCTypingState ) typingState
+    {
+    return self.currentCalculation.typingState;
+    }
+
 - ( OMCAry ) currentAry
     {
     return self.currentCalculation.currentAry;
