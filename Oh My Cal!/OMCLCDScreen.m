@@ -138,7 +138,7 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
                                         context: NULL ];
                                         
     [ self.currentCalculation addObserver: self
-                               forKeyPath: kKeyPathForCurrentCalStyleInMainPanelBackgroundView
+                               forKeyPath: kKeyPathCurrentAryInCalculations
                                   options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                                   context: NULL ];
     }
@@ -159,6 +159,8 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
         else if ( style == OMCProgrammerStyle )
             self.currentCalculation = self._programmerStyleCalculation;
         }
+    else if ( [ _KeyPath isEqualToString: kKeyPathCurrentAryInCalculations ] )
+        [ self setNeedsDisplay: YES ];
     else if ( [ _KeyPath isEqualToString: kKeyPathForTrigonometircModeInCalculations ]
                 || [ _KeyPath isEqualToString: kKeyPathForHasMemoryInCalculations ]
                 || [ _KeyPath isEqualToString: kKeyPathCurrentAryInCalculations ] )
@@ -359,7 +361,7 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
                            withAttributes: ( NSDictionary* )_Attributes
     {
     NSString* placeholder = nil;
-    OMCAry currentAry = self.currentCalculation.currentAry;
+    OMCAry currentAry = self.currentAry;
 
     if ( self.currentCalculation.calStyle == OMCProgrammerStyle )
         {
@@ -481,9 +483,9 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
     //=======================================================================================================//
     // Drawing current ary
     NSString* currentAryInString = nil;
-    if ( self.currentCalculation.currentAry == OMCDecimal )         currentAryInString = @"DEC";
-        else if ( self.currentCalculation.currentAry == OMCOctal )  currentAryInString = @"OCT";
-        else if ( self.currentCalculation.currentAry == OMCHex )    currentAryInString = @"HEX";
+    if ( self.currentAry == OMCDecimal )         currentAryInString = @"DEC";
+        else if ( self.currentAry == OMCOctal )  currentAryInString = @"OCT";
+        else if ( self.currentAry == OMCHex )    currentAryInString = @"HEX";
 
     NSSize sizeForCurrentAryInString = [ currentAryInString sizeWithAttributes: drawingAttributesForStatus ];
     NSRect rectForCurrentAryInString = NSMakeRect( NSMaxX( rectForHasMemoryStatus ) + gapInStatus
