@@ -153,9 +153,11 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
         else if ( style == OMCProgrammerStyle )
             self.currentCalculation = self._programmerStyleCalculation;
         }
+
     else if ( [ _KeyPath isEqualToString: kKeyPathCurrentAryInCalculations ]
                 || [ _KeyPath isEqualToString: kKeyPathTypingStateInCalculations ] )
         [ self setNeedsDisplay: YES ];
+        
     else if ( [ _KeyPath isEqualToString: kKeyPathForTrigonometircModeInCalculations ]
                 || [ _KeyPath isEqualToString: kKeyPathForHasMemoryInCalculations ]
                 || [ _KeyPath isEqualToString: kKeyPathCurrentAryInCalculations ] )
