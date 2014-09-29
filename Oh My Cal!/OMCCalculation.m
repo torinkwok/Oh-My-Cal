@@ -417,9 +417,9 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
 
     case OMC0xA:    case OMC0xB:    case OMC0xC:    case OMC0xD:    case OMC0xE:    case OMC0xF:
     case OMC0xFF:
-        {
-        [ self appendNumberWithLastPressedButton: self.lastTypedButton ];
-        } return;
+            {
+            [ self appendNumberWithLastPressedButton: self.lastTypedButton ];
+            } return;
 
     // Binary operators
     case OMCAdd:        case OMCSub:    case OMCMuliply:    case OMCDivide:
@@ -445,7 +445,9 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
             return;
 
     // Commands
-    case OMCDel:    [ self deleteNumberWithLastPressedButton: self.lastTypedButton ];  return;
+    case OMCDel:
+            [ self deleteNumberWithLastPressedButton: self.lastTypedButton ];
+            return;
 
     case OMCClear:
             {
@@ -455,8 +457,13 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
                 [ self clearAllAndReset ];
             } return;
 
-    case OMCAC: [ self clearAllAndReset ];                                              return;
-    case OMCToggleTrigonometircMode: [ self toggleTrigonometricMode: pressedButton ];   return;
+    case OMCAC:
+            [ self clearAllAndReset ];
+            return;
+
+    case OMCToggleTrigonometircMode:
+            [ self toggleTrigonometricMode: pressedButton ];
+            return;
 
     case OMCLeftParenthesis:  return;
     case OMCRightParenthesis: return;
@@ -466,7 +473,9 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
             return;
 
     /* Cal with scientific style will observe this property( isInShift ) and response it */
-    case OMCShift: self.isInShift = !self.isInShift;    return;
+    case OMCShift:
+            self.isInShift = !self.isInShift;
+            return;
 
     // Memory Operations
     case OMCMemoryAdd:
@@ -485,7 +494,10 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
                                                                        : [ self.memory subtract: operandToBeAdded ];
             } return;
 
-    case OMCMemoryClear: [ self clearMemory ];  return;
+    case OMCMemoryClear:
+            [ self clearMemory ];
+            return;
+
     case OMCMemoryRead:
             {
             if ( self.typingState == OMCWaitAllOperands )
