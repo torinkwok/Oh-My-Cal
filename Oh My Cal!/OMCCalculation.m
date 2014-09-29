@@ -337,22 +337,22 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
     /* If the user has not finished a calculation,
      * for example, they have finished typing the right operand,
      * and they want to calculate a result value... */
-    if ( COMPARE_WITH_OPERATOR( OMCAddOperatorIdentifier) )            calculation = @selector( add: );
-    else if ( COMPARE_WITH_OPERATOR( OMCSubOperatorIdentifier ) )      calculation = @selector( subtract: );
-    else if ( COMPARE_WITH_OPERATOR( OMCMultiplyOperatorIdentifier ) ) calculation = @selector( multiply: );
-    else if ( COMPARE_WITH_OPERATOR( OMCDivideOperatorIdentifier ) )   calculation = @selector( divide: );
+    if ( COMPARE_WITH_OPERATOR( OMCAddOperatorIdentifier) )             calculation = @selector( add: );
+    else if ( COMPARE_WITH_OPERATOR( OMCSubOperatorIdentifier ) )       calculation = @selector( subtract: );
+    else if ( COMPARE_WITH_OPERATOR( OMCMultiplyOperatorIdentifier ) )  calculation = @selector( multiply: );
+    else if ( COMPARE_WITH_OPERATOR( OMCDivideOperatorIdentifier ) )    calculation = @selector( divide: );
 
-    else if ( COMPARE_WITH_OPERATOR( OMCAndOperatorIdentifier ) )     calculation = @selector( bitwiseAnd: );
-    else if ( COMPARE_WITH_OPERATOR( OMCOrOperatorIdentifier ) )      calculation = @selector( bitwiseOr: );
-    else if ( COMPARE_WITH_OPERATOR( OMCNorOperatorIdentifier ) )     calculation = @selector( bitwiseNor: );
-    else if ( COMPARE_WITH_OPERATOR( OMCXorOperatorIdentifier ) )     calculation = @selector( bitwiseXor: );
-    else if ( COMPARE_WITH_OPERATOR( OMCLshOperatorIdentifier ) )     calculation = @selector( Lsh: );
-    else if ( COMPARE_WITH_OPERATOR( OMCRshOperatorIdentifier ) )     calculation = @selector( Rsh: );
+    else if ( COMPARE_WITH_OPERATOR( OMCAndOperatorIdentifier ) )       calculation = @selector( bitwiseAnd: );
+    else if ( COMPARE_WITH_OPERATOR( OMCOrOperatorIdentifier ) )        calculation = @selector( bitwiseOr: );
+    else if ( COMPARE_WITH_OPERATOR( OMCNorOperatorIdentifier ) )       calculation = @selector( bitwiseNor: );
+    else if ( COMPARE_WITH_OPERATOR( OMCXorOperatorIdentifier ) )       calculation = @selector( bitwiseXor: );
+    else if ( COMPARE_WITH_OPERATOR( OMCLshOperatorIdentifier ) )       calculation = @selector( Lsh: );
+    else if ( COMPARE_WITH_OPERATOR( OMCRshOperatorIdentifier ) )       calculation = @selector( Rsh: );
 
     else if ( COMPARE_WITH_OPERATOR( OMCPowXOperatorIdentifier ) )      calculation = @selector( pow: );
-    else if ( COMPARE_WITH_OPERATOR( OMCxRootIdentifier ) )     calculation = @selector( xRoot: );
-    else if ( COMPARE_WITH_OPERATOR( OMCModOperatorIdentifier ) )     calculation = @selector( mod: );
-    else if ( COMPARE_WITH_OPERATOR( OMCeIdentifier ) )      calculation = @selector( EE: );
+    else if ( COMPARE_WITH_OPERATOR( OMCxRootIdentifier ) )             calculation = @selector( xRoot: );
+    else if ( COMPARE_WITH_OPERATOR( OMCModOperatorIdentifier ) )       calculation = @selector( mod: );
+    else if ( COMPARE_WITH_OPERATOR( OMCeIdentifier ) )                 calculation = @selector( EE: );
 
     self.resultValue = [ self _performCalculationOfBinomial: calculation ];
     self.typingState = OMCFinishedTyping;
