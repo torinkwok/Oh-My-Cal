@@ -218,15 +218,22 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return newOperand;
     }
 
-- ( instancetype ) pow: ( OMCOperand* )_Exponent
+- ( instancetype ) pow: ( OMCOperand* )_Rhs
     {
-    double exponent = [ _Exponent.decimalNumber doubleValue ];
+    double exponent = [ _Rhs.decimalNumber doubleValue ];
     double result = pow( self.decimalNumber.doubleValue, exponent );
 
     OMCOperand* newOperand = [ OMCOperand operandWithString: [ NSString stringWithFormat: @"%.16g", result ]
                                                       inAry: self.currentAry
                                                    calStyle: self.calStyle ];
     return newOperand;
+    }
+
+- ( instancetype ) EE: ( OMCOperand* )_Rhs
+    {
+    OMCOperand* ten = [ OMCOperand operandWithString: @"10" inAry: self.currentAry calStyle: self.calStyle ];
+
+    return [ self multiply: [ ten pow: _Rhs ] ];
     }
 
 - ( instancetype ) square
@@ -254,10 +261,10 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return [ self pow: [ [ OMCOperand one ] divide: three ] ];
     }
 
-- ( instancetype ) xRoot: ( OMCOperand* )_Exponent
+- ( instancetype ) xRoot: ( OMCOperand* )_Rhs
     {
     /* x root = pow( val, 1 / x ) */
-    return [ self pow: [ [ OMCOperand one ] divide: _Exponent ] ];
+    return [ self pow: [ [ OMCOperand one ] divide: _Rhs ] ];
     }
 
 - ( instancetype ) e_x

@@ -34,6 +34,8 @@
 #import <Cocoa/Cocoa.h>
 #import "OMCBinaryAndDecimalConversion.h"
 
+#define COMPARE_WITH_OPERATOR( _Rhs ) COMPARE_WITH_CASE_INSENSITIVE( self.theOperator, _Rhs )
+
 // Exception Names
 NSString extern* const OMCInvalidCalStyle;
 

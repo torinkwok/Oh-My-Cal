@@ -605,7 +605,6 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     else if ( [ characters isEqualToString: @"*" ] )
         actionSender = self._calWithProgrammerStyle._multiplicationOperator;
     // /
-    
     else if ( [ characters isEqualToString: @"/" ] )
         actionSender = self._calWithProgrammerStyle._divisionOperator;
 

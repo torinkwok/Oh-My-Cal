@@ -150,6 +150,13 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
     if ( isWaitingForFloatNumber )
         numberWillBeAppended = -1;
 
+    // Float number is not available for the rhs operand of EE calculation
+    if ( numberWillBeAppended == -1 && COMPARE_WITH_OPERATOR( @"EE" ) )
+        {
+        NSBeep();
+        return;
+        }
+
     if ( self.currentAry == OMCHex )
         {
         if ( [ buttonTitle isEqualToString: @"A" ] )    numberWillBeAppended = k0xA;
@@ -222,8 +229,6 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
         self.typingState = OMCWaitRhsOperand;
         }
     }
-    
-#define COMPARE_WITH_OPERATOR( _Rhs ) COMPARE_WITH_CASE_INSENSITIVE( self.theOperator, _Rhs )
 
 - ( void ) calculateTheResultValueForMonomialWithLastPressedButton: ( NSButton* )_Button
     {
@@ -347,6 +352,7 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
     else if ( COMPARE_WITH_OPERATOR( @"Yˣ" ) )      calculation = @selector( pow: );
     else if ( COMPARE_WITH_OPERATOR( @"ˣ√y" ) )     calculation = @selector( xRoot: );
     else if ( COMPARE_WITH_OPERATOR( @"Mod" ) )     calculation = @selector( mod: );
+    else if ( COMPARE_WITH_OPERATOR( @"EE" ) )      calculation = @selector( EE: );
 
     self.resultValue = [ self _performCalculationOfBinomial: calculation ];
     self.typingState = OMCFinishedTyping;
@@ -418,7 +424,7 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
     // Binary operators
     case OMCAdd:        case OMCSub:    case OMCMuliply:    case OMCDivide:
 
-    case OMCxPower:     case OMCxRoot:
+    case OMCxPower:     case OMCxRoot:  case OMCEE:
 
     case OMCAnd:        case OMCOr:     case OMCNor:        case OMCXor:    case OMCLsh:    case OMCRsh:
     case OMCMod:

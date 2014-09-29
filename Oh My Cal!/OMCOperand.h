@@ -110,12 +110,13 @@ NSString extern* const OMCOperandDivideByZeroException;
 - ( instancetype ) abs;
 - ( instancetype ) positiveOrNegative;
 
-- ( instancetype ) pow: ( OMCOperand* )_Exponent;
+- ( instancetype ) pow: ( OMCOperand* )_Rhs;
+- ( instancetype ) EE: ( OMCOperand* )_Rhs;
 - ( instancetype ) square;
 - ( instancetype ) cube;
 - ( instancetype ) sqrt;
 - ( instancetype ) cubeRoot;
-- ( instancetype ) xRoot: ( OMCOperand* )_Exponent;
+- ( instancetype ) xRoot: ( OMCOperand* )_Rhs;
 - ( instancetype ) e_x;
 - ( instancetype ) _2_x;
 - ( instancetype ) _10_x;
