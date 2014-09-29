@@ -33,6 +33,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class OMCCalculation;
+
 @class OMFMainPanelController;
 @class OMCLCDScreen;
 @class OMCSettingsBar;
@@ -57,6 +59,8 @@
 @property ( nonatomic, assign ) IBOutlet OMCSettingsBar* _settingsBar;
 @property ( nonatomic, assign ) IBOutlet OMCBinaryOperationBox* _binaryOperationBox;
     @property ( nonatomic, assign ) IBOutlet OMCBinaryOperationPanel* _binaryOperationPanel;
+
+@property ( nonatomic, assign, readonly ) OMCCalculation* currentCalculation;
 
 @property ( nonatomic, assign ) IBOutlet OMCCalWithBasicStyle* _calWithBasicStyle;
 @property ( nonatomic, assign ) IBOutlet OMCCalWithScientificStyle* _calWithScientificStyle;

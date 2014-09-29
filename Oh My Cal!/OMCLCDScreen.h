@@ -69,8 +69,6 @@ typedef NSRect OMCSpaceBarRect;
     NSFont* _operatorsFont;
     NSFont* _storageFormulasFont;
     NSFont* _statusFont;
-
-    OMCCalculation* _currentCalculation;
     }
 
 @property ( nonatomic, assign ) IBOutlet OMFPanelBackgroundView* _mainPanelBackgroundView;

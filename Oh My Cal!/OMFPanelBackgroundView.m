@@ -39,6 +39,8 @@
 #import "OMCBinaryOperationBox.h"
 #import "OMCBinaryOperationPanel.h"
 
+#import "OMCOperand.h"
+
 #import "OMCCalWithBasicStyle.h"
 #import "OMCCalWithScientificStyle.h"
 #import "OMCCalWithProgrammerStyle.h"
@@ -71,6 +73,8 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 @synthesize _binaryOperationBox;
     @synthesize _binaryOperationPanel;
 
+@synthesize currentCalculation;
+
 @synthesize _calWithBasicStyle;
 @synthesize _calWithProgrammerStyle;
 
@@ -79,14 +83,6 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 @synthesize _programmertyleMenuItem;
 
 @synthesize arrowX = _arrowX;
-
-#define DEBUG_CODE \
-    NSLog( @"LCD Screen: %@", NSStringFromRect( self._LCDScreen.frame ) );                  \
-    NSLog( @"Settings Bar: %@", NSStringFromRect( self._settingsBar.frame ) );              \
-    NSLog( @"Binary Operation Box: %@", NSStringFromRect( self._binaryOperationBox.frame ) );   \
-    NSLog( @"Cal With Basic Style: %@", NSStringFromRect( self._calWithBasicStyle.frame ) );    \
-    NSLog( @"Cal With Programmer Style: %@", NSStringFromRect( self._calWithProgrammerStyle.frame ) );  \
-    printf( "\n\n" )
 
 #pragma mark Conforms <NSAwakeFromNib> protocol
 - ( void ) awakeFromNib
@@ -252,6 +248,11 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
         }
     }
 
+- ( OMCCalculation* ) currentCalculation
+    {
+    return self._LCDScreen.currentCalculation;
+    }
+
 #pragma mark IBActions
 - ( IBAction ) calStyleChanged: ( id )_Sender
     {
@@ -262,8 +263,7 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
     [ self _switchCalStyle: self._currentCalStyle ];
 
     if ( self._currentCalStyle == OMCBasicStyle || self._currentCalStyle == OMCScientificStyle )
-        [ self._LCDScreen.currentCalculation setCurrentAry: OMCDecimal ];
-    // TODO: BUG!
+        [ self.currentCalculation setCurrentAry: OMCDecimal ];
     }
 
 - ( void ) _checkCorrectStyleMenuItem: ( OMCCalStyle )_CalStyle

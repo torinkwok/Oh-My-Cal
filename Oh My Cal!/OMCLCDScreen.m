@@ -91,6 +91,8 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
 @synthesize typingState;
 @synthesize currentAry;
 
+@synthesize currentCalculation;
+
 #pragma mark Overrides
 - ( BOOL ) canBecomeKeyView
     {
