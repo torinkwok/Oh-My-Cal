@@ -126,6 +126,24 @@ typedef enum { OMCWaitAllOperands, OMCWaitRhsOperand, OMCFinishedTyping } OMCTyp
 #define BIT_GROUP_HORIZONTAL_GAP    15.f
 #define BIT_GROUP_VERTICAL_GAP      4.5f
 
+// Identifier of binary operators
+NSString extern* const OMCAddOperatorIdentifier;
+NSString extern* const OMCSubOperatorIdentifier;
+NSString extern* const OMCMultiplyOperatorIdentifier;
+NSString extern* const OMCDivideOperatorIdentifier;
+
+NSString extern* const OMCPowXOperatorIdentifier;
+NSString extern* const OMCxRootIdentifier;
+NSString extern* const OMCeIdentifier;
+
+NSString extern* const OMCAndOperatorIdentifier;
+NSString extern* const OMCOrOperatorIdentifier;
+NSString extern* const OMCNorOperatorIdentifier;
+NSString extern* const OMCXorOperatorIdentifier;
+NSString extern* const OMCLshOperatorIdentifier;
+NSString extern* const OMCRshOperatorIdentifier;
+NSString extern* const OMCModOperatorIdentifier;
+
 ////////////////////////////////////////////////////////////////////////////
 
 /****************************************************************************

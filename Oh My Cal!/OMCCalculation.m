@@ -146,12 +146,12 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
     NSString* buttonTitle = [ _Button title ];
     NSInteger numberWillBeAppended = numberWillBeAppended = [ buttonTitle integerValue ];
 
-    BOOL isWaitingForFloatNumber = [ buttonTitle isEqualToString: @"." ];
+    BOOL isWaitingForFloatNumber = [ buttonTitle isEqualToString: OMCDot ];
     if ( isWaitingForFloatNumber )
         numberWillBeAppended = -1;
 
     // Float number is not available for the rhs operand of EE calculation
-    if ( numberWillBeAppended == -1 && COMPARE_WITH_OPERATOR( @"EE" ) )
+    if ( numberWillBeAppended == -1 && COMPARE_WITH_OPERATOR( OMCeIdentifier ) )
         {
         NSBeep();
         return;
@@ -209,7 +209,6 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
 
 - ( void ) appendBinaryOperatorWithLastPressedButton: ( NSButton* )_Button
     {
-    NSLog( @"Identifier: %@", _Button.identifier );
     /* If user has finished typing the left operand just a moment ago */
     if ( self.typingState == OMCWaitAllOperands )
         {
@@ -338,22 +337,22 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
     /* If the user has not finished a calculation,
      * for example, they have finished typing the right operand,
      * and they want to calculate a result value... */
-    if ( COMPARE_WITH_OPERATOR( @"+" ) )            calculation = @selector( add: );
-    else if ( COMPARE_WITH_OPERATOR( @"-" ) )       calculation = @selector( subtract: );
-    else if ( COMPARE_WITH_OPERATOR( @"×" ) )       calculation = @selector( multiply: );
-    else if ( COMPARE_WITH_OPERATOR( @"÷" ) )       calculation = @selector( divide: );
+    if ( COMPARE_WITH_OPERATOR( OMCAddOperatorIdentifier) )            calculation = @selector( add: );
+    else if ( COMPARE_WITH_OPERATOR( OMCSubOperatorIdentifier ) )      calculation = @selector( subtract: );
+    else if ( COMPARE_WITH_OPERATOR( OMCMultiplyOperatorIdentifier ) ) calculation = @selector( multiply: );
+    else if ( COMPARE_WITH_OPERATOR( OMCDivideOperatorIdentifier ) )   calculation = @selector( divide: );
 
-    else if ( COMPARE_WITH_OPERATOR( @"AND" ) )     calculation = @selector( bitwiseAnd: );
-    else if ( COMPARE_WITH_OPERATOR( @"OR" ) )      calculation = @selector( bitwiseOr: );
-    else if ( COMPARE_WITH_OPERATOR( @"NOR" ) )     calculation = @selector( bitwiseNor: );
-    else if ( COMPARE_WITH_OPERATOR( @"XOR" ) )     calculation = @selector( bitwiseXor: );
-    else if ( COMPARE_WITH_OPERATOR( @"Lsh" ) )     calculation = @selector( Lsh: );
-    else if ( COMPARE_WITH_OPERATOR( @"Rsh" ) )     calculation = @selector( Rsh: );
+    else if ( COMPARE_WITH_OPERATOR( OMCAndOperatorIdentifier ) )     calculation = @selector( bitwiseAnd: );
+    else if ( COMPARE_WITH_OPERATOR( OMCOrOperatorIdentifier ) )      calculation = @selector( bitwiseOr: );
+    else if ( COMPARE_WITH_OPERATOR( OMCNorOperatorIdentifier ) )     calculation = @selector( bitwiseNor: );
+    else if ( COMPARE_WITH_OPERATOR( OMCXorOperatorIdentifier ) )     calculation = @selector( bitwiseXor: );
+    else if ( COMPARE_WITH_OPERATOR( OMCLshOperatorIdentifier ) )     calculation = @selector( Lsh: );
+    else if ( COMPARE_WITH_OPERATOR( OMCRshOperatorIdentifier ) )     calculation = @selector( Rsh: );
 
-    else if ( COMPARE_WITH_OPERATOR( @"POW" ) )      calculation = @selector( pow: );
-    else if ( COMPARE_WITH_OPERATOR( @"ˣroot" ) )     calculation = @selector( xRoot: );
-    else if ( COMPARE_WITH_OPERATOR( @"Mod" ) )     calculation = @selector( mod: );
-    else if ( COMPARE_WITH_OPERATOR( @"E" ) )      calculation = @selector( EE: );
+    else if ( COMPARE_WITH_OPERATOR( OMCPowXOperatorIdentifier ) )      calculation = @selector( pow: );
+    else if ( COMPARE_WITH_OPERATOR( OMCxRootIdentifier ) )     calculation = @selector( xRoot: );
+    else if ( COMPARE_WITH_OPERATOR( OMCModOperatorIdentifier ) )     calculation = @selector( mod: );
+    else if ( COMPARE_WITH_OPERATOR( OMCeIdentifier ) )      calculation = @selector( EE: );
 
     self.resultValue = [ self _performCalculationOfBinomial: calculation ];
     self.typingState = OMCFinishedTyping;
