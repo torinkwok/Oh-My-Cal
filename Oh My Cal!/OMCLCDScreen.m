@@ -267,12 +267,39 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     [ NSGraphicsContext restoreGraphicsState ];
     }
 
+- ( NSString* ) _truncateStringFormOfOperand: ( NSString* )_OperandInString
+                   withAttributesForOperands: ( NSDictionary* )_AttributesForOperands
+                              andForOperator: ( NSDictionary* )_AttributesForOperator
+    {
+    NSSize sizeForCurrentOperator = [ self.currentCalculation.theOperator sizeWithAttributes: _AttributesForOperator ];
+    NSSize sizeForDrawingOperandInString = [ _OperandInString sizeWithAttributes: _AttributesForOperands ];
+    CGFloat widthOfBounds = NSWidth( self.bottommostSpaceBar ) - sizeForCurrentOperator.width - 20.f;
+
+    if ( sizeForDrawingOperandInString.width > widthOfBounds )
+        {
+        NSString* sampleString = @"0";
+        NSString* tail = @"...";
+
+        NSInteger count = floor( widthOfBounds / [ sampleString sizeWithAttributes: _AttributesForOperands ].width ) - [ tail length ];
+        NSString* truncatedString = [ _OperandInString substringToIndex: count ];
+        truncatedString = [ truncatedString stringByAppendingString: tail ];
+
+        return truncatedString;
+        }
+
+    return _OperandInString;
+    }
+
 - ( void ) _drawLhsOperandWithAttributes: ( NSDictionary* )_Attributes
     {
     /* When the user is typing left operand... */
 
     OMCOperand* operand = self.currentCalculation.lhsOperand;
+
     NSString* lhsOperandInString = ( self.typingState == OMCWaitAllOperands ) ? [ operand numericString ] : [ operand description ];
+    lhsOperandInString = [ self _truncateStringFormOfOperand: lhsOperandInString
+                                   withAttributesForOperands: _Attributes
+                                              andForOperator: _Attributes ];
 
     /* ...we should only draw the left operand into the bottommost space bar. It's easy, isn't it? :) */
     [ lhsOperandInString drawAtPoint: [ self _pointUsedForDrawingOperands: lhsOperandInString inSpaceBar: self.bottommostSpaceBar ]
@@ -289,6 +316,9 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
 
     NSString* lhsOperandInString = ( self.typingState == OMCWaitAllOperands ) ? [ lhsOperand numericString ] : [ lhsOperand description ];
     NSString* rhsOperandInString = ( self.typingState == OMCWaitRhsOperand ) ? [ rhsOperand numericString ] : [ rhsOperand description ];
+
+    lhsOperandInString = [ self _truncateStringFormOfOperand: lhsOperandInString withAttributesForOperands: _AttributesForOperands andForOperator: _AttributesForOperator ];
+    rhsOperandInString = [ self _truncateStringFormOfOperand: rhsOperandInString withAttributesForOperands: _AttributesForOperands andForOperator: _AttributesForOperator ];
 
     /* ...we must draw a left operand into the bottom third space bar... */
     [ lhsOperandInString drawAtPoint: [ self _pointUsedForDrawingOperands: lhsOperandInString inSpaceBar: self.thirdSpaceBar ]
@@ -312,7 +342,9 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
                                     andForOperator: ( NSDictionary* )_AttributesForOperator
     {
     OMCOperand* resultValue = self.currentCalculation.resultValue;
+
     NSString* resultValueInString = [ resultValue description ];
+    resultValueInString = [ self _truncateStringFormOfOperand: resultValueInString withAttributesForOperands: _AttributesForOperands andForOperator: _AttributesForOperator ];
 
     [ resultValueInString drawAtPoint: [ self _pointUsedForDrawingOperands: resultValueInString inSpaceBar: self.bottommostSpaceBar ]
                        withAttributes: _AttributesForOperands ];
