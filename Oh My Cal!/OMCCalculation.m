@@ -39,6 +39,9 @@
 #import "OMCOperand.h"
 #import "OMCBinaryOperationPanel.h"
 
+// Exception Names
+NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
+
 // OMCCalculation class
 @implementation OMCCalculation
 
@@ -544,17 +547,17 @@
 
 - ( void ) reliveFromBasicStyleCalculation: ( OMCBasicStyleCalculation* )_BasicStyleCalculation
     {
-
+    __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__;
     }
 
 - ( void ) reliveFromScientificStyleCalculation: ( OMCScientificStyleCalculation* )_ScientificStyleCalculation
     {
-
+    __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__;
     }
 
 - ( void ) reliveFromProgrammerStyleCalculation: ( OMCProgrammerStyleCalculation* )_ProgrammerStyleCalculation
     {
-
+    __THROW_EXCEPTION__WHEN_INVOKED_PURE_VIRTUAL_METHOD__;
     }
 
 #pragma mark Accessors

@@ -34,6 +34,9 @@
 #import <Cocoa/Cocoa.h>
 #import "OMCBinaryAndDecimalConversion.h"
 
+// Exception Names
+NSString extern* const OMCInvalidCalStyle;
+
 // Notification UserInfo Keys
 NSString extern* const OMCCalculationNewTypingState;
 NSString extern* const OMCCalculationNewAry;
