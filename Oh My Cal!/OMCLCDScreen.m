@@ -47,8 +47,9 @@ NSInteger static const kSpaceBarsCount = 4;
 
 NSString static* const kKeyPathForTrigonometircModeInCalculations = @"self.trigonometricMode";
 NSString static* const kKeyPathForHasMemoryInCalculations = @"self.hasMemory";
-NSString static* const kKeyPathTypingStateInCalculations = @"self.typingState";
-NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
+NSString static* const kKeyPathForTypingStateInCalculations = @"self.typingState";
+NSString static* const kKeyPathForCurrentAryInCalculations = @"self.currentAry";
+NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
 
 // OMCLCDScreen class
 @implementation OMCLCDScreen
@@ -129,13 +130,14 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
                            change: ( NSDictionary* )_Change
                            context: ( void* )_Context
     {
-    if ( [ _KeyPath isEqualToString: kKeyPathCurrentAryInCalculations ]
-                || [ _KeyPath isEqualToString: kKeyPathTypingStateInCalculations ] )
+    if ( [ _KeyPath isEqualToString: kKeyPathForCurrentAryInCalculations ]
+                || [ _KeyPath isEqualToString: kKeyPathForTypingStateInCalculations ] )
         [ self setNeedsDisplay: YES ];
-        
+
     else if ( [ _KeyPath isEqualToString: kKeyPathForTrigonometircModeInCalculations ]
                 || [ _KeyPath isEqualToString: kKeyPathForHasMemoryInCalculations ]
-                || [ _KeyPath isEqualToString: kKeyPathCurrentAryInCalculations ] )
+                /* || [ _KeyPath isEqualToString: kKeyPathForCurrentAryInCalculations ] */
+                || [ _KeyPath isEqualToString: kKeyPathForIsInShiftInCalculations ] )
         [ self setNeedsDisplayInRect: self.statusSpaceBar ];
     }
 
@@ -152,12 +154,17 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
                        context: NULL ];
 
     [ _Calculation addObserver: self
-                    forKeyPath: kKeyPathCurrentAryInCalculations
+                    forKeyPath: kKeyPathForCurrentAryInCalculations
                        options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                        context: NULL ];
 
     [ _Calculation addObserver: self
-                    forKeyPath: kKeyPathTypingStateInCalculations
+                    forKeyPath: kKeyPathForTypingStateInCalculations
+                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                       context: NULL ];
+
+    [ _Calculation addObserver: self
+                    forKeyPath: kKeyPathForIsInShiftInCalculations
                        options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                        context: NULL ];
     }
@@ -461,7 +468,20 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
                                                  );
 
     if ( self.currentCalculation.calStyle == OMCProgrammerStyle )
-    [ currentAryInString drawInRect: rectForCurrentAryInString withAttributes: drawingAttributesForStatus ];
+        [ currentAryInString drawInRect: rectForCurrentAryInString withAttributes: drawingAttributesForStatus ];
+
+    //=======================================================================================================//
+    // Drawing shift state
+    NSString* shiftStateInString = @"⇧";
+    NSSize sizeForShiftInString = [ shiftStateInString sizeWithAttributes: drawingAttributesForStatus ];
+    NSRect rectForShiftInString = NSMakeRect( NSMaxX( rectForCurrentAryInString ) + gapInStatus
+                                            , rectForCurrentAryInString.origin.y
+                                            , sizeForShiftInString.width
+                                            , sizeForShiftInString.height
+                                            );
+                                            
+    if ( self.currentCalculation.calStyle == OMCScientificStyle && self.currentCalculation.isInShift )
+        [ shiftStateInString drawInRect: rectForShiftInString withAttributes: drawingAttributesForStatus ];
     }
 
 - ( NSPoint ) _pointUsedForDrawingOperators: ( NSString* )_Operator
