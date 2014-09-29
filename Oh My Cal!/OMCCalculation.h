@@ -54,7 +54,6 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
     OMCTypingState _typingState;
 
     OMCAry                  _currentAry;
-    OMCCalStyle             _calStyle;
     OMCTrigonometricMode    _trigonometricMode;
     BOOL                    _hasMemory;
     BOOL                    _isInShift;
@@ -76,7 +75,7 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
 @property ( nonatomic, assign ) OMCTypingState typingState;
 
 @property ( nonatomic, assign ) OMCAry currentAry;
-@property ( nonatomic, assign ) OMCCalStyle calStyle;
+@property ( nonatomic, assign, readonly ) OMCCalStyle calStyle;
 @property ( nonatomic, assign ) OMCTrigonometricMode trigonometricMode;
 @property ( nonatomic, assign ) BOOL hasMemory;
 @property ( nonatomic, assign ) BOOL isInShift;

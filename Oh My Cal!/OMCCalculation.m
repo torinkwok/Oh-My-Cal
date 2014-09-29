@@ -47,7 +47,7 @@
 @synthesize typingState = _typingState;
 
 @synthesize currentAry = _currentAry;
-@synthesize calStyle = _calStyle;
+@synthesize calStyle;
 @synthesize trigonometricMode = _trigonometricMode;
 @synthesize hasMemory = _hasMemory;
 @synthesize isInShift = _isInShift;
@@ -76,13 +76,6 @@
 
     /* Radian mode by default */
     [ self setTrigonometricMode: OMCRadianMode ];
-
-    if ( [ self class ] == [ OMCBasicStyleCalculation class ] )
-        self.calStyle = OMCBasicStyle;
-    else if ( [ self class ] == [ OMCScientificStyleCalculation class ] )
-        self.calStyle = OMCScientificStyle;
-    else if ( [ self class ] == [ OMCProgrammerStyleCalculation class ] )
-        self.calStyle = OMCProgrammerStyle;
 
     [ NOTIFICATION_CENTER addObserver: self
                              selector: @selector( binaryStringDidChanged: )
@@ -578,6 +571,20 @@
     [ self.resultValue zeroed ];
 
     [ self.theOperator clear ];
+    }
+
+- ( OMCCalStyle ) calStyle
+    {
+    OMCCalStyle currentCalStyle = OMCBasicStyle;
+
+    if ( [ self class ] == [ OMCBasicStyleCalculation class ] )
+        currentCalStyle = OMCBasicStyle;
+    else if ( [ self class ] == [ OMCScientificStyleCalculation class ] )
+        currentCalStyle = OMCScientificStyle;
+    else if ( [ self class ] == [ OMCProgrammerStyleCalculation class ] )
+        currentCalStyle = OMCProgrammerStyle;
+
+    return currentCalStyle;
     }
 
 - ( void ) setCurrentAry: ( OMCAry )_Ary

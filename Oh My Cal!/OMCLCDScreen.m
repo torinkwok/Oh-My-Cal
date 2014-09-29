@@ -88,8 +88,8 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
 @synthesize storageFormulasFont = _storageFormulasFont;
 @synthesize statusFont = _statusFont;
 
-@synthesize typingState = _typingState;
-@synthesize currentAry = _currentAry;
+@synthesize typingState;
+@synthesize currentAry;
 
 #pragma mark Overrides
 - ( BOOL ) canBecomeKeyView
@@ -325,13 +325,13 @@ NSString static* const kKeyPathCurrentAryInCalculations = @"self.currentAry";
                            withAttributes: ( NSDictionary* )_Attributes
     {
     NSString* placeholder = nil;
-    OMCAry currentAry = self.currentAry;
+    OMCAry ary = self.currentAry;
 
     if ( self.currentCalculation.calStyle == OMCProgrammerStyle )
         {
-        if ( currentAry == OMCOctal || currentAry == OMCDecimal )
+        if ( ary == OMCOctal || ary == OMCDecimal )
             placeholder = @"0";
-        else if ( currentAry == OMCHex )
+        else if ( ary == OMCHex )
             placeholder = @"0x0";
         }
     else
