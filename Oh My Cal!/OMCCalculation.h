@@ -43,6 +43,10 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
 @class OMCOperand;
 @class OMCBinaryOperationPanel;
 
+@class OMCBasicStyleCalculation;
+@class OMCScientificStyleCalculation;
+@class OMCProgrammerStyleCalculation;
+
 // OMCCalculation class
 @interface OMCCalculation : NSObject <OMCBinaryAndDecimalConversion>
     {
@@ -103,6 +107,10 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
 
 - ( void ) clearAllAndReset;
 - ( void ) clearCurrentOperand;
+
+- ( void ) reliveFromBasicStyleCalculation: ( OMCBasicStyleCalculation* )_BasicStyleCalculation;
+- ( void ) reliveFromScientificStyleCalculation: ( OMCScientificStyleCalculation* )_ScientificStyleCalculation;
+- ( void ) reliveFromProgrammerStyleCalculation: ( OMCProgrammerStyleCalculation* )_ProgrammerStyleCalculation;
 
 @end // OMCCalculation class
 

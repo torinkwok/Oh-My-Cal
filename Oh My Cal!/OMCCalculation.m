@@ -549,6 +549,21 @@
         }
     }
 
+- ( void ) reliveFromBasicStyleCalculation: ( OMCBasicStyleCalculation* )_BasicStyleCalculation
+    {
+
+    }
+
+- ( void ) reliveFromScientificStyleCalculation: ( OMCScientificStyleCalculation* )_ScientificStyleCalculation
+    {
+
+    }
+
+- ( void ) reliveFromProgrammerStyleCalculation: ( OMCProgrammerStyleCalculation* )_ProgrammerStyleCalculation
+    {
+
+    }
+
 #pragma mark Accessors
 - ( void ) setTypingState: ( OMCTypingState )_TypingState
     {
