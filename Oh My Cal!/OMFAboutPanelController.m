@@ -66,17 +66,16 @@
     [ [ NSWorkspace sharedWorkspace ] openURL: emailURL ];
     }
 
-- ( IBAction ) wikipediaForWestKorea: ( id )_Sender
-    {
-    NSURL* wikipediaForWestKorea = [ NSURL URLWithString: @"https://en.wikipedia.org/wiki/China" ];
-
-    [ [ NSWorkspace sharedWorkspace ] openURL: wikipediaForWestKorea ];
-    }
-
 - ( IBAction ) followMeOnTwitter: ( id )_Sender
     {
     NSURL* twitterURL = [ NSURL URLWithString: @"https://twitter.com/NSTongG" ];
     [ [ NSWorkspace sharedWorkspace ] openURL: twitterURL ];
+    }
+
+- ( IBAction ) importMyGnuPGPubKey: ( id )_Sender
+    {
+    NSURL* pubkeyFileURL = [ [ NSBundle mainBundle ] URLForResource: @"pubkey" withExtension: @"txt" ];
+    [ [ NSWorkspace sharedWorkspace ] openURL: pubkeyFileURL ];
     }
 
 @end // OMFAboutPanelController

@@ -15,127 +15,103 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" managed="YES" participatesInCycle="YES"/>
             <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
-            <rect key="contentRect" x="75" y="291" width="366" height="362"/>
+            <rect key="contentRect" x="75" y="434" width="477" height="186"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <view key="contentView" id="PpQ-42-U3G" customClass="OMFContentViewOfAboutPanel">
-                <rect key="frame" x="0.0" y="0.0" width="366" height="362"/>
+                <rect key="frame" x="0.0" y="0.0" width="477" height="186"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zGh-bv-d7A">
-                        <rect key="frame" x="131" y="256" width="104" height="91"/>
+                        <rect key="frame" x="-2" y="0.0" width="166" height="186"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="logo" id="CrG-ne-sEf"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hew-Jm-FxA">
-                        <rect key="frame" x="110" y="226" width="146" height="27"/>
+                        <rect key="frame" x="241" y="139" width="146" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Oh My Cal!" id="3eL-Ev-7Fk">
                             <font key="font" size="22" name="LucidaGrande-Bold"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jT9-Ww-mbp">
-                        <rect key="frame" x="143" y="201" width="81" height="17"/>
+                        <rect key="frame" x="274" y="116" width="81" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="2.0" id="N3D-ub-FnF">
-                            <font key="font" size="11" name="LucidaGrande"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <font key="font" size="9" name="LucidaGrande"/>
+                            <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="egP-gc-Z2e">
-                        <rect key="frame" x="67" y="6" width="233" height="17"/>
+                        <rect key="frame" x="198" y="14" width="233" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="© 2014 Tong Guo. ALL RIGHTS RESERVED." id="dTA-9R-6yZ">
                             <font key="font" size="9" name="LucidaGrande"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zeq-Gc-ry0">
-                        <rect key="frame" x="121" y="160" width="124" height="17"/>
+                        <rect key="frame" x="252" y="94" width="124" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hey, I'm Tong Guo." id="p15-bT-xuT">
                             <font key="font" size="13" name="LucidaGrande"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PVE-J3-g7D">
-                        <rect key="frame" x="36" y="135" width="202" height="17"/>
+                        <rect key="frame" x="166" y="72" width="297" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="I'm a individual developer from" id="Fke-NV-RzZ">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="I'm a individual developer from West Korea. :D" id="Fke-NV-RzZ">
                             <font key="font" size="13" name="LucidaGrande"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uMY-w2-6kz">
-                        <rect key="frame" x="101" y="84" width="60" height="17"/>
+                    <button toolTip="Follow me on Twitter" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9gZ-KA-Zvr">
+                        <rect key="frame" x="305" y="39" width="22" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Contact me:" id="BQC-vQ-Chj">
-                            <font key="font" metaFont="miniSystem"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OF7-bf-4oH">
-                        <rect key="frame" x="103" y="66" width="103" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Follow me on Twitter:" id="Mhh-S1-4oS">
-                            <font key="font" metaFont="miniSystem"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XhC-bg-40N">
-                        <rect key="frame" x="157" y="87" width="111" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="recessed" title="Tong-G@outlook.com" bezelStyle="recessed" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kmg-gj-jKW">
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="y0f-yN-zy5">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="miniSystem"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="emailMe:" target="-2" id="bGj-79-Tzj"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fpu-QY-Iln">
-                        <rect key="frame" x="201" y="69" width="63" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="recessed" title="@NSTongG" bezelStyle="recessed" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ch8-lh-xqe">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="miniSystem"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="followMeOnTwitter:" target="-2" id="B3X-Ig-9eY"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zwj-dN-IXG">
-                        <rect key="frame" x="230" y="135" width="84" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="recessed" title="West Korea" bezelStyle="recessed" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Stv-Nb-yNg">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" size="13" name="LucidaGrande"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="wikipediaForWestKorea:" target="-2" id="MSR-65-tDx"/>
-                        </connections>
-                    </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KRp-Lk-Fa1">
-                        <rect key="frame" x="308" y="135" width="22" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=" :D" id="rwS-ad-Phu">
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
+                        </buttonCell>
+                        <connections>
+                            <action selector="followMeOnTwitter:" target="-2" id="UZz-i8-yJh"/>
+                        </connections>
+                    </button>
+                    <button toolTip="Send me Email" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fuT-JO-81p">
+                        <rect key="frame" x="273" y="39" width="22" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="email" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="sCu-yz-6Zo">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="emailMe:" target="-2" id="Csy-5r-FSF"/>
+                        </connections>
+                    </button>
+                    <button toolTip="Import my GnuPG pub key" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0KN-7y-wCk">
+                        <rect key="frame" x="334" y="42" width="22" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="gnupg" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="e7z-Q8-7jh">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="importMyGnuPGPubKey:" target="-2" id="8oy-n5-1kL"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
         </window>
     </objects>
     <resources>
+        <image name="email" width="512" height="512"/>
+        <image name="gnupg" width="512" height="512"/>
         <image name="logo" width="256" height="256"/>
+        <image name="twitter" width="512" height="512"/>
     </resources>
 </document>
