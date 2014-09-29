@@ -267,29 +267,6 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     [ NSGraphicsContext restoreGraphicsState ];
     }
 
-- ( NSString* ) _truncateStringFormOfOperand: ( NSString* )_OperandInString
-                   withAttributesForOperands: ( NSDictionary* )_AttributesForOperands
-                              andForOperator: ( NSDictionary* )_AttributesForOperator
-    {
-    NSSize sizeForCurrentOperator = [ self.currentCalculation.theOperator sizeWithAttributes: _AttributesForOperator ];
-    NSSize sizeForDrawingOperandInString = [ _OperandInString sizeWithAttributes: _AttributesForOperands ];
-    CGFloat widthOfBounds = NSWidth( self.bottommostSpaceBar ) - sizeForCurrentOperator.width - 20.f;
-
-    if ( sizeForDrawingOperandInString.width > widthOfBounds )
-        {
-        NSString* sampleString = @"0";
-        NSString* tail = @"...";
-
-        NSInteger count = floor( widthOfBounds / [ sampleString sizeWithAttributes: _AttributesForOperands ].width ) - [ tail length ];
-        NSString* truncatedString = [ _OperandInString substringToIndex: count ];
-        truncatedString = [ truncatedString stringByAppendingString: tail ];
-
-        return truncatedString;
-        }
-
-    return _OperandInString;
-    }
-
 - ( void ) _drawLhsOperandWithAttributes: ( NSDictionary* )_Attributes
     {
     /* When the user is typing left operand... */
@@ -355,6 +332,29 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
             && ![ resultValue.exceptionCarried isEqualToString: OMCOperandDivideByZeroException ] )
         [ self _drawRhsOperandWithAttributesForOperands: _AttributesForOperands
                                          andForOperator: _AttributesForOperator ];
+    }
+
+- ( NSString* ) _truncateStringFormOfOperand: ( NSString* )_OperandInString
+                   withAttributesForOperands: ( NSDictionary* )_AttributesForOperands
+                              andForOperator: ( NSDictionary* )_AttributesForOperator
+    {
+    NSSize sizeForCurrentOperator = [ self.currentCalculation.theOperator sizeWithAttributes: _AttributesForOperator ];
+    NSSize sizeForDrawingOperandInString = [ _OperandInString sizeWithAttributes: _AttributesForOperands ];
+    CGFloat widthOfBounds = NSWidth( self.bottommostSpaceBar ) - sizeForCurrentOperator.width - 20.f;
+
+    if ( sizeForDrawingOperandInString.width > widthOfBounds )
+        {
+        NSString* sampleString = @"0";
+        NSString* tail = @"...";
+
+        NSInteger count = floor( widthOfBounds / [ sampleString sizeWithAttributes: _AttributesForOperands ].width ) - [ tail length ];
+        NSString* truncatedString = [ _OperandInString substringToIndex: count ];
+        truncatedString = [ truncatedString stringByAppendingString: tail ];
+
+        return truncatedString;
+        }
+
+    return _OperandInString;
     }
 
 /* Initial state of Oh My Cal!: 1. Left Operand is empty

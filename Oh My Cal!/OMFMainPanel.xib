@@ -152,7 +152,7 @@
                         <action selector="calculate:" target="Mio-RE-1td" id="DEj-15-YAD"/>
                     </connections>
                 </button>
-                <button identifier="-" verticalHuggingPriority="750" fixedFrame="YES" tag="35" translatesAutoresizingMaskIntoConstraints="NO" id="CSg-bu-6eI">
+                <button identifier="-" toolTip="Subtract (or press -)" verticalHuggingPriority="750" fixedFrame="YES" tag="35" translatesAutoresizingMaskIntoConstraints="NO" id="CSg-bu-6eI">
                     <rect key="frame" x="141" y="73" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="-" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Iyc-Xa-VuE" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -162,7 +162,7 @@
                         <action selector="calculate:" target="Mio-RE-1td" id="k8Y-Wf-bPC"/>
                     </connections>
                 </button>
-                <button identifier="+" verticalHuggingPriority="750" fixedFrame="YES" tag="34" translatesAutoresizingMaskIntoConstraints="NO" id="BiN-jz-sFr">
+                <button identifier="+" toolTip="Add (or press +)" verticalHuggingPriority="750" fixedFrame="YES" tag="34" translatesAutoresizingMaskIntoConstraints="NO" id="BiN-jz-sFr">
                     <rect key="frame" x="141" y="103" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="+" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JgR-RO-wfr" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -172,7 +172,7 @@
                         <action selector="calculate:" target="Mio-RE-1td" id="XBX-nf-csP"/>
                     </connections>
                 </button>
-                <button identifier="×" verticalHuggingPriority="750" fixedFrame="YES" tag="36" translatesAutoresizingMaskIntoConstraints="NO" id="D7S-EU-UQS">
+                <button identifier="×" toolTip="Multiply (or press *)" verticalHuggingPriority="750" fixedFrame="YES" tag="36" translatesAutoresizingMaskIntoConstraints="NO" id="D7S-EU-UQS">
                     <rect key="frame" x="141" y="43" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="×" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ewX-YV-1ch" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -182,7 +182,7 @@
                         <action selector="calculate:" target="Mio-RE-1td" id="PR2-fW-aNC"/>
                     </connections>
                 </button>
-                <button identifier="÷" verticalHuggingPriority="750" fixedFrame="YES" tag="37" translatesAutoresizingMaskIntoConstraints="NO" id="xUR-L1-Bze">
+                <button identifier="÷" toolTip="Divide (or press /)" verticalHuggingPriority="750" fixedFrame="YES" tag="37" translatesAutoresizingMaskIntoConstraints="NO" id="xUR-L1-Bze">
                     <rect key="frame" x="141" y="13" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="÷" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1Cl-ES-PGs" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -192,7 +192,7 @@
                         <action selector="calculate:" target="Mio-RE-1td" id="7T0-BR-S3Q"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="33" translatesAutoresizingMaskIntoConstraints="NO" id="zHv-TY-7Bl">
+                <button toolTip="Evaluate the result (or press Return)" verticalHuggingPriority="750" fixedFrame="YES" tag="33" translatesAutoresizingMaskIntoConstraints="NO" id="zHv-TY-7Bl">
                     <rect key="frame" x="98" y="133" width="78" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="Enter" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Eqt-Sk-jMn" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -202,7 +202,7 @@
                         <action selector="calculate:" target="Mio-RE-1td" id="vDO-ZJ-5cG"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="32" translatesAutoresizingMaskIntoConstraints="NO" id="Hd2-18-W8W">
+                <button toolTip="Clear" verticalHuggingPriority="750" fixedFrame="YES" tag="32" translatesAutoresizingMaskIntoConstraints="NO" id="Hd2-18-W8W">
                     <rect key="frame" x="12" y="133" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="C" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Syf-Yj-SlW" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -212,7 +212,7 @@
                         <action selector="calculate:" target="Mio-RE-1td" id="eZj-3g-fyb"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="44" translatesAutoresizingMaskIntoConstraints="NO" id="bv8-XB-RKG">
+                <button toolTip="Negate the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="44" translatesAutoresizingMaskIntoConstraints="NO" id="bv8-XB-RKG">
                     <rect key="frame" x="55" y="133" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="±" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vSf-2d-s3f" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -222,7 +222,7 @@
                         <action selector="calculate:" target="Mio-RE-1td" id="6bw-u1-Nnd"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="41" translatesAutoresizingMaskIntoConstraints="NO" id="gxt-35-FfD">
+                <button toolTip="Add the displayed value to the memory" verticalHuggingPriority="750" fixedFrame="YES" tag="41" translatesAutoresizingMaskIntoConstraints="NO" id="gxt-35-FfD">
                     <rect key="frame" x="12" y="163" width="36" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="M+" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1WH-r3-oWc" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -232,7 +232,7 @@
                         <action selector="calculate:" target="Mio-RE-1td" id="MhV-gG-Rng"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="42" translatesAutoresizingMaskIntoConstraints="NO" id="5ZN-Iu-w4F">
+                <button toolTip="Subtract the displayed value from the memory" verticalHuggingPriority="750" fixedFrame="YES" tag="42" translatesAutoresizingMaskIntoConstraints="NO" id="5ZN-Iu-w4F">
                     <rect key="frame" x="55" y="163" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="M-" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4Dq-Ge-6Mb" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -242,7 +242,7 @@
                         <action selector="calculate:" target="Mio-RE-1td" id="pfc-35-3Rs"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="40" translatesAutoresizingMaskIntoConstraints="NO" id="Qe5-XS-F7Q">
+                <button toolTip="Clear the memory" verticalHuggingPriority="750" fixedFrame="YES" tag="40" translatesAutoresizingMaskIntoConstraints="NO" id="Qe5-XS-F7Q">
                     <rect key="frame" x="98" y="163" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="MC" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ljb-yU-jAz" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -252,7 +252,7 @@
                         <action selector="calculate:" target="Mio-RE-1td" id="F2b-9L-sjD"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="43" translatesAutoresizingMaskIntoConstraints="NO" id="R2w-PG-h33">
+                <button toolTip="Recall the value stored in memory" verticalHuggingPriority="750" fixedFrame="YES" tag="43" translatesAutoresizingMaskIntoConstraints="NO" id="R2w-PG-h33">
                     <rect key="frame" x="141" y="163" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="MR" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IiX-uY-Nqk" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -402,7 +402,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="AdI-Qn-Bpy"/>
                     </connections>
                 </button>
-                <button identifier="-" verticalHuggingPriority="750" fixedFrame="YES" tag="35" translatesAutoresizingMaskIntoConstraints="NO" id="uiG-Uc-uai">
+                <button identifier="-" toolTip="Subtract (or press -)" verticalHuggingPriority="750" fixedFrame="YES" tag="35" translatesAutoresizingMaskIntoConstraints="NO" id="uiG-Uc-uai">
                     <rect key="frame" x="382" y="73" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="-" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hhC-EX-idU" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -412,7 +412,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="kRJ-7d-sAL"/>
                     </connections>
                 </button>
-                <button identifier="+" verticalHuggingPriority="750" fixedFrame="YES" tag="34" translatesAutoresizingMaskIntoConstraints="NO" id="cz6-c1-4Aq">
+                <button identifier="+" toolTip="Add (or press +)" verticalHuggingPriority="750" fixedFrame="YES" tag="34" translatesAutoresizingMaskIntoConstraints="NO" id="cz6-c1-4Aq">
                     <rect key="frame" x="382" y="103" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="+" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="osm-Dx-fEz" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -422,7 +422,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="aEA-AU-aRG"/>
                     </connections>
                 </button>
-                <button identifier="×" verticalHuggingPriority="750" fixedFrame="YES" tag="36" translatesAutoresizingMaskIntoConstraints="NO" id="Mjl-7V-O8R">
+                <button identifier="×" toolTip="Multiply (or press *)" verticalHuggingPriority="750" fixedFrame="YES" tag="36" translatesAutoresizingMaskIntoConstraints="NO" id="Mjl-7V-O8R">
                     <rect key="frame" x="382" y="43" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="×" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PLi-nI-dPa" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -432,7 +432,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="wnw-Nd-h6B"/>
                     </connections>
                 </button>
-                <button identifier="÷" verticalHuggingPriority="750" fixedFrame="YES" tag="37" translatesAutoresizingMaskIntoConstraints="NO" id="rrS-tS-Wcu">
+                <button identifier="÷" toolTip="Divide (or press /)" verticalHuggingPriority="750" fixedFrame="YES" tag="37" translatesAutoresizingMaskIntoConstraints="NO" id="rrS-tS-Wcu">
                     <rect key="frame" x="382" y="13" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="÷" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2vl-Yi-tQq" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -442,7 +442,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="JOH-5d-rgA"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="33" translatesAutoresizingMaskIntoConstraints="NO" id="K6L-au-Ira">
+                <button toolTip="Evaluate the result (or press Return)" verticalHuggingPriority="750" fixedFrame="YES" tag="33" translatesAutoresizingMaskIntoConstraints="NO" id="K6L-au-Ira">
                     <rect key="frame" x="339" y="133" width="78" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="Enter" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xDx-4y-8Dr" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -452,7 +452,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="fJy-BT-EDd"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="32" translatesAutoresizingMaskIntoConstraints="NO" id="aMI-Ns-0jC">
+                <button toolTip="Clear" verticalHuggingPriority="750" fixedFrame="YES" tag="32" translatesAutoresizingMaskIntoConstraints="NO" id="aMI-Ns-0jC">
                     <rect key="frame" x="253" y="133" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="C" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sGS-U2-4lV" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -462,7 +462,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="DOh-9l-nyQ"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="44" translatesAutoresizingMaskIntoConstraints="NO" id="cQn-Y1-so0">
+                <button toolTip="Negate the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="44" translatesAutoresizingMaskIntoConstraints="NO" id="cQn-Y1-so0">
                     <rect key="frame" x="296" y="133" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="±" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qro-U5-fLj" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -472,7 +472,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="51e-aY-Pfe"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="41" translatesAutoresizingMaskIntoConstraints="NO" id="AeZ-VG-2Tv">
+                <button toolTip="Add the displayed value to the memory" verticalHuggingPriority="750" fixedFrame="YES" tag="41" translatesAutoresizingMaskIntoConstraints="NO" id="AeZ-VG-2Tv">
                     <rect key="frame" x="253" y="163" width="36" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="M+" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4M5-m3-eaH" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -482,7 +482,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="6OW-r4-Wvg"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="42" translatesAutoresizingMaskIntoConstraints="NO" id="JWm-yg-wSQ">
+                <button toolTip="Subtract the displayed value from the memory" verticalHuggingPriority="750" fixedFrame="YES" tag="42" translatesAutoresizingMaskIntoConstraints="NO" id="JWm-yg-wSQ">
                     <rect key="frame" x="296" y="163" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="M-" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V6J-VI-PDP" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -492,7 +492,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="clw-fU-b55"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="40" translatesAutoresizingMaskIntoConstraints="NO" id="hmZ-Br-Af9">
+                <button toolTip="Clear the memory" verticalHuggingPriority="750" fixedFrame="YES" tag="40" translatesAutoresizingMaskIntoConstraints="NO" id="hmZ-Br-Af9">
                     <rect key="frame" x="339" y="163" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="MC" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PaB-tb-So4" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -502,7 +502,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="uzH-jZ-jhT"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="43" translatesAutoresizingMaskIntoConstraints="NO" id="Rbl-8c-f8H">
+                <button toolTip="Recall the value stored in memory" verticalHuggingPriority="750" fixedFrame="YES" tag="43" translatesAutoresizingMaskIntoConstraints="NO" id="Rbl-8c-f8H">
                     <rect key="frame" x="382" y="163" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="MR" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="egN-T4-tcK" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -512,7 +512,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="aMY-sJ-2Av"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="53" translatesAutoresizingMaskIntoConstraints="NO" id="Ndg-W4-RHZ">
+                <button toolTip="Calculate the square root of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="53" translatesAutoresizingMaskIntoConstraints="NO" id="Ndg-W4-RHZ">
                     <rect key="frame" x="189" y="133" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="√" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ijV-GI-tCJ" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -522,7 +522,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="luB-GP-rb6"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="54" translatesAutoresizingMaskIntoConstraints="NO" id="iT4-QC-fQg">
+                <button toolTip="Toggle between degrees and radians" verticalHuggingPriority="750" fixedFrame="YES" tag="54" translatesAutoresizingMaskIntoConstraints="NO" id="iT4-QC-fQg">
                     <rect key="frame" x="12" y="73" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="Deg" alternateTitle="Rad" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hEb-vH-xOM" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
@@ -532,7 +532,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="wgc-yQ-vRe"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="56" translatesAutoresizingMaskIntoConstraints="NO" id="sUd-jb-GDY">
+                <button toolTip="Calculate the sine of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="56" translatesAutoresizingMaskIntoConstraints="NO" id="sUd-jb-GDY">
                     <rect key="frame" x="71" y="73" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="sin" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xsg-6m-uoe" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -542,7 +542,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="UOr-xj-kbg"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="57" translatesAutoresizingMaskIntoConstraints="NO" id="ZdN-k8-Eua">
+                <button toolTip="Calculate the cosine of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="57" translatesAutoresizingMaskIntoConstraints="NO" id="ZdN-k8-Eua">
                     <rect key="frame" x="130" y="73" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="cos" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZBJ-dE-VWi" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -552,7 +552,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="7NH-P3-edd"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="58" translatesAutoresizingMaskIntoConstraints="NO" id="27P-W9-OCd">
+                <button toolTip="Calculate the tangent of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="58" translatesAutoresizingMaskIntoConstraints="NO" id="27P-W9-OCd">
                     <rect key="frame" x="189" y="73" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="tan" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EY1-vU-XsH" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -562,7 +562,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="Gtq-Iz-cMS"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="60" translatesAutoresizingMaskIntoConstraints="NO" id="d8F-ah-rLU">
+                <button toolTip="Calculate the hyperbolic sine of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="60" translatesAutoresizingMaskIntoConstraints="NO" id="d8F-ah-rLU">
                     <rect key="frame" x="71" y="43" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="sinh" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="olg-Ho-DVb" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -572,7 +572,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="LoW-jq-rc4"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="61" translatesAutoresizingMaskIntoConstraints="NO" id="VMm-mj-Rc3">
+                <button toolTip="Calculate the hyperbolic cosine of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="61" translatesAutoresizingMaskIntoConstraints="NO" id="VMm-mj-Rc3">
                     <rect key="frame" x="130" y="43" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="cosh" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zcp-xh-9yY" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -582,7 +582,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="Btn-Mg-wNQ"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="62" translatesAutoresizingMaskIntoConstraints="NO" id="zsa-Ac-Cs2">
+                <button toolTip="Calculate the hyperbolic tangent of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="62" translatesAutoresizingMaskIntoConstraints="NO" id="zsa-Ac-Cs2">
                     <rect key="frame" x="189" y="43" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="tanh" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V4w-E7-7d7" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -592,7 +592,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="Wrh-a9-11A"/>
                     </connections>
                 </button>
-                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="68" translatesAutoresizingMaskIntoConstraints="NO" id="fah-Ef-KXg">
+                <button hidden="YES" toolTip="Calculate the inverse sine of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="68" translatesAutoresizingMaskIntoConstraints="NO" id="fah-Ef-KXg">
                     <rect key="frame" x="71" y="73" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="sin⁻¹" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zDp-1q-MLg" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -602,7 +602,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="NEk-Hf-Bf9"/>
                     </connections>
                 </button>
-                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="69" translatesAutoresizingMaskIntoConstraints="NO" id="BCl-yp-krP">
+                <button hidden="YES" toolTip="Calculate the inverse cosine of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="69" translatesAutoresizingMaskIntoConstraints="NO" id="BCl-yp-krP">
                     <rect key="frame" x="130" y="73" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="cos⁻¹" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k0I-7o-4x2" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -612,7 +612,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="1ly-zO-aKO"/>
                     </connections>
                 </button>
-                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="70" translatesAutoresizingMaskIntoConstraints="NO" id="1RG-cx-DJS">
+                <button hidden="YES" toolTip="Calculate the inverse tangent of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="70" translatesAutoresizingMaskIntoConstraints="NO" id="1RG-cx-DJS">
                     <rect key="frame" x="189" y="73" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="tan⁻¹" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WOA-7I-HOf" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -622,7 +622,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="qGg-dc-2zu"/>
                     </connections>
                 </button>
-                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="71" translatesAutoresizingMaskIntoConstraints="NO" id="Vzm-RN-G5N">
+                <button hidden="YES" toolTip="Calculate the inverse hyperbolic sine of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="71" translatesAutoresizingMaskIntoConstraints="NO" id="Vzm-RN-G5N">
                     <rect key="frame" x="71" y="43" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="sinh⁻¹" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u88-m5-mzR" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -632,7 +632,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="jwx-z7-YDf"/>
                     </connections>
                 </button>
-                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="72" translatesAutoresizingMaskIntoConstraints="NO" id="ibs-it-awK">
+                <button hidden="YES" toolTip="Calculate the inverse hyperbolic cosine of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="72" translatesAutoresizingMaskIntoConstraints="NO" id="ibs-it-awK">
                     <rect key="frame" x="130" y="43" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="cosh⁻¹" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qws-xG-Eml" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -642,7 +642,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="msC-3u-EbZ"/>
                     </connections>
                 </button>
-                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="73" translatesAutoresizingMaskIntoConstraints="NO" id="izj-wM-poz">
+                <button hidden="YES" toolTip="Calculate the inverse hyperbolic tangent of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="73" translatesAutoresizingMaskIntoConstraints="NO" id="izj-wM-poz">
                     <rect key="frame" x="189" y="43" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="tanh⁻¹" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0qA-PP-et0" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -652,7 +652,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="84k-b3-nel"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="xlw-mm-E4b">
+                <button toolTip="Calculate the factorial of the displayed value (or press !)" verticalHuggingPriority="750" fixedFrame="YES" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="xlw-mm-E4b">
                     <rect key="frame" x="12" y="43" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="!" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tvj-FY-4ng" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -662,7 +662,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="u96-yL-2ra"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="59" translatesAutoresizingMaskIntoConstraints="NO" id="hIt-97-ZUC">
+                <button toolTip="Calculate the base 10 logarithm of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="59" translatesAutoresizingMaskIntoConstraints="NO" id="hIt-97-ZUC">
                     <rect key="frame" x="189" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="log₁₀" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jLf-pf-cyE" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -672,7 +672,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="w18-Z4-F3i"/>
                     </connections>
                 </button>
-                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="78" translatesAutoresizingMaskIntoConstraints="NO" id="5H0-QU-OWK">
+                <button hidden="YES" toolTip="Calculate 10 to the power of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="78" translatesAutoresizingMaskIntoConstraints="NO" id="5H0-QU-OWK">
                     <rect key="frame" x="189" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="10ˣ" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gpT-da-dHO" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -682,7 +682,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="xkt-r2-fvl"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="55" translatesAutoresizingMaskIntoConstraints="NO" id="kMA-V1-h54">
+                <button toolTip="Calculate the base 2 logarithm of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="55" translatesAutoresizingMaskIntoConstraints="NO" id="kMA-V1-h54">
                     <rect key="frame" x="130" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="log₂" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3au-sK-g1L" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -692,7 +692,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="0rM-1I-w1r"/>
                     </connections>
                 </button>
-                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="77" translatesAutoresizingMaskIntoConstraints="NO" id="ptl-Cy-8b7">
+                <button hidden="YES" toolTip="Calculate 2 to the power of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="77" translatesAutoresizingMaskIntoConstraints="NO" id="ptl-Cy-8b7">
                     <rect key="frame" x="130" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="2ˣ" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RY5-ze-7s4" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -702,7 +702,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="e56-EJ-zdA"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="63" translatesAutoresizingMaskIntoConstraints="NO" id="2cP-wd-v3L">
+                <button toolTip="Calculate the natural logarithm of the displayed value (or press e)" verticalHuggingPriority="750" fixedFrame="YES" tag="63" translatesAutoresizingMaskIntoConstraints="NO" id="2cP-wd-v3L">
                     <rect key="frame" x="71" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="In" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9b0-6M-2lS" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -712,7 +712,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="298-ts-SNU"/>
                     </connections>
                 </button>
-                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="76" translatesAutoresizingMaskIntoConstraints="NO" id="FjF-r1-z9S">
+                <button hidden="YES" toolTip="Calculate e to the power of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="76" translatesAutoresizingMaskIntoConstraints="NO" id="FjF-r1-z9S">
                     <rect key="frame" x="71" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="eˣ" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CDH-Hk-gMu" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -722,7 +722,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="bBO-6r-AVg"/>
                     </connections>
                 </button>
-                <button identifier="E" verticalHuggingPriority="750" fixedFrame="YES" tag="67" translatesAutoresizingMaskIntoConstraints="NO" id="6Cf-o1-ucv">
+                <button identifier="E" toolTip="Exponential notation (or press ⇧+E)" verticalHuggingPriority="750" fixedFrame="YES" tag="67" translatesAutoresizingMaskIntoConstraints="NO" id="6Cf-o1-ucv">
                     <rect key="frame" x="189" y="13" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="EE" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EOB-04-jTZ" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -732,7 +732,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="0by-x0-ICw"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="48" translatesAutoresizingMaskIntoConstraints="NO" id="Ef4-Oc-ltn">
+                <button toolTip="Calculate the Inverse of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="48" translatesAutoresizingMaskIntoConstraints="NO" id="Ef4-Oc-ltn">
                     <rect key="frame" x="12" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="1/x" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="byd-wI-f0P" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -742,7 +742,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="6fF-1A-cOx"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="49" translatesAutoresizingMaskIntoConstraints="NO" id="nmk-G0-F15">
+                <button toolTip="Square the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="49" translatesAutoresizingMaskIntoConstraints="NO" id="nmk-G0-F15">
                     <rect key="frame" x="12" y="133" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="x²" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WJm-JK-Jju" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -752,7 +752,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="4bc-qJ-w9Z"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="46" translatesAutoresizingMaskIntoConstraints="NO" id="86a-if-81k">
+                <button toolTip="Change some buttons to their inverse functions" verticalHuggingPriority="750" fixedFrame="YES" tag="46" translatesAutoresizingMaskIntoConstraints="NO" id="86a-if-81k">
                     <rect key="frame" x="12" y="163" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="⇧" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6Ln-Fe-NV6" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
@@ -762,7 +762,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="EJR-m4-2wp"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="30" translatesAutoresizingMaskIntoConstraints="NO" id="LP3-vH-khj">
+                <button toolTip="Delete the last digit of the displayed value (or press Delete)" verticalHuggingPriority="750" fixedFrame="YES" tag="30" translatesAutoresizingMaskIntoConstraints="NO" id="LP3-vH-khj">
                     <rect key="frame" x="130" y="163" width="110" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="DEL" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aFI-PB-he3" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -772,7 +772,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="I8W-lN-Dz5"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="47" translatesAutoresizingMaskIntoConstraints="NO" id="fZp-y8-SY8">
+                <button toolTip="Percent (or press %)" verticalHuggingPriority="750" fixedFrame="YES" tag="47" translatesAutoresizingMaskIntoConstraints="NO" id="fZp-y8-SY8">
                     <rect key="frame" x="71" y="163" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="%" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nnN-Pm-me6" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -782,7 +782,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="F6j-G2-tlv"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="50" translatesAutoresizingMaskIntoConstraints="NO" id="K0L-iF-VWf">
+                <button toolTip="Cube the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="50" translatesAutoresizingMaskIntoConstraints="NO" id="K0L-iF-VWf">
                     <rect key="frame" x="71" y="133" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="x³" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IbN-wR-dRL" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -792,7 +792,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="Ncd-I3-E0e"/>
                     </connections>
                 </button>
-                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="74" translatesAutoresizingMaskIntoConstraints="NO" id="5L6-ih-V9P">
+                <button hidden="YES" toolTip="Calculate the cube root of the displayed value" verticalHuggingPriority="750" fixedFrame="YES" tag="74" translatesAutoresizingMaskIntoConstraints="NO" id="5L6-ih-V9P">
                     <rect key="frame" x="71" y="133" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="∛" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dD5-GG-ggp" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -802,7 +802,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="kJ3-iQ-398"/>
                     </connections>
                 </button>
-                <button identifier="POW" verticalHuggingPriority="750" fixedFrame="YES" tag="51" translatesAutoresizingMaskIntoConstraints="NO" id="kyr-pf-ahU">
+                <button identifier="POW" toolTip="Raise the displayed value to the power of the next value entered (or press ^)" verticalHuggingPriority="750" fixedFrame="YES" tag="51" translatesAutoresizingMaskIntoConstraints="NO" id="kyr-pf-ahU">
                     <rect key="frame" x="130" y="133" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="yˣ" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oyY-WF-L1G" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -812,7 +812,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="Zoy-ju-cba"/>
                     </connections>
                 </button>
-                <button identifier="ˣroot" hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="75" translatesAutoresizingMaskIntoConstraints="NO" id="iNL-Hp-hol">
+                <button identifier="ˣroot" hidden="YES" toolTip="Compute the nth root of the displayed value, where n is the next value entered" verticalHuggingPriority="750" fixedFrame="YES" tag="75" translatesAutoresizingMaskIntoConstraints="NO" id="iNL-Hp-hol">
                     <rect key="frame" x="130" y="133" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="ˣ√y" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QyW-lu-pZt" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -822,7 +822,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="YtK-th-TmR"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="65" translatesAutoresizingMaskIntoConstraints="NO" id="Gux-H7-Esu">
+                <button toolTip="Enter e (2.71828...)" verticalHuggingPriority="750" fixedFrame="YES" tag="65" translatesAutoresizingMaskIntoConstraints="NO" id="Gux-H7-Esu">
                     <rect key="frame" x="71" y="13" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="e" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B2f-do-jb5" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -832,7 +832,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="YWD-0q-09c"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="64" translatesAutoresizingMaskIntoConstraints="NO" id="3UN-sW-C8Y">
+                <button toolTip="Enter pi (3.14159...) (or press p)" verticalHuggingPriority="750" fixedFrame="YES" tag="64" translatesAutoresizingMaskIntoConstraints="NO" id="3UN-sW-C8Y">
                     <rect key="frame" x="12" y="13" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="π" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NHx-7K-52h" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -842,7 +842,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="8CT-VE-7g7"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="66" translatesAutoresizingMaskIntoConstraints="NO" id="tiA-tk-R9K">
+                <button toolTip="Enter a random number between 0 and 1" verticalHuggingPriority="750" fixedFrame="YES" tag="66" translatesAutoresizingMaskIntoConstraints="NO" id="tiA-tk-R9K">
                     <rect key="frame" x="130" y="13" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="Rand" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vBI-B5-xpk" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -917,7 +917,7 @@
             <rect key="frame" x="0.0" y="0.0" width="371" height="187"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="32" translatesAutoresizingMaskIntoConstraints="NO" id="v83-Rs-WKp">
+                <button toolTip="Clear" verticalHuggingPriority="750" fixedFrame="YES" tag="32" translatesAutoresizingMaskIntoConstraints="NO" id="v83-Rs-WKp">
                     <rect key="frame" x="318" y="133" width="41" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="C" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tag-sv-hHs" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -967,7 +967,7 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="sxb-Wl-aol"/>
                     </connections>
                 </button>
-                <button identifier="÷" verticalHuggingPriority="750" fixedFrame="YES" tag="37" translatesAutoresizingMaskIntoConstraints="NO" id="EeY-7x-TAX">
+                <button identifier="÷" toolTip="Divide (or press /)" verticalHuggingPriority="750" fixedFrame="YES" tag="37" translatesAutoresizingMaskIntoConstraints="NO" id="EeY-7x-TAX">
                     <rect key="frame" x="318" y="73" width="41" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="÷" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1fH-rC-q4M" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1247,7 +1247,7 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="RGT-Rl-2DR"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="33" translatesAutoresizingMaskIntoConstraints="NO" id="xro-bX-OpV">
+                <button toolTip="Evaluate the result (or press Return)" verticalHuggingPriority="750" fixedFrame="YES" tag="33" translatesAutoresizingMaskIntoConstraints="NO" id="xro-bX-OpV">
                     <rect key="frame" x="269" y="13" width="90" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="Enter" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ct0-m0-6Qn" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1297,7 +1297,7 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="mV8-gO-vJd"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="30" translatesAutoresizingMaskIntoConstraints="NO" id="lHe-Zb-MeN">
+                <button toolTip="Delete the last digit of the displayed value (or press Delete)" verticalHuggingPriority="750" fixedFrame="YES" tag="30" translatesAutoresizingMaskIntoConstraints="NO" id="lHe-Zb-MeN">
                     <rect key="frame" x="269" y="163" width="90" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="DEL" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gdn-bk-XsF" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
