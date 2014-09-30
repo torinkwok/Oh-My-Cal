@@ -41,6 +41,7 @@
 #import "OMCProgrammerStyleCalculation.h"
 
 #import "OMCCalWithBasicStyle.h"
+#import "OMCCalWithScientificStyle.h"
 #import "OMCCalWithProgrammerStyle.h"
 
 NSInteger static const kSpaceBarsCount = 4;
@@ -556,11 +557,14 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
 #pragma mark Events Handling
 - ( void ) keyDown: ( NSEvent* )_Event
     {
-    NSLog( @"%@", self.currentCalculator );
     NSUInteger modifierFlags = [ _Event modifierFlags ];
     NSString* characters = [ _Event charactersIgnoringModifiers ];
 
     #define COMPARE_WITH_CHARACTERS( _Rhs ) COMPARE_WITH_CASE_INSENSITIVE( characters, _Rhs )
+
+    BOOL isBasicStyle = ( self.currentCalculator == self._calWithBasicStyle );
+    BOOL isScientificStyle = ( self.currentCalculator == self._calWithScientificStyle );
+    BOOL isProgrammerStyle = ( self.currentCalculator == self._calWithProgrammerStyle );
     BOOL isHex = [ self.currentCalculation currentAry ] == OMCHex;
 
     SEL actionToBeSent = @selector( calculate: );
@@ -577,22 +581,58 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     else if ( COMPARE_WITH_CHARACTERS( @"9" ) )             actionSender = self.currentCalculator._nine;
 
     else if ( COMPARE_WITH_CHARACTERS( @"0" ) && !( modifierFlags & NSAlternateKeyMask ) )
+        /* Double zero is only available for Programmer Style */
         actionSender = self.currentCalculator._zero;
     // 00: : ⌥-0
-    else if ( COMPARE_WITH_CHARACTERS( @"0" ) && ( modifierFlags & NSAlternateKeyMask ) )
+    else if ( isProgrammerStyle && COMPARE_WITH_CHARACTERS( @"0" ) && ( modifierFlags & NSAlternateKeyMask ) )
         actionSender = self._calWithProgrammerStyle._doubleZero;
 
-    else if ( isHex && COMPARE_WITH_CHARACTERS( @"A" ) && !( modifierFlags & NSCommandKeyMask ) )
-                                                            actionSender = self._calWithProgrammerStyle._0xA;
-    else if ( isHex && COMPARE_WITH_CHARACTERS( @"B" ) )    actionSender = self._calWithProgrammerStyle._0xB;
-    else if ( isHex && COMPARE_WITH_CHARACTERS( @"C" ) )    actionSender = self._calWithProgrammerStyle._0xC;
-    else if ( isHex && COMPARE_WITH_CHARACTERS( @"D" ) )    actionSender = self._calWithProgrammerStyle._0xD;
-    else if ( isHex && COMPARE_WITH_CHARACTERS( @"E" ) )    actionSender = self._calWithProgrammerStyle._0xE;
+    else if ( ( isBasicStyle || isScientificStyle ) && COMPARE_WITH_CHARACTERS( @"." ) )
+                                                            actionSender = self._calWithBasicStyle._floatPoint;
 
-    else if ( isHex && COMPARE_WITH_CHARACTERS( @"F" ) && !( modifierFlags & NSAlternateKeyMask ) )
+    // +
+    else if ( COMPARE_WITH_CHARACTERS( @"+" ) )             actionSender = self.currentCalculator._additionOperator;
+    // -
+    else if ( COMPARE_WITH_CHARACTERS( @"-" ) )             actionSender = self.currentCalculator._subtractionOperator;
+    // *
+    else if ( COMPARE_WITH_CHARACTERS( @"*" ) )             actionSender = self.currentCalculator._multiplicationOperator;
+    // /
+    else if ( COMPARE_WITH_CHARACTERS( @"/" ) )             actionSender = self.currentCalculator._divisionOperator;
+
+    // Percent
+    else if ( isScientificStyle && COMPARE_WITH_CHARACTERS( @"%" ) )
+                                                            actionSender = self._calWithScientificStyle._percent;
+    // Pow
+    else if ( isScientificStyle && COMPARE_WITH_CHARACTERS( @"^" ) )
+                                                            actionSender = self._calWithScientificStyle._xPower;
+    // In
+    else if ( isScientificStyle && COMPARE_WITH_CHARACTERS( @"e" ) && !( modifierFlags & NSShiftKeyMask ) )
+                                                            actionSender = self._calWithScientificStyle._In;
+    // EE
+    else if ( isScientificStyle && COMPARE_WITH_CHARACTERS( @"e" ) && ( modifierFlags & NSShiftKeyMask ) )
+                                                            actionSender = self._calWithScientificStyle._EE;
+
+    // Factorial
+    else if ( ( isScientificStyle || isProgrammerStyle ) && COMPARE_WITH_CHARACTERS( @"!" ) )
+        actionSender = self._calWithProgrammerStyle._factorialOperator;
+
+    //=======================================================================================================
+    // The following characters are only available for Programmer Style */
+    else if ( isProgrammerStyle && isHex && COMPARE_WITH_CHARACTERS( @"A" ) && !( modifierFlags & NSCommandKeyMask ) )
+                                                            actionSender = self._calWithProgrammerStyle._0xA;
+    else if ( isProgrammerStyle && isHex && COMPARE_WITH_CHARACTERS( @"B" ) )
+                                                            actionSender = self._calWithProgrammerStyle._0xB;
+    else if ( isProgrammerStyle && isHex && COMPARE_WITH_CHARACTERS( @"C" ) )
+                                                            actionSender = self._calWithProgrammerStyle._0xC;
+    else if ( isProgrammerStyle && isHex && COMPARE_WITH_CHARACTERS( @"D" ) )
+                                                            actionSender = self._calWithProgrammerStyle._0xD;
+    else if ( isProgrammerStyle && isHex && COMPARE_WITH_CHARACTERS( @"E" ) )
+                                                            actionSender = self._calWithProgrammerStyle._0xE;
+
+    else if ( isProgrammerStyle && isHex && COMPARE_WITH_CHARACTERS( @"F" ) && !( modifierFlags & NSAlternateKeyMask ) )
         actionSender = self._calWithProgrammerStyle._0xF;
     // FF: ⌥-F
-    else if ( isHex && COMPARE_WITH_CHARACTERS( @"F" ) && ( modifierFlags & NSAlternateKeyMask ) )
+    else if ( isProgrammerStyle && isHex && COMPARE_WITH_CHARACTERS( @"F" ) && ( modifierFlags & NSAlternateKeyMask ) )
         actionSender = self._calWithProgrammerStyle._0xFF;
 
     // AND: ⌘-A
@@ -609,33 +649,21 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
         actionSender = self._calWithProgrammerStyle._xorOperator;
 
     // RoL
-    else if ( COMPARE_WITH_CHARACTERS( @"L" ) && !( modifierFlags & NSCommandKeyMask ) )
+    else if ( isProgrammerStyle && COMPARE_WITH_CHARACTERS( @"L" ) && !( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._rolOperator;
     // RoR
-    else if ( COMPARE_WITH_CHARACTERS( @"R" ) && !( modifierFlags & NSCommandKeyMask ) )
+    else if ( isProgrammerStyle && COMPARE_WITH_CHARACTERS( @"R" ) && !( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._rorOperator;
     // Lsh: ⌘-L
-    else if ( COMPARE_WITH_CHARACTERS( @"L" ) && ( modifierFlags & NSCommandKeyMask ) )
+    else if ( isProgrammerStyle && COMPARE_WITH_CHARACTERS( @"L" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._lshOperator;
     // Rsh: ⌘-R
-    else if ( COMPARE_WITH_CHARACTERS( @"R" ) && ( modifierFlags & NSCommandKeyMask ) )
+    else if ( isProgrammerStyle && COMPARE_WITH_CHARACTERS( @"R" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._rshOperator;
 
-    // +
-    else if ( COMPARE_WITH_CHARACTERS( @"+" ) )    actionSender = self.currentCalculator._additionOperator;
-    // -
-    else if ( COMPARE_WITH_CHARACTERS( @"-" ) )    actionSender = self.currentCalculator._subtractionOperator;
-    // *
-    else if ( COMPARE_WITH_CHARACTERS( @"*" ) )    actionSender = self.currentCalculator._multiplicationOperator;
-    // /
-    else if ( COMPARE_WITH_CHARACTERS( @"/" ) )    actionSender = self.currentCalculator._divisionOperator;
-
     // Mod: ⌘-M
-    else if ( COMPARE_WITH_CHARACTERS( @"M" ) && ( modifierFlags & NSCommandKeyMask ) )
+    else if ( isProgrammerStyle && COMPARE_WITH_CHARACTERS( @"M" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._modOperator;
-    // Factorial
-    else if ( COMPARE_WITH_CHARACTERS( @"!" ) )
-        actionSender = self._calWithProgrammerStyle._factorialOperator;
 
     // DEL: Delete
     else if ( _Event.keyCode == 51 && !( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
