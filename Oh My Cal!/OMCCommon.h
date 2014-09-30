@@ -144,6 +144,10 @@ NSString extern* const OMCLshOperatorIdentifier;
 NSString extern* const OMCRshOperatorIdentifier;
 NSString extern* const OMCModOperatorIdentifier;
 
+#define SHIFT_COMMAND_SPACE__GLOBAL_KEY     0x1
+
+NSString extern* const OMCPressedShiftCommandSpaceGlobalKey;
+
 ////////////////////////////////////////////////////////////////////////////
 
 /****************************************************************************

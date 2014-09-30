@@ -46,6 +46,8 @@
 @synthesize aboutPanelController;
 @synthesize preferencesPanelController;
 
+@synthesize hasOpened = _hasOpened;
+
 #pragma mark Initializers & Deallocators
 + ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate
     {
@@ -57,6 +59,7 @@
     if ( self = [ super initWithWindowNibName: @"OMFMainPanel" ] )
         {
         self.delegate = _Delegate;
+        self.hasOpened = NO;
         }
 
     return self;
@@ -92,11 +95,15 @@
 
     [ self.window makeKeyAndOrderFront: self ];
     [ NSApp activateIgnoringOtherApps: YES ];
+
+    self.hasOpened = YES;
     }
 
 - ( void ) closePanel
     {
     [ self.window orderOut: self ];
+
+    self.hasOpened = NO;
     }
 
 #pragma mark Conforms <NSWindowDelegate> protocol

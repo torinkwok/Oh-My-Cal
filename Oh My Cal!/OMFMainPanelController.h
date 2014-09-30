@@ -57,6 +57,8 @@
 
     OMFPanelBackgroundView* _backgroundView;
     OMFDashboardView*       _dashboardView;
+
+    BOOL _hasOpened;
     }
 
 @property ( nonatomic, retain ) id <OMFMainPanelControllerDelegate> delegate;
@@ -64,6 +66,8 @@
 @property ( nonatomic, assign ) IBOutlet OMFPanelBackgroundView* backgrondView;
 @property ( nonatomic, retain ) OMFAboutPanelController* aboutPanelController;
 @property ( nonatomic, retain ) OMFPreferencesPanelController* preferencesPanelController;
+
+@property ( nonatomic, assign, setter = setOpened: ) BOOL hasOpened;
 
 + ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;
 - ( id ) initWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;

@@ -31,14 +31,20 @@
  **                                                                         **
  ****************************************************************************/
 
+#import <Carbon/Carbon.h>
+
 #import "OMCAppDelegate.h"
 #import "OMFStatusItemView.h"
+
+#import "OMFMainPanelController.h"
 
 // OMFAppDelegate class
 @implementation OMCAppDelegate
 
 @synthesize _statusBarController;
 @synthesize _mainPanelController;
+
+OSStatus hotKeyHandler( EventHandlerCallRef, EventRef, void* );
 
 #pragma mark Conforms <NSAwakeFromNib> protocol
 - ( void ) awakeFromNib
@@ -49,6 +55,60 @@
 //    [ self setStartAtLogin: ( [ USER_DEFAULTS integerForKey: OMFDefaultsKeyStartAtLogin ] == OMFStartAtLogin ) ? YES : NO ];
 //
 //    [ self setRights ];
+
+    EventHotKeyRef hotKeyRef;
+    EventHotKeyID hotKeyID;
+    EventTypeSpec eventType;
+    eventType.eventClass = kEventClassKeyboard;
+    eventType.eventKind = kEventHotKeyPressed;
+
+    // The signature of the hot key, actual type is UInt32
+    hotKeyID.signature = 'coid';    // Callout ID
+    // The ID of the hot key, which be used in handling more than one global hot key
+    hotKeyID.id = SHIFT_COMMAND_SPACE__GLOBAL_KEY;
+
+    // Register the hot key through this function
+    RegisterEventHotKey( 49, cmdKey + shiftKey, hotKeyID, GetApplicationEventTarget(), 0, &hotKeyRef);
+
+    InstallApplicationEventHandler( &hotKeyHandler, 1, &eventType, NULL, NULL );
+
+    [ NOTIFICATION_CENTER addObserver: self
+                             selector: @selector( handlePressedShiftCommandSpaceNotif: )
+                                 name: OMCPressedShiftCommandSpaceGlobalKey
+                               object: nil ];
+    }
+
+OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, void* _UserData )
+    {
+    EventHotKeyID hotKeyRef;
+
+    GetEventParameter( _AnEvent
+                     , kEventParamDirectObject, typeEventHotKeyID
+                     , NULL, sizeof( hotKeyRef ), NULL, &hotKeyRef
+                     );
+
+    unsigned int hotKeyId = hotKeyRef.id;
+
+    switch ( hotKeyId )
+        {
+    case SHIFT_COMMAND_SPACE__GLOBAL_KEY:
+            {
+            [ NOTIFICATION_CENTER postNotificationName: OMCPressedShiftCommandSpaceGlobalKey object: nil ];
+            } break;
+
+    default:
+        break;
+        }
+
+    return noErr;
+    }
+
+- ( void ) handlePressedShiftCommandSpaceNotif: ( NSNotification* )_Notif
+    {
+    if ( self._mainPanelController.hasOpened )
+        [ self._mainPanelController closePanel ];
+    else
+        [ self._mainPanelController openPanel ];
     }
 
 - ( IBAction ) togglePanel: ( id )_Sender

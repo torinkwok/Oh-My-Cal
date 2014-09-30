@@ -54,6 +54,8 @@ NSString* const OMCLshOperatorIdentifier = @"Lsh";
 NSString* const OMCRshOperatorIdentifier = @"Rsh" ;
 NSString* const OMCModOperatorIdentifier = @"Mod";
 
+NSString* const OMCPressedShiftCommandSpaceGlobalKey = @"OMCPressedShiftCommandSpaceGlobalKey";
+
 //////////////////////////////////////////////////////////////////////////////
 
 /*****************************************************************************
