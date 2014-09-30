@@ -202,7 +202,7 @@
                         <action selector="calculate:" target="Mio-RE-1td" id="vDO-ZJ-5cG"/>
                     </connections>
                 </button>
-                <button toolTip="Clear" verticalHuggingPriority="750" fixedFrame="YES" tag="32" translatesAutoresizingMaskIntoConstraints="NO" id="Hd2-18-W8W">
+                <button toolTip="Clear (or press ⌘-Delete)" verticalHuggingPriority="750" fixedFrame="YES" tag="32" translatesAutoresizingMaskIntoConstraints="NO" id="Hd2-18-W8W">
                     <rect key="frame" x="12" y="133" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="C" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Syf-Yj-SlW" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -452,7 +452,7 @@
                         <action selector="calculate:" target="lIE-2s-Zv9" id="fJy-BT-EDd"/>
                     </connections>
                 </button>
-                <button toolTip="Clear" verticalHuggingPriority="750" fixedFrame="YES" tag="32" translatesAutoresizingMaskIntoConstraints="NO" id="aMI-Ns-0jC">
+                <button toolTip="Clear (or press ⌘-Delete)" verticalHuggingPriority="750" fixedFrame="YES" tag="32" translatesAutoresizingMaskIntoConstraints="NO" id="aMI-Ns-0jC">
                     <rect key="frame" x="253" y="133" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="C" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sGS-U2-4lV" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -917,7 +917,7 @@
             <rect key="frame" x="0.0" y="0.0" width="371" height="187"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button toolTip="Clear" verticalHuggingPriority="750" fixedFrame="YES" tag="32" translatesAutoresizingMaskIntoConstraints="NO" id="v83-Rs-WKp">
+                <button toolTip="Clear (or press ⌘-Delete)" verticalHuggingPriority="750" fixedFrame="YES" tag="32" translatesAutoresizingMaskIntoConstraints="NO" id="v83-Rs-WKp">
                     <rect key="frame" x="318" y="133" width="41" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="C" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tag-sv-hHs" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -927,7 +927,7 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="1J4-kL-4u6"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="31" translatesAutoresizingMaskIntoConstraints="NO" id="QRR-RZ-tmp">
+                <button toolTip="Clear All (or press ⌘-⇧-Delete)" verticalHuggingPriority="750" fixedFrame="YES" tag="31" translatesAutoresizingMaskIntoConstraints="NO" id="QRR-RZ-tmp">
                     <rect key="frame" x="269" y="133" width="41" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="AC" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uTI-Tv-bcw" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -937,7 +937,7 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="gmF-gB-iZp"/>
                     </connections>
                 </button>
-                <button identifier="-" verticalHuggingPriority="750" fixedFrame="YES" tag="35" translatesAutoresizingMaskIntoConstraints="NO" id="nf8-3Z-7I6">
+                <button identifier="-" toolTip="Subtract (or press -)" verticalHuggingPriority="750" fixedFrame="YES" tag="35" translatesAutoresizingMaskIntoConstraints="NO" id="nf8-3Z-7I6">
                     <rect key="frame" x="318" y="103" width="41" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="-" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3eZ-93-1OA" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -947,7 +947,7 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="u3z-IM-uf8"/>
                     </connections>
                 </button>
-                <button identifier="+" verticalHuggingPriority="750" fixedFrame="YES" tag="34" translatesAutoresizingMaskIntoConstraints="NO" id="Ugm-HP-Zzc">
+                <button identifier="+" toolTip="Add (or press +)" verticalHuggingPriority="750" fixedFrame="YES" tag="34" translatesAutoresizingMaskIntoConstraints="NO" id="Ugm-HP-Zzc">
                     <rect key="frame" x="269" y="103" width="41" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="+" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d4a-yT-xmK" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -957,7 +957,7 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="gsL-gh-cOu"/>
                     </connections>
                 </button>
-                <button identifier="×" verticalHuggingPriority="750" fixedFrame="YES" tag="36" translatesAutoresizingMaskIntoConstraints="NO" id="mP3-HX-zwp">
+                <button identifier="×" toolTip="Multiply (or press *)" verticalHuggingPriority="750" fixedFrame="YES" tag="36" translatesAutoresizingMaskIntoConstraints="NO" id="mP3-HX-zwp">
                     <rect key="frame" x="269" y="73" width="41" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="×" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BKQ-Uv-N5T" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1097,7 +1097,7 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="cLY-Dr-pZo"/>
                     </connections>
                 </button>
-                <button identifier="Rsh" verticalHuggingPriority="750" fixedFrame="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="eoj-2e-pms">
+                <button identifier="Rsh" toolTip="Shift X Y bit to the right" verticalHuggingPriority="750" fixedFrame="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="eoj-2e-pms">
                     <rect key="frame" x="71" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="Rsh" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w7S-3a-xEh" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1147,7 +1147,7 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="xg5-rF-ymo"/>
                     </connections>
                 </button>
-                <button identifier="Lsh" verticalHuggingPriority="750" fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="tbD-k4-Tuc">
+                <button identifier="Lsh" toolTip="Shift X Y bit to the left" verticalHuggingPriority="750" fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="tbD-k4-Tuc">
                     <rect key="frame" x="12" y="103" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="Lsh" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iHh-o4-JYV" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1207,7 +1207,7 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="Pr9-B2-u5e"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="22" translatesAutoresizingMaskIntoConstraints="NO" id="mtT-1S-mhW">
+                <button toolTip="Enter '00' to the displayed value (or press ⌥-0)" verticalHuggingPriority="750" fixedFrame="YES" tag="22" translatesAutoresizingMaskIntoConstraints="NO" id="mtT-1S-mhW">
                     <rect key="frame" x="221" y="13" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="00" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NUd-A5-0N4" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1217,7 +1217,7 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="z8V-wP-3EU"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="29" translatesAutoresizingMaskIntoConstraints="NO" id="OBM-U9-lcj">
+                <button toolTip="Enter 'FF' to the displayed value (or press ⌥-F)" verticalHuggingPriority="750" fixedFrame="YES" tag="29" translatesAutoresizingMaskIntoConstraints="NO" id="OBM-U9-lcj">
                     <rect key="frame" x="135" y="13" width="35" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="FF" bezelStyle="texturedRounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mge-fp-wwh" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1277,7 +1277,7 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="gPW-gP-CPc"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="7" translatesAutoresizingMaskIntoConstraints="NO" id="IBi-Bj-Vn0">
+                <button toolTip="Shift X 1 bit to the right" verticalHuggingPriority="750" fixedFrame="YES" tag="7" translatesAutoresizingMaskIntoConstraints="NO" id="IBi-Bj-Vn0">
                     <rect key="frame" x="71" y="73" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="RoR" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oR3-tT-6sg" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1287,7 +1287,7 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="Mea-iG-3kp"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="u7O-fd-shE">
+                <button toolTip="Shift X 1 bit to the left" verticalHuggingPriority="750" fixedFrame="YES" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="u7O-fd-shE">
                     <rect key="frame" x="12" y="73" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="RoL" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vgf-uq-lFF" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1307,7 +1307,7 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="Rua-iW-eWY"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="51z-wu-RTE">
+                <button toolTip="Calculate the factorial of the displayed value (or press !)" verticalHuggingPriority="750" fixedFrame="YES" tag="11" translatesAutoresizingMaskIntoConstraints="NO" id="51z-wu-RTE">
                     <rect key="frame" x="71" y="13" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="!" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lqt-dJ-t1b" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
