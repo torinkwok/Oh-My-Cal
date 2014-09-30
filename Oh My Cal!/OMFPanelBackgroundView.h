@@ -41,6 +41,7 @@
 @class OMCBinaryOperationBox;
 @class OMCBinaryOperationPanel;
 
+@class OMCCal;
 @class OMCCalWithBasicStyle;
 @class OMCCalWithScientificStyle;
 @class OMCCalWithProgrammerStyle;
@@ -65,6 +66,8 @@
 @property ( nonatomic, assign ) IBOutlet OMCCalWithBasicStyle* _calWithBasicStyle;
 @property ( nonatomic, assign ) IBOutlet OMCCalWithScientificStyle* _calWithScientificStyle;
 @property ( nonatomic, assign ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
+
+@property ( nonatomic, assign, readonly ) OMCCal* currentCalculator;
 
 @property ( nonatomic, assign ) IBOutlet NSMenuItem* _basicStyleMenuItem;
 @property ( nonatomic, assign ) IBOutlet NSMenuItem* _scientificStyleMenuItem;

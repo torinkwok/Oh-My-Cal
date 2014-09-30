@@ -68,6 +68,8 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
 @synthesize _calWithScientificStyle;
 @synthesize _calWithProgrammerStyle;
 
+@synthesize currentCalculator;
+
 @synthesize auxiliaryLinePath = _auxiliaryLinePath;
 @synthesize gridPath = _gridPath;
 
@@ -554,112 +556,99 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
 #pragma mark Events Handling
 - ( void ) keyDown: ( NSEvent* )_Event
     {
+    NSLog( @"%@", self.currentCalculator );
     NSUInteger modifierFlags = [ _Event modifierFlags ];
     NSString* characters = [ _Event charactersIgnoringModifiers ];
+
+    #define COMPARE_WITH_CHARACTERS( _Rhs ) COMPARE_WITH_CASE_INSENSITIVE( characters, _Rhs )
     BOOL isHex = [ self.currentCalculation currentAry ] == OMCHex;
 
     SEL actionToBeSent = @selector( calculate: );
     id actionSender = nil;
 
-    if ( [ characters isEqualToString: @"1" ] )
-        actionSender = self._calWithProgrammerStyle._one;
-    else if ( [ characters isEqualToString: @"2" ] )
-        actionSender = self._calWithProgrammerStyle._two;
-    else if ( [ characters isEqualToString: @"3" ] )
-        actionSender = self._calWithProgrammerStyle._three;
-    else if ( [ characters isEqualToString: @"4" ] )
-        actionSender = self._calWithProgrammerStyle._four;
-    else if ( [ characters isEqualToString: @"5" ] )
-        actionSender = self._calWithProgrammerStyle._five;
-    else if ( [ characters isEqualToString: @"6" ] )
-        actionSender = self._calWithProgrammerStyle._six;
-    else if ( [ characters isEqualToString: @"7" ] )
-        actionSender = self._calWithProgrammerStyle._seven;
-    else if ( [ characters isEqualToString: @"8" ] )
-        actionSender = self._calWithProgrammerStyle._eight;
-    else if ( [ characters isEqualToString: @"9" ] )
-        actionSender = self._calWithProgrammerStyle._nine;
-    else if ( [ characters isEqualToString: @"0" ] && !( modifierFlags & NSAlternateKeyMask ) )
-        actionSender = self._calWithProgrammerStyle._zero;
+    if ( COMPARE_WITH_CHARACTERS( @"1" ) )                  actionSender = self.currentCalculator._one;
+    else if ( COMPARE_WITH_CHARACTERS( @"2" ) )             actionSender = self.currentCalculator._two;
+    else if ( COMPARE_WITH_CHARACTERS( @"3" ) )             actionSender = self.currentCalculator._three;
+    else if ( COMPARE_WITH_CHARACTERS( @"4" ) )             actionSender = self.currentCalculator._four;
+    else if ( COMPARE_WITH_CHARACTERS( @"5" ) )             actionSender = self.currentCalculator._five;
+    else if ( COMPARE_WITH_CHARACTERS( @"6" ) )             actionSender = self.currentCalculator._six;
+    else if ( COMPARE_WITH_CHARACTERS( @"7" ) )             actionSender = self.currentCalculator._seven;
+    else if ( COMPARE_WITH_CHARACTERS( @"8" ) )             actionSender = self.currentCalculator._eight;
+    else if ( COMPARE_WITH_CHARACTERS( @"9" ) )             actionSender = self.currentCalculator._nine;
+
+    else if ( COMPARE_WITH_CHARACTERS( @"0" ) && !( modifierFlags & NSAlternateKeyMask ) )
+        actionSender = self.currentCalculator._zero;
     // 00: : ⌥-0
-    else if ( [ characters isEqualToString: @"0" ] && ( modifierFlags & NSAlternateKeyMask ) )
+    else if ( COMPARE_WITH_CHARACTERS( @"0" ) && ( modifierFlags & NSAlternateKeyMask ) )
         actionSender = self._calWithProgrammerStyle._doubleZero;
 
-    else if ( isHex && [ characters isCaseInsensitiveLike: @"A" ] && !( modifierFlags & NSCommandKeyMask ) )
-        actionSender = self._calWithProgrammerStyle._0xA;
-    else if ( isHex && [ characters isCaseInsensitiveLike: @"B" ] )
-        actionSender = self._calWithProgrammerStyle._0xB;
-    else if ( isHex && [ characters isCaseInsensitiveLike: @"C" ] )
-        actionSender = self._calWithProgrammerStyle._0xC;
-    else if ( isHex && [ characters isCaseInsensitiveLike: @"D" ] )
-        actionSender = self._calWithProgrammerStyle._0xD;
-    else if ( isHex && [ characters isCaseInsensitiveLike: @"E" ] )
-        actionSender = self._calWithProgrammerStyle._0xE;
-    else if ( isHex && [ characters isCaseInsensitiveLike: @"F" ] && !( modifierFlags & NSAlternateKeyMask ) )
+    else if ( isHex && COMPARE_WITH_CHARACTERS( @"A" ) && !( modifierFlags & NSCommandKeyMask ) )
+                                                            actionSender = self._calWithProgrammerStyle._0xA;
+    else if ( isHex && COMPARE_WITH_CHARACTERS( @"B" ) )    actionSender = self._calWithProgrammerStyle._0xB;
+    else if ( isHex && COMPARE_WITH_CHARACTERS( @"C" ) )    actionSender = self._calWithProgrammerStyle._0xC;
+    else if ( isHex && COMPARE_WITH_CHARACTERS( @"D" ) )    actionSender = self._calWithProgrammerStyle._0xD;
+    else if ( isHex && COMPARE_WITH_CHARACTERS( @"E" ) )    actionSender = self._calWithProgrammerStyle._0xE;
+
+    else if ( isHex && COMPARE_WITH_CHARACTERS( @"F" ) && !( modifierFlags & NSAlternateKeyMask ) )
         actionSender = self._calWithProgrammerStyle._0xF;
     // FF: ⌥-F
-    else if ( isHex && [ characters isCaseInsensitiveLike: @"F" ] && ( modifierFlags & NSAlternateKeyMask ) )
+    else if ( isHex && COMPARE_WITH_CHARACTERS( @"F" ) && ( modifierFlags & NSAlternateKeyMask ) )
         actionSender = self._calWithProgrammerStyle._0xFF;
 
     // AND: ⌘-A
-    else if ( [ characters isCaseInsensitiveLike: @"A" ] && ( modifierFlags & NSCommandKeyMask ) )
+    else if ( COMPARE_WITH_CHARACTERS( @"A" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._andOperator;
     // OR: ⌘-O
-    else if ( [ characters isCaseInsensitiveLike: @"O" ] && ( modifierFlags & NSCommandKeyMask ) )
+    else if ( COMPARE_WITH_CHARACTERS( @"O" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._orOperator;
     // NOR: ⌘-N
-    else if ( [ characters isCaseInsensitiveLike: @"N" ] && ( modifierFlags & NSCommandKeyMask ) )
+    else if ( COMPARE_WITH_CHARACTERS( @"N" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._norOperator;
     // XOR: ⌘-X
-    else if ( [ characters isCaseInsensitiveLike: @"X" ] && ( modifierFlags & NSCommandKeyMask ) )
+    else if ( COMPARE_WITH_CHARACTERS( @"X" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._xorOperator;
 
     // RoL
-    else if ( [ characters isCaseInsensitiveLike: @"L" ] && !( modifierFlags & NSCommandKeyMask ) )
+    else if ( COMPARE_WITH_CHARACTERS( @"L" ) && !( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._rolOperator;
     // RoR
-    else if ( [ characters isCaseInsensitiveLike: @"R" ] && !( modifierFlags & NSCommandKeyMask ) )
+    else if ( COMPARE_WITH_CHARACTERS( @"R" ) && !( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._rorOperator;
     // Lsh: ⌘-L
-    else if ( [ characters isCaseInsensitiveLike: @"L" ] && ( modifierFlags & NSCommandKeyMask ) )
+    else if ( COMPARE_WITH_CHARACTERS( @"L" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._lshOperator;
     // Rsh: ⌘-R
-    else if ( [ characters isCaseInsensitiveLike: @"R" ] && ( modifierFlags & NSCommandKeyMask ) )
+    else if ( COMPARE_WITH_CHARACTERS( @"R" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._rshOperator;
 
     // +
-    else if ( [ characters isEqualToString: @"+" ] )
-        actionSender = self._calWithProgrammerStyle._additionOperator;
+    else if ( COMPARE_WITH_CHARACTERS( @"+" ) )    actionSender = self.currentCalculator._additionOperator;
     // -
-    else if ( [ characters isEqualToString: @"-" ] )
-        actionSender = self._calWithProgrammerStyle._subtractionOperator;
+    else if ( COMPARE_WITH_CHARACTERS( @"-" ) )    actionSender = self.currentCalculator._subtractionOperator;
     // *
-    else if ( [ characters isEqualToString: @"*" ] )
-        actionSender = self._calWithProgrammerStyle._multiplicationOperator;
+    else if ( COMPARE_WITH_CHARACTERS( @"*" ) )    actionSender = self.currentCalculator._multiplicationOperator;
     // /
-    else if ( [ characters isEqualToString: @"/" ] )
-        actionSender = self._calWithProgrammerStyle._divisionOperator;
+    else if ( COMPARE_WITH_CHARACTERS( @"/" ) )    actionSender = self.currentCalculator._divisionOperator;
 
     // Mod: ⌘-M
-    else if ( [ characters isCaseInsensitiveLike: @"M" ] && ( modifierFlags & NSCommandKeyMask ) )
+    else if ( COMPARE_WITH_CHARACTERS( @"M" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._modOperator;
     // Factorial
-    else if ( [ characters isEqualToString: @"!" ] )
+    else if ( COMPARE_WITH_CHARACTERS( @"!" ) )
         actionSender = self._calWithProgrammerStyle._factorialOperator;
 
     // DEL: Delete
     else if ( _Event.keyCode == 51 && !( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
-        actionSender = self._calWithProgrammerStyle._del;
+        actionSender = self.currentCalculator._del;
     // Clear: ⌘-Delete
     else if ( _Event.keyCode == 51 && ( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
-        actionSender = self._calWithProgrammerStyle._clear;
+        actionSender = self.currentCalculator._clear;
     // Clear All: ⌘-⇧-Delete
     else if ( _Event.keyCode == 51 && ( modifierFlags & NSCommandKeyMask ) && ( modifierFlags & NSShiftKeyMask ) )
-        actionSender = self._calWithProgrammerStyle._clearAll;
+        actionSender = self.currentCalculator._clearAll;
 
     // Enter: Return
-    else if ( _Event.keyCode == 36 )
-        actionSender = self._calWithProgrammerStyle._enterOperator;
+    else if ( _Event.keyCode == 36 )    actionSender = self.currentCalculator._enterOperator;
 
     if ( actionSender )
         {
@@ -693,6 +682,11 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
         return self._programmerStyleCalculation;
 
     return nil;
+    }
+
+- ( OMCCal* ) currentCalculator
+    {
+    return self._mainPanelBackgroundView.currentCalculator;
     }
 
 @end // OMCLCDScreen class

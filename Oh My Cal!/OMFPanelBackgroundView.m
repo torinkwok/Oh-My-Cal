@@ -76,7 +76,10 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 @synthesize currentCalculation;
 
 @synthesize _calWithBasicStyle;
+@synthesize _calWithScientificStyle;
 @synthesize _calWithProgrammerStyle;
+
+@synthesize currentCalculator;
 
 @synthesize _basicStyleMenuItem;
 @synthesize _scientificStyleMenuItem;
@@ -251,6 +254,17 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 - ( OMCCalculation* ) currentCalculation
     {
     return self._LCDScreen.currentCalculation;
+    }
+
+- ( OMCCal* ) currentCalculator
+    {
+    OMCCal* cal = nil;
+
+    if ( self._currentCalStyle == OMCBasicStyle )           cal = self._calWithBasicStyle;
+    else if ( self._currentCalStyle == OMCScientificStyle ) cal = self._calWithScientificStyle;
+    else if ( self._currentCalStyle == OMCProgrammerStyle ) cal = self._calWithProgrammerStyle;
+
+    return cal;
     }
 
 #pragma mark IBActions
