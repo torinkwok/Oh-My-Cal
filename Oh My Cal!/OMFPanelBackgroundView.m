@@ -178,9 +178,11 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 
     [ components addObject: currentCal ];
 
-    [ [ self window ] setFrame: [ self._mainPanelController frameBasedOnFrameOfStatusItemView: newWindowFrame ]
-                       display: YES
-                       animate: YES ];
+    NSRect newFrame = ( self._mainPanelController.currentOpenMode == OMCHangInMenuMode )
+                            ? [ self._mainPanelController frameBasedOnFrameOfStatusItemView: newWindowFrame ]
+                            : [ self._mainPanelController frameCenteredInScreen: newWindowFrame ];
+
+    [ [ self window ] setFrame: newFrame display: YES animate: YES ];
 
     [ self setSubviews: components ];
     }
@@ -193,50 +195,45 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
     NSBezierPath* bezierPath = [ NSBezierPath bezierPath ];
     OMCOpenMode openMode = self._mainPanelController.currentOpenMode;
 
+    // Draw the arrow only when dashboard appears in the menu bar
     if ( openMode == OMCHangInMenuMode )
         {
         [ bezierPath moveToPoint: NSMakePoint( self.arrowX, NSMaxY( bounds ) ) ];
         [ bezierPath lineToPoint: NSMakePoint( self.arrowX + ARROW_WIDTH / 2, NSMaxY( bounds ) - ARROW_HEIGHT ) ];
-        [ bezierPath lineToPoint: NSMakePoint( NSMaxX( bounds ) - CORNER_RADIUS, NSMaxY( bounds ) - ARROW_HEIGHT ) ];
-
-        NSPoint rightTopCorner = NSMakePoint( NSMaxX( bounds ), NSMaxY( bounds ) - ARROW_HEIGHT );
-        [ bezierPath curveToPoint: NSMakePoint( NSMaxX( bounds ), NSMaxY( bounds ) - ARROW_HEIGHT - CORNER_RADIUS )
-                    controlPoint1: rightTopCorner
-                    controlPoint2: rightTopCorner ];
-
-        [ bezierPath lineToPoint: NSMakePoint( NSMaxX( bounds ), NSMinY( bounds ) + CORNER_RADIUS ) ];
-
-        NSPoint rightBottomCorner = NSMakePoint( NSMaxX( bounds ), NSMinY( bounds ) );
-        [ bezierPath curveToPoint: NSMakePoint( NSMaxX( bounds ) - CORNER_RADIUS, NSMinY( bounds ) )
-                    controlPoint1: rightBottomCorner
-                    controlPoint2: rightBottomCorner ];
-
-        [ bezierPath lineToPoint: NSMakePoint( NSMinX( bounds ) + CORNER_RADIUS, NSMinY( bounds ) ) ];
-
-        NSPoint leftBottomCorner = bounds.origin;
-        [ bezierPath curveToPoint: NSMakePoint( NSMinX( bounds ), NSMinY( bounds ) + CORNER_RADIUS )
-                    controlPoint1: leftBottomCorner
-                    controlPoint2: leftBottomCorner ];
-
-        [ bezierPath lineToPoint: NSMakePoint( NSMinX( bounds ), NSMaxY( bounds ) - ARROW_HEIGHT - CORNER_RADIUS ) ];
-
-        NSPoint leftTopCorner = NSMakePoint( NSMinX( bounds ), NSMaxY( bounds ) - ARROW_HEIGHT );
-        [ bezierPath curveToPoint: NSMakePoint( NSMinX( bounds ) + CORNER_RADIUS, NSMaxY( bounds ) - ARROW_HEIGHT )
-                    controlPoint1: leftTopCorner
-                    controlPoint2: leftTopCorner ];
-
-        [ bezierPath lineToPoint: NSMakePoint( self.arrowX - ARROW_WIDTH / 2, NSMaxY( bounds ) - ARROW_HEIGHT ) ];
-        [ bezierPath closePath ];
         }
     else if ( openMode == OMCGlobalCalloutMode )
-        {
-        NSRect rect = bounds;
-        rect.size.height -= ARROW_WIDTH / 2;
+        [ bezierPath moveToPoint: NSMakePoint( NSMinX( bounds ) + CORNER_RADIUS, NSMaxY( bounds ) - ARROW_HEIGHT ) ];
 
-        [ bezierPath appendBezierPathWithRoundedRect: rect
-                                             xRadius: 15.f
-                                             yRadius: 15.f ];
-        }
+    [ bezierPath lineToPoint: NSMakePoint( NSMaxX( bounds ) - CORNER_RADIUS, NSMaxY( bounds ) - ARROW_HEIGHT ) ];
+
+    NSPoint rightTopCorner = NSMakePoint( NSMaxX( bounds ), NSMaxY( bounds ) - ARROW_HEIGHT );
+    [ bezierPath curveToPoint: NSMakePoint( NSMaxX( bounds ), NSMaxY( bounds ) - ARROW_HEIGHT - CORNER_RADIUS )
+                controlPoint1: rightTopCorner
+                controlPoint2: rightTopCorner ];
+
+    [ bezierPath lineToPoint: NSMakePoint( NSMaxX( bounds ), NSMinY( bounds ) + CORNER_RADIUS ) ];
+
+    NSPoint rightBottomCorner = NSMakePoint( NSMaxX( bounds ), NSMinY( bounds ) );
+    [ bezierPath curveToPoint: NSMakePoint( NSMaxX( bounds ) - CORNER_RADIUS, NSMinY( bounds ) )
+                controlPoint1: rightBottomCorner
+                controlPoint2: rightBottomCorner ];
+
+    [ bezierPath lineToPoint: NSMakePoint( NSMinX( bounds ) + CORNER_RADIUS, NSMinY( bounds ) ) ];
+
+    NSPoint leftBottomCorner = bounds.origin;
+    [ bezierPath curveToPoint: NSMakePoint( NSMinX( bounds ), NSMinY( bounds ) + CORNER_RADIUS )
+                controlPoint1: leftBottomCorner
+                controlPoint2: leftBottomCorner ];
+
+    [ bezierPath lineToPoint: NSMakePoint( NSMinX( bounds ), NSMaxY( bounds ) - ARROW_HEIGHT - CORNER_RADIUS ) ];
+
+    NSPoint leftTopCorner = NSMakePoint( NSMinX( bounds ), NSMaxY( bounds ) - ARROW_HEIGHT );
+    [ bezierPath curveToPoint: NSMakePoint( NSMinX( bounds ) + CORNER_RADIUS, NSMaxY( bounds ) - ARROW_HEIGHT )
+                controlPoint1: leftTopCorner
+                controlPoint2: leftTopCorner ];
+
+    [ bezierPath lineToPoint: NSMakePoint( self.arrowX - ARROW_WIDTH / 2, NSMaxY( bounds ) - ARROW_HEIGHT ) ];
+    [ bezierPath closePath ];
 
     [ NSGraphicsContext saveGraphicsState ];
         {

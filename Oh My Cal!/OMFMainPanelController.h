@@ -77,6 +77,7 @@ typedef enum { OMCHangInMenuMode, OMCGlobalCalloutMode } OMCOpenMode;
 - ( id ) initWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;
 
 - ( NSRect ) frameBasedOnFrameOfStatusItemView: ( NSRect )_Frame;
+- ( NSRect ) frameCenteredInScreen: ( NSRect )_Frame;
 
 #pragma mark Panel Handling
 - ( void ) openPanelWithMode: ( OMCOpenMode )_OpenMode;

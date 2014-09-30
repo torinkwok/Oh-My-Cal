@@ -82,22 +82,33 @@
     {
     NSRect frameOfStatusItemView = [ [ self.delegate statusItemViewForPanelController: self ] globalRect ];
 
-    NSRect frame = _Frame;
-    NSPoint origin = NSMakePoint( NSMidX( frameOfStatusItemView ) - NSWidth( _Frame ) / 2
+    NSRect newFrame = _Frame;
+    NSPoint newOrigin = NSMakePoint( NSMidX( frameOfStatusItemView ) - NSWidth( _Frame ) / 2
                                 , NSMinY( frameOfStatusItemView ) - NSHeight( _Frame )
                                 );
-    frame.origin = origin;
+    newFrame.origin = newOrigin;
+    return newFrame;
+    }
 
-    return frame;
+- ( NSRect ) frameCenteredInScreen: ( NSRect )_Frame
+    {
+    NSScreen* mainScreen = [ NSScreen mainScreen ];
+
+    NSRect newFrame = _Frame;
+    NSPoint newOrigin = NSMakePoint( ( NSMaxX( mainScreen.visibleFrame ) - NSWidth( _Frame ) ) / 2
+                                   , ( NSMaxY( mainScreen.visibleFrame ) - NSHeight( _Frame ) ) / 2 + 100.f
+                                   );
+    newFrame.origin = newOrigin;
+    return newFrame;
     }
 
 - ( void ) openPanelWithMode: ( OMCOpenMode )_OpenMode
     {
-    if ( _OpenMode == OMCHangInMenuMode )
-        [ self.window setFrame: [ self frameBasedOnFrameOfStatusItemView: self.window.frame ] display: YES ];
-    else if ( _OpenMode == OMCGlobalCalloutMode )
-        [ self.window center ];
+    NSRect newFrame = ( _OpenMode == OMCHangInMenuMode )
+                            ? [ self frameBasedOnFrameOfStatusItemView: self.window.frame ]
+                            : [ self frameCenteredInScreen: self.window.frame ];
 
+    [ self.window setFrame: newFrame display: YES ];
     [ self setCurrentOpenMode: _OpenMode ];
 
     [ self.window makeKeyAndOrderFront: self ];
