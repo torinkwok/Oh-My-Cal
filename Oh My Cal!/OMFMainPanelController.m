@@ -47,6 +47,7 @@
 @synthesize preferencesPanelController;
 
 @synthesize hasOpened = _hasOpened;
+@synthesize currentOpenMode = _currentOpenMode;
 
 #pragma mark Initializers & Deallocators
 + ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate
@@ -60,6 +61,7 @@
         {
         self.delegate = _Delegate;
         self.hasOpened = NO;
+        self.currentOpenMode = OMCHangInMenuMode;
         }
 
     return self;
@@ -89,9 +91,14 @@
     return frame;
     }
 
-- ( void ) openPanel
+- ( void ) openPanelWithMode: ( OMCOpenMode )_OpenMode
     {
-    [ self.window setFrame: [ self frameBasedOnFrameOfStatusItemView: self.window.frame ] display: YES ];
+    if ( _OpenMode == OMCHangInMenuMode )
+        [ self.window setFrame: [ self frameBasedOnFrameOfStatusItemView: self.window.frame ] display: YES ];
+    else if ( _OpenMode == OMCGlobalCalloutMode )
+        [ self.window center ];
+
+    [ self setCurrentOpenMode: _OpenMode ];
 
     [ self.window makeKeyAndOrderFront: self ];
     [ NSApp activateIgnoringOtherApps: YES ];
@@ -104,6 +111,16 @@
     [ self.window orderOut: self ];
 
     self.hasOpened = NO;
+    }
+
+- ( void ) setCurrentOpenMode:( OMCOpenMode )_OpenMode
+    {
+    if ( self->_currentOpenMode != _OpenMode )
+        {
+        self->_currentOpenMode = _OpenMode;
+        
+        [ self.window display ];
+        }
     }
 
 #pragma mark Conforms <NSWindowDelegate> protocol
@@ -124,7 +141,7 @@
     if ( _IsHighlighting )
         {
         [ statusItemView setHighlighting: YES ];
-        [ self openPanel ];
+        [ self openPanelWithMode: OMCHangInMenuMode ];
         }
     else
         {

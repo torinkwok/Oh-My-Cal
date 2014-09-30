@@ -33,6 +33,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+typedef enum { OMCHangInMenuMode, OMCGlobalCalloutMode } OMCOpenMode;
+
 @class OMFStatusItemView;
 @class OMFMainPanelController;
 @class OMFDashboardView;
@@ -59,6 +61,7 @@
     OMFDashboardView*       _dashboardView;
 
     BOOL _hasOpened;
+    OMCOpenMode _currentOpenMode;
     }
 
 @property ( nonatomic, retain ) id <OMFMainPanelControllerDelegate> delegate;
@@ -68,6 +71,7 @@
 @property ( nonatomic, retain ) OMFPreferencesPanelController* preferencesPanelController;
 
 @property ( nonatomic, assign, setter = setOpened: ) BOOL hasOpened;
+@property ( nonatomic, assign ) OMCOpenMode currentOpenMode;
 
 + ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;
 - ( id ) initWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate;
@@ -75,7 +79,7 @@
 - ( NSRect ) frameBasedOnFrameOfStatusItemView: ( NSRect )_Frame;
 
 #pragma mark Panel Handling
-- ( void ) openPanel;
+- ( void ) openPanelWithMode: ( OMCOpenMode )_OpenMode;
 - ( void ) closePanel;
 
 - ( void ) _fuckPanel: ( BOOL )_IsHighlighting;

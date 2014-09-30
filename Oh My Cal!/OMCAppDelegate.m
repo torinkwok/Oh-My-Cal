@@ -108,7 +108,7 @@ OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, voi
     if ( self._mainPanelController.hasOpened )
         [ self._mainPanelController closePanel ];
     else
-        [ self._mainPanelController openPanel ];
+        [ self._mainPanelController openPanelWithMode: OMCGlobalCalloutMode ];
     }
 
 - ( IBAction ) togglePanel: ( id )_Sender
