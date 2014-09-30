@@ -15,7 +15,7 @@
             <windowStyleMask key="styleMask" utility="YES"/>
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" transient="YES" ignoresCycle="YES"/>
             <rect key="contentRect" x="196" y="240" width="240" height="175"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <view key="contentView" id="EiT-Mj-1SZ" customClass="OMFPanelBackgroundView">
                 <rect key="frame" x="0.0" y="0.0" width="240" height="175"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -814,7 +814,7 @@
                 </button>
                 <button identifier="ˣroot" hidden="YES" toolTip="Compute the nth root of the displayed value, where n is the next value entered" verticalHuggingPriority="750" fixedFrame="YES" tag="75" translatesAutoresizingMaskIntoConstraints="NO" id="iNL-Hp-hol">
                     <rect key="frame" x="130" y="133" width="51" height="25"/>
-                    <buttonCell key="cell" type="roundTextured" title="ˣ√y" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QyW-lu-pZt" customClass="BGHUDButtonCell">
+                    <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="xroot" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QyW-lu-pZt" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -1479,5 +1479,6 @@
     </objects>
     <resources>
         <image name="settings" width="13.5" height="14.5"/>
+        <image name="xroot" width="10.5" height="14"/>
     </resources>
 </document>
