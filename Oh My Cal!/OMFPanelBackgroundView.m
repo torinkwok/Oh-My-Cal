@@ -230,9 +230,12 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
         }
     else if ( openMode == OMCGlobalCalloutMode )
         {
-        [ bezierPath appendBezierPathWithRoundedRect: bounds
-                                             xRadius: CORNER_RADIUS
-                                             yRadius: CORNER_RADIUS ];
+        NSRect rect = bounds;
+        rect.size.height -= ARROW_WIDTH / 2;
+
+        [ bezierPath appendBezierPathWithRoundedRect: rect
+                                             xRadius: 15.f
+                                             yRadius: 15.f ];
         }
 
     [ NSGraphicsContext saveGraphicsState ];

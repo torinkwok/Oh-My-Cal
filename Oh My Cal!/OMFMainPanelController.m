@@ -118,7 +118,6 @@
     if ( self->_currentOpenMode != _OpenMode )
         {
         self->_currentOpenMode = _OpenMode;
-        
         [ self.window display ];
         }
     }
