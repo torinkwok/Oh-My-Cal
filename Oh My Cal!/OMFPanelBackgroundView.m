@@ -84,6 +84,7 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 @synthesize _basicStyleMenuItem;
 @synthesize _scientificStyleMenuItem;
 @synthesize _programmertyleMenuItem;
+@synthesize _startAtLoginMenuItem;
 
 @synthesize arrowX = _arrowX;
 
@@ -94,6 +95,9 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
     [ self _checkCorrectStyleMenuItem: self._currentCalStyle ];
 
     [ self _switchCalStyle: self._currentCalStyle ];
+
+    BOOL isStartsAtLogin = ( [ USER_DEFAULTS integerForKey: OMFDefaultsKeyStartAtLogin ] == OMFStartAtLogin ) ? YES : NO;
+    [ self._startAtLoginMenuItem setState: isStartsAtLogin ];
     }
 
 - ( void ) _removeAllSubview

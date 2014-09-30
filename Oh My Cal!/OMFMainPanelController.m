@@ -124,6 +124,8 @@
     self.hasOpened = NO;
     }
 
+
+#pragma mark Accessors
 - ( void ) setCurrentOpenMode:( OMCOpenMode )_OpenMode
     {
     if ( self->_currentOpenMode != _OpenMode )
