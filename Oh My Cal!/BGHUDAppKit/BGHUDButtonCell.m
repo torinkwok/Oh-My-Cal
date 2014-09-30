@@ -304,10 +304,14 @@
 			
 			//Draw the image based on enabled state
 			if([self isEnabled]) {
-				
-				[image drawInRect: imageRect fromRect: NSZeroRect operation: NSCompositeSourceAtop fraction: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] alphaValue]];
+
+                // Tong Guo.
+				[image drawInRect: imageRect fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.f];
+//				[image drawInRect: imageRect fromRect: NSZeroRect operation: NSCompositeSourceAtop fraction: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] alphaValue]];
 			} else {
-				[image drawInRect: imageRect fromRect: NSZeroRect operation: NSCompositeSourceAtop fraction: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] disabledAlphaValue]];
+                // Tong Guo.
+				[image drawInRect: imageRect fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.f];
+//				[image drawInRect: imageRect fromRect: NSZeroRect operation: NSCompositeSourceAtop fraction: [[[BGThemeManager keyedManager] themeForKey: self.themeKey] disabledAlphaValue]];
 			}
 			
 		}
