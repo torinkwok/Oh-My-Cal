@@ -74,7 +74,7 @@ OSStatus hotKeyHandler( EventHandlerCallRef, EventRef, void* );
                                  name: OMCPressedShiftCommandSpaceGlobalKey
                                object: nil ];
 
-#if 0
+#if 0   // Not successful, lost to Sandbox😩
     [ self setStartAtLogin: [ USER_DEFAULTS boolForKey: OMCDefaultsKeyStartAtLogin ] ];
 #endif
     }
@@ -129,6 +129,7 @@ OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, voi
     return self._statusBarController.statusItemView;
     }
 
+// Not successful, lost to Sandbox😩
 - ( void ) setStartAtLogin:( BOOL )_Enabled
     {
     NSString *helperPath = [ [ [ NSBundle mainBundle ] bundlePath ] stringByAppendingPathComponent: @"/Contents/Library/LoginItems/OMCStartHelper.app" ];
@@ -215,6 +216,7 @@ OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, voi
 #endif
     }
 
+// Not successful, lost to Sandbox😩
 - ( IBAction ) changedIsStartAtLogin: ( id )_Sender
     {
     [ _Sender setState: ![ _Sender state ] ];
