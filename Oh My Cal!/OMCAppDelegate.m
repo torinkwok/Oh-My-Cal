@@ -104,10 +104,13 @@ OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, voi
 
 - ( void ) handlePressedShiftCommandSpaceNotif: ( NSNotification* )_Notif
     {
-    if ( self._mainPanelController.hasOpened )
-        [ self._mainPanelController closePanel ];
-    else
-        [ self._mainPanelController openPanelWithMode: OMCGlobalCalloutMode ];
+    if ( [ USER_DEFAULTS boolForKey: OMCDefaultsKeyCalloutByKeyCombination ] )
+        {
+        if ( self._mainPanelController.hasOpened )
+            [ self._mainPanelController closePanel ];
+        else
+            [ self._mainPanelController openPanelWithMode: OMCGlobalCalloutMode ];
+        }
     }
 
 - ( IBAction ) togglePanel: ( id )_Sender

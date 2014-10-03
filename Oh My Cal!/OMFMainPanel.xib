@@ -1462,8 +1462,14 @@
                                         <action selector="changedIsStartsAtLogin:" target="-1" id="YbI-AH-UXh"/>
                                     </connections>
                                 </menuItem>
+                                <menuItem title="Callout by ⌘+⇧+Space Bar" state="on" id="IM1-RK-AH3">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                    <connections>
+                                        <action selector="changedIsStartsAtLogin:" target="-1" id="N1I-4f-RZs"/>
+                                    </connections>
+                                </menuItem>
                                 <menuItem isSeparatorItem="YES" id="EoT-5t-i1T"/>
-                                <menuItem title="Quit" keyEquivalent="q" id="Yhd-vS-FEf">
+                                <menuItem title="Quit" id="Yhd-vS-FEf">
                                     <connections>
                                         <action selector="terminate:" target="-1" id="vnO-1D-psK"/>
                                     </connections>

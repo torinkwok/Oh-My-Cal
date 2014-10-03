@@ -8,5 +8,7 @@
 	<integer>1</integer>
 	<key>OMCDefaultsKeyAry</key>
 	<integer>1</integer>
+	<key>OMCDefaultsKeyCalloutByKeyCombination</key>
+	<true/>
 </dict>
 </plist>

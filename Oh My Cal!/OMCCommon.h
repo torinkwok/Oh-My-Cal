@@ -61,9 +61,10 @@
 #define TEXTURE !FLAT
 
 // User Defaults Keys
-#define OMCDefaultsKeyCalStyle          @"OMCDefaultsKeyCalStyle"
-#define OMFDefaultsKeyStartAtLogin      @"OMFDefaultsKeyStartAtLogin"
-#define OMCDefaultsKeyAry               @"OMCDefaultsKeyAry"
+#define OMCDefaultsKeyCalStyle                  @"OMCDefaultsKeyCalStyle"
+#define OMFDefaultsKeyStartAtLogin              @"OMFDefaultsKeyStartAtLogin"
+#define OMCDefaultsKeyAry                       @"OMCDefaultsKeyAry"
+#define OMCDefaultsKeyCalloutByKeyCombination   @"OMCDefaultsKeyCalloutByKeyCombination"
 
 typedef enum { OMCBasicStyle, OMCScientificStyle, OMCProgrammerStyle } OMCCalStyle;
 typedef enum { OMFStartAtLogin, OMFNotStartAtLogin } OMFBehaviorWhileStarting;
