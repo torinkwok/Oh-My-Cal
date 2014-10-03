@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>OMCStartHelper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Oh My Cal!.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>83A9BE2819DE4563001511C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>83A9BE4219DE4563001511C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>83D5D4C019ADB172004AFD84</key>
 		<dict>
 			<key>primary</key>

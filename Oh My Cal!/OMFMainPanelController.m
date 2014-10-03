@@ -195,16 +195,6 @@
     [ USER_DEFAULTS synchronize ];
     }
 
-- ( IBAction ) changedIsStartAtLogin: ( id )_Sender
-    {
-    [ self._startAtLoginMenuItem setState: ![ _Sender state ] ];
-
-    [ USER_DEFAULTS setBool: [ self._startAtLoginMenuItem state ]
-                     forKey: OMCDefaultsKeyStartAtLogin ];
-
-    [ USER_DEFAULTS synchronize ];
-    }
-
 @end // OMFMainPanelController
 
 /////////////////////////////////////////////////////////////////////////////

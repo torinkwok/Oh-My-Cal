@@ -45,6 +45,8 @@
 @property ( nonatomic, retain ) OMFStatusBarController* _statusBarController;
 @property ( nonatomic, retain ) OMFMainPanelController* _mainPanelController;
 
+- ( IBAction ) changedIsStartAtLogin: ( id )_Sender;
+
 @end // OMFAppDelegate
 
 /////////////////////////////////////////////////////////////////////////////

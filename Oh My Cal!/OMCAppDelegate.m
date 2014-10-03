@@ -72,6 +72,8 @@ OSStatus hotKeyHandler( EventHandlerCallRef, EventRef, void* );
                              selector: @selector( handlePressedShiftCommandSpaceNotif: )
                                  name: OMCPressedShiftCommandSpaceGlobalKey
                                object: nil ];
+
+    [ self setStartAtLogin: [ USER_DEFAULTS boolForKey: OMCDefaultsKeyStartAtLogin ] ];
     }
 
 OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, void* _UserData )
@@ -190,6 +192,16 @@ OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, voi
         }
     else if ( !_Enabled && ( existingItem != NULL ) )
 		LSSharedFileListItemRemove( loginItems, existingItem );
+    }
+
+- ( IBAction ) changedIsStartAtLogin: ( id )_Sender
+    {
+    [ _Sender setState: ![ _Sender state ] ];
+
+    [ self setStartAtLogin: [ _Sender state ] ];
+
+    [ USER_DEFAULTS setBool: [ _Sender state ] forKey: OMCDefaultsKeyStartAtLogin ];
+    [ USER_DEFAULTS synchronize ];
     }
 
 @end // OMFAppDelegate
