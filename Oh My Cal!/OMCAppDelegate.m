@@ -65,12 +65,12 @@ OSStatus hotKeyHandler( EventHandlerCallRef, EventRef, void* );
     hotKeyID.id = SHIFT_COMMAND_SPACE__GLOBAL_KEY;
 
     // Register the hot key through this function
-    RegisterEventHotKey( 49, cmdKey + shiftKey, hotKeyID, GetApplicationEventTarget(), 0, &hotKeyRef);
+    RegisterEventHotKey( 49, optionKey + shiftKey, hotKeyID, GetApplicationEventTarget(), 0, &hotKeyRef);
 
     InstallApplicationEventHandler( &hotKeyHandler, 1, &eventType, NULL, NULL );
 
     [ NOTIFICATION_CENTER addObserver: self
-                             selector: @selector( handlePressedShiftCommandSpaceNotif: )
+                             selector: @selector( handleKeyCombinationNotif: )
                                  name: OMCPressedShiftCommandSpaceGlobalKey
                                object: nil ];
 
@@ -104,9 +104,9 @@ OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, voi
     return noErr;
     }
 
-- ( void ) handlePressedShiftCommandSpaceNotif: ( NSNotification* )_Notif
+- ( void ) handleKeyCombinationNotif: ( NSNotification* )_Notif
     {
-    // If the `Callout by ⌘+⇧+Space Bar` menu item has been checked...
+    // If the `Callout by ⌥-⇧-Space Bar` menu item has been checked...
     if ( [ USER_DEFAULTS boolForKey: OMCDefaultsKeyCalloutByKeyCombination ] )
         {
         if ( self._mainPanelController.hasOpened )

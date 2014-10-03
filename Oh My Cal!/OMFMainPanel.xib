@@ -1452,7 +1452,7 @@
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="HDw-Lt-knt"/>
-                                <menuItem title="Callout by ⌘-⇧-Space Bar" state="on" id="IM1-RK-AH3">
+                                <menuItem title="Callout by ⌥-⇧-Space Bar" state="on" id="IM1-RK-AH3">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <connections>
                                         <action selector="changedCalloutByKeyCombination:" target="-1" id="gHR-c8-5na"/>

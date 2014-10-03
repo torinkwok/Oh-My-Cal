@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>OMCDefaultsKeyCalStyle</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>OMCDefaultsKeyStartAtLogin</key>
 	<true/>
-	<key>OMCDefaultsKeyAry</key>
+	<key>OMCDefaultsKeyCurrentAryForProgrammerStyle</key>
 	<integer>1</integer>
 	<key>OMCDefaultsKeyCalloutByKeyCombination</key>
 	<true/>

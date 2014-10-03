@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0600"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "83D5D4C019ADB172004AFD84"
-               BuildableName = "Oh My Cal!.app"
-               BlueprintName = "Oh My Cal!"
+               BlueprintIdentifier = "83A9BE2819DE4563001511C9"
+               BuildableName = "OMCStartHelper.app"
+               BlueprintName = "OMCStartHelper"
                ReferencedContainer = "container:Oh My Cal!.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,33 +28,13 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "83D5D4E119ADB172004AFD84"
-               BuildableName = "Oh My Cal!Tests.xctest"
-               BlueprintName = "Oh My Cal!Tests"
-               ReferencedContainer = "container:Oh My Cal!.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "83A9BE4219DE4563001511C9"
-               BuildableName = "OMCStartHelperTests.xctest"
-               BlueprintName = "OMCStartHelperTests"
-               ReferencedContainer = "container:Oh My Cal!.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "83D5D4C019ADB172004AFD84"
-            BuildableName = "Oh My Cal!.app"
-            BlueprintName = "Oh My Cal!"
+            BlueprintIdentifier = "83A9BE2819DE4563001511C9"
+            BuildableName = "OMCStartHelper.app"
+            BlueprintName = "OMCStartHelper"
             ReferencedContainer = "container:Oh My Cal!.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,16 +44,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "83D5D4C019ADB172004AFD84"
-            BuildableName = "Oh My Cal!.app"
-            BlueprintName = "Oh My Cal!"
+            BlueprintIdentifier = "83A9BE2819DE4563001511C9"
+            BuildableName = "OMCStartHelper.app"
+            BlueprintName = "OMCStartHelper"
             ReferencedContainer = "container:Oh My Cal!.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -89,9 +69,9 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "83D5D4C019ADB172004AFD84"
-            BuildableName = "Oh My Cal!.app"
-            BlueprintName = "Oh My Cal!"
+            BlueprintIdentifier = "83A9BE2819DE4563001511C9"
+            BuildableName = "OMCStartHelper.app"
+            BlueprintName = "OMCStartHelper"
             ReferencedContainer = "container:Oh My Cal!.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

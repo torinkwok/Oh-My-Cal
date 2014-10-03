@@ -47,7 +47,7 @@
     [ self.resultValue  setCalStyle: OMCProgrammerStyle ];
     [ self.memory       setCalStyle: OMCProgrammerStyle ];
 
-    [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
+    [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyCurrentAryForProgrammerStyle ] ];
     }
 
 @end // OMCUnsignedIntegerCalculation

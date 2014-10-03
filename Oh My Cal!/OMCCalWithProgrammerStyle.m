@@ -67,7 +67,7 @@
 #pragma mark Initializers & Deallocators
 - ( void ) awakeFromNib
     {
-    [ self _toggleSpecialButtonsBasedAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
+    [ self _toggleSpecialButtonsBasedAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyCurrentAryForProgrammerStyle ] ];
     }
 
 #pragma mark IBActions
@@ -78,7 +78,7 @@
     self._calculation.currentAry = ( OMCAry )[ arySeg.cell tagForSegment: [ arySeg selectedSegment ] ];
     [ self _toggleSpecialButtonsBasedAry: self._calculation.currentAry ];
 
-    [ USER_DEFAULTS setInteger: self._calculation.currentAry forKey: OMCDefaultsKeyAry ];
+    [ USER_DEFAULTS setInteger: self._calculation.currentAry forKey: OMCDefaultsKeyCurrentAryForProgrammerStyle ];
     }
 
 - ( void ) _toggleSpecialButtonsBasedAry: ( OMCAry )_Ary

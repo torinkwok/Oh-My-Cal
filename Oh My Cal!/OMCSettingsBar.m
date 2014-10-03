@@ -41,7 +41,7 @@
 #pragma mark Initializers & Deallocators
 - ( void ) awakeFromNib
     {
-    [ self._arySegControl setSelectedSegment: [ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
+    [ self._arySegControl setSelectedSegment: [ USER_DEFAULTS integerForKey: OMCDefaultsKeyCurrentAryForProgrammerStyle ] ];
     }
 
 @end // OMCSettingsBar class
