@@ -91,7 +91,6 @@ typedef enum { OMCHangInMenuMode, OMCGlobalCalloutMode } OMCOpenMode;
 #pragma mark IBActions
 - ( IBAction ) about: ( id )_Sender;
 - ( IBAction ) showPreferences: ( id )_Sender;
-- ( IBAction ) changedCalloutByKeyCombination: ( id )_Sender;
 
 @end // OMFMainPanelController
 

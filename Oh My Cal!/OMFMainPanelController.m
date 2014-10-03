@@ -185,16 +185,6 @@
     [ self.preferencesPanelController showWindow: self ];
     }
 
-- ( IBAction ) changedCalloutByKeyCombination: ( id )_Sender
-    {
-    [ self._calloutByKeyCombinationMenuItem setState: ![ _Sender state ] ];
-
-    [ USER_DEFAULTS setBool: [ self._calloutByKeyCombinationMenuItem state ]
-                     forKey: OMCDefaultsKeyCalloutByKeyCombination ];
-
-    [ USER_DEFAULTS synchronize ];
-    }
-
 @end // OMFMainPanelController
 
 /////////////////////////////////////////////////////////////////////////////

@@ -227,6 +227,14 @@ OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, voi
     [ USER_DEFAULTS synchronize ];
     }
 
+- ( IBAction ) changedCalloutByKeyCombination: ( id )_Sender
+    {
+    [ _Sender setState: ![ _Sender state ] ];
+
+    [ USER_DEFAULTS setBool: [ _Sender state ] forKey: OMCDefaultsKeyCalloutByKeyCombination ];
+    [ USER_DEFAULTS synchronize ];
+    }
+
 @end // OMFAppDelegate
 
 /////////////////////////////////////////////////////////////////////////////

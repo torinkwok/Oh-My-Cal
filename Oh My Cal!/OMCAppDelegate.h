@@ -46,6 +46,7 @@
 @property ( nonatomic, retain ) OMFMainPanelController* _mainPanelController;
 
 - ( IBAction ) changedIsStartAtLogin: ( id )_Sender;
+- ( IBAction ) changedCalloutByKeyCombination: ( id )_Sender;
 
 @end // OMFAppDelegate
 
