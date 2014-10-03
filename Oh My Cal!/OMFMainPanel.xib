@@ -1459,6 +1459,9 @@
                                 <menuItem isSeparatorItem="YES" id="HDw-Lt-knt"/>
                                 <menuItem title="Start At Login" id="KEI-0d-daR">
                                     <modifierMask key="keyEquivalentModifierMask"/>
+                                    <connections>
+                                        <action selector="changedIsStartAtLogin:" target="-1" id="b6I-TJ-rAe"/>
+                                    </connections>
                                 </menuItem>
                                 <menuItem title="Callout by ⌘+⇧+Space Bar" state="on" id="IM1-RK-AH3">
                                     <modifierMask key="keyEquivalentModifierMask"/>

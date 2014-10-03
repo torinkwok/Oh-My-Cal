@@ -62,7 +62,7 @@
 
 // User Defaults Keys
 #define OMCDefaultsKeyCalStyle                  @"OMCDefaultsKeyCalStyle"
-#define OMFDefaultsKeyStartAtLogin              @"OMFDefaultsKeyStartAtLogin"
+#define OMCDefaultsKeyStartAtLogin              @"OMCDefaultsKeyStartAtLogin"
 #define OMCDefaultsKeyAry                       @"OMCDefaultsKeyAry"
 #define OMCDefaultsKeyCalloutByKeyCombination   @"OMCDefaultsKeyCalloutByKeyCombination"
 

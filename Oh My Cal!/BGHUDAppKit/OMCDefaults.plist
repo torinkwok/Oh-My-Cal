@@ -4,8 +4,8 @@
 <dict>
 	<key>OMCDefaultsKeyCalStyle</key>
 	<integer>2</integer>
-	<key>OMFDefaultsKeyStartAtLogin</key>
-	<integer>1</integer>
+	<key>OMCDefaultsKeyStartAtLogin</key>
+	<true/>
 	<key>OMCDefaultsKeyAry</key>
 	<integer>1</integer>
 	<key>OMCDefaultsKeyCalloutByKeyCombination</key>

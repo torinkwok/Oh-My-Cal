@@ -52,9 +52,6 @@ OSStatus hotKeyHandler( EventHandlerCallRef, EventRef, void* );
     self._statusBarController = [ OMFStatusBarController statusBarController ];
     self._mainPanelController = [ OMFMainPanelController mainPanelControllerWithDelegate: self ];
 
-    BOOL isStartsAtLogin = ( [ USER_DEFAULTS integerForKey: OMFDefaultsKeyStartAtLogin ] == OMFStartAtLogin ) ? YES : NO;
-    [ self setStartAtLogin: isStartsAtLogin ];
-
     EventHotKeyRef hotKeyRef;
     EventHotKeyID hotKeyID;
     EventTypeSpec eventType;

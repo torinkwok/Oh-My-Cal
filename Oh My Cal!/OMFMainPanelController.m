@@ -80,6 +80,7 @@
     [ self.backgrondView setArrowX: NSWidth( [ self.window frame ] ) / 2 ];
 
     [ self._calloutByKeyCombinationMenuItem setState: [ USER_DEFAULTS boolForKey: OMCDefaultsKeyCalloutByKeyCombination ] ];
+    [ self._startAtLoginMenuItem setState: [ USER_DEFAULTS boolForKey: OMCDefaultsKeyStartAtLogin ] ];
     }
 
 #pragma mark Panel Handling
@@ -188,8 +189,20 @@
     {
     [ self._calloutByKeyCombinationMenuItem setState: ![ _Sender state ] ];
 
-    [ USER_DEFAULTS setBool: self._calloutByKeyCombinationMenuItem.state
+    [ USER_DEFAULTS setBool: [ self._calloutByKeyCombinationMenuItem state ]
                      forKey: OMCDefaultsKeyCalloutByKeyCombination ];
+
+    [ USER_DEFAULTS synchronize ];
+    }
+
+- ( IBAction ) changedIsStartAtLogin: ( id )_Sender
+    {
+    [ self._startAtLoginMenuItem setState: ![ _Sender state ] ];
+
+    [ USER_DEFAULTS setBool: [ self._startAtLoginMenuItem state ]
+                     forKey: OMCDefaultsKeyStartAtLogin ];
+
+    [ USER_DEFAULTS synchronize ];
     }
 
 @end // OMFMainPanelController
