@@ -74,7 +74,9 @@ OSStatus hotKeyHandler( EventHandlerCallRef, EventRef, void* );
                                  name: OMCPressedShiftCommandSpaceGlobalKey
                                object: nil ];
 
+#if 0
     [ self setStartAtLogin: [ USER_DEFAULTS boolForKey: OMCDefaultsKeyStartAtLogin ] ];
+#endif
     }
 
 OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, void* _UserData )
@@ -137,11 +139,12 @@ OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, voi
     NSURL* helperUrl = [ NSURL fileURLWithPath: helperPath ];
  
     // Registering helper app
-    if ( LSRegisterURL( ( __bridge CFURLRef )helperUrl, _Enabled ) != noErr )
+    OSStatus res = LSRegisterURL( ( __bridge CFURLRef )helperUrl, true );
+    if ( res  != noErr )
         NSLog( @"#Error: LSRegisterURL failed" );
  
     // Setting login
-    if ( !SMLoginItemSetEnabled( ( CFStringRef )@"individual.TongGuo.OMCStartHelper", _Enabled ) )
+    if ( !SMLoginItemSetEnabled( ( CFStringRef )@"individual.TongGuo.OMCStartHelper", true ) )
         NSLog( @"#Error: SMLoginItemSetEnabled failed" );
 
 #if 0

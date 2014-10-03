@@ -10,9 +10,20 @@
 
 @implementation OMCAppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    // Insert code here to initialize your application
-}
+- ( void ) applicationDidFinishLaunching: ( NSNotification* )_Notif
+    {
+    NSString *appPath = [[NSBundle mainBundle] bundlePath];
+    appPath = [ appPath stringByReplacingOccurrencesOfString: @"/Contents/Library/LoginItems/OMCStartHelper.app" withString: @"" ];
+    appPath = [ appPath stringByAppendingPathComponent: @"/Contents/MacOS/Oh My Cal!" ];
+
+    if ( ![ [ NSFileManager defaultManager ] fileExistsAtPath: appPath ] )
+        return;
+
+    NSArray* runningArray = [ NSRunningApplication runningApplicationsWithBundleIdentifier: @"individual.TongGuo.Oh-My-Cal-" ];
+    if ( [ runningArray count ] > 0 )
+        return;
+
+    [ [ NSWorkspace sharedWorkspace ] launchApplication: appPath ];
+    }
 
 @end

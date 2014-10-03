@@ -7,7 +7,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="OMFMainPanelController">
             <connections>
                 <outlet property="_calloutByKeyCombinationMenuItem" destination="IM1-RK-AH3" id="EY6-uC-DX4"/>
-                <outlet property="_startAtLoginMenuItem" destination="KEI-0d-daR" id="fsy-5d-ugB"/>
                 <outlet property="backgrondView" destination="EiT-Mj-1SZ" id="wvg-6p-St8"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="wQc-LD-5Zz"/>
             </connections>
@@ -1428,7 +1427,7 @@
                 </segmentedControl>
                 <popUpButton misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rtb-tf-nhm">
                     <rect key="frame" x="270" y="1" width="31" height="21"/>
-                    <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" inset="2" pullsDown="YES" arrowPosition="noArrow" preferredEdge="maxX" id="f6V-lo-oIV">
+                    <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" inset="2" pullsDown="YES" arrowPosition="noArrow" preferredEdge="maxX" selectedItem="IM1-RK-AH3" id="f6V-lo-oIV">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" title="OtherViews" id="Lgq-so-pDQ">
@@ -1457,12 +1456,6 @@
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="HDw-Lt-knt"/>
-                                <menuItem title="Start At Login" id="KEI-0d-daR">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                    <connections>
-                                        <action selector="changedIsStartAtLogin:" target="-1" id="b6I-TJ-rAe"/>
-                                    </connections>
-                                </menuItem>
                                 <menuItem title="Callout by ⌘+⇧+Space Bar" state="on" id="IM1-RK-AH3">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <connections>

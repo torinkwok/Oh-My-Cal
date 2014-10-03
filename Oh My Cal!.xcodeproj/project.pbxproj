@@ -1232,6 +1232,7 @@
 				83A9BE5219DE4564001511C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		83A9BE5319DE4564001511C9 /* Build configuration list for PBXNativeTarget "OMCStartHelperTests" */ = {
 			isa = XCConfigurationList;
@@ -1240,6 +1241,7 @@
 				83A9BE5519DE4564001511C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		83D5D4BC19ADB172004AFD84 /* Build configuration list for PBXProject "Oh My Cal!" */ = {
 			isa = XCConfigurationList;
