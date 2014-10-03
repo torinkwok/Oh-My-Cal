@@ -40,8 +40,6 @@ NSString static* const kKeyPathForIsInShiftInCalculationObject = @"self.isInShif
 @implementation OMCCalWithScientificStyle
 
 @synthesize _shift;
-@synthesize _lhsParenthesis;
-@synthesize _rhsParenthesis;
 @synthesize _percent;
 
 @synthesize _reciprocal;

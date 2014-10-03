@@ -35,6 +35,11 @@
 
 @interface OMCCal : NSView
 
+@property ( nonatomic, assign ) IBOutlet NSButton* _memoryClear;
+@property ( nonatomic, assign ) IBOutlet NSButton* _memoryPlus;
+@property ( nonatomic, assign ) IBOutlet NSButton* _memorySub;
+@property ( nonatomic, assign ) IBOutlet NSButton* _memoryRead;
+
 @property ( nonatomic, assign ) IBOutlet NSButton* _one;
 @property ( nonatomic, assign ) IBOutlet NSButton* _two;
 @property ( nonatomic, assign ) IBOutlet NSButton* _three;

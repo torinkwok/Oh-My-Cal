@@ -35,6 +35,10 @@
 
 // OMCCalWithBasicStyle class
 @implementation OMCCalWithBasicStyle
+
+@synthesize _positiveAndNegative;
+@synthesize _floatPoint;
+
 @end // OMCCalWithBasicStyle
 
 //////////////////////////////////////////////////////////////////////////////

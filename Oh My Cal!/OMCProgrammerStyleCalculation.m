@@ -42,9 +42,10 @@
     {
     [ super awakeFromNib ];
 
-    [ self.lhsOperand setCalStyle: OMCProgrammerStyle ];
-    [ self.rhsOperand setCalStyle: OMCProgrammerStyle ];
-    [ self.resultValue setCalStyle: OMCProgrammerStyle ];
+    [ self.lhsOperand   setCalStyle: OMCProgrammerStyle ];
+    [ self.rhsOperand   setCalStyle: OMCProgrammerStyle ];
+    [ self.resultValue  setCalStyle: OMCProgrammerStyle ];
+    [ self.memory       setCalStyle: OMCProgrammerStyle ];
 
     [ self setCurrentAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
     }

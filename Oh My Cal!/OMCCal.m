@@ -36,6 +36,11 @@
 // OMCCal class
 @implementation OMCCal
 
+@synthesize _memoryClear;
+@synthesize _memoryRead;
+@synthesize _memoryPlus;
+@synthesize _memorySub;
+
 @synthesize _one;
 @synthesize _two;
 @synthesize _three;

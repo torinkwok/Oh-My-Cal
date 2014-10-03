@@ -48,14 +48,10 @@
 @property ( nonatomic, assign ) IBOutlet NSButton* _rshOperator;
 @property ( nonatomic, assign ) IBOutlet NSButton* _rolOperator;
 @property ( nonatomic, assign ) IBOutlet NSButton* _rorOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _2_sOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _1_sOperator;
 
 #pragma mark Buttons with mathematical operators
 @property ( nonatomic, assign ) IBOutlet NSButton* _modOperator;
 @property ( nonatomic, assign ) IBOutlet NSButton* _factorialOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _lhsParenthesis;
-@property ( nonatomic, assign ) IBOutlet NSButton* _rhsParenthesis;
 
 #pragma mark Buttons with operands
 @property ( nonatomic, assign ) IBOutlet NSButton* _doubleZero;

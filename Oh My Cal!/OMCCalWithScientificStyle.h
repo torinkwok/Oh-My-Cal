@@ -40,8 +40,6 @@
 @interface OMCCalWithScientificStyle : OMCCalWithBasicStyle
 
 @property ( nonatomic, assign ) IBOutlet NSButton* _shift;
-@property ( nonatomic, assign ) IBOutlet NSButton* _lhsParenthesis;
-@property ( nonatomic, assign ) IBOutlet NSButton* _rhsParenthesis;
 @property ( nonatomic, assign ) IBOutlet NSButton* _percent;
 
 @property ( nonatomic, assign ) IBOutlet NSButton* _reciprocal;

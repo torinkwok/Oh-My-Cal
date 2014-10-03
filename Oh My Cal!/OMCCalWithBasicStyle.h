@@ -37,13 +37,7 @@
 // OMCCalWithBasicStyle class
 @interface OMCCalWithBasicStyle : OMCCal
 
-@property ( nonatomic, assign ) IBOutlet NSButton* _memoryClear;
-@property ( nonatomic, assign ) IBOutlet NSButton* _memoryPlus;
-@property ( nonatomic, assign ) IBOutlet NSButton* _memorySub;
-@property ( nonatomic, assign ) IBOutlet NSButton* _memoryRead;
-
 @property ( nonatomic, assign ) IBOutlet NSButton* _positiveAndNegative;
-
 @property ( nonatomic, assign ) IBOutlet NSButton* _floatPoint;
 
 @end // OMCCalWithBasicStyle

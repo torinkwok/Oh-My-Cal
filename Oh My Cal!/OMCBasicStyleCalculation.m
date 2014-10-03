@@ -41,9 +41,10 @@
     {
     [ super awakeFromNib ];
 
-    [ self.lhsOperand setCalStyle: OMCBasicStyle ];
-    [ self.rhsOperand setCalStyle: OMCBasicStyle ];
-    [ self.resultValue setCalStyle: OMCBasicStyle ];
+    [ self.lhsOperand   setCalStyle: OMCBasicStyle ];
+    [ self.rhsOperand   setCalStyle: OMCBasicStyle ];
+    [ self.resultValue  setCalStyle: OMCBasicStyle ];
+    [ self.memory       setCalStyle: OMCBasicStyle ];
 
     [ self setCurrentAry: OMCDecimal ];
     }

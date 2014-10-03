@@ -47,14 +47,10 @@
 @synthesize _rshOperator;
 @synthesize _rolOperator;
 @synthesize _rorOperator;
-@synthesize _2_sOperator;
-@synthesize _1_sOperator;
 
 #pragma mark Buttons with mathematical operators
 @synthesize _modOperator;
 @synthesize _factorialOperator;
-@synthesize _lhsParenthesis;
-@synthesize _rhsParenthesis;
 
 #pragma mark Buttons with operands
 @synthesize _doubleZero;
