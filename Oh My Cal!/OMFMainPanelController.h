@@ -70,7 +70,7 @@ typedef enum { OMCHangInMenuMode, OMCGlobalCalloutMode } OMCOpenMode;
 @property ( nonatomic, retain ) OMFAboutPanelController* aboutPanelController;
 @property ( nonatomic, retain ) OMFPreferencesPanelController* preferencesPanelController;
 
-@property ( nonatomic, assign ) IBOutlet NSMenuItem* _startAtLoginMenuItem;
+@property ( nonatomic, assign ) IBOutlet NSMenuItem* _startAtLoginMenuItem; // Not successful, lost to Sandbox😩
 @property ( nonatomic, assign ) IBOutlet NSMenuItem* _calloutByKeyCombinationMenuItem;
 
 @property ( nonatomic, assign, setter = setOpened: ) BOOL hasOpened;
