@@ -114,19 +114,9 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
     if ( !self.lhsOperand )     self.lhsOperand = [ OMCOperand zero ];
     if ( !self.rhsOperand )     self.rhsOperand = [ OMCOperand zero ];
     if ( !self.resultValue )    self.resultValue = [ OMCOperand zero ];
+    if ( !self.memory )         self.memory = [ OMCOperand zero ];
+
     if ( !self.theOperator )    self.theOperator = [ NSMutableString string ];
-
-    if ( !self.memory )
-//        {
-        self.memory = [ OMCOperand zero ];
-
-//        [ self.memory setCalStyle: self.calStyle ];
-//
-//        if ( self.memory.calStyle == OMCProgrammerStyle )
-//            [ self.memory setCurrentAry: ( OMCAry )[ USER_DEFAULTS integerForKey: OMCDefaultsKeyAry ] ];
-//        else
-//            [ self.memory setCurrentAry: OMCDecimal ];
-//        }
     }
 
 - ( void ) deleteNumberWithLastPressedButton: ( NSButton* )_Button
