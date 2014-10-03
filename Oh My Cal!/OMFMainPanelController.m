@@ -49,6 +49,9 @@
 @synthesize hasOpened = _hasOpened;
 @synthesize currentOpenMode = _currentOpenMode;
 
+@synthesize _startAtLoginMenuItem;
+@synthesize _calloutByKeyCombinationMenuItem;
+
 #pragma mark Initializers & Deallocators
 + ( id ) mainPanelControllerWithDelegate: ( id <OMFMainPanelControllerDelegate> )_Delegate
     {
@@ -75,6 +78,8 @@
     [ self.window setLevel: NSPopUpMenuWindowLevel ];
 
     [ self.backgrondView setArrowX: NSWidth( [ self.window frame ] ) / 2 ];
+
+    [ self._calloutByKeyCombinationMenuItem setState: [ USER_DEFAULTS boolForKey: OMCDefaultsKeyCalloutByKeyCombination ] ];
     }
 
 #pragma mark Panel Handling
@@ -177,6 +182,14 @@
         self.preferencesPanelController = [ OMFPreferencesPanelController preferencesPanelController ];
 
     [ self.preferencesPanelController showWindow: self ];
+    }
+
+- ( IBAction ) changedCalloutByKeyCombination: ( id )_Sender
+    {
+    [ self._calloutByKeyCombinationMenuItem setState: ![ _Sender state ] ];
+
+    [ USER_DEFAULTS setBool: self._calloutByKeyCombinationMenuItem.state
+                     forKey: OMCDefaultsKeyCalloutByKeyCombination ];
     }
 
 @end // OMFMainPanelController

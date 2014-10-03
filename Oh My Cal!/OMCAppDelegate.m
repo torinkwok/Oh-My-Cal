@@ -104,6 +104,7 @@ OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, voi
 
 - ( void ) handlePressedShiftCommandSpaceNotif: ( NSNotification* )_Notif
     {
+    // If the `Callout by ⌘+⇧+Space Bar` menu item has been checked...
     if ( [ USER_DEFAULTS boolForKey: OMCDefaultsKeyCalloutByKeyCombination ] )
         {
         if ( self._mainPanelController.hasOpened )
@@ -192,17 +193,6 @@ OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, voi
         }
     else if ( !_Enabled && ( existingItem != NULL ) )
 		LSSharedFileListItemRemove( loginItems, existingItem );
-    }
-
-#pragma mark IBActions
-- ( IBAction ) changedIsStartsAtLogin: ( id )_Sender
-    {
-    BOOL yesOrNo = ( [ ( NSMenuItem* )_Sender state ] == NSOnState ) ? YES : NO;
-
-    [ self setStartAtLogin: yesOrNo ];
-    [ _Sender setState: ( NSCellStateValue )!yesOrNo ];
-
-    [ USER_DEFAULTS setBool: yesOrNo forKey: OMFDefaultsKeyStartAtLogin ];
     }
 
 @end // OMFAppDelegate

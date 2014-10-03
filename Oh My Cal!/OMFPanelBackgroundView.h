@@ -72,7 +72,6 @@
 @property ( nonatomic, assign ) IBOutlet NSMenuItem* _basicStyleMenuItem;
 @property ( nonatomic, assign ) IBOutlet NSMenuItem* _scientificStyleMenuItem;
 @property ( nonatomic, assign ) IBOutlet NSMenuItem* _programmertyleMenuItem;
-@property ( nonatomic, assign ) IBOutlet NSMenuItem* _startAtLoginMenuItem;
 
 @property ( nonatomic, assign ) CGFloat arrowX;
 

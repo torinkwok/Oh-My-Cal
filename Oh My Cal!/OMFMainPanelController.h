@@ -70,6 +70,9 @@ typedef enum { OMCHangInMenuMode, OMCGlobalCalloutMode } OMCOpenMode;
 @property ( nonatomic, retain ) OMFAboutPanelController* aboutPanelController;
 @property ( nonatomic, retain ) OMFPreferencesPanelController* preferencesPanelController;
 
+@property ( nonatomic, assign ) IBOutlet NSMenuItem* _startAtLoginMenuItem;
+@property ( nonatomic, assign ) IBOutlet NSMenuItem* _calloutByKeyCombinationMenuItem;
+
 @property ( nonatomic, assign, setter = setOpened: ) BOOL hasOpened;
 @property ( nonatomic, assign ) OMCOpenMode currentOpenMode;
 
@@ -84,6 +87,11 @@ typedef enum { OMCHangInMenuMode, OMCGlobalCalloutMode } OMCOpenMode;
 - ( void ) closePanel;
 
 - ( void ) _fuckPanel: ( BOOL )_IsHighlighting;
+
+#pragma mark IBActions
+- ( IBAction ) about: ( id )_Sender;
+- ( IBAction ) showPreferences: ( id )_Sender;
+- ( IBAction ) changedCalloutByKeyCombination: ( id )_Sender;
 
 @end // OMFMainPanelController
 
