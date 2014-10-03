@@ -32,6 +32,7 @@
  ****************************************************************************/
 
 #import <Carbon/Carbon.h>
+#import <ServiceManagement/ServiceManagement.h>
 
 #import "OMCAppDelegate.h"
 #import "OMFStatusItemView.h"
@@ -128,6 +129,22 @@ OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, voi
 
 - ( void ) setStartAtLogin:( BOOL )_Enabled
     {
+    NSString *helperPath = [ [ [ NSBundle mainBundle ] bundlePath ] stringByAppendingPathComponent: @"/Contents/Library/LoginItems/OMCStartHelper.app" ];
+
+    if ( ![ [ NSFileManager defaultManager ] fileExistsAtPath: helperPath ] )
+        return;
+
+    NSURL* helperUrl = [ NSURL fileURLWithPath: helperPath ];
+ 
+    // Registering helper app
+    if ( LSRegisterURL( ( __bridge CFURLRef )helperUrl, _Enabled ) != noErr )
+        NSLog( @"#Error: LSRegisterURL failed" );
+ 
+    // Setting login
+    if ( !SMLoginItemSetEnabled( ( CFStringRef )@"individual.TongGuo.OMCStartHelper", _Enabled ) )
+        NSLog( @"#Error: SMLoginItemSetEnabled failed" );
+
+#if 0
 	LSSharedFileListRef loginItems = LSSharedFileListCreate( kCFAllocatorDefault, kLSSharedFileListSessionLoginItems, /*options*/ NULL );
 
 	NSString* path = [ [ NSBundle mainBundle ] bundlePath ];
@@ -192,6 +209,7 @@ OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, voi
         }
     else if ( !_Enabled && ( existingItem != NULL ) )
 		LSSharedFileListItemRemove( loginItems, existingItem );
+#endif
     }
 
 - ( IBAction ) changedIsStartAtLogin: ( id )_Sender
