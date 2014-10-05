@@ -35,7 +35,6 @@
 #import "OMFStatusItemView.h"
 #import "OMFPanelBackgroundView.h"
 #import "OMFAboutPanelController.h"
-#import "OMFPreferencesPanelController.h"
 
 // OMFMainPanelController class
 @implementation OMFMainPanelController
@@ -44,7 +43,6 @@
 
 @synthesize backgrondView = _backgroundView;
 @synthesize aboutPanelController;
-@synthesize preferencesPanelController;
 
 @synthesize hasOpened = _hasOpened;
 @synthesize currentOpenMode = _currentOpenMode;
@@ -175,14 +173,6 @@
         self.aboutPanelController = [ OMFAboutPanelController aboutPanelController ];
 
     [ self.aboutPanelController showWindow: self ];
-    }
-
-- ( IBAction ) showPreferences: ( id )_Sender
-    {
-    if ( !self.preferencesPanelController )
-        self.preferencesPanelController = [ OMFPreferencesPanelController preferencesPanelController ];
-
-    [ self.preferencesPanelController showWindow: self ];
     }
 
 @end // OMFMainPanelController

@@ -80,8 +80,6 @@
 		83D5D53619ADB8C7004AFD84 /* OMFStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D53319ADB8C7004AFD84 /* OMFStatusItemView.m */; };
 		83D5D53719ADB8C7004AFD84 /* OMFStatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D53519ADB8C7004AFD84 /* OMFStatusBarController.m */; };
 		83D5D53A19ADB8E1004AFD84 /* OMFAboutPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D53819ADB8E1004AFD84 /* OMFAboutPanel.xib */; };
-		83D5D53B19ADB8E1004AFD84 /* OMFPreferencesPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D53919ADB8E1004AFD84 /* OMFPreferencesPanel.xib */; };
-		83D5D54119ADB8FF004AFD84 /* OMFPreferencesPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D53C19ADB8FF004AFD84 /* OMFPreferencesPanelController.m */; };
 		83D5D54219ADB8FF004AFD84 /* OMFAboutPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D53E19ADB8FF004AFD84 /* OMFAboutPanelController.m */; };
 		83D5D54419ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D54319ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m */; };
 		83DD4A1219B1B0B2007F530A /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 83DD4A1119B1B0B2007F530A /* settings.png */; };
@@ -261,12 +259,9 @@
 		83D5D53419ADB8C7004AFD84 /* OMFStatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFStatusBarController.h; path = "Oh My Cal!/OMFStatusBarController.h"; sourceTree = "<group>"; };
 		83D5D53519ADB8C7004AFD84 /* OMFStatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFStatusBarController.m; path = "Oh My Cal!/OMFStatusBarController.m"; sourceTree = "<group>"; };
 		83D5D53819ADB8E1004AFD84 /* OMFAboutPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OMFAboutPanel.xib; path = "Oh My Cal!/OMFAboutPanel.xib"; sourceTree = "<group>"; };
-		83D5D53919ADB8E1004AFD84 /* OMFPreferencesPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OMFPreferencesPanel.xib; path = "Oh My Cal!/OMFPreferencesPanel.xib"; sourceTree = "<group>"; };
-		83D5D53C19ADB8FF004AFD84 /* OMFPreferencesPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFPreferencesPanelController.m; path = "Oh My Cal!/OMFPreferencesPanelController.m"; sourceTree = "<group>"; };
 		83D5D53D19ADB8FF004AFD84 /* OMFAboutPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFAboutPanelController.h; path = "Oh My Cal!/OMFAboutPanelController.h"; sourceTree = "<group>"; };
 		83D5D53E19ADB8FF004AFD84 /* OMFAboutPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFAboutPanelController.m; path = "Oh My Cal!/OMFAboutPanelController.m"; sourceTree = "<group>"; };
 		83D5D53F19ADB8FF004AFD84 /* OMFContentViewOfAboutPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFContentViewOfAboutPanel.h; path = "Oh My Cal!/OMFContentViewOfAboutPanel.h"; sourceTree = "<group>"; };
-		83D5D54019ADB8FF004AFD84 /* OMFPreferencesPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFPreferencesPanelController.h; path = "Oh My Cal!/OMFPreferencesPanelController.h"; sourceTree = "<group>"; };
 		83D5D54319ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFContentViewOfAboutPanel.m; path = "Oh My Cal!/OMFContentViewOfAboutPanel.m"; sourceTree = "<group>"; };
 		83DD4A1119B1B0B2007F530A /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = "Oh My Cal!/Resources/settings.png"; sourceTree = "<group>"; };
 		83DD4A1319B1B11A007F530A /* OMCSettingsBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCSettingsBar.h; path = "Oh My Cal!/OMCSettingsBar.h"; sourceTree = "<group>"; };
@@ -601,8 +596,6 @@
 				83D5D53E19ADB8FF004AFD84 /* OMFAboutPanelController.m */,
 				83D5D53F19ADB8FF004AFD84 /* OMFContentViewOfAboutPanel.h */,
 				83D5D54319ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m */,
-				83D5D54019ADB8FF004AFD84 /* OMFPreferencesPanelController.h */,
-				83D5D53C19ADB8FF004AFD84 /* OMFPreferencesPanelController.m */,
 			);
 			name = "Other Panels";
 			sourceTree = "<group>";
@@ -616,7 +609,6 @@
 				83ED014C19BC97FC004E7F9E /* logo.png */,
 				832A8C8719D914CD005DB2A7 /* pubkey.txt */,
 				83D5D53819ADB8E1004AFD84 /* OMFAboutPanel.xib */,
-				83D5D53919ADB8E1004AFD84 /* OMFPreferencesPanel.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -826,7 +818,6 @@
 				83DD4A1219B1B0B2007F530A /* settings.png in Resources */,
 				83ED014D19BC97FC004E7F9E /* logo.png in Resources */,
 				83D5D4DD19ADB172004AFD84 /* Images.xcassets in Resources */,
-				83D5D53B19ADB8E1004AFD84 /* OMFPreferencesPanel.xib in Resources */,
 				832A8C8119D90BCD005DB2A7 /* twitter.png in Resources */,
 				832A8C8819D914CD005DB2A7 /* pubkey.txt in Resources */,
 				832A8C8219D90BCD005DB2A7 /* email.png in Resources */,
@@ -879,7 +870,6 @@
 				83D5D53719ADB8C7004AFD84 /* OMFStatusBarController.m in Sources */,
 				83099C9F19ADBB2E00DDBF1D /* BGHUDOutlineView.m in Sources */,
 				83099CA119ADBB2E00DDBF1D /* BGHUDProgressIndicator.m in Sources */,
-				83D5D54119ADB8FF004AFD84 /* OMFPreferencesPanelController.m in Sources */,
 				839396FB19AE1D81008D8A3C /* OMCCommon.m in Sources */,
 				83099CB119ADBB2E00DDBF1D /* BGHUDView.m in Sources */,
 				83D5D52D19ADB85A004AFD84 /* OMFPanelBackgroundView.m in Sources */,
