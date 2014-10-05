@@ -14,7 +14,7 @@ Benefit Highlighting:
 * A black berry flavors UI :-)
 
 #### Why Oh My Cal! ?
-You may want to ask: **The Calculator.app in OS X is powerful, why should I use the Oh My Cal! ?**
+You may want to ask: *The Calculator.app in OS X is powerful, why should I use the Oh My Cal! ?*
 
 The Calculator.app in OS X is powerful, but it's not convenient. For me, I usually use many apps in fullscreen mode( Xcode, Evernote, etc.). Whenever I want to calculate some formulas, I have to switch among several apps or screens. Oh, I really could not stand!!! So I wrote Oh My Cal!. In addition to as powerful as the Calculator.app in OS X, it's very convenient to use (Global Callout or Hanging in menu bar).
 
