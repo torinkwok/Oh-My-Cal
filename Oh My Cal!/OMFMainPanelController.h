@@ -33,7 +33,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-typedef enum { OMCHangInMenuMode, OMCGlobalCalloutMode } OMCOpenMode;
+typedef NS_ENUM( short, OMCOpenMode ) { OMCHangInMenuMode, OMCGlobalCalloutMode };
 
 @class OMFStatusItemView;
 @class OMFMainPanelController;
