@@ -36,7 +36,7 @@
 // OMCSettingsBar class
 @interface OMCSettingsBar : NSView
 
-@property ( nonatomic, assign ) IBOutlet NSSegmentedControl* _arySegControl;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSSegmentedControl* _arySegControl;
 
 @end // OMCSettingsBar class
 

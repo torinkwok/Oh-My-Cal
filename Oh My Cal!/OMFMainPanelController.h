@@ -66,12 +66,12 @@ typedef NS_ENUM( short, OMCOpenMode ) { OMCHangInMenuMode, OMCGlobalCalloutMode 
 
 @property ( nonatomic, retain ) id <OMFMainPanelControllerDelegate> delegate;
 
-@property ( nonatomic, assign ) IBOutlet OMFPanelBackgroundView* backgrondView;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMFPanelBackgroundView* backgrondView;
 @property ( nonatomic, retain ) OMFAboutPanelController* aboutPanelController;
 @property ( nonatomic, retain ) OMFPreferencesPanelController* preferencesPanelController;
 
-@property ( nonatomic, assign ) IBOutlet NSMenuItem* _startAtLoginMenuItem; // Not successful, lost to Sandbox😩
-@property ( nonatomic, assign ) IBOutlet NSMenuItem* _calloutByKeyCombinationMenuItem;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSMenuItem* _startAtLoginMenuItem; // Not successful, lost to Sandbox😩
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSMenuItem* _calloutByKeyCombinationMenuItem;
 
 @property ( nonatomic, assign, setter = setOpened: ) BOOL hasOpened;
 @property ( nonatomic, assign ) OMCOpenMode currentOpenMode;

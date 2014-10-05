@@ -40,30 +40,30 @@
 @interface OMCCalWithProgrammerStyle : OMCCal
 
 #pragma mark Buttons with bitwise operators
-@property ( nonatomic, assign ) IBOutlet NSButton* _andOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _orOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _norOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _xorOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _lshOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _rshOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _rolOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _rorOperator;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _andOperator;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _orOperator;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _norOperator;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _xorOperator;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _lshOperator;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _rshOperator;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _rolOperator;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _rorOperator;
 
 #pragma mark Buttons with mathematical operators
-@property ( nonatomic, assign ) IBOutlet NSButton* _modOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _factorialOperator;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _modOperator;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _factorialOperator;
 
 #pragma mark Buttons with operands
-@property ( nonatomic, assign ) IBOutlet NSButton* _doubleZero;
-@property ( nonatomic, assign ) IBOutlet NSButton* _0xA;
-@property ( nonatomic, assign ) IBOutlet NSButton* _0xB;
-@property ( nonatomic, assign ) IBOutlet NSButton* _0xC;
-@property ( nonatomic, assign ) IBOutlet NSButton* _0xD;
-@property ( nonatomic, assign ) IBOutlet NSButton* _0xE;
-@property ( nonatomic, assign ) IBOutlet NSButton* _0xF;
-@property ( nonatomic, assign ) IBOutlet NSButton* _0xFF;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _doubleZero;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _0xA;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _0xB;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _0xC;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _0xD;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _0xE;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _0xF;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _0xFF;
 
-@property ( nonatomic, assign ) IBOutlet OMCProgrammerStyleCalculation* _calculation;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCProgrammerStyleCalculation* _calculation;
 
 #pragma mark IBActions
 - ( IBAction ) aryChanged: ( id )_Sender;

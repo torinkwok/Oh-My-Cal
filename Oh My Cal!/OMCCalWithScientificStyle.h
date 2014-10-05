@@ -39,47 +39,47 @@
 // OMCCalWithScientificStyle class
 @interface OMCCalWithScientificStyle : OMCCalWithBasicStyle
 
-@property ( nonatomic, assign ) IBOutlet NSButton* _shift;
-@property ( nonatomic, assign ) IBOutlet NSButton* _percent;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _shift;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _percent;
 
-@property ( nonatomic, assign ) IBOutlet NSButton* _reciprocal;
-@property ( nonatomic, assign ) IBOutlet NSButton* _square;
-@property ( nonatomic, assign ) IBOutlet NSButton* _cube;
-@property ( nonatomic, assign ) IBOutlet NSButton* _xPower;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _reciprocal;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _square;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _cube;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _xPower;
 
-@property ( nonatomic, assign ) IBOutlet NSButton* _cubeRoot;
-@property ( nonatomic, assign ) IBOutlet NSButton* _xRoot;
-@property ( nonatomic, assign ) IBOutlet NSButton* _e_x;
-@property ( nonatomic, assign ) IBOutlet NSButton* _2_x;
-@property ( nonatomic, assign ) IBOutlet NSButton* _10_x;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _cubeRoot;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _xRoot;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _e_x;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _2_x;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _10_x;
 
-@property ( nonatomic, assign ) IBOutlet NSButton* _factorial;
-@property ( nonatomic, assign ) IBOutlet NSButton* _sqrt;
-@property ( nonatomic, assign ) IBOutlet NSButton* _rad;
-@property ( nonatomic, assign ) IBOutlet NSButton* _log2;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _factorial;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _sqrt;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _rad;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _log2;
 
-@property ( nonatomic, assign ) IBOutlet NSButton* _sin;
-@property ( nonatomic, assign ) IBOutlet NSButton* _cos;
-@property ( nonatomic, assign ) IBOutlet NSButton* _tan;
-@property ( nonatomic, assign ) IBOutlet NSButton* _asin;
-@property ( nonatomic, assign ) IBOutlet NSButton* _acos;
-@property ( nonatomic, assign ) IBOutlet NSButton* _atan;
-@property ( nonatomic, assign ) IBOutlet NSButton* _log10;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _sin;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _cos;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _tan;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _asin;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _acos;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _atan;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _log10;
 
-@property ( nonatomic, assign ) IBOutlet NSButton* _sinh;
-@property ( nonatomic, assign ) IBOutlet NSButton* _cosh;
-@property ( nonatomic, assign ) IBOutlet NSButton* _tanh;
-@property ( nonatomic, assign ) IBOutlet NSButton* _asinh;
-@property ( nonatomic, assign ) IBOutlet NSButton* _acosh;
-@property ( nonatomic, assign ) IBOutlet NSButton* _atanh;
-@property ( nonatomic, assign ) IBOutlet NSButton* _In;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _sinh;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _cosh;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _tanh;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _asinh;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _acosh;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _atanh;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _In;
 
-@property ( nonatomic, assign ) IBOutlet NSButton* _pi;
-@property ( nonatomic, assign ) IBOutlet NSButton* _e;
-@property ( nonatomic, assign ) IBOutlet NSButton* _rand;
-@property ( nonatomic, assign ) IBOutlet NSButton* _EE;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _pi;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _e;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _rand;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _EE;
 
-@property ( nonatomic, assign ) IBOutlet OMCScientificStyleCalculation* _calculation;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCScientificStyleCalculation* _calculation;
 
 @end // OMCCal
 

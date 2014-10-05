@@ -73,17 +73,17 @@ typedef NSRect OMCSpaceBarRect;
     NSFont* _statusFont;
     }
 
-@property ( nonatomic, assign ) IBOutlet OMFPanelBackgroundView* _mainPanelBackgroundView;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMFPanelBackgroundView* _mainPanelBackgroundView;
 
-@property ( nonatomic, assign ) IBOutlet OMCBasicStyleCalculation* _basicStyleCalculation;
-@property ( nonatomic, assign ) IBOutlet OMCScientificStyleCalculation* _scientificStyleCalculation;
-@property ( nonatomic, assign ) IBOutlet OMCProgrammerStyleCalculation* _programmerStyleCalculation;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCBasicStyleCalculation* _basicStyleCalculation;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCScientificStyleCalculation* _scientificStyleCalculation;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCProgrammerStyleCalculation* _programmerStyleCalculation;
 
-@property ( nonatomic, assign ) IBOutlet OMCCalWithBasicStyle* _calWithBasicStyle;
-@property ( nonatomic, assign ) IBOutlet OMCCalWithScientificStyle* _calWithScientificStyle;
-@property ( nonatomic, assign ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCCalWithBasicStyle* _calWithBasicStyle;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCCalWithScientificStyle* _calWithScientificStyle;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
 
-@property ( nonatomic, assign, readonly ) OMCCal* currentCalculator;
+@property ( nonatomic, unsafe_unretained, readonly ) OMCCal* currentCalculator;
 
 @property ( nonatomic, assign, readonly ) OMCSpaceBarRect bottommostSpaceBar;
 @property ( nonatomic, assign, readonly ) OMCSpaceBarRect secondSpaceBar;

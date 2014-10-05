@@ -36,9 +36,9 @@
 // OMFPreferecesPanelController class
 @interface OMFPreferencesPanelController : NSWindowController
 
-@property ( assign ) IBOutlet NSSegmentedControl* _temperatureUnitSegControl;
-@property ( assign ) IBOutlet NSSegmentedControl* _startAtLoginSegControl;
-@property ( assign ) IBOutlet NSSegmentedControl* _dashboardAccuracy;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSSegmentedControl* _temperatureUnitSegControl;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSSegmentedControl* _startAtLoginSegControl;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSSegmentedControl* _dashboardAccuracy;
 
 + ( id ) preferencesPanelController;
 

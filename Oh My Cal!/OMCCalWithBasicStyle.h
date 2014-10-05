@@ -37,8 +37,8 @@
 // OMCCalWithBasicStyle class
 @interface OMCCalWithBasicStyle : OMCCal
 
-@property ( nonatomic, assign ) IBOutlet NSButton* _positiveAndNegative;
-@property ( nonatomic, assign ) IBOutlet NSButton* _floatPoint;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _positiveAndNegative;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _floatPoint;
 
 @end // OMCCalWithBasicStyle
 

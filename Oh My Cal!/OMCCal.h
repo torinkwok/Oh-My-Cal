@@ -35,33 +35,33 @@
 
 @interface OMCCal : NSView
 
-@property ( nonatomic, assign ) IBOutlet NSButton* _memoryClear;
-@property ( nonatomic, assign ) IBOutlet NSButton* _memoryPlus;
-@property ( nonatomic, assign ) IBOutlet NSButton* _memorySub;
-@property ( nonatomic, assign ) IBOutlet NSButton* _memoryRead;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _memoryClear;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _memoryPlus;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _memorySub;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _memoryRead;
 
-@property ( nonatomic, assign ) IBOutlet NSButton* _one;
-@property ( nonatomic, assign ) IBOutlet NSButton* _two;
-@property ( nonatomic, assign ) IBOutlet NSButton* _three;
-@property ( nonatomic, assign ) IBOutlet NSButton* _four;
-@property ( nonatomic, assign ) IBOutlet NSButton* _five;
-@property ( nonatomic, assign ) IBOutlet NSButton* _six;
-@property ( nonatomic, assign ) IBOutlet NSButton* _seven;
-@property ( nonatomic, assign ) IBOutlet NSButton* _eight;
-@property ( nonatomic, assign ) IBOutlet NSButton* _nine;
-@property ( nonatomic, assign ) IBOutlet NSButton* _zero;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _one;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _two;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _three;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _four;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _five;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _six;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _seven;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _eight;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _nine;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _zero;
 
-@property ( nonatomic, assign ) IBOutlet NSButton* _additionOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _subtractionOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _multiplicationOperator;
-@property ( nonatomic, assign ) IBOutlet NSButton* _divisionOperator;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _additionOperator;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _subtractionOperator;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _multiplicationOperator;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _divisionOperator;
 
 #pragma mark Control Button
-@property ( nonatomic, assign ) IBOutlet NSButton* _del;
-@property ( nonatomic, assign ) IBOutlet NSButton* _clearAll;
-@property ( nonatomic, assign ) IBOutlet NSButton* _clear;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _del;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _clearAll;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _clear;
 
-@property ( nonatomic, assign ) IBOutlet NSButton* _enterOperator;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSButton* _enterOperator;
 
 @end
 

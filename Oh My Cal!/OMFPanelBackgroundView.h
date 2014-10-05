@@ -53,25 +53,25 @@
     CGFloat _arrowX;
     }
 
-@property ( nonatomic, assign ) IBOutlet OMFMainPanelController* _mainPanelController;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMFMainPanelController* _mainPanelController;
 
 @property ( nonatomic, assign ) OMCCalStyle _currentCalStyle;
-@property ( nonatomic, assign ) IBOutlet OMCLCDScreen* _LCDScreen;
-@property ( nonatomic, assign ) IBOutlet OMCSettingsBar* _settingsBar;
-@property ( nonatomic, assign ) IBOutlet OMCBinaryOperationBox* _binaryOperationBox;
-    @property ( nonatomic, assign ) IBOutlet OMCBinaryOperationPanel* _binaryOperationPanel;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCLCDScreen* _LCDScreen;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCSettingsBar* _settingsBar;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCBinaryOperationBox* _binaryOperationBox;
+    @property ( nonatomic, unsafe_unretained ) IBOutlet OMCBinaryOperationPanel* _binaryOperationPanel;
 
-@property ( nonatomic, assign, readonly ) OMCCalculation* currentCalculation;
+@property ( nonatomic, unsafe_unretained, readonly ) OMCCalculation* currentCalculation;
 
-@property ( nonatomic, assign ) IBOutlet OMCCalWithBasicStyle* _calWithBasicStyle;
-@property ( nonatomic, assign ) IBOutlet OMCCalWithScientificStyle* _calWithScientificStyle;
-@property ( nonatomic, assign ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCCalWithBasicStyle* _calWithBasicStyle;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCCalWithScientificStyle* _calWithScientificStyle;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCCalWithProgrammerStyle* _calWithProgrammerStyle;
 
-@property ( nonatomic, assign, readonly ) OMCCal* currentCalculator;
+@property ( nonatomic, unsafe_unretained, readonly ) OMCCal* currentCalculator;
 
-@property ( nonatomic, assign ) IBOutlet NSMenuItem* _basicStyleMenuItem;
-@property ( nonatomic, assign ) IBOutlet NSMenuItem* _scientificStyleMenuItem;
-@property ( nonatomic, assign ) IBOutlet NSMenuItem* _programmertyleMenuItem;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSMenuItem* _basicStyleMenuItem;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSMenuItem* _scientificStyleMenuItem;
+@property ( nonatomic, unsafe_unretained ) IBOutlet NSMenuItem* _programmertyleMenuItem;
 
 @property ( nonatomic, assign ) CGFloat arrowX;
 

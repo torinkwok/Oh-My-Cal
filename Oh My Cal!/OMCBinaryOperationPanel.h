@@ -59,7 +59,7 @@ NSString extern* const OMCBinaryStringDidChanged;
     NSSize          _anchorSize;
     }
 
-@property ( nonatomic, assign ) IBOutlet OMCProgrammerStyleCalculation* _calculation;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCProgrammerStyleCalculation* _calculation;
 
 @property ( nonatomic, assign ) NSUInteger currentResultVal;
 @property ( nonatomic, copy ) NSString* binaryInString;

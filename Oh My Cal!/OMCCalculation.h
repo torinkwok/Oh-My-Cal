@@ -75,7 +75,7 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
     NSMutableString* _theOperator;
     }
 
-@property ( nonatomic, assign ) IBOutlet OMCBinaryOperationPanel* _binaryOperationPanel;
+@property ( nonatomic, unsafe_unretained ) IBOutlet OMCBinaryOperationPanel* _binaryOperationPanel;
 
 @property ( nonatomic, assign ) OMCTypingState typingState;
 
