@@ -37,7 +37,7 @@
 
 - ( void ) applicationDidFinishLaunching: ( NSNotification* )_Notif
     {
-    NSString *appPath = [[NSBundle mainBundle] bundlePath];
+    NSString *appPath = [ [ NSBundle mainBundle ] bundlePath ];
     appPath = [ appPath stringByReplacingOccurrencesOfString: @"/Contents/Library/LoginItems/OMCStartHelper.app" withString: @"" ];
     appPath = [ appPath stringByAppendingPathComponent: @"/Contents/MacOS/Oh My Cal!" ];
 
