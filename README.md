@@ -13,8 +13,15 @@ Benefit Highlighting:
 
 * A black berry flavors UI :-)
 
-#### Screenshots
-![globalcallout-programmer](http://i.imgbox.com/VxJChC1z.png)
+![hangin-programmer](http://i.imgbox.com/S229p48K.png)
+
+![globalcallout-programmer](http://i.imgbox.com/gpiJbG11.png)
+
+![hangin-scientific](http://i.imgbox.com/ZavWq8eF.png)
+
+![globalcallout-scientific](http://i.imgbox.com/Zb10sKyC.png)
+
+![hangin-basic](http://i.imgbox.com/dTMWQKlW.png)
 
 #### Why Oh My Cal! ?
 You may want to ask: *The Calculator.app in OS X is powerful, why should I use the Oh My Cal! ?*
