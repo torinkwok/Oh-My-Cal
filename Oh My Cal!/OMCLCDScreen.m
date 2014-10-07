@@ -687,34 +687,47 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     [ super keyDown: _Event ];
     }
 
-#pragma mark Accessors
-- ( OMCTypingState ) typingState
+#pragma mark Dynamically Synthesize the Accessors
+OMCTypingState _typingStateIMP( id self, SEL _cmd )
     {
-    return self.currentCalculation.typingState;
+    return ( ( OMCLCDScreen* )self ).currentCalculation.typingState;
     }
 
-- ( OMCAry ) currentAry
+OMCAry _currentAryIMP( id self, SEL _cmd )
     {
-    return self.currentCalculation.currentAry;
+    return ( ( OMCLCDScreen* )self ).currentCalculation.currentAry;
     }
 
-- ( OMCCalculation* ) currentCalculation
+OMCCalculation* _currentCalculationIMP( id self, SEL _cmd )
     {
-    OMCCalStyle defaultCalStyle = [ self._mainPanelBackgroundView _currentCalStyle ];
+    OMCCalStyle defaultCalStyle = [ ( ( OMCLCDScreen* )self )._mainPanelBackgroundView _currentCalStyle ];
 
-    if ( defaultCalStyle == OMCBasicStyle )
-        return self._basicStyleCalculation;
-    else if ( defaultCalStyle == OMCScientificStyle )
-        return self._scientificStyleCalculation;
-    else if ( defaultCalStyle == OMCProgrammerStyle )
-        return self._programmerStyleCalculation;
+    if ( defaultCalStyle == OMCBasicStyle )             return ( ( OMCLCDScreen* )self )._basicStyleCalculation;
+    else if ( defaultCalStyle == OMCScientificStyle )   return ( ( OMCLCDScreen* )self )._scientificStyleCalculation;
+    else if ( defaultCalStyle == OMCProgrammerStyle )   return ( ( OMCLCDScreen* )self )._programmerStyleCalculation;
 
     return nil;
     }
 
-- ( OMCCal* ) currentCalculator
+OMCCal* _currentCalculatorIMP( id self, SEL _cmd )
     {
-    return self._mainPanelBackgroundView.currentCalculator;
+    return ( ( OMCLCDScreen* )self )._mainPanelBackgroundView.currentCalculator;
+    }
+
++ ( BOOL ) resolveInstanceMethod: ( SEL )_Sel
+    {
+    Class class = [ self class ];
+
+    if ( _Sel == @selector( typingState ) )
+        class_addMethod( class, _Sel, ( IMP )_typingStateIMP, "s@:" );
+    else if ( _Sel == @selector( currentAry ) )
+        class_addMethod( class, _Sel, ( IMP )_currentAryIMP, "s@:" );
+    else if ( _Sel == @selector( currentCalculation ) )
+        class_addMethod( class, _Sel, ( IMP )_currentCalculationIMP, "@@:" );
+    else if ( _Sel == @selector( currentCalculator ) )
+        class_addMethod( class, _Sel, ( IMP )_currentCalculatorIMP, "@@:" );
+
+    return [ super resolveInstanceMethod: _Sel ];
     }
 
 @end // OMCLCDScreen class
