@@ -688,6 +688,40 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     }
 
 #pragma mark Dynamically Synthesize the Accessors
++ ( BOOL ) resolveInstanceMethod: ( SEL )_Sel
+    {
+    Class class = [ self class ];
+
+    IMP implementation = nil;
+    char* types = nil;
+    if ( _Sel == @selector( typingState ) )
+        {
+        implementation = ( IMP )_typingStateIMP;
+        types = "s@:";
+        }
+    else if ( _Sel == @selector( currentAry ) )
+        {
+        implementation = ( IMP )_currentAryIMP;
+        types = "s@:";
+        }
+    else if ( _Sel == @selector( currentCalculation ) )
+        {
+        implementation = ( IMP )_currentCalculationIMP;
+        types = "@@:";
+        }
+    else if ( _Sel == @selector( currentCalculator ) )
+        {
+        implementation = ( IMP )_currentCalculatorIMP;
+        types = "@@:";
+        }
+
+    if ( ( implementation && types )
+            && class_addMethod( class, _Sel, implementation, types ) )
+        return YES;
+
+    return [ super resolveInstanceMethod: _Sel ];
+    }
+
 OMCTypingState _typingStateIMP( id self, SEL _cmd )
     {
     return ( ( OMCLCDScreen* )self ).currentCalculation.typingState;
@@ -712,22 +746,6 @@ OMCCalculation* _currentCalculationIMP( id self, SEL _cmd )
 OMCCal* _currentCalculatorIMP( id self, SEL _cmd )
     {
     return ( ( OMCLCDScreen* )self )._mainPanelBackgroundView.currentCalculator;
-    }
-
-+ ( BOOL ) resolveInstanceMethod: ( SEL )_Sel
-    {
-    Class class = [ self class ];
-
-    if ( _Sel == @selector( typingState ) )
-        class_addMethod( class, _Sel, ( IMP )_typingStateIMP, "s@:" );
-    else if ( _Sel == @selector( currentAry ) )
-        class_addMethod( class, _Sel, ( IMP )_currentAryIMP, "s@:" );
-    else if ( _Sel == @selector( currentCalculation ) )
-        class_addMethod( class, _Sel, ( IMP )_currentCalculationIMP, "@@:" );
-    else if ( _Sel == @selector( currentCalculator ) )
-        class_addMethod( class, _Sel, ( IMP )_currentCalculatorIMP, "@@:" );
-
-    return [ super resolveInstanceMethod: _Sel ];
     }
 
 @end // OMCLCDScreen class

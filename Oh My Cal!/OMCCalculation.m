@@ -633,8 +633,17 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
     {
     Class class = [ self class ];
 
+    IMP implementation = nil;
+    char* types = nil;
     if ( _Sel == @selector( calStyle ) )
-        class_addMethod( class, _Sel, ( IMP )_calStyleIMP, "B@:" );
+        {
+        implementation = ( IMP )_calStyleIMP;
+        types = "B@:";
+        }
+
+    if ( ( implementation && types )
+            && class_addMethod( class, _Sel, implementation, types ) )
+        return YES;
 
     return [ super resolveInstanceMethod: _Sel ];
     }
