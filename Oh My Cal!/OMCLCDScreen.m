@@ -92,8 +92,8 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
 @synthesize storageFormulasFont = _storageFormulasFont;
 @synthesize statusFont = _statusFont;
 
-@synthesize typingState;
-@synthesize currentAry;
+@dynamic typingState;
+@dynamic currentAry;
 
 @synthesize currentCalculation;
 
@@ -421,10 +421,10 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
                                                    , NSForegroundColorAttributeName : self.operatorsColor
                                                    };
 
-    [ self _drawPlaceholderForTypingState: self.currentCalculation.typingState
+    [ self _drawPlaceholderForTypingState: self.typingState
                            withAttributes: drawingAttributesForOperands ];
 
-    switch ( self.currentCalculation.typingState )
+    switch ( self.typingState )
         {
     case OMCWaitAllOperands:
             {

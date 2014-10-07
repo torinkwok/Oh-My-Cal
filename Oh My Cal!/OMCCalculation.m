@@ -50,7 +50,7 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
 @synthesize typingState = _typingState;
 
 @synthesize currentAry = _currentAry;
-@synthesize calStyle;
+@dynamic calStyle;
 @synthesize trigonometricMode = _trigonometricMode;
 @synthesize hasMemory = _hasMemory;
 @synthesize isInShift = _isInShift;
@@ -381,6 +381,7 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
 // All of the buttons on the keyboard has been connected to this action
 - ( IBAction ) calculate: ( id )_Sender
     {
+    NSLog( @"self.calStyle: %d", self.calStyle );
     NSButton* pressedButton = ( NSButton* )_Sender;
     self.lastTypedButtonType = ( OMCButtonType )[ pressedButton tag ];
     self.lastTypedButton = _Sender;
