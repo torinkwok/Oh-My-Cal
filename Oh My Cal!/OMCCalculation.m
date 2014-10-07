@@ -579,20 +579,6 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
     [ self.theOperator clear ];
     }
 
-- ( OMCCalStyle ) calStyle
-    {
-    OMCCalStyle currentCalStyle = OMCBasicStyle;
-
-    if ( [ self class ] == [ OMCBasicStyleCalculation class ] )
-        currentCalStyle = OMCBasicStyle;
-    else if ( [ self class ] == [ OMCScientificStyleCalculation class ] )
-        currentCalStyle = OMCScientificStyle;
-    else if ( [ self class ] == [ OMCProgrammerStyleCalculation class ] )
-        currentCalStyle = OMCProgrammerStyle;
-
-    return currentCalStyle;
-    }
-
 - ( void ) setCurrentAry: ( OMCAry )_Ary
     {
     if ( self->_currentAry != _Ary
@@ -640,6 +626,31 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
     default:
         return YES;
         }
+    }
+
+#pragma mark Dynamically Synthesize the Accessors
++ ( BOOL ) resolveInstanceMethod: ( SEL )_Sel
+    {
+    Class class = [ self class ];
+
+    if ( _Sel == @selector( calStyle ) )
+        class_addMethod( class, _Sel, ( IMP )_calStyleIMP, "B@:" );
+
+    return [ super resolveInstanceMethod: _Sel ];
+    }
+
+OMCCalStyle _calStyleIMP( id self, SEL _cmd )
+    {
+    OMCCalStyle currentCalStyle = OMCBasicStyle;
+
+    if ( [ self class ] == [ OMCBasicStyleCalculation class ] )
+        currentCalStyle = OMCBasicStyle;
+    else if ( [ self class ] == [ OMCScientificStyleCalculation class ] )
+        currentCalStyle = OMCScientificStyle;
+    else if ( [ self class ] == [ OMCProgrammerStyleCalculation class ] )
+        currentCalStyle = OMCProgrammerStyle;
+
+    return currentCalStyle;
     }
 
 #pragma mark Conforms <OMCBinaryAndDecimalConversion> protocol
