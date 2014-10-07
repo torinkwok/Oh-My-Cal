@@ -69,7 +69,7 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
 @synthesize _calWithScientificStyle;
 @synthesize _calWithProgrammerStyle;
 
-@synthesize currentCalculator;
+@dynamic currentCalculator;
 
 @synthesize auxiliaryLinePath = _auxiliaryLinePath;
 @synthesize gridPath = _gridPath;
@@ -95,7 +95,7 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
 @dynamic typingState;
 @dynamic currentAry;
 
-@synthesize currentCalculation;
+@dynamic currentCalculation;
 
 #pragma mark Overrides
 - ( BOOL ) canBecomeKeyView
