@@ -652,11 +652,11 @@ OMCCalStyle _calStyleIMP( id self, SEL _cmd )
     {
     OMCCalStyle currentCalStyle = OMCBasicStyle;
 
-    if ( [ self class ] == [ OMCBasicStyleCalculation class ] )
+    if ( [ self isMemberOfClass: [ OMCBasicStyleCalculation class ] ] )
         currentCalStyle = OMCBasicStyle;
-    else if ( [ self class ] == [ OMCScientificStyleCalculation class ] )
+    else if ( [ self isMemberOfClass: [ OMCScientificStyleCalculation class ] ] )
         currentCalStyle = OMCScientificStyle;
-    else if ( [ self class ] == [ OMCProgrammerStyleCalculation class ] )
+    else if ( [ self isMemberOfClass: [ OMCProgrammerStyleCalculation class ] ] )
         currentCalStyle = OMCProgrammerStyle;
 
     return currentCalStyle;
