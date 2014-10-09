@@ -69,7 +69,7 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
 @synthesize _calWithScientificStyle;
 @synthesize _calWithProgrammerStyle;
 
-@synthesize currentCalculator;
+@dynamic currentCalculator;
 
 @synthesize auxiliaryLinePath = _auxiliaryLinePath;
 @synthesize gridPath = _gridPath;
@@ -92,10 +92,10 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
 @synthesize storageFormulasFont = _storageFormulasFont;
 @synthesize statusFont = _statusFont;
 
-@synthesize typingState;
-@synthesize currentAry;
+@dynamic typingState;
+@dynamic currentAry;
 
-@synthesize currentCalculation;
+@dynamic currentCalculation;
 
 #pragma mark Overrides
 - ( BOOL ) canBecomeKeyView
@@ -421,10 +421,10 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
                                                    , NSForegroundColorAttributeName : self.operatorsColor
                                                    };
 
-    [ self _drawPlaceholderForTypingState: self.currentCalculation.typingState
+    [ self _drawPlaceholderForTypingState: self.typingState
                            withAttributes: drawingAttributesForOperands ];
 
-    switch ( self.currentCalculation.typingState )
+    switch ( self.typingState )
         {
     case OMCWaitAllOperands:
             {
@@ -687,34 +687,65 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     [ super keyDown: _Event ];
     }
 
-#pragma mark Accessors
-- ( OMCTypingState ) typingState
+#pragma mark Dynamically Synthesize the Accessors
++ ( BOOL ) resolveInstanceMethod: ( SEL )_Sel
     {
-    return self.currentCalculation.typingState;
+    Class class = [ self class ];
+
+    IMP implementation = nil;
+    char* types = nil;
+    if ( _Sel == @selector( typingState ) )
+        {
+        implementation = ( IMP )_typingStateIMP;
+        types = "s@:";
+        }
+    else if ( _Sel == @selector( currentAry ) )
+        {
+        implementation = ( IMP )_currentAryIMP;
+        types = "s@:";
+        }
+    else if ( _Sel == @selector( currentCalculation ) )
+        {
+        implementation = ( IMP )_currentCalculationIMP;
+        types = "@@:";
+        }
+    else if ( _Sel == @selector( currentCalculator ) )
+        {
+        implementation = ( IMP )_currentCalculatorIMP;
+        types = "@@:";
+        }
+
+    if ( ( implementation && types )
+            && class_addMethod( class, _Sel, implementation, types ) )
+        return YES;
+
+    return [ super resolveInstanceMethod: _Sel ];
     }
 
-- ( OMCAry ) currentAry
+OMCTypingState _typingStateIMP( id self, SEL _cmd )
     {
-    return self.currentCalculation.currentAry;
+    return ( ( OMCLCDScreen* )self ).currentCalculation.typingState;
     }
 
-- ( OMCCalculation* ) currentCalculation
+OMCAry _currentAryIMP( id self, SEL _cmd )
     {
-    OMCCalStyle defaultCalStyle = [ self._mainPanelBackgroundView _currentCalStyle ];
+    return ( ( OMCLCDScreen* )self ).currentCalculation.currentAry;
+    }
 
-    if ( defaultCalStyle == OMCBasicStyle )
-        return self._basicStyleCalculation;
-    else if ( defaultCalStyle == OMCScientificStyle )
-        return self._scientificStyleCalculation;
-    else if ( defaultCalStyle == OMCProgrammerStyle )
-        return self._programmerStyleCalculation;
+OMCCalculation* _currentCalculationIMP( id self, SEL _cmd )
+    {
+    OMCCalStyle defaultCalStyle = [ ( ( OMCLCDScreen* )self )._mainPanelBackgroundView _currentCalStyle ];
+
+    if ( defaultCalStyle == OMCBasicStyle )             return ( ( OMCLCDScreen* )self )._basicStyleCalculation;
+    else if ( defaultCalStyle == OMCScientificStyle )   return ( ( OMCLCDScreen* )self )._scientificStyleCalculation;
+    else if ( defaultCalStyle == OMCProgrammerStyle )   return ( ( OMCLCDScreen* )self )._programmerStyleCalculation;
 
     return nil;
     }
 
-- ( OMCCal* ) currentCalculator
+OMCCal* _currentCalculatorIMP( id self, SEL _cmd )
     {
-    return self._mainPanelBackgroundView.currentCalculator;
+    return ( ( OMCLCDScreen* )self )._mainPanelBackgroundView.currentCalculator;
     }
 
 @end // OMCLCDScreen class

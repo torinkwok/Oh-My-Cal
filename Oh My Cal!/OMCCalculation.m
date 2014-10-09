@@ -50,7 +50,7 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
 @synthesize typingState = _typingState;
 
 @synthesize currentAry = _currentAry;
-@synthesize calStyle;
+@dynamic calStyle;
 @synthesize trigonometricMode = _trigonometricMode;
 @synthesize hasMemory = _hasMemory;
 @synthesize isInShift = _isInShift;
@@ -579,20 +579,6 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
     [ self.theOperator clear ];
     }
 
-- ( OMCCalStyle ) calStyle
-    {
-    OMCCalStyle currentCalStyle = OMCBasicStyle;
-
-    if ( [ self class ] == [ OMCBasicStyleCalculation class ] )
-        currentCalStyle = OMCBasicStyle;
-    else if ( [ self class ] == [ OMCScientificStyleCalculation class ] )
-        currentCalStyle = OMCScientificStyle;
-    else if ( [ self class ] == [ OMCProgrammerStyleCalculation class ] )
-        currentCalStyle = OMCProgrammerStyle;
-
-    return currentCalStyle;
-    }
-
 - ( void ) setCurrentAry: ( OMCAry )_Ary
     {
     if ( self->_currentAry != _Ary
@@ -640,6 +626,40 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
     default:
         return YES;
         }
+    }
+
+#pragma mark Dynamically Synthesize the Accessors
++ ( BOOL ) resolveInstanceMethod: ( SEL )_Sel
+    {
+    Class class = [ self class ];
+
+    IMP implementation = nil;
+    char* types = nil;
+    if ( _Sel == @selector( calStyle ) )
+        {
+        implementation = ( IMP )_calStyleIMP;
+        types = "B@:";
+        }
+
+    if ( ( implementation && types )
+            && class_addMethod( class, _Sel, implementation, types ) )
+        return YES;
+
+    return [ super resolveInstanceMethod: _Sel ];
+    }
+
+OMCCalStyle _calStyleIMP( id self, SEL _cmd )
+    {
+    OMCCalStyle currentCalStyle = OMCBasicStyle;
+
+    if ( [ self isMemberOfClass: [ OMCBasicStyleCalculation class ] ] )
+        currentCalStyle = OMCBasicStyle;
+    else if ( [ self isMemberOfClass: [ OMCScientificStyleCalculation class ] ] )
+        currentCalStyle = OMCScientificStyle;
+    else if ( [ self isMemberOfClass: [ OMCProgrammerStyleCalculation class ] ] )
+        currentCalStyle = OMCProgrammerStyle;
+
+    return currentCalStyle;
     }
 
 #pragma mark Conforms <OMCBinaryAndDecimalConversion> protocol

@@ -117,6 +117,7 @@ typedef NS_ENUM( short, OMCAry ) { OMCOctal, OMCDecimal, OMCHex };
 typedef NS_ENUM( short, OMCTrigonometricMode ) { OMCDegreeMode, OMCRadianMode };
 typedef NS_ENUM( short, OMCTypingState ) { OMCWaitAllOperands, OMCWaitRhsOperand, OMCFinishedTyping };
 
+#import <objc/runtime.h>
 #import "NSString+OMCString.h"
 #import "NSMutableString+OMCMutableString.h"
 

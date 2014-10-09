@@ -47,16 +47,19 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 @synthesize decimalNumber = _decimalNumber;
 @synthesize numericString = _numericString;
 
-@synthesize inOctal;
-@synthesize inDecimal;
-@synthesize inHex;
+@dynamic inOctal;
+@dynamic inDecimal;
+@dynamic inHex;
 
-@synthesize unsignedInteger = _unsignedInteger;
+@dynamic unsignedInteger;
 
 @synthesize calStyle = _calStyle;
 @synthesize currentAry = _currentAry;
+@dynamic calStyleInString;
+@dynamic currentAryInString;
 
 @synthesize isInMemory = _isInMemory;
+@dynamic decimalPlaces;
 
 @synthesize isWaitingForFloatNumber = _isWaitingForFloatNumber;
 
@@ -70,12 +73,37 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return [ self _numericStringInAry: self.currentAry ];
     }
 
+- ( NSString* ) debugDescription
+    {
+    return [ NSString stringWithFormat: @"<%@: %p \"%@\">"
+                                      , [ self class ]
+                                      , self
+                                      , @{ @"Decimal Number" : self.decimalNumber
+                                         , @"Numeric String" : self.numericString
+                                         , @"Description" : self.description
+                                         , @"Unsigned Integer" : @( self.unsignedInteger )
+                                         , @"Current Cal Style" : self.calStyleInString
+                                         , @"Current Ary" : self.currentAryInString
+                                         , @"Is in Memory" : self.isInMemory ? @"YES" : @"NO"
+                                         , @"Decimal Places" : @( self.decimalPlaces )
+                                         , @"Exception Carried" : self.exceptionCarried
+                                         , @"Decimal Number Handler" : self.decimalNumberHandler
+                                         } ];
+    }
+
 - ( id ) copyWithZone: ( NSZone* )_Zone
     {
     id newOperand = [ [ self class ] operandWithDecimalNumber: [ self.decimalNumber copy ]
                                                         inAry: self.currentAry
                                                      calStyle: self.calStyle ];
     return newOperand;
+    }
+
+- ( id ) init
+    {
+    @throw [ NSException exceptionWithName: NSInternalInconsistencyException
+                                    reason: @"Must use factory class methods instead."
+                                  userInfo: nil ];
     }
 
 #pragma mark Initializers & Deallocators
@@ -518,39 +546,6 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return [ self.decimalNumber compare: _Rhs.decimalNumber ];
     }
 
-#pragma mark Accessors
-- ( NSString* ) inOctal
-    {
-    return [ NSString stringWithFormat: @"%lo", [ self.decimalNumber unsignedIntegerValue ] ];
-    }
-
-- ( NSString* ) inDecimal
-    {
-    NSString* decimalForm = nil;
-
-    switch ( self.calStyle )
-        {
-    case OMCBasicStyle:
-    case OMCScientificStyle:
-            {
-            decimalForm = [ NSString stringWithFormat: @"%@", [ self.decimalNumber description ] ];
-            } break;
-
-    case OMCProgrammerStyle:
-            {
-            decimalForm = [ NSString stringWithFormat: @"%lu", [ self.decimalNumber unsignedIntegerValue ] ];
-            } break;
-        }
-
-    return decimalForm;
-    }
-
-- ( NSString* ) inHex
-    {
-    NSString* hexValueInUppercase = [ NSString stringWithFormat: @"%lx", [ self.decimalNumber unsignedIntegerValue ] ].uppercaseString;
-    return [ NSString stringWithFormat: @"0x%@", hexValueInUppercase ];
-    }
-
 #pragma mark Degit Operations
 - ( void ) appendDigit: ( NSInteger )_Digit
                  count: ( NSInteger )_Count
@@ -729,7 +724,6 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
         return @"DivByZero";
 
     NSString* numericString = nil;
-
     if ( _Ary == OMCDecimal )           numericString = [ self inDecimal ];
         else if ( _Ary == OMCOctal )    numericString = [ self inOctal ];
         else if ( _Ary == OMCHex )      numericString = [ self inHex ];
@@ -738,6 +732,38 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     }
 
 #pragma mark Accessors
+- ( NSString* ) inOctal
+    {
+    return [ NSString stringWithFormat: @"%lo", [ self.decimalNumber unsignedIntegerValue ] ];
+    }
+
+- ( NSString* ) inDecimal
+    {
+    NSString* decimalForm = nil;
+
+    switch ( self.calStyle )
+        {
+    case OMCBasicStyle:
+    case OMCScientificStyle:
+            {
+            decimalForm = [ NSString stringWithFormat: @"%@", [ self.decimalNumber description ] ];
+            } break;
+
+    case OMCProgrammerStyle:
+            {
+            decimalForm = [ NSString stringWithFormat: @"%lu", [ self.decimalNumber unsignedIntegerValue ] ];
+            } break;
+        }
+
+    return decimalForm;
+    }
+
+- ( NSString* ) inHex
+    {
+    NSString* hexValueInUppercase = [ NSString stringWithFormat: @"%lx", [ self.decimalNumber unsignedIntegerValue ] ].uppercaseString;
+    return [ NSString stringWithFormat: @"0x%@", hexValueInUppercase ];
+    }
+
 - ( void ) setCurrentAry: ( OMCAry )_Ary
     {
     if ( self->_currentAry != _Ary )
@@ -755,6 +781,32 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 - ( int ) decimalPlaces
     {
     return abs( [ [ self decimalNumber ] decimalValue ]._exponent );
+    }
+
+- ( NSString* ) calStyleInString
+    {
+    NSString* string = nil;
+    switch ( self.calStyle )
+        {
+    case OMCBasicStyle:         string = @"OMCCalStyle";          break;
+    case OMCScientificStyle:    string = @"OMCScientificStyle";   break;
+    case OMCProgrammerStyle:    string = @"OMCProgrammerStyle";   break;
+        }
+
+    return string;
+    }
+
+- ( NSString* ) currentAryInString
+    {
+    NSString* string = nil;
+    switch ( self.currentAry )
+        {
+    case OMCOctal:      string = @"OMCOctal";   break;
+    case OMCDecimal:    string = @"OMCDecimal"; break;
+    case OMCHex:        string = @"OMCHex";     break;
+        }
+
+    return string;
     }
 
 - ( NSUInteger ) unsignedInteger
