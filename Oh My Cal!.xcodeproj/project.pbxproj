@@ -1054,7 +1054,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Oh My Cal!/Oh My Cal!.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Oh My Cal!/Oh My Cal!-Prefix.pch";
 				INFOPLIST_FILE = "Oh My Cal!/Oh My Cal!-Info.plist";
