@@ -53,16 +53,8 @@
 		839396FB19AE1D81008D8A3C /* OMCCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 839396FA19AE1D81008D8A3C /* OMCCommon.m */; };
 		83A9BE2419DE448B001511C9 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83A9BE2319DE448B001511C9 /* ServiceManagement.framework */; };
 		83A9BE2A19DE4563001511C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4C419ADB172004AFD84 /* Cocoa.framework */; };
-		83A9BE3019DE4563001511C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83A9BE2E19DE4563001511C9 /* InfoPlist.strings */; };
-		83A9BE3219DE4563001511C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A9BE3119DE4563001511C9 /* main.m */; };
-		83A9BE3619DE4563001511C9 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 83A9BE3419DE4563001511C9 /* Credits.rtf */; };
-		83A9BE3919DE4563001511C9 /* OMCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A9BE3819DE4563001511C9 /* OMCAppDelegate.m */; };
-		83A9BE3E19DE4563001511C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83A9BE3D19DE4563001511C9 /* Images.xcassets */; };
 		83A9BE4419DE4563001511C9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4E319ADB172004AFD84 /* XCTest.framework */; };
 		83A9BE4519DE4563001511C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4C419ADB172004AFD84 /* Cocoa.framework */; };
-		83A9BE4D19DE4563001511C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83A9BE4B19DE4563001511C9 /* InfoPlist.strings */; };
-		83A9BE4F19DE4563001511C9 /* OMCStartHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A9BE4E19DE4563001511C9 /* OMCStartHelperTests.m */; };
-		83A9BE5719DE4903001511C9 /* OMCStartHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 83A9BE2919DE4563001511C9 /* OMCStartHelper.app */; };
 		83D5D4C519ADB172004AFD84 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4C419ADB172004AFD84 /* Cocoa.framework */; };
 		83D5D4CF19ADB172004AFD84 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D4CD19ADB172004AFD84 /* InfoPlist.strings */; };
 		83D5D4D119ADB172004AFD84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D4D019ADB172004AFD84 /* main.m */; };
@@ -113,19 +105,6 @@
 			remoteInfo = "Oh My Cal!";
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		83A9BE5619DE48B9001511C9 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Contents/Library/LoginItems;
-			dstSubfolderSpec = 1;
-			files = (
-				83A9BE5719DE4903001511C9 /* OMCStartHelper.app in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		83099C5C19ADBB2E00DDBF1D /* BGGradientTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGGradientTheme.h; sourceTree = "<group>"; };
@@ -214,19 +193,7 @@
 		839396FA19AE1D81008D8A3C /* OMCCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMCCommon.m; sourceTree = "<group>"; };
 		83A9BE2319DE448B001511C9 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		83A9BE2919DE4563001511C9 /* OMCStartHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OMCStartHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		83A9BE2D19DE4563001511C9 /* OMCStartHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OMCStartHelper-Info.plist"; sourceTree = "<group>"; };
-		83A9BE2F19DE4563001511C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		83A9BE3119DE4563001511C9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		83A9BE3319DE4563001511C9 /* OMCStartHelper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OMCStartHelper-Prefix.pch"; sourceTree = "<group>"; };
-		83A9BE3519DE4563001511C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		83A9BE3719DE4563001511C9 /* OMCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMCAppDelegate.h; sourceTree = "<group>"; };
-		83A9BE3819DE4563001511C9 /* OMCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OMCAppDelegate.m; sourceTree = "<group>"; };
-		83A9BE3D19DE4563001511C9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		83A9BE4319DE4563001511C9 /* OMCStartHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMCStartHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		83A9BE4A19DE4563001511C9 /* OMCStartHelperTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OMCStartHelperTests-Info.plist"; sourceTree = "<group>"; };
-		83A9BE4C19DE4563001511C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		83A9BE4E19DE4563001511C9 /* OMCStartHelperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OMCStartHelperTests.m; sourceTree = "<group>"; };
-		83A9BE5819DE4E23001511C9 /* OMCStartHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = OMCStartHelper.entitlements; sourceTree = "<group>"; };
 		83D5D4C119ADB172004AFD84 /* Oh My Cal!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oh My Cal!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D5D4C419ADB172004AFD84 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		83D5D4C719ADB172004AFD84 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -439,48 +406,6 @@
 			name = "Cal Views";
 			sourceTree = "<group>";
 		};
-		83A9BE2B19DE4563001511C9 /* OMCStartHelper */ = {
-			isa = PBXGroup;
-			children = (
-				83A9BE5819DE4E23001511C9 /* OMCStartHelper.entitlements */,
-				83A9BE3719DE4563001511C9 /* OMCAppDelegate.h */,
-				83A9BE3819DE4563001511C9 /* OMCAppDelegate.m */,
-				83A9BE3D19DE4563001511C9 /* Images.xcassets */,
-				83A9BE2C19DE4563001511C9 /* Supporting Files */,
-			);
-			path = OMCStartHelper;
-			sourceTree = "<group>";
-		};
-		83A9BE2C19DE4563001511C9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				83A9BE2D19DE4563001511C9 /* OMCStartHelper-Info.plist */,
-				83A9BE2E19DE4563001511C9 /* InfoPlist.strings */,
-				83A9BE3119DE4563001511C9 /* main.m */,
-				83A9BE3319DE4563001511C9 /* OMCStartHelper-Prefix.pch */,
-				83A9BE3419DE4563001511C9 /* Credits.rtf */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		83A9BE4819DE4563001511C9 /* OMCStartHelperTests */ = {
-			isa = PBXGroup;
-			children = (
-				83A9BE4E19DE4563001511C9 /* OMCStartHelperTests.m */,
-				83A9BE4919DE4563001511C9 /* Supporting Files */,
-			);
-			path = OMCStartHelperTests;
-			sourceTree = "<group>";
-		};
-		83A9BE4919DE4563001511C9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				83A9BE4A19DE4563001511C9 /* OMCStartHelperTests-Info.plist */,
-				83A9BE4B19DE4563001511C9 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		83D5D4B819ADB172004AFD84 = {
 			isa = PBXGroup;
 			children = (
@@ -492,8 +417,6 @@
 				83D5D51D19ADB3F3004AFD84 /* Other Panels */,
 				83D5D4CB19ADB172004AFD84 /* Supporting Files */,
 				83D5D4E819ADB172004AFD84 /* Oh My Cal!Tests */,
-				83A9BE2B19DE4563001511C9 /* OMCStartHelper */,
-				83A9BE4819DE4563001511C9 /* OMCStartHelperTests */,
 				83D5D4C319ADB172004AFD84 /* Frameworks */,
 				83099C5B19ADBB2E00DDBF1D /* BGHUDAppKit */,
 				83D5D4C219ADB172004AFD84 /* Products */,
@@ -704,7 +627,6 @@
 				83D5D4BD19ADB172004AFD84 /* Sources */,
 				83D5D4BE19ADB172004AFD84 /* Frameworks */,
 				83D5D4BF19ADB172004AFD84 /* Resources */,
-				83A9BE5619DE48B9001511C9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -793,9 +715,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83A9BE3019DE4563001511C9 /* InfoPlist.strings in Resources */,
-				83A9BE3E19DE4563001511C9 /* Images.xcassets in Resources */,
-				83A9BE3619DE4563001511C9 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,7 +722,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83A9BE4D19DE4563001511C9 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -846,8 +764,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83A9BE3919DE4563001511C9 /* OMCAppDelegate.m in Sources */,
-				83A9BE3219DE4563001511C9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,7 +771,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83A9BE4F19DE4563001511C9 /* OMCStartHelperTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -943,30 +858,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		83A9BE2E19DE4563001511C9 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				83A9BE2F19DE4563001511C9 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		83A9BE3419DE4563001511C9 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				83A9BE3519DE4563001511C9 /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		83A9BE4B19DE4563001511C9 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				83A9BE4C19DE4563001511C9 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		83D5D4CD19ADB172004AFD84 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
