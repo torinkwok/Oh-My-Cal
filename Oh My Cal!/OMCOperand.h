@@ -69,6 +69,8 @@ NSString extern* const OMCOperandDivideByZeroException;
 
 @property ( nonatomic, assign ) OMCCalStyle calStyle;
 @property ( nonatomic, assign ) OMCAry currentAry;
+@property ( nonatomic, copy, readonly ) NSString* calStyleInString;
+@property ( nonatomic, copy, readonly ) NSString* currentAryInString;
 
 @property ( nonatomic, assign, setter = setInMemory: ) BOOL isInMemory;
 
