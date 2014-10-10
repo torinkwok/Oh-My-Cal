@@ -52,9 +52,6 @@
 		839396F919ADF459008D8A3C /* statusbar-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 839396F719ADF459008D8A3C /* statusbar-logo.png */; };
 		839396FB19AE1D81008D8A3C /* OMCCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 839396FA19AE1D81008D8A3C /* OMCCommon.m */; };
 		83A9BE2419DE448B001511C9 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83A9BE2319DE448B001511C9 /* ServiceManagement.framework */; };
-		83A9BE2A19DE4563001511C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4C419ADB172004AFD84 /* Cocoa.framework */; };
-		83A9BE4419DE4563001511C9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4E319ADB172004AFD84 /* XCTest.framework */; };
-		83A9BE4519DE4563001511C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4C419ADB172004AFD84 /* Cocoa.framework */; };
 		83D5D4C519ADB172004AFD84 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4C419ADB172004AFD84 /* Cocoa.framework */; };
 		83D5D4CF19ADB172004AFD84 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D4CD19ADB172004AFD84 /* InfoPlist.strings */; };
 		83D5D4D119ADB172004AFD84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D4D019ADB172004AFD84 /* main.m */; };
@@ -90,13 +87,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		83A9BE4619DE4563001511C9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83D5D4B919ADB172004AFD84 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 83A9BE2819DE4563001511C9;
-			remoteInfo = OMCStartHelper;
-		};
 		83D5D4E619ADB172004AFD84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83D5D4B919ADB172004AFD84 /* Project object */;
@@ -192,8 +182,6 @@
 		839396F719ADF459008D8A3C /* statusbar-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "statusbar-logo.png"; path = "Oh My Cal!/Resources/statusbar-logo.png"; sourceTree = "<group>"; };
 		839396FA19AE1D81008D8A3C /* OMCCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMCCommon.m; sourceTree = "<group>"; };
 		83A9BE2319DE448B001511C9 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
-		83A9BE2919DE4563001511C9 /* OMCStartHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OMCStartHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		83A9BE4319DE4563001511C9 /* OMCStartHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMCStartHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D5D4C119ADB172004AFD84 /* Oh My Cal!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oh My Cal!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D5D4C419ADB172004AFD84 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		83D5D4C719ADB172004AFD84 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -254,23 +242,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		83A9BE2619DE4563001511C9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				83A9BE2A19DE4563001511C9 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		83A9BE4019DE4563001511C9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				83A9BE4519DE4563001511C9 /* Cocoa.framework in Frameworks */,
-				83A9BE4419DE4563001511C9 /* XCTest.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		83D5D4BE19ADB172004AFD84 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -429,8 +400,6 @@
 			children = (
 				83D5D4C119ADB172004AFD84 /* Oh My Cal!.app */,
 				83D5D4E219ADB172004AFD84 /* Oh My Cal!Tests.xctest */,
-				83A9BE2919DE4563001511C9 /* OMCStartHelper.app */,
-				83A9BE4319DE4563001511C9 /* OMCStartHelperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -585,41 +554,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		83A9BE2819DE4563001511C9 /* OMCStartHelper */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 83A9BE5019DE4564001511C9 /* Build configuration list for PBXNativeTarget "OMCStartHelper" */;
-			buildPhases = (
-				83A9BE2519DE4563001511C9 /* Sources */,
-				83A9BE2619DE4563001511C9 /* Frameworks */,
-				83A9BE2719DE4563001511C9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = OMCStartHelper;
-			productName = OMCStartHelper;
-			productReference = 83A9BE2919DE4563001511C9 /* OMCStartHelper.app */;
-			productType = "com.apple.product-type.application";
-		};
-		83A9BE4219DE4563001511C9 /* OMCStartHelperTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 83A9BE5319DE4564001511C9 /* Build configuration list for PBXNativeTarget "OMCStartHelperTests" */;
-			buildPhases = (
-				83A9BE3F19DE4563001511C9 /* Sources */,
-				83A9BE4019DE4563001511C9 /* Frameworks */,
-				83A9BE4119DE4563001511C9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				83A9BE4719DE4563001511C9 /* PBXTargetDependency */,
-			);
-			name = OMCStartHelperTests;
-			productName = OMCStartHelperTests;
-			productReference = 83A9BE4319DE4563001511C9 /* OMCStartHelperTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		83D5D4C019ADB172004AFD84 /* Oh My Cal! */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83D5D4F219ADB172004AFD84 /* Build configuration list for PBXNativeTarget "Oh My Cal!" */;
@@ -665,17 +599,6 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Tong G.";
 				TargetAttributes = {
-					83A9BE2819DE4563001511C9 = {
-						DevelopmentTeam = 89BSC2UYH8;
-						SystemCapabilities = {
-							com.apple.Sandbox = {
-								enabled = 1;
-							};
-						};
-					};
-					83A9BE4219DE4563001511C9 = {
-						TestTargetID = 83D5D4C019ADB172004AFD84;
-					};
 					83D5D4C019ADB172004AFD84 = {
 						DevelopmentTeam = 89BSC2UYH8;
 						SystemCapabilities = {
@@ -704,27 +627,11 @@
 			targets = (
 				83D5D4C019ADB172004AFD84 /* Oh My Cal! */,
 				83D5D4E119ADB172004AFD84 /* Oh My Cal!Tests */,
-				83A9BE2819DE4563001511C9 /* OMCStartHelper */,
-				83A9BE4219DE4563001511C9 /* OMCStartHelperTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		83A9BE2719DE4563001511C9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		83A9BE4119DE4563001511C9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		83D5D4BF19ADB172004AFD84 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -760,20 +667,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		83A9BE2519DE4563001511C9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		83A9BE3F19DE4563001511C9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		83D5D4BD19ADB172004AFD84 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -845,11 +738,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		83A9BE4719DE4563001511C9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 83A9BE2819DE4563001511C9 /* OMCStartHelper */;
-			targetProxy = 83A9BE4619DE4563001511C9 /* PBXContainerItemProxy */;
-		};
 		83D5D4E719ADB172004AFD84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 83D5D4C019ADB172004AFD84 /* Oh My Cal! */;
@@ -885,82 +773,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		83A9BE5119DE4564001511C9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = OMCStartHelper/OMCStartHelper.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OMCStartHelper/OMCStartHelper-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "OMCStartHelper/OMCStartHelper-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		83A9BE5219DE4564001511C9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = OMCStartHelper/OMCStartHelper.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OMCStartHelper/OMCStartHelper-Prefix.pch";
-				INFOPLIST_FILE = "OMCStartHelper/OMCStartHelper-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		83A9BE5419DE4564001511C9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Oh My Cal!.app/Contents/MacOS/Oh My Cal!";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OMCStartHelper/OMCStartHelper-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "OMCStartHelperTests/OMCStartHelperTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		83A9BE5519DE4564001511C9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Oh My Cal!.app/Contents/MacOS/Oh My Cal!";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OMCStartHelper/OMCStartHelper-Prefix.pch";
-				INFOPLIST_FILE = "OMCStartHelperTests/OMCStartHelperTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 		83D5D4F019ADB172004AFD84 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1106,24 +918,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		83A9BE5019DE4564001511C9 /* Build configuration list for PBXNativeTarget "OMCStartHelper" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				83A9BE5119DE4564001511C9 /* Debug */,
-				83A9BE5219DE4564001511C9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		83A9BE5319DE4564001511C9 /* Build configuration list for PBXNativeTarget "OMCStartHelperTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				83A9BE5419DE4564001511C9 /* Debug */,
-				83A9BE5519DE4564001511C9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		83D5D4BC19ADB172004AFD84 /* Build configuration list for PBXProject "Oh My Cal!" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
