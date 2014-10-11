@@ -63,7 +63,7 @@ typedef NS_ENUM( short, OMCOpenMode ) { OMCHangInMenuMode, OMCGlobalCalloutMode 
     OMCOpenMode _currentOpenMode;
     }
 
-@property ( nonatomic, retain ) id <OMFMainPanelControllerDelegate> delegate;
+@property ( nonatomic, unsafe_unretained ) id <OMFMainPanelControllerDelegate> delegate;
 
 @property ( nonatomic, unsafe_unretained ) IBOutlet OMFPanelBackgroundView* backgrondView;
 @property ( nonatomic, retain ) OMFAboutPanelController* aboutPanelController;

@@ -221,6 +221,284 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return [ OMCOperand operandWithString: randNumericString ];
     }
 
+- ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs
+    {
+    return [ self.decimalNumber compare: _Rhs.decimalNumber ];
+    }
+
+#pragma mark Degit Operations
+- ( void ) appendDigit: ( NSInteger )_Digit
+                 count: ( NSInteger )_Count
+                   ary: ( OMCAry )_Ary
+    {
+    NSString* digitToBeAppend = nil;
+
+    switch ( self.calStyle )
+        {
+    case OMCBasicStyle:
+    case OMCScientificStyle:
+            {
+            if ( _Digit == -1 /* If the user has just pressed the '.' button... */ )
+                {
+                if ( !self.isWaitingForFloatNumber /* If the user has already pressed the '.' button, do nothing */ )
+                    {
+                    self.isWaitingForFloatNumber = YES;
+
+                    digitToBeAppend = [ NSString stringWithFormat: OMCDot ];
+                    [ self.numericString appendString: digitToBeAppend ];
+                    }
+                else
+                    NSBeep();
+                }
+            else
+                {
+                digitToBeAppend = [ NSString stringWithFormat: @"%ld", _Digit ];
+
+                if ( self.isWaitingForFloatNumber )
+                    /* If the user has already pressed the '.' button, 
+                     * and he began to type the digit after decimal separator... */
+                    [ self _appendDigit: digitToBeAppend ];
+                else /* If the user hasn't pressed the '.' button.
+                      * In other words, the current numeric is just a integer... */
+                    {
+                    if ( [ self.numericString isEqualToString: @"0" ] )
+                        /* For a decimal integer, the beginning of numeric is never 0... */
+                        [ self.numericString clear ];
+
+                    [ self _appendDigit: digitToBeAppend ];
+                    }
+                }
+            } break;
+
+    case OMCProgrammerStyle:
+            {
+            NSUInteger baseNumber = 10;
+            NSUInteger currentNumeric = [ [ self decimalNumber ] unsignedIntegerValue ];
+
+            if ( _Ary == OMCDecimal )           baseNumber = 10;
+                else if ( _Ary == OMCOctal )    baseNumber = 8;
+                else if ( _Ary == OMCHex )      baseNumber = 16;
+
+            NSUInteger newNumeric = ( NSUInteger )( currentNumeric * pow( ( double )baseNumber, ( double )_Count ) + _Digit );
+            NSString* newNumericString = [ NSNumber numberWithUnsignedInteger: newNumeric ].stringValue;
+
+            if ( [ newNumericString length ] <= UNSIGNED_INT_OPERAND_MAX_DIGIT )
+                self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: newNumericString ];
+            else
+                NSBeep();
+
+            [ self.numericString replaceAllWithString: [ self _numericStringInAry: _Ary ] ];
+            } break;
+        }
+    }
+
+- ( void ) deleteDigit: ( NSInteger )_Digit
+                 count: ( NSInteger )_Count
+                   ary: ( OMCAry )_Ary
+    {
+    switch ( self.calStyle )
+        {
+    case OMCBasicStyle:
+    case OMCScientificStyle:
+            {
+            [ self _deleteLastDigit ];
+
+            if ( ![ self.numericString contains: OMCDot ] && self.isWaitingForFloatNumber )
+                self.isWaitingForFloatNumber = NO;
+            } break;
+
+    case OMCProgrammerStyle:
+            {
+            NSUInteger baseNumber = 10;
+
+            if ( _Ary == OMCDecimal )           baseNumber = 10;
+                else if ( _Ary == OMCOctal )    baseNumber = 8;
+                else if ( _Ary == OMCHex )      baseNumber = 16;
+
+            NSDecimalNumber* digitNumeric = [ NSDecimalNumber decimalNumberWithString: [ NSString stringWithFormat: @"%ld", _Digit ] ];
+            NSDecimalNumber* exponent = [ NSDecimalNumber decimalNumberWithString: [ NSString stringWithFormat: @"%g", pow( ( double )baseNumber, ( double )_Count ) ] ];
+
+            NSDecimalNumberHandler* roundUpBehavior = [ NSDecimalNumberHandler roundUpBehavior ];
+            NSDecimalNumberHandler* roundDownBehavior = [ NSDecimalNumberHandler roundDownBehavior ];
+
+            /* TODO: To be graceful */
+
+            NSDecimalNumber* newNumeric = nil;
+
+            /* The initial numeric, and it is waiting for testing of consistency, so the value may not be a final value */
+            newNumeric = [ [ self.decimalNumber decimalNumberBySubtracting: digitNumeric ] decimalNumberByDividingBy: exponent withBehavior: roundUpBehavior ];
+
+            /* This operand is just for testing of consistency! */
+            OMCOperand* operandJustForTestingConsistency = [ OMCOperand operandWithDecimalNumber: newNumeric inAry: self.currentAry calStyle: self.calStyle ];
+
+            /* If inconsistent due to round up... */
+            NSString* theCorrectFormAfterDeletingTheLastDigit = [ self.description substringToIndex: self.description.length - 1 ];
+            if ( ![ operandJustForTestingConsistency.description isEqualToString: theCorrectFormAfterDeletingTheLastDigit ] )
+                /* ...round down */
+                newNumeric = [ [ self.decimalNumber decimalNumberBySubtracting: digitNumeric ] decimalNumberByDividingBy: exponent withBehavior: roundDownBehavior ];
+
+            /* ^ It's double insurance, it's very useful, but it's very ugly. Hmmm...I admit that. ^ */
+
+            [ self setDecimalNumber: newNumeric ];
+
+            OMCOperand* resultOperand = [ OMCOperand operandWithDecimalNumber: newNumeric inAry: self.currentAry calStyle: self.calStyle ];
+            [ self.numericString replaceAllWithString: [ resultOperand numericString ] ];
+            } break;
+        }
+    }
+
+- ( BOOL ) isZero
+    {
+    return [ self.decimalNumber compare: [ NSDecimalNumber zero ] ] == NSOrderedSame;
+    }
+
+- ( void ) zeroed
+    {
+    if ( self.isWaitingForFloatNumber )
+        self.isWaitingForFloatNumber = NO;
+
+    if ( self.isInMemory )
+        self.isInMemory = NO;
+
+    self.decimalNumber = [ NSDecimalNumber zero ];
+
+    NSString* zeroString = nil;
+    if ( self.currentAry == OMCProgrammerStyle )
+        zeroString = @"0x0";
+    else
+        zeroString = @"0";
+
+    [ self.numericString replaceAllWithString: zeroString ];
+    }
+
+- ( void ) _appendDigit: ( NSString* )_DigitToBeAppend
+    {
+    [ self.numericString appendString: _DigitToBeAppend ];
+    self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: self.numericString ];
+    }
+
+- ( void ) _deleteLastDigit
+    {
+    if ( [ self.numericString isEqualToString: @"0" ] )
+        {
+        NSBeep();
+        return;
+        }
+
+    [ self.numericString deleteTheLastCharacter ];
+
+    /* If the numeric string is empty... */
+    if ( self.numericString.length == 0
+            /* or there is only a negative sign in numeric string... */
+            || ( ( self.numericString.length == 1 ) && [ self.numericString isEqualToString: @"-" ] )
+            /* or there is a "-0" in numeric string... */
+            || ( ( self.numericString.length == 2 ) && [ self.numericString isEqualToString: @"-0" ] ) )
+        [ self.numericString replaceAllWithString: @"0" ];
+
+    self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: self.numericString ];
+    }
+
+- ( NSString* ) _numericStringInAry: ( OMCAry )_Ary
+    {
+    if ( [ self.exceptionCarried isEqualToString: OMCOperandDivideByZeroException ] )
+        return @"DivByZero";
+
+    NSString* numericString = nil;
+    if ( _Ary == OMCDecimal )           numericString = [ self inDecimal ];
+        else if ( _Ary == OMCOctal )    numericString = [ self inOctal ];
+        else if ( _Ary == OMCHex )      numericString = [ self inHex ];
+
+    return numericString;
+    }
+
+#pragma mark Accessors
+- ( NSString* ) inOctal
+    {
+    return [ NSString stringWithFormat: @"%lo", [ self.decimalNumber unsignedIntegerValue ] ];
+    }
+
+- ( NSString* ) inDecimal
+    {
+    NSString* decimalForm = nil;
+
+    switch ( self.calStyle )
+        {
+    case OMCBasicStyle:
+    case OMCScientificStyle:
+            {
+            decimalForm = [ NSString stringWithFormat: @"%@", [ self.decimalNumber description ] ];
+            } break;
+
+    case OMCProgrammerStyle:
+            {
+            decimalForm = [ NSString stringWithFormat: @"%lu", [ self.decimalNumber unsignedIntegerValue ] ];
+            } break;
+        }
+
+    return decimalForm;
+    }
+
+- ( NSString* ) inHex
+    {
+    NSString* hexValueInUppercase = [ NSString stringWithFormat: @"%lx", [ self.decimalNumber unsignedIntegerValue ] ].uppercaseString;
+    return [ NSString stringWithFormat: @"0x%@", hexValueInUppercase ];
+    }
+
+- ( void ) setCurrentAry: ( OMCAry )_Ary
+    {
+    if ( self->_currentAry != _Ary )
+        {
+        self->_currentAry = _Ary;
+        [ self.numericString replaceAllWithString: [ self _numericStringInAry: self->_currentAry ] ];
+        }
+    }
+
+- ( OMCAry ) currentAry
+    {
+    return self->_currentAry;
+    }
+
+- ( int ) decimalPlaces
+    {
+    return abs( [ [ self decimalNumber ] decimalValue ]._exponent );
+    }
+
+- ( NSString* ) calStyleInString
+    {
+    NSString* string = nil;
+    switch ( self.calStyle )
+        {
+    case OMCBasicStyle:         string = @"OMCCalStyle";          break;
+    case OMCScientificStyle:    string = @"OMCScientificStyle";   break;
+    case OMCProgrammerStyle:    string = @"OMCProgrammerStyle";   break;
+        }
+
+    return string;
+    }
+
+- ( NSString* ) currentAryInString
+    {
+    NSString* string = nil;
+    switch ( self.currentAry )
+        {
+    case OMCOctal:      string = @"OMCOctal";   break;
+    case OMCDecimal:    string = @"OMCDecimal"; break;
+    case OMCHex:        string = @"OMCHex";     break;
+        }
+
+    return string;
+    }
+
+- ( NSUInteger ) unsignedInteger
+    {
+    return self.decimalNumber.unsignedIntegerValue;
+    }
+
+@end // OMCOperand class
+
+#pragma mark Unitary Operations
+@implementation OMCOperand ( OMCUnitaryOperations )
+
 - ( instancetype ) abs
     {
     NSDecimal decimalValue = [ self.decimalNumber decimalValue ];
@@ -541,392 +819,26 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                                  calStyle: self.calStyle ];
     }
 
-- ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs
-    {
-    return [ self.decimalNumber compare: _Rhs.decimalNumber ];
-    }
-
-#pragma mark Degit Operations
-- ( void ) appendDigit: ( NSInteger )_Digit
-                 count: ( NSInteger )_Count
-                   ary: ( OMCAry )_Ary
-    {
-    NSString* digitToBeAppend = nil;
-
-    switch ( self.calStyle )
-        {
-    case OMCBasicStyle:
-    case OMCScientificStyle:
-            {
-            if ( _Digit == -1 /* If the user has just pressed the '.' button... */ )
-                {
-                if ( !self.isWaitingForFloatNumber /* If the user has already pressed the '.' button, do nothing */ )
-                    {
-                    self.isWaitingForFloatNumber = YES;
-
-                    digitToBeAppend = [ NSString stringWithFormat: OMCDot ];
-                    [ self.numericString appendString: digitToBeAppend ];
-                    }
-                else
-                    NSBeep();
-                }
-            else
-                {
-                digitToBeAppend = [ NSString stringWithFormat: @"%ld", _Digit ];
-
-                if ( self.isWaitingForFloatNumber )
-                    /* If the user has already pressed the '.' button, 
-                     * and he began to type the digit after decimal separator... */
-                    [ self _appendDigit: digitToBeAppend ];
-                else /* If the user hasn't pressed the '.' button.
-                      * In other words, the current numeric is just a integer... */
-                    {
-                    if ( [ self.numericString isEqualToString: @"0" ] )
-                        /* For a decimal integer, the beginning of numeric is never 0... */
-                        [ self.numericString clear ];
-
-                    [ self _appendDigit: digitToBeAppend ];
-                    }
-                }
-            } break;
-
-    case OMCProgrammerStyle:
-            {
-            NSUInteger baseNumber = 10;
-            NSUInteger currentNumeric = [ [ self decimalNumber ] unsignedIntegerValue ];
-
-            if ( _Ary == OMCDecimal )           baseNumber = 10;
-                else if ( _Ary == OMCOctal )    baseNumber = 8;
-                else if ( _Ary == OMCHex )      baseNumber = 16;
-
-            NSUInteger newNumeric = ( NSUInteger )( currentNumeric * pow( ( double )baseNumber, ( double )_Count ) + _Digit );
-            NSString* newNumericString = [ NSNumber numberWithUnsignedInteger: newNumeric ].stringValue;
-
-            if ( [ newNumericString length ] <= UNSIGNED_INT_OPERAND_MAX_DIGIT )
-                self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: newNumericString ];
-            else
-                NSBeep();
-
-            [ self.numericString replaceAllWithString: [ self _numericStringInAry: _Ary ] ];
-            } break;
-        }
-    }
-
-- ( void ) deleteDigit: ( NSInteger )_Digit
-                 count: ( NSInteger )_Count
-                   ary: ( OMCAry )_Ary
-    {
-    switch ( self.calStyle )
-        {
-    case OMCBasicStyle:
-    case OMCScientificStyle:
-            {
-            [ self _deleteLastDigit ];
-
-            if ( ![ self.numericString contains: OMCDot ] && self.isWaitingForFloatNumber )
-                self.isWaitingForFloatNumber = NO;
-            } break;
-
-    case OMCProgrammerStyle:
-            {
-            NSUInteger baseNumber = 10;
-
-            if ( _Ary == OMCDecimal )           baseNumber = 10;
-                else if ( _Ary == OMCOctal )    baseNumber = 8;
-                else if ( _Ary == OMCHex )      baseNumber = 16;
-
-            NSDecimalNumber* digitNumeric = [ NSDecimalNumber decimalNumberWithString: [ NSString stringWithFormat: @"%ld", _Digit ] ];
-            NSDecimalNumber* exponent = [ NSDecimalNumber decimalNumberWithString: [ NSString stringWithFormat: @"%g", pow( ( double )baseNumber, ( double )_Count ) ] ];
-
-            NSDecimalNumberHandler* roundUpBehavior = [ NSDecimalNumberHandler roundUpBehavior ];
-            NSDecimalNumberHandler* roundDownBehavior = [ NSDecimalNumberHandler roundDownBehavior ];
-
-            /* TODO: To be graceful */
-
-            NSDecimalNumber* newNumeric = nil;
-
-            /* The initial numeric, and it is waiting for testing of consistency, so the value may not be a final value */
-            newNumeric = [ [ self.decimalNumber decimalNumberBySubtracting: digitNumeric ] decimalNumberByDividingBy: exponent withBehavior: roundUpBehavior ];
-
-            /* This operand is just for testing of consistency! */
-            OMCOperand* operandJustForTestingConsistency = [ OMCOperand operandWithDecimalNumber: newNumeric inAry: self.currentAry calStyle: self.calStyle ];
-
-            /* If inconsistent due to round up... */
-            NSString* theCorrectFormAfterDeletingTheLastDigit = [ self.description substringToIndex: self.description.length - 1 ];
-            if ( ![ operandJustForTestingConsistency.description isEqualToString: theCorrectFormAfterDeletingTheLastDigit ] )
-                /* ...round down */
-                newNumeric = [ [ self.decimalNumber decimalNumberBySubtracting: digitNumeric ] decimalNumberByDividingBy: exponent withBehavior: roundDownBehavior ];
-
-            /* ^ It's double insurance, it's very useful, but it's very ugly. Hmmm...I admit that. ^ */
-
-            [ self setDecimalNumber: newNumeric ];
-
-            OMCOperand* resultOperand = [ OMCOperand operandWithDecimalNumber: newNumeric inAry: self.currentAry calStyle: self.calStyle ];
-            [ self.numericString replaceAllWithString: [ resultOperand numericString ] ];
-            } break;
-        }
-    }
-
-- ( BOOL ) isZero
-    {
-    return [ self.decimalNumber compare: [ NSDecimalNumber zero ] ] == NSOrderedSame;
-    }
-
-- ( void ) zeroed
-    {
-    if ( self.isWaitingForFloatNumber )
-        self.isWaitingForFloatNumber = NO;
-
-    if ( self.isInMemory )
-        self.isInMemory = NO;
-
-    self.decimalNumber = [ NSDecimalNumber zero ];
-
-    NSString* zeroString = nil;
-    if ( self.currentAry == OMCProgrammerStyle )
-        zeroString = @"0x0";
-    else
-        zeroString = @"0";
-
-    [ self.numericString replaceAllWithString: zeroString ];
-    }
-
-- ( void ) _appendDigit: ( NSString* )_DigitToBeAppend
-    {
-    [ self.numericString appendString: _DigitToBeAppend ];
-    self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: self.numericString ];
-    }
-
-- ( void ) _deleteLastDigit
-    {
-    if ( [ self.numericString isEqualToString: @"0" ] )
-        {
-        NSBeep();
-        return;
-        }
-
-    [ self.numericString deleteTheLastCharacter ];
-
-    /* If the numeric string is empty... */
-    if ( self.numericString.length == 0
-            /* or there is only a negative sign in numeric string... */
-            || ( ( self.numericString.length == 1 ) && [ self.numericString isEqualToString: @"-" ] )
-            /* or there is a "-0" in numeric string... */
-            || ( ( self.numericString.length == 2 ) && [ self.numericString isEqualToString: @"-0" ] ) )
-        [ self.numericString replaceAllWithString: @"0" ];
-
-    self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: self.numericString ];
-    }
-
-- ( NSString* ) _numericStringInAry: ( OMCAry )_Ary
-    {
-    if ( [ self.exceptionCarried isEqualToString: OMCOperandDivideByZeroException ] )
-        return @"DivByZero";
-
-    NSString* numericString = nil;
-    if ( _Ary == OMCDecimal )           numericString = [ self inDecimal ];
-        else if ( _Ary == OMCOctal )    numericString = [ self inOctal ];
-        else if ( _Ary == OMCHex )      numericString = [ self inHex ];
-
-    return numericString;
-    }
-
-#pragma mark Accessors
-- ( NSString* ) inOctal
-    {
-    return [ NSString stringWithFormat: @"%lo", [ self.decimalNumber unsignedIntegerValue ] ];
-    }
-
-- ( NSString* ) inDecimal
-    {
-    NSString* decimalForm = nil;
-
-    switch ( self.calStyle )
-        {
-    case OMCBasicStyle:
-    case OMCScientificStyle:
-            {
-            decimalForm = [ NSString stringWithFormat: @"%@", [ self.decimalNumber description ] ];
-            } break;
-
-    case OMCProgrammerStyle:
-            {
-            decimalForm = [ NSString stringWithFormat: @"%lu", [ self.decimalNumber unsignedIntegerValue ] ];
-            } break;
-        }
-
-    return decimalForm;
-    }
-
-- ( NSString* ) inHex
-    {
-    NSString* hexValueInUppercase = [ NSString stringWithFormat: @"%lx", [ self.decimalNumber unsignedIntegerValue ] ].uppercaseString;
-    return [ NSString stringWithFormat: @"0x%@", hexValueInUppercase ];
-    }
-
-- ( void ) setCurrentAry: ( OMCAry )_Ary
-    {
-    if ( self->_currentAry != _Ary )
-        {
-        self->_currentAry = _Ary;
-        [ self.numericString replaceAllWithString: [ self _numericStringInAry: self->_currentAry ] ];
-        }
-    }
-
-- ( OMCAry ) currentAry
-    {
-    return self->_currentAry;
-    }
-
-- ( int ) decimalPlaces
-    {
-    return abs( [ [ self decimalNumber ] decimalValue ]._exponent );
-    }
-
-- ( NSString* ) calStyleInString
-    {
-    NSString* string = nil;
-    switch ( self.calStyle )
-        {
-    case OMCBasicStyle:         string = @"OMCCalStyle";          break;
-    case OMCScientificStyle:    string = @"OMCScientificStyle";   break;
-    case OMCProgrammerStyle:    string = @"OMCProgrammerStyle";   break;
-        }
-
-    return string;
-    }
-
-- ( NSString* ) currentAryInString
-    {
-    NSString* string = nil;
-    switch ( self.currentAry )
-        {
-    case OMCOctal:      string = @"OMCOctal";   break;
-    case OMCDecimal:    string = @"OMCDecimal"; break;
-    case OMCHex:        string = @"OMCHex";     break;
-        }
-
-    return string;
-    }
-
-- ( NSUInteger ) unsignedInteger
-    {
-    return self.decimalNumber.unsignedIntegerValue;
-    }
-
-#pragma mark Calculation
-- ( OMCOperand* ) add: ( OMCOperand* )_Rhs
-    {
-    NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberByAdding: _Rhs.decimalNumber
-                                                                   withBehavior: self ];
-
-    OMCOperand* resultOperand = [ OMCOperand operandWithDecimalNumber: resultDecimal
-                                                                inAry: self.currentAry
-                                                             calStyle: self.calStyle ];
-    return resultOperand;
-    }
-
-- ( OMCOperand* ) subtract: ( OMCOperand* )_Rhs
-    {
-    NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberBySubtracting: _Rhs.decimalNumber
-                                                                        withBehavior: self ];
-
-    OMCOperand* resultOperand = [ OMCOperand operandWithDecimalNumber: resultDecimal
-                                                                inAry: self.currentAry
-                                                             calStyle: self.calStyle ];
-    return resultOperand;
-    }
-
-- ( OMCOperand* ) multiply: ( OMCOperand* )_Rhs
-    {
-    NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberByMultiplyingBy: _Rhs.decimalNumber
-                                                                          withBehavior: self ];
-    return [ OMCOperand operandWithDecimalNumber: resultDecimal
-                                           inAry: self.currentAry
-                                        calStyle: self.calStyle ];
-    }
-
-- ( OMCOperand* ) divide: ( OMCOperand* )_Rhs
-    {
-    if ( [ _Rhs isZero ] )
-        return [ OMCOperand divByZero ];
-
-    NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberByDividingBy: _Rhs.decimalNumber
-                                                                       withBehavior: self ];
-    return [ OMCOperand operandWithDecimalNumber: resultDecimal
-                                           inAry: self.currentAry
-                                        calStyle: self.calStyle ];
-    }
-
-- ( OMCOperand* ) mod: ( OMCOperand* )_Rhs
-    {
-    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger % _Rhs.unsignedInteger
-                                             inAry: self.currentAry
-                                          calStyle: self.calStyle ];
-    }
-
-- ( OMCOperand* ) factorial
-    {
-    return [ OMCOperand operandWithUnsignedInteger: factorial( self.unsignedInteger )
-                                             inAry: self.currentAry
-                                          calStyle: self.calStyle ];
-    }
-
-- ( OMCOperand* ) bitwiseAnd: ( OMCOperand* )_Rhs
-    {
-    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger & _Rhs.unsignedInteger
-                                             inAry: self.currentAry
-                                          calStyle: self.calStyle ];
-    }
-
-- ( OMCOperand* ) bitwiseOr: ( OMCOperand* )_Rhs
-    {
-    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger | _Rhs.unsignedInteger
-                                             inAry: self.currentAry
-                                          calStyle: self.calStyle ];
-    }
-    
-- ( OMCOperand* ) bitwiseNor: ( OMCOperand* )_Rhs
-    {
-    return [ OMCOperand operandWithUnsignedInteger: ~( self.unsignedInteger | _Rhs.unsignedInteger )
-                                             inAry: self.currentAry
-                                          calStyle: self.calStyle ];
-    }
-
-- ( OMCOperand* ) bitwiseXor: ( OMCOperand* )_Rhs
-    {
-    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger ^ _Rhs.unsignedInteger
-                                             inAry: self.currentAry
-                                          calStyle: self.calStyle ];
-    }
-
-- ( OMCOperand* ) Lsh: ( OMCOperand* )_Rhs
-    {
-    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger << _Rhs.unsignedInteger
-                                             inAry: self.currentAry
-                                          calStyle: self.calStyle ];
-    }
-
-- ( OMCOperand* ) Rsh: ( OMCOperand* )_Rhs
-    {
-    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger >> _Rhs.unsignedInteger
-                                             inAry: self.currentAry
-                                          calStyle: self.calStyle ];
-    }
-
-- ( OMCOperand* ) RoL
+- ( instancetype ) RoL
     {
     return [ self Lsh: [ OMCOperand one ] ];
     }
 
-- ( OMCOperand* ) RoR
+- ( instancetype ) RoR
     {
     return [ self Rsh: [ OMCOperand one ] ];
     }
 
-- ( OMCOperand* ) flipBytes
+- ( instancetype ) flipBytes
     {
     return [ OMCOperand operandWithUnsignedInteger: ~self.unsignedInteger
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) factorial
+    {
+    return [ OMCOperand operandWithUnsignedInteger: factorial( self.unsignedInteger )
                                              inAry: self.currentAry
                                           calStyle: self.calStyle ];
     }
@@ -939,9 +851,106 @@ NSUInteger factorial( NSUInteger _X )
         return _X * factorial( _X - 1 );
     }
 
-@end // OMCOperand class
+@end // OMCOperand + OMCUnitaryOperations
 
-// OMCOperand + OMCDecimalNumberBehaviors
+#pragma mark Binary Operations
+@implementation OMCOperand ( OMCBinaryOperations )
+
+- ( instancetype ) add: ( OMCOperand* )_Rhs
+    {
+    NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberByAdding: _Rhs.decimalNumber
+                                                                   withBehavior: self ];
+
+    OMCOperand* resultOperand = [ OMCOperand operandWithDecimalNumber: resultDecimal
+                                                                inAry: self.currentAry
+                                                             calStyle: self.calStyle ];
+    return resultOperand;
+    }
+
+- ( instancetype ) subtract: ( OMCOperand* )_Rhs
+    {
+    NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberBySubtracting: _Rhs.decimalNumber
+                                                                        withBehavior: self ];
+
+    OMCOperand* resultOperand = [ OMCOperand operandWithDecimalNumber: resultDecimal
+                                                                inAry: self.currentAry
+                                                             calStyle: self.calStyle ];
+    return resultOperand;
+    }
+
+- ( instancetype ) multiply: ( OMCOperand* )_Rhs
+    {
+    NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberByMultiplyingBy: _Rhs.decimalNumber
+                                                                          withBehavior: self ];
+    return [ OMCOperand operandWithDecimalNumber: resultDecimal
+                                           inAry: self.currentAry
+                                        calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) divide: ( OMCOperand* )_Rhs
+    {
+    if ( [ _Rhs isZero ] )
+        return [ OMCOperand divByZero ];
+
+    NSDecimalNumber* resultDecimal = [ self.decimalNumber decimalNumberByDividingBy: _Rhs.decimalNumber
+                                                                       withBehavior: self ];
+    return [ OMCOperand operandWithDecimalNumber: resultDecimal
+                                           inAry: self.currentAry
+                                        calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) mod: ( OMCOperand* )_Rhs
+    {
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger % _Rhs.unsignedInteger
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) bitwiseAnd: ( OMCOperand* )_Rhs
+    {
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger & _Rhs.unsignedInteger
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) bitwiseOr: ( OMCOperand* )_Rhs
+    {
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger | _Rhs.unsignedInteger
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
+    }
+    
+- ( instancetype ) bitwiseNor: ( OMCOperand* )_Rhs
+    {
+    return [ OMCOperand operandWithUnsignedInteger: ~( self.unsignedInteger | _Rhs.unsignedInteger )
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) bitwiseXor: ( OMCOperand* )_Rhs
+    {
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger ^ _Rhs.unsignedInteger
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) Lsh: ( OMCOperand* )_Rhs
+    {
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger << _Rhs.unsignedInteger
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
+    }
+
+- ( instancetype ) Rsh: ( OMCOperand* )_Rhs
+    {
+    return [ OMCOperand operandWithUnsignedInteger: self.unsignedInteger >> _Rhs.unsignedInteger
+                                             inAry: self.currentAry
+                                          calStyle: self.calStyle ];
+    }
+
+@end // OMCOperand + OMCBinaryOperations
+
+#pragma mark Decimal Number Behaviors
 @implementation OMCOperand ( OMCDecimalNumberBehaviors )
 
 - ( short ) scale

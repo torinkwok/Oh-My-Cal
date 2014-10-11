@@ -35,6 +35,7 @@ The Calculator.app in OS X is powerful, but it's not convenient. For me, I usual
 #### What's New in This Version?
 * Full feature: supports Basic/Scientific/Programmer mode.
 * Supports global callout.
+* Stability improved.
 * Killed some fucking bugs.
 
 ---
