@@ -497,7 +497,7 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
 @end // OMCOperand class
 
 #pragma mark Unitary Operations
-@implementation OMCOperand ( OMCUnitaryOperations )
+@implementation OMCOperand ( OMCOperand_UnitaryOperations )
 
 - ( instancetype ) abs
     {
@@ -851,10 +851,10 @@ NSUInteger factorial( NSUInteger _X )
         return _X * factorial( _X - 1 );
     }
 
-@end // OMCOperand + OMCUnitaryOperations
+@end // OMCOperand + OMCOperand_UnitaryOperations
 
 #pragma mark Binary Operations
-@implementation OMCOperand ( OMCBinaryOperations )
+@implementation OMCOperand ( OMCOperand_BinaryOperations )
 
 - ( instancetype ) add: ( OMCOperand* )_Rhs
     {
@@ -948,7 +948,7 @@ NSUInteger factorial( NSUInteger _X )
                                           calStyle: self.calStyle ];
     }
 
-@end // OMCOperand + OMCBinaryOperations
+@end // OMCOperand + OMCOperand_BinaryOperations
 
 #pragma mark Decimal Number Behaviors
 @implementation OMCOperand ( OMCDecimalNumberBehaviors )

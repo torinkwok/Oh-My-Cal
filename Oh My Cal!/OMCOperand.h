@@ -126,7 +126,7 @@ NSString extern* const OMCOperandDivideByZeroException;
 @end // OMCOperand class
 
 #pragma mark Unitary Operations
-@interface OMCOperand ( OMCUnitaryOperations )
+@interface OMCOperand ( OMCOperand_UnitaryOperations )
 
 - ( instancetype ) abs;
 - ( instancetype ) positiveOrNegative;
@@ -204,7 +204,7 @@ NSString extern* const OMCOperandDivideByZeroException;
 @end // OMCOperand + OMCOperations
 
 #pragma mark Binary Operations
-@interface OMCOperand ( OMCBinaryOperations )
+@interface OMCOperand ( OMCOperand_BinaryOperations )
 
 - ( instancetype ) add: ( OMCOperand* )_Rhs;
 - ( instancetype ) subtract: ( OMCOperand* )_Rhs;
@@ -219,7 +219,7 @@ NSString extern* const OMCOperandDivideByZeroException;
 - ( instancetype ) Lsh: ( OMCOperand* )_Rhs;
 - ( instancetype ) Rsh: ( OMCOperand* )_Rhs;
 
-@end // OMCOperand + OMCBinaryOperations
+@end // OMCOperand + OMCOperand_BinaryOperations
 
 #pragma mark Decimal Number Behaviors
 @interface OMCOperand ( OMCDecimalNumberBehaviors ) <NSDecimalNumberBehaviors>
