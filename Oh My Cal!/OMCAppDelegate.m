@@ -34,10 +34,23 @@
 #import <Carbon/Carbon.h>
 #import <ServiceManagement/ServiceManagement.h>
 
+#import "OMFMainPanelController.h"
+#import "OMFStatusBarController.h"
+
 #import "OMCAppDelegate.h"
 #import "OMFStatusItemView.h"
 
 #import "OMFMainPanelController.h"
+
+#pragma mark Conforms <OMCMainPanelControllerDelegate> protocol
+@implementation OMCAppDelegate ( OMCAppDelegateConformsOMCMainPanelControllerDelegate )
+
+- ( OMFStatusItemView* ) statusItemViewForPanelController: ( OMFMainPanelController* )_StatusItemView
+    {
+    return self._statusBarController.statusItemView;
+    }
+
+@end // OMCAppDelegate + OMCAppDelegateConformsOMCMainPanelControllerDelegate
 
 // OMFAppDelegate class
 @implementation OMCAppDelegate
@@ -121,12 +134,6 @@ OSStatus hotKeyHandler( EventHandlerCallRef _NextHandler, EventRef _AnEvent, voi
     BOOL isHighlighting = self._statusBarController.statusItemView.isHighlighting ;
 
     [ self._mainPanelController _fuckPanel: !isHighlighting ];
-    }
-
-#pragma mark Conforms <OMFMainPanelControllerDelegate> protocol
-- ( OMFStatusItemView* ) statusItemViewForPanelController: ( OMFMainPanelController* )_StatusItemView
-    {
-    return self._statusBarController.statusItemView;
     }
 
 // Not successful, lost to Sandbox😩

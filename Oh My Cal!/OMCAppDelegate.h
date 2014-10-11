@@ -33,14 +33,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "OMFMainPanelController.h"
-#import "OMFStatusBarController.h"
+@protocol OMFMainPanelControllerDelegate;
 
 @class OMFStatusBarController;
 @class OMFMainPanelController;
 
 // OMFAppDelegate class
-@interface OMCAppDelegate : NSObject <NSApplicationDelegate, OMFMainPanelControllerDelegate>
+@interface OMCAppDelegate : NSObject <NSApplicationDelegate>
 
 @property ( nonatomic, retain ) OMFStatusBarController* _statusBarController;
 @property ( nonatomic, retain ) OMFMainPanelController* _mainPanelController;
@@ -49,6 +48,10 @@
 - ( IBAction ) changedCalloutByKeyCombination: ( id )_Sender;
 
 @end // OMFAppDelegate
+
+#pragma mark Conforms <OMCMainPanelControllerDelegate> protocol
+@interface OMCAppDelegate ( OMCAppDelegateConformsOMCMainPanelControllerDelegate ) <OMFMainPanelControllerDelegate>
+@end // OMCAppDelegate + OMCAppDelegateConformsOMCMainPanelControllerDelegate
 
 /////////////////////////////////////////////////////////////////////////////
 
