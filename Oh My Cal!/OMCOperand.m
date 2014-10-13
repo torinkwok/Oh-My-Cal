@@ -106,6 +106,16 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
                                   userInfo: nil ];
     }
 
+- ( void ) dealloc
+    {
+    RELEASE_AND_NIL( self->_decimalNumber );
+    RELEASE_AND_NIL( self->_numericString );
+    RELEASE_AND_NIL( self->_exceptionCarried );
+    RELEASE_AND_NIL( self->_decimalNumberHandler );
+
+    [ super dealloc ];
+    }
+
 #pragma mark Initializers & Deallocators
 + ( instancetype ) operandWithDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
     {
