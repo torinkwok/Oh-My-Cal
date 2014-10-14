@@ -38,8 +38,6 @@ The Calculator.app in OS X is powerful, but it's not convenient. For me, I usual
 * Stability improved.
 * Killed some fucking bugs (In particular the lagging when switch OCT/DEC/HEX mode ).
 
----
-
 #### Contact Me
 If you encounter any issue, you can email me: <Tong-G@outlook.com> or DM me on Twitter: [ @NSTongG ]( https://twitter.com/NSTongG )
 
