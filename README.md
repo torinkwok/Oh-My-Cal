@@ -36,7 +36,7 @@ The Calculator.app in OS X is powerful, but it's not convenient. For me, I usual
 * Full feature: supports Basic/Scientific/Programmer mode.
 * Supports global callout.
 * Stability improved.
-* Killed some fucking bugs.
+* Killed some fucking bugs (In particular the lagging when switch OCT/DEC/HEX mode ).
 
 ---
 
