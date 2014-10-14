@@ -72,7 +72,7 @@
                         </textFieldCell>
                     </textField>
                     <button toolTip="Follow me on Twitter" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9gZ-KA-Zvr">
-                        <rect key="frame" x="305" y="39" width="22" height="25"/>
+                        <rect key="frame" x="291" y="39" width="21" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="y0f-yN-zy5">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -83,7 +83,7 @@
                         </connections>
                     </button>
                     <button toolTip="Send me Email" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fuT-JO-81p">
-                        <rect key="frame" x="273" y="39" width="22" height="25"/>
+                        <rect key="frame" x="261" y="39" width="22" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="email" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="sCu-yz-6Zo">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -94,7 +94,7 @@
                         </connections>
                     </button>
                     <button toolTip="Import my GnuPG pub key" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0KN-7y-wCk">
-                        <rect key="frame" x="334" y="42" width="22" height="20"/>
+                        <rect key="frame" x="345" y="42" width="22" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="gnupg" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="e7z-Q8-7jh">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -104,12 +104,24 @@
                             <action selector="importMyGnuPGPubKey:" target="-2" id="8oy-n5-1kL"/>
                         </connections>
                     </button>
+                    <button toolTip="Fork this repo on GitHub" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a6A-ov-SNc">
+                        <rect key="frame" x="315" y="39" width="28" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="github" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="bYp-jt-8P3">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="forkThisRepoOnGitHub:" target="-2" id="I7z-wB-5uP"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
         </window>
     </objects>
     <resources>
         <image name="email" width="512" height="512"/>
+        <image name="github" width="512" height="512"/>
         <image name="gnupg" width="512" height="512"/>
         <image name="logo" width="256" height="256"/>
         <image name="twitter" width="512" height="512"/>

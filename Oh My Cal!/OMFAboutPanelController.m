@@ -72,6 +72,12 @@
     [ [ NSWorkspace sharedWorkspace ] openURL: twitterURL ];
     }
 
+- ( IBAction ) forkThisRepoOnGitHub: ( id )_Sender;
+    {
+    NSURL* twitterURL = [ NSURL URLWithString: @"https://github.com/TongG/Oh-My-Cal" ];
+    [ [ NSWorkspace sharedWorkspace ] openURL: twitterURL ];
+    }
+
 - ( IBAction ) importMyGnuPGPubKey: ( id )_Sender
     {
     NSURL* pubkeyFileURL = [ [ NSBundle mainBundle ] URLForResource: @"pubkey" withExtension: @"txt" ];

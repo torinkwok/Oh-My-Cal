@@ -35,6 +35,7 @@
 		83099CB119ADBB2E00DDBF1D /* BGHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9119ADBB2E00DDBF1D /* BGHUDView.m */; };
 		83099CB219ADBB2E00DDBF1D /* BGTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9319ADBB2E00DDBF1D /* BGTheme.m */; };
 		83099CB319ADBB2E00DDBF1D /* BGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9519ADBB2E00DDBF1D /* BGThemeManager.m */; };
+		8316FF9119ED4DDF007C5840 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 8316FF8F19ED4DDF007C5840 /* github.png */; };
 		832A24A619C4387E005E79A5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 832A24A519C4387E005E79A5 /* README.md */; };
 		832A8C8119D90BCD005DB2A7 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 832A8C7F19D90BCD005DB2A7 /* twitter.png */; };
 		832A8C8219D90BCD005DB2A7 /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 832A8C8019D90BCD005DB2A7 /* email.png */; };
@@ -158,6 +159,7 @@
 		83099C9619ADBB2E00DDBF1D /* NSTokenAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTokenAttachment.h; sourceTree = "<group>"; };
 		83099C9719ADBB2E00DDBF1D /* NSTokenAttachmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTokenAttachmentCell.h; sourceTree = "<group>"; };
 		83166B3119B9C6FB00D39FC4 /* OMCBinaryAndDecimalConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCBinaryAndDecimalConversion.h; path = "Oh My Cal!/OMCBinaryAndDecimalConversion.h"; sourceTree = "<group>"; };
+		8316FF8F19ED4DDF007C5840 /* github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = github.png; path = "Oh My Cal!/Resources/github.png"; sourceTree = "<group>"; };
 		832A24A519C4387E005E79A5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		832A8C7F19D90BCD005DB2A7 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter.png; path = "Oh My Cal!/Resources/twitter.png"; sourceTree = "<group>"; };
 		832A8C8019D90BCD005DB2A7 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = email.png; path = "Oh My Cal!/Resources/email.png"; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 		83D5D51E19ADB3FC004AFD84 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8316FF8F19ED4DDF007C5840 /* github.png */,
 				832A8C8319D90E0B005DB2A7 /* gnupg.png */,
 				832A8C7F19D90BCD005DB2A7 /* twitter.png */,
 				832A8C8019D90BCD005DB2A7 /* email.png */,
@@ -642,6 +645,7 @@
 				839396F219ADE567008D8A3C /* OMCDefaults.plist in Resources */,
 				83DD4A1219B1B0B2007F530A /* settings.png in Resources */,
 				83ED014D19BC97FC004E7F9E /* logo.png in Resources */,
+				8316FF9119ED4DDF007C5840 /* github.png in Resources */,
 				83D5D4DD19ADB172004AFD84 /* Images.xcassets in Resources */,
 				832A8C8119D90BCD005DB2A7 /* twitter.png in Resources */,
 				832A8C8819D914CD005DB2A7 /* pubkey.txt in Resources */,
