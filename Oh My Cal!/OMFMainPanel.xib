@@ -1404,13 +1404,13 @@
             </connections>
         </customObject>
         <customView id="TuJ-OT-THp" customClass="OMCSettingsBar">
-            <rect key="frame" x="0.0" y="0.0" width="302" height="30"/>
+            <rect key="frame" x="0.0" y="0.0" width="302" height="24"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <segmentedControl hidden="YES" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="832-bz-Fs4">
-                    <rect key="frame" x="4" y="4" width="102" height="24"/>
-                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="qjx-Ls-5hD" customClass="BGHUDSegmentedCell">
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="6" y="1" width="94" height="17"/>
+                    <segmentedCell key="cell" controlSize="mini" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectOne" id="qjx-Ls-5hD">
+                        <font key="font" metaFont="miniSystem"/>
                         <segments>
                             <segment label="Oct" width="30"/>
                             <segment label="Dec" width="30" selected="YES" tag="1"/>
@@ -1422,7 +1422,7 @@
                     </connections>
                 </segmentedControl>
                 <popUpButton misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rtb-tf-nhm">
-                    <rect key="frame" x="270" y="1" width="31" height="21"/>
+                    <rect key="frame" x="270" y="0.5" width="31" height="21"/>
                     <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" inset="2" pullsDown="YES" arrowPosition="noArrow" preferredEdge="maxX" selectedItem="IM1-RK-AH3" id="f6V-lo-oIV">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="menu"/>
@@ -1470,11 +1470,11 @@
                 </popUpButton>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="rtb-tf-nhm" secondAttribute="trailing" constant="3" id="8Cr-dE-W6M"/>
-                <constraint firstAttribute="bottom" secondItem="rtb-tf-nhm" secondAttribute="bottom" constant="3" id="MDy-IQ-N9W"/>
-                <constraint firstItem="832-bz-Fs4" firstAttribute="leading" secondItem="TuJ-OT-THp" secondAttribute="leading" constant="6" id="Ocg-Ci-fGT"/>
-                <constraint firstAttribute="bottom" secondItem="832-bz-Fs4" secondAttribute="bottom" constant="6" id="SMs-pe-DCM"/>
-                <constraint firstItem="832-bz-Fs4" firstAttribute="top" secondItem="TuJ-OT-THp" secondAttribute="top" constant="3" id="UMZ-gf-s1J"/>
+                <constraint firstAttribute="bottom" secondItem="rtb-tf-nhm" secondAttribute="bottom" constant="0.5" id="PvA-tS-7d1"/>
+                <constraint firstItem="832-bz-Fs4" firstAttribute="leading" secondItem="TuJ-OT-THp" secondAttribute="leading" constant="6" id="cN9-qB-u9J"/>
+                <constraint firstItem="rtb-tf-nhm" firstAttribute="top" secondItem="TuJ-OT-THp" secondAttribute="top" constant="2.5" id="hrO-96-Tup"/>
+                <constraint firstAttribute="trailing" secondItem="rtb-tf-nhm" secondAttribute="trailing" constant="1" id="sTC-dd-RbB"/>
+                <constraint firstItem="832-bz-Fs4" firstAttribute="top" secondItem="TuJ-OT-THp" secondAttribute="top" constant="4" id="z2D-gn-JnR"/>
             </constraints>
             <connections>
                 <outlet property="_arySegControl" destination="832-bz-Fs4" id="nph-Wr-5b2"/>
