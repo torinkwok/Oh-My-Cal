@@ -36,9 +36,10 @@ The Calculator.app in OS X is powerful, but it's not convenient. For me, I usual
 * Full feature: supports Basic/Scientific/Programmer mode.
 * Supports global callout.
 * Stability improved.
-* Killed some fucking bugs
+* Killed some fucking bugs:
     * Lagging when switch OCT/DEC/HEX mode.
     *  The Enter, Clear and Equal button on the "Apple Keyboard With Numeric Keypad" all do not work. ( found by Mr. Tobias Kroniger ).
+* Various minor improvements.
 
 #### Contact Me
 If you encounter any issue, you can email me: <Tong-G@outlook.com> or DM me on Twitter: [ @NSTongG ]( https://twitter.com/NSTongG )
