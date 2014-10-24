@@ -94,7 +94,7 @@
                         </connections>
                     </button>
                     <button toolTip="Import my GnuPG pub key" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0KN-7y-wCk">
-                        <rect key="frame" x="345" y="42" width="22" height="19"/>
+                        <rect key="frame" x="342" y="41" width="23" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="gnupg" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="e7z-Q8-7jh">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
