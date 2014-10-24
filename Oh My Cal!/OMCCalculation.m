@@ -450,12 +450,8 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
             return;
 
     case OMCClear:
-            {
-            if ( self.calStyle == OMCProgrammerStyle )
-                [ self clearCurrentOperand ];
-            else
-                [ self clearAllAndReset ];
-            } return;
+            [ self clearCurrentOperand ];
+            return;
 
     case OMCAC:
             [ self clearAllAndReset ];
