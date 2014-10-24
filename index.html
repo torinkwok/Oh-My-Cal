@@ -1,43 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
     <title>Oh My Cal! by TongG</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/TongG/Oh-My-Cal">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/TongG/Oh-My-Cal/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/TongG/Oh-My-Cal/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
 
-    <div class="wrapper">
+    <header>
+      <div class="container">
+        <h1>Oh My Cal!</h1>
+        <h2>Oh My Cal! is a multifunctional and multi-mode calculator. It&#39;s very cool and convenient!</h2>
 
-      <section>
-        <div id="title">
-          <h1>Oh My Cal!</h1>
-          <p>Oh My Cal! is a multifunctional and multi-mode calculator. It&#39;s very cool and convenient!</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/TongG">TongG</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
+        <section id="downloads">
+          <a href="https://github.com/TongG/Oh-My-Cal/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/TongG/Oh-My-Cal/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/TongG/Oh-My-Cal" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
 
+    <div class="container">
+      <section id="main_content">
         <h1>
 <a name="oh-my-cal" class="anchor" href="#oh-my-cal"><span class="octicon octicon-link"></span></a>Oh My Cal!</h1>
 
@@ -77,13 +67,19 @@
 <p>The Calculator.app in OS X is powerful, but it's not convenient. For me, I usually use many apps in fullscreen mode( Xcode, Evernote, etc.). Whenever I want to calculate some formulas, I have to switch among several apps or screens. Oh, I really could not stand!!! So I wrote Oh My Cal!. In addition to as powerful as the Calculator.app in OS X, it's very convenient to use (Global Callout or Hanging in menu bar).</p>
 
 <h4>
-<a name="whats-new-in-this-version" class="anchor" href="#whats-new-in-this-version"><span class="octicon octicon-link"></span></a>What's New in This Version?</h4>
+<a name="whats-new-in-this-version-v202" class="anchor" href="#whats-new-in-this-version-v202"><span class="octicon octicon-link"></span></a>What's New in This Version (v2.0.2)?</h4>
 
 <ul>
 <li>Full feature: supports Basic/Scientific/Programmer mode.</li>
 <li>Supports global callout.</li>
 <li>Stability improved.</li>
-<li>Killed some fucking bugs (In particular the lagging when switch OCT/DEC/HEX mode ).</li>
+<li>Killed some fucking bugs
+
+<ul>
+<li>Lagging when switch OCT/DEC/HEX mode.</li>
+<li> The Enter, Clear and Equal button on the "Apple Keyboard With Numeric Keypad" all do not work. ( found by Mr. Tobias Kroniger ).</li>
+</ul>
+</li>
 </ul>
 
 <h4>
@@ -108,9 +104,8 @@
 <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 </blockquote>
       </section>
-
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
     
   </body>
 </html>
