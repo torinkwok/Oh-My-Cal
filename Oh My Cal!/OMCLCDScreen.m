@@ -677,12 +677,13 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     else if ( ( keyCodeOfTheEvent == kVK_Delete  && ( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
                 || keyCodeOfTheEvent == kVK_ANSI_KeypadClear /* kVK_ANSI_K */)
         actionSender = self.currentCalculator._clear;
+
     // Clear All: ⌘-⇧-⌫
     else if ( keyCodeOfTheEvent == kVK_Delete && ( modifierFlags & NSCommandKeyMask ) && ( modifierFlags & NSShiftKeyMask ) )
         actionSender = self.currentCalculator._clearAll;
 
     // Enter: ↵
-    else if ( keyCodeOfTheEvent == kVK_Return || keyCodeOfTheEvent == kVK_ANSI_KeypadEnter || keyCodeOfTheEvent == kVK_ANSI_KeypadEquals )
+    else if ( keyCodeOfTheEvent == kVK_Return || keyCodeOfTheEvent == kVK_ANSI_KeypadEnter || keyCodeOfTheEvent == kVK_ANSI_KeypadEquals /* kVK_ANSI_Q */)
         actionSender = self.currentCalculator._enterOperator;
 
     if ( actionSender )
