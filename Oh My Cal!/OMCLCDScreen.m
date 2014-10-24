@@ -559,7 +559,6 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
 - ( void ) keyDown: ( NSEvent* )_Event
     {
     unsigned short keyCodeOfTheEvent = [ _Event keyCode ];
-    NSLog( @"%d", _Event.keyCode );
 
     NSUInteger modifierFlags = [ _Event modifierFlags ];
     NSString* characters = [ _Event charactersIgnoringModifiers ];

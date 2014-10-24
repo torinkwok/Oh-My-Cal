@@ -40,10 +40,6 @@
 @synthesize themeKey;
 
 -(id)init {
-	
-//	self = [super init];
-
-    NSLog( @"FUCK BGHUDLabel #1: %@", self );
 	if(self = [ super init ]) {
 		
 		self.themeKey = @"gradientTheme";
@@ -52,7 +48,6 @@
 		[self setBezeled: NO];
 		[self setEditable: NO];
 		[self setSelectable: NO];
-        NSLog( @"FUCK BGHUDLabel #2: %@", self );
 	}
 	
 	return self;
