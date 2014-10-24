@@ -558,7 +558,7 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
 #pragma mark Events Handling
 - ( void ) keyDown: ( NSEvent* )_Event
     {
-    unsigned short ketCodeEvent = [ _Event keyCode ];
+    unsigned short keyCodeOfTheEvent = [ _Event keyCode ];
     NSLog( @"%d", _Event.keyCode );
 
     NSUInteger modifierFlags = [ _Event modifierFlags ];
@@ -669,18 +669,21 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     else if ( isProgrammerStyle && COMPARE_WITH_CHARACTERS( @"M" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._modOperator;
 
-    // DEL: Delete
-    else if ( ( _Event.keyCode == 51 || _Event.keyCode == 117 ) && !( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
+    // DEL: ⌫
+    else if ( ( keyCodeOfTheEvent == kVK_Delete || keyCodeOfTheEvent == kVK_ForwardDelete )
+                && !( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
         actionSender = self.currentCalculator._del;
-    // Clear: ⌘-Delete
-    else if ( _Event.keyCode == 51  && ( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
+    // Clear: ⌘-⌫
+    else if ( ( keyCodeOfTheEvent == kVK_Delete  && ( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
+                || keyCodeOfTheEvent == kVK_ANSI_KeypadClear /* kVK_ANSI_K */)
         actionSender = self.currentCalculator._clear;
-    // Clear All: ⌘-⇧-Delete
-    else if ( _Event.keyCode == 51 && ( modifierFlags & NSCommandKeyMask ) && ( modifierFlags & NSShiftKeyMask ) )
+    // Clear All: ⌘-⇧-⌫
+    else if ( keyCodeOfTheEvent == kVK_Delete && ( modifierFlags & NSCommandKeyMask ) && ( modifierFlags & NSShiftKeyMask ) )
         actionSender = self.currentCalculator._clearAll;
 
-    // Enter: Return
-    else if ( _Event.keyCode == 36 || _Event.keyCode == 76 )    actionSender = self.currentCalculator._enterOperator;
+    // Enter: ↵
+    else if ( keyCodeOfTheEvent == kVK_Return || keyCodeOfTheEvent == kVK_ANSI_KeypadEnter || keyCodeOfTheEvent == kVK_ANSI_KeypadEquals )
+        actionSender = self.currentCalculator._enterOperator;
 
     if ( actionSender )
         {
