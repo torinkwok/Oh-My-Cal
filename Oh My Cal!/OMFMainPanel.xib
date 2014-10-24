@@ -1352,6 +1352,10 @@
                 <outlet property="_five" destination="j0S-nK-d0b" id="ROp-Q7-Ixl"/>
                 <outlet property="_four" destination="zGM-1h-KUg" id="l3s-MR-qWT"/>
                 <outlet property="_lshOperator" destination="tbD-k4-Tuc" id="hcm-TF-0Y6"/>
+                <outlet property="_memoryClear" destination="RsW-O4-EGW" id="z5N-gO-ZkY"/>
+                <outlet property="_memoryPlus" destination="6TW-9G-SYX" id="mnP-CP-T7U"/>
+                <outlet property="_memoryRead" destination="VkI-ag-tYI" id="s5y-qs-YwJ"/>
+                <outlet property="_memorySub" destination="3Xk-UO-AeZ" id="AUn-19-cY5"/>
                 <outlet property="_modOperator" destination="9Mf-2o-9Jw" id="ZfF-He-RsC"/>
                 <outlet property="_multiplicationOperator" destination="mP3-HX-zwp" id="R1Y-js-TOl"/>
                 <outlet property="_nine" destination="Ru3-NP-4t9" id="AsO-Dv-fqe"/>
