@@ -235,6 +235,14 @@ NSString extern* const OMCOperandDivideByZeroException;
 
 @end // OMCOperand + OMCDecimalNumberBehaviors
 
+#pragma mark Coding Behaviors
+@interface OMCOperand ( OMCCodingBehaviors ) <NSCoding>
+
+- ( id ) initWithCoder: ( NSCoder* )_Coder;
+- ( void ) encodeWithCoder: ( NSCoder* )_Coder;
+
+@end // OMCOperand + OMCCodingBehaviors
+
 // NSDecimalNumberHandler + OMCOperand
 @interface NSDecimalNumberHandler ( OMCOperand )
 

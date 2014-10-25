@@ -1020,6 +1020,40 @@ NSUInteger factorial( NSUInteger _X )
 
 @end // OMCOperand + OMCDecimalNumberBehaviors
 
+#pragma mark Coding Behaviors
+@implementation OMCOperand ( OMCCodingBehaviors )
+
+NSString static* kDecimalNumberKey = @"kDecimalNumberKey";
+NSString static* kNumericStringKey = @"kNumericStringKey";
+NSString static* kCalStyleKey = @"kCalStyleKey";
+NSString static* kCurrentAryKey = @"kCurrentAryKey";
+NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
+
+- ( id ) initWithCoder: ( NSCoder* )_Coder
+    {
+    if ( self = [ super init ] )
+        {
+        self.decimalNumber = [ _Coder decodeObjectForKey: kDecimalNumberKey ];
+        self.numericString = [ _Coder decodeObjectForKey: kNumericStringKey ];
+        self.calStyle = ( short )[ _Coder decodeIntForKey: kCalStyleKey ];
+        self.currentAry = ( short )[ _Coder decodeIntForKey: kCurrentAryKey ];
+        self.exceptionCarried = [ _Coder decodeObjectForKey: kExceptionCarriedKey ];
+        }
+
+    return self;
+    }
+
+- ( void ) encodeWithCoder: ( NSCoder* )_Coder
+    {
+    [ _Coder encodeObject: [ self decimalNumber ] forKey: kDecimalNumberKey ];
+    [ _Coder encodeObject: [ self numericString ] forKey: kNumericStringKey ];
+    [ _Coder encodeInt: ( int )[ self calStyle ] forKey: kCalStyleKey ];
+    [ _Coder encodeInt: ( int )[ self currentAry ] forKey: kCurrentAryKey ];
+    [ _Coder encodeObject: [ self exceptionCarried ] forKey: kExceptionCarriedKey ];
+    }
+
+@end // OMCOperand +OMCCodingBehaviors
+
 // NSDecimalNumberHandler + OMCOperand
 @implementation NSDecimalNumberHandler ( OMCOperand )
 
