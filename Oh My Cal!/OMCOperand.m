@@ -1054,6 +1054,7 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
     [ _Coder encodeObject: [ self exceptionCarried ] forKey: kExceptionCarriedKey ];
     }
 
+// Conforms <NSPasteboardWriting> protocol
 - ( NSArray* ) writableTypesForPasteboard: ( NSPasteboard* )_Pboard
     {
     NSArray static* writableTypes = nil;
@@ -1075,6 +1076,28 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
         propertyListObject = [ self.numericString pasteboardPropertyListForType: NSPasteboardTypeString ];
 
     return propertyListObject;
+    }
+
+// Conforms <NSPasteboardReading> protocol
++ ( NSArray* ) readableTypesForPasteboard: ( NSPasteboard* )_Pboard
+    {
+    NSArray static* readableTypes = nil;
+
+    if ( !readableTypes )
+        readableTypes = [ @[ OMCOperandPboardType ] retain ];
+
+    return readableTypes;
+    }
+
++ ( NSPasteboardReadingOptions ) readingOptionsForType: ( NSString* )_Type
+                                            pasteboard: ( NSPasteboard* )_Pboard
+    {
+    NSPasteboardReadingOptions readingOptions = 0;
+
+    if ( [ _Type isEqualToString: OMCOperandPboardType ] )
+        readingOptions = NSPasteboardReadingAsKeyedArchive;
+
+    return readingOptions;
     }
 
 - ( BOOL ) writeToPasteboard: ( NSPasteboard* )_Pboard

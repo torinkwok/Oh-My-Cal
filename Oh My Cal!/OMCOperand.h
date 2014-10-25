@@ -238,13 +238,19 @@ NSString extern* const OMCOperandDivideByZeroException;
 @end // OMCOperand + OMCDecimalNumberBehaviors
 
 #pragma mark Pasteboard Support
-@interface OMCOperand ( OMCPasteboardSupport ) <NSCoding, NSPasteboardWriting>
+@interface OMCOperand ( OMCPasteboardSupport ) <NSCoding, NSPasteboardWriting, NSPasteboardReading>
 
 - ( id ) initWithCoder: ( NSCoder* )_Coder;
 - ( void ) encodeWithCoder: ( NSCoder* )_Coder;
 
+// Conforms <NSPasteboardWriting> protocol
 - ( NSArray* ) writableTypesForPasteboard: ( NSPasteboard* )_Pboard;
 - ( id ) pasteboardPropertyListForType: ( NSString* )_Type;
+
+// Conforms <NSPasteboardReading> protocol
++ ( NSArray* ) readableTypesForPasteboard: ( NSPasteboard* )_Pboard;
++ ( NSPasteboardReadingOptions ) readingOptionsForType: ( NSString* )_Type
+                                            pasteboard: ( NSPasteboard* )_Pboard;
 
 - ( BOOL ) writeToPasteboard: ( NSPasteboard* )_Pboard;
 
