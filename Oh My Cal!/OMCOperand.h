@@ -37,6 +37,8 @@
 
 NSString extern* const OMCDot;
 
+NSString extern* const OMCOperandPboardType;
+
 // Exception names
 NSString extern* const OMCOperandExactnessException;
 NSString extern* const OMCOperandOverflowException;
@@ -235,11 +237,14 @@ NSString extern* const OMCOperandDivideByZeroException;
 
 @end // OMCOperand + OMCDecimalNumberBehaviors
 
-#pragma mark Coding Behaviors
-@interface OMCOperand ( OMCCodingBehaviors ) <NSCoding>
+#pragma mark Pasteboard Support
+@interface OMCOperand ( OMCPasteboardSupport ) <NSCoding, NSPasteboardWriting>
 
 - ( id ) initWithCoder: ( NSCoder* )_Coder;
 - ( void ) encodeWithCoder: ( NSCoder* )_Coder;
+
+- ( NSArray* ) writableTypesForPasteboard: ( NSPasteboard* )_Pboard;
+- ( id ) pasteboardPropertyListForType: ( NSString* )_Type;
 
 @end // OMCOperand + OMCCodingBehaviors
 

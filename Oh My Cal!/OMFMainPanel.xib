@@ -1438,7 +1438,7 @@
                 </segmentedControl>
                 <popUpButton misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rtb-tf-nhm">
                     <rect key="frame" x="270" y="0.5" width="31" height="21"/>
-                    <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" inset="2" pullsDown="YES" arrowPosition="noArrow" preferredEdge="maxX" selectedItem="IM1-RK-AH3" id="f6V-lo-oIV">
+                    <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" inset="2" pullsDown="YES" arrowPosition="noArrow" preferredEdge="maxX" id="f6V-lo-oIV">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" title="OtherViews" id="Lgq-so-pDQ">
@@ -1451,17 +1451,17 @@
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="BRm-vl-G1v"/>
-                                <menuItem title="Basic" keyEquivalent="1" id="n6C-zu-lsG">
+                                <menuItem title="Basic" id="n6C-zu-lsG">
                                     <connections>
                                         <action selector="calStyleChanged:" target="EiT-Mj-1SZ" id="96J-vA-jRi"/>
                                     </connections>
                                 </menuItem>
-                                <menuItem title="Scientific" tag="1" keyEquivalent="2" id="rWO-LH-2vs">
+                                <menuItem title="Scientific" tag="1" id="rWO-LH-2vs">
                                     <connections>
                                         <action selector="calStyleChanged:" target="EiT-Mj-1SZ" id="W47-9T-Wwy"/>
                                     </connections>
                                 </menuItem>
-                                <menuItem title="Programmer" tag="2" keyEquivalent="3" id="ZhY-vc-eNE">
+                                <menuItem title="Programmer" tag="2" id="ZhY-vc-eNE">
                                     <connections>
                                         <action selector="calStyleChanged:" target="EiT-Mj-1SZ" id="nvB-iP-Sf9"/>
                                     </connections>
@@ -1474,7 +1474,7 @@
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="EoT-5t-i1T"/>
-                                <menuItem title="Quit" keyEquivalent="q" id="Yhd-vS-FEf">
+                                <menuItem title="Quit" id="Yhd-vS-FEf">
                                     <connections>
                                         <action selector="terminate:" target="-1" id="vnO-1D-psK"/>
                                     </connections>

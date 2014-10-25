@@ -35,6 +35,8 @@
 
 NSString* const OMCDot = @".";
 
+NSString* const OMCOperandPboardType = @"individual.TongGuo.Oh-My-Cal.operand";
+
 // Exception names
 NSString* const OMCOperandExactnessException = @"OMCOperandExactnessException";
 NSString* const OMCOperandOverflowException = @"OMCOperandOverflowException";
@@ -1020,8 +1022,8 @@ NSUInteger factorial( NSUInteger _X )
 
 @end // OMCOperand + OMCDecimalNumberBehaviors
 
-#pragma mark Coding Behaviors
-@implementation OMCOperand ( OMCCodingBehaviors )
+#pragma mark Pasteboard Support
+@implementation OMCOperand ( OMCPasteboardSupport )
 
 NSString static* kDecimalNumberKey = @"kDecimalNumberKey";
 NSString static* kNumericStringKey = @"kNumericStringKey";
@@ -1050,6 +1052,26 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
     [ _Coder encodeInt: ( int )[ self calStyle ] forKey: kCalStyleKey ];
     [ _Coder encodeInt: ( int )[ self currentAry ] forKey: kCurrentAryKey ];
     [ _Coder encodeObject: [ self exceptionCarried ] forKey: kExceptionCarriedKey ];
+    }
+
+- ( NSArray* ) writableTypesForPasteboard: ( NSPasteboard* )_Pboard
+    {
+    NSArray static* writableTypes = nil;
+
+    if ( !writableTypes )
+        writableTypes = @[ OMCOperandPboardType ];
+
+    return writableTypes;
+    }
+
+- ( id ) pasteboardPropertyListForType: ( NSString* )_Type
+    {
+    id propertyListObject = nil;
+
+    if ( [ _Type isEqualToString: OMCOperandPboardType ] )
+        return [ NSKeyedArchiver archivedDataWithRootObject: self ];
+
+    return propertyListObject;
     }
 
 @end // OMCOperand +OMCCodingBehaviors
