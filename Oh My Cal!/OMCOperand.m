@@ -1033,16 +1033,19 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
 
 - ( id ) initWithCoder: ( NSCoder* )_Coder
     {
-    if ( self = [ super init ] )
-        {
-        self.decimalNumber = [ _Coder decodeObjectForKey: kDecimalNumberKey ];
-        self.numericString = [ _Coder decodeObjectForKey: kNumericStringKey ];
-        self.calStyle = ( short )[ _Coder decodeIntForKey: kCalStyleKey ];
-        self.currentAry = ( short )[ _Coder decodeIntForKey: kCurrentAryKey ];
-        self.exceptionCarried = [ _Coder decodeObjectForKey: kExceptionCarriedKey ];
-        }
-
-    return self;
+    return [ self initWithDecimalNumber: [ _Coder decodeObjectForKey: kDecimalNumberKey ]
+                                  inAry: ( OMCAry )[ _Coder decodeIntForKey: kCurrentAryKey ]
+                               calStyle: ( OMCCalStyle )[ _Coder decodeIntForKey: kCalStyleKey ] ];
+//    if ( self = [ super init ] )
+//        {
+//        self.decimalNumber = [ _Coder decodeObjectForKey: kDecimalNumberKey ];
+//        self.numericString = [ _Coder decodeObjectForKey: kNumericStringKey ];
+//        self.calStyle = ( short )[ _Coder decodeIntForKey: kCalStyleKey ];
+//        self.currentAry = ( short )[ _Coder decodeIntForKey: kCurrentAryKey ];
+//        self.exceptionCarried = [ _Coder decodeObjectForKey: kExceptionCarriedKey ];
+//        }
+//
+//    return self;
     }
 
 - ( void ) encodeWithCoder: ( NSCoder* )_Coder

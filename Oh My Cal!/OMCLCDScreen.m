@@ -782,6 +782,11 @@ OMCCal* _currentCalculatorIMP( id self, SEL _cmd )
         {
         OMCOperand* operandFromPboard = [ GENERAL_PASTEBOARD readObjectsForClasses: classes options: readingOptions ].firstObject;
 
+        /* The calStyle and currentAry in operandFromPboard may be out of date:
+         * current calStyle and currentAry properties may be changed after this operand was archived */
+        [ operandFromPboard setCalStyle: self.currentCalculation.calStyle ];
+        [ operandFromPboard setCurrentAry: self.currentAry ];
+
         if ( currentTypingState == OMCWaitAllOperands )
             {
             self.currentCalculation.lhsOperand = operandFromPboard;
