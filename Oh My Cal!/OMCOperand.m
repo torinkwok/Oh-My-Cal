@@ -1059,7 +1059,7 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
     NSArray static* writableTypes = nil;
 
     if ( !writableTypes )
-        writableTypes = [ @[ OMCOperandPboardType ] retain ];
+        writableTypes = [ @[ OMCOperandPboardType, NSPasteboardTypeString ] retain ];
 
     return writableTypes;
     }
@@ -1069,7 +1069,10 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
     id propertyListObject = nil;
 
     if ( [ _Type isEqualToString: OMCOperandPboardType ] )
-        return [ NSKeyedArchiver archivedDataWithRootObject: self ];
+        propertyListObject = [ NSKeyedArchiver archivedDataWithRootObject: self ];
+        
+    else if ( [ _Type isEqualToString: NSPasteboardTypeString ] )
+        propertyListObject = [ self.numericString pasteboardPropertyListForType: NSPasteboardTypeString ];
 
     return propertyListObject;
     }
