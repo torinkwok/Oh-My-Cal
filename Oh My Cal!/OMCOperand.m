@@ -1071,7 +1071,7 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
 
     if ( [ _Type isEqualToString: OMCOperandPboardType ] )
         propertyListObject = [ NSKeyedArchiver archivedDataWithRootObject: self ];
-        
+
     else if ( [ _Type isEqualToString: NSPasteboardTypeString ] )
         propertyListObject = [ self.numericString pasteboardPropertyListForType: NSPasteboardTypeString ];
 
@@ -1108,7 +1108,7 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
 
 @end // OMCOperand +OMCCodingBehaviors
 
-// NSDecimalNumberHandler + OMCOperand
+#pragma mark NSDecimalNumberHandler + OMCOperand
 @implementation NSDecimalNumberHandler ( OMCOperand )
 
 + ( instancetype ) roundUpBehavior

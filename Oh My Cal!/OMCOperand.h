@@ -256,7 +256,7 @@ NSString extern* const OMCOperandDivideByZeroException;
 
 @end // OMCOperand + OMCCodingBehaviors
 
-// NSDecimalNumberHandler + OMCOperand
+#pragma mark NSDecimalNumberHandler + OMCOperand
 @interface NSDecimalNumberHandler ( OMCOperand )
 
 + ( instancetype ) roundUpBehavior;

@@ -773,7 +773,32 @@ OMCCal* _currentCalculatorIMP( id self, SEL _cmd )
 
 - ( IBAction ) paste: ( id )_Sender
     {
+    NSArray* classes = @[ [ OMCOperand class ] ];
+    NSDictionary* readingOptions = [ NSDictionary dictionary ];
+    OMCTypingState currentTypingState = [ self typingState ];
 
+    BOOL canReadOperand = [ GENERAL_PASTEBOARD canReadObjectForClasses: classes options: readingOptions ];
+    if ( canReadOperand )
+        {
+        OMCOperand* operandFromPboard = [ GENERAL_PASTEBOARD readObjectsForClasses: classes options: readingOptions ].firstObject;
+
+        if ( currentTypingState == OMCWaitAllOperands )
+            {
+            self.currentCalculation.lhsOperand = operandFromPboard;
+            self.currentCalculation.typingState = OMCWaitAllOperands;
+            }
+        else if ( currentTypingState == OMCWaitRhsOperand )
+            {
+            self.currentCalculation.rhsOperand = operandFromPboard;
+            self.currentCalculation.typingState = OMCWaitRhsOperand;
+            }
+        else if ( currentTypingState == OMCFinishedTyping )
+            {
+            [ self.currentCalculation clearAllAndReset ];
+            self.currentCalculation.lhsOperand = operandFromPboard;
+            self.currentCalculation.typingState = OMCWaitAllOperands;
+            }
+        }
     }
 
 @end // OMCLCDScreen class
