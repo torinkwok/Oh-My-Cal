@@ -777,8 +777,7 @@ OMCCal* _currentCalculatorIMP( id self, SEL _cmd )
     NSDictionary* readingOptions = [ NSDictionary dictionary ];
     OMCTypingState currentTypingState = [ self typingState ];
 
-    BOOL canReadOperand = [ GENERAL_PASTEBOARD canReadObjectForClasses: classes options: readingOptions ];
-    if ( canReadOperand )
+    if ( [ GENERAL_PASTEBOARD canReadObjectForClasses: classes options: readingOptions ] )
         {
         OMCOperand* operandFromPboard = [ GENERAL_PASTEBOARD readObjectsForClasses: classes options: readingOptions ].firstObject;
 

@@ -1036,16 +1036,6 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
     return [ self initWithDecimalNumber: [ _Coder decodeObjectForKey: kDecimalNumberKey ]
                                   inAry: ( OMCAry )[ _Coder decodeIntForKey: kCurrentAryKey ]
                                calStyle: ( OMCCalStyle )[ _Coder decodeIntForKey: kCalStyleKey ] ];
-//    if ( self = [ super init ] )
-//        {
-//        self.decimalNumber = [ _Coder decodeObjectForKey: kDecimalNumberKey ];
-//        self.numericString = [ _Coder decodeObjectForKey: kNumericStringKey ];
-//        self.calStyle = ( short )[ _Coder decodeIntForKey: kCalStyleKey ];
-//        self.currentAry = ( short )[ _Coder decodeIntForKey: kCurrentAryKey ];
-//        self.exceptionCarried = [ _Coder decodeObjectForKey: kExceptionCarriedKey ];
-//        }
-//
-//    return self;
     }
 
 - ( void ) encodeWithCoder: ( NSCoder* )_Coder
@@ -1087,7 +1077,7 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
     NSArray static* readableTypes = nil;
 
     if ( !readableTypes )
-        readableTypes = [ @[ OMCOperandPboardType ] retain ];
+        readableTypes = [ @[ OMCOperandPboardType, NSPasteboardTypeString ] retain ];
 
     return readableTypes;
     }
@@ -1100,7 +1090,26 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
     if ( [ _Type isEqualToString: OMCOperandPboardType ] )
         readingOptions = NSPasteboardReadingAsKeyedArchive;
 
+    else if ( [ _Type isEqualToString: NSPasteboardTypeString ] )
+        readingOptions = NSPasteboardReadingAsPropertyList;
+
     return readingOptions;
+    }
+
+- ( id ) initWithPasteboardPropertyList: ( id )_PropertyList
+                                 ofType: ( NSString* )_Type
+    {
+    if ( self = [ super init ] )
+        {
+        if ( [ _Type isEqualToString: NSPasteboardTypeString ] )
+            {
+            NSDecimalNumber* decimalNumber = [ NSDecimalNumber decimalNumberWithString: _PropertyList ];
+            self.decimalNumber = decimalNumber;
+            self.numericString = [ [ decimalNumber stringValue ] mutableCopy ];
+            }
+        }
+
+    return self;
     }
 
 - ( BOOL ) writeToPasteboard: ( NSPasteboard* )_Pboard
