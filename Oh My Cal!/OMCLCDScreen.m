@@ -755,6 +755,27 @@ OMCCal* _currentCalculatorIMP( id self, SEL _cmd )
     return ( ( OMCLCDScreen* )self )._mainPanelBackgroundView.currentCalculator;
     }
 
+#pragma mark IBActions
+- ( IBAction ) copy: ( id )_Sender
+    {
+    OMCTypingState currentTypingState = [ self typingState ];
+    OMCOperand* operandToBeCopied = nil;
+
+    if ( currentTypingState == OMCWaitAllOperands )
+        operandToBeCopied = [ [ self currentCalculation ] lhsOperand ];
+    else if ( currentTypingState == OMCWaitRhsOperand )
+        operandToBeCopied = [ [ self currentCalculation ] rhsOperand ];
+    else if ( currentTypingState == OMCFinishedTyping )
+        operandToBeCopied = [ [ self currentCalculation ] resultValue ];
+
+    [ operandToBeCopied writeToPasteboard: GENERAL_PASTEBOARD ];
+    }
+
+- ( IBAction ) paste: ( id )_Sender
+    {
+
+    }
+
 @end // OMCLCDScreen class
 
 //////////////////////////////////////////////////////////////////////////////

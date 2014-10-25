@@ -317,9 +317,6 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
 
 - ( void ) calculateTheResultValueForBinomialWithLastPressedButton: ( NSButton* )_Button
     {
-//    NSString* path = [ NSString stringWithFormat: @"/Users/EsquireTongG/Downloads/lhsOperand.plist" ];
-//    BOOL res = [ NSKeyedArchiver archiveRootObject: self.lhsOperand toFile: path ];
-//    NSLog( @"%@", res ? @"YES" : @"NO" );
     if ( self.typingState == OMCFinishedTyping /* If the user has already finished a calculation... */
             || self.typingState == OMCWaitAllOperands /* or if the user is typing the left operand... */  )
         {

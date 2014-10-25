@@ -1059,7 +1059,7 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
     NSArray static* writableTypes = nil;
 
     if ( !writableTypes )
-        writableTypes = @[ OMCOperandPboardType ];
+        writableTypes = [ @[ OMCOperandPboardType ] retain ];
 
     return writableTypes;
     }
@@ -1072,6 +1072,12 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
         return [ NSKeyedArchiver archivedDataWithRootObject: self ];
 
     return propertyListObject;
+    }
+
+- ( BOOL ) writeToPasteboard: ( NSPasteboard* )_Pboard
+    {
+    [ _Pboard clearContents ];
+    return [ _Pboard writeObjects: @[ self ] ];
     }
 
 @end // OMCOperand +OMCCodingBehaviors

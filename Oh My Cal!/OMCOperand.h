@@ -246,6 +246,8 @@ NSString extern* const OMCOperandDivideByZeroException;
 - ( NSArray* ) writableTypesForPasteboard: ( NSPasteboard* )_Pboard;
 - ( id ) pasteboardPropertyListForType: ( NSString* )_Type;
 
+- ( BOOL ) writeToPasteboard: ( NSPasteboard* )_Pboard;
+
 @end // OMCOperand + OMCCodingBehaviors
 
 // NSDecimalNumberHandler + OMCOperand

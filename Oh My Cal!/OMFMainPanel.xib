@@ -1451,22 +1451,33 @@
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="BRm-vl-G1v"/>
-                                <menuItem title="Basic" id="n6C-zu-lsG">
+                                <menuItem title="Basic" keyEquivalent="1" id="n6C-zu-lsG">
                                     <connections>
                                         <action selector="calStyleChanged:" target="EiT-Mj-1SZ" id="96J-vA-jRi"/>
                                     </connections>
                                 </menuItem>
-                                <menuItem title="Scientific" tag="1" id="rWO-LH-2vs">
+                                <menuItem title="Scientific" tag="1" keyEquivalent="2" id="rWO-LH-2vs">
                                     <connections>
                                         <action selector="calStyleChanged:" target="EiT-Mj-1SZ" id="W47-9T-Wwy"/>
                                     </connections>
                                 </menuItem>
-                                <menuItem title="Programmer" tag="2" id="ZhY-vc-eNE">
+                                <menuItem title="Programmer" tag="2" keyEquivalent="3" id="ZhY-vc-eNE">
                                     <connections>
                                         <action selector="calStyleChanged:" target="EiT-Mj-1SZ" id="nvB-iP-Sf9"/>
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="HDw-Lt-knt"/>
+                                <menuItem title="Copy" keyEquivalent="c" id="fwG-My-9Q6">
+                                    <connections>
+                                        <action selector="copy:" target="lUW-uQ-i4U" id="38i-kP-gRE"/>
+                                    </connections>
+                                </menuItem>
+                                <menuItem title="Paste" keyEquivalent="v" id="cpP-cp-Ocl">
+                                    <connections>
+                                        <action selector="paste:" target="lUW-uQ-i4U" id="em5-qd-I4y"/>
+                                    </connections>
+                                </menuItem>
+                                <menuItem isSeparatorItem="YES" id="hrM-d9-Jvq"/>
                                 <menuItem title="Callout by ⌥-⇧-Space Bar" state="on" id="IM1-RK-AH3">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <connections>
@@ -1474,7 +1485,7 @@
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="EoT-5t-i1T"/>
-                                <menuItem title="Quit" id="Yhd-vS-FEf">
+                                <menuItem title="Quit" keyEquivalent="q" id="Yhd-vS-FEf">
                                     <connections>
                                         <action selector="terminate:" target="-1" id="vnO-1D-psK"/>
                                     </connections>
