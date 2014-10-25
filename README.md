@@ -40,6 +40,8 @@ The Calculator.app in OS X is powerful, but it's not convenient. For me, I usual
     * Lagging when switch OCT/DEC/HEX mode.
     *  The Enter, Clear and Equal button on the "Apple Keyboard With Numeric Keypad" all do not work. ( found by Mr. Tobias Kroniger ).
 * Various minor improvements.
+* Supports of Parentheses and Pasteboard will coming soon!
+* Enjoy & STAY TUNED!
 
 #### Contact Me
 If you encounter any issue, you can email me: <Tong-G@outlook.com> or DM me on Twitter: [ @NSTongG ]( https://twitter.com/NSTongG )
