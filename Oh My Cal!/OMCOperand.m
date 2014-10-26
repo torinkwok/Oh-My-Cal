@@ -1115,7 +1115,6 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
             theDecimalNumber = [ NSDecimalNumber decimalNumberWithString: _PropertyList ];
 
         return [ self initWithDecimalNumber: theDecimalNumber ];
-//        self.numericString = [ [ self description ] mutableCopy ];
         }
 
     return nil;
