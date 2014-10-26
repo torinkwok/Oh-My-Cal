@@ -1145,6 +1145,72 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
 
 @end // NSDecimalNumberHandler + OMCOperand
 
+#pragma mark Utility Functions
+BOOL isCharInAtoB( NSString* );
+NSUInteger mapHexAlphaToDecimalNumeric( NSString* _AlphaInHexNumeric );
+
+NSUInteger OMCOperandConvertHexToDecimal( NSString* _HexNumeric )
+    {
+    NSString* prefixForHex = @"0x";
+    if ( ![ _HexNumeric hasPrefix: prefixForHex ] )
+        return NAN;
+
+    NSString* hexNumericWithoutPrefix = [ _HexNumeric substringFromIndex: prefixForHex.length ];
+
+    NSUInteger resultInDecimal = 0U;
+    double exponent = 0.f;
+    for ( int index = ( int )hexNumericWithoutPrefix.length - 1; index >= 0; index-- )
+        {
+        NSString* stringForCurrentDigit = [ hexNumericWithoutPrefix substringWithRange: NSMakeRange( index, 1 ) ];
+        NSUInteger valueForCurrentDigit = 0U;
+
+        if ( isCharInAtoB( stringForCurrentDigit ) )
+            valueForCurrentDigit = mapHexAlphaToDecimalNumeric( stringForCurrentDigit );
+        else
+            valueForCurrentDigit = ( NSUInteger )[ stringForCurrentDigit integerValue ];
+
+        resultInDecimal += valueForCurrentDigit * ( NSUInteger )pow( 16, exponent++ );
+        }
+
+    return resultInDecimal;
+    }
+
+BOOL isCharInAtoB( NSString* _Char )
+    {
+    if ( [ _Char isEqualToString: @"A" ]
+            || [ _Char isEqualToString: @"B" ]
+            || [ _Char isEqualToString: @"C" ]
+            || [ _Char isEqualToString: @"D" ]
+            || [ _Char isEqualToString: @"E" ]
+            || [ _Char isEqualToString: @"F" ] )
+        return YES;
+    else
+        return NO;
+    }
+
+NSUInteger mapHexAlphaToDecimalNumeric( NSString* _AlphaInHexNumeric )
+    {
+    if ( [ _AlphaInHexNumeric isEqualToString: @"A" ] )
+        return 10;
+
+    if ( [ _AlphaInHexNumeric isEqualToString: @"B" ] )
+        return 11U;
+
+    if ( [ _AlphaInHexNumeric isEqualToString: @"C" ] )
+        return 12U;
+
+    if ( [ _AlphaInHexNumeric isEqualToString: @"D" ] )
+        return 13U;
+
+    if ( [ _AlphaInHexNumeric isEqualToString: @"E" ] )
+        return 14U;
+
+    if ( [ _AlphaInHexNumeric isEqualToString: @"F" ] )
+        return 15U;
+
+    return NAN;
+    }
+
 //////////////////////////////////////////////////////////////////////////////
 
 /*****************************************************************************

@@ -264,6 +264,9 @@ NSString extern* const OMCOperandDivideByZeroException;
 
 @end // NSDecimalNumberHandler + OMCOperand
 
+#pragma mark Utility Functions
+NSUInteger OMCOperandConvertHexToDecimal( NSString* );
+
 //////////////////////////////////////////////////////////////////////////////
 
 /*****************************************************************************
