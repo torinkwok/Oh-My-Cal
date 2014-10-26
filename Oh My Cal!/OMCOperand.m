@@ -1099,26 +1099,26 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
 - ( id ) initWithPasteboardPropertyList: ( id )_PropertyList
                                  ofType: ( NSString* )_Type
     {
-    if ( self = [ super init ] )
+    if ( [ _Type isEqualToString: NSPasteboardTypeString ] )
         {
-        if ( [ _Type isEqualToString: NSPasteboardTypeString ] )
+        NSString* valueString = ( NSString* )_PropertyList;
+        NSString* prefixForHex = @"0x";
+
+        NSDecimalNumber* theDecimalNumber = nil;
+
+        if ( [ valueString hasPrefix: prefixForHex ] )
             {
-            NSString* valueString = ( NSString* )_PropertyList;
-            NSString* prefixForHex = @"0x";
-
-            if ( [ valueString hasPrefix: prefixForHex ] )
-                {
-                NSNumber* unsignedNumber = [ NSNumber numberWithUnsignedInteger: OMCOperandConvertHexToDecimal( valueString ) ];
-                self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: [ unsignedNumber stringValue ] ];
-                }
-            else
-                self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: _PropertyList ];
-
-            self.numericString = [ [ self.decimalNumber stringValue ] mutableCopy ];
+            NSNumber* unsignedNumber = [ NSNumber numberWithUnsignedInteger: OMCOperandConvertHexToDecimal( valueString ) ];
+            theDecimalNumber = [ NSDecimalNumber decimalNumberWithString: [ unsignedNumber stringValue ] ];
             }
+        else
+            theDecimalNumber = [ NSDecimalNumber decimalNumberWithString: _PropertyList ];
+
+        return [ self initWithDecimalNumber: theDecimalNumber ];
+//        self.numericString = [ [ self description ] mutableCopy ];
         }
 
-    return self;
+    return nil;
     }
 
 - ( BOOL ) writeToPasteboard: ( NSPasteboard* )_Pboard
