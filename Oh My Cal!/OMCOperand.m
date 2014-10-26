@@ -1103,9 +1103,18 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
         {
         if ( [ _Type isEqualToString: NSPasteboardTypeString ] )
             {
-            NSDecimalNumber* decimalNumber = [ NSDecimalNumber decimalNumberWithString: _PropertyList ];
-            self.decimalNumber = decimalNumber;
-            self.numericString = [ [ decimalNumber stringValue ] mutableCopy ];
+            NSString* valueString = ( NSString* )_PropertyList;
+            NSString* prefixForHex = @"0x";
+
+            if ( [ valueString hasPrefix: prefixForHex ] )
+                {
+                NSNumber* unsignedNumber = [ NSNumber numberWithUnsignedInteger: OMCOperandConvertHexToDecimal( valueString ) ];
+                self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: [ unsignedNumber stringValue ] ];
+                }
+            else
+                self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: _PropertyList ];
+
+            self.numericString = [ [ self.decimalNumber stringValue ] mutableCopy ];
             }
         }
 
@@ -1146,7 +1155,7 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
 @end // NSDecimalNumberHandler + OMCOperand
 
 #pragma mark Utility Functions
-BOOL isCharInAtoB( NSString* );
+BOOL isCharInAtoE( NSString* );
 NSUInteger mapHexAlphaToDecimalNumeric( NSString* _AlphaInHexNumeric );
 
 NSUInteger OMCOperandConvertHexToDecimal( NSString* _HexNumeric )
@@ -1164,7 +1173,7 @@ NSUInteger OMCOperandConvertHexToDecimal( NSString* _HexNumeric )
         NSString* stringForCurrentDigit = [ hexNumericWithoutPrefix substringWithRange: NSMakeRange( index, 1 ) ];
         NSUInteger valueForCurrentDigit = 0U;
 
-        if ( isCharInAtoB( stringForCurrentDigit ) )
+        if ( isCharInAtoE( stringForCurrentDigit ) )
             valueForCurrentDigit = mapHexAlphaToDecimalNumeric( stringForCurrentDigit );
         else
             valueForCurrentDigit = ( NSUInteger )[ stringForCurrentDigit integerValue ];
@@ -1175,14 +1184,14 @@ NSUInteger OMCOperandConvertHexToDecimal( NSString* _HexNumeric )
     return resultInDecimal;
     }
 
-BOOL isCharInAtoB( NSString* _Char )
+BOOL isCharInAtoE( NSString* _Char )
     {
-    if ( [ _Char isEqualToString: @"A" ]
-            || [ _Char isEqualToString: @"B" ]
-            || [ _Char isEqualToString: @"C" ]
-            || [ _Char isEqualToString: @"D" ]
-            || [ _Char isEqualToString: @"E" ]
-            || [ _Char isEqualToString: @"F" ] )
+    if ( COMPARE_WITH_CASE_INSENSITIVE( _Char, @"A" )
+            || COMPARE_WITH_CASE_INSENSITIVE( _Char, @"B" )
+            || COMPARE_WITH_CASE_INSENSITIVE( _Char, @"C" )
+            || COMPARE_WITH_CASE_INSENSITIVE( _Char, @"D" )
+            || COMPARE_WITH_CASE_INSENSITIVE( _Char, @"E" )
+            || COMPARE_WITH_CASE_INSENSITIVE( _Char, @"F" ) )
         return YES;
     else
         return NO;
@@ -1190,22 +1199,22 @@ BOOL isCharInAtoB( NSString* _Char )
 
 NSUInteger mapHexAlphaToDecimalNumeric( NSString* _AlphaInHexNumeric )
     {
-    if ( [ _AlphaInHexNumeric isEqualToString: @"A" ] )
+    if ( COMPARE_WITH_CASE_INSENSITIVE( _AlphaInHexNumeric, @"A" ) )
         return 10;
 
-    if ( [ _AlphaInHexNumeric isEqualToString: @"B" ] )
+    if ( COMPARE_WITH_CASE_INSENSITIVE( _AlphaInHexNumeric, @"B" ) )
         return 11U;
 
-    if ( [ _AlphaInHexNumeric isEqualToString: @"C" ] )
+    if ( COMPARE_WITH_CASE_INSENSITIVE( _AlphaInHexNumeric, @"C" ) )
         return 12U;
 
-    if ( [ _AlphaInHexNumeric isEqualToString: @"D" ] )
+    if ( COMPARE_WITH_CASE_INSENSITIVE( _AlphaInHexNumeric, @"D" ) )
         return 13U;
 
-    if ( [ _AlphaInHexNumeric isEqualToString: @"E" ] )
+    if ( COMPARE_WITH_CASE_INSENSITIVE( _AlphaInHexNumeric, @"E" ) )
         return 14U;
 
-    if ( [ _AlphaInHexNumeric isEqualToString: @"F" ] )
+    if ( COMPARE_WITH_CASE_INSENSITIVE( _AlphaInHexNumeric, @"F" ) )
         return 15U;
 
     return NAN;
