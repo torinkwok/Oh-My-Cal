@@ -465,6 +465,31 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
         }
     }
 
+- ( void ) setDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
+    {
+    if ( self->_decimalNumber != _DecimalNumber )
+        {
+        [ self->_decimalNumber release ];
+        self->_decimalNumber = [ _DecimalNumber retain ];
+
+        [ self.numericString replaceAllWithString: [ self _numericStringInAry: self.currentAry ] ];
+        }
+    }
+
+- ( void ) setCalStyle: ( OMCCalStyle )_CalStyle
+    {
+    if ( self->_calStyle != _CalStyle )
+        {
+        self->_calStyle = _CalStyle;
+
+        if ( self->_calStyle == OMCProgrammerStyle )
+            {
+            NSString* numericStringAfterFlooring = [ NSString stringWithFormat: @"%.16g", floor( self.decimalNumber.doubleValue ) ];
+            self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: numericStringAfterFlooring ];
+            }
+        }
+    }
+
 - ( OMCAry ) currentAry
     {
     return self->_currentAry;
