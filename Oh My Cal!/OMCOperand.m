@@ -35,6 +35,8 @@
 
 NSString* const OMCDot = @".";
 
+NSString* const OMCOperandPboardType = @"individual.TongGuo.Oh-My-Cal.operand";
+
 // Exception names
 NSString* const OMCOperandExactnessException = @"OMCOperandExactnessException";
 NSString* const OMCOperandOverflowException = @"OMCOperandOverflowException";
@@ -357,6 +359,11 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
         }
     }
 
+- ( BOOL ) isNaN
+    {
+    return [ self.decimalNumber compare: [ NSDecimalNumber notANumber ] ] == NSOrderedSame;
+    }
+
 - ( BOOL ) isZero
     {
     return [ self.decimalNumber compare: [ NSDecimalNumber zero ] ] == NSOrderedSame;
@@ -460,6 +467,31 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
         {
         self->_currentAry = _Ary;
         [ self.numericString replaceAllWithString: [ self _numericStringInAry: self->_currentAry ] ];
+        }
+    }
+
+- ( void ) setDecimalNumber: ( NSDecimalNumber* )_DecimalNumber
+    {
+    if ( self->_decimalNumber != _DecimalNumber )
+        {
+        [ self->_decimalNumber release ];
+        self->_decimalNumber = [ _DecimalNumber retain ];
+
+        [ self.numericString replaceAllWithString: [ self _numericStringInAry: self.currentAry ] ];
+        }
+    }
+
+- ( void ) setCalStyle: ( OMCCalStyle )_CalStyle
+    {
+    if ( self->_calStyle != _CalStyle )
+        {
+        self->_calStyle = _CalStyle;
+
+        if ( self->_calStyle == OMCProgrammerStyle )
+            {
+            NSString* numericStringAfterFlooring = [ NSString stringWithFormat: @"%.16g", floor( self.decimalNumber.doubleValue ) ];
+            self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: numericStringAfterFlooring ];
+            }
         }
     }
 
@@ -1020,7 +1052,119 @@ NSUInteger factorial( NSUInteger _X )
 
 @end // OMCOperand + OMCDecimalNumberBehaviors
 
-// NSDecimalNumberHandler + OMCOperand
+#pragma mark Pasteboard Support
+@implementation OMCOperand ( OMCPasteboardSupport )
+
+NSString static* kDecimalNumberKey = @"kDecimalNumberKey";
+NSString static* kNumericStringKey = @"kNumericStringKey";
+NSString static* kCalStyleKey = @"kCalStyleKey";
+NSString static* kCurrentAryKey = @"kCurrentAryKey";
+NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
+
+- ( id ) initWithCoder: ( NSCoder* )_Coder
+    {
+    return [ self initWithDecimalNumber: [ _Coder decodeObjectForKey: kDecimalNumberKey ]
+                                  inAry: ( OMCAry )[ _Coder decodeIntForKey: kCurrentAryKey ]
+                               calStyle: ( OMCCalStyle )[ _Coder decodeIntForKey: kCalStyleKey ] ];
+    }
+
+- ( void ) encodeWithCoder: ( NSCoder* )_Coder
+    {
+    [ _Coder encodeObject: [ self decimalNumber ] forKey: kDecimalNumberKey ];
+    [ _Coder encodeObject: [ self numericString ] forKey: kNumericStringKey ];
+    [ _Coder encodeInt: ( int )[ self calStyle ] forKey: kCalStyleKey ];
+    [ _Coder encodeInt: ( int )[ self currentAry ] forKey: kCurrentAryKey ];
+    [ _Coder encodeObject: [ self exceptionCarried ] forKey: kExceptionCarriedKey ];
+    }
+
+// Conforms <NSPasteboardWriting> protocol
+- ( NSArray* ) writableTypesForPasteboard: ( NSPasteboard* )_Pboard
+    {
+    NSArray static* writableTypes = nil;
+
+    if ( !writableTypes )
+        writableTypes = [ @[ OMCOperandPboardType, NSPasteboardTypeString ] retain ];
+
+    return writableTypes;
+    }
+
+- ( id ) pasteboardPropertyListForType: ( NSString* )_Type
+    {
+    id propertyListObject = nil;
+
+    if ( [ _Type isEqualToString: OMCOperandPboardType ] )
+        propertyListObject = [ NSKeyedArchiver archivedDataWithRootObject: self ];
+
+    else if ( [ _Type isEqualToString: NSPasteboardTypeString ] )
+        propertyListObject = [ self.numericString pasteboardPropertyListForType: NSPasteboardTypeString ];
+
+    return propertyListObject;
+    }
+
+// Conforms <NSPasteboardReading> protocol
++ ( NSArray* ) readableTypesForPasteboard: ( NSPasteboard* )_Pboard
+    {
+    NSArray static* readableTypes = nil;
+
+    if ( !readableTypes )
+        readableTypes = [ @[ OMCOperandPboardType, NSPasteboardTypeString ] retain ];
+
+    return readableTypes;
+    }
+
++ ( NSPasteboardReadingOptions ) readingOptionsForType: ( NSString* )_Type
+                                            pasteboard: ( NSPasteboard* )_Pboard
+    {
+    NSPasteboardReadingOptions readingOptions = 0;
+
+    if ( [ _Type isEqualToString: OMCOperandPboardType ] )
+        readingOptions = NSPasteboardReadingAsKeyedArchive;
+
+    else if ( [ _Type isEqualToString: NSPasteboardTypeString ] )
+        readingOptions = NSPasteboardReadingAsPropertyList;
+
+    return readingOptions;
+    }
+
+- ( id ) initWithPasteboardPropertyList: ( id )_PropertyList
+                                 ofType: ( NSString* )_Type
+    {
+    if ( [ _Type isEqualToString: NSPasteboardTypeString ] )
+        {
+//        if ( ![ _PropertyList contains: @"1" ] )
+//            {
+//            NSBeep();
+//            return [ self initWithDecimalNumber: [ NSDecimalNumber zero ] ];
+//            }
+
+        NSString* valueString = ( NSString* )_PropertyList;
+        NSString* prefixForHex = @"0x";
+
+        NSDecimalNumber* theDecimalNumber = nil;
+
+        if ( [ valueString hasPrefix: prefixForHex ] )
+            {
+            NSNumber* unsignedNumber = [ NSNumber numberWithUnsignedInteger: OMCOperandConvertHexToDecimal( valueString ) ];
+            theDecimalNumber = [ NSDecimalNumber decimalNumberWithString: [ unsignedNumber stringValue ] ];
+            }
+        else
+            theDecimalNumber = [ NSDecimalNumber decimalNumberWithString: _PropertyList ];
+
+        return [ self initWithDecimalNumber: theDecimalNumber ];
+        }
+
+    return nil;
+    }
+
+- ( BOOL ) writeToPasteboard: ( NSPasteboard* )_Pboard
+    {
+    [ _Pboard clearContents ];
+    return [ _Pboard writeObjects: @[ self ] ];
+    }
+
+@end // OMCOperand +OMCCodingBehaviors
+
+#pragma mark NSDecimalNumberHandler + OMCOperand
 @implementation NSDecimalNumberHandler ( OMCOperand )
 
 + ( instancetype ) roundUpBehavior
@@ -1044,6 +1188,72 @@ NSUInteger factorial( NSUInteger _X )
     }
 
 @end // NSDecimalNumberHandler + OMCOperand
+
+#pragma mark Utility Functions
+BOOL isCharInAtoE( NSString* );
+NSUInteger mapHexAlphaToDecimalNumeric( NSString* _AlphaInHexNumeric );
+
+NSUInteger OMCOperandConvertHexToDecimal( NSString* _HexNumeric )
+    {
+    NSString* prefixForHex = @"0x";
+    if ( ![ _HexNumeric hasPrefix: prefixForHex ] )
+        return NAN;
+
+    NSString* hexNumericWithoutPrefix = [ _HexNumeric substringFromIndex: prefixForHex.length ];
+
+    NSUInteger resultInDecimal = 0U;
+    double exponent = 0.f;
+    for ( int index = ( int )hexNumericWithoutPrefix.length - 1; index >= 0; index-- )
+        {
+        NSString* stringForCurrentDigit = [ hexNumericWithoutPrefix substringWithRange: NSMakeRange( index, 1 ) ];
+        NSUInteger valueForCurrentDigit = 0U;
+
+        if ( isCharInAtoE( stringForCurrentDigit ) )
+            valueForCurrentDigit = mapHexAlphaToDecimalNumeric( stringForCurrentDigit );
+        else
+            valueForCurrentDigit = ( NSUInteger )[ stringForCurrentDigit integerValue ];
+
+        resultInDecimal += valueForCurrentDigit * ( NSUInteger )pow( 16, exponent++ );
+        }
+
+    return resultInDecimal;
+    }
+
+BOOL isCharInAtoE( NSString* _Char )
+    {
+    if ( COMPARE_WITH_CASE_INSENSITIVE( _Char, @"A" )
+            || COMPARE_WITH_CASE_INSENSITIVE( _Char, @"B" )
+            || COMPARE_WITH_CASE_INSENSITIVE( _Char, @"C" )
+            || COMPARE_WITH_CASE_INSENSITIVE( _Char, @"D" )
+            || COMPARE_WITH_CASE_INSENSITIVE( _Char, @"E" )
+            || COMPARE_WITH_CASE_INSENSITIVE( _Char, @"F" ) )
+        return YES;
+    else
+        return NO;
+    }
+
+NSUInteger mapHexAlphaToDecimalNumeric( NSString* _AlphaInHexNumeric )
+    {
+    if ( COMPARE_WITH_CASE_INSENSITIVE( _AlphaInHexNumeric, @"A" ) )
+        return 10;
+
+    if ( COMPARE_WITH_CASE_INSENSITIVE( _AlphaInHexNumeric, @"B" ) )
+        return 11U;
+
+    if ( COMPARE_WITH_CASE_INSENSITIVE( _AlphaInHexNumeric, @"C" ) )
+        return 12U;
+
+    if ( COMPARE_WITH_CASE_INSENSITIVE( _AlphaInHexNumeric, @"D" ) )
+        return 13U;
+
+    if ( COMPARE_WITH_CASE_INSENSITIVE( _AlphaInHexNumeric, @"E" ) )
+        return 14U;
+
+    if ( COMPARE_WITH_CASE_INSENSITIVE( _AlphaInHexNumeric, @"F" ) )
+        return 15U;
+
+    return NAN;
+    }
 
 //////////////////////////////////////////////////////////////////////////////
 

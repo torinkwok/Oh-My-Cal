@@ -111,7 +111,16 @@ typedef NSRect OMCSpaceBarRect;
 
 @property ( nonatomic, retain, readonly ) OMCCalculation* currentCalculation;
 
+#pragma mark IBActions
+- ( IBAction ) copy: ( id )_Sender;
+- ( IBAction ) paste: ( id )_Sender;
+
 @end // OMCLCDScreen
+
+#pragma mark Validate the 'Cut', 'Copy' and 'Paste' menu item
+@interface OMCLCDScreen ( OMCLCDScreenValidation ) <NSUserInterfaceValidations>
+- ( BOOL ) validateUserInterfaceItem: ( id <NSValidatedUserInterfaceItem> )_TheItemToBeValidated;
+@end // OMCLCDScreen + OMCLCDScreenValidation
 
 //////////////////////////////////////////////////////////////////////////////
 

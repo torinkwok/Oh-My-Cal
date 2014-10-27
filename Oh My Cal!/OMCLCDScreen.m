@@ -755,7 +755,85 @@ OMCCal* _currentCalculatorIMP( id self, SEL _cmd )
     return ( ( OMCLCDScreen* )self )._mainPanelBackgroundView.currentCalculator;
     }
 
+#pragma mark IBActions
+- ( IBAction ) copy: ( id )_Sender
+    {
+    OMCTypingState currentTypingState = [ self typingState ];
+    OMCOperand* operandToBeCopied = nil;
+
+    if ( currentTypingState == OMCWaitAllOperands )
+        operandToBeCopied = [ [ self currentCalculation ] lhsOperand ];
+    else if ( currentTypingState == OMCWaitRhsOperand )
+        operandToBeCopied = [ [ self currentCalculation ] rhsOperand ];
+    else if ( currentTypingState == OMCFinishedTyping )
+        operandToBeCopied = [ [ self currentCalculation ] resultValue ];
+
+    [ operandToBeCopied writeToPasteboard: GENERAL_PASTEBOARD ];
+    }
+
+- ( IBAction ) paste: ( id )_Sender
+    {
+    NSArray* classes = @[ [ OMCOperand class ] ];
+    NSDictionary* readingOptions = [ NSDictionary dictionary ];
+    OMCTypingState currentTypingState = [ self typingState ];
+
+    if ( [ GENERAL_PASTEBOARD canReadObjectForClasses: classes options: readingOptions ] )
+        {
+        OMCOperand* operandFromPboard = [ GENERAL_PASTEBOARD readObjectsForClasses: classes options: readingOptions ].firstObject;
+
+        /* The calStyle and currentAry in operandFromPboard may be out of date:
+         * current calStyle and currentAry properties may be changed after this operand was archived */
+        [ operandFromPboard setCalStyle: self.currentCalculation.calStyle ];
+        [ operandFromPboard setCurrentAry: self.currentAry ];
+
+        if ( currentTypingState == OMCWaitAllOperands )
+            {
+            self.currentCalculation.lhsOperand = operandFromPboard;
+            self.currentCalculation.typingState = OMCWaitAllOperands;
+            }
+        else if ( currentTypingState == OMCWaitRhsOperand )
+            {
+            self.currentCalculation.rhsOperand = operandFromPboard;
+            self.currentCalculation.typingState = OMCWaitRhsOperand;
+            }
+        else if ( currentTypingState == OMCFinishedTyping )
+            {
+            [ self.currentCalculation clearAllAndReset ];
+            self.currentCalculation.lhsOperand = operandFromPboard;
+            self.currentCalculation.typingState = OMCWaitAllOperands;
+            }
+        }
+    }
+
 @end // OMCLCDScreen class
+
+#pragma mark Validate the 'Cut', 'Copy' and 'Paste' menu item
+@implementation OMCLCDScreen ( OMCLCDScreenValidation )
+
+- ( BOOL ) validateUserInterfaceItem: ( id <NSValidatedUserInterfaceItem> )_TheItemToBeValidated
+    {
+    if ( [ _TheItemToBeValidated action ] == @selector( paste: ) )
+        {
+        NSArray* classes = @[ [ OMCOperand class ] ];
+        NSDictionary* options = [ NSDictionary dictionary ];
+        if ( [ GENERAL_PASTEBOARD canReadObjectForClasses: classes options: options ] )
+            {
+            OMCOperand* theOperandOnPasteboard = [ GENERAL_PASTEBOARD readObjectsForClasses: classes options: options ].firstObject;
+
+            if ( !theOperandOnPasteboard || [ theOperandOnPasteboard isNaN ] )
+                return NO;
+            }
+        else
+            return NO;
+        }
+
+    return YES;
+
+    /* The Super class of OMCLCDScreen doesn't conform to <NSUserInterfaceValidations> protocol
+     * so there is no necessary to forward this method to super */
+    }
+
+@end // OMCLCDScreen + OMCLCDScreenValidation
 
 //////////////////////////////////////////////////////////////////////////////
 

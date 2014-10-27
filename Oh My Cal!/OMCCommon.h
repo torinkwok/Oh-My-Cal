@@ -55,6 +55,8 @@
 #define USER_DEFAULTS  [ NSUserDefaults standardUserDefaults ]
 #define NOTIFICATION_CENTER [ NSNotificationCenter defaultCenter ]
 
+#define GENERAL_PASTEBOARD [ NSPasteboard generalPasteboard ]
+
 #define FLAT    0
 #define TEXTURE !FLAT
 

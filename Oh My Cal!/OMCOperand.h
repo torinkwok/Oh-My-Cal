@@ -37,6 +37,8 @@
 
 NSString extern* const OMCDot;
 
+NSString extern* const OMCOperandPboardType;
+
 // Exception names
 NSString extern* const OMCOperandExactnessException;
 NSString extern* const OMCOperandOverflowException;
@@ -120,6 +122,7 @@ NSString extern* const OMCOperandDivideByZeroException;
                  count: ( NSInteger )_Count
                    ary: ( OMCAry )_Ary;
 
+- ( BOOL ) isNaN;
 - ( BOOL ) isZero;
 - ( void ) zeroed;
 
@@ -235,13 +238,35 @@ NSString extern* const OMCOperandDivideByZeroException;
 
 @end // OMCOperand + OMCDecimalNumberBehaviors
 
-// NSDecimalNumberHandler + OMCOperand
+#pragma mark Pasteboard Support
+@interface OMCOperand ( OMCPasteboardSupport ) <NSCoding, NSPasteboardWriting, NSPasteboardReading>
+
+- ( id ) initWithCoder: ( NSCoder* )_Coder;
+- ( void ) encodeWithCoder: ( NSCoder* )_Coder;
+
+// Conforms <NSPasteboardWriting> protocol
+- ( NSArray* ) writableTypesForPasteboard: ( NSPasteboard* )_Pboard;
+- ( id ) pasteboardPropertyListForType: ( NSString* )_Type;
+
+// Conforms <NSPasteboardReading> protocol
++ ( NSArray* ) readableTypesForPasteboard: ( NSPasteboard* )_Pboard;
++ ( NSPasteboardReadingOptions ) readingOptionsForType: ( NSString* )_Type
+                                            pasteboard: ( NSPasteboard* )_Pboard;
+
+- ( BOOL ) writeToPasteboard: ( NSPasteboard* )_Pboard;
+
+@end // OMCOperand + OMCCodingBehaviors
+
+#pragma mark NSDecimalNumberHandler + OMCOperand
 @interface NSDecimalNumberHandler ( OMCOperand )
 
 + ( instancetype ) roundUpBehavior;
 + ( instancetype ) roundDownBehavior;
 
 @end // NSDecimalNumberHandler + OMCOperand
+
+#pragma mark Utility Functions
+NSUInteger OMCOperandConvertHexToDecimal( NSString* );
 
 //////////////////////////////////////////////////////////////////////////////
 

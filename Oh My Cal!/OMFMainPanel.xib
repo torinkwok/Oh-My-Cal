@@ -1438,7 +1438,7 @@
                 </segmentedControl>
                 <popUpButton misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rtb-tf-nhm">
                     <rect key="frame" x="270" y="0.5" width="31" height="21"/>
-                    <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" inset="2" pullsDown="YES" arrowPosition="noArrow" preferredEdge="maxX" selectedItem="IM1-RK-AH3" id="f6V-lo-oIV">
+                    <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" inset="2" pullsDown="YES" arrowPosition="noArrow" preferredEdge="maxX" id="f6V-lo-oIV">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" title="OtherViews" id="Lgq-so-pDQ">
@@ -1467,6 +1467,17 @@
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="HDw-Lt-knt"/>
+                                <menuItem title="Copy" keyEquivalent="c" id="fwG-My-9Q6">
+                                    <connections>
+                                        <action selector="copy:" target="lUW-uQ-i4U" id="38i-kP-gRE"/>
+                                    </connections>
+                                </menuItem>
+                                <menuItem title="Paste" keyEquivalent="v" id="cpP-cp-Ocl">
+                                    <connections>
+                                        <action selector="paste:" target="lUW-uQ-i4U" id="em5-qd-I4y"/>
+                                    </connections>
+                                </menuItem>
+                                <menuItem isSeparatorItem="YES" id="hrM-d9-Jvq"/>
                                 <menuItem title="Callout by ⌥-⇧-Space Bar" state="on" id="IM1-RK-AH3">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <connections>
