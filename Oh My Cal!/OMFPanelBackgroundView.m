@@ -289,6 +289,8 @@ CGFloat static const kPaddingBetweenBinaryOperationPanelAndKeyboard = 8.f;
 
     if ( self._currentCalStyle == OMCBasicStyle || self._currentCalStyle == OMCScientificStyle )
         [ self.currentCalculation setCurrentAry: OMCDecimal ];
+
+    [ self.window makeFirstResponder: self._LCDScreen ];
     }
 
 - ( void ) _checkCorrectStyleMenuItem: ( OMCCalStyle )_CalStyle

@@ -109,6 +109,11 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     return YES;
     }
 
+- ( BOOL ) resignFirstResponder
+    {
+    return NO;
+    }
+
 #pragma mark Initializers & Deallocators
 - ( void ) awakeFromNib
     {

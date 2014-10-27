@@ -476,8 +476,6 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
         {
         [ self->_decimalNumber release ];
         self->_decimalNumber = [ _DecimalNumber retain ];
-
-        [ self.numericString replaceAllWithString: [ self _numericStringInAry: self.currentAry ] ];
         }
     }
 
@@ -491,6 +489,7 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
             {
             NSString* numericStringAfterFlooring = [ NSString stringWithFormat: @"%.16g", floor( self.decimalNumber.doubleValue ) ];
             self.decimalNumber = [ NSDecimalNumber decimalNumberWithString: numericStringAfterFlooring ];
+            [ self.numericString replaceAllWithString: [ self _numericStringInAry: self.currentAry ] ];
             }
         }
     }
