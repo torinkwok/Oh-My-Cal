@@ -1099,7 +1099,7 @@
                         <action selector="calculate:" target="odj-gr-7MT" id="SQg-4r-1vl"/>
                     </connections>
                 </button>
-                <button identifier="XOR" toolTip="XOR (or press ⌘X)" verticalHuggingPriority="750" fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="2EZ-i4-X2D">
+                <button identifier="XOR" toolTip="XOR (or press ⌘⇧X)" verticalHuggingPriority="750" fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="2EZ-i4-X2D">
                     <rect key="frame" x="71" y="73" width="51" height="25"/>
                     <buttonCell key="cell" type="roundTextured" title="Xor" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ATd-IS-mgO" customClass="BGHUDButtonCell">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1467,6 +1467,11 @@
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="HDw-Lt-knt"/>
+                                <menuItem title="Cut" keyEquivalent="x" id="nIw-Yt-qBW">
+                                    <connections>
+                                        <action selector="cut:" target="lUW-uQ-i4U" id="nUc-5L-RqC"/>
+                                    </connections>
+                                </menuItem>
                                 <menuItem title="Copy" keyEquivalent="c" id="fwG-My-9Q6">
                                     <connections>
                                         <action selector="copy:" target="lUW-uQ-i4U" id="38i-kP-gRE"/>

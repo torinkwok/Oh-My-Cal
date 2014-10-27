@@ -634,21 +634,21 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
 
     else if ( isProgrammerStyle && isHex && COMPARE_WITH_CHARACTERS( @"F" ) && !( modifierFlags & NSAlternateKeyMask ) )
         actionSender = self._calWithProgrammerStyle._0xF;
-    // FF: ⌥-F
+    // FF: ⌥F
     else if ( isProgrammerStyle && isHex && COMPARE_WITH_CHARACTERS( @"F" ) && ( modifierFlags & NSAlternateKeyMask ) )
         actionSender = self._calWithProgrammerStyle._0xFF;
 
-    // AND: ⌘-A
+    // AND: ⌘A
     else if ( COMPARE_WITH_CHARACTERS( @"A" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._andOperator;
-    // OR: ⌘-O
+    // OR: ⌘O
     else if ( COMPARE_WITH_CHARACTERS( @"O" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._orOperator;
-    // NOR: ⌘-N
+    // NOR: ⌘N
     else if ( COMPARE_WITH_CHARACTERS( @"N" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._norOperator;
-    // XOR: ⌘-X
-    else if ( COMPARE_WITH_CHARACTERS( @"X" ) && ( modifierFlags & NSCommandKeyMask ) )
+    // XOR: ⌘⇧X
+    else if ( COMPARE_WITH_CHARACTERS( @"X" ) && ( modifierFlags & NSCommandKeyMask ) && ( modifierFlags & NSShiftKeyMask ) )
         actionSender = self._calWithProgrammerStyle._xorOperator;
 
     // RoL
@@ -657,14 +657,14 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     // RoR
     else if ( isProgrammerStyle && COMPARE_WITH_CHARACTERS( @"R" ) && !( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._rorOperator;
-    // Lsh: ⌘-L
+    // Lsh: ⌘L
     else if ( isProgrammerStyle && COMPARE_WITH_CHARACTERS( @"L" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._lshOperator;
-    // Rsh: ⌘-R
+    // Rsh: ⌘R
     else if ( isProgrammerStyle && COMPARE_WITH_CHARACTERS( @"R" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._rshOperator;
 
-    // Mod: ⌘-M
+    // Mod: ⌘M
     else if ( isProgrammerStyle && COMPARE_WITH_CHARACTERS( @"M" ) && ( modifierFlags & NSCommandKeyMask ) )
         actionSender = self._calWithProgrammerStyle._modOperator;
 
@@ -672,12 +672,12 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     else if ( ( keyCodeOfTheEvent == kVK_Delete || keyCodeOfTheEvent == kVK_ForwardDelete )
                 && !( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
         actionSender = self.currentCalculator._del;
-    // Clear: ⌘-⌫
+    // Clear: ⌘⌫
     else if ( ( keyCodeOfTheEvent == kVK_Delete  && ( modifierFlags & NSCommandKeyMask ) && !( modifierFlags & NSShiftKeyMask ) )
                 || keyCodeOfTheEvent == kVK_ANSI_KeypadClear /* kVK_ANSI_K */)
         actionSender = self.currentCalculator._clear;
 
-    // Clear All: ⌘-⇧-⌫
+    // Clear All: ⌘⇧⌫
     else if ( keyCodeOfTheEvent == kVK_Delete && ( modifierFlags & NSCommandKeyMask ) && ( modifierFlags & NSShiftKeyMask ) )
         actionSender = self.currentCalculator._clearAll;
 
@@ -756,6 +756,28 @@ OMCCal* _currentCalculatorIMP( id self, SEL _cmd )
     }
 
 #pragma mark IBActions
+- ( IBAction ) cut: ( id )_Sender
+    {
+    [ self copy: _Sender ];
+
+    OMCTypingState currentTypingState = [ self typingState ];
+    if ( currentTypingState == OMCWaitAllOperands )
+        {
+        [ self.currentCalculation.lhsOperand zeroed ];
+        self.currentCalculation.typingState = OMCWaitAllOperands;
+        }
+    else if ( currentTypingState == OMCWaitRhsOperand )
+        {
+        [ self.currentCalculation.rhsOperand zeroed ];
+        self.currentCalculation.typingState = OMCWaitRhsOperand;
+        }
+    else if ( currentTypingState == OMCFinishedTyping )
+        {
+        [ self.currentCalculation clearAllAndReset ];
+        self.currentCalculation.typingState = OMCWaitAllOperands;
+        }
+    }
+
 - ( IBAction ) copy: ( id )_Sender
     {
     OMCTypingState currentTypingState = [ self typingState ];

@@ -112,6 +112,7 @@ typedef NSRect OMCSpaceBarRect;
 @property ( nonatomic, retain, readonly ) OMCCalculation* currentCalculation;
 
 #pragma mark IBActions
+- ( IBAction ) cut: ( id )_Sender;
 - ( IBAction ) copy: ( id )_Sender;
 - ( IBAction ) paste: ( id )_Sender;
 
