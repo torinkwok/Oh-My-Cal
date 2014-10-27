@@ -32,15 +32,15 @@ You may want to ask: *The Calculator.app in OS X is powerful, why should I use t
 
 The Calculator.app in OS X is powerful, but it's not convenient. For me, I usually use many apps in fullscreen mode( Xcode, Evernote, etc.). Whenever I want to calculate some formulas, I have to switch among several apps or screens. Oh, I really could not stand!!! So I wrote Oh My Cal!. In addition to as powerful as the Calculator.app in OS X, it's very convenient to use (Global Callout or Hanging in menu bar).
 
-#### What's New in This Version (v2.0.2)?
-* Full feature: supports Basic/Scientific/Programmer mode.
-* Supports global callout.
+#### What's New in This Version (v2.0.3)?
+
 * Stability improved.
 * Killed some fucking bugs:
     * Lagging when switch OCT/DEC/HEX mode.
     *  The Enter, Clear and Equal button on the "Apple Keyboard With Numeric Keypad" all do not work. ( found by Mr. Tobias Kroniger ).
+* Support of Pasteboard.
+* Supports of Parentheses and more will coming soon!
 * Various minor improvements.
-* Supports of Parentheses and Pasteboard will coming soon!
 * Enjoy & STAY TUNED!
 
 #### Contact Me
