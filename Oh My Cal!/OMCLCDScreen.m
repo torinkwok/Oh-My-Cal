@@ -807,6 +807,34 @@ OMCCal* _currentCalculatorIMP( id self, SEL _cmd )
 
 @end // OMCLCDScreen class
 
+#pragma mark Validate the 'Cut', 'Copy' and 'Paste' menu item
+@implementation OMCLCDScreen ( OMCLCDScreenValidation )
+
+- ( BOOL ) validateUserInterfaceItem: ( id <NSValidatedUserInterfaceItem> )_TheItemToBeValidated
+    {
+    if ( [ _TheItemToBeValidated action ] == @selector( paste: ) )
+        {
+        NSArray* classes = @[ [ OMCOperand class ] ];
+        NSDictionary* options = [ NSDictionary dictionary ];
+        if ( [ GENERAL_PASTEBOARD canReadObjectForClasses: classes options: options ] )
+            {
+            OMCOperand* theOperandOnPasteboard = [ GENERAL_PASTEBOARD readObjectsForClasses: classes options: options ].firstObject;
+
+            if ( !theOperandOnPasteboard || [ theOperandOnPasteboard isNaN ] )
+                return NO;
+            }
+        else
+            return NO;
+        }
+
+    return YES;
+
+    /* The Super class of OMCLCDScreen doesn't conform to <NSUserInterfaceValidations> protocol
+     * so there is no necessary to forward this method to super */
+    }
+
+@end // OMCLCDScreen + OMCLCDScreenValidation
+
 //////////////////////////////////////////////////////////////////////////////
 
 /*****************************************************************************

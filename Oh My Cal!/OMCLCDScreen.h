@@ -117,6 +117,11 @@ typedef NSRect OMCSpaceBarRect;
 
 @end // OMCLCDScreen
 
+#pragma mark Validate the 'Cut', 'Copy' and 'Paste' menu item
+@interface OMCLCDScreen ( OMCLCDScreenValidation ) <NSUserInterfaceValidations>
+- ( BOOL ) validateUserInterfaceItem: ( id <NSValidatedUserInterfaceItem> )_TheItemToBeValidated;
+@end // OMCLCDScreen + OMCLCDScreenValidation
+
 //////////////////////////////////////////////////////////////////////////////
 
 /*****************************************************************************

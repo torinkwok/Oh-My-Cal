@@ -359,6 +359,11 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
         }
     }
 
+- ( BOOL ) isNaN
+    {
+    return [ self.decimalNumber compare: [ NSDecimalNumber notANumber ] ] == NSOrderedSame;
+    }
+
 - ( BOOL ) isZero
     {
     return [ self.decimalNumber compare: [ NSDecimalNumber zero ] ] == NSOrderedSame;
@@ -1126,6 +1131,12 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
     {
     if ( [ _Type isEqualToString: NSPasteboardTypeString ] )
         {
+//        if ( ![ _PropertyList contains: @"1" ] )
+//            {
+//            NSBeep();
+//            return [ self initWithDecimalNumber: [ NSDecimalNumber zero ] ];
+//            }
+
         NSString* valueString = ( NSString* )_PropertyList;
         NSString* prefixForHex = @"0x";
 

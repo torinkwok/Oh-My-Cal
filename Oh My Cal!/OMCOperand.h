@@ -122,6 +122,7 @@ NSString extern* const OMCOperandDivideByZeroException;
                  count: ( NSInteger )_Count
                    ary: ( OMCAry )_Ary;
 
+- ( BOOL ) isNaN;
 - ( BOOL ) isZero;
 - ( void ) zeroed;
 
