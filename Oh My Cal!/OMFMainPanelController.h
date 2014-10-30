@@ -39,7 +39,6 @@ typedef NS_ENUM( short, OMCOpenMode ) { OMCHangInMenuMode, OMCGlobalCalloutMode 
 @class OMFStatusItemView;
 @class OMFMainPanelController;
 @class OMFDashboardView;
-@class OMFAboutPanelController;
 
 @class OMFPanelBackgroundView;
 
@@ -68,7 +67,6 @@ typedef NS_ENUM( short, OMCOpenMode ) { OMCHangInMenuMode, OMCGlobalCalloutMode 
 
 @property ( nonatomic, unsafe_unretained ) IBOutlet OMFPanelBackgroundView* backgrondView;
 
-@property ( nonatomic, retain ) OMFAboutPanelController* aboutPanelController;
 @property ( nonatomic, retain ) MASPreferencesWindowController* preferencesPanelController;
 
 @property ( nonatomic, unsafe_unretained ) IBOutlet NSMenuItem* _startAtLoginMenuItem; // Not successful, lost to Sandbox😩

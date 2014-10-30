@@ -31,60 +31,25 @@
  **                                                                         **
  ****************************************************************************/
 
-#import "OMFAboutPanelController.h"
+#import "OMCAboutViewController.h"
 
-// OMFAboutPanelController class
-@implementation OMFAboutPanelController
+// OMCAboutViewController class
+@implementation OMCAboutViewController
 
-#pragma mark Initializers
-+ ( id ) aboutPanelController
++ ( id ) aboutViewController
     {
     return [ [ [ [ self class ] alloc ] init ] autorelease ];
     }
 
 - ( id ) init
     {
-    if ( self = [ super initWithWindowNibName: @"OMFAboutPanel" ] )
-        {
-        // TODO:
-        }
+    if ( self = [ super initWithNibName: @"OMCAboutView" bundle: [ NSBundle mainBundle ] ] )
+        ;
 
     return self;
     }
 
-#pragma mark Conforms <NSNibAwaking> protocol
-- ( void ) awakeFromNib
-    {
-    // TODO:
-    }
-
-#pragma mark Actions
-- ( IBAction ) emailMe: ( id )_Sender
-    {
-    NSURL* emailURL = [ NSURL URLWithString: @"mailto:Tong-G@outlook.com"
-                                              "?subject=Hey,%20Tong%20Guo!" ];
-    [ [ NSWorkspace sharedWorkspace ] openURL: emailURL ];
-    }
-
-- ( IBAction ) followMeOnTwitter: ( id )_Sender
-    {
-    NSURL* twitterURL = [ NSURL URLWithString: @"https://twitter.com/NSTongG" ];
-    [ [ NSWorkspace sharedWorkspace ] openURL: twitterURL ];
-    }
-
-- ( IBAction ) forkThisRepoOnGitHub: ( id )_Sender;
-    {
-    NSURL* twitterURL = [ NSURL URLWithString: @"https://github.com/TongG/Oh-My-Cal" ];
-    [ [ NSWorkspace sharedWorkspace ] openURL: twitterURL ];
-    }
-
-- ( IBAction ) importMyGnuPGPubKey: ( id )_Sender
-    {
-    NSURL* pubkeyFileURL = [ [ NSBundle mainBundle ] URLForResource: @"pubkey" withExtension: @"txt" ];
-    [ [ NSWorkspace sharedWorkspace ] openURL: pubkeyFileURL ];
-    }
-
-@end // OMFAboutPanelController
+@end // OMCAboutViewController
 
 //////////////////////////////////////////////////////////////////////////////
 

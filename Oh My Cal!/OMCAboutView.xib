@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="OMCAboutViewController">
+            <connections>
+                <outlet property="view" destination="A8U-qF-fkf" id="lkv-fJ-1z2"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <view id="A8U-qF-fkf" userLabel="About View" customClass="OMFContentViewOfAboutPanel">
+            <rect key="frame" x="0.0" y="0.0" width="477" height="186"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IX3-BQ-U1F">
+                    <rect key="frame" x="-2" y="0.0" width="168" height="186"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="logo" id="IVC-ys-eqG"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wV1-Iq-75U">
+                    <rect key="frame" x="241" y="139" width="146" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Oh My Cal!" id="MQO-8P-8FV">
+                        <font key="font" size="22" name="LucidaGrande-Bold"/>
+                        <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZdJ-Un-RkU">
+                    <rect key="frame" x="274" y="116" width="81" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="2.0.3" id="IAH-fy-d1e">
+                        <font key="font" size="9" name="LucidaGrande"/>
+                        <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hRD-sj-vsB">
+                    <rect key="frame" x="198" y="14" width="233" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="© 2014 Tong Guo. ALL RIGHTS RESERVED." id="7wZ-RA-9tV">
+                        <font key="font" size="9" name="LucidaGrande"/>
+                        <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wk3-QU-AZi">
+                    <rect key="frame" x="252" y="94" width="124" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hey, I'm Tong Guo." id="5V6-aS-uDK">
+                        <font key="font" size="13" name="LucidaGrande"/>
+                        <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kXc-CK-5sm">
+                    <rect key="frame" x="166" y="72" width="297" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="I'm a individual developer from West Korea. :D" id="KdQ-gm-ePE">
+                        <font key="font" size="13" name="LucidaGrande"/>
+                        <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button toolTip="Follow me on Twitter" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OBI-Op-IoV">
+                    <rect key="frame" x="291" y="38" width="21" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="twitter" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="SV5-oV-vSg">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="followMeOnTwitter:" target="A8U-qF-fkf" id="7rn-fc-klY"/>
+                    </connections>
+                </button>
+                <button toolTip="Send me Email" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Lk-rI-YwG">
+                    <rect key="frame" x="261" y="39" width="22" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="email" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="3tb-fs-30T">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="emailMe:" target="A8U-qF-fkf" id="Iis-pw-NoT"/>
+                    </connections>
+                </button>
+                <button toolTip="Import my GnuPG pub key" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mjw-GC-kae">
+                    <rect key="frame" x="342" y="41" width="23" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="gnupg" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="8Zg-sj-cYD">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="importMyGnuPGPubKey:" target="A8U-qF-fkf" id="Q2B-6G-ig7"/>
+                    </connections>
+                </button>
+                <button toolTip="Fork this repo on GitHub" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Olt-jS-2f1">
+                    <rect key="frame" x="315" y="38" width="28" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="github" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="lmo-cT-2DQ">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="forkThisRepoOnGitHub:" target="A8U-qF-fkf" id="VdX-Ql-TwC"/>
+                    </connections>
+                </button>
+            </subviews>
+        </view>
+    </objects>
+    <resources>
+        <image name="email" width="512" height="512"/>
+        <image name="github" width="512" height="512"/>
+        <image name="gnupg" width="512" height="512"/>
+        <image name="logo" width="256" height="256"/>
+        <image name="twitter" width="512" height="512"/>
+    </resources>
+</document>

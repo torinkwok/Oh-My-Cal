@@ -34,7 +34,6 @@
 #import "OMFMainPanelController.h"
 #import "OMFStatusItemView.h"
 #import "OMFPanelBackgroundView.h"
-#import "OMFAboutPanelController.h"
 
 // OMFMainPanelController class
 @implementation OMFMainPanelController
@@ -50,7 +49,6 @@
 
 @synthesize backgrondView = _backgroundView;
 
-@synthesize aboutPanelController;
 @synthesize preferencesPanelController;
 
 @synthesize hasOpened = _hasOpened;
@@ -204,10 +202,7 @@
 
 - ( IBAction ) about: ( id )_Sender
     {
-    if ( !self.aboutPanelController )
-        self.aboutPanelController = [ OMFAboutPanelController aboutPanelController ];
 
-    [ self.aboutPanelController showWindow: self ];
     }
 
 @end // OMFMainPanelController
