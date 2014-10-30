@@ -1,0 +1,3 @@
+[submodule "MASPreferences"]
+	path = MASPreferences
+	url = https://github.com/TongG/MASPreferences.git

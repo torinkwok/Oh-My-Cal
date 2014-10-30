@@ -31,31 +31,13 @@
  **                                                                         **
  ****************************************************************************/
 
-#import "OMFAboutPanelController.h"
+#import "OMCAboutView.h"
 
-// OMFAboutPanelController class
-@implementation OMFAboutPanelController
+@implementation OMCAboutView
 
-#pragma mark Initializers
-+ ( id ) aboutPanelController
+- ( BOOL ) mouseDownCanMoveWindow
     {
-    return [ [ [ [ self class ] alloc ] init ] autorelease ];
-    }
-
-- ( id ) init
-    {
-    if ( self = [ super initWithWindowNibName: @"OMFAboutPanel" ] )
-        {
-        // TODO:
-        }
-
-    return self;
-    }
-
-#pragma mark Conforms <NSNibAwaking> protocol
-- ( void ) awakeFromNib
-    {
-    // TODO:
+    return NO;
     }
 
 #pragma mark Actions
@@ -84,7 +66,7 @@
     [ [ NSWorkspace sharedWorkspace ] openURL: pubkeyFileURL ];
     }
 
-@end // OMFAboutPanelController
+@end // OMCAboutView
 
 //////////////////////////////////////////////////////////////////////////////
 
