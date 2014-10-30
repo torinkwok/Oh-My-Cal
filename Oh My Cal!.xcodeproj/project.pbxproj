@@ -35,6 +35,12 @@
 		83099CB119ADBB2E00DDBF1D /* BGHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9119ADBB2E00DDBF1D /* BGHUDView.m */; };
 		83099CB219ADBB2E00DDBF1D /* BGTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9319ADBB2E00DDBF1D /* BGTheme.m */; };
 		83099CB319ADBB2E00DDBF1D /* BGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C9519ADBB2E00DDBF1D /* BGThemeManager.m */; };
+		8310B0181A0215F700ED8EB0 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0101A0215F700ED8EB0 /* .gitignore */; };
+		8310B0191A0215F700ED8EB0 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0111A0215F700ED8EB0 /* LICENSE.md */; };
+		8310B01A1A0215F700ED8EB0 /* MASPreferences.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0121A0215F700ED8EB0 /* MASPreferences.podspec */; };
+		8310B01B1A0215F700ED8EB0 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0141A0215F700ED8EB0 /* MASPreferencesWindow.xib */; };
+		8310B01C1A0215F700ED8EB0 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8310B0161A0215F700ED8EB0 /* MASPreferencesWindowController.m */; };
+		8310B01D1A0215F700ED8EB0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0171A0215F700ED8EB0 /* README.md */; };
 		8316FF9119ED4DDF007C5840 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 8316FF8F19ED4DDF007C5840 /* github.png */; };
 		832A24A619C4387E005E79A5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 832A24A519C4387E005E79A5 /* README.md */; };
 		832A8C8119D90BCD005DB2A7 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 832A8C7F19D90BCD005DB2A7 /* twitter.png */; };
@@ -158,6 +164,14 @@
 		83099C9519ADBB2E00DDBF1D /* BGThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGThemeManager.m; sourceTree = "<group>"; };
 		83099C9619ADBB2E00DDBF1D /* NSTokenAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTokenAttachment.h; sourceTree = "<group>"; };
 		83099C9719ADBB2E00DDBF1D /* NSTokenAttachmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTokenAttachmentCell.h; sourceTree = "<group>"; };
+		8310B0101A0215F700ED8EB0 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		8310B0111A0215F700ED8EB0 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.md; sourceTree = "<group>"; };
+		8310B0121A0215F700ED8EB0 /* MASPreferences.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MASPreferences.podspec; sourceTree = "<group>"; };
+		8310B0131A0215F700ED8EB0 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
+		8310B0141A0215F700ED8EB0 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
+		8310B0151A0215F700ED8EB0 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
+		8310B0161A0215F700ED8EB0 /* MASPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASPreferencesWindowController.m; sourceTree = "<group>"; };
+		8310B0171A0215F700ED8EB0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		83166B3119B9C6FB00D39FC4 /* OMCBinaryAndDecimalConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCBinaryAndDecimalConversion.h; path = "Oh My Cal!/OMCBinaryAndDecimalConversion.h"; sourceTree = "<group>"; };
 		8316FF8F19ED4DDF007C5840 /* github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = github.png; path = "Oh My Cal!/Resources/github.png"; sourceTree = "<group>"; };
 		832A24A519C4387E005E79A5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -334,6 +348,21 @@
 			path = "Oh My Cal!/BGHUDAppKit";
 			sourceTree = "<group>";
 		};
+		8310B00F1A0215F700ED8EB0 /* MASPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				8310B0101A0215F700ED8EB0 /* .gitignore */,
+				8310B0111A0215F700ED8EB0 /* LICENSE.md */,
+				8310B0121A0215F700ED8EB0 /* MASPreferences.podspec */,
+				8310B0131A0215F700ED8EB0 /* MASPreferencesViewController.h */,
+				8310B0141A0215F700ED8EB0 /* MASPreferencesWindow.xib */,
+				8310B0151A0215F700ED8EB0 /* MASPreferencesWindowController.h */,
+				8310B0161A0215F700ED8EB0 /* MASPreferencesWindowController.m */,
+				8310B0171A0215F700ED8EB0 /* README.md */,
+			);
+			path = MASPreferences;
+			sourceTree = SOURCE_ROOT;
+		};
 		833F645219AF2FAE001C7C35 /* Calculation */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,6 +417,7 @@
 				83D5D52119ADB46E004AFD84 /* Status Bar */,
 				83D5D4CA19ADB172004AFD84 /* Whole App */,
 				83D5D51D19ADB3F3004AFD84 /* Other Panels */,
+				8310B00F1A0215F700ED8EB0 /* MASPreferences */,
 				83D5D4CB19ADB172004AFD84 /* Supporting Files */,
 				83D5D4E819ADB172004AFD84 /* Oh My Cal!Tests */,
 				83D5D4C319ADB172004AFD84 /* Frameworks */,
@@ -639,6 +669,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8310B0191A0215F700ED8EB0 /* LICENSE.md in Resources */,
 				83D5D4CF19ADB172004AFD84 /* InfoPlist.strings in Resources */,
 				83D5D52519ADB819004AFD84 /* OMFMainPanel.xib in Resources */,
 				83DE176719DA9DC100D38667 /* xroot.png in Resources */,
@@ -646,11 +677,15 @@
 				83DD4A1219B1B0B2007F530A /* settings.png in Resources */,
 				83ED014D19BC97FC004E7F9E /* logo.png in Resources */,
 				8316FF9119ED4DDF007C5840 /* github.png in Resources */,
+				8310B01D1A0215F700ED8EB0 /* README.md in Resources */,
 				83D5D4DD19ADB172004AFD84 /* Images.xcassets in Resources */,
 				832A8C8119D90BCD005DB2A7 /* twitter.png in Resources */,
 				832A8C8819D914CD005DB2A7 /* pubkey.txt in Resources */,
 				832A8C8219D90BCD005DB2A7 /* email.png in Resources */,
+				8310B01B1A0215F700ED8EB0 /* MASPreferencesWindow.xib in Resources */,
+				8310B0181A0215F700ED8EB0 /* .gitignore in Resources */,
 				83D5D53A19ADB8E1004AFD84 /* OMFAboutPanel.xib in Resources */,
+				8310B01A1A0215F700ED8EB0 /* MASPreferences.podspec in Resources */,
 				83ED014919BC9627004E7F9E /* OhMyCal.icns in Resources */,
 				832A24A619C4387E005E79A5 /* README.md in Resources */,
 				839396F919ADF459008D8A3C /* statusbar-logo.png in Resources */,
@@ -715,6 +750,7 @@
 				83DD4A1519B1B11A007F530A /* OMCSettingsBar.m in Sources */,
 				83099CA919ADBB2E00DDBF1D /* BGHUDTableCornerView.m in Sources */,
 				83099CB319ADBB2E00DDBF1D /* BGThemeManager.m in Sources */,
+				8310B01C1A0215F700ED8EB0 /* MASPreferencesWindowController.m in Sources */,
 				83099C9A19ADBB2E00DDBF1D /* BGHUDButtonCell.m in Sources */,
 				83099C9D19ADBB2E00DDBF1D /* BGHUDCommon.m in Sources */,
 				83099CAD19ADBB2E00DDBF1D /* BGHUDTabViewItem.m in Sources */,
