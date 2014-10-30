@@ -32,7 +32,6 @@
  ****************************************************************************/
 
 #import <Cocoa/Cocoa.h>
-#import "MASPreferencesWindowController.h"
 
 typedef NS_ENUM( short, OMCOpenMode ) { OMCHangInMenuMode, OMCGlobalCalloutMode };
 
@@ -41,6 +40,8 @@ typedef NS_ENUM( short, OMCOpenMode ) { OMCHangInMenuMode, OMCGlobalCalloutMode 
 @class OMFDashboardView;
 
 @class OMFPanelBackgroundView;
+
+@class MASPreferencesWindowController;
 
 // OMFMainPanelControllerDelegate protocol
 @protocol OMFMainPanelControllerDelegate <NSObject>

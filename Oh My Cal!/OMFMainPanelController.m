@@ -35,6 +35,9 @@
 #import "OMFStatusItemView.h"
 #import "OMFPanelBackgroundView.h"
 
+#import "MASPreferencesWindowController.h"
+    #import "OMCAboutViewController.h"
+
 // OMFMainPanelController class
 @implementation OMFMainPanelController
     {
@@ -194,7 +197,9 @@
     {
     if ( !self.preferencesPanelController )
         {
-//        self.preferencesPanelController = 
+        OMCAboutViewController* aboutViewController = [ OMCAboutViewController aboutViewController ];
+
+        self.preferencesPanelController = [ MASPreferencesWindowController preferencesWindowControllerWithViewControllers: @[ aboutViewController ] ];
         }
 
     [ self.preferencesPanelController showWindow: self ];

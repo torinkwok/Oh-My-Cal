@@ -33,7 +33,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface OMFContentViewOfAboutPanel : NSView
+@interface OMCAboutView : NSView
 
 #pragma mark Actions
 - ( IBAction ) emailMe: ( id )_Sender;
@@ -41,7 +41,7 @@
 - ( IBAction ) forkThisRepoOnGitHub: ( id )_Sender;
 - ( IBAction ) importMyGnuPGPubKey: ( id )_Sender;
 
-@end // OMFContentViewOfAboutPanel
+@end // OMCAboutView
 
 //////////////////////////////////////////////////////////////////////////////
 

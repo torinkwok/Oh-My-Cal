@@ -77,7 +77,7 @@
 		83D5D52D19ADB85A004AFD84 /* OMFPanelBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D52B19ADB85A004AFD84 /* OMFPanelBackgroundView.m */; };
 		83D5D53619ADB8C7004AFD84 /* OMFStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D53319ADB8C7004AFD84 /* OMFStatusItemView.m */; };
 		83D5D53719ADB8C7004AFD84 /* OMFStatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D53519ADB8C7004AFD84 /* OMFStatusBarController.m */; };
-		83D5D54419ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D54319ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m */; };
+		83D5D54419ADB91B004AFD84 /* OMCAboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D54319ADB91B004AFD84 /* OMCAboutView.m */; };
 		83DD4A1219B1B0B2007F530A /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 83DD4A1119B1B0B2007F530A /* settings.png */; };
 		83DD4A1519B1B11A007F530A /* OMCSettingsBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DD4A1419B1B11A007F530A /* OMCSettingsBar.m */; };
 		83DD4A1819B1F8CA007F530A /* NSMutableString+OMCMutableString.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DD4A1719B1F8CA007F530A /* NSMutableString+OMCMutableString.m */; };
@@ -232,8 +232,8 @@
 		83D5D53319ADB8C7004AFD84 /* OMFStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFStatusItemView.m; path = "Oh My Cal!/OMFStatusItemView.m"; sourceTree = "<group>"; };
 		83D5D53419ADB8C7004AFD84 /* OMFStatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFStatusBarController.h; path = "Oh My Cal!/OMFStatusBarController.h"; sourceTree = "<group>"; };
 		83D5D53519ADB8C7004AFD84 /* OMFStatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFStatusBarController.m; path = "Oh My Cal!/OMFStatusBarController.m"; sourceTree = "<group>"; };
-		83D5D53F19ADB8FF004AFD84 /* OMFContentViewOfAboutPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFContentViewOfAboutPanel.h; path = "Oh My Cal!/OMFContentViewOfAboutPanel.h"; sourceTree = "<group>"; };
-		83D5D54319ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMFContentViewOfAboutPanel.m; path = "Oh My Cal!/OMFContentViewOfAboutPanel.m"; sourceTree = "<group>"; };
+		83D5D53F19ADB8FF004AFD84 /* OMCAboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCAboutView.h; path = "Oh My Cal!/OMCAboutView.h"; sourceTree = "<group>"; };
+		83D5D54319ADB91B004AFD84 /* OMCAboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCAboutView.m; path = "Oh My Cal!/OMCAboutView.m"; sourceTree = "<group>"; };
 		83DD4A1119B1B0B2007F530A /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = "Oh My Cal!/Resources/settings.png"; sourceTree = "<group>"; };
 		83DD4A1319B1B11A007F530A /* OMCSettingsBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCSettingsBar.h; path = "Oh My Cal!/OMCSettingsBar.h"; sourceTree = "<group>"; };
 		83DD4A1419B1B11A007F530A /* OMCSettingsBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCSettingsBar.m; path = "Oh My Cal!/OMCSettingsBar.m"; sourceTree = "<group>"; };
@@ -524,8 +524,8 @@
 			isa = PBXGroup;
 			children = (
 				83D5D51E19ADB3FC004AFD84 /* Resources */,
-				83D5D53F19ADB8FF004AFD84 /* OMFContentViewOfAboutPanel.h */,
-				83D5D54319ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m */,
+				83D5D53F19ADB8FF004AFD84 /* OMCAboutView.h */,
+				83D5D54319ADB91B004AFD84 /* OMCAboutView.m */,
 				8310B0211A022EB400ED8EB0 /* OMCAboutViewController.h */,
 				8310B0221A022EB400ED8EB0 /* OMCAboutViewController.m */,
 			);
@@ -744,7 +744,7 @@
 				83099CAF19ADBB2E00DDBF1D /* BGHUDTokenAttachmentCell.m in Sources */,
 				83099CA219ADBB2E00DDBF1D /* BGHUDScroller.m in Sources */,
 				83099C9B19ADBB2E00DDBF1D /* BGHUDColorWell.m in Sources */,
-				83D5D54419ADB91B004AFD84 /* OMFContentViewOfAboutPanel.m in Sources */,
+				83D5D54419ADB91B004AFD84 /* OMCAboutView.m in Sources */,
 				83FD69A219C3753000B4488C /* OMCCalWithBasicStyle.m in Sources */,
 				83D5D4D119ADB172004AFD84 /* main.m in Sources */,
 				83099CAA19ADBB2E00DDBF1D /* BGHUDTableView.m in Sources */,

@@ -31,9 +31,9 @@
  **                                                                         **
  ****************************************************************************/
 
-#import "OMFContentViewOfAboutPanel.h"
+#import "OMCAboutView.h"
 
-@implementation OMFContentViewOfAboutPanel
+@implementation OMCAboutView
 
 - ( BOOL ) mouseDownCanMoveWindow
     {
@@ -66,7 +66,7 @@
     [ [ NSWorkspace sharedWorkspace ] openURL: pubkeyFileURL ];
     }
 
-@end // OMFContentViewOfAboutPanel
+@end // OMCAboutView
 
 //////////////////////////////////////////////////////////////////////////////
 

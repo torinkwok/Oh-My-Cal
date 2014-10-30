@@ -49,6 +49,22 @@
     return self;
     }
 
+#pragma mark PreferencesViewController Behaviors
+- ( NSString* ) identifier
+    {
+    return @"OMCAboutView";
+    }
+
+- ( NSImage* ) toolbarItemImage
+    {
+    return [ NSImage imageNamed: NSImageNameInfo ];
+    }
+
+- ( NSString* ) toolbarItemLabel
+    {
+    return NSLocalizedString( @"About", @"Toolbar item name for the Info preference pane" );
+    }
+
 @end // OMCAboutViewController
 
 //////////////////////////////////////////////////////////////////////////////

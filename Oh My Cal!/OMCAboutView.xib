@@ -11,7 +11,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application"/>
-        <view id="A8U-qF-fkf" userLabel="About View" customClass="OMFContentViewOfAboutPanel">
+        <view id="A8U-qF-fkf" userLabel="About View" customClass="OMCAboutView">
             <rect key="frame" x="0.0" y="0.0" width="477" height="186"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
