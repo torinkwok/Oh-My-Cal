@@ -32,6 +32,7 @@
  ****************************************************************************/
 
 #import <Cocoa/Cocoa.h>
+#import "MASPreferencesWindowController.h"
 
 typedef NS_ENUM( short, OMCOpenMode ) { OMCHangInMenuMode, OMCGlobalCalloutMode };
 
@@ -66,7 +67,9 @@ typedef NS_ENUM( short, OMCOpenMode ) { OMCHangInMenuMode, OMCGlobalCalloutMode 
 @property ( nonatomic, unsafe_unretained ) id <OMFMainPanelControllerDelegate> delegate;
 
 @property ( nonatomic, unsafe_unretained ) IBOutlet OMFPanelBackgroundView* backgrondView;
+
 @property ( nonatomic, retain ) OMFAboutPanelController* aboutPanelController;
+@property ( nonatomic, retain ) MASPreferencesWindowController* preferencesPanelController;
 
 @property ( nonatomic, unsafe_unretained ) IBOutlet NSMenuItem* _startAtLoginMenuItem; // Not successful, lost to Sandbox😩
 @property ( nonatomic, unsafe_unretained ) IBOutlet NSMenuItem* _calloutByKeyCombinationMenuItem;
@@ -87,6 +90,7 @@ typedef NS_ENUM( short, OMCOpenMode ) { OMCHangInMenuMode, OMCGlobalCalloutMode 
 - ( void ) _fuckPanel: ( BOOL )_IsHighlighting;
 
 #pragma mark IBActions
+- ( IBAction ) showPreferences: ( id )_Sender;
 - ( IBAction ) about: ( id )_Sender;
 
 @end // OMFMainPanelController

@@ -49,7 +49,9 @@
 @synthesize delegate = _delegate;
 
 @synthesize backgrondView = _backgroundView;
+
 @synthesize aboutPanelController;
+@synthesize preferencesPanelController;
 
 @synthesize hasOpened = _hasOpened;
 @synthesize currentOpenMode = _currentOpenMode;
@@ -190,6 +192,16 @@
     }
 
 #pragma mark IBActions
+- ( IBAction ) showPreferences: ( id )_Sender
+    {
+    if ( !self.preferencesPanelController )
+        {
+//        self.preferencesPanelController = 
+        }
+
+    [ self.preferencesPanelController showWindow: self ];
+    }
+
 - ( IBAction ) about: ( id )_Sender
     {
     if ( !self.aboutPanelController )

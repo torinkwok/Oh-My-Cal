@@ -1438,7 +1438,7 @@
                 </segmentedControl>
                 <popUpButton misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rtb-tf-nhm">
                     <rect key="frame" x="270" y="0.5" width="31" height="21"/>
-                    <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" inset="2" pullsDown="YES" arrowPosition="noArrow" preferredEdge="maxX" id="f6V-lo-oIV">
+                    <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="bezel" inset="2" pullsDown="YES" arrowPosition="noArrow" preferredEdge="maxX" selectedItem="HhM-Vb-oWI" id="f6V-lo-oIV">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" title="OtherViews" id="Lgq-so-pDQ">
@@ -1448,6 +1448,11 @@
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <connections>
                                         <action selector="about:" target="-1" id="kLB-q8-nNo"/>
+                                    </connections>
+                                </menuItem>
+                                <menuItem title="Preferences..." keyEquivalent="," id="HhM-Vb-oWI">
+                                    <connections>
+                                        <action selector="showPreferences:" target="-2" id="440-q9-g7R"/>
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="BRm-vl-G1v"/>
