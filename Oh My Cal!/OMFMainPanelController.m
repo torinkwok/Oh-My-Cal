@@ -34,7 +34,11 @@
 #import "OMFMainPanelController.h"
 #import "OMFStatusItemView.h"
 #import "OMFPanelBackgroundView.h"
-#import "OMFAboutPanelController.h"
+
+#import "MASPreferencesWindowController.h"
+    #import "OMCGeneralViewController.h"
+    #import "OMCKeyBindingsViewController.h"
+    #import "OMCAboutViewController.h"
 
 // OMFMainPanelController class
 @implementation OMFMainPanelController
@@ -49,7 +53,8 @@
 @synthesize delegate = _delegate;
 
 @synthesize backgrondView = _backgroundView;
-@synthesize aboutPanelController;
+
+@synthesize preferencesPanelController;
 
 @synthesize hasOpened = _hasOpened;
 @synthesize currentOpenMode = _currentOpenMode;
@@ -190,12 +195,23 @@
     }
 
 #pragma mark IBActions
+- ( IBAction ) showPreferences: ( id )_Sender
+    {
+    if ( !self.preferencesPanelController )
+        {
+        OMCGeneralViewController* generalViewController = [ OMCGeneralViewController generalViewController ];
+        OMCKeyBindingsViewController* keyBindingsController = [ OMCKeyBindingsViewController keyBindingsViewController ];
+        OMCAboutViewController* aboutViewController = [ OMCAboutViewController aboutViewController ];
+
+        self.preferencesPanelController = [ MASPreferencesWindowController preferencesWindowControllerWithViewControllers: @[ generalViewController, keyBindingsController, aboutViewController ] ];
+        }
+
+    [ self.preferencesPanelController showWindow: self ];
+    }
+
 - ( IBAction ) about: ( id )_Sender
     {
-    if ( !self.aboutPanelController )
-        self.aboutPanelController = [ OMFAboutPanelController aboutPanelController ];
 
-    [ self.aboutPanelController showWindow: self ];
     }
 
 @end // OMFMainPanelController

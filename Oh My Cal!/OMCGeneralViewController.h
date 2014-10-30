@@ -31,16 +31,15 @@
  **                                                                         **
  ****************************************************************************/
 
-#import "OMFContentViewOfAboutPanel.h"
+#import <Cocoa/Cocoa.h>
+#import "MASPreferencesViewController.h"
 
-@implementation OMFContentViewOfAboutPanel
+// OMCGeneralViewController
+@interface OMCGeneralViewController : NSViewController <MASPreferencesViewController>
 
-- ( BOOL ) mouseDownCanMoveWindow
-    {
-    return NO;
-    }
++ ( instancetype ) generalViewController;
 
-@end // OMFContentViewOfAboutPanel
+@end // OMCGeneralViewController
 
 //////////////////////////////////////////////////////////////////////////////
 
