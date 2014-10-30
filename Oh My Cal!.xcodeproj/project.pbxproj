@@ -351,17 +351,25 @@
 		8310B00F1A0215F700ED8EB0 /* MASPreferences */ = {
 			isa = PBXGroup;
 			children = (
-				8310B0101A0215F700ED8EB0 /* .gitignore */,
-				8310B0111A0215F700ED8EB0 /* LICENSE.md */,
-				8310B0121A0215F700ED8EB0 /* MASPreferences.podspec */,
+				8310B01E1A021BB900ED8EB0 /* Resoureces */,
 				8310B0131A0215F700ED8EB0 /* MASPreferencesViewController.h */,
-				8310B0141A0215F700ED8EB0 /* MASPreferencesWindow.xib */,
 				8310B0151A0215F700ED8EB0 /* MASPreferencesWindowController.h */,
 				8310B0161A0215F700ED8EB0 /* MASPreferencesWindowController.m */,
+				8310B0111A0215F700ED8EB0 /* LICENSE.md */,
 				8310B0171A0215F700ED8EB0 /* README.md */,
+				8310B0121A0215F700ED8EB0 /* MASPreferences.podspec */,
+				8310B0101A0215F700ED8EB0 /* .gitignore */,
 			);
 			path = MASPreferences;
 			sourceTree = SOURCE_ROOT;
+		};
+		8310B01E1A021BB900ED8EB0 /* Resoureces */ = {
+			isa = PBXGroup;
+			children = (
+				8310B0141A0215F700ED8EB0 /* MASPreferencesWindow.xib */,
+			);
+			name = Resoureces;
+			sourceTree = "<group>";
 		};
 		833F645219AF2FAE001C7C35 /* Calculation */ = {
 			isa = PBXGroup;
