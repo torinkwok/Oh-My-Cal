@@ -32,9 +32,14 @@
  ****************************************************************************/
 
 #import <Cocoa/Cocoa.h>
+#import "MASPreferencesViewController.h"
 
-@interface OMFContentViewOfAboutPanel : NSView
-@end // OMFContentViewOfAboutPanel
+// OMCAboutViewController
+@interface OMCAboutViewController : NSViewController <MASPreferencesViewController>
+
++ ( instancetype ) aboutViewController;
+
+@end // OMCAboutViewController
 
 //////////////////////////////////////////////////////////////////////////////
 
