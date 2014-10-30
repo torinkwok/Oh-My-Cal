@@ -31,41 +31,15 @@
  **                                                                         **
  ****************************************************************************/
 
-#import "OMCAboutViewController.h"
+#import <Cocoa/Cocoa.h>
+#import "MASPreferencesViewController.h"
 
-// OMCAboutViewController class
-@implementation OMCAboutViewController
+// OMCKeyBindingsViewController
+@interface OMCKeyBindingsViewController : NSViewController <MASPreferencesViewController>
 
-+ ( instancetype ) aboutViewController
-    {
-    return [ [ [ [ self class ] alloc ] init ] autorelease ];
-    }
++ ( instancetype ) keyBindingsViewController;
 
-- ( instancetype ) init
-    {
-    if ( self = [ super initWithNibName: @"OMCAboutView" bundle: [ NSBundle mainBundle ] ] )
-        ;
-
-    return self;
-    }
-
-#pragma mark PreferencesViewController Behaviors
-- ( NSString* ) identifier
-    {
-    return @"OMCAboutView";
-    }
-
-- ( NSImage* ) toolbarItemImage
-    {
-    return [ NSImage imageNamed: NSImageNameInfo ];
-    }
-
-- ( NSString* ) toolbarItemLabel
-    {
-    return NSLocalizedString( @"About", @"Toolbar item name for the About preference pane" );
-    }
-
-@end // OMCAboutViewController
+@end // OMCKeyBindingsViewController
 
 //////////////////////////////////////////////////////////////////////////////
 

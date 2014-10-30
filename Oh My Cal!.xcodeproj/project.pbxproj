@@ -45,6 +45,8 @@
 		8310B0231A022EB400ED8EB0 /* OMCAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8310B0221A022EB400ED8EB0 /* OMCAboutViewController.m */; };
 		8310B0251A023BB200ED8EB0 /* OMCGeneralView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0241A023BB200ED8EB0 /* OMCGeneralView.xib */; };
 		8310B0281A023BCE00ED8EB0 /* OMCGeneralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8310B0271A023BCE00ED8EB0 /* OMCGeneralViewController.m */; };
+		8310B02A1A023FBF00ED8EB0 /* OMCKeyBindingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0291A023FBF00ED8EB0 /* OMCKeyBindingsView.xib */; };
+		8310B02D1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8310B02C1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m */; };
 		8316FF9119ED4DDF007C5840 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 8316FF8F19ED4DDF007C5840 /* github.png */; };
 		832A24A619C4387E005E79A5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 832A24A519C4387E005E79A5 /* README.md */; };
 		832A8C8119D90BCD005DB2A7 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 832A8C7F19D90BCD005DB2A7 /* twitter.png */; };
@@ -180,6 +182,9 @@
 		8310B0241A023BB200ED8EB0 /* OMCGeneralView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OMCGeneralView.xib; path = "Oh My Cal!/OMCGeneralView.xib"; sourceTree = "<group>"; };
 		8310B0261A023BCE00ED8EB0 /* OMCGeneralViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCGeneralViewController.h; path = "Oh My Cal!/OMCGeneralViewController.h"; sourceTree = "<group>"; };
 		8310B0271A023BCE00ED8EB0 /* OMCGeneralViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCGeneralViewController.m; path = "Oh My Cal!/OMCGeneralViewController.m"; sourceTree = "<group>"; };
+		8310B0291A023FBF00ED8EB0 /* OMCKeyBindingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OMCKeyBindingsView.xib; sourceTree = "<group>"; };
+		8310B02B1A023FD100ED8EB0 /* OMCKeyBindingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCKeyBindingsViewController.h; path = "Oh My Cal!/OMCKeyBindingsViewController.h"; sourceTree = "<group>"; };
+		8310B02C1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCKeyBindingsViewController.m; path = "Oh My Cal!/OMCKeyBindingsViewController.m"; sourceTree = "<group>"; };
 		83166B3119B9C6FB00D39FC4 /* OMCBinaryAndDecimalConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCBinaryAndDecimalConversion.h; path = "Oh My Cal!/OMCBinaryAndDecimalConversion.h"; sourceTree = "<group>"; };
 		8316FF8F19ED4DDF007C5840 /* github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = github.png; path = "Oh My Cal!/Resources/github.png"; sourceTree = "<group>"; };
 		832A24A519C4387E005E79A5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -533,6 +538,8 @@
 				83D5D54319ADB91B004AFD84 /* OMCAboutView.m */,
 				8310B0261A023BCE00ED8EB0 /* OMCGeneralViewController.h */,
 				8310B0271A023BCE00ED8EB0 /* OMCGeneralViewController.m */,
+				8310B02B1A023FD100ED8EB0 /* OMCKeyBindingsViewController.h */,
+				8310B02C1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m */,
 				8310B0211A022EB400ED8EB0 /* OMCAboutViewController.h */,
 				8310B0221A022EB400ED8EB0 /* OMCAboutViewController.m */,
 			);
@@ -549,6 +556,7 @@
 				83ED014C19BC97FC004E7F9E /* logo.png */,
 				8310B01F1A022E7900ED8EB0 /* OMCAboutView.xib */,
 				8310B0241A023BB200ED8EB0 /* OMCGeneralView.xib */,
+				8310B0291A023FBF00ED8EB0 /* OMCKeyBindingsView.xib */,
 				832A8C8719D914CD005DB2A7 /* pubkey.txt */,
 			);
 			name = Resources;
@@ -690,6 +698,7 @@
 				83D5D52519ADB819004AFD84 /* OMFMainPanel.xib in Resources */,
 				83DE176719DA9DC100D38667 /* xroot.png in Resources */,
 				839396F219ADE567008D8A3C /* OMCDefaults.plist in Resources */,
+				8310B02A1A023FBF00ED8EB0 /* OMCKeyBindingsView.xib in Resources */,
 				83DD4A1219B1B0B2007F530A /* settings.png in Resources */,
 				83ED014D19BC97FC004E7F9E /* logo.png in Resources */,
 				8316FF9119ED4DDF007C5840 /* github.png in Resources */,
@@ -733,6 +742,7 @@
 				839396F019ADD791008D8A3C /* OMCLCDScreen.m in Sources */,
 				83D5D53719ADB8C7004AFD84 /* OMFStatusBarController.m in Sources */,
 				83099C9F19ADBB2E00DDBF1D /* BGHUDOutlineView.m in Sources */,
+				8310B02D1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m in Sources */,
 				8310B0281A023BCE00ED8EB0 /* OMCGeneralViewController.m in Sources */,
 				83099CA119ADBB2E00DDBF1D /* BGHUDProgressIndicator.m in Sources */,
 				839396FB19AE1D81008D8A3C /* OMCCommon.m in Sources */,

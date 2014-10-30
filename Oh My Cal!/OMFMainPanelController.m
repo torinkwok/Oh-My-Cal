@@ -37,6 +37,7 @@
 
 #import "MASPreferencesWindowController.h"
     #import "OMCGeneralViewController.h"
+    #import "OMCKeyBindingsViewController.h"
     #import "OMCAboutViewController.h"
 
 // OMFMainPanelController class
@@ -199,9 +200,10 @@
     if ( !self.preferencesPanelController )
         {
         OMCGeneralViewController* generalViewController = [ OMCGeneralViewController generalViewController ];
+        OMCKeyBindingsViewController* keyBindingsController = [ OMCKeyBindingsViewController keyBindingsViewController ];
         OMCAboutViewController* aboutViewController = [ OMCAboutViewController aboutViewController ];
 
-        self.preferencesPanelController = [ MASPreferencesWindowController preferencesWindowControllerWithViewControllers: @[ generalViewController, aboutViewController ] ];
+        self.preferencesPanelController = [ MASPreferencesWindowController preferencesWindowControllerWithViewControllers: @[ generalViewController, keyBindingsController, aboutViewController ] ];
         }
 
     [ self.preferencesPanelController showWindow: self ];

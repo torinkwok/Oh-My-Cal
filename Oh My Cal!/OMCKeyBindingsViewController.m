@@ -31,19 +31,19 @@
  **                                                                         **
  ****************************************************************************/
 
-#import "OMCAboutViewController.h"
+#import "OMCKeyBindingsViewController.h"
 
-// OMCAboutViewController class
-@implementation OMCAboutViewController
+// OMCKeyBindingsViewController class
+@implementation OMCKeyBindingsViewController
 
-+ ( instancetype ) aboutViewController
++ ( instancetype ) keyBindingsViewController
     {
     return [ [ [ [ self class ] alloc ] init ] autorelease ];
     }
 
 - ( instancetype ) init
     {
-    if ( self = [ super initWithNibName: @"OMCAboutView" bundle: [ NSBundle mainBundle ] ] )
+    if ( self = [ super initWithNibName: @"OMCKeyBindingsView" bundle: [ NSBundle mainBundle ] ] )
         ;
 
     return self;
@@ -52,20 +52,20 @@
 #pragma mark PreferencesViewController Behaviors
 - ( NSString* ) identifier
     {
-    return @"OMCAboutView";
+    return @"OMCKeyBindingsView";
     }
 
 - ( NSImage* ) toolbarItemImage
     {
-    return [ NSImage imageNamed: NSImageNameInfo ];
+    return [ NSImage imageNamed: NSImageNameAdvanced ];
     }
 
 - ( NSString* ) toolbarItemLabel
     {
-    return NSLocalizedString( @"About", @"Toolbar item name for the About preference pane" );
+    return NSLocalizedString( @"Key Bindings", @"Toolbar item name for the Key Bindings preference pane" );
     }
 
-@end // OMCAboutViewController
+@end // OMCKeyBindingsViewController
 
 //////////////////////////////////////////////////////////////////////////////
 
