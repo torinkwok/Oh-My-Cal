@@ -31,19 +31,19 @@
  **                                                                         **
  ****************************************************************************/
 
-#import "OMCAboutViewController.h"
+#import "OMCGeneralViewController.h"
 
-// OMCAboutViewController class
-@implementation OMCAboutViewController
+// OMCGeneralViewController class
+@implementation OMCGeneralViewController
 
-+ ( instancetype ) aboutViewController
++ ( instancetype ) generalViewController
     {
     return [ [ [ [ self class ] alloc ] init ] autorelease ];
     }
 
 - ( instancetype ) init
     {
-    if ( self = [ super initWithNibName: @"OMCAboutView" bundle: [ NSBundle mainBundle ] ] )
+    if ( self = [ super initWithNibName: @"OMCGeneralView" bundle: [ NSBundle mainBundle ] ] )
         ;
 
     return self;
@@ -52,20 +52,21 @@
 #pragma mark PreferencesViewController Behaviors
 - ( NSString* ) identifier
     {
-    return @"OMCAboutView";
+    return @"OMCGeneralView";
     }
 
 - ( NSImage* ) toolbarItemImage
     {
-    return [ NSImage imageNamed: NSImageNameInfo ];
+    return [ NSImage imageNamed: NSImageNamePreferencesGeneral ];
     }
 
 - ( NSString* ) toolbarItemLabel
     {
-    return NSLocalizedString( @"About", @"Toolbar item name for the Info preference pane" );
+    return NSLocalizedString( @"General", @"Toolbar item name for the General preference pane" );
     }
 
-@end // OMCAboutViewController
+
+@end // OMCGeneralViewController
 
 //////////////////////////////////////////////////////////////////////////////
 

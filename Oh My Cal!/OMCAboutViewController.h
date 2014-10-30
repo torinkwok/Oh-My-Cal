@@ -37,7 +37,7 @@
 // OMCAboutViewController
 @interface OMCAboutViewController : NSViewController <MASPreferencesViewController>
 
-+ ( id ) aboutViewController;
++ ( instancetype ) aboutViewController;
 
 @end // OMCAboutViewController
 

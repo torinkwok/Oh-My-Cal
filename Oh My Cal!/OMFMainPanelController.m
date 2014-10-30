@@ -36,6 +36,7 @@
 #import "OMFPanelBackgroundView.h"
 
 #import "MASPreferencesWindowController.h"
+    #import "OMCGeneralViewController.h"
     #import "OMCAboutViewController.h"
 
 // OMFMainPanelController class
@@ -197,9 +198,10 @@
     {
     if ( !self.preferencesPanelController )
         {
+        OMCGeneralViewController* generalViewController = [ OMCGeneralViewController generalViewController ];
         OMCAboutViewController* aboutViewController = [ OMCAboutViewController aboutViewController ];
 
-        self.preferencesPanelController = [ MASPreferencesWindowController preferencesWindowControllerWithViewControllers: @[ aboutViewController ] ];
+        self.preferencesPanelController = [ MASPreferencesWindowController preferencesWindowControllerWithViewControllers: @[ generalViewController, aboutViewController ] ];
         }
 
     [ self.preferencesPanelController showWindow: self ];
