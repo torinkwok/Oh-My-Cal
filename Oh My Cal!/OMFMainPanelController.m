@@ -164,6 +164,23 @@
         [ self.delegate respondsToSelector: @selector( statusItemViewForPanelController: ) ];
     }
 
+MASPreferencesWindowController static* sPreferencesPanelController = nil;
+- ( MASPreferencesWindowController* ) preferencesPanelController
+    {
+    if ( !sPreferencesPanelController )
+        {
+        OMCGeneralViewController* generalViewController = [ OMCGeneralViewController generalViewController ];
+        OMCKeyBindingsViewController* keyBindingsController = [ OMCKeyBindingsViewController keyBindingsViewController ];
+        OMCAboutViewController* aboutViewController = [ OMCAboutViewController aboutViewController ];
+
+        sPreferencesPanelController =
+            [ [ MASPreferencesWindowController preferencesWindowControllerWithViewControllers:
+                    @[ generalViewController, keyBindingsController, [ NSNull null ], aboutViewController ] ] retain ];
+        }
+
+    return sPreferencesPanelController;
+    }
+
 #pragma mark Conforms <NSWindowDelegate> protocol
 - ( void ) windowDidResize: ( NSNotification* )_Notif
     {
@@ -204,23 +221,6 @@
     {
     [ self.preferencesPanelController selectControllerAtIndex: 3 ];
     [ self.preferencesPanelController showWindow: self ];
-    }
-
-MASPreferencesWindowController static* sPreferencesPanelController = nil;
-- ( MASPreferencesWindowController* ) preferencesPanelController
-    {
-    if ( !sPreferencesPanelController )
-        {
-        OMCGeneralViewController* generalViewController = [ OMCGeneralViewController generalViewController ];
-        OMCKeyBindingsViewController* keyBindingsController = [ OMCKeyBindingsViewController keyBindingsViewController ];
-        OMCAboutViewController* aboutViewController = [ OMCAboutViewController aboutViewController ];
-
-        sPreferencesPanelController =
-            [ [ MASPreferencesWindowController preferencesWindowControllerWithViewControllers:
-                    @[ generalViewController, keyBindingsController, [ NSNull null ], aboutViewController ] ] retain ];
-        }
-
-    return sPreferencesPanelController;
     }
 
 @end // OMFMainPanelController
