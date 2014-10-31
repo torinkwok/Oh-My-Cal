@@ -54,7 +54,7 @@
 
 @synthesize backgrondView = _backgroundView;
 
-@synthesize preferencesPanelController;
+@dynamic preferencesPanelController;
 
 @synthesize hasOpened = _hasOpened;
 @synthesize currentOpenMode = _currentOpenMode;
@@ -197,21 +197,30 @@
 #pragma mark IBActions
 - ( IBAction ) showPreferences: ( id )_Sender
     {
-    if ( !self.preferencesPanelController )
-        {
-        OMCGeneralViewController* generalViewController = [ OMCGeneralViewController generalViewController ];
-        OMCKeyBindingsViewController* keyBindingsController = [ OMCKeyBindingsViewController keyBindingsViewController ];
-        OMCAboutViewController* aboutViewController = [ OMCAboutViewController aboutViewController ];
-
-        self.preferencesPanelController = [ MASPreferencesWindowController preferencesWindowControllerWithViewControllers: @[ generalViewController, keyBindingsController, aboutViewController ] ];
-        }
-
     [ self.preferencesPanelController showWindow: self ];
     }
 
 - ( IBAction ) about: ( id )_Sender
     {
+    [ self.preferencesPanelController selectControllerAtIndex: 3 ];
+    [ self.preferencesPanelController showWindow: self ];
+    }
 
+MASPreferencesWindowController static* sPreferencesPanelController = nil;
+- ( MASPreferencesWindowController* ) preferencesPanelController
+    {
+    if ( !sPreferencesPanelController )
+        {
+        OMCGeneralViewController* generalViewController = [ OMCGeneralViewController generalViewController ];
+        OMCKeyBindingsViewController* keyBindingsController = [ OMCKeyBindingsViewController keyBindingsViewController ];
+        OMCAboutViewController* aboutViewController = [ OMCAboutViewController aboutViewController ];
+
+        sPreferencesPanelController =
+            [ [ MASPreferencesWindowController preferencesWindowControllerWithViewControllers:
+                    @[ generalViewController, keyBindingsController, [ NSNull null ], aboutViewController ] ] retain ];
+        }
+
+    return sPreferencesPanelController;
     }
 
 @end // OMFMainPanelController

@@ -1452,7 +1452,7 @@
                                 </menuItem>
                                 <menuItem title="Preferences..." keyEquivalent="," id="HhM-Vb-oWI">
                                     <connections>
-                                        <action selector="showPreferences:" target="-2" id="440-q9-g7R"/>
+                                        <action selector="showPreferences:" target="-1" id="Lm1-Mj-x57"/>
                                     </connections>
                                 </menuItem>
                                 <menuItem isSeparatorItem="YES" id="BRm-vl-G1v"/>
