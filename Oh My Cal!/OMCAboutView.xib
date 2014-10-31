@@ -39,7 +39,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hRD-sj-vsB">
-                    <rect key="frame" x="198" y="14" width="233" height="17"/>
+                    <rect key="frame" x="198" y="17" width="233" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="© 2014 Tong Guo. ALL RIGHTS RESERVED." id="7wZ-RA-9tV">
                         <font key="font" size="9" name="LucidaGrande"/>
