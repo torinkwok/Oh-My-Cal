@@ -1155,6 +1155,13 @@ NSString static* kExceptionCarriedKey = @"kExceptionCarriedKey";
     return [ _Pboard writeObjects: @[ self ] ];
     }
 
+- ( id ) valueForUndefinedKey: ( NSString* )_Key
+    {
+    NSLog( @"Undefined Key: %@", _Key );
+
+    return [ super valueForUndefinedKey: _Key ];
+    }
+
 @end // OMCOperand +OMCCodingBehaviors
 
 #pragma mark NSDecimalNumberHandler + OMCOperand
