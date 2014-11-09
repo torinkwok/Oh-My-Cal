@@ -105,6 +105,7 @@ NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultVa
             || [ _KeyPath isEqualToString: kKeyPathForLhsOperandInCalculationObject ]
             || [ _KeyPath isEqualToString: kKeyPathForRhsOperandInCalculationObject ] )
         {
+        NSLog( @"Change Dict: %@", _Change );
         self.binaryInString = [ self convertDecimalToBinary: [ _Change[ @"new" ] unsignedIntegerValue ] ];
         [ self setNeedsDisplay: YES ];
         }

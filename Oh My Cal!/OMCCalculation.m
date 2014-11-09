@@ -381,14 +381,6 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
 // All of the buttons on the keyboard has been connected to this action
 - ( IBAction ) calculate: ( id )_Sender
     {
-    NSDictionary* dict = @{ @"Tong" : @"Guo"
-                          , @"AnQi" : @"Jiang"
-                          , @"Rui" : @"Liu"
-                          , @"YuTao" : @"Di"
-                          };
-
-    NSLog( @"%@", [ dict dictionaryWithValuesForKeys: @[ @"Tong", @"AnQi", @"Rui" ] ] );
-
     NSButton* pressedButton = ( NSButton* )_Sender;
     self.lastTypedButtonType = ( OMCButtonType )[ pressedButton tag ];
     self.lastTypedButton = _Sender;
