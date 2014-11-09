@@ -68,6 +68,11 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
 
 @synthesize isBinomialInLastCalculation = _isBinomial;
 
+@synthesize testingForKVO = _testingForKVO;
+@synthesize dateForKVO = _dateForKVO;
+
+@dynamic fuckFuckGo;
+
 #pragma mark Initializers & Deallocators
 - ( void ) awakeFromNib
     {
@@ -84,6 +89,9 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
                              selector: @selector( binaryStringDidChanged: )
                                  name: OMCBinaryStringDidChanged
                                object: self._binaryOperationPanel ];
+
+    self.testingForKVO = [ @[ @"FUCK", @"SHIT", @"BULLSHIT" ] mutableCopy ];
+    self.dateForKVO = [ NSDate date ];
     }
 
 - ( void ) binaryStringDidChanged: ( NSNotification* )_Notif
@@ -378,9 +386,61 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
     }
 
 #pragma mark IBActions
+#if 0
+- ( NSUInteger ) countOfTestingForKVO
+    {
+    return [ self.testingForKVO count ];
+    }
+
+- ( id ) objectInTestingForKVOAtIndex: ( NSUInteger )_Index
+    {
+    return self.testingForKVO[ _Index ];
+    }
+
+- ( void ) insertObject: ( NSString* )_Object
+ inTestingForKVOAtIndex: ( NSUInteger )_Index
+    {
+    [ self.testingForKVO insertObject: _Object atIndex: _Index ];
+    }
+#endif
+
++ ( BOOL ) automaticallyNotifiesObserversForKey: ( NSString* )_Key
+    {
+//    if ( [ _Key isEqualToString: @"testingForKVO" ] )
+//        return NO;
+
+    if ( [ _Key isEqualToString: @"dateForKVO" ] )
+        return NO;
+
+    return [ super automaticallyNotifiesObserversForKey: _Key ];
+    }
+
+- ( void ) setDateForKVO: ( NSDate* )_Date
+    {
+    if ( self->_dateForKVO != _Date )
+        {
+        [ self willChangeValueForKey: @"dateForKVO" ];
+            [ self->_dateForKVO release ];
+            self->_dateForKVO = [ _Date retain ];
+        [ self didChangeValueForKey: @"dateForKVO" ];
+        }
+    }
+
 // All of the buttons on the keyboard has been connected to this action
 - ( IBAction ) calculate: ( id )_Sender
     {
+    self.dateForKVO = [ NSDate date ];
+
+//    [ self willChangeValueForKey: @"testingForKVO" ];
+//    NSMutableArray* proxyOfTestingForKVO = [ self mutableArrayValueForKeyPath: @"self.testingForKVO" ];
+//
+//    [ proxyOfTestingForKVO addObject: [ NSString stringWithFormat: @"%p", _Sender ] ];
+//
+//    NSUInteger index = [ proxyOfTestingForKVO indexOfObject: [ NSString stringWithFormat: @"%p", _Sender ] ];
+//    [ proxyOfTestingForKVO replaceObjectAtIndex: index withObject: @"Give me five" ];
+
+//    [ self didChangeValueForKey: @"testingForKVO" ];
+
     NSButton* pressedButton = ( NSButton* )_Sender;
     self.lastTypedButtonType = ( OMCButtonType )[ pressedButton tag ];
     self.lastTypedButton = _Sender;
@@ -622,6 +682,24 @@ NSString* const OMCInvalidCalStyle = @"OMCInvalidCalStyle";
     default:
         return YES;
         }
+    }
+
++ ( NSSet* ) keyPathsForValuesAffectingValueForKey: ( NSString* )_Key
+    {
+    NSSet* keyPaths = [ super keyPathsForValuesAffectingValueForKey: _Key ];
+
+    if ( [ _Key isEqualToString: @"fuckFuckGo" ] )
+        {
+        NSArray* affectingKeys = @[ @"dateForKVO", @"testingForKVO" ];
+        keyPaths = [ keyPaths setByAddingObjectsFromArray: affectingKeys ];
+        }
+
+    return keyPaths;
+    }
+
+- ( NSString* ) fuckFuckGo
+    {
+    return [ NSString stringWithFormat: @"%@    FuckFuckGo: %lu", self.dateForKVO, self.testingForKVO.count ];
     }
 
 #pragma mark Dynamically Synthesize the Accessors

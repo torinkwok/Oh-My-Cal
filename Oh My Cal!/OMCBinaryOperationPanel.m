@@ -42,6 +42,9 @@ NSString* const OMCBinaryStringDidChanged = @"OMCBinaryStringDidChanged";
 NSString static* const kKeyPathForLhsOperandInCalculationObject = @"self.lhsOperand.decimalNumber";
 NSString static* const kKeyPathForRhsOperandInCalculationObject = @"self.rhsOperand.decimalNumber";
 NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultValue.decimalNumber";
+NSString static* const kKeyPathForTestingForKVOInCalculationObject = @"self.testingForKVO";
+NSString static* const kKeyPathForDateForKVOInCalculationObject = @"self.dateForKVO";
+NSString static* const kKeyPathForFuckFuckGoInCalculationObject = @"self.fuckFuckGo";
 
 // OMCBinaryOperationPanel class
 @implementation OMCBinaryOperationPanel
@@ -84,6 +87,21 @@ NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultVa
                        options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                        context: NULL ];
 
+    [ _calculation addObserver: self
+                    forKeyPath: kKeyPathForTestingForKVOInCalculationObject
+                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                       context: NULL ];
+
+    [ _calculation addObserver: self
+                    forKeyPath: kKeyPathForDateForKVOInCalculationObject
+                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                       context: NULL ];
+
+    [ _calculation addObserver: self
+                    forKeyPath: kKeyPathForFuckFuckGoInCalculationObject
+                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                       context: NULL ];
+
     self.bitColor = [ NSColor whiteColor ];
     self.bitFont = [ NSFont fontWithName: @"Courier" size: 13.f ];
 
@@ -105,10 +123,18 @@ NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultVa
             || [ _KeyPath isEqualToString: kKeyPathForLhsOperandInCalculationObject ]
             || [ _KeyPath isEqualToString: kKeyPathForRhsOperandInCalculationObject ] )
         {
-        NSLog( @"Change Dict: %@", _Change );
+//        NSLog( @"Change Dict: %@", _Change );
         self.binaryInString = [ self convertDecimalToBinary: [ _Change[ @"new" ] unsignedIntegerValue ] ];
         [ self setNeedsDisplay: YES ];
         }
+    else if ( [ _KeyPath isEqualToString: kKeyPathForTestingForKVOInCalculationObject ] )
+        NSLog( @"Change Dict for to-many relationship: %@", _Change );
+
+    else if ( [ _KeyPath isEqualToString: kKeyPathForDateForKVOInCalculationObject ] )
+        NSLog( @"Change Dict for to-one relationship: %@", _Change );
+
+    else if ( [ _KeyPath isEqualToString: kKeyPathForFuckFuckGoInCalculationObject ] )
+        NSLog( @"Change Dict for fuckFuckGo: %@", _Change );
     }
 
 - ( void ) _initializeRectsBitOccupied

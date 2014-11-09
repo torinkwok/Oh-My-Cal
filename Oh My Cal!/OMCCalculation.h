@@ -73,6 +73,8 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
     OMCOperand* _memory;
 
     NSMutableString* _theOperator;
+
+    NSMutableArray* _testingForKVO;
     }
 
 @property ( nonatomic, unsafe_unretained ) IBOutlet OMCBinaryOperationPanel* _binaryOperationPanel;
@@ -97,6 +99,10 @@ enum { k0xA = 10, k0xB = 11, k0xC = 12, k0xD = 13, k0xE = 14, k0xF = 15, k0xFF =
 @property ( nonatomic, retain ) NSMutableString* theOperator;
 
 @property ( nonatomic, assign, readonly ) BOOL isBinomialInLastCalculation;
+
+@property ( nonatomic, retain ) NSMutableArray* testingForKVO;
+@property ( nonatomic, retain ) NSDate* dateForKVO;
+@property ( nonatomic, retain, readonly ) NSString* fuckFuckGo;
 
 - ( IBAction ) calculate: ( id )_Sender;
 
