@@ -107,6 +107,18 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8340B88B1A18DDDA0008DB3C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		83099C5C19ADBB2E00DDBF1D /* BGGradientTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGGradientTheme.h; sourceTree = "<group>"; };
 		83099C5D19ADBB2E00DDBF1D /* BGGradientTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGGradientTheme.m; sourceTree = "<group>"; };
@@ -618,6 +630,7 @@
 				83D5D4BD19ADB172004AFD84 /* Sources */,
 				83D5D4BE19ADB172004AFD84 /* Frameworks */,
 				83D5D4BF19ADB172004AFD84 /* Resources */,
+				8340B88B1A18DDDA0008DB3C /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -919,10 +932,20 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Oh My Cal!/Oh My Cal!-Prefix.pch";
 				INFOPLIST_FILE = "Oh My Cal!/Oh My Cal!-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -935,10 +958,20 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Oh My Cal!/Oh My Cal!-Prefix.pch";
 				INFOPLIST_FILE = "Oh My Cal!/Oh My Cal!-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
