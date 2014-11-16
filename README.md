@@ -1,5 +1,4 @@
-# Oh My Cal!
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/TongG/Oh-My-Cal?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+# Oh My Cal! [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/TongG/Oh-My-Cal?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 #### What's Oh My Cal! ?
 Oh My Cal! is a multifunctional and multi-mode calculator. It's very cool and convenient!
