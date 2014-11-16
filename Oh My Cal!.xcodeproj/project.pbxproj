@@ -948,6 +948,9 @@
 					"$(PROJECT_DIR)/Oh",
 					My,
 					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Oh My Cal!/Oh My Cal!-Prefix.pch";
@@ -967,6 +970,9 @@
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
 					"$(PROJECT_DIR)/Oh",
 					My,
 					"Cal!/Frameworks",
