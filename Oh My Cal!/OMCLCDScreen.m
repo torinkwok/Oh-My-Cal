@@ -45,6 +45,8 @@
 #import "OMCCalWithScientificStyle.h"
 #import "OMCCalWithProgrammerStyle.h"
 
+#import <FBKVOController/NSObject+FBKVOController.h>
+
 NSInteger static const kSpaceBarsCount = 4;
 
 NSString static* const kKeyPathForTrigonometircModeInCalculations = @"self.trigonometricMode";
@@ -59,6 +61,8 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     NSRect _LCDBoundary;
     NSRect _gridPathBoundary;
     }
+
+@synthesize KVOController = _KVOController;
 
 @synthesize _mainPanelBackgroundView;
 
@@ -129,53 +133,34 @@ NSString static* const kKeyPathForIsInShiftInCalculations = @"self.isInShift";
     self.storageFormulasFont = self.operandsFont;   // Same as the font for operands
     self.statusFont = [ NSFont fontWithName: @"Lucida Grande" size: 10 ];
 
+    self.KVOController = [ FBKVOController controllerWithObserver: self ];
     [ self _addObserverForCalculations: self._basicStyleCalculation ];
     [ self _addObserverForCalculations: self._scientificStyleCalculation ];
     [ self _addObserverForCalculations: self._programmerStyleCalculation ];
     }
 
-- ( void ) observeValueForKeyPath: ( NSString* )_KeyPath
-                         ofObject: ( id )_Object
-                           change: ( NSDictionary* )_Change
-                           context: ( void* )_Context
-    {
-    if ( [ _KeyPath isEqualToString: kKeyPathForCurrentAryInCalculations ]
-                || [ _KeyPath isEqualToString: kKeyPathForTypingStateInCalculations ] )
-        [ self setNeedsDisplay: YES ];
-
-    else if ( [ _KeyPath isEqualToString: kKeyPathForTrigonometircModeInCalculations ]
-                || [ _KeyPath isEqualToString: kKeyPathForHasMemoryInCalculations ]
-                /* || [ _KeyPath isEqualToString: kKeyPathForCurrentAryInCalculations ] */
-                || [ _KeyPath isEqualToString: kKeyPathForIsInShiftInCalculations ] )
-        [ self setNeedsDisplayInRect: self.statusSpaceBar ];
-    }
-
 - ( void ) _addObserverForCalculations: ( OMCCalculation* )_Calculation
     {
-    [ _Calculation addObserver: self
-                    forKeyPath: kKeyPathForTrigonometircModeInCalculations
-                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                       context: NULL ];
+    [ self.KVOController observe: _Calculation
+                        keyPaths: @[ kKeyPathForTrigonometircModeInCalculations
+                                   , kKeyPathForHasMemoryInCalculations
+                                   , kKeyPathForCurrentAryInCalculations
+                                   , kKeyPathForTypingStateInCalculations
+                                   , kKeyPathForIsInShiftInCalculations ]
+                         options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                           block:
+        ^( NSString* _KeyPath, OMCLCDScreen* _Observer, OMCCalculation* _ObservedObject, NSDictionary* _Change )
+            {
+            if ( [ _KeyPath isEqualToString: kKeyPathForCurrentAryInCalculations ]
+                        || [ _KeyPath isEqualToString: kKeyPathForTypingStateInCalculations ] )
+                [ self setNeedsDisplay: YES ];
 
-    [ _Calculation addObserver: self
-                    forKeyPath: kKeyPathForHasMemoryInCalculations
-                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                       context: NULL ];
-
-    [ _Calculation addObserver: self
-                    forKeyPath: kKeyPathForCurrentAryInCalculations
-                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                       context: NULL ];
-
-    [ _Calculation addObserver: self
-                    forKeyPath: kKeyPathForTypingStateInCalculations
-                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                       context: NULL ];
-
-    [ _Calculation addObserver: self
-                    forKeyPath: kKeyPathForIsInShiftInCalculations
-                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                       context: NULL ];
+            else if ( [ _KeyPath isEqualToString: kKeyPathForTrigonometircModeInCalculations ]
+                        || [ _KeyPath isEqualToString: kKeyPathForHasMemoryInCalculations ]
+                        /* || [ _KeyPath isEqualToString: kKeyPathForCurrentAryInCalculations ] */
+                        || [ _KeyPath isEqualToString: kKeyPathForIsInShiftInCalculations ] )
+                [ self setNeedsDisplayInRect: self.statusSpaceBar ];
+            } ];
     }
 
 - ( void ) viewWillMoveToWindow: ( NSWindow* )_Window

@@ -45,6 +45,8 @@
 @class OMCCalWithScientificStyle;
 @class OMCCalWithProgrammerStyle;
 
+@class FBKVOController;
+
 typedef NSRect OMCSpaceBarRect;
 
 // OMCLCDScreen class
@@ -72,6 +74,8 @@ typedef NSRect OMCSpaceBarRect;
     NSFont* _storageFormulasFont;
     NSFont* _statusFont;
     }
+
+@property ( nonatomic, retain ) FBKVOController* KVOController;
 
 @property ( nonatomic, unsafe_unretained ) IBOutlet OMFPanelBackgroundView* _mainPanelBackgroundView;
 

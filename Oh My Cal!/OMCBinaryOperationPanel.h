@@ -38,6 +38,7 @@
 NSString extern* const OMCBinaryStringDidChanged;
 
 @class OMCProgrammerStyleCalculation;
+@class FBKVOController;
 
 // OMCBinaryOperationPanel class
 @interface OMCBinaryOperationPanel : NSView <OMCBinaryAndDecimalConversion>
@@ -58,6 +59,8 @@ NSString extern* const OMCBinaryStringDidChanged;
     NSSize          _bitSize;
     NSSize          _anchorSize;
     }
+
+@property ( nonatomic, retain ) FBKVOController* KVOController;
 
 @property ( nonatomic, unsafe_unretained ) IBOutlet OMCProgrammerStyleCalculation* _calculation;
 

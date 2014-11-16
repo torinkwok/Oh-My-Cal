@@ -36,6 +36,8 @@
 #import "OMCBinaryAndDecimalConversion.h"
 #import "OMCProgrammerStyleCalculation.h"
 
+#import <FBKVOController/NSObject+FBKVOController.h>
+
 // Notification names
 NSString* const OMCBinaryStringDidChanged = @"OMCBinaryStringDidChanged";
 
@@ -45,6 +47,8 @@ NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultVa
 
 // OMCBinaryOperationPanel class
 @implementation OMCBinaryOperationPanel
+
+@synthesize KVOController = _KVOController;
 
 @synthesize _calculation;
 
@@ -69,20 +73,23 @@ NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultVa
     self.currentResultVal = 0U;
     self.binaryInString = [ self convertDecimalToBinary: 0 ];
 
-    [ _calculation addObserver: self
-                    forKeyPath: kKeyPathForResultValInCalculationObject
-                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                       context: NULL ];
-
-    [ _calculation addObserver: self
-                    forKeyPath: kKeyPathForLhsOperandInCalculationObject
-                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                       context: NULL ];
-
-    [ _calculation addObserver: self
-                    forKeyPath: kKeyPathForRhsOperandInCalculationObject
-                       options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
-                       context: NULL ];
+    self.KVOController = [ FBKVOController controllerWithObserver: self ];
+    [ self.KVOController observe: _calculation
+                        keyPaths: @[ kKeyPathForResultValInCalculationObject
+                                   , kKeyPathForLhsOperandInCalculationObject
+                                   , kKeyPathForRhsOperandInCalculationObject ]
+                         options: NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                           block:
+        ^( NSString* _KeyPath, OMCBinaryOperationPanel* _Observer, OMCCalculation* _ObservedObject, NSDictionary* _Change )
+            {
+            if ( [ _KeyPath isEqualToString: kKeyPathForResultValInCalculationObject ]
+                    || [ _KeyPath isEqualToString: kKeyPathForLhsOperandInCalculationObject ]
+                    || [ _KeyPath isEqualToString: kKeyPathForRhsOperandInCalculationObject ] )
+                {
+                self.binaryInString = [ self convertDecimalToBinary: [ _Change[ @"new" ] unsignedIntegerValue ] ];
+                [ self setNeedsDisplay: YES ];
+                }
+            } ];
 
     self.bitColor = [ NSColor whiteColor ];
     self.bitFont = [ NSFont fontWithName: @"Courier" size: 13.f ];
@@ -94,20 +101,6 @@ NSString static* const kKeyPathForResultValInCalculationObject = @"self.resultVa
     self.anchorSize = [ @"64" sizeWithAttributes: @{ NSFontAttributeName : self.anchorFont } ];
 
     [ self _initializeRectsBitOccupied ];
-    }
-
-- ( void ) observeValueForKeyPath: ( NSString* )_KeyPath
-                         ofObject: ( id )_Object
-                           change: ( NSDictionary* )_Change
-                          context: ( void* )_Context
-    {
-    if ( [ _KeyPath isEqualToString: kKeyPathForResultValInCalculationObject ]
-            || [ _KeyPath isEqualToString: kKeyPathForLhsOperandInCalculationObject ]
-            || [ _KeyPath isEqualToString: kKeyPathForRhsOperandInCalculationObject ] )
-        {
-        self.binaryInString = [ self convertDecimalToBinary: [ _Change[ @"new" ] unsignedIntegerValue ] ];
-        [ self setNeedsDisplay: YES ];
-        }
     }
 
 - ( void ) _initializeRectsBitOccupied
