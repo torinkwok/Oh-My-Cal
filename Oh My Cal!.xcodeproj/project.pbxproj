@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		830941841A19176600ABCD65 /* FBKVOController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 830941831A19176600ABCD65 /* FBKVOController.framework */; };
+		830941851A19177400ABCD65 /* FBKVOController.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 830941831A19176600ABCD65 /* FBKVOController.framework */; };
 		83099C9819ADBB2E00DDBF1D /* BGGradientTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C5D19ADBB2E00DDBF1D /* BGGradientTheme.m */; };
 		83099C9919ADBB2E00DDBF1D /* BGHUDBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C6019ADBB2E00DDBF1D /* BGHUDBox.m */; };
 		83099C9A19ADBB2E00DDBF1D /* BGHUDButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C6219ADBB2E00DDBF1D /* BGHUDButtonCell.m */; };
@@ -114,12 +116,14 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				830941851A19177400ABCD65 /* FBKVOController.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		830941831A19176600ABCD65 /* FBKVOController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBKVOController.framework; path = "Oh My Cal!/Frameworks/FBKVOController.framework"; sourceTree = "<group>"; };
 		83099C5C19ADBB2E00DDBF1D /* BGGradientTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGGradientTheme.h; sourceTree = "<group>"; };
 		83099C5D19ADBB2E00DDBF1D /* BGGradientTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGGradientTheme.m; sourceTree = "<group>"; };
 		83099C5E19ADBB2E00DDBF1D /* BGHUDAppKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGHUDAppKit.h; sourceTree = "<group>"; };
@@ -284,6 +288,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				830941841A19176600ABCD65 /* FBKVOController.framework in Frameworks */,
 				83DE176919DABC2F00D38667 /* Carbon.framework in Frameworks */,
 				83A9BE2419DE448B001511C9 /* ServiceManagement.framework in Frameworks */,
 				83D5D4C519ADB172004AFD84 /* Cocoa.framework in Frameworks */,
@@ -469,6 +474,7 @@
 		83D5D4C319ADB172004AFD84 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				830941831A19176600ABCD65 /* FBKVOController.framework */,
 				83A9BE2319DE448B001511C9 /* ServiceManagement.framework */,
 				83DE176819DABC2F00D38667 /* Carbon.framework */,
 				83D5D4C419ADB172004AFD84 /* Cocoa.framework */,
@@ -929,11 +935,13 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = "Oh My Cal!/Oh My Cal!.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
 					"$(PROJECT_DIR)/Oh",
 					My,
 					"Cal!/Frameworks",
@@ -955,11 +963,13 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = "Oh My Cal!/Oh My Cal!.entitlements";
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
 					"$(PROJECT_DIR)/Oh",
 					My,
 					"Cal!/Frameworks",
