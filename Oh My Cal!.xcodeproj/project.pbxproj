@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		830941841A19176600ABCD65 /* FBKVOController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 830941831A19176600ABCD65 /* FBKVOController.framework */; };
-		830941851A19177400ABCD65 /* FBKVOController.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 830941831A19176600ABCD65 /* FBKVOController.framework */; };
 		83099C9819ADBB2E00DDBF1D /* BGGradientTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C5D19ADBB2E00DDBF1D /* BGGradientTheme.m */; };
 		83099C9919ADBB2E00DDBF1D /* BGHUDBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C6019ADBB2E00DDBF1D /* BGHUDBox.m */; };
 		83099C9A19ADBB2E00DDBF1D /* BGHUDButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099C6219ADBB2E00DDBF1D /* BGHUDButtonCell.m */; };
@@ -55,6 +53,8 @@
 		832A8C8219D90BCD005DB2A7 /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 832A8C8019D90BCD005DB2A7 /* email.png */; };
 		832A8C8419D90E0B005DB2A7 /* gnupg.png in Resources */ = {isa = PBXBuildFile; fileRef = 832A8C8319D90E0B005DB2A7 /* gnupg.png */; };
 		832A8C8819D914CD005DB2A7 /* pubkey.txt in Resources */ = {isa = PBXBuildFile; fileRef = 832A8C8719D914CD005DB2A7 /* pubkey.txt */; };
+		833A60EA1A1B581F009C8ED5 /* FBKVOController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 833A60E91A1B581F009C8ED5 /* FBKVOController.framework */; };
+		833A60EB1A1B582B009C8ED5 /* FBKVOController.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 833A60E91A1B581F009C8ED5 /* FBKVOController.framework */; };
 		833F645119AF03BB001C7C35 /* OMCBinaryOperationBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 833F645019AF03BB001C7C35 /* OMCBinaryOperationBox.m */; };
 		833F645519AF2FBE001C7C35 /* OMCCalculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 833F645419AF2FBE001C7C35 /* OMCCalculation.m */; };
 		8351EF2A19D113ED00D5FD7D /* NSString+OMCString.m in Sources */ = {isa = PBXBuildFile; fileRef = 8351EF2919D113ED00D5FD7D /* NSString+OMCString.m */; };
@@ -116,14 +116,13 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				830941851A19177400ABCD65 /* FBKVOController.framework in CopyFiles */,
+				833A60EB1A1B582B009C8ED5 /* FBKVOController.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		830941831A19176600ABCD65 /* FBKVOController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBKVOController.framework; path = "Oh My Cal!/Frameworks/FBKVOController.framework"; sourceTree = "<group>"; };
 		83099C5C19ADBB2E00DDBF1D /* BGGradientTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGGradientTheme.h; sourceTree = "<group>"; };
 		83099C5D19ADBB2E00DDBF1D /* BGGradientTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGGradientTheme.m; sourceTree = "<group>"; };
 		83099C5E19ADBB2E00DDBF1D /* BGHUDAppKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGHUDAppKit.h; sourceTree = "<group>"; };
@@ -208,6 +207,7 @@
 		832A8C8019D90BCD005DB2A7 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = email.png; path = "Oh My Cal!/Resources/email.png"; sourceTree = "<group>"; };
 		832A8C8319D90E0B005DB2A7 /* gnupg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gnupg.png; path = "Oh My Cal!/Resources/gnupg.png"; sourceTree = "<group>"; };
 		832A8C8719D914CD005DB2A7 /* pubkey.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pubkey.txt; path = "Oh My Cal!/Resources/pubkey.txt"; sourceTree = "<group>"; };
+		833A60E91A1B581F009C8ED5 /* FBKVOController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBKVOController.framework; path = "Oh My Cal!/FBKVOController.framework"; sourceTree = "<group>"; };
 		833F644F19AF03BB001C7C35 /* OMCBinaryOperationBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCBinaryOperationBox.h; path = "Oh My Cal!/OMCBinaryOperationBox.h"; sourceTree = "<group>"; };
 		833F645019AF03BB001C7C35 /* OMCBinaryOperationBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCBinaryOperationBox.m; path = "Oh My Cal!/OMCBinaryOperationBox.m"; sourceTree = "<group>"; };
 		833F645319AF2FBE001C7C35 /* OMCCalculation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCCalculation.h; path = "Oh My Cal!/OMCCalculation.h"; sourceTree = "<group>"; };
@@ -288,7 +288,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				830941841A19176600ABCD65 /* FBKVOController.framework in Frameworks */,
+				833A60EA1A1B581F009C8ED5 /* FBKVOController.framework in Frameworks */,
 				83DE176919DABC2F00D38667 /* Carbon.framework in Frameworks */,
 				83A9BE2419DE448B001511C9 /* ServiceManagement.framework in Frameworks */,
 				83D5D4C519ADB172004AFD84 /* Cocoa.framework in Frameworks */,
@@ -474,7 +474,7 @@
 		83D5D4C319ADB172004AFD84 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				830941831A19176600ABCD65 /* FBKVOController.framework */,
+				833A60E91A1B581F009C8ED5 /* FBKVOController.framework */,
 				83A9BE2319DE448B001511C9 /* ServiceManagement.framework */,
 				83DE176819DABC2F00D38667 /* Carbon.framework */,
 				83D5D4C419ADB172004AFD84 /* Cocoa.framework */,
@@ -970,6 +970,9 @@
 					"$(PROJECT_DIR)/Oh",
 					My,
 					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Oh My Cal!/Oh My Cal!-Prefix.pch";
@@ -1020,6 +1023,9 @@
 					"$(PROJECT_DIR)/Oh",
 					My,
 					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Oh My Cal!/Oh My Cal!-Prefix.pch";
