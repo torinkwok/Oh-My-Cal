@@ -26,60 +26,32 @@
  **                   \\    _  _\\| \//  |//_   _ \// _                     **
  **                  ^ `^`^ ^`` `^ ^` ``^^`  `^^` `^ `^                     **
  **                                                                         **
- **                       Copyright (c) 2014 Tong G.                        **
- **                          ALL RIGHTS RESERVED.                           **
+ **                  Created by Facebook Inc. Originally                    **
+ **               https://github.com/facebook/KVOController                 **
+ **               Copyright (c) 2014-present, Facebook, Inc.                **
+ **                         ALL RIGHTS RESERVED.                            **
+ **                                                                         **
+ **              Forked, Changed and Republished by Tong Guo                **
+ **                 https://github.com/TongG/KVOController                  **
+ **                      Copyright (c) 2014 Tong G.                         **
+ **                         ALL RIGHTS RESERVED.                            **
  **                                                                         **
  ****************************************************************************/
 
-#import <Cocoa/Cocoa.h>
-#import "OMCBinaryAndDecimalConversion.h"
+#import <Foundation/Foundation.h>
+#import "FBKVOController.h"
 
-// Notification names
-NSString extern* const OMCBinaryStringDidChanged;
+@interface NSObject ( FBKVOController )
 
-@class OMCProgrammerStyleCalculation;
-@class FBKVOController;
+/**
+ @abstract Lazy-loaded FBKVOController for use with any object
+ @return FBKVOController associated with this object, creating one if necessary
+ @discussion This makes it convenient to simply create and forget a FBKVOController, and when this object gets dealloc'd, so will the associated controller and the observation info.
+ */
+@property ( nonatomic, strong ) FBKVOController* KVOController;
+@property ( nonatomic, strong ) FBKVOController* KVOControllerNonRetaining;
 
-// OMCBinaryOperationPanel class
-@interface OMCBinaryOperationPanel : NSView <OMCBinaryAndDecimalConversion>
-    {
-@private
-    NSUInteger      _currentResultVal;
-    NSString*       _binaryInString;
-
-    NSArray*        _rectsTheTopLevelBitsOccupied;
-    NSArray*        _rectsTheBottomLevelBitsOccupied;
-
-    NSColor*        _bitColor;
-    NSFont*         _bitFont;
-
-    NSColor*        _anchorColor;
-    NSFont*         _anchorFont;
-
-    NSSize          _bitSize;
-    NSSize          _anchorSize;
-    }
-
-@property ( nonatomic, retain ) FBKVOController* KVOController;
-
-@property ( nonatomic, unsafe_unretained ) IBOutlet OMCProgrammerStyleCalculation* _calculation;
-
-@property ( nonatomic, assign ) NSUInteger currentResultVal;
-@property ( nonatomic, copy ) NSString* binaryInString;
-
-@property ( nonatomic, copy ) NSArray* rectsTheTopLevelBitsOccupied;
-@property ( nonatomic, copy ) NSArray* rectsTheBottomLevelBitsOccupied;
-
-@property ( nonatomic, retain ) NSColor* bitColor;
-@property ( nonatomic, retain ) NSFont* bitFont;
-
-@property ( nonatomic, retain ) NSColor* anchorColor;
-@property ( nonatomic, retain ) NSFont* anchorFont;
-
-@property ( nonatomic, assign ) NSSize bitSize;
-@property ( nonatomic, assign ) NSSize anchorSize;
-
-@end // OMCBinaryOperationPanel class
+@end
 
 //////////////////////////////////////////////////////////////////////////////
 
