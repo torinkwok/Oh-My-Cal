@@ -935,10 +935,17 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = "Oh My Cal!/Oh My Cal!.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
 					"$(PROJECT_DIR)/Oh",
 					My,
 					"Cal!/Frameworks",
@@ -978,10 +985,17 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = "Oh My Cal!/Oh My Cal!.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
+					"$(PROJECT_DIR)/Oh",
+					My,
+					"Cal!/Frameworks",
 					"$(PROJECT_DIR)/Oh",
 					My,
 					"Cal!/Frameworks",
