@@ -3,7 +3,7 @@
 #### What's Oh My Cal! ?
 Oh My Cal! is a multifunctional and multi-mode calculator. It's very cool and convenient!
 
-[![app-store](http://i.imgbox.com/3eep90Oo.png)](https://itunes.apple.com/app/oh-my-cal!/id916544190?l=en&mt=12)
+[![app-store](http://i.imgbox.com/QbSv7AVG.png)](https://itunes.apple.com/app/oh-my-cal!/id916544190?l=en&mt=12)
 
 Benefit Highlighting:
 
