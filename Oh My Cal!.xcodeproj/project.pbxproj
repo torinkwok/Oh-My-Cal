@@ -66,6 +66,7 @@
 		839396F819ADF459008D8A3C /* statusbar-logo-highlighting.png in Resources */ = {isa = PBXBuildFile; fileRef = 839396F619ADF459008D8A3C /* statusbar-logo-highlighting.png */; };
 		839396F919ADF459008D8A3C /* statusbar-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 839396F719ADF459008D8A3C /* statusbar-logo.png */; };
 		839396FB19AE1D81008D8A3C /* OMCCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 839396FA19AE1D81008D8A3C /* OMCCommon.m */; };
+		8399E1B11A48437000699858 /* AdvancedTestForOMCOperand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8399E1B01A48437000699858 /* AdvancedTestForOMCOperand.m */; };
 		83A9BE2419DE448B001511C9 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83A9BE2319DE448B001511C9 /* ServiceManagement.framework */; };
 		83AF00B01A46DBE900D6DB4F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4E319ADB172004AFD84 /* XCTest.framework */; };
 		83AF00B61A46DBE900D6DB4F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83AF00B41A46DBE900D6DB4F /* InfoPlist.strings */; };
@@ -244,6 +245,7 @@
 		839396F619ADF459008D8A3C /* statusbar-logo-highlighting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "statusbar-logo-highlighting.png"; path = "Oh My Cal!/Resources/statusbar-logo-highlighting.png"; sourceTree = "<group>"; };
 		839396F719ADF459008D8A3C /* statusbar-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "statusbar-logo.png"; path = "Oh My Cal!/Resources/statusbar-logo.png"; sourceTree = "<group>"; };
 		839396FA19AE1D81008D8A3C /* OMCCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMCCommon.m; sourceTree = "<group>"; };
+		8399E1B01A48437000699858 /* AdvancedTestForOMCOperand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedTestForOMCOperand.m; sourceTree = "<group>"; };
 		839B3F8A1A45759F00F5B5FE /* DocumentationHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DocumentationHelper.xcodeproj; path = DocumentationHelper/DocumentationHelper.xcodeproj; sourceTree = "<group>"; };
 		83A9BE2319DE448B001511C9 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		83AF00AF1A46DBE900D6DB4F /* OMCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -589,6 +591,7 @@
 		83D5D4E819ADB172004AFD84 /* Oh My Cal!Tests */ = {
 			isa = PBXGroup;
 			children = (
+				8399E1B01A48437000699858 /* AdvancedTestForOMCOperand.m */,
 				83D5D4EE19ADB172004AFD84 /* BasicTestForOMCOperand.m */,
 				83D5D4E919ADB172004AFD84 /* Supporting Files */,
 			);
@@ -937,6 +940,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83D5D4EF19ADB172004AFD84 /* BasicTestForOMCOperand.m in Sources */,
+				8399E1B11A48437000699858 /* AdvancedTestForOMCOperand.m in Sources */,
 				83AF00C11A46DC1100D6DB4F /* OMCTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

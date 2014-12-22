@@ -53,6 +53,12 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "AdvancedTestForOMCOperand">
+               </Test>
+               <Test
+                  Identifier = "AdvancedTestForOMCOperand/testExample">
+               </Test>
+               <Test
                   Identifier = "OMCTests">
                </Test>
             </SkippedTests>

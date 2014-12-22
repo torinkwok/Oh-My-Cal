@@ -73,46 +73,52 @@
 
 - ( void ) testOperandCreation
     {
+    NSArray* array = @[ @1, @2, @3 ];
+    XCTAssertThrowsSpecific( array[ 4 ], NSException );
+    XCTAssertThrowsSpecificNamed( array[ 4 ], NSException, NSRangeException );
+    XCTAssertNoThrowSpecificNamed( array[ 4 ], NSException, NSInvalidArgumentException );
+
     // operandWithDecimalNumber:
     self.lhsOperand = [ OMCOperand operandWithDecimalNumber: [ NSDecimalNumber decimalNumberWithString: @"41.513" ] ];
     XCTAssertNotNil( self.lhsOperand
-                   , @"operandWithDecimalNumber: | self.lhsOperand | Part 1: FAILED!"
+                   , @"%@ ♦︎ self.lhsOperand ♦︎ Part 1 ♦︎ FAILED!"
+                   , NSStringFromSelector( @selector( operandWithDecimalNumber: ) )
                    );
 
     XCTAssertEqualObjects( self.lhsOperand.decimalNumber
                          , [ NSDecimalNumber decimalNumberWithString: @"41.513" ]
-                         , @"operandWithDecimalNumber: | self.lhsOperand | Part 2: FAILED!"
+                         , @"operandWithDecimalNumber: ♦︎ self.lhsOperand ♦︎ Part 2 ♦︎ FAILED!"
                          );
 
     self.rhsOperand = [ OMCOperand operandWithDecimalNumber: [ NSDecimalNumber decimalNumberWithString: @"73423425" ] ];
     XCTAssertNotNil( self.rhsOperand
-                   , @"operandWithDecimalNumber: | self.rhsOperand | Part 1: FAILED!"
+                   , @"operandWithDecimalNumber: ♦︎ self.rhsOperand ♦︎ Part 1 ♦︎ FAILED!"
                    );
 
     XCTAssertEqualObjects( self.rhsOperand.decimalNumber
                          , [ NSDecimalNumber decimalNumberWithString: @"73423425" ]
-                         , @"operandWithDecimalNumber: | self.rhsOperand | Part 2: FAILED!"
+                         , @"operandWithDecimalNumber: ♦︎ self.rhsOperand ♦︎ Part 2 ♦︎ FAILED!"
                          );
 
     // operandWithString:
     self.lhsOperand = [ OMCOperand operandWithString: @"111" ];
     XCTAssertNotNil( self.lhsOperand
-                   , @"operandWithString: | self.lhsOperand | Part 1: FAILED!"
+                   , @"operandWithString: ♦︎ self.lhsOperand ♦︎ Part 1 ♦︎ FAILED!"
                    );
 
     XCTAssertEqualObjects( self.lhsOperand.decimalNumber.stringValue
                          , @"111"
-                         , @"operandWithString: | self.lhsOperand | Part 2: FAILED!"
+                         , @"operandWithString: ♦︎ self.lhsOperand ♦︎ Part 2 ♦︎ FAILED!"
                          );
 
     self.rhsOperand = [ OMCOperand operandWithString: @"213.4214" ];
     XCTAssertNotNil( self.rhsOperand
-                   , @"operandWithString: | self.rhsOperand | Part 1: FAILED!"
+                   , @"operandWithString: ♦︎ self.rhsOperand ♦︎ Part 1 ♦︎ FAILED!"
                    );
 
     XCTAssertEqualObjects( self.rhsOperand.decimalNumber.stringValue
                          , @"213.4214"
-                         , @"operandWithString: | self.rhsOperand | Part 2: FAILED!"
+                         , @"operandWithString: ♦︎ self.rhsOperand ♦︎ Part 2 ♦︎ FAILED!"
                          );
 
 //    self.lhsOperand = [ OMCOperand operandWithDecimalNumber
