@@ -14,24 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "83D5D4C019ADB172004AFD84"
-               BuildableName = "Oh My Cal!.app"
-               BlueprintName = "Oh My Cal!"
-               ReferencedContainer = "container:Oh My Cal!.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "83D5D4E119ADB172004AFD84"
-               BuildableName = "Oh My Cal!Tests.xctest"
-               BlueprintName = "Oh My Cal!Tests"
-               ReferencedContainer = "container:Oh My Cal!.xcodeproj">
+               BlueprintIdentifier = "839B3F781A45759F00F5B5FE"
+               BuildableName = "DocumentationHelper"
+               BlueprintName = "DocumentationHelper"
+               ReferencedContainer = "container:DocumentationHelper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -49,22 +35,27 @@
                BlueprintIdentifier = "83D5D4E119ADB172004AFD84"
                BuildableName = "Oh My Cal!Tests.xctest"
                BlueprintName = "Oh My Cal!Tests"
-               ReferencedContainer = "container:Oh My Cal!.xcodeproj">
+               ReferencedContainer = "container:../Oh My Cal!.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "OMCTests">
-               </Test>
-            </SkippedTests>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "83AF00AE1A46DBE800D6DB4F"
+               BuildableName = "OMCTests.xctest"
+               BlueprintName = "OMCTests"
+               ReferencedContainer = "container:../Oh My Cal!.xcodeproj">
+            </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "83D5D4C019ADB172004AFD84"
-            BuildableName = "Oh My Cal!.app"
-            BlueprintName = "Oh My Cal!"
-            ReferencedContainer = "container:Oh My Cal!.xcodeproj">
+            BlueprintIdentifier = "839B3F781A45759F00F5B5FE"
+            BuildableName = "DocumentationHelper"
+            BlueprintName = "DocumentationHelper"
+            ReferencedContainer = "container:DocumentationHelper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -80,25 +71,13 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "83D5D4C019ADB172004AFD84"
-            BuildableName = "Oh My Cal!.app"
-            BlueprintName = "Oh My Cal!"
-            ReferencedContainer = "container:Oh My Cal!.xcodeproj">
+            BlueprintIdentifier = "839B3F781A45759F00F5B5FE"
+            BuildableName = "DocumentationHelper"
+            BlueprintName = "DocumentationHelper"
+            ReferencedContainer = "container:DocumentationHelper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = ""
-            value = ""
-            isEnabled = "NO">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
-         <AdditionalOption
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
@@ -110,10 +89,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "83D5D4C019ADB172004AFD84"
-            BuildableName = "Oh My Cal!.app"
-            BlueprintName = "Oh My Cal!"
-            ReferencedContainer = "container:Oh My Cal!.xcodeproj">
+            BlueprintIdentifier = "839B3F781A45759F00F5B5FE"
+            BuildableName = "DocumentationHelper"
+            BlueprintName = "DocumentationHelper"
+            ReferencedContainer = "container:DocumentationHelper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

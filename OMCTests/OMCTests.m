@@ -1,18 +1,18 @@
 //
-//  Oh_My_Cal_Tests.m
-//  Oh My Cal!Tests
+//  OMCTests.m
+//  Oh My Cal!
 //
-//  Created by Tong G. on 8/27/14.
+//  Created by Tong G. on 12/21/14.
 //  Copyright (c) 2014 Tong G. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface Oh_My_Cal_Tests : XCTestCase
+@interface OMCTests : XCTestCase
 
 @end
 
-@implementation Oh_My_Cal_Tests
+@implementation OMCTests
 
 - (void)setUp
 {
@@ -28,7 +28,7 @@
 
 - (void)testExample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+//    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
 
 @end

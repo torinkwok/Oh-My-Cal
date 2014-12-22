@@ -103,12 +103,46 @@ NSString extern* const OMCOperandDivideByZeroException;
                                         inAry: ( OMCAry )_Ary
                                      calStyle: ( OMCCalStyle )_CalStyle;
 
+/**
+  Return a OMCOperand object represented 0.
+  
+  @return A OMCOperand object reperesented 0.
+  */
 + ( instancetype ) zero;
+
+/**
+  Return a OMCOperand object represented 1.
+  
+  @return A OMCOperand object reperesented 1.
+  */
 + ( instancetype ) one;
+
+/**
+  Return a OMCOperand object represented a divByZero error.
+  
+  @return A OMCOperand object reperesented a divByZero error.
+  */
 + ( instancetype ) divByZero;
+
+/**
+  Return a OMCOperand object represented π constant.
+  
+  @return A OMCOperand object reperesented π constant.
+  */
 + ( instancetype ) pi;
+
+/**
+  Return a OMCOperand object represented e constant.
+  
+  @return A OMCOperand object reperesented e constant.
+  */
 + ( instancetype ) e;
 
+/**
+  Return a OMCOperand object represented a random number
+  
+  @return A OMCOperand object reperesented a random number
+  */
 + ( instancetype ) rand;
 
 - ( NSComparisonResult ) compare: ( OMCOperand* )_Rhs;
