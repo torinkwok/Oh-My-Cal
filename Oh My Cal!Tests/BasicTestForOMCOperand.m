@@ -76,7 +76,7 @@
     NSArray* array = @[ @1, @2, @3 ];
     XCTAssertThrowsSpecific( array[ 4 ], NSException );
     XCTAssertThrowsSpecificNamed( array[ 4 ], NSException, NSRangeException );
-    XCTAssertNoThrowSpecificNamed( array[ 4 ], NSException, NSInvalidArgumentException );
+    XCTAssertNoThrowSpecificNamed( array[ 4 ], NSException, NSRangeException );
 
     // operandWithDecimalNumber:
     self.lhsOperand = [ OMCOperand operandWithDecimalNumber: [ NSDecimalNumber decimalNumberWithString: @"41.513" ] ];
