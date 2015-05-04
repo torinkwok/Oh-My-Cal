@@ -1,1 +1,3 @@
 language: objective-c
+xcode_project: Oh My Cal!.xcodeproj
+xcode_scheme: Oh My Cal!Tests

@@ -16,6 +16,8 @@
 		<string>https://bitbucket.org/TongGuo/oh-my-cal.git</string>
 		<key>D30F5457-CF72-4758-9233-005F1689C22E</key>
 		<string>https://bitbucket.org/TongGuo/oh-my-cal.git</string>
+		<key>F0515DE9ED749C0E1C50A307EAD2A54C575AF047</key>
+		<string>https://github.com/TongG/MASPreferences.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Oh My Cal!.xcodeproj</string>
@@ -27,6 +29,8 @@
 		<string>../..</string>
 		<key>D30F5457-CF72-4758-9233-005F1689C22E</key>
 		<string>../../../Oh My Cal!</string>
+		<key>F0515DE9ED749C0E1C50A307EAD2A54C575AF047</key>
+		<string>../../MASPreferences/</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://bitbucket.org/TongGuo/oh-my-cal.git</string>
@@ -43,6 +47,14 @@
 			<string>1AA6A00E595DC228559FDCC8AE09DFD29C6565E8</string>
 			<key>IDESourceControlWCCName</key>
 			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F0515DE9ED749C0E1C50A307EAD2A54C575AF047</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MASPreferences</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
