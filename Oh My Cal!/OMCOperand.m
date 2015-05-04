@@ -238,6 +238,23 @@ NSString* const OMCOperandDivideByZeroException = @"OMCOperandDivideByZeroExcept
     return [ self.decimalNumber compare: _Rhs.decimalNumber ];
     }
 
+- ( BOOL ) isEqual: ( id )_Object
+    {
+    if ( [ _Object isKindOfClass: [ OMCOperand class ] ] )
+        return [ self isEqualTo: ( OMCOperand* )_Object ];
+
+    return [ self isEqual: _Object ];
+    }
+
+- ( BOOL ) isEqualTo: ( OMCOperand* )_RhsOperand
+    {
+    BOOL isEqual = YES;
+    if ( _RhsOperand != self )
+        return [ _RhsOperand.decimalNumber isEqualToNumber: self.decimalNumber ];
+
+    return isEqual;
+    }
+
 #pragma mark Degit Operations
 - ( void ) appendDigit: ( NSInteger )_Digit
                  count: ( NSInteger )_Count

@@ -48,6 +48,11 @@
 		8310B02A1A023FBF00ED8EB0 /* OMCKeyBindingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0291A023FBF00ED8EB0 /* OMCKeyBindingsView.xib */; };
 		8310B02D1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8310B02C1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m */; };
 		8316FF9119ED4DDF007C5840 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 8316FF8F19ED4DDF007C5840 /* github.png */; };
+		832A16B11AC8671D00358E82 /* INAppStoreWindowSwizzling.c in Sources */ = {isa = PBXBuildFile; fileRef = 832A16A61AC8671D00358E82 /* INAppStoreWindowSwizzling.c */; };
+		832A16B21AC8671D00358E82 /* INWindowBackgroundView+CoreUIRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = 832A16A91AC8671D00358E82 /* INWindowBackgroundView+CoreUIRendering.m */; };
+		832A16B31AC8671D00358E82 /* NSDocument+INAppStoreWindowFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = 832A16AB1AC8671D00358E82 /* NSDocument+INAppStoreWindowFixes.m */; };
+		832A16B41AC8671D00358E82 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 832A16AD1AC8671D00358E82 /* INAppStoreWindow.m */; };
+		832A16B51AC8671D00358E82 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 832A16B01AC8671D00358E82 /* INWindowButton.m */; };
 		832A24A619C4387E005E79A5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 832A24A519C4387E005E79A5 /* README.md */; };
 		832A8C8119D90BCD005DB2A7 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 832A8C7F19D90BCD005DB2A7 /* twitter.png */; };
 		832A8C8219D90BCD005DB2A7 /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 832A8C8019D90BCD005DB2A7 /* email.png */; };
@@ -66,7 +71,12 @@
 		839396F819ADF459008D8A3C /* statusbar-logo-highlighting.png in Resources */ = {isa = PBXBuildFile; fileRef = 839396F619ADF459008D8A3C /* statusbar-logo-highlighting.png */; };
 		839396F919ADF459008D8A3C /* statusbar-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 839396F719ADF459008D8A3C /* statusbar-logo.png */; };
 		839396FB19AE1D81008D8A3C /* OMCCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 839396FA19AE1D81008D8A3C /* OMCCommon.m */; };
+		8399E1B11A48437000699858 /* AdvancedTestForOMCOperand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8399E1B01A48437000699858 /* AdvancedTestForOMCOperand.m */; };
 		83A9BE2419DE448B001511C9 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83A9BE2319DE448B001511C9 /* ServiceManagement.framework */; };
+		83AF00B01A46DBE900D6DB4F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4E319ADB172004AFD84 /* XCTest.framework */; };
+		83AF00B61A46DBE900D6DB4F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83AF00B41A46DBE900D6DB4F /* InfoPlist.strings */; };
+		83AF00B81A46DBE900D6DB4F /* OMCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AF00B71A46DBE900D6DB4F /* OMCTests.m */; };
+		83AF00C11A46DC1100D6DB4F /* OMCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AF00C01A46DC1100D6DB4F /* OMCTests.m */; };
 		83D5D4C519ADB172004AFD84 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4C419ADB172004AFD84 /* Cocoa.framework */; };
 		83D5D4CF19ADB172004AFD84 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D4CD19ADB172004AFD84 /* InfoPlist.strings */; };
 		83D5D4D119ADB172004AFD84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D4D019ADB172004AFD84 /* main.m */; };
@@ -76,7 +86,7 @@
 		83D5D4E419ADB172004AFD84 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4E319ADB172004AFD84 /* XCTest.framework */; };
 		83D5D4E519ADB172004AFD84 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5D4C419ADB172004AFD84 /* Cocoa.framework */; };
 		83D5D4ED19ADB172004AFD84 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D4EB19ADB172004AFD84 /* InfoPlist.strings */; };
-		83D5D4EF19ADB172004AFD84 /* Oh_My_Cal_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D4EE19ADB172004AFD84 /* Oh_My_Cal_Tests.m */; };
+		83D5D4EF19ADB172004AFD84 /* BasicTestForOMCOperand.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D4EE19ADB172004AFD84 /* BasicTestForOMCOperand.m */; };
 		83D5D52519ADB819004AFD84 /* OMFMainPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D5D52419ADB819004AFD84 /* OMFMainPanel.xib */; };
 		83D5D52919ADB83C004AFD84 /* OMFMainPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D52619ADB83C004AFD84 /* OMFMainPanelController.m */; };
 		83D5D52A19ADB83C004AFD84 /* OMFMainPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D5D52819ADB83C004AFD84 /* OMFMainPanel.m */; };
@@ -100,6 +110,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		839B3F8E1A4575A000F5B5FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 839B3F8A1A45759F00F5B5FE /* DocumentationHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 839B3F791A45759F00F5B5FE;
+			remoteInfo = DocumentationHelper;
+		};
+		83AF00BA1A46DBE900D6DB4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83D5D4B919ADB172004AFD84 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83D5D4C019ADB172004AFD84;
+			remoteInfo = "Oh My Cal!";
+		};
 		83D5D4E619ADB172004AFD84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83D5D4B919ADB172004AFD84 /* Project object */;
@@ -202,6 +226,17 @@
 		8310B02C1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCKeyBindingsViewController.m; path = "Oh My Cal!/OMCKeyBindingsViewController.m"; sourceTree = "<group>"; };
 		83166B3119B9C6FB00D39FC4 /* OMCBinaryAndDecimalConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCBinaryAndDecimalConversion.h; path = "Oh My Cal!/OMCBinaryAndDecimalConversion.h"; sourceTree = "<group>"; };
 		8316FF8F19ED4DDF007C5840 /* github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = github.png; path = "Oh My Cal!/Resources/github.png"; sourceTree = "<group>"; };
+		832A16A61AC8671D00358E82 /* INAppStoreWindowSwizzling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = INAppStoreWindowSwizzling.c; sourceTree = "<group>"; };
+		832A16A71AC8671D00358E82 /* INAppStoreWindowSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowSwizzling.h; sourceTree = "<group>"; };
+		832A16A81AC8671D00358E82 /* INWindowBackgroundView+CoreUIRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "INWindowBackgroundView+CoreUIRendering.h"; sourceTree = "<group>"; };
+		832A16A91AC8671D00358E82 /* INWindowBackgroundView+CoreUIRendering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "INWindowBackgroundView+CoreUIRendering.m"; sourceTree = "<group>"; };
+		832A16AA1AC8671D00358E82 /* NSDocument+INAppStoreWindowFixes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDocument+INAppStoreWindowFixes.h"; sourceTree = "<group>"; };
+		832A16AB1AC8671D00358E82 /* NSDocument+INAppStoreWindowFixes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDocument+INAppStoreWindowFixes.m"; sourceTree = "<group>"; };
+		832A16AC1AC8671D00358E82 /* INAppStoreWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindow.h; sourceTree = "<group>"; };
+		832A16AD1AC8671D00358E82 /* INAppStoreWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INAppStoreWindow.m; sourceTree = "<group>"; };
+		832A16AE1AC8671D00358E82 /* INAppStoreWindowCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowCompatibility.h; sourceTree = "<group>"; };
+		832A16AF1AC8671D00358E82 /* INWindowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INWindowButton.h; sourceTree = "<group>"; };
+		832A16B01AC8671D00358E82 /* INWindowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INWindowButton.m; sourceTree = "<group>"; };
 		832A24A519C4387E005E79A5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		832A8C7F19D90BCD005DB2A7 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter.png; path = "Oh My Cal!/Resources/twitter.png"; sourceTree = "<group>"; };
 		832A8C8019D90BCD005DB2A7 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = email.png; path = "Oh My Cal!/Resources/email.png"; sourceTree = "<group>"; };
@@ -226,7 +261,15 @@
 		839396F619ADF459008D8A3C /* statusbar-logo-highlighting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "statusbar-logo-highlighting.png"; path = "Oh My Cal!/Resources/statusbar-logo-highlighting.png"; sourceTree = "<group>"; };
 		839396F719ADF459008D8A3C /* statusbar-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "statusbar-logo.png"; path = "Oh My Cal!/Resources/statusbar-logo.png"; sourceTree = "<group>"; };
 		839396FA19AE1D81008D8A3C /* OMCCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMCCommon.m; sourceTree = "<group>"; };
+		8399E1B01A48437000699858 /* AdvancedTestForOMCOperand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedTestForOMCOperand.m; sourceTree = "<group>"; };
+		839B3F8A1A45759F00F5B5FE /* DocumentationHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DocumentationHelper.xcodeproj; path = DocumentationHelper/DocumentationHelper.xcodeproj; sourceTree = "<group>"; };
 		83A9BE2319DE448B001511C9 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		83AF00AF1A46DBE900D6DB4F /* OMCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		83AF00B31A46DBE900D6DB4F /* OMCTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OMCTests-Info.plist"; sourceTree = "<group>"; };
+		83AF00B51A46DBE900D6DB4F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		83AF00B71A46DBE900D6DB4F /* OMCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OMCTests.m; sourceTree = "<group>"; };
+		83AF00B91A46DBE900D6DB4F /* OMCTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OMCTests-Prefix.pch"; sourceTree = "<group>"; };
+		83AF00C01A46DC1100D6DB4F /* OMCTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCTests.m; path = OMCTests/OMCTests.m; sourceTree = "<group>"; };
 		83D5D4C119ADB172004AFD84 /* Oh My Cal!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oh My Cal!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D5D4C419ADB172004AFD84 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		83D5D4C719ADB172004AFD84 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -244,7 +287,7 @@
 		83D5D4E319ADB172004AFD84 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		83D5D4EA19ADB172004AFD84 /* Oh My Cal!Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Oh My Cal!Tests-Info.plist"; sourceTree = "<group>"; };
 		83D5D4EC19ADB172004AFD84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		83D5D4EE19ADB172004AFD84 /* Oh_My_Cal_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Oh_My_Cal_Tests.m; sourceTree = "<group>"; };
+		83D5D4EE19ADB172004AFD84 /* BasicTestForOMCOperand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicTestForOMCOperand.m; sourceTree = "<group>"; };
 		83D5D4F819ADB17B004AFD84 /* Oh My Cal!.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Oh My Cal!.entitlements"; sourceTree = "<group>"; };
 		83D5D51C19ADB26C004AFD84 /* OMCCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMCCommon.h; sourceTree = "<group>"; };
 		83D5D52319ADB803004AFD84 /* OMFMainPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMFMainPanel.h; path = "Oh My Cal!/OMFMainPanel.h"; sourceTree = "<group>"; };
@@ -284,6 +327,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		83AF00AC1A46DBE800D6DB4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83AF00B01A46DBE900D6DB4F /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83D5D4BE19ADB172004AFD84 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,6 +449,32 @@
 			name = Resoureces;
 			sourceTree = "<group>";
 		};
+		832A16A41AC8671D00358E82 /* INAppStoreWindow */ = {
+			isa = PBXGroup;
+			children = (
+				832A16A51AC8671D00358E82 /* Extensions */,
+				832A16AC1AC8671D00358E82 /* INAppStoreWindow.h */,
+				832A16AD1AC8671D00358E82 /* INAppStoreWindow.m */,
+				832A16AE1AC8671D00358E82 /* INAppStoreWindowCompatibility.h */,
+				832A16AF1AC8671D00358E82 /* INWindowButton.h */,
+				832A16B01AC8671D00358E82 /* INWindowButton.m */,
+			);
+			path = INAppStoreWindow;
+			sourceTree = "<group>";
+		};
+		832A16A51AC8671D00358E82 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				832A16A61AC8671D00358E82 /* INAppStoreWindowSwizzling.c */,
+				832A16A71AC8671D00358E82 /* INAppStoreWindowSwizzling.h */,
+				832A16A81AC8671D00358E82 /* INWindowBackgroundView+CoreUIRendering.h */,
+				832A16A91AC8671D00358E82 /* INWindowBackgroundView+CoreUIRendering.m */,
+				832A16AA1AC8671D00358E82 /* NSDocument+INAppStoreWindowFixes.h */,
+				832A16AB1AC8671D00358E82 /* NSDocument+INAppStoreWindowFixes.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		833F645219AF2FAE001C7C35 /* Calculation */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,10 +520,39 @@
 			name = "Cal Views";
 			sourceTree = "<group>";
 		};
+		839B3F8B1A45759F00F5B5FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				839B3F8F1A4575A000F5B5FE /* DocumentationHelper */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		83AF00B11A46DBE900D6DB4F /* OMCTests */ = {
+			isa = PBXGroup;
+			children = (
+				83AF00B71A46DBE900D6DB4F /* OMCTests.m */,
+				83AF00B21A46DBE900D6DB4F /* Supporting Files */,
+			);
+			path = OMCTests;
+			sourceTree = "<group>";
+		};
+		83AF00B21A46DBE900D6DB4F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				83AF00B31A46DBE900D6DB4F /* OMCTests-Info.plist */,
+				83AF00B41A46DBE900D6DB4F /* InfoPlist.strings */,
+				83AF00B91A46DBE900D6DB4F /* OMCTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		83D5D4B819ADB172004AFD84 = {
 			isa = PBXGroup;
 			children = (
+				83AF00C01A46DC1100D6DB4F /* OMCTests.m */,
 				83ED014819BC9627004E7F9E /* OhMyCal.icns */,
+				832A16A41AC8671D00358E82 /* INAppStoreWindow */,
 				833F645219AF2FAE001C7C35 /* Calculation */,
 				83D5D51F19ADB452004AFD84 /* Main Panel */,
 				83D5D52119ADB46E004AFD84 /* Status Bar */,
@@ -455,9 +561,11 @@
 				8310B00F1A0215F700ED8EB0 /* MASPreferences */,
 				83D5D4CB19ADB172004AFD84 /* Supporting Files */,
 				83D5D4E819ADB172004AFD84 /* Oh My Cal!Tests */,
+				83AF00B11A46DBE900D6DB4F /* OMCTests */,
 				83D5D4C319ADB172004AFD84 /* Frameworks */,
 				83099C5B19ADBB2E00DDBF1D /* BGHUDAppKit */,
 				83D5D4C219ADB172004AFD84 /* Products */,
+				839B3F8A1A45759F00F5B5FE /* DocumentationHelper.xcodeproj */,
 				832A24A519C4387E005E79A5 /* README.md */,
 			);
 			sourceTree = "<group>";
@@ -467,6 +575,7 @@
 			children = (
 				83D5D4C119ADB172004AFD84 /* Oh My Cal!.app */,
 				83D5D4E219ADB172004AFD84 /* Oh My Cal!Tests.xctest */,
+				83AF00AF1A46DBE900D6DB4F /* OMCTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -525,7 +634,8 @@
 		83D5D4E819ADB172004AFD84 /* Oh My Cal!Tests */ = {
 			isa = PBXGroup;
 			children = (
-				83D5D4EE19ADB172004AFD84 /* Oh_My_Cal_Tests.m */,
+				8399E1B01A48437000699858 /* AdvancedTestForOMCOperand.m */,
+				83D5D4EE19ADB172004AFD84 /* BasicTestForOMCOperand.m */,
 				83D5D4E919ADB172004AFD84 /* Supporting Files */,
 			);
 			path = "Oh My Cal!Tests";
@@ -629,6 +739,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		83AF00AE1A46DBE800D6DB4F /* OMCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83AF00BF1A46DBE900D6DB4F /* Build configuration list for PBXNativeTarget "OMCTests" */;
+			buildPhases = (
+				83AF00AB1A46DBE800D6DB4F /* Sources */,
+				83AF00AC1A46DBE800D6DB4F /* Frameworks */,
+				83AF00AD1A46DBE800D6DB4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				83AF00BB1A46DBE900D6DB4F /* PBXTargetDependency */,
+			);
+			name = OMCTests;
+			productName = OMCTests;
+			productReference = 83AF00AF1A46DBE900D6DB4F /* OMCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		83D5D4C019ADB172004AFD84 /* Oh My Cal! */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83D5D4F219ADB172004AFD84 /* Build configuration list for PBXNativeTarget "Oh My Cal!" */;
@@ -675,11 +803,14 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Tong G.";
 				TargetAttributes = {
+					83AF00AE1A46DBE800D6DB4F = {
+						TestTargetID = 83D5D4C019ADB172004AFD84;
+					};
 					83D5D4C019ADB172004AFD84 = {
 						DevelopmentTeam = 89BSC2UYH8;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -699,15 +830,40 @@
 			mainGroup = 83D5D4B819ADB172004AFD84;
 			productRefGroup = 83D5D4C219ADB172004AFD84 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 839B3F8B1A45759F00F5B5FE /* Products */;
+					ProjectRef = 839B3F8A1A45759F00F5B5FE /* DocumentationHelper.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				83D5D4C019ADB172004AFD84 /* Oh My Cal! */,
 				83D5D4E119ADB172004AFD84 /* Oh My Cal!Tests */,
+				83AF00AE1A46DBE800D6DB4F /* OMCTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		839B3F8F1A4575A000F5B5FE /* DocumentationHelper */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = DocumentationHelper;
+			remoteRef = 839B3F8E1A4575A000F5B5FE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
+		83AF00AD1A46DBE800D6DB4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83AF00B61A46DBE900D6DB4F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83D5D4BF19ADB172004AFD84 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -751,11 +907,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		83AF00AB1A46DBE800D6DB4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83AF00B81A46DBE900D6DB4F /* OMCTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83D5D4BD19ADB172004AFD84 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				83099CA819ADBB2E00DDBF1D /* BGHUDStepperCell.m in Sources */,
+				832A16B11AC8671D00358E82 /* INAppStoreWindowSwizzling.c in Sources */,
 				83099CA319ADBB2E00DDBF1D /* BGHUDScrollView.m in Sources */,
 				83D5D52A19ADB83C004AFD84 /* OMFMainPanel.m in Sources */,
 				839396F019ADD791008D8A3C /* OMCLCDScreen.m in Sources */,
@@ -773,6 +938,7 @@
 				833F645119AF03BB001C7C35 /* OMCBinaryOperationBox.m in Sources */,
 				83DD4A1B19B20005007F530A /* OMCOperand.m in Sources */,
 				83099C9919ADBB2E00DDBF1D /* BGHUDBox.m in Sources */,
+				832A16B21AC8671D00358E82 /* INWindowBackgroundView+CoreUIRendering.m in Sources */,
 				83D5D4D819ADB172004AFD84 /* OMCAppDelegate.m in Sources */,
 				83099CA719ADBB2E00DDBF1D /* BGHUDSliderCell.m in Sources */,
 				83FD699919C3303300B4488C /* OMCProgrammerStyleCalculation.m in Sources */,
@@ -783,6 +949,7 @@
 				83099CAF19ADBB2E00DDBF1D /* BGHUDTokenAttachmentCell.m in Sources */,
 				83099CA219ADBB2E00DDBF1D /* BGHUDScroller.m in Sources */,
 				83099C9B19ADBB2E00DDBF1D /* BGHUDColorWell.m in Sources */,
+				832A16B41AC8671D00358E82 /* INAppStoreWindow.m in Sources */,
 				83D5D54419ADB91B004AFD84 /* OMCAboutView.m in Sources */,
 				83FD69A219C3753000B4488C /* OMCCalWithBasicStyle.m in Sources */,
 				83D5D4D119ADB172004AFD84 /* main.m in Sources */,
@@ -803,12 +970,14 @@
 				83099CAD19ADBB2E00DDBF1D /* BGHUDTabViewItem.m in Sources */,
 				83099CB019ADBB2E00DDBF1D /* BGHUDTokenFieldCell.m in Sources */,
 				8310B0231A022EB400ED8EB0 /* OMCAboutViewController.m in Sources */,
+				832A16B51AC8671D00358E82 /* INWindowButton.m in Sources */,
 				83099CA019ADBB2E00DDBF1D /* BGHUDPopUpButtonCell.m in Sources */,
 				83099CA619ADBB2E00DDBF1D /* BGHUDSegmentedCell.m in Sources */,
 				8351EF2A19D113ED00D5FD7D /* NSString+OMCString.m in Sources */,
 				83099C9C19ADBB2E00DDBF1D /* BGHUDComboBoxCell.m in Sources */,
 				83099CAC19ADBB2E00DDBF1D /* BGHUDTabView.m in Sources */,
 				83D5D52919ADB83C004AFD84 /* OMFMainPanelController.m in Sources */,
+				832A16B31AC8671D00358E82 /* NSDocument+INAppStoreWindowFixes.m in Sources */,
 				83099C9819ADBB2E00DDBF1D /* BGGradientTheme.m in Sources */,
 				839396ED19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m in Sources */,
 			);
@@ -818,13 +987,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83D5D4EF19ADB172004AFD84 /* Oh_My_Cal_Tests.m in Sources */,
+				83D5D4EF19ADB172004AFD84 /* BasicTestForOMCOperand.m in Sources */,
+				8399E1B11A48437000699858 /* AdvancedTestForOMCOperand.m in Sources */,
+				83AF00C11A46DC1100D6DB4F /* OMCTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		83AF00BB1A46DBE900D6DB4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83D5D4C019ADB172004AFD84 /* Oh My Cal! */;
+			targetProxy = 83AF00BA1A46DBE900D6DB4F /* PBXContainerItemProxy */;
+		};
 		83D5D4E719ADB172004AFD84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 83D5D4C019ADB172004AFD84 /* Oh My Cal! */;
@@ -833,6 +1009,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		83AF00B41A46DBE900D6DB4F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83AF00B51A46DBE900D6DB4F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		83D5D4CD19ADB172004AFD84 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -860,6 +1044,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		83AF00BC1A46DBE900D6DB4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Oh My Cal!.app/Contents/MacOS/Oh My Cal!";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OMCTests/OMCTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "OMCTests/OMCTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		83AF00BD1A46DBE900D6DB4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Oh My Cal!.app/Contents/MacOS/Oh My Cal!";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OMCTests/OMCTests-Prefix.pch";
+				INFOPLIST_FILE = "OMCTests/OMCTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		83D5D4F019ADB172004AFD84 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -934,7 +1158,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_ENTITLEMENTS = "Oh My Cal!/Oh My Cal!.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -988,7 +1211,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_ENTITLEMENTS = "Oh My Cal!/Oh My Cal!.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
@@ -1081,6 +1303,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		83AF00BF1A46DBE900D6DB4F /* Build configuration list for PBXNativeTarget "OMCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83AF00BC1A46DBE900D6DB4F /* Debug */,
+				83AF00BD1A46DBE900D6DB4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		83D5D4BC19ADB172004AFD84 /* Build configuration list for PBXProject "Oh My Cal!" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

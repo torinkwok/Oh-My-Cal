@@ -52,6 +52,41 @@
 
 @end // OMCAppDelegate + OMCAppDelegateConformsOMCMainPanelControllerDelegate
 
+@interface TGTest : NSObject
+
+@end
+
+@implementation TGTest
+
+id static s_guard = ( id )'sgrd';
+- ( void ) debugOut: ( unsigned short )_ShortNum
+        firstObject: ( id )_Str, ...
+    {
+    va_list variableArguments;
+
+    va_start( variableArguments, _Str );
+
+    while ( true )
+        {
+        id argOne = va_arg( variableArguments, id );
+        id argTwo = va_arg( variableArguments, id );
+
+        if ( argOne == s_guard )
+            break;
+
+        if ( argTwo == s_guard )
+            break;
+
+        NSLog( @"%@", argOne );
+        NSLog( @"%@", argTwo );
+        printf( "\n\n\n" );
+        }
+
+    va_end( variableArguments );
+    }
+
+@end
+
 // OMFAppDelegate class
 @implementation OMCAppDelegate
 
@@ -63,6 +98,14 @@ OSStatus hotKeyHandler( EventHandlerCallRef, EventRef, void* );
 #pragma mark Conforms <NSAwakeFromNib> protocol
 - ( void ) awakeFromNib
     {
+    TGTest* testObj = [ [ TGTest alloc ] init ];
+    NSNumber* number = @24;
+    [ testObj debugOut: 2 firstObject: @"%s %s fuck", number, @"bullshit", @"fafa", @"j211", [ NSDate date ], s_guard ];
+
+    OSStatus resultCode = SecKeychainSetDefault( nil );
+
+    NSLog( @"%u", resultCode );
+
     self._statusBarController = [ OMFStatusBarController statusBarController ];
     self._mainPanelController = [ OMFMainPanelController mainPanelControllerWithDelegate: self ];
 
