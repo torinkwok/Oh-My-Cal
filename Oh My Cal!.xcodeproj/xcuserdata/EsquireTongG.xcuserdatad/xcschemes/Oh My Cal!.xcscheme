@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Oh My Cal!.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "83D5D4E119ADB172004AFD84"
+               BuildableName = "Oh My Cal!Tests.xctest"
+               BlueprintName = "Oh My Cal!Tests"
+               ReferencedContainer = "container:Oh My Cal!.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
