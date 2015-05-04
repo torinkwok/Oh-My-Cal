@@ -48,6 +48,11 @@
 		8310B02A1A023FBF00ED8EB0 /* OMCKeyBindingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8310B0291A023FBF00ED8EB0 /* OMCKeyBindingsView.xib */; };
 		8310B02D1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8310B02C1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m */; };
 		8316FF9119ED4DDF007C5840 /* github.png in Resources */ = {isa = PBXBuildFile; fileRef = 8316FF8F19ED4DDF007C5840 /* github.png */; };
+		832A16B11AC8671D00358E82 /* INAppStoreWindowSwizzling.c in Sources */ = {isa = PBXBuildFile; fileRef = 832A16A61AC8671D00358E82 /* INAppStoreWindowSwizzling.c */; };
+		832A16B21AC8671D00358E82 /* INWindowBackgroundView+CoreUIRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = 832A16A91AC8671D00358E82 /* INWindowBackgroundView+CoreUIRendering.m */; };
+		832A16B31AC8671D00358E82 /* NSDocument+INAppStoreWindowFixes.m in Sources */ = {isa = PBXBuildFile; fileRef = 832A16AB1AC8671D00358E82 /* NSDocument+INAppStoreWindowFixes.m */; };
+		832A16B41AC8671D00358E82 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 832A16AD1AC8671D00358E82 /* INAppStoreWindow.m */; };
+		832A16B51AC8671D00358E82 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 832A16B01AC8671D00358E82 /* INWindowButton.m */; };
 		832A24A619C4387E005E79A5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 832A24A519C4387E005E79A5 /* README.md */; };
 		832A8C8119D90BCD005DB2A7 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 832A8C7F19D90BCD005DB2A7 /* twitter.png */; };
 		832A8C8219D90BCD005DB2A7 /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 832A8C8019D90BCD005DB2A7 /* email.png */; };
@@ -221,6 +226,17 @@
 		8310B02C1A023FD100ED8EB0 /* OMCKeyBindingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OMCKeyBindingsViewController.m; path = "Oh My Cal!/OMCKeyBindingsViewController.m"; sourceTree = "<group>"; };
 		83166B3119B9C6FB00D39FC4 /* OMCBinaryAndDecimalConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OMCBinaryAndDecimalConversion.h; path = "Oh My Cal!/OMCBinaryAndDecimalConversion.h"; sourceTree = "<group>"; };
 		8316FF8F19ED4DDF007C5840 /* github.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = github.png; path = "Oh My Cal!/Resources/github.png"; sourceTree = "<group>"; };
+		832A16A61AC8671D00358E82 /* INAppStoreWindowSwizzling.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = INAppStoreWindowSwizzling.c; sourceTree = "<group>"; };
+		832A16A71AC8671D00358E82 /* INAppStoreWindowSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowSwizzling.h; sourceTree = "<group>"; };
+		832A16A81AC8671D00358E82 /* INWindowBackgroundView+CoreUIRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "INWindowBackgroundView+CoreUIRendering.h"; sourceTree = "<group>"; };
+		832A16A91AC8671D00358E82 /* INWindowBackgroundView+CoreUIRendering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "INWindowBackgroundView+CoreUIRendering.m"; sourceTree = "<group>"; };
+		832A16AA1AC8671D00358E82 /* NSDocument+INAppStoreWindowFixes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDocument+INAppStoreWindowFixes.h"; sourceTree = "<group>"; };
+		832A16AB1AC8671D00358E82 /* NSDocument+INAppStoreWindowFixes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDocument+INAppStoreWindowFixes.m"; sourceTree = "<group>"; };
+		832A16AC1AC8671D00358E82 /* INAppStoreWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindow.h; sourceTree = "<group>"; };
+		832A16AD1AC8671D00358E82 /* INAppStoreWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INAppStoreWindow.m; sourceTree = "<group>"; };
+		832A16AE1AC8671D00358E82 /* INAppStoreWindowCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindowCompatibility.h; sourceTree = "<group>"; };
+		832A16AF1AC8671D00358E82 /* INWindowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INWindowButton.h; sourceTree = "<group>"; };
+		832A16B01AC8671D00358E82 /* INWindowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INWindowButton.m; sourceTree = "<group>"; };
 		832A24A519C4387E005E79A5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		832A8C7F19D90BCD005DB2A7 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter.png; path = "Oh My Cal!/Resources/twitter.png"; sourceTree = "<group>"; };
 		832A8C8019D90BCD005DB2A7 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = email.png; path = "Oh My Cal!/Resources/email.png"; sourceTree = "<group>"; };
@@ -433,6 +449,32 @@
 			name = Resoureces;
 			sourceTree = "<group>";
 		};
+		832A16A41AC8671D00358E82 /* INAppStoreWindow */ = {
+			isa = PBXGroup;
+			children = (
+				832A16A51AC8671D00358E82 /* Extensions */,
+				832A16AC1AC8671D00358E82 /* INAppStoreWindow.h */,
+				832A16AD1AC8671D00358E82 /* INAppStoreWindow.m */,
+				832A16AE1AC8671D00358E82 /* INAppStoreWindowCompatibility.h */,
+				832A16AF1AC8671D00358E82 /* INWindowButton.h */,
+				832A16B01AC8671D00358E82 /* INWindowButton.m */,
+			);
+			path = INAppStoreWindow;
+			sourceTree = "<group>";
+		};
+		832A16A51AC8671D00358E82 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				832A16A61AC8671D00358E82 /* INAppStoreWindowSwizzling.c */,
+				832A16A71AC8671D00358E82 /* INAppStoreWindowSwizzling.h */,
+				832A16A81AC8671D00358E82 /* INWindowBackgroundView+CoreUIRendering.h */,
+				832A16A91AC8671D00358E82 /* INWindowBackgroundView+CoreUIRendering.m */,
+				832A16AA1AC8671D00358E82 /* NSDocument+INAppStoreWindowFixes.h */,
+				832A16AB1AC8671D00358E82 /* NSDocument+INAppStoreWindowFixes.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		833F645219AF2FAE001C7C35 /* Calculation */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,6 +552,7 @@
 			children = (
 				83AF00C01A46DC1100D6DB4F /* OMCTests.m */,
 				83ED014819BC9627004E7F9E /* OhMyCal.icns */,
+				832A16A41AC8671D00358E82 /* INAppStoreWindow */,
 				833F645219AF2FAE001C7C35 /* Calculation */,
 				83D5D51F19ADB452004AFD84 /* Main Panel */,
 				83D5D52119ADB46E004AFD84 /* Status Bar */,
@@ -877,6 +920,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83099CA819ADBB2E00DDBF1D /* BGHUDStepperCell.m in Sources */,
+				832A16B11AC8671D00358E82 /* INAppStoreWindowSwizzling.c in Sources */,
 				83099CA319ADBB2E00DDBF1D /* BGHUDScrollView.m in Sources */,
 				83D5D52A19ADB83C004AFD84 /* OMFMainPanel.m in Sources */,
 				839396F019ADD791008D8A3C /* OMCLCDScreen.m in Sources */,
@@ -894,6 +938,7 @@
 				833F645119AF03BB001C7C35 /* OMCBinaryOperationBox.m in Sources */,
 				83DD4A1B19B20005007F530A /* OMCOperand.m in Sources */,
 				83099C9919ADBB2E00DDBF1D /* BGHUDBox.m in Sources */,
+				832A16B21AC8671D00358E82 /* INWindowBackgroundView+CoreUIRendering.m in Sources */,
 				83D5D4D819ADB172004AFD84 /* OMCAppDelegate.m in Sources */,
 				83099CA719ADBB2E00DDBF1D /* BGHUDSliderCell.m in Sources */,
 				83FD699919C3303300B4488C /* OMCProgrammerStyleCalculation.m in Sources */,
@@ -904,6 +949,7 @@
 				83099CAF19ADBB2E00DDBF1D /* BGHUDTokenAttachmentCell.m in Sources */,
 				83099CA219ADBB2E00DDBF1D /* BGHUDScroller.m in Sources */,
 				83099C9B19ADBB2E00DDBF1D /* BGHUDColorWell.m in Sources */,
+				832A16B41AC8671D00358E82 /* INAppStoreWindow.m in Sources */,
 				83D5D54419ADB91B004AFD84 /* OMCAboutView.m in Sources */,
 				83FD69A219C3753000B4488C /* OMCCalWithBasicStyle.m in Sources */,
 				83D5D4D119ADB172004AFD84 /* main.m in Sources */,
@@ -924,12 +970,14 @@
 				83099CAD19ADBB2E00DDBF1D /* BGHUDTabViewItem.m in Sources */,
 				83099CB019ADBB2E00DDBF1D /* BGHUDTokenFieldCell.m in Sources */,
 				8310B0231A022EB400ED8EB0 /* OMCAboutViewController.m in Sources */,
+				832A16B51AC8671D00358E82 /* INWindowButton.m in Sources */,
 				83099CA019ADBB2E00DDBF1D /* BGHUDPopUpButtonCell.m in Sources */,
 				83099CA619ADBB2E00DDBF1D /* BGHUDSegmentedCell.m in Sources */,
 				8351EF2A19D113ED00D5FD7D /* NSString+OMCString.m in Sources */,
 				83099C9C19ADBB2E00DDBF1D /* BGHUDComboBoxCell.m in Sources */,
 				83099CAC19ADBB2E00DDBF1D /* BGHUDTabView.m in Sources */,
 				83D5D52919ADB83C004AFD84 /* OMFMainPanelController.m in Sources */,
+				832A16B31AC8671D00358E82 /* NSDocument+INAppStoreWindowFixes.m in Sources */,
 				83099C9819ADBB2E00DDBF1D /* BGGradientTheme.m in Sources */,
 				839396ED19ADC7EC008D8A3C /* OMCCalWithProgrammerStyle.m in Sources */,
 			);
